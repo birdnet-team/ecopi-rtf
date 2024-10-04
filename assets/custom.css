@@ -1,0 +1,49 @@
+/* Custom CSS for the layout */
+body {
+    font-family: 'SwissWorks', sans-serif; /* Set the default font */
+    max-width: 1200px; /* Set the maximum site width */
+    margin: 0 auto; /* Center the content */
+    padding: 0 0px; /* Add some padding to the sides */
+}
+
+h1 {
+    font-family: gibson, Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    line-height: 1.1;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: gibson, Helvetica, Arial, sans-serif;
+    letter-spacing: -.01em;
+}
+
+.header-graphic {
+    width: 100%;
+    height: 400px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensures the image covers the entire width */
+}
+
+.header-logo {
+    max-height: 25px;
+}
+
+.divider {
+    border-left: 1px solid rgb(46, 46, 46); 
+    height: 25px; 
+    margin: 0 0px;
+}
+
+nav .navbar-nav {
+    margin-left: auto; /* Align menu items to the right */
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer-logo {
+    max-height: 50px;
+}
