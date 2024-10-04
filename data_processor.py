@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 import config as cfg 
 
-def get_total_detections(min_conf=0.5, species_list=[], days=-1):
+def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=10):
     
     url = cfg.API_BASE_URL + 'meta/project/' + cfg.PROJECT_NAME + '/detections/recorderspeciescounts/'
     
@@ -33,6 +33,9 @@ def get_total_detections(min_conf=0.5, species_list=[], days=-1):
         
     # Sort by count
     detections = {k: v for k, v in sorted(detections.items(), key=lambda item: item[1], reverse=True)}
+    
+    # Only keep species with count >= min_count
+    detections = {k: v for k, v in detections.items() if v >= min_count}
     
     total_detections = {'total_detections': sum(detections.values()), 'species_counts': detections}
 
