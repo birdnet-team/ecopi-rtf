@@ -64,7 +64,8 @@ app.layout = html.Div([
         ),
         color="light",  # Background color
         dark=False,  # White text
-        className="mb-0",  # Add bottom margin
+        className="mb-0 navbar-border",  # Add bottom margin and custom class
+        sticky="top",  # Stick the navbar to the top
     ),
 
     # Content will be rendered here based on the URL
@@ -97,18 +98,19 @@ main_page_content = html.Div([
         className="stat-row"
     ),
     
-    # Sapcer between the statistics and the main content
+    # Spacer between the statistics and the main content
     html.Div(className="h-spacer"),
 
     # Main Content Section
     dbc.Container(
         [
-            html.H1("Sapsucker Woods Acoustic Monitoring Project", className="mt-1"),
+            html.H2("Sapsucker Woods Acoustic Monitoring Project", className="mt-1"),
             html.P("This is where the content of your page goes."),
             html.P("You can add graphs, charts, or any other interactive components here."),
             # Add more components or visualizations as needed
         ],
         fluid=True,  # Make the content container fluid (adjusts to screen size)
+        className="main-content"
     ),
 ])
 
@@ -158,7 +160,8 @@ footer_content = html.Footer(
                                 html.P("We collect and interpret sounds in nature by developing, applying, and sharing innovative conservation technologies across relevant scales to inform and advance the conservation of wildlife and habitats.", style={'textAlign': 'justify'}),
                                 html.H5("SWAMP"),
                                 html.P("The Sapsucker Woods Acoustic Monitoring Project (SWAMP) is an effort to study the biodiversity of birds in Sapsucker Woods through acoustic monitoring and advances AI models for bird sound ID.", style={'textAlign': 'justify'}),
-                            ]
+                            ],
+                            style={'padding-right': '5px'}
                         ),
                         width=6,
                     ),
@@ -168,7 +171,8 @@ footer_content = html.Footer(
                                 html.H5("BirdNET - Bird Sound Identification"),
                                 html.P("This project is supported by Jake Holshuh (Cornell class of '69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats.", style={'textAlign': 'justify'}),
                                 html.P("The German Federal Ministry of Education and Research is funding the development of BirdNET through the project 'BirdNET+' (FKZ 01|S22072). Additionally, the German Federal Ministry of Environment, Nature Conservation and Nuclear Safety is funding the development of BirdNET through the project 'DeepBirdDetect' (FKZ 67KI31040E).", style={'textAlign': 'justify'}),
-                            ]
+                            ],
+                            style={'padding-left': '5px'}
                         ),
                         width=6,
                     ),

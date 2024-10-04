@@ -1,30 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Merriweather:wght@300;400;700&display=swap');
+
 /* Custom CSS for the layout */
 body {
-    font-family: 'SwissWorks', sans-serif; /* Set the default font */
+    font-family: 'Montserrat', sans-serif; /* Set the default font */
     max-width: 1200px; /* Set the maximum site width */
     margin: 0 auto; /* Center the content */
     padding: 0 0px; /* Add some padding to the sides */
+    letter-spacing: 0.02em; /* Adjust letter spacing for body text */
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif; /* Ensure Montserrat font is applied */
+    letter-spacing: -.03em; /* Adjust letter spacing for headings */
 }
 
 h1 {
-    font-family: "Gibson", Helvetica, Arial, sans-serif;
-    font-weight: 100;
-    line-height: 1.1;
+    font-weight: 300; /* Light */
+    font-size: 4.625rem; /* Headline size */
 }
 
-h2, h3, h4, h5, h6 {
-    font-family: "Gibson", Helvetica, Arial, sans-serif;
-    font-weight: 100;
-    letter-spacing: -.01em;
+h2 {
+    font-weight: 300; /* Light */
+    font-size: 2.5rem; /* Subhead size */
 }
 
-.header-graphic {
-    width: 100%;
-    height: 400px; /* Adjust the height as needed */
-    object-fit: cover; /* Ensures the image covers the entire width */
-    margin-bottom: 0; /* Remove bottom margin */
+h3 {
+    font-weight: 400; /* Regular */
+    font-size: 2rem; /* Title size */
 }
 
+h4 {
+    font-weight: 400; /* Regular */
+    font-size: 1.5rem; /* Section tag size */
+}
+
+p {
+    font-family: 'Merriweather', serif;
+    font-weight: 300; /* Light */
+    font-size: 1.125rem; /* Paragraph copy size */
+    letter-spacing: 0.02em; /* Adjust letter spacing for paragraphs */
+}
+
+.small-paragraph {
+    font-family: 'Merriweather', serif;
+    font-weight: 300; /* Light */
+    font-size: .875rem; /* Small paragraph copy size */
+    letter-spacing: 0.02em; /* Adjust letter spacing for small paragraphs */
+}
+
+.caption {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; /* Regular */
+    font-size: .875rem; /* Caption size */
+    letter-spacing: 0.01em; /* Adjust letter spacing for captions */
+}
+
+/* Additional styles */
 .header-logo {
     max-height: 25px;
 }
@@ -36,13 +67,24 @@ h2, h3, h4, h5, h6 {
 }
 
 nav .navbar-nav {
-    margin-left: auto; /* Align menu items to the right */
+    margin-left: auto; 
+}
+
+.navbar-border {
+    border-top: 5px solid #b31b1b; /* 3px red border */
+}
+
+.header-graphic {
+    width: 100%;
+    height: 400px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensures the image covers the entire width */
+    margin-bottom: 0; /* Remove bottom margin */
 }
 
 .stat-row {
     background-color: #2e261f;
     color: white; 
-    padding: 10px 10px; 
+    padding: 5px 30px; 
     text-align: center; 
     margin: 0; 
     max-width: 1200px; 
@@ -59,6 +101,14 @@ nav .navbar-nav {
     margin: 0 10px; 
 }
 
+.v-spacer {
+    margin: 10px 0; 
+}
+
+.main-content {
+    padding: 30px;
+}
+
 .footer-logo {
     max-height: 50px;
 }
@@ -68,6 +118,7 @@ nav .navbar-nav {
     padding: 20px;
     color: white;
     text-align: center;
+    border-bottom: 5px solid #b31b1b;
 }
 
 .footer .footer-content {
@@ -78,6 +129,7 @@ nav .navbar-nav {
     margin-top: 20px;
     text-align: center;
     font-size: 14px;
+    letter-spacing: 0.02em; /* Adjust letter spacing for footer paragraphs */
 }
 
 .footer .footer-logo {
