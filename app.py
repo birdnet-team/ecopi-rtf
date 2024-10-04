@@ -2,6 +2,7 @@ import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
+import data_processor as dp  # Import data_processor as dp
 
 # Initialize Dash app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, '/assets/custom.css'])
@@ -77,10 +78,32 @@ main_page_content = html.Div([
         html.Img(src='/assets/swamp_header.jpg', className="header-graphic")
     ),
 
+    # Dark gray row with three columns
+    dbc.Row(
+        [
+            dbc.Col(html.Div([
+                html.Div("Detections (total):"),
+                html.H4(id="total-detections", children="0")
+            ]), className="stat-column"),
+            dbc.Col(html.Div([
+                html.Div("Detections (24h):"),
+                html.H4(id="detections-24h", children="0")
+            ]), className="stat-column"),
+            dbc.Col(html.Div([
+                html.Div("Species (24h):"),
+                html.H4(id="species-24h", children="0")
+            ]), className="stat-column"),
+        ],
+        className="stat-row"
+    ),
+    
+    # Sapcer between the statistics and the main content
+    html.Div(className="h-spacer"),
+
     # Main Content Section
     dbc.Container(
         [
-            html.H1("Sapsucker Woods Acoustic Monitoring Project", className="mt-0"),
+            html.H1("Sapsucker Woods Acoustic Monitoring Project", className="mt-1"),
             html.P("This is where the content of your page goes."),
             html.P("You can add graphs, charts, or any other interactive components here."),
             # Add more components or visualizations as needed
@@ -192,6 +215,26 @@ def display_page(pathname):
         return [about_page_content, footer_content]
     else:
         return [html.H1("404: Not found"), footer_content]
+
+# Callback to update the statistics
+@app.callback(
+    [Output('total-detections', 'children'),
+     Output('detections-24h', 'children'),
+     Output('species-24h', 'children')],
+    [Input('url', 'pathname')]
+)
+def update_statistics(pathname):
+    total_detections = dp.get_total_detections()
+    detections_24h = dp.get_total_detections(days=1)
+    species_24h = len(detections_24h['species_counts'])
+    
+    # Format the numbers with dots as thousand separators
+    total_detections_formatted = f"{total_detections['total_detections']:,}"
+    detections_24h_formatted = f"{detections_24h['total_detections']:,}"
+    species_24h_formatted = f"{species_24h:,}"
+    
+    return total_detections_formatted, detections_24h_formatted, species_24h_formatted
+
 
 # Run the app on the local server
 if __name__ == "__main__":

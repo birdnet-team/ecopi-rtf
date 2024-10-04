@@ -22,7 +22,7 @@ h2, h3, h4, h5, h6 {
     width: 100%;
     height: 400px; /* Adjust the height as needed */
     object-fit: cover; /* Ensures the image covers the entire width */
-    padding-bottom: 20px; /* Add padding between the header and content */
+    margin-bottom: 0; /* Remove bottom margin */
 }
 
 .header-logo {
@@ -37,6 +37,26 @@ h2, h3, h4, h5, h6 {
 
 nav .navbar-nav {
     margin-left: auto; /* Align menu items to the right */
+}
+
+.stat-row {
+    background-color: #2e261f;
+    color: white; 
+    padding: 10px 10px; 
+    text-align: center; 
+    margin: 0; 
+    max-width: 1200px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.stat-column {
+    padding: 5px; 
+    text-align: left;
+}
+
+.h-spacer {
+    margin: 0 10px; 
 }
 
 .footer-logo {
