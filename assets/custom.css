@@ -7,13 +7,14 @@ body {
 }
 
 h1 {
-    font-family: gibson, Helvetica, Arial, sans-serif;
+    font-family: "Gibson", Helvetica, Arial, sans-serif;
     font-weight: 100;
     line-height: 1.1;
 }
 
 h2, h3, h4, h5, h6 {
-    font-family: gibson, Helvetica, Arial, sans-serif;
+    font-family: "Gibson", Helvetica, Arial, sans-serif;
+    font-weight: 100;
     letter-spacing: -.01em;
 }
 
@@ -21,6 +22,7 @@ h2, h3, h4, h5, h6 {
     width: 100%;
     height: 400px; /* Adjust the height as needed */
     object-fit: cover; /* Ensures the image covers the entire width */
+    padding-bottom: 20px; /* Add padding between the header and content */
 }
 
 .header-logo {
@@ -37,13 +39,29 @@ nav .navbar-nav {
     margin-left: auto; /* Align menu items to the right */
 }
 
-footer {
-    background-color: #f8f9fa;
-    padding: 20px;
-    text-align: center;
-    margin-top: 40px;
-}
-
 .footer-logo {
     max-height: 50px;
+}
+
+.footer {
+    background-color: #2e261f;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.footer .footer-content {
+    padding: 20px;
+}
+
+.footer p {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer .footer-logo {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
