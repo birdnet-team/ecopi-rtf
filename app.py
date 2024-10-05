@@ -108,10 +108,15 @@ main_page_content = html.Div([
     # Main Content Section
     dbc.Container(
         [
-            html.H2("Sapsucker Woods Acoustic Monitoring Project", className="mt-1"),
+            html.H3("Sapsucker Woods Acoustic Monitoring Project", className="mt-1"),
             html.P("This is where the content of your page goes."),
             html.P("You can add graphs, charts, or any other interactive components here."),
-            # Add more components or visualizations as needed
+            
+            # Recent detections
+            html.H5("Recent Detections:", className="mt-4"),
+            dbc.Row(id='last-detections', className="mt-4"),
+            dbc.Spinner(html.Div(id='no-detections-placeholder', className="mt-4"), color="#b31b1b")
+            
         ],
         fluid=True,  # Make the content container fluid (adjusts to screen size)
         className="main-content"
@@ -247,6 +252,39 @@ def update_statistics(pathname):
     
     return total_detections_formatted, detections_24h_formatted, species_24h_formatted, total_audio_formatted
 
+# Callback to update the last detections
+@app.callback(
+    [Output('last-detections', 'children'),
+     Output('no-detections-placeholder', 'children')],
+    [Input('url', 'pathname')]
+)
+def update_last_detections(pathname):
+    last_detections = dp.get_last_n_detections()
+    cards = []
+    for species, data in last_detections.items():
+        card = dbc.Col(
+            dbc.Card(
+                [
+                    dbc.CardImg(src=data['url_media'], top=True),
+                    dbc.CardBody(
+                        [
+                            html.H5(species, className="card-title"),
+                            html.Audio(src=data['url_media'], controls=True, className="w-100")
+                        ]
+                    ),
+                ],
+                className="mb-4"
+            ),
+            width=12, sm=6, md=4  # Adjust the width for different screen sizes
+        )
+        cards.append(card)
+    
+    if not cards:
+        placeholder = html.P("No recent detections available.", className="text-muted")
+    else:
+        placeholder = None
+    
+    return cards, placeholder
 
 # Run the app on the local server
 if __name__ == "__main__":
