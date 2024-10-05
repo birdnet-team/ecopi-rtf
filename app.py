@@ -79,25 +79,25 @@ main_page_content = html.Div([
         html.Img(src='/assets/swamp_header.jpg', className="header-graphic")
     ),
 
-    # Dark gray row with three columns
+    # Dark gray row with four columns, responsive to 2x2 on narrow screens
     dbc.Row(
         [            
             dbc.Col(html.Div([
                 html.Div("Detections (24h):"),
                 html.H5(id="detections-24h", children="0")
-            ]), className="stat-column"),
+            ]), className="stat-column", width=6, md=3),
             dbc.Col(html.Div([
                 html.Div("Species (24h):"),
                 html.H5(id="species-24h", children="0")
-            ]), className="stat-column"),
+            ]), className="stat-column", width=6, md=3),
             dbc.Col(html.Div([
                 html.Div("Detections (total):"),
                 html.H5(id="total-detections", children="0")
-            ]), className="stat-column"),
+            ]), className="stat-column", width=6, md=3),
             dbc.Col(html.Div([
                 html.Div("Audio (total):"),
                 html.H5(id="total-audio", children="0")
-            ]), className="stat-column"),
+            ]), className="stat-column", width=6, md=3),
         ],
         className="stat-row"
     ),
@@ -153,7 +153,7 @@ footer_content = html.Footer(
             html.Img(src='/assets/cornell-lab-logo-full-white.png', className="footer-logo")
         ),
         
-        # Two-column content
+        # Two-column content, responsive to single column on narrow screens
         dbc.Container(
             dbc.Row(
                 [
@@ -163,22 +163,22 @@ footer_content = html.Footer(
                                 html.H5("K. Lisa Yang Center for Conservation Bioacoustics"),
                                 html.P("We collect and interpret sounds in nature by developing, applying, and sharing innovative conservation technologies across relevant scales to inform and advance the conservation of wildlife and habitats.", style={'textAlign': 'justify'}),
                                 html.H5("SWAMP"),
-                                html.P("The Sapsucker Woods Acoustic Monitoring Project (SWAMP) is an effort to study the biodiversity of birds in Sapsucker Woods through acoustic monitoring and advances AI models for bird sound ID.", style={'textAlign': 'justify'}),
+                                html.P("The Sapsucker Woods Acoustic Monitoring Project (SWAMP) is an effort to study bird biodiversity in Sapsucker Woods through acoustic monitoring and advanced AI models for bird call identification. SWAMP is a collaboration between Cornell University, Chemnitz University of Technology and OekoFor GbR.", style={'textAlign': 'justify'}),
                             ],
                             style={'padding-right': '5px'}
                         ),
-                        width=6,
+                        width=12, md=6,
                     ),
                     dbc.Col(
                         html.Div(
                             [
                                 html.H5("BirdNET - Bird Sound Identification"),
-                                html.P("This project is supported by Jake Holshuh (Cornell class of '69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats.", style={'textAlign': 'justify'}),
+                                html.P("BirdNET is an advanced AI for bird call identification. BirdNET is supported by Jake Holshuh (Cornell class of '69) and the Arthur Vining Davis Foundation. Our work at the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform wildlife and habitat conservation.", style={'textAlign': 'justify'}),
                                 html.P("The German Federal Ministry of Education and Research is funding the development of BirdNET through the project 'BirdNET+' (FKZ 01|S22072). Additionally, the German Federal Ministry of Environment, Nature Conservation and Nuclear Safety is funding the development of BirdNET through the project 'DeepBirdDetect' (FKZ 67KI31040E).", style={'textAlign': 'justify'}),
                             ],
                             style={'padding-left': '5px'}
                         ),
-                        width=6,
+                        width=12, md=6,
                     ),
                 ]
             ),

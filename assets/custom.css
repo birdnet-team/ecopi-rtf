@@ -88,6 +88,8 @@ nav .navbar-nav {
 .stat-column {
     padding: 5px; 
     text-align: left;
+    font-size: .75rem;
+    font-weight: 400;
 }
 
 .h-spacer {
