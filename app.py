@@ -81,18 +81,22 @@ main_page_content = html.Div([
 
     # Dark gray row with three columns
     dbc.Row(
-        [
-            dbc.Col(html.Div([
-                html.Div("Detections (total):"),
-                html.H4(id="total-detections", children="0")
-            ]), className="stat-column"),
+        [            
             dbc.Col(html.Div([
                 html.Div("Detections (24h):"),
-                html.H4(id="detections-24h", children="0")
+                html.H5(id="detections-24h", children="0")
             ]), className="stat-column"),
             dbc.Col(html.Div([
                 html.Div("Species (24h):"),
-                html.H4(id="species-24h", children="0")
+                html.H5(id="species-24h", children="0")
+            ]), className="stat-column"),
+            dbc.Col(html.Div([
+                html.Div("Detections (total):"),
+                html.H5(id="total-detections", children="0")
+            ]), className="stat-column"),
+            dbc.Col(html.Div([
+                html.Div("Audio (total):"),
+                html.H5(id="total-audio", children="0")
             ]), className="stat-column"),
         ],
         className="stat-row"
@@ -224,20 +228,24 @@ def display_page(pathname):
 @app.callback(
     [Output('total-detections', 'children'),
      Output('detections-24h', 'children'),
-     Output('species-24h', 'children')],
+     Output('species-24h', 'children'),
+     Output('total-audio', 'children')],
     [Input('url', 'pathname')]
 )
 def update_statistics(pathname):
     total_detections = dp.get_total_detections()
     detections_24h = dp.get_total_detections(days=1)
     species_24h = len(detections_24h['species_counts'])
+    total_audio = total_detections['total_detections'] * 5  # Assuming 5 seconds of audio per detection
     
-    # Format the numbers with dots as thousand separators
+    # Format the numbers with commas as thousand separators
     total_detections_formatted = f"{total_detections['total_detections']:,}"
     detections_24h_formatted = f"{detections_24h['total_detections']:,}"
     species_24h_formatted = f"{species_24h:,}"
+    # show total ausio as 45d 12h 37m
+    total_audio_formatted = f"{total_audio // 86400}d {total_audio % 86400 // 3600}h {total_audio % 3600 // 60}m"
     
-    return total_detections_formatted, detections_24h_formatted, species_24h_formatted
+    return total_detections_formatted, detections_24h_formatted, species_24h_formatted, total_audio_formatted
 
 
 # Run the app on the local server

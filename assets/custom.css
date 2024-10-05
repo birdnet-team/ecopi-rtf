@@ -36,16 +36,9 @@ h4 {
 
 p {
     font-family: 'Merriweather', serif;
-    font-weight: 300; /* Light */
-    font-size: 1.125rem; /* Paragraph copy size */
-    letter-spacing: 0.02em; /* Adjust letter spacing for paragraphs */
-}
-
-.small-paragraph {
-    font-family: 'Merriweather', serif;
-    font-weight: 300; /* Light */
-    font-size: .875rem; /* Small paragraph copy size */
-    letter-spacing: 0.02em; /* Adjust letter spacing for small paragraphs */
+    font-weight: 300;
+    font-size: .875rem;
+    letter-spacing: 0.02em;
 }
 
 .caption {
@@ -84,7 +77,7 @@ nav .navbar-nav {
 .stat-row {
     background-color: #2e261f;
     color: white; 
-    padding: 5px 30px; 
+    padding: 1px 30px; 
     text-align: center; 
     margin: 0; 
     max-width: 1200px; 
@@ -128,7 +121,7 @@ nav .navbar-nav {
 .footer p {
     margin-top: 20px;
     text-align: center;
-    font-size: 14px;
+    font-size: .875rem;
     letter-spacing: 0.02em; /* Adjust letter spacing for footer paragraphs */
 }
 
