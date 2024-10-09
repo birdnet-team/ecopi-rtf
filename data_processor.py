@@ -4,6 +4,29 @@ from datetime import datetime, timedelta
 
 import config as cfg 
 
+def get_current_week():
+    
+    # Return current week 1..48 (4 weeks per month)
+    return datetime.now().isocalendar()[1]
+
+def is_in_species_data(species_code):
+    
+    return True
+
+def get_species_data(species):
+    
+    data = {}
+    
+    # This is example data, we'll parse this from the species data later
+    data['common_name'] = cfg.SPECIES_DATA[species]['common_name']
+    data['scientific_name'] = cfg.SPECIES_DATA[species]['sci_name']
+    data['ebird_url'] = 'https://ebird.org/species/' + cfg.SPECIES_DATA[species]['new_ebird_code']
+    data['image_url'] = cfg.SPECIES_DATA[species]['image']['src'] + '/320'
+    data['image_author'] = cfg.SPECIES_DATA[species]['image']['author']
+    data['frequency'] = cfg.SPECIES_DATA[species]['frequencies'][get_current_week()] / 100
+    
+    return data
+
 def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=10):
     
     url = cfg.API_BASE_URL + 'meta/project/' + cfg.PROJECT_NAME + '/detections/recorderspeciescounts/'
@@ -67,7 +90,7 @@ def get_last_n_detections(n=6, min_conf=0.85, hours=24, limit=1000):
     params['datetime_lte'] = now.isoformat()  
     
     # Only retrieve certain fields
-    params['only'] = 'species_code, has_audio, datetime, url_media, confidence'
+    params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'
     
     # Pagination/limit
     params['limit'] = limit
@@ -82,9 +105,14 @@ def get_last_n_detections(n=6, min_conf=0.85, hours=24, limit=1000):
         # Has audio?
         if not item['has_audio']:
             continue
+        # Is species in species data?
+        if not is_in_species_data(item['species_code']):
+            continue
         if item['species_code'] not in detections:
             detections[item['species_code']] = []
         detections[item['species_code']].append(item)
+        # format datetime to exclude milliseconds
+        item['datetime'] = item['datetime'].split('.')[0]
         
     # For each species, sort by confidence and then randomly select 1 detection from the top 10
     last_n = {}
@@ -97,6 +125,12 @@ def get_last_n_detections(n=6, min_conf=0.85, hours=24, limit=1000):
     
     # Limit to n species
     last_n = {k: v for k, v in list(last_n.items())[:n]}
+    
+    # Add species data
+    for species in last_n:
+        species_data = get_species_data(species)
+        for key, value in species_data.items():
+            last_n[species][key] = value
     
     return last_n
     

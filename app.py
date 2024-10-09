@@ -1,15 +1,21 @@
 import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State, ALL, MATCH
 import data_processor as dp  # Import data_processor as dp
 
 # Initialize Dash app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, '/assets/custom.css'])
+app = dash.Dash(__name__, external_stylesheets=[
+    dbc.themes.BOOTSTRAP, 
+    '/assets/custom.css',
+    'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css'
+])
 
 # Layout of the Dash app
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),  # Track the URL
+    dcc.Store(id='audio-store'),  # Store for audio URLs
+    dcc.Store(id='play-audio-store'),  # Store for the audio to be played
 
     # Header Section with Logo and Navigation Bar
     dbc.Navbar(
@@ -80,25 +86,28 @@ main_page_content = html.Div([
     ),
 
     # Dark gray row with four columns, responsive to 2x2 on narrow screens
-    dbc.Row(
-        [            
-            dbc.Col(html.Div([
-                html.Div("Detections (24h):"),
-                html.H5(id="detections-24h", children="0")
-            ]), className="stat-column", width=6, md=3),
-            dbc.Col(html.Div([
-                html.Div("Species (24h):"),
-                html.H5(id="species-24h", children="0")
-            ]), className="stat-column", width=6, md=3),
-            dbc.Col(html.Div([
-                html.Div("Detections (total):"),
-                html.H5(id="total-detections", children="0")
-            ]), className="stat-column", width=6, md=3),
-            dbc.Col(html.Div([
-                html.Div("Audio (total):"),
-                html.H5(id="total-audio", children="0")
-            ]), className="stat-column", width=6, md=3),
-        ],
+    html.Div(
+        dbc.Row(
+            [            
+                dbc.Col(html.Div([
+                    html.Div("Detections (24h):"),
+                    html.H5(id="detections-24h", children="0")
+                ]), className="stat-column", width=6, md=3),
+                dbc.Col(html.Div([
+                    html.Div("Species (24h):"),
+                    html.H5(id="species-24h", children="0")
+                ]), className="stat-column", width=6, md=3),
+                dbc.Col(html.Div([
+                    html.Div("Detections (total):"),
+                    html.H5(id="total-detections", children="0")
+                ]), className="stat-column", width=6, md=3),
+                dbc.Col(html.Div([
+                    html.Div("Audio (total):"),
+                    html.H5(id="total-audio", children="0")
+                ]), className="stat-column", width=6, md=3),
+            ],
+            className="stat-row-container"
+        ),
         className="stat-row"
     ),
     
@@ -247,12 +256,11 @@ def update_statistics(pathname):
     total_detections_formatted = f"{total_detections['total_detections']:,}"
     detections_24h_formatted = f"{detections_24h['total_detections']:,}"
     species_24h_formatted = f"{species_24h:,}"
-    # show total ausio as 45d 12h 37m
     total_audio_formatted = f"{total_audio // 86400}d {total_audio % 86400 // 3600}h {total_audio % 3600 // 60}m"
     
     return total_detections_formatted, detections_24h_formatted, species_24h_formatted, total_audio_formatted
 
-# Callback to update the last detections
+# Callback to load recent detections and populate the cards
 @app.callback(
     [Output('last-detections', 'children'),
      Output('no-detections-placeholder', 'children')],
@@ -261,21 +269,42 @@ def update_statistics(pathname):
 def update_last_detections(pathname):
     last_detections = dp.get_last_n_detections()
     cards = []
-    for species, data in last_detections.items():
+    for idx, (species, data) in enumerate(last_detections.items()):
         card = dbc.Col(
             dbc.Card(
                 [
-                    dbc.CardImg(src=data['url_media'], top=True),
+                    html.Div(
+                        [
+                            dbc.CardImg(src=data['image_url'], top=True, className="card-img-top"),
+                            html.Div(
+                                # Wrapping the play icon inside a clickable Div
+                                html.Div([
+                                    html.I(className="bi bi-play-circle-fill"),
+                                ], id=f'play-icon-{idx}', n_clicks=0),
+                                className="play-icon-overlay"
+                            ),
+                        ],
+                        style={"position": "relative"}  # Ensure the overlay is positioned relative to the image
+                    ),
                     dbc.CardBody(
                         [
-                            html.H5(species, className="card-title"),
-                            html.Audio(src=data['url_media'], controls=True, className="w-100")
+                            html.H5(data['common_name'], className="card-title"),
+                            html.P(data['scientific_name'], className="card-subtitle mb-2 text-muted"),
+                            html.P([
+                                html.Span(f"Date: {data['datetime']}", className="small-text"),
+                                html.Br(),
+                                html.Span(f"Recorder: #{data['recorder_field_id']}", className="small-text")
+                            ], className="card-text"),
+                            html.P(f"Photo: {data['image_author']}", className="card-text text-end very-small-text text-muted"),
+                            # Hidden audio element for each card with a unique string-based id
+                            html.Audio(id=f'audio-{idx}', src=data['url_media'], controls=True, className="d-none")
                         ]
                     ),
                 ],
-                className="mb-4"
+                className="mb-4",
+                style={"width": "100%", "position": "relative"}  # Set card width to 100%
             ),
-            width=12, sm=6, md=4  # Adjust the width for different screen sizes
+            width=12, sm=6, md=4
         )
         cards.append(card)
     
@@ -285,6 +314,29 @@ def update_last_detections(pathname):
         placeholder = None
     
     return cards, placeholder
+
+# Client-side callback for playing audio when play icon is clicked
+app.clientside_callback(
+    """
+    function(n_clicks, audio_id) {
+        if (n_clicks) {
+            const audioElement = document.getElementById(audio_id);
+            if (audioElement) {
+                audioElement.play();
+            } else {
+                console.log("Audio element not found: " + audio_id);
+            }
+        } else {
+            console.log("Play icon not clicked yet.");
+        }
+        return '';
+    }
+    """,
+    Output({'type': 'audio', 'index': MATCH}, 'src'),
+    [Input({'type': 'play-icon', 'index': MATCH}, 'n_clicks')],
+    [State({'type': 'audio', 'index': MATCH}, 'id')]
+)
+
 
 # Run the app on the local server
 if __name__ == "__main__":
