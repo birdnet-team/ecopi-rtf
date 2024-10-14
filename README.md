@@ -30,6 +30,12 @@ source .venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
+4. Create a file `.env` and add your API token to the `API_TOKEN` key
+
+```bash
+API_TOKEBN=<your api token>
+```
+
 ## Running the app
 
 This is a Dash app, so you can run it with the following command:
