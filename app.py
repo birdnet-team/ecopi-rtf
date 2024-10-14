@@ -1,8 +1,8 @@
 import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output, State, ALL, MATCH
-import data_processor as dp  # Import data_processor as dp
+from dash.dependencies import Input, Output, State, MATCH
+import data_processor as dp
 
 # Initialize Dash app
 app = dash.Dash(
@@ -12,6 +12,7 @@ app = dash.Dash(
         "/assets/custom.css",
         "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css",
     ],
+    suppress_callback_exceptions=True,  # Suppress the warning for dynamic callbacks
 )
 
 # Layout of the Dash app
@@ -248,15 +249,12 @@ footer_content = html.Footer(
     [dash.dependencies.State("navbar-collapse", "is_open")],
 )
 def toggle_navbar_collapse(n, is_open):
-    if n:
-        return not is_open
-    return is_open
+    return not is_open if n else is_open
 
 
 # Callback to update the page content based on the URL
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    print("display_page:", pathname)
     if pathname == "/":
         return [main_page_content, footer_content]
     elif pathname.startswith("/recorder/"):
@@ -276,7 +274,8 @@ def display_page(pathname):
         Output("species-24h", "children"),
         Output("total-audio", "children"),
     ],
-    [Input("url", "pathname")])
+    [Input("url", "pathname")],
+)
 def update_statistics(pathname):
     total_detections = dp.get_total_detections()
     detections_24h = dp.get_total_detections(days=1)
@@ -294,12 +293,12 @@ def update_statistics(pathname):
 
 # Callback to load recent detections and populate the cards
 @app.callback(
-    [Output("last-detections", "children"), Output("no-detections-placeholder", "children")], [Input("url", "pathname")], surpress_callback_exceptions=True
+    [Output("last-detections", "children"), Output("no-detections-placeholder", "children")], [Input("url", "pathname")]
 )
 def update_last_detections(pathname):
-    print("update_last_detections:", pathname)
     last_detections = dp.get_last_n_detections()
     cards = []
+
     for idx, (species, data) in enumerate(last_detections.items()):
         card = dbc.Col(
             dbc.Card(
@@ -397,4 +396,4 @@ app.clientside_callback(
 
 # Run the app on the local server
 if __name__ == "__main__":
-    app.run_server(host="127.0.0.1", port=8050, debug=True)
+    app.run(debug=True)
