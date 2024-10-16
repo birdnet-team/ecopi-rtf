@@ -371,7 +371,8 @@ app.clientside_callback(
             const elementId = JSON.parse(audioElements[i].id).index;
             if (elementId === audio_id["index"]) {
                 audioElement = audioElements[i];
-                break;
+            } else {
+                audioElements[i].pause();
             }
         }
         
