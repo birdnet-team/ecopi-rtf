@@ -116,14 +116,7 @@ main_page_content = html.Div(
             style={"position": "relative"}  # Ensure the button is positioned relative to the image
         ),
         
-        # Stats bar with headings for small screens
-        html.Div(
-            [
-                html.H1("SWAMP: Sapsucker Woods Monitoring Project"),
-                #html.H2("AI-powered acoustic monitoring"),
-            ],
-            className="header-text"
-        ),
+        
         # Dark gray row with four columns, responsive to 2x2 on narrow screens
         html.Div(
             dbc.Row(
@@ -162,6 +155,14 @@ main_page_content = html.Div(
         # Main Content Section
         dbc.Container(
             [
+                # Heading on small screens
+                html.Div(
+                    [
+                        html.H1("SWAMP: Sapsucker Woods Monitoring Project"),
+                        #html.H2("AI-powered acoustic monitoring"),
+                    ],
+                    className="header-text"
+                ),
                 html.P("This is where the content of your page goes."),
                 html.P("You can add graphs, charts, or any other interactive components here."),
                 # Recent detections
@@ -326,6 +327,7 @@ def update_last_detections(pathname):
     cards = []
 
     for idx, (species, data) in enumerate(last_detections.items()):
+        confidence_score = data['confidence'] * 10
         card = dbc.Col(
             dbc.Card(
                 [
@@ -340,6 +342,10 @@ def update_last_detections(pathname):
                                 ),
                                 className="play-icon-overlay",
                             ),
+                            html.Div(
+                                f"Photo: {data['image_author']}",
+                                className="photo-author-overlay",
+                            ),
                         ],
                         style={"position": "relative"},  # Ensure the overlay is positioned relative to the image
                     ),
@@ -347,17 +353,44 @@ def update_last_detections(pathname):
                         [
                             html.H5(data["common_name"], className="card-title"),
                             html.P(data["scientific_name"], className="card-subtitle mb-2 text-muted"),
-                            html.P(
+                            dbc.Row(
                                 [
-                                    html.Span(f"Date: {data['datetime']}", className="small-text"),
-                                    html.Br(),
-                                    html.Span(f"Recorder: #{data['recorder_field_id']}", className="small-text"),
+                                    dbc.Col(
+                                        [
+                                            html.Div(f"Date: {data['datetime']}", className="small-text"),
+                                            html.Div(f"Recorder: #{data['recorder_field_id']}", className="small-text"),
+                                        ],
+                                        width=9,
+                                    ),
+                                    dbc.Col(
+                                        html.Div(
+                                            [
+                                                html.Div(
+                                                    f"{data['confidence'] / 10.0:.1f}",
+                                                    className="confidence-score-text"
+                                                ),
+                                                html.Div(
+                                                    className="confidence-score-bar",
+                                                    style={
+                                                        "--value": data['confidence'],
+                                                        "--color": (
+                                                            "#B31B1B" if data['confidence'] < 33 else
+                                                            "#FF672E" if data['confidence'] < 50 else
+                                                            "#FFBC10" if data['confidence'] < 75 else
+                                                            "#D9EB6F" if data['confidence'] < 85 else
+                                                            "#A3BC09" if data['confidence'] < 90 else
+                                                            "#296239"
+                                                        )
+                                                    }
+                                                ),
+                                            ],
+                                            className="confidence-score-container"
+                                        ),
+                                        width=3,
+                                        className="d-flex align-items-center justify-content-center",
+                                    ),
                                 ],
-                                className="card-text",
-                            ),
-                            html.P(
-                                f"Photo: {data['image_author']}",
-                                className="card-text text-end very-small-text text-muted",
+                                className="align-items-end",  # Align items to the bottom
                             ),
                             # Hidden audio element for each card with a unique string-based id
                             html.Audio(
@@ -375,6 +408,7 @@ def update_last_detections(pathname):
             width=12,
             sm=6,
             md=4,
+            lg=3,
         )
         cards.append(card)
 
@@ -423,4 +457,4 @@ app.clientside_callback(
 
 # Run the app on the local server
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8050)

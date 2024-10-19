@@ -11,7 +11,20 @@ def get_current_week():
 
 def is_in_species_data(species_code):
     
-    return True
+    return species_code in cfg.SPECIES_DATA
+
+def get_confidence_score(species, confidence):
+    
+    week = get_current_week()
+    try:
+        species_freq = cfg.SPECIES_DATA[species]['frequencies'][week]
+    except:
+        species_freq = 10
+        
+    # Blend confidence and frequency as weighted average
+    confidence = int((confidence * 0.7) + (species_freq * 0.3))
+    
+    return min(100, max(1, confidence))
 
 def get_species_data(species):
     
@@ -65,7 +78,7 @@ def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=10):
 
     return total_detections
 
-def get_last_n_detections(n=6, min_conf=0.85, hours=24, limit=1000):
+def get_last_n_detections(n=8, min_conf=0.85, hours=24, limit=1000):
     
     url = cfg.API_BASE_URL + 'detections'
     
@@ -111,8 +124,10 @@ def get_last_n_detections(n=6, min_conf=0.85, hours=24, limit=1000):
         if item['species_code'] not in detections:
             detections[item['species_code']] = []
         detections[item['species_code']].append(item)
-        # format datetime to exclude milliseconds
-        item['datetime'] = item['datetime'].split('.')[0]
+        # format date
+        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
+        # compute confidence as percentage
+        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100)
         
     # For each species, sort by confidence and then randomly select 1 detection from the top 10
     last_n = {}
