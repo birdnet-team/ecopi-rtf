@@ -128,6 +128,8 @@ def get_last_n_detections(n=8, min_conf=0.75, hours=12, limit=1000):
         item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
         # compute confidence as percentage
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100)
+        # ebird url
+        item['ebird_url'] = 'https://ebird.org/species/' + cfg.SPECIES_DATA[item['species_code']]['new_ebird_code']
         
     # For each species, sort by confidence and then randomly select 1 detection from the top 10
     last_n = {}

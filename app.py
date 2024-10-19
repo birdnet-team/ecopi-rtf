@@ -23,6 +23,7 @@ app.layout = html.Div(
         dcc.Location(id="url", refresh=False),  # Track the URL
         dcc.Store(id="audio-store"),  # Store for audio URLs
         dcc.Store(id="play-audio-store"),  # Store for the audio to be played
+        
         # Header Section with Logo and Navigation Bar
         dbc.Navbar(
             dbc.Container(
@@ -341,6 +342,13 @@ def update_last_detections(pathname):
                                     id={"type": "play-icon", "index": idx},
                                 ),
                                 className="play-icon-overlay",
+                            ),
+                            html.A(
+                                # Wrapping the info icon inside an <a> tag
+                                html.I(className="bi bi-info-circle-fill"),
+                                href=data["ebird_url"],
+                                target="_blank",
+                                className="info-icon-overlay",
                             ),
                             html.Div(
                                 f"Photo: {data['image_author']}",
