@@ -1,6 +1,7 @@
 import requests
 import random
 from datetime import datetime, timedelta
+import numpy as np
 
 import config as cfg 
 
@@ -99,8 +100,8 @@ def get_last_n_detections(n=8, min_conf=0.75, hours=12, limit=1000):
     # We only want detections from the last x hours
     # so we have to set datetime_gte and datetime_lte
     now = datetime.now()
-    params['datetime_gte'] = (now - timedelta(hours=hours)).isoformat()
-    params['datetime_lte'] = now.isoformat()  
+    params['datetime__gte'] = (now - timedelta(hours=hours)).isoformat()
+    params['datetime__lte'] = now.isoformat()  
     
     # Only retrieve certain fields
     params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'
@@ -128,8 +129,6 @@ def get_last_n_detections(n=8, min_conf=0.75, hours=12, limit=1000):
         item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
         # compute confidence as percentage
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100)
-        # ebird url
-        item['ebird_url'] = 'https://ebird.org/species/' + cfg.SPECIES_DATA[item['species_code']]['new_ebird_code']
         
     # For each species, sort by confidence and then randomly select 1 detection from the top 10
     last_n = {}
@@ -150,12 +149,78 @@ def get_last_n_detections(n=8, min_conf=0.75, hours=12, limit=1000):
             last_n[species][key] = value
     
     return last_n
+
+def get_most_active_species(n=10, min_conf=0.5):
+    
+    url = cfg.API_BASE_URL + 'detections'
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    params = {}
+    
+    # Project name
+    params['project_name'] = cfg.PROJECT_NAME
+    
+    # Minimum confidence
+    params['confidence_gte'] = min_conf
+    
+    # We only want detections from the last 24 hours
+    # so we have to set datetime_gte and datetime_lte
+    now = datetime.now()
+    params['datetime__gte'] = (now - timedelta(hours=24)).isoformat()
+    params['datetime__lte'] = now.isoformat()  
+    
+    # Only retrieve certain fields
+    params['only'] = 'species_code, datetime, confidence'
+    
+    # Pagination/limit
+    params['limit'] = 'None'
+    
+    # Send request
+    response = requests.get(url, headers=headers, params=params)
+    response = response.json()
+    
+    # Parse detections
+    detections = {}
+    for item in response:
+        # Is species in species data?
+        if not is_in_species_data(item['species_code']):
+            continue
+        if item['species_code'] not in detections:
+            detections[item['species_code']] = {'detections': np.zeros(24, dtype=int)}
+        # format date
+        hour = int(item['datetime'].split(' ')[1].split(':')[0])
+        detections[item['species_code']]['detections'][hour] += 1
+        
+    # Convert np array to list
+    for species in detections:
+        detections[species]['detections'] = detections[species]['detections'].tolist()
+        
+    # Sort by sum of detections
+    detections = {k: v for k, v in sorted(detections.items(), key=lambda item: sum(item[1]['detections']), reverse=True)}
+    
+    # Remove species with no detections
+    detections = {k: v for k, v in detections.items() if sum(v['detections']) > 0}
+    
+    # Limit to n species
+    detections = {k: v for k, v in list(detections.items())[:n]}
+    
+    # Add species data
+    for species in detections:
+        species_data = get_species_data(species)
+        for key, value in species_data.items():
+            detections[species][key] = value
+        detections[species]['total_detections'] = sum(detections[species]['detections'])
+    
+    return detections
     
 if __name__ == '__main__':
     
     #print('Number of detections in the last 24 hours:', get_total_detections(days=1)['total_detections'])
     #print('Number of detections with confidence >= 0.5:', get_total_detections(min_conf=0.5)['total_detections'])
     
-    print(get_last_n_detections())
+    #print(get_last_n_detections())
+    print(get_most_active_species())
     
     
