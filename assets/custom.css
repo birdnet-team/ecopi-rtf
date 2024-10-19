@@ -82,6 +82,26 @@ nav .navbar-nav {
     margin-bottom: 0; /* Remove bottom margin */
 }
 
+.listen-live-button {
+    position: absolute;
+    bottom: 20px; /* Position 10px from the bottom */
+    right: 20px; /* Position 10px from the right */
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 15px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for the button */
+    font-size: 16px; /* Font size */
+    display: flex; /* Flexbox for icon and text alignment */
+    align-items: center; /* Center align items */
+    cursor: pointer; /* Pointer cursor on hover */
+    z-index: 10; /* Ensure the button is on top */
+}
+
+.listen-live-button i {
+    margin-right: 5px; /* Space between icon and text */
+}
+
 .stat-row-container {
     max-width: 1400px;
     margin-left: auto;
@@ -170,3 +190,4 @@ nav .navbar-nav {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+

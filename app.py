@@ -96,7 +96,16 @@ app.layout = html.Div(
 main_page_content = html.Div(
     [
         # Full-width Header Image (below the navbar)
-        html.Div(html.Img(src="/assets/swamp_header.jpg", className="header-graphic")),
+        html.Div(
+            [
+                html.Img(src="/assets/swamp_header.jpg", className="header-graphic"),
+                html.Button(
+                    [html.I(className="bi bi-volume-up-fill"), " Listen live"],
+                    className="listen-live-button"
+                ),
+            ],
+            style={"position": "relative"}  # Ensure the button is positioned relative to the image
+        ),
         # Dark gray row with four columns, responsive to 2x2 on narrow screens
         html.Div(
             dbc.Row(
