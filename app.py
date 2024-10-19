@@ -99,6 +99,13 @@ main_page_content = html.Div(
         html.Div(
             [
                 html.Img(src="/assets/swamp_header.jpg", className="header-graphic"),
+                html.Div(
+                    [
+                        html.H1("SWAMP: Sapsucker Woods Monitoring Project"),
+                        html.H2("AI-powered acoustic monitoring"),
+                    ],
+                    className="header-overlay"
+                ),
                 html.Button(
                     [html.I(className="bi bi-volume-up-fill"), " Listen live"],
                     className="listen-live-button"
@@ -106,30 +113,39 @@ main_page_content = html.Div(
             ],
             style={"position": "relative"}  # Ensure the button is positioned relative to the image
         ),
+        
+        # Stats bar with headings for small screens
+        html.Div(
+            [
+                html.H1("SWAMP: Sapsucker Woods Monitoring Project"),
+                #html.H2("AI-powered acoustic monitoring"),
+            ],
+            className="header-text"
+        ),
         # Dark gray row with four columns, responsive to 2x2 on narrow screens
         html.Div(
             dbc.Row(
                 [
                     dbc.Col(
-                        html.Div([html.Div("Detections (24h):"), html.H5(id="detections-24h", children="0")]),
+                        html.Div([html.Div("Detections (24h):"), html.H4(id="detections-24h", children="0")]),
                         className="stat-column",
                         width=6,
                         md=3,
                     ),
                     dbc.Col(
-                        html.Div([html.Div("Species (24h):"), html.H5(id="species-24h", children="0")]),
+                        html.Div([html.Div("Species (24h):"), html.H4(id="species-24h", children="0")]),
                         className="stat-column",
                         width=6,
                         md=3,
                     ),
                     dbc.Col(
-                        html.Div([html.Div("Detections (total):"), html.H5(id="total-detections", children="0")]),
+                        html.Div([html.Div("Detections (total):"), html.H4(id="total-detections", children="0")]),
                         className="stat-column",
                         width=6,
                         md=3,
                     ),
                     dbc.Col(
-                        html.Div([html.Div("Audio (total):"), html.H5(id="total-audio", children="0")]),
+                        html.Div([html.Div("Audio (total):"), html.H4(id="total-audio", children="0")]),
                         className="stat-column",
                         width=6,
                         md=3,
@@ -144,7 +160,6 @@ main_page_content = html.Div(
         # Main Content Section
         dbc.Container(
             [
-                html.H3("Sapsucker Woods Acoustic Monitoring Project", className="mt-1"),
                 html.P("This is where the content of your page goes."),
                 html.P("You can add graphs, charts, or any other interactive components here."),
                 # Recent detections

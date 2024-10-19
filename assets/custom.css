@@ -82,6 +82,64 @@ nav .navbar-nav {
     margin-bottom: 0; /* Remove bottom margin */
 }
 
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100%;
+    background-color: rgba(46, 38, 31, .6); /* Black with 50% transparency */
+    backdrop-filter: blur(3px); /* For modern browsers */
+    -webkit-backdrop-filter: blur(3px); /* For Safari */
+    color: white;
+    border-right: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center items vertically */
+    align-items: flex-start; /* Align items to the left */
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.header-overlay h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.header-overlay h2 {
+    font-size: 2rem;
+    margin: 0;
+    text-align: left;
+}
+
+@media (max-width: 1024px) {
+    .header-overlay {
+        display: none;
+    }
+
+    .header-text {
+        display: block !important;
+        background-color: #2e261f;
+        color: white; 
+        padding: 10px 35px; /* Same padding as the stats bar */
+        text-align: left; /* Align text to the left */
+        width: 100%; /* Full width */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+
+    .header-text h1 {
+        font-size: 2rem;
+    }
+
+    .header-text h2 {
+        font-size: 1.5rem;
+    }
+}
+
+.header-text {
+    display: none;
+}
+
 .listen-live-button {
     position: absolute;
     bottom: 20px; /* Position 10px from the bottom */
@@ -103,7 +161,7 @@ nav .navbar-nav {
 }
 
 .stat-row-container {
-    max-width: 1400px;
+    max-width: 1350px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -122,7 +180,7 @@ nav .navbar-nav {
 .stat-column {
     padding: 5px; 
     text-align: left;
-    font-size: .75rem;
+    font-size: 1rem;
     font-weight: 400;
 }
 
@@ -190,4 +248,9 @@ nav .navbar-nav {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+
+
+
+
 
