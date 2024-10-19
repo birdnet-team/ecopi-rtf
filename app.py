@@ -13,6 +13,8 @@ app = dash.Dash(
         "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css",
     ],
     suppress_callback_exceptions=True,  # Suppress the warning for dynamic callbacks
+    title="SWAMP",
+    update_title=None,
 )
 
 # Layout of the Dash app
