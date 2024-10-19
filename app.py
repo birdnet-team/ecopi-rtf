@@ -500,7 +500,7 @@ def update_most_active_species(pathname):
                     md=10
                 )
             ],
-            className="species-row mb-4",
+            className="species-row mb-2",
         )
         
         plot_rows.append(plot_row)
