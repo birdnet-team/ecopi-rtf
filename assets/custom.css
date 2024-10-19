@@ -211,7 +211,13 @@ nav .navbar-nav {
     max-width: 100%;
     object-fit: contain;
     border-radius: 5%;
-    margin-right: 10px; /* Add some space between the image and the text */
+}
+
+@media screen and (max-width: 768px) {
+    .species-image {
+        max-height: 85px;
+    }
+    
 }
 
 .total-detections-bar {
@@ -227,20 +233,12 @@ nav .navbar-nav {
     background-color: #69A0C2;
 }
 
-.species-info, .species-plot {
-    height: 50px; /* Set height to 50px */
+.species-info {
+    height: 35px;
 }
 
-@media (max-width: 768px) {
-    .species-row {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .species-info, .species-plot {
-        width: 100%;
-        margin-top: 10px;
-    }
+.species-plot {
+    height: 50px;
 }
 
 .play-icon-overlay {

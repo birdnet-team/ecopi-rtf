@@ -463,7 +463,7 @@ def update_most_active_species(pathname):
             [
                 dbc.Col(
                     html.Img(src=data['image_url'], className="species-image"),
-                    sm=2,
+                    sm="auto",
                     md="auto",
                 ),
                 dbc.Col(
@@ -496,11 +496,11 @@ def update_most_active_species(pathname):
                             ],
                         )
                     ],
-                    sm=10,
+                    sm=9,
                     md=10
                 )
             ],
-            className="species-row mb-2",
+            className="species-row mb-4",
         )
         
         plot_rows.append(plot_row)
