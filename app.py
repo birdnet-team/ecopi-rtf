@@ -338,7 +338,7 @@ def update_last_detections(pathname):
                             html.Div(
                                 # Wrapping the play icon inside a clickable Div
                                 html.Div(
-                                    [html.I(className="bi bi-play-circle-fill")],
+                                    [html.I(className="bi bi-play-circle-fill", id=f"play-icon-{idx}")],
                                     id={"type": "play-icon", "index": idx},
                                 ),
                                 className="play-icon-overlay",
@@ -435,13 +435,16 @@ app.clientside_callback(
     function(n_clicks, audio_id) {
         const audioElements = document.querySelectorAll("audio");
         let audioElement = null;
+        let iconElement = null;
 
         for (let i = 0; i < audioElements.length; i++) {
             const elementId = JSON.parse(audioElements[i].id).index;
             if (elementId === audio_id["index"]) {
                 audioElement = audioElements[i];
+                iconElement = document.getElementById(`play-icon-${elementId}`);
             } else {
                 audioElements[i].pause();
+                document.getElementById(`play-icon-${elementId}`).className = "bi bi-play-circle-fill";
             }
         }
         
@@ -449,8 +452,11 @@ app.clientside_callback(
             if (audioElement.paused) {
                 audioElement.currentTime = 0;
                 audioElement.play();
-            } else
+                iconElement.className = "bi bi-pause-circle-fill";
+            } else {
                 audioElement.pause();
+                iconElement.className = "bi bi-play-circle-fill";
+            }
 
             return audioElement.src;
         } else {
