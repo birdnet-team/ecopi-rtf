@@ -3,6 +3,7 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH
 import data_processor as dp
+import plots
 
 # Initialize Dash app
 app = dash.Dash(
@@ -166,6 +167,12 @@ main_page_content = html.Div(
                 ),
                 html.P("This is where the content of your page goes."),
                 html.P("You can add graphs, charts, or any other interactive components here."),
+                
+                # Most active species
+                html.H5("Most Active Species (24h):", className="mt-4"),
+                dbc.Row(id="most-active-species", className="mt-4"),
+                dbc.Spinner(html.Div(id="no-active-species-placeholder", className="mt-4"), color="#b31b1b"),
+                
                 # Recent detections
                 html.H5("Recent Detections:", className="mt-4"),
                 dbc.Row(id="last-detections", className="mt-4"),
@@ -321,7 +328,11 @@ def update_statistics(pathname):
 
 # Callback to load recent detections and populate the cards
 @app.callback(
-    [Output("last-detections", "children"), Output("no-detections-placeholder", "children")], [Input("url", "pathname")]
+    [
+        Output("last-detections", "children"), 
+        Output("no-detections-placeholder", "children")
+    ], 
+    [Input("url", "pathname")]
 )
 def update_last_detections(pathname):
     last_detections = dp.get_last_n_detections()
@@ -428,6 +439,77 @@ def update_last_detections(pathname):
 
     return cards, placeholder
 
+# Callback to update the plot for "Most active species"
+@app.callback(
+    [
+        Output("most-active-species", "children"),
+        Output("no-active-species-placeholder", "children")
+    ],
+    [Input("url", "pathname")]
+)
+
+def update_most_active_species(pathname):
+    # get plots for all species and create a row for each plot
+    species_data = dp.get_most_active_species()
+    plot_rows = []
+
+    max_detections = max(data['total_detections'] for data in species_data.values())
+
+    for species, data in species_data.items():
+        plot = plots.get_hourly_detections_plot(data['detections'])
+        detection_fraction = data['total_detections'] / max_detections * 100
+        
+        plot_row = dbc.Row(
+            [
+                dbc.Col(
+                    html.Img(src=data['image_url'], className="species-image"),
+                    sm=2,
+                    md="auto",
+                ),
+                dbc.Col(
+                    [
+                        dbc.Row(
+                            [
+                                dbc.Col(
+                                    [
+                                        html.Div(f"{data['common_name']} ({data['total_detections']})", className="small-text"),
+                                        html.Div(
+                                            className="total-detections-bar",
+                                            children=[
+                                                html.Div(
+                                                    className="total-detections-bar-fill",
+                                                    style={"width": f"{detection_fraction}%"}
+                                                )
+                                            ]
+                                        )
+                                    ],
+                                    sm=12,
+                                    md=4,
+                                    className="species-info"
+                                ),
+                                dbc.Col(
+                                    dcc.Graph(figure=plot, config={"displayModeBar": False}, style={"height": "50px"}),
+                                    sm=12,
+                                    md=8,
+                                    className="species-plot"
+                                )
+                            ],
+                        )
+                    ],
+                    sm=10,
+                    md=10
+                )
+            ],
+            className="species-row mb-2",
+        )
+        
+        plot_rows.append(plot_row)
+
+    # Adjust placeholder
+    placeholder = None
+
+    # Return the plot wrapped in a Div
+    return plot_rows, placeholder
 
 # Client-side callback for playing audio when play icon is clicked
 app.clientside_callback(
