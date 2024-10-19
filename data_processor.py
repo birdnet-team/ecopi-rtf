@@ -78,7 +78,7 @@ def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=10):
 
     return total_detections
 
-def get_last_n_detections(n=8, min_conf=0.85, hours=24, limit=1000):
+def get_last_n_detections(n=8, min_conf=0.75, hours=12, limit=1000):
     
     url = cfg.API_BASE_URL + 'detections'
     

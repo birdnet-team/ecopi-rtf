@@ -103,7 +103,7 @@ main_page_content = html.Div(
                 html.Img(src="/assets/swamp_header.jpg", className="header-graphic"),
                 html.Div(
                     [
-                        html.H1("SWAMP: Sapsucker Woods Monitoring Project"),
+                        html.H1("SWAMP: Sapsucker Woods Acoustic Monitoring Project"),
                         html.H2("AI-powered acoustic monitoring"),
                     ],
                     className="header-overlay"
@@ -158,7 +158,7 @@ main_page_content = html.Div(
                 # Heading on small screens
                 html.Div(
                     [
-                        html.H1("SWAMP: Sapsucker Woods Monitoring Project"),
+                        html.H1("SWAMP: Sapsucker Woods Acoustic Monitoring Project"),
                         #html.H2("AI-powered acoustic monitoring"),
                     ],
                     className="header-text"
@@ -357,8 +357,8 @@ def update_last_detections(pathname):
                                 [
                                     dbc.Col(
                                         [
-                                            html.Div(f"Date: {data['datetime']}", className="small-text"),
-                                            html.Div(f"Recorder: #{data['recorder_field_id']}", className="small-text"),
+                                            html.Div(f"Date: {data['datetime']}", className="very-small-text"),
+                                            html.Div(f"Recorder: #{data['recorder_field_id']}", className="very-small-text"),
                                         ],
                                         width=9,
                                     ),
@@ -407,8 +407,9 @@ def update_last_detections(pathname):
             ),
             width=12,
             sm=6,
-            md=4,
-            lg=3,
+            md=6,
+            lg=4,
+            xl=3,
         )
         cards.append(card)
 
