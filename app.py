@@ -450,13 +450,13 @@ def update_last_detections(pathname):
 
 def update_most_active_species(pathname):
     # get plots for all species and create a row for each plot
-    species_data = dp.get_most_active_species(n=8)
+    species_data = dp.get_most_active_species(n=8, min_conf=0.5)
     plot_rows = []
 
     max_detections = max(data['total_detections'] for data in species_data.values())
 
     for index, (species, data) in enumerate(species_data.items()):
-        plot_sun_moon = True if index == 0 else True
+        plot_sun_moon = True if index == 0 else False
         plot = plots.get_hourly_detections_plot(data['detections'], plot_sun_moon)
         detection_fraction = data['total_detections'] / max_detections * 100
         

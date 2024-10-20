@@ -4,6 +4,7 @@ from astral import LocationInfo
 from astral.sun import sun
 from datetime import datetime
 import config as cfg
+import numpy as np
 
 def compute_sunrise_sunset(lat, lon, date=None):
     if date is None:
@@ -27,16 +28,41 @@ def compute_sunrise_sunset(lat, lon, date=None):
 def get_hourly_detections_plot(detections, plot_sun_moon=False):
     
     sunrise_hour, sunset_hour = compute_sunrise_sunset(cfg.DEPLOYMENT_LAT, cfg.DEPLOYMENT_LON, date=datetime.now())
+    
+    # Normalize the detections
     max_val = max(detections)
+    normalized_detections = [val / max_val for val in detections]
+    
+    # Apply log function to the normalized detections
+    log_detections = [np.log1p(val) for val in normalized_detections]  # np.log1p is used to avoid log(0)
     
     # Create two sets of bars: one for blue and one for gray
-    blue_bars = [val if val != 0 else 0 for val in detections]
+    blue_bars = [val if val != 0 else 0 for val in log_detections]
     
-    # Create bars for night and day
-    night_bars = [max_val if val == 0 and (hour < sunrise_hour or hour >= sunset_hour) else max_val - val if val != 0 and (hour < sunrise_hour or hour >= sunset_hour) else 0 for hour, val in enumerate(detections)]
-    day_bars = [max_val if val == 0 and (sunrise_hour <= hour < sunset_hour) else max_val - val if val != 0 and (sunrise_hour <= hour < sunset_hour) else 0 for hour, val in enumerate(detections)]
+    # Create bars for night and day, split into top and bottom halves
+    night_bars_top = [0.5 if val == 0 and (hour < sunrise_hour or hour >= sunset_hour) else (1 - val) / 2 if val != 0 and (hour < sunrise_hour or hour >= sunset_hour) else 0 for hour, val in enumerate(log_detections)]
+    night_bars_bottom = [0.5 if val == 0 and (hour < sunrise_hour or hour >= sunset_hour) else (1 - val) / 2 if val != 0 and (hour < sunrise_hour or hour >= sunset_hour) else 0 for hour, val in enumerate(log_detections)]
+    
+    day_bars_top = [0.5 if val == 0 and (sunrise_hour <= hour < sunset_hour) else (1 - val) / 2 if val != 0 and (sunrise_hour <= hour < sunset_hour) else 0 for hour, val in enumerate(log_detections)]
+    day_bars_bottom = [0.5 if val == 0 and (sunrise_hour <= hour < sunset_hour) else (1 - val) / 2 if val != 0 and (sunrise_hour <= hour < sunset_hour) else 0 for hour, val in enumerate(log_detections)]
     
     fig = go.Figure()
+    
+    # Add night bars (bottom)
+    fig.add_trace(go.Bar(
+        x=list(range(24)),
+        y=night_bars_bottom,
+        marker_color='#D0DDDB',
+        showlegend=False
+    ))
+    
+    # Add day bars (bottom)
+    fig.add_trace(go.Bar(
+        x=list(range(24)),
+        y=day_bars_bottom,
+        marker_color='#F5F3E9',
+        showlegend=False
+    ))
     
     # Add blue bars
     fig.add_trace(go.Bar(
@@ -46,48 +72,51 @@ def get_hourly_detections_plot(detections, plot_sun_moon=False):
         showlegend=False
     ))
     
-    # Add night bars
+    # Add night bars (top)
     fig.add_trace(go.Bar(
         x=list(range(24)),
-        y=night_bars,
+        y=night_bars_top,
         marker_color='#D0DDDB',
         showlegend=False
     ))
     
-    # Add day bars
+    # Add day bars (top)
     fig.add_trace(go.Bar(
         x=list(range(24)),
-        y=day_bars,
+        y=day_bars_top,
         marker_color='#F5F3E9',
         showlegend=False
     ))
     
     if plot_sun_moon:
-        
         # Add sun and moon icons as shapes
         sun_icon = "☼"  # Unicode for sun: ☼, 🌣, ☀
         moon_icon = "☽"  # Unicode for moon
         
+        # Determine the color based on the detection value at sunrise and sunset hours
+        sun_color = "white" if log_detections[sunrise_hour] > 0.6 else "#385B75"
+        moon_color = "white" if log_detections[sunset_hour] > 0.6 else "#385B75"
+        
         fig.add_annotation(
             x=sunrise_hour,
-            y=max_val * 0.75,
+            y=0.75,
             text=sun_icon,
             showarrow=False,
-            font=dict(size=12, color="#385B75"),
+            font=dict(size=10, color=sun_color),
             xanchor='center',
             yanchor='middle'
         )
         
         fig.add_annotation(
             x=sunset_hour,
-            y=max_val * 0.75,
+            y=0.75,
             text=moon_icon,
             showarrow=False,
-            font=dict(size=12, color="#385B75"),
+            font=dict(size=10, color=moon_color),
             xanchor='center',
             yanchor='middle'
         )
-    
+        
     fig.update_layout(
         barmode='stack',
         template='plotly_white',
