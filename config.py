@@ -16,6 +16,7 @@ PROJECT_NAME = 'pam_in_chemnitz'
 SPECIES_DATA = load_species_data()
 DEPLOYMENT_LAT = 50.832
 DEPLOYMENT_LON = 12.924
+TIMEZONE = 'Europe/Berlin'
 
 RECORDERS = {
     '1': '0271',

@@ -82,7 +82,7 @@ nav .navbar-nav {
 
 .header-graphic {
     width: 100%;
-    max-height: 750px; /* Adjust the height as needed */
+    max-height: 800px; /* Adjust the height as needed */
     object-fit: cover; /* Ensures the image covers the entire width */
     margin-bottom: 0; /* Remove bottom margin */
 }
@@ -215,7 +215,8 @@ nav .navbar-nav {
 
 @media screen and (max-width: 768px) {
     .species-image {
-        max-height: 85px;
+        max-height: 80px;
+        margin-top: 5px;
     }
     
 }
@@ -230,7 +231,7 @@ nav .navbar-nav {
 
 .total-detections-bar-fill {
     height: 100%;
-    background-color: #457999;
+    background-color: #385B75;
 }
 
 .species-info {

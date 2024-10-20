@@ -1,4 +1,5 @@
 import plotly.graph_objs as go
+import pytz
 from astral import LocationInfo
 from astral.sun import sun
 from datetime import datetime
@@ -7,14 +8,23 @@ import config as cfg
 def compute_sunrise_sunset(lat, lon, date=None):
     if date is None:
         date = datetime.now()
-    location = LocationInfo(latitude=lat, longitude=lon)
-    s = sun(location.observer, date=date)
-    sunrise_hour = s['sunrise'].hour
-    sunset_hour = s['sunset'].hour
     
-    return sunrise_hour + 1, sunset_hour + 1
+    # Define the timezone for the location
+    timezone = pytz.timezone(cfg.TIMEZONE)  # Replace with the appropriate timezone
+    
+    # Localize the date to the specified timezone
+    localized_date = timezone.localize(date)
+    
+    location = LocationInfo(latitude=lat, longitude=lon)
+    s = sun(location.observer, date=localized_date)
+    
+    # Get the sunrise and sunset times in the localized timezone
+    sunrise_hour = s['sunrise'].astimezone(timezone).hour
+    sunset_hour = s['sunset'].astimezone(timezone).hour
+    
+    return sunrise_hour, sunset_hour
 
-def get_hourly_detections_plot(detections):
+def get_hourly_detections_plot(detections, plot_sun_moon=False):
     
     sunrise_hour, sunset_hour = compute_sunrise_sunset(cfg.DEPLOYMENT_LAT, cfg.DEPLOYMENT_LON, date=datetime.now())
     max_val = max(detections)
@@ -32,7 +42,7 @@ def get_hourly_detections_plot(detections):
     fig.add_trace(go.Bar(
         x=list(range(24)),
         y=blue_bars,
-        marker_color='#457999',
+        marker_color='#385B75',
         showlegend=False
     ))
     
@@ -40,7 +50,7 @@ def get_hourly_detections_plot(detections):
     fig.add_trace(go.Bar(
         x=list(range(24)),
         y=night_bars,
-        marker_color='#AAC4C4',
+        marker_color='#D0DDDB',
         showlegend=False
     ))
     
@@ -51,6 +61,32 @@ def get_hourly_detections_plot(detections):
         marker_color='#F5F3E9',
         showlegend=False
     ))
+    
+    if plot_sun_moon:
+        
+        # Add sun and moon icons as shapes
+        sun_icon = "☼"  # Unicode for sun: ☼, 🌣, ☀
+        moon_icon = "☽"  # Unicode for moon
+        
+        fig.add_annotation(
+            x=sunrise_hour,
+            y=max_val * 0.75,
+            text=sun_icon,
+            showarrow=False,
+            font=dict(size=12, color="#385B75"),
+            xanchor='center',
+            yanchor='middle'
+        )
+        
+        fig.add_annotation(
+            x=sunset_hour,
+            y=max_val * 0.75,
+            text=moon_icon,
+            showarrow=False,
+            font=dict(size=12, color="#385B75"),
+            xanchor='center',
+            yanchor='middle'
+        )
     
     fig.update_layout(
         barmode='stack',

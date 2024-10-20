@@ -450,19 +450,21 @@ def update_last_detections(pathname):
 
 def update_most_active_species(pathname):
     # get plots for all species and create a row for each plot
-    species_data = dp.get_most_active_species()
+    species_data = dp.get_most_active_species(n=8)
     plot_rows = []
 
     max_detections = max(data['total_detections'] for data in species_data.values())
 
-    for species, data in species_data.items():
-        plot = plots.get_hourly_detections_plot(data['detections'])
+    for index, (species, data) in enumerate(species_data.items()):
+        plot_sun_moon = True if index == 0 else True
+        plot = plots.get_hourly_detections_plot(data['detections'], plot_sun_moon)
         detection_fraction = data['total_detections'] / max_detections * 100
         
         plot_row = dbc.Row(
             [
                 dbc.Col(
                     html.Img(src=data['image_url'], className="species-image"),
+                    xs=4,
                     sm="auto",
                     md="auto",
                 ),
@@ -488,7 +490,7 @@ def update_most_active_species(pathname):
                                     className="species-info"
                                 ),
                                 dbc.Col(
-                                    dcc.Graph(figure=plot, config={"displayModeBar": False}, style={"height": "50px"}),
+                                    dcc.Graph(figure=plot, config={"displayModeBar": False, "staticPlot": True}, style={"height": "50px"}),
                                     sm=12,
                                     md=8,
                                     className="species-plot"
@@ -496,6 +498,7 @@ def update_most_active_species(pathname):
                             ],
                         )
                     ],
+                    xs=8,
                     sm=9,
                     md=10
                 )
