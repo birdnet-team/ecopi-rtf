@@ -168,6 +168,8 @@ main_page_content = html.Div(
                 
                 #html.P("This is where the content of your page goes."),
                 #html.P("You can add graphs, charts, or any other interactive components here."),
+                html.H5("We listen to the sounds of the animals in Sapsucker Woods and track species diversity over large spatio-temporal scales.", 
+                        className="text-center d-none d-lg-block"),
                 
                 # Most active species
                 html.Div(className="divider-container", children=[
