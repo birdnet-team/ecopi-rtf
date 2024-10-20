@@ -125,7 +125,7 @@ nav .navbar-nav {
     .header-text {
         display: block !important;
         margin-bottom: 25px;
-        text-align: left; /* Align text to the left */
+        text-align: center; /* Align text to the left */
         width: 100%; /* Full width */
         box-sizing: border-box; /* Include padding and border in the element's total width and height */
     }
@@ -198,6 +198,32 @@ nav .navbar-nav {
 .main-content {
     padding: 30px;
     max-width: 1400px;
+}
+
+.divider-heading {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 1.5em;
+    text-align: center;
+    position: relative;
+}
+
+.divider-line {
+    width: 1px; 
+    height: 2em;
+    background-color: #000;  
+    margin: 0 auto;  
+}
+
+.divider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spinner {
+    height: 25px;
+    padding: 0em;
 }
 
 .species-row {
@@ -366,6 +392,7 @@ nav .navbar-nav {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 
 
 

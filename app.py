@@ -165,18 +165,27 @@ main_page_content = html.Div(
                     ],
                     className="header-text"
                 ),
-                html.P("This is where the content of your page goes."),
-                html.P("You can add graphs, charts, or any other interactive components here."),
+                
+                #html.P("This is where the content of your page goes."),
+                #html.P("You can add graphs, charts, or any other interactive components here."),
                 
                 # Most active species
-                html.H5("Most Active Species (24h):", className="mt-4"),
+                html.Div(className="divider-container", children=[
+                    html.Div(className="divider-line"),
+                    html.H5("Most active species (24h)", className="divider-heading"),
+                    html.Div(className="divider-line")
+                ]),
                 dbc.Row(id="most-active-species", className="mt-4"),
-                dbc.Spinner(html.Div(id="no-active-species-placeholder", className="mt-4"), color="#b31b1b"),
-                
+                dbc.Spinner(html.Div(id="no-active-species-placeholder", className="spinner"), color="#b31b1b"),
+
                 # Recent detections
-                html.H5("Recent Detections:", className="mt-4"),
+                html.Div(className="divider-container", children=[
+                    html.Div(className="divider-line"),
+                    html.H5("Recent detections", className="divider-heading"),
+                    html.Div(className="divider-line")
+                ]),
                 dbc.Row(id="last-detections", className="mt-4"),
-                dbc.Spinner(html.Div(id="no-detections-placeholder", className="mt-4"), color="#b31b1b"),
+                dbc.Spinner(html.Div(id="no-detections-placeholder", className="spinner"), color="#b31b1b"),
             ],
             fluid=True,  # Make the content container fluid (adjusts to screen size)
             className="main-content",
@@ -431,11 +440,14 @@ def update_last_detections(pathname):
             xl=3,
         )
         cards.append(card)
+        #cards = []
 
     if not cards:
-        placeholder = html.P("No recent detections available.", className="text-muted")
+        placeholder = html.P("Uuups...something went wrong. Please try to reload.", 
+                             className="text-muted",
+                             style={"text-align": "center", "width": "100%"})
     else:
-        placeholder = None
+        placeholder = None #TODO: We want to fully remove the parent div
 
     return cards, placeholder
 
@@ -509,9 +521,15 @@ def update_most_active_species(pathname):
         )
         
         plot_rows.append(plot_row)
+        #plot_rows = []
 
     # Adjust placeholder
-    placeholder = None
+    if not plot_rows:
+        placeholder = html.P("Uuups...something went wrong. Please try to reload.", 
+                             className="text-muted",
+                             style={"text-align": "center", "width": "100%"})
+    else:
+        placeholder = None #TODO: We want to fully remove the parent div
 
     # Return the plot wrapped in a Div
     return plot_rows, placeholder
