@@ -164,7 +164,7 @@ nav .navbar-nav {
 }
 
 .stat-row-container {
-    max-width: 1350px;
+    max-width: 1150px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -175,7 +175,6 @@ nav .navbar-nav {
     padding: 1px 30px; 
     text-align: center; 
     margin: 0; 
-    /*max-width: 1200px;*/ 
     margin-left: auto; 
     margin-right: auto; 
 }
@@ -197,7 +196,7 @@ nav .navbar-nav {
 
 .main-content {
     padding: 30px;
-    max-width: 1400px;
+    max-width: 1200px;
 }
 
 .divider-heading {
