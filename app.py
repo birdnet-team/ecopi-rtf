@@ -467,6 +467,7 @@ def update_most_active_species(pathname):
                     xs=4,
                     sm="auto",
                     md="auto",
+                    lg=1,
                 ),
                 dbc.Col(
                     [
@@ -500,7 +501,8 @@ def update_most_active_species(pathname):
                     ],
                     xs=8,
                     sm=9,
-                    md=10
+                    md=10,
+                    lg=11,
                 )
             ],
             className="species-row mb-2",
