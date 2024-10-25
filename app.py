@@ -228,6 +228,11 @@ app.clientside_callback(
                 audioElement.currentTime = 0;
                 audioElement.play();
                 iconElement.className = "bi bi-pause-circle-fill";
+
+                // Add event listener for when the audio playback finishes
+                audioElement.onended = function() {
+                    iconElement.className = "bi bi-play-circle-fill";
+                };
             } else {
                 audioElement.pause();
                 iconElement.className = "bi bi-play-circle-fill";
