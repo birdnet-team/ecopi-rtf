@@ -36,7 +36,7 @@ pip3 install -r requirements.txt
 API_TOKEN=<your api token>
 ```
 
-5. You'll also need a mapbox token. Add your tolen to the `.env` file as follows:
+5. You'll also need a mapbox token. Add your token to the `.env` file as follows:
 
 ```bash
 MAPBOX_TOKEN=<your mapbox token>
