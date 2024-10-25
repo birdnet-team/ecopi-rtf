@@ -55,28 +55,28 @@ def nav_bar():
                     dbc.Row(
                         [
                             dbc.Col(html.Img(src="/assets/clo-logo-bird.png", className="header-logo"), width="auto"),
-                            # Vertical Divider
                             dbc.Col(html.Div(className="divider"), width="auto"),
-                            # Title of the website
                             dbc.Col(dbc.NavbarBrand("SWAMP", className="ml-0"), width="auto"),
                         ],
                         align="center",
                         className="light",
                     ),
-                    # Navbar Toggler
                     dbc.NavbarToggler(id="navbar-toggler"),
-                    # Navbar menu on the right
                     dbc.Collapse(
                         dbc.Nav(
                             [
                                 dbc.NavItem(
                                     dcc.Link(
-                                        html.I(className="bi bi-house-door-fill"),
+                                        [
+                                            html.I(className="bi bi-house-door-fill home-icon"),
+                                            html.Span("Home", className="home-text")
+                                        ],
                                         href="/",
-                                        className="nav-link"
+                                        className="nav-link",
+                                        id="nav-home"
                                     )
                                 ),
-                                dbc.NavItem(dcc.Link("Dashboard", href="/dashboard", className="nav-link")),
+                                dbc.NavItem(dcc.Link("Dashboard", href="/dashboard", className="nav-link", id="nav-dashboard")),
                                 dbc.DropdownMenu(
                                     label="Recorders",
                                     children=[
@@ -86,21 +86,21 @@ def nav_bar():
                                     ],
                                     nav=True,
                                 ),
-                                dbc.NavItem(dcc.Link("About", href="/about", className="nav-link")),
+                                dbc.NavItem(dcc.Link("About", href="/about", className="nav-link", id="nav-about")),
                             ],
-                            className="ml-auto",  # Align items to the right
+                            className="ml-auto",
                             navbar=True,
                         ),
                         id="navbar-collapse",
                         navbar=True,
                     ),
                 ],
-                fluid=True,  # Make the header container fluid
+                fluid=True,
             ),
-            color="light",  # Background color
-            dark=False,  # White text
-            className="mb-0 navbar-border",  # Add bottom margin and custom class
-            sticky="top",  # Stick the navbar to the top
+            color="light",
+            dark=False,
+            className="mb-0 navbar-border",
+            sticky="top",
         )
 
 # Define the footer content
@@ -171,6 +171,19 @@ def footer_content():
 )
 def toggle_navbar_collapse(n, is_open):
     return not is_open if n else is_open
+
+# Callback to update the active nav link based on the URL
+@app.callback(
+    [Output("nav-home", "className"),
+     Output("nav-dashboard", "className"),
+     Output("nav-about", "className")],
+    [Input("url", "pathname")]
+)
+def update_active_nav(pathname):
+    home_class = "nav-link active-nav" if pathname == "/" else "nav-link"
+    dashboard_class = "nav-link active-nav" if pathname == "/dashboard" else "nav-link"
+    about_class = "nav-link active-nav" if pathname == "/about" else "nav-link"
+    return home_class, dashboard_class, about_class
 
 # Callback to update the page content based on the URL
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
