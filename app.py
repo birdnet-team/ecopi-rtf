@@ -188,6 +188,53 @@ main_page_content = html.Div(
                 ]),
                 dbc.Row(id="last-detections", className="mt-4"),
                 dbc.Spinner(html.Div(id="no-detections-placeholder", className="spinner"), color="#b31b1b"),
+                
+                # Recording units
+                html.Div(className="divider-container", children=[
+                    html.Div(className="divider-line"),
+                    html.H5("Recording units", className="divider-heading"),
+                    html.Div(className="divider-line")
+                ]),
+                dbc.Row(id="recorder-stats", className="mt-4"),
+                dbc.Spinner(html.Div(id="no-recorder-stats-placeholder", className="spinner"), color="#b31b1b"),
+                
+                # Backyard monitoring
+                html.Div(className="divider-container", children=[
+                    html.Div(className="divider-line"),
+                    html.H5("DIY backyard monitoring", className="divider-heading"),
+                    html.Div(className="divider-line")
+                ]),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            [
+                                html.H5("Haikubox", className="text-center"),
+                                html.Img(src="/assets/haikubox_teaser.png", className="img-fluid"),
+                                html.P("Haikubox is an innovative tool designed for bird enthusiasts and conservationists who want to keep track of the birds visiting their backyards. Using advanced AI-powered sound recognition, Haikubox listens to bird calls and automatically identifies species in real-time. It's a hands-free solution that provides continuous monitoring, making it ideal for anyone curious about local bird activity without needing to have expert knowledge.", className="text-justify mt-4"),
+                                html.Div(
+                                    html.A("Visit the Haikubox website", href="https://www.haikubox.com", target="_blank", className="btn btn-href mt-4"),
+                                    className="d-flex justify-content-center mb-4"
+                                ),
+                            ],
+                            md=6,
+                            sm=12
+                        ),
+                        dbc.Col(
+                            [
+                                html.H5("BirdWeather", className="text-center"),
+                                html.Img(src="/assets/birdweather_teaser.png", className="img-fluid"),
+                                html.P("BirdWeather is an advanced bird monitoring platform that connects bird enthusiasts with real-time data about bird species visiting their area. BirdWeather allows users to identify bird species based on their calls, without the need for expert-level birdwatching knowledge. The platform is designed to provide continuous, automated monitoring, making it a perfect solution for those interested in observing bird activity in their backyard.", className="text-justify mt-4"),
+                                html.Div(
+                                    html.A("Visit the BirdWeather website", href="https://www.birdweather.com", target="_blank", className="btn btn-href mt-4"),
+                                    className="d-flex justify-content-center mb-4"
+                                ),
+                            ],
+                            md=6,
+                            sm=12
+                        )
+                    ],
+                    className="mt-4"
+                ),
             ],
             fluid=True,  # Make the content container fluid (adjusts to screen size)
             className="main-content",
@@ -535,6 +582,96 @@ def update_most_active_species(pathname):
 
     # Return the plot wrapped in a Div
     return plot_rows, placeholder
+
+@app.callback(
+    [Output('recorder-stats', 'children'),
+     Output('no-recorder-stats-placeholder', 'children')],
+    [Input('url', 'pathname')]
+)
+def update_recorder_stats(pathname):
+    try:
+        recorder_data = dp.get_recorder_data()
+        map_figure = plots.get_recorder_map(recorder_data)
+        
+        # Create the map component
+        map_component = html.Div(
+            [
+                html.Div("Recorder map", className="text-center small-text mb-2"),
+                dcc.Graph(figure=map_figure, config={"staticPlot": True}, id="map-container", className="mb-2")
+            ]
+        )
+        
+        # Create the recorder stats components
+        recorder_stats = []
+        
+        # Add heading for the recorder stats
+        recorder_stats.append(
+            dbc.Row(
+                [
+                    dbc.Col(html.Div("Detections | Species (24h)", className="small-text text-center mb-2"), width=12)
+                ],
+                className="recorder-stats-heading"
+            )
+        )
+        
+        for r in recorder_data:
+            recorder_stats.append(
+                dbc.Col(
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                dcc.Link(
+                                    html.Div(f"#{r}", className="small-text"),
+                                    href=f"/recorder/{r}"
+                                ),
+                                width=2
+                            ),
+                            dbc.Col(
+                                dcc.Link(
+                                    html.Div(f"{recorder_data[r]['detections']} | {len(recorder_data[r]['species_counts'])}", className="small-text"),
+                                    href=f"/recorder/{r}"
+                                ),
+                                width=8
+                            ),
+                            dbc.Col(
+                                dcc.Link(
+                                    html.Div(html.I(className="bi bi-graph-up"), className="small-text"),
+                                    href=f"/recorder/{r}"
+                                ),
+                                width=2
+                            ),
+                        ],
+                        className="recorder-info",
+                    ),
+                    width=12,  # Full width on larger screens
+                )        
+            )
+            
+        # Combine the map and recorder stats
+        children = [
+            dbc.Row(
+                [
+                    dbc.Col(map_component, 
+                            md=9,
+                            xs=12
+                        ),
+                    dbc.Col(recorder_stats, 
+                            md=3,
+                            xs=12
+                        )
+                ]
+            )
+        ]
+        
+        placeholder = None
+    except Exception as e:
+        print(e.with_traceback())
+        children = []
+        placeholder = html.P("Uuups...something went wrong. Please try to reload.", 
+                             className="text-muted",
+                             style={"text-align": "center", "width": "100%"})
+    
+    return children, placeholder
 
 # Client-side callback for playing audio when play icon is clicked
 app.clientside_callback(

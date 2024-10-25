@@ -41,6 +41,48 @@ def get_species_data(species):
     
     return data
 
+def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=10):
+    
+    url = cfg.API_BASE_URL + 'meta/project/' + cfg.PROJECT_NAME + '/detections/recorderspeciescounts/'
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    params = {}
+    
+    # Minimum confidence
+    params['min_confidence'] = min_conf
+    
+    # Set start date
+    if days < 0:
+        params['start_date'] = datetime(2023, 1, 1).strftime('%Y-%m-%d')
+    else:
+        params['start_date'] = (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%d')
+    
+    response = requests.get(url, headers=headers, params=params)
+    response = response.json()
+    
+    # Count detections per recorder
+    recorder_data = {}
+    for item in response:
+        if item['recorder_field_id'] not in recorder_data:
+            recorder_data[item['recorder_field_id']] = {'detections': 0, 'species_counts': {}}
+        recorder_data[item['recorder_field_id']]['detections'] += item['species_count']
+        if item['species_code'] not in recorder_data[item['recorder_field_id']]['species_counts'] and (len(species_list) == 0 or item['species_code'] in species_list):
+            recorder_data[item['recorder_field_id']]['species_counts'][item['species_code']] = 0
+        recorder_data[item['recorder_field_id']]['species_counts'][item['species_code']] += item['species_count']
+    
+    # Add recorder metadata
+    for recorder in recorder_data:
+        if recorder not in cfg.RECORDERS:
+            continue
+        recorder_data[recorder]['lat'] = cfg.RECORDERS[recorder]['lat']
+        recorder_data[recorder]['lon'] = cfg.RECORDERS[recorder]['lon']
+        recorder_data[recorder]['id'] = recorder
+        recorder_data[recorder]['species'] = len(recorder_data[recorder]['species_counts'])
+    
+    return recorder_data
+
 def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=10):
     
     url = cfg.API_BASE_URL + 'meta/project/' + cfg.PROJECT_NAME + '/detections/recorderspeciescounts/'
@@ -221,6 +263,8 @@ if __name__ == '__main__':
     #print('Number of detections with confidence >= 0.5:', get_total_detections(min_conf=0.5)['total_detections'])
     
     #print(get_last_n_detections())
-    print(get_most_active_species())
+    #print(get_most_active_species())
+    
+    print(get_recorder_data())
     
     

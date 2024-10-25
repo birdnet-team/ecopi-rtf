@@ -46,6 +46,10 @@ p {
     letter-spacing: 0.02em;
 }
 
+a {
+    text-decoration: none;
+}
+
 .caption {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400; /* Regular */
@@ -220,6 +224,16 @@ nav .navbar-nav {
     align-items: center;
 }
 
+.text-justify {
+    text-align: justify;
+}
+
+.btn-href {
+    color: white;
+    background-color: #36824b; ;
+    text-decoration: none;
+}
+
 .spinner {
     height: 25px;
     padding: 0em;
@@ -360,6 +374,36 @@ nav .navbar-nav {
     width: calc(var(--value) * 1%);
     height: 100%;
     background-color: var(--color); /* Use the color based on the score */
+}
+
+.recorder-info {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+}
+
+.recorder-info:hover {
+    background-color: #36824b;
+    color: white;
+}
+
+.recorder-info a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.recorder-info:hover a {
+    color: white; 
+}
+
+.chart-icon {
+    font-size: 1.2em;
+    margin-left: 10px;
 }
 
 .footer-logo {

@@ -1,4 +1,6 @@
+import pandas as pd
 import plotly.graph_objs as go
+import plotly.express as px
 import pytz
 from astral import LocationInfo
 from astral.sun import sun
@@ -128,3 +130,64 @@ def get_hourly_detections_plot(detections, plot_sun_moon=False):
     )
     
     return fig
+
+def get_recorder_map(data):
+    # Convert the nested dictionary to a DataFrame
+    df = pd.DataFrame.from_dict(data, orient='index')
+    
+    # Normalize species values to fall between 0 and 1 for color mapping
+    species_min = df['species'].min()
+    species_max = df['species'].max()
+    df['normalized_species'] = (df['species'] - species_min) / (species_max - species_min)
+    
+    # Calculate the bounding box for the recorder locations
+    min_lat = df['lat'].min()
+    max_lat = df['lat'].max()
+    min_lon = df['lon'].min()
+    max_lon = df['lon'].max()
+    
+    # Calculate the center of the bounding box
+    center_lat = (min_lat + max_lat) / 2
+    center_lon = (min_lon + max_lon) / 2
+    
+    # Define a custom colorscale with three points: low, mid, high
+    custom_colorscale = [
+        [0.00, '#385B75'],
+        [0.25, '#A3BC09'],
+        [0.50, '#FFDD00'],
+        [0.75, '#FF9417'],
+        [1.00, '#FF672E']
+    ]
+    
+    # Create a single trace with all points to apply the colorscale consistently
+    fig = go.Figure(go.Scattermapbox(
+        lat=df['lat'],
+        lon=df['lon'],
+        mode='markers+text',
+        marker=go.scattermapbox.Marker(
+            size=np.log1p(df['detections']) * 10,  # Use log scale for size
+            color=df['normalized_species'],        # Use normalized species for color
+            colorscale=custom_colorscale,          # Set the custom colorscale
+            cmin=0,                                # Minimum for colormap
+            cmax=1,                                # Maximum for colormap
+            showscale=False,                        # Display color scale
+            opacity=0.7
+        ),
+        text=["#" + str(id) for id in df['id']],   # Display recorder ID above the circle
+        textposition="middle center"
+    ))
+    
+    # Update the layout to set the center and zoom level
+    fig.update_layout(
+        mapbox=dict(
+            style="carto-positron",  # Use Mapbox monochrome theme
+            center=dict(lat=center_lat, lon=center_lon),
+            zoom=14,  # Adjust the zoom level as needed
+            accesstoken=cfg.MAPBOX_TOKEN
+        ),
+        margin={"r":0,"t":0,"l":0,"b":0},  # Remove margins
+        showlegend=False  # Hide legend
+    )
+    
+    return fig
+
