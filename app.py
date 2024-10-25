@@ -20,15 +20,29 @@ app = dash.Dash(
     update_title=None,
 )
 
-# Layout of the Dash app
-app.layout = html.Div(
-    [
-        dcc.Location(id="url", refresh=False),  # Track the URL
-        dcc.Store(id="audio-store"),  # Store for audio URLs
-        dcc.Store(id="play-audio-store"),  # Store for the audio to be played
-        
-        # Header Section with Logo and Navigation Bar
-        dbc.Navbar(
+# Define overall layout
+def app_layout():
+    
+    return html.Div(
+        [
+            dcc.Location(id="url", refresh=False),  # Track the URL
+            dcc.Store(id="audio-store"),  # Store for audio URLs
+            dcc.Store(id="play-audio-store"),  # Store for the audio to be played
+            
+            # Header Section with Logo and Navigation Bar
+            nav_bar(),
+            
+            # Content will be rendered here based on the URL
+            html.Div(id="page-content"),
+            
+            # Footer Section
+            footer_content(),
+        ]
+    )
+
+# Define nav bar
+def nav_bar():    
+    return dbc.Navbar(
             dbc.Container(
                 [
                     # Logo, Divider, and Title in a single row
@@ -81,157 +95,154 @@ app.layout = html.Div(
             dark=False,  # White text
             className="mb-0 navbar-border",  # Add bottom margin and custom class
             sticky="top",  # Stick the navbar to the top
-        ),
-        # Content will be rendered here based on the URL
-        html.Div(id="page-content"),
-    ]
-)
+        )
 
 # Define the content for the main page
-main_page_content = html.Div(
-    [
-        # Full-width Header Image (below the navbar)
-        html.Div(
-            [
-                html.Img(src="/assets/swamp_header.jpg", className="header-graphic"),
-                html.Div(
-                    [
-                        html.H1("SWAMP: Sapsucker Woods Acoustic Monitoring Project"),
-                        html.H2("AI-powered acoustic monitoring"),
-                    ],
-                    className="header-overlay"
-                ),
-                html.Button(
-                    [html.I(className="bi bi-volume-up-fill"), " Listen live"],
-                    className="listen-live-button"
-                ),
-            ],
-            style={"position": "relative"}  # Ensure the button is positioned relative to the image
-        ),
-        
-        
-        # Dark gray row with four columns, responsive to 2x2 on narrow screens
-        html.Div(
-            dbc.Row(
+def main_page_content():
+    return html.Div(
+        [
+            # Full-width Header Image (below the navbar)
+            html.Div(
                 [
-                    dbc.Col(
-                        html.Div([html.Div("Detections (24h):"), html.H4(id="detections-24h", children="0")]),
-                        className="stat-column",
-                        width=6,
-                        md=3,
+                    html.Img(src="/assets/swamp_header.jpg", className="header-graphic"),
+                    html.Div(
+                        [
+                            html.H1("SWAMP: Sapsucker Woods Acoustic Monitoring Project"),
+                            html.H2("AI-powered acoustic monitoring"),
+                        ],
+                        className="header-overlay"
                     ),
-                    dbc.Col(
-                        html.Div([html.Div("Species (24h):"), html.H4(id="species-24h", children="0")]),
-                        className="stat-column",
-                        width=6,
-                        md=3,
-                    ),
-                    dbc.Col(
-                        html.Div([html.Div("Detections (total):"), html.H4(id="total-detections", children="0")]),
-                        className="stat-column",
-                        width=6,
-                        md=3,
-                    ),
-                    dbc.Col(
-                        html.Div([html.Div("Audio (total):"), html.H4(id="total-audio", children="0")]),
-                        className="stat-column",
-                        width=6,
-                        md=3,
+                    html.Button(
+                        [html.I(className="bi bi-volume-up-fill"), " Listen live"],
+                        className="listen-live-button"
                     ),
                 ],
-                className="stat-row-container",
+                style={"position": "relative"}  # Ensure the button is positioned relative to the image
             ),
-            className="stat-row",
-        ),
-        # Spacer between the statistics and the main content
-        html.Div(className="h-spacer"),
-        # Main Content Section
-        dbc.Container(
-            [
-                # Heading on small screens
-                html.Div(
-                    [
-                        html.H1("SWAMP: Sapsucker Woods Acoustic Monitoring Project"),
-                        #html.H2("AI-powered acoustic monitoring"),
-                    ],
-                    className="header-text"
-                ),
-                
-                #html.P("This is where the content of your page goes."),
-                #html.P("You can add graphs, charts, or any other interactive components here."),
-                html.H5("We listen to the sounds of the animals in Sapsucker Woods and track species diversity over large spatio-temporal scales.", 
-                        className="text-center d-none d-lg-block"),
-                
-                # Most active species
-                html.Div(className="divider-container", children=[
-                    html.Div(className="divider-line"),
-                    html.H5("Most active species (24h)", className="divider-heading"),
-                    html.Div(className="divider-line")
-                ]),
-                dbc.Row(id="most-active-species", className="mt-4"),
-                dbc.Spinner(html.Div(id="no-active-species-placeholder", className="spinner"), color="#b31b1b"),
-
-                # Recent detections
-                html.Div(className="divider-container", children=[
-                    html.Div(className="divider-line"),
-                    html.H5("Recent detections", className="divider-heading"),
-                    html.Div(className="divider-line")
-                ]),
-                dbc.Row(id="last-detections", className="mt-4"),
-                dbc.Spinner(html.Div(id="no-detections-placeholder", className="spinner"), color="#b31b1b"),
-                
-                # Recording units
-                html.Div(className="divider-container", children=[
-                    html.Div(className="divider-line"),
-                    html.H5("Recording units", className="divider-heading"),
-                    html.Div(className="divider-line")
-                ]),
-                dbc.Row(id="recorder-stats", className="mt-4"),
-                dbc.Spinner(html.Div(id="no-recorder-stats-placeholder", className="spinner"), color="#b31b1b"),
-                
-                # Backyard monitoring
-                html.Div(className="divider-container", children=[
-                    html.Div(className="divider-line"),
-                    html.H5("DIY backyard monitoring", className="divider-heading"),
-                    html.Div(className="divider-line")
-                ]),
+            
+            
+            # Dark gray row with four columns, responsive to 2x2 on narrow screens
+            html.Div(
                 dbc.Row(
                     [
                         dbc.Col(
-                            [
-                                html.H5("Haikubox", className="text-center"),
-                                html.Img(src="/assets/haikubox_teaser.png", className="img-fluid"),
-                                html.P("Haikubox is an innovative tool designed for bird enthusiasts and conservationists who want to keep track of the birds visiting their backyards. Using advanced AI-powered sound recognition, Haikubox listens to bird calls and automatically identifies species in real-time. It's a hands-free solution that provides continuous monitoring, making it ideal for anyone curious about local bird activity without needing to have expert knowledge.", className="text-justify mt-4"),
-                                html.Div(
-                                    html.A("Visit the Haikubox website", href="https://www.haikubox.com", target="_blank", className="btn btn-href mt-4"),
-                                    className="d-flex justify-content-center mb-4"
-                                ),
-                            ],
-                            md=6,
-                            sm=12
+                            html.Div([html.Div("Detections (24h):"), html.H4(id="detections-24h", children="0")]),
+                            className="stat-column",
+                            width=6,
+                            md=3,
                         ),
                         dbc.Col(
-                            [
-                                html.H5("BirdWeather", className="text-center"),
-                                html.Img(src="/assets/birdweather_teaser.png", className="img-fluid"),
-                                html.P("BirdWeather is an advanced bird monitoring platform that connects bird enthusiasts with real-time data about bird species visiting their area. BirdWeather allows users to identify bird species based on their calls, without the need for expert-level birdwatching knowledge. The platform is designed to provide continuous, automated monitoring, making it a perfect solution for those interested in observing bird activity in their backyard.", className="text-justify mt-4"),
-                                html.Div(
-                                    html.A("Visit the BirdWeather website", href="https://www.birdweather.com", target="_blank", className="btn btn-href mt-4"),
-                                    className="d-flex justify-content-center mb-4"
-                                ),
-                            ],
-                            md=6,
-                            sm=12
-                        )
+                            html.Div([html.Div("Species (24h):"), html.H4(id="species-24h", children="0")]),
+                            className="stat-column",
+                            width=6,
+                            md=3,
+                        ),
+                        dbc.Col(
+                            html.Div([html.Div("Detections (total):"), html.H4(id="total-detections", children="0")]),
+                            className="stat-column",
+                            width=6,
+                            md=3,
+                        ),
+                        dbc.Col(
+                            html.Div([html.Div("Audio (total):"), html.H4(id="total-audio", children="0")]),
+                            className="stat-column",
+                            width=6,
+                            md=3,
+                        ),
                     ],
-                    className="mt-4"
+                    className="stat-row-container",
                 ),
-            ],
-            fluid=True,  # Make the content container fluid (adjusts to screen size)
-            className="main-content",
-        ),
-    ]
-)
+                className="stat-row",
+            ),
+            # Spacer between the statistics and the main content
+            html.Div(className="h-spacer"),
+            # Main Content Section
+            dbc.Container(
+                [
+                    # Heading on small screens
+                    html.Div(
+                        [
+                            html.H1("SWAMP: Sapsucker Woods Acoustic Monitoring Project"),
+                            #html.H2("AI-powered acoustic monitoring"),
+                        ],
+                        className="header-text"
+                    ),
+                    
+                    #html.P("This is where the content of your page goes."),
+                    #html.P("You can add graphs, charts, or any other interactive components here."),
+                    html.H5("We listen to the sounds of the animals in Sapsucker Woods and track species diversity over large spatio-temporal scales.", 
+                            className="text-center d-none d-lg-block"),
+                    
+                    # Most active species
+                    html.Div(className="divider-container", children=[
+                        html.Div(className="divider-line"),
+                        html.H5("Most active species (24h)", className="divider-heading"),
+                        html.Div(className="divider-line")
+                    ]),
+                    dbc.Row(id="most-active-species", className="mt-4"),
+                    dbc.Spinner(html.Div(id="no-active-species-placeholder", className="spinner"), color="#b31b1b"),
+
+                    # Recent detections
+                    html.Div(className="divider-container", children=[
+                        html.Div(className="divider-line"),
+                        html.H5("Recent detections", className="divider-heading"),
+                        html.Div(className="divider-line")
+                    ]),
+                    dbc.Row(id="last-detections", className="mt-4"),
+                    dbc.Spinner(html.Div(id="no-detections-placeholder", className="spinner"), color="#b31b1b"),
+                    
+                    # Recording units
+                    html.Div(className="divider-container", children=[
+                        html.Div(className="divider-line"),
+                        html.H5("Recording units", className="divider-heading"),
+                        html.Div(className="divider-line")
+                    ]),
+                    dbc.Row(id="recorder-stats", className="mt-4"),
+                    dbc.Spinner(html.Div(id="no-recorder-stats-placeholder", className="spinner"), color="#b31b1b"),
+                    
+                    # Backyard monitoring
+                    html.Div(className="divider-container", children=[
+                        html.Div(className="divider-line"),
+                        html.H5("DIY backyard monitoring", className="divider-heading"),
+                        html.Div(className="divider-line")
+                    ]),
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                [
+                                    html.H5("Haikubox", className="text-center"),
+                                    html.Img(src="/assets/haikubox_teaser.png", className="img-fluid"),
+                                    html.P("Haikubox is an innovative tool designed for bird enthusiasts and conservationists who want to keep track of the birds visiting their backyards. Using advanced AI-powered sound recognition, Haikubox listens to bird calls and automatically identifies species in real-time. It's a hands-free solution that provides continuous monitoring, making it ideal for anyone curious about local bird activity without needing to have expert knowledge.", className="text-justify mt-4"),
+                                    html.Div(
+                                        html.A("Visit the Haikubox website", href="https://www.haikubox.com", target="_blank", className="btn btn-href mt-4"),
+                                        className="d-flex justify-content-center mb-4"
+                                    ),
+                                ],
+                                md=6,
+                                sm=12
+                            ),
+                            dbc.Col(
+                                [
+                                    html.H5("BirdWeather", className="text-center"),
+                                    html.Img(src="/assets/birdweather_teaser.png", className="img-fluid"),
+                                    html.P("BirdWeather is an advanced bird monitoring platform that connects bird enthusiasts with real-time data about bird species visiting their area. BirdWeather allows users to identify bird species based on their calls, without the need for expert-level birdwatching knowledge. The platform is designed to provide continuous, automated monitoring, making it a perfect solution for those interested in observing bird activity in their backyard.", className="text-justify mt-4"),
+                                    html.Div(
+                                        html.A("Visit the BirdWeather website", href="https://www.birdweather.com", target="_blank", className="btn btn-href mt-4"),
+                                        className="d-flex justify-content-center mb-4"
+                                    ),
+                                ],
+                                md=6,
+                                sm=12
+                            )
+                        ],
+                        className="mt-4"
+                    ),
+                ],
+                fluid=True,  # Make the content container fluid (adjusts to screen size)
+                className="main-content",
+            ),
+        ]
+    )
 
 # Define content for the dashboard page
 def dashboard_page_content():
@@ -285,78 +296,80 @@ def species_page_content(species_id):
     )
 
 # Define the content for the about page
-about_page_content = html.Div(
-    [
-        # Main Content Section
-        dbc.Container(
-            [
-                html.H1("About SWAMP", className="mt-0"),
-                html.P("This is the about page content."),
-                # Add more components or visualizations as needed
-            ],
-            fluid=True,  # Make the content container fluid (adjusts to screen size)
-        ),
-    ]
-)
+def about_page_content():
+    return html.Div(
+        [
+            # Main Content Section
+            dbc.Container(
+                [
+                    html.H1("About SWAMP", className="mt-0"),
+                    html.P("This is the about page content."),
+                    # Add more components or visualizations as needed
+                ],
+                fluid=True,  # Make the content container fluid (adjusts to screen size)
+            ),
+        ]
+    )
 
 # Define the footer content
-footer_content = html.Footer(
-    [
-        # Top Logo
-        html.Div(html.Img(src="/assets/cornell-lab-logo-full-white.png", className="footer-logo")),
-        # Two-column content, responsive to single column on narrow screens
-        dbc.Container(
-            dbc.Row(
-                [
-                    dbc.Col(
-                        html.Div(
-                            [
-                                html.H5("K. Lisa Yang Center for Conservation Bioacoustics"),
-                                html.P(
-                                    "We collect and interpret sounds in nature by developing, applying, and sharing innovative conservation technologies across relevant scales to inform and advance the conservation of wildlife and habitats.",
-                                    style={"textAlign": "justify"},
-                                ),
-                                html.H5("SWAMP"),
-                                html.P(
-                                    "The Sapsucker Woods Acoustic Monitoring Project (SWAMP) is an effort to study bird biodiversity in Sapsucker Woods through acoustic monitoring and advanced AI models for bird call identification. SWAMP is a collaboration between Cornell University, Chemnitz University of Technology and OekoFor GbR.",
-                                    style={"textAlign": "justify"},
-                                ),
-                            ],
-                            style={"paddingRight": "5px"},
+def footer_content():
+    return html.Footer(
+        [
+            # Top Logo
+            html.Div(html.Img(src="/assets/cornell-lab-logo-full-white.png", className="footer-logo")),
+            # Two-column content, responsive to single column on narrow screens
+            dbc.Container(
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            html.Div(
+                                [
+                                    html.H5("K. Lisa Yang Center for Conservation Bioacoustics"),
+                                    html.P(
+                                        "We collect and interpret sounds in nature by developing, applying, and sharing innovative conservation technologies across relevant scales to inform and advance the conservation of wildlife and habitats.",
+                                        style={"textAlign": "justify"},
+                                    ),
+                                    html.H5("SWAMP"),
+                                    html.P(
+                                        "The Sapsucker Woods Acoustic Monitoring Project (SWAMP) is an effort to study bird biodiversity in Sapsucker Woods through acoustic monitoring and advanced AI models for bird call identification. SWAMP is a collaboration between Cornell University, Chemnitz University of Technology and OekoFor GbR.",
+                                        style={"textAlign": "justify"},
+                                    ),
+                                ],
+                                style={"paddingRight": "5px"},
+                            ),
+                            width=12,
+                            md=6,
                         ),
-                        width=12,
-                        md=6,
-                    ),
-                    dbc.Col(
-                        html.Div(
-                            [
-                                html.H5("BirdNET - Bird Sound Identification"),
-                                html.P(
-                                    "BirdNET is an advanced AI for bird call identification. BirdNET is supported by Jake Holshuh (Cornell class of '69) and the Arthur Vining Davis Foundation. Our work at the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform wildlife and habitat conservation.",
-                                    style={"textAlign": "justify"},
-                                ),
-                                html.P(
-                                    "The German Federal Ministry of Education and Research is funding the development of BirdNET through the project 'BirdNET+' (FKZ 01|S22072). Additionally, the German Federal Ministry of Environment, Nature Conservation and Nuclear Safety is funding the development of BirdNET through the project 'DeepBirdDetect' (FKZ 67KI31040E).",
-                                    style={"textAlign": "justify"},
-                                ),
-                            ],
-                            style={"paddingLeft": "5px"},
+                        dbc.Col(
+                            html.Div(
+                                [
+                                    html.H5("BirdNET - Bird Sound Identification"),
+                                    html.P(
+                                        "BirdNET is an advanced AI for bird call identification. BirdNET is supported by Jake Holshuh (Cornell class of '69) and the Arthur Vining Davis Foundation. Our work at the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform wildlife and habitat conservation.",
+                                        style={"textAlign": "justify"},
+                                    ),
+                                    html.P(
+                                        "The German Federal Ministry of Education and Research is funding the development of BirdNET through the project 'BirdNET+' (FKZ 01|S22072). Additionally, the German Federal Ministry of Environment, Nature Conservation and Nuclear Safety is funding the development of BirdNET through the project 'DeepBirdDetect' (FKZ 67KI31040E).",
+                                        style={"textAlign": "justify"},
+                                    ),
+                                ],
+                                style={"paddingLeft": "5px"},
+                            ),
+                            width=12,
+                            md=6,
                         ),
-                        width=12,
-                        md=6,
-                    ),
-                ]
+                    ]
+                ),
+                fluid=True,
+                className="footer-content",
             ),
-            fluid=True,
-            className="footer-content",
-        ),
-        # Bottom Logo
-        html.Div(html.Img(src="/assets/cornell-logo-white.png", className="footer-logo")),
-        # Copyright text
-        html.P("© 2024 Cornell University"),
-    ],
-    className="footer",
-)
+            # Bottom Logo
+            html.Div(html.Img(src="/assets/cornell-logo-white.png", className="footer-logo")),
+            # Copyright text
+            html.P("© 2024 Cornell University"),
+        ],
+        className="footer",
+    )
 
 
 # Callback to toggle the collapse on small screens
@@ -373,19 +386,19 @@ def toggle_navbar_collapse(n, is_open):
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
     if pathname == "/":
-        return [main_page_content, footer_content]
+        return [main_page_content()]
     elif pathname == "/dashboard":
-        return [dashboard_page_content(), footer_content]
+        return [dashboard_page_content()]
     elif pathname.startswith("/recorder/"):
         recorder_id = pathname.split("/")[-1]
-        return [recorder_page_content(recorder_id), footer_content]
+        return [recorder_page_content(recorder_id)]
     elif pathname.startswith("/species/"):
         species_id = pathname.split("/")[-1]
-        return [species_page_content(species_id), footer_content]
+        return [species_page_content(species_id)]
     elif pathname == "/about":
-        return [about_page_content, footer_content]
+        return [about_page_content()]
     else:
-        return [html.H1("404: Not found"), footer_content]
+        return [html.H1("404: Not found")]
 
 
 # Callback to update the statistics
@@ -543,7 +556,6 @@ def update_last_detections(pathname):
     ],
     [Input("url", "pathname")]
 )
-
 def update_most_active_species(pathname):
     # get plots for all species and create a row for each plot
     species_data = dp.get_most_active_species(n=8, min_conf=0.5)
@@ -748,6 +760,9 @@ app.clientside_callback(
     [State({"type": "audio", "index": MATCH}, "id")],
     prevent_initial_call=True,
 )
+
+# Layout of the Dash app
+app.layout = app_layout()
 
 # Run the app on the local server
 if __name__ == "__main__":
