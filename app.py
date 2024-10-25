@@ -15,6 +15,9 @@ from pages.recorder import recorder_page_content
 from pages.species import species_page_content
 from pages.about import about_page_content
 
+# Import callback registration function for recent detections
+from widgets.recent_detections import register_recent_detections_callbacks
+
 # Initialize Dash app
 app = dash.Dash(
     __name__,
@@ -204,57 +207,14 @@ def display_page(pathname):
     else:
         return "404 Page Not Found"
 
-# Client-side callback for playing audio when play icon is clicked
-app.clientside_callback(
-    """
-    function(n_clicks, audio_id) {
-        const audioElements = document.querySelectorAll("audio");
-        let audioElement = null;
-        let iconElement = null;
-
-        for (let i = 0; i < audioElements.length; i++) {
-            const elementId = JSON.parse(audioElements[i].id).index;
-            if (elementId === audio_id["index"]) {
-                audioElement = audioElements[i];
-                iconElement = document.getElementById(`play-icon-${elementId}`);
-            } else {
-                audioElements[i].pause();
-                document.getElementById(`play-icon-${elementId}`).className = "bi bi-play-circle-fill";
-            }
-        }
-        
-        if (audioElement) {
-            if (audioElement.paused) {
-                audioElement.currentTime = 0;
-                audioElement.play();
-                iconElement.className = "bi bi-pause-circle-fill";
-
-                // Add event listener for when the audio playback finishes
-                audioElement.onended = function() {
-                    iconElement.className = "bi bi-play-circle-fill";
-                };
-            } else {
-                audioElement.pause();
-                iconElement.className = "bi bi-play-circle-fill";
-            }
-
-            return audioElement.src;
-        } else {
-            throw new Error("Audio element not found: " + audio_id);
-        }
-    }
-    """,
-    Output({"type": "audio", "index": MATCH}, "src"),
-    [Input({"type": "play-icon", "index": MATCH}, "n_clicks")],
-    [State({"type": "audio", "index": MATCH}, "id")],
-    prevent_initial_call=True,
-)
-
 # Layout of the Dash app
 app.layout = app_layout()
 
 # Register callbacks from main.py
 register_main_callbacks(app)
+
+# Register callbacks from recent_detections.py
+register_recent_detections_callbacks(app)
 
 # Run the app on the local server
 if __name__ == "__main__":
