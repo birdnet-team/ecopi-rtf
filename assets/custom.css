@@ -303,6 +303,17 @@ nav .navbar-nav {
     z-index: 10;
 }
 
+.chart-icon-overlay {
+    position: absolute;
+    top: 55px;
+    right: 15px;
+    font-size: 1.5em;
+    color: white;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 10;
+}
+
 .card-title {
     font-size: 1em;
 }

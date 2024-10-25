@@ -5,6 +5,8 @@ from dash.dependencies import Input, Output, State, MATCH
 import data_processor as dp
 import plots
 
+import config as cfg
+
 # Initialize Dash app
 app = dash.Dash(
     __name__,
@@ -47,31 +49,20 @@ app.layout = html.Div(
                     dbc.Collapse(
                         dbc.Nav(
                             [
-                                dbc.NavItem(dcc.Link("Dashboard", href="/", className="nav-link")),
+                                dbc.NavItem(
+                                    dcc.Link(
+                                        html.I(className="bi bi-house-door-fill"),
+                                        href="/",
+                                        className="nav-link"
+                                    )
+                                ),
+                                dbc.NavItem(dcc.Link("Dashboard", href="/dashboard", className="nav-link")),
                                 dbc.DropdownMenu(
                                     label="Recorders",
                                     children=[
                                         dbc.DropdownMenuItem(
-                                            dcc.Link("Recorder 1", href="/recorder/1", className="dropdown-item")
-                                        ),
-                                        dbc.DropdownMenuItem(
-                                            dcc.Link("Recorder 2", href="/recorder/2", className="dropdown-item")
-                                        ),
-                                        dbc.DropdownMenuItem(
-                                            dcc.Link("Recorder 3", href="/recorder/3", className="dropdown-item")
-                                        ),
-                                        dbc.DropdownMenuItem(
-                                            dcc.Link("Recorder 4", href="/recorder/4", className="dropdown-item")
-                                        ),
-                                        dbc.DropdownMenuItem(
-                                            dcc.Link("Recorder 5", href="/recorder/5", className="dropdown-item")
-                                        ),
-                                        dbc.DropdownMenuItem(
-                                            dcc.Link("Recorder 6", href="/recorder/6", className="dropdown-item")
-                                        ),
-                                        dbc.DropdownMenuItem(
-                                            dcc.Link("Recorder 7", href="/recorder/7", className="dropdown-item")
-                                        ),
+                                            dcc.Link(f"Recorder {recorder_id}", href=f"/recorder/{recorder_id}", className="dropdown-item")
+                                        ) for recorder_id in cfg.RECORDERS.keys()
                                     ],
                                     nav=True,
                                 ),
@@ -242,6 +233,21 @@ main_page_content = html.Div(
     ]
 )
 
+# Define content for the dashboard page
+def dashboard_page_content():
+    return html.Div(
+        [
+            # Main Content Section
+            dbc.Container(
+                [
+                    html.H1("Dashboard", className="mt-0"),
+                    html.P("This is the content for the Dashboard page."),
+                    # Add more components or visualizations as needed
+                ],
+                fluid=True,  # Make the content container fluid (adjusts to screen size)
+            ),
+        ]
+    )
 
 # Define the content for the recorder subpages
 def recorder_page_content(recorder_id):
@@ -259,6 +265,24 @@ def recorder_page_content(recorder_id):
         ]
     )
 
+
+# Define the content for the species subpages
+def species_page_content(species_id):
+    species_data = dp.get_species_data(species_id)
+    return html.Div(
+        [
+            dbc.Container(
+                [
+                    html.H1(f"Species: {species_data['common_name']}"),
+                    html.Img(src=species_data["image_url"], className="img-fluid"),
+                    html.P(f"Scientific Name: {species_data['scientific_name']}"),
+                    html.A("More Info", href=species_data["ebird_url"], target="_blank", className="btn btn-href mt-4"),
+                ],
+                fluid=True,
+                className="main-content",
+            ),
+        ]
+    )
 
 # Define the content for the about page
 about_page_content = html.Div(
@@ -350,9 +374,14 @@ def toggle_navbar_collapse(n, is_open):
 def display_page(pathname):
     if pathname == "/":
         return [main_page_content, footer_content]
+    elif pathname == "/dashboard":
+        return [dashboard_page_content(), footer_content]
     elif pathname.startswith("/recorder/"):
         recorder_id = pathname.split("/")[-1]
         return [recorder_page_content(recorder_id), footer_content]
+    elif pathname.startswith("/species/"):
+        species_id = pathname.split("/")[-1]
+        return [species_page_content(species_id), footer_content]
     elif pathname == "/about":
         return [about_page_content, footer_content]
     else:
@@ -418,6 +447,12 @@ def update_last_detections(pathname):
                                 href=data["ebird_url"],
                                 target="_blank",
                                 className="info-icon-overlay",
+                            ),
+                            html.A(
+                                # Wrapping the chart icon inside an <a> tag
+                                html.I(className="bi bi-bar-chart-fill"),
+                                href=f"/species/{species}",
+                                className="chart-icon-overlay",
                             ),
                             html.Div(
                                 f"Photo: {data['image_author']}",
