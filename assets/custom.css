@@ -39,6 +39,11 @@ h5 {
     font-size: 1.25em; /* Section tag size */
 }
 
+h6 {
+    font-weight: 400; /* Regular */
+    font-size: 1em; /* Section tag size */
+}
+
 p {
     font-family: 'Merriweather', serif;
     font-weight: 300;
@@ -476,7 +481,61 @@ nav .navbar-nav {
     margin-bottom: 20px;
 }
 
+/* SPECIES PAGE */
 
+.species-page-content {
+    padding: 0;
+    margin: 0;
+}
+
+.species-header {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.species-header-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.species-overlay-row {
+    width: 100%;
+    margin: 0;
+}
+
+.species-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); /* Gradient background */
+    color: white;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.species-overlay-text {
+    margin: 0;
+}
+
+.learn-more-btn {
+    background-color: #36824b; 
+    border-radius: 20px;
+}
+
+.learn-more-btn:hover {
+    background-color: white;
+    color: #36824b;
+    text-decoration: none;
+}
 
 
 

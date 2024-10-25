@@ -36,6 +36,7 @@ def get_species_data(species):
     data['scientific_name'] = cfg.SPECIES_DATA[species]['sci_name']
     data['ebird_url'] = 'https://ebird.org/species/' + cfg.SPECIES_DATA[species]['new_ebird_code']
     data['image_url'] = cfg.SPECIES_DATA[species]['image']['src'] + '/320'
+    data['image_url_highres'] = cfg.SPECIES_DATA[species]['image']['src'] + '/640'
     data['image_author'] = cfg.SPECIES_DATA[species]['image']['author']
     data['frequency'] = cfg.SPECIES_DATA[species]['frequencies'][get_current_week()] / 100
     
