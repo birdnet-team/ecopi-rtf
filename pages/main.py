@@ -2,9 +2,13 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 
+from utils import data_processor as dp
+from utils import plots
 
-import data_processor as dp
-import plots
+from widgets.stats_bar import stats_bar
+from widgets.active_species import active_species
+from widgets.recent_detections import recent_detections
+from widgets.recording_units import recording_units
 
 def main_page_content():
     return html.Div(
@@ -26,38 +30,7 @@ def main_page_content():
                 ],
                 style={"position": "relative"}
             ),
-            html.Div(
-                dbc.Row(
-                    [
-                        dbc.Col(
-                            html.Div([html.Div("Detections (24h):"), html.H4(id="detections-24h", children="0")]),
-                            className="stat-column",
-                            width=6,
-                            md=3,
-                        ),
-                        dbc.Col(
-                            html.Div([html.Div("Species (24h):"), html.H4(id="species-24h", children="0")]),
-                            className="stat-column",
-                            width=6,
-                            md=3,
-                        ),
-                        dbc.Col(
-                            html.Div([html.Div("Detections (total):"), html.H4(id="total-detections", children="0")]),
-                            className="stat-column",
-                            width=6,
-                            md=3,
-                        ),
-                        dbc.Col(
-                            html.Div([html.Div("Audio (total):"), html.H4(id="total-audio", children="0")]),
-                            className="stat-column",
-                            width=6,
-                            md=3,
-                        ),
-                    ],
-                    className="stat-row-container",
-                ),
-                className="stat-row",
-            ),
+            stats_bar(),
             html.Div(className="h-spacer"),
             dbc.Container(
                 [
@@ -164,113 +137,7 @@ def register_main_callbacks(app):
         [Input("url", "pathname")]
     )
     def update_last_detections(pathname):
-        last_detections = dp.get_last_n_detections()
-        cards = []
-
-        for idx, (species, data) in enumerate(last_detections.items()):
-            confidence_score = data['confidence'] * 10
-            card = dbc.Col(
-                dbc.Card(
-                    [
-                        html.Div(
-                            [
-                                dbc.CardImg(src=data["image_url"], top=True, className="card-img-top"),
-                                html.Div(
-                                    html.Div(
-                                        [html.I(className="bi bi-play-circle-fill", id=f"play-icon-{idx}")],
-                                        id={"type": "play-icon", "index": idx},
-                                    ),
-                                    className="play-icon-overlay",
-                                ),
-                                html.A(
-                                    html.I(className="bi bi-info-circle-fill"),
-                                    href=data["ebird_url"],
-                                    target="_blank",
-                                    className="info-icon-overlay",
-                                ),
-                                html.A(
-                                    html.I(className="bi bi-bar-chart-fill"),
-                                    href=f"/species/{species}",
-                                    className="chart-icon-overlay",
-                                ),
-                                html.Div(
-                                    f"Photo: {data['image_author']}",
-                                    className="photo-author-overlay",
-                                ),
-                            ],
-                            style={"position": "relative"},
-                        ),
-                        dbc.CardBody(
-                            [
-                                html.H5(data["common_name"], className="card-title"),
-                                html.P(data["scientific_name"], className="card-subtitle mb-2 text-muted"),
-                                dbc.Row(
-                                    [
-                                        dbc.Col(
-                                            [
-                                                html.Div(f"Date: {data['datetime']}", className="very-small-text"),
-                                                html.Div(f"Recorder: #{data['recorder_field_id']}", className="very-small-text"),
-                                            ],
-                                            width=9,
-                                        ),
-                                        dbc.Col(
-                                            html.Div(
-                                                [
-                                                    html.Div(
-                                                        f"{data['confidence'] / 10.0:.1f}",
-                                                        className="confidence-score-text"
-                                                    ),
-                                                    html.Div(
-                                                        className="confidence-score-bar",
-                                                        style={
-                                                            "--value": data['confidence'],
-                                                            "--color": (
-                                                                "#B31B1B" if data['confidence'] < 33 else
-                                                                "#FF672E" if data['confidence'] < 50 else
-                                                                "#FFBC10" if data['confidence'] < 75 else
-                                                                "#D9EB6F" if data['confidence'] < 85 else
-                                                                "#A3BC09" if data['confidence'] < 90 else
-                                                                "#296239"
-                                                            )
-                                                        }
-                                                    ),
-                                                ],
-                                                className="confidence-score-container"
-                                            ),
-                                            width=3,
-                                            className="d-flex align-items-center justify-content-center",
-                                        ),
-                                    ],
-                                    className="align-items-end",
-                                ),
-                                html.Audio(
-                                    id={"type": "audio", "index": idx},
-                                    src=data["url_media"],
-                                    controls=True,
-                                    className="d-none",
-                                ),
-                            ]
-                        ),
-                    ],
-                    className="mb-4",
-                    style={"width": "100%", "position": "relative"},
-                ),
-                width=12,
-                sm=6,
-                md=6,
-                lg=4,
-                xl=3,
-            )
-            cards.append(card)
-
-        if not cards:
-            placeholder = html.P("Uuups...something went wrong. Please try to reload.", 
-                                 className="text-muted",
-                                 style={"text-align": "center", "width": "100%"})
-        else:
-            placeholder = None
-
-        return cards, placeholder
+        return recent_detections()
 
     @app.callback(
         [
@@ -280,74 +147,7 @@ def register_main_callbacks(app):
         [Input("url", "pathname")]
     )
     def update_most_active_species(pathname):
-        species_data = dp.get_most_active_species(n=8, min_conf=0.5)
-        plot_rows = []
-
-        max_detections = max(data['total_detections'] for data in species_data.values())
-
-        for index, (species, data) in enumerate(species_data.items()):
-            plot_sun_moon = True if index == 0 else False
-            plot = plots.get_hourly_detections_plot(data['detections'], plot_sun_moon)
-            detection_fraction = data['total_detections'] / max_detections * 100
-            
-            plot_row = dbc.Row(
-                [
-                    dbc.Col(
-                        html.Img(src=data['image_url'], className="species-image"),
-                        xs=4,
-                        sm="auto",
-                        md="auto",
-                        lg=1,
-                    ),
-                    dbc.Col(
-                        [
-                            dbc.Row(
-                                [
-                                    dbc.Col(
-                                        [
-                                            html.Div(f"{data['common_name']} ({data['total_detections']})", className="small-text"),
-                                            html.Div(
-                                                className="total-detections-bar",
-                                                children=[
-                                                    html.Div(
-                                                        className="total-detections-bar-fill",
-                                                        style={"width": f"{detection_fraction}%"}
-                                                    )
-                                                ]
-                                            )
-                                        ],
-                                        sm=12,
-                                        md=4,
-                                        className="species-info"
-                                    ),
-                                    dbc.Col(
-                                        dcc.Graph(figure=plot, config={"displayModeBar": False, "staticPlot": True}, style={"height": "50px"}),
-                                        sm=12,
-                                        md=8,
-                                        className="species-plot"
-                                    )
-                                ],
-                            )
-                        ],
-                        xs=8,
-                        sm=9,
-                        md=10,
-                        lg=11,
-                    )
-                ],
-                className="species-row mb-2",
-            )
-            
-            plot_rows.append(plot_row)
-
-        if not plot_rows:
-            placeholder = html.P("Uuups...something went wrong. Please try to reload.", 
-                                 className="text-muted",
-                                 style={"text-align": "center", "width": "100%"})
-        else:
-            placeholder = None
-
-        return plot_rows, placeholder
+        return active_species()
 
     @app.callback(
         [Output('recorder-stats', 'children'),
@@ -355,82 +155,4 @@ def register_main_callbacks(app):
         [Input('url', 'pathname')]
     )
     def update_recorder_stats(pathname):
-        try:
-            recorder_data = dp.get_recorder_data()
-            map_figure = plots.get_recorder_map(recorder_data)
-            
-            map_component = html.Div(
-                [
-                    html.Div("Recorder map", className="text-center small-text mb-2"),
-                    dcc.Graph(figure=map_figure, config={"staticPlot": True}, id="map-container", className="mb-2")
-                ]
-            )
-            
-            recorder_stats = []
-            
-            recorder_stats.append(
-                dbc.Row(
-                    [
-                        dbc.Col(html.Div("Detections | Species (24h)", className="small-text text-center mb-2"), width=12)
-                    ],
-                    className="recorder-stats-heading"
-                )
-            )
-            
-            for r in recorder_data:
-                recorder_stats.append(
-                    dbc.Col(
-                        dbc.Row(
-                            [
-                                dbc.Col(
-                                    dcc.Link(
-                                        html.Div(f"#{r}", className="small-text"),
-                                        href=f"/recorder/{r}"
-                                    ),
-                                    width=2
-                                ),
-                                dbc.Col(
-                                    dcc.Link(
-                                        html.Div(f"{recorder_data[r]['detections']} | {len(recorder_data[r]['species_counts'])}", className="small-text"),
-                                        href=f"/recorder/{r}"
-                                    ),
-                                    width=8
-                                ),
-                                dbc.Col(
-                                    dcc.Link(
-                                        html.Div(html.I(className="bi bi-graph-up"), className="small-text"),
-                                        href=f"/recorder/{r}"
-                                    ),
-                                    width=2
-                                ),
-                            ],
-                            className="recorder-info",
-                        ),
-                        width=12,
-                    )        
-                )
-                
-            children = [
-                dbc.Row(
-                    [
-                        dbc.Col(map_component, 
-                                md=9,
-                                xs=12
-                            ),
-                        dbc.Col(recorder_stats, 
-                                md=3,
-                                xs=12
-                            )
-                    ]
-                )
-            ]
-            
-            placeholder = None
-        except Exception as e:
-            print(e.with_traceback())
-            children = []
-            placeholder = html.P("Uuups...something went wrong. Please try to reload.", 
-                                 className="text-muted",
-                                 style={"text-align": "center", "width": "100%"})
-        
-        return children, placeholder
+        return recording_units()

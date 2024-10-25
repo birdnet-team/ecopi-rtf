@@ -1,6 +1,7 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
-import data_processor as dp
+
+from utils import data_processor as dp
 
 def species_page_content(species_id):
     species_data = dp.get_species_data(species_id)

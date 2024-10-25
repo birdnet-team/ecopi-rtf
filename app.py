@@ -2,8 +2,9 @@ import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH
-import data_processor as dp
-import plots
+
+from utils import data_processor as dp
+from utils import plots
 
 import config as cfg
 
@@ -202,6 +203,47 @@ def display_page(pathname):
         return about_page_content()
     else:
         return "404 Page Not Found"
+
+# Client-side callback for playing audio when play icon is clicked
+app.clientside_callback(
+    """
+    function(n_clicks, audio_id) {
+        const audioElements = document.querySelectorAll("audio");
+        let audioElement = null;
+        let iconElement = null;
+
+        for (let i = 0; i < audioElements.length; i++) {
+            const elementId = JSON.parse(audioElements[i].id).index;
+            if (elementId === audio_id["index"]) {
+                audioElement = audioElements[i];
+                iconElement = document.getElementById(`play-icon-${elementId}`);
+            } else {
+                audioElements[i].pause();
+                document.getElementById(`play-icon-${elementId}`).className = "bi bi-play-circle-fill";
+            }
+        }
+        
+        if (audioElement) {
+            if (audioElement.paused) {
+                audioElement.currentTime = 0;
+                audioElement.play();
+                iconElement.className = "bi bi-pause-circle-fill";
+            } else {
+                audioElement.pause();
+                iconElement.className = "bi bi-play-circle-fill";
+            }
+
+            return audioElement.src;
+        } else {
+            throw new Error("Audio element not found: " + audio_id);
+        }
+    }
+    """,
+    Output({"type": "audio", "index": MATCH}, "src"),
+    [Input({"type": "play-icon", "index": MATCH}, "n_clicks")],
+    [State({"type": "audio", "index": MATCH}, "id")],
+    prevent_initial_call=True,
+)
 
 # Layout of the Dash app
 app.layout = app_layout()
