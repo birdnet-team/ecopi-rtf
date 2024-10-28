@@ -54,6 +54,16 @@ The app will be available at `http://localhost:8050/`.
 
 Note: You'll need an OekoFor API key to run the app. Please send an email to [info@oekofor.de](mailto:info@oekofor.de) to request an API key.
 
+## Running the app in production
+
+We use Gunicorn to run the app in production. You can run the app with the following command:
+
+```bash
+gunicorn app:server --bind 0.0.0.0:8050 --workers 4
+```
+
+The app will be available at `http://localhost:8050/`. You can specify the number of workers to run with the `--workers` flag based on the number of cores available on your machine. Make sure to set 'debug=False' in the app.py file before running the app in production.
+
 ## License
 
 - **Source Code**: The source code for this project is licensed under the [MIT License](https://opensource.org/licenses/MIT).

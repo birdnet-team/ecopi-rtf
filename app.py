@@ -2,6 +2,7 @@ import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH
+from flask_cors import CORS
 
 from utils import data_processor as dp
 from utils import plots
@@ -30,6 +31,9 @@ app = dash.Dash(
     title="SWAMP",
     update_title=None,
 )
+
+# Enable CORS
+CORS(app.server)
 
 # Define overall layout
 def app_layout():
@@ -215,6 +219,9 @@ register_main_callbacks(app)
 
 # Register callbacks from recent_detections.py
 register_recent_detections_callbacks(app)
+
+# App server
+server = app.server
 
 # Run the app on the local server
 if __name__ == "__main__":
