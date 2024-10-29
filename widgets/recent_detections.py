@@ -134,21 +134,7 @@ def register_recent_detections_callbacks(app):
             }
             
             if (audioElement) {
-                if (audioElement.paused) {
-                    audioElement.currentTime = 0;
-                    audioElement.play();
-                    iconElement.className = "bi bi-pause-circle-fill";
-
-                    // Add event listener for when the audio playback finishes
-                    audioElement.onended = function() {
-                        iconElement.className = "bi bi-play-circle-fill";
-                    };
-                } else {
-                    audioElement.pause();
-                    iconElement.className = "bi bi-play-circle-fill";
-                }
-
-                return audioElement.src;
+                openPlayer(audioElement.src);
             } else {
                 throw new Error("Audio element not found: " + audio_id);
             }
