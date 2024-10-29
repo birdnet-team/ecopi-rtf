@@ -575,7 +575,6 @@ nav .navbar-nav {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 500px;
     height: 300px;
     top: 100%;
     opacity: 0;
@@ -584,6 +583,25 @@ nav .navbar-nav {
       opacity 0.75s,
       top 0.75s,
       display 0.75s allow-discrete;
+}
+
+@media only screen and (min-width: 600px) {
+    #popup {
+        width: 500px;
+    }
+}
+
+
+@media only screen and (min-width: 360px) {
+    #popup {
+        width: 360px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    #popup {
+        width: 240px;
+    }
 }
 
 #popup.visible {
