@@ -14,8 +14,8 @@ function openPlayer(audioUrl) {
         container: '#popup-content',
         waveColor: 'rgb(200, 0, 200)',
         progressColor: 'rgb(100, 0, 100)',
-        // url: audioUrl,
-        url: "./assets/example.mp3",
+        url: audioUrl,
+        // url: "./assets/example.mp3",
         sampleRate: 22050,
     });
     
