@@ -120,21 +120,17 @@ def register_recent_detections_callbacks(app):
         function(n_clicks, audio_id) {
             const audioElements = document.querySelectorAll("audio");
             let audioElement = null;
-            let iconElement = null;
 
             for (let i = 0; i < audioElements.length; i++) {
                 const elementId = JSON.parse(audioElements[i].id).index;
                 if (elementId === audio_id["index"]) {
                     audioElement = audioElements[i];
-                    iconElement = document.getElementById(`play-icon-${elementId}`);
-                } else {
-                    audioElements[i].pause();
-                    document.getElementById(`play-icon-${elementId}`).className = "bi bi-play-circle-fill";
                 }
             }
             
             if (audioElement) {
                 openPlayer(audioElement.src);
+                return audioElement.src;
             } else {
                 throw new Error("Audio element not found: " + audio_id);
             }
