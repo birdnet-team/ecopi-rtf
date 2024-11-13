@@ -560,11 +560,11 @@ nav .navbar-nav {
     z-index: 10; 
 }
 
-#popup {
+/* #popup {
     ::part(canvases) {
         display: none;
     }
-}
+} */
 
 #popup {
     position: fixed;
@@ -575,7 +575,6 @@ nav .navbar-nav {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 300px;
     top: 100%;
     opacity: 0;
     display:none;
