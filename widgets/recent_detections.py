@@ -23,12 +23,12 @@ def recent_detections():
                                 ),
                                 className="play-icon-overlay",
                             ),
-                            html.A(
-                                html.I(className="bi bi-info-circle-fill"),
-                                href=data["ebird_url"],
-                                target="_blank",
-                                className="info-icon-overlay",
-                            ),
+                            #html.A(
+                            #    html.I(className="bi bi-info-circle-fill"),
+                            #    href=data["ebird_url"],
+                            #    target="_blank",
+                            #    className="info-icon-overlay",
+                            #),
                             html.A(
                                 html.I(className="bi bi-bar-chart-fill"),
                                 href=f"/species/{species}",
