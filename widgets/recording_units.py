@@ -41,7 +41,7 @@ def recording_units():
                             ),
                             dbc.Col(
                                 dcc.Link(
-                                    html.Div(f"{recorder_data[r]['detections']} | {len(recorder_data[r]['species_counts'])}", className="small-text"),
+                                    html.Div(f"{max(1, recorder_data[r]['detections'])} | {max(1, len(recorder_data[r]['species_counts']))}", className="small-text"),
                                     href=f"/recorder/{r}"
                                 ),
                                 width=8

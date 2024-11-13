@@ -1,3 +1,6 @@
+import sys
+sys.path.append('..')
+
 import requests
 import random
 from datetime import datetime, timedelta
@@ -27,6 +30,23 @@ def get_confidence_score(species, confidence):
     
     return min(100, max(1, confidence))
 
+def get_inventory_data():
+    
+    url = cfg.API_BASE_URL + 'recorders/'
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    params = {}
+    
+    # Project name
+    params['project_name'] = cfg.PROJECT_NAME
+    
+    response = requests.get(url, headers=headers, params=params)
+    response = response.json()
+    
+    return response
+
 def get_species_data(species):
     
     data = {}
@@ -39,10 +59,11 @@ def get_species_data(species):
     data['image_url_highres'] = cfg.SPECIES_DATA[species]['image']['src'] + '/640'
     data['image_author'] = cfg.SPECIES_DATA[species]['image']['author']
     data['frequency'] = cfg.SPECIES_DATA[species]['frequencies'][get_current_week()] / 100
+    data['species_code'] = species 
     
     return data
 
-def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=10):
+def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=5):
     
     url = cfg.API_BASE_URL + 'meta/project/' + cfg.PROJECT_NAME + '/detections/recorderspeciescounts/'
     
@@ -72,6 +93,10 @@ def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=10):
         if item['species_code'] not in recorder_data[item['recorder_field_id']]['species_counts'] and (len(species_list) == 0 or item['species_code'] in species_list):
             recorder_data[item['recorder_field_id']]['species_counts'][item['species_code']] = 0
         recorder_data[item['recorder_field_id']]['species_counts'][item['species_code']] += item['species_count']
+        
+    # Only keep species with count >= min_count
+    for recorder in recorder_data:
+        recorder_data[recorder]['species_counts'] = {k: v for k, v in recorder_data[recorder]['species_counts'].items() if v >= min_count}
     
     # Add recorder metadata
     for recorder in recorder_data:
@@ -84,7 +109,7 @@ def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=10):
     
     return recorder_data
 
-def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=10):
+def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=5):
     
     url = cfg.API_BASE_URL + 'meta/project/' + cfg.PROJECT_NAME + '/detections/recorderspeciescounts/'
     
@@ -122,7 +147,7 @@ def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=10):
 
     return total_detections
 
-def get_last_n_detections(n=8, min_conf=0.75, hours=12, limit=1000):
+def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000):
     
     url = cfg.API_BASE_URL + 'detections'
     
@@ -143,8 +168,8 @@ def get_last_n_detections(n=8, min_conf=0.75, hours=12, limit=1000):
     # We only want detections from the last x hours
     # so we have to set datetime_gte and datetime_lte
     now = datetime.now()
-    params['datetime__gte'] = (now - timedelta(hours=hours)).isoformat()
-    params['datetime__lte'] = now.isoformat()  
+    params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
+    params['datetime_recording__lte'] = now.isoformat()  
     
     # Only retrieve certain fields
     params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'
@@ -154,7 +179,12 @@ def get_last_n_detections(n=8, min_conf=0.75, hours=12, limit=1000):
     
     # Send request
     response = requests.get(url, headers=headers, params=params)
-    response = response.json()
+    
+    try:
+        response = response.json()
+    except:
+        # Empty response
+        return {}
     
     # Parse detections
     detections = {}
@@ -193,7 +223,7 @@ def get_last_n_detections(n=8, min_conf=0.75, hours=12, limit=1000):
     
     return last_n
 
-def get_most_active_species(n=10, min_conf=0.5):
+def get_most_active_species(n=10, min_conf=0.5, hours=24):
     
     url = cfg.API_BASE_URL + 'detections'
     
@@ -211,8 +241,8 @@ def get_most_active_species(n=10, min_conf=0.5):
     # We only want detections from the last 24 hours
     # so we have to set datetime_gte and datetime_lte
     now = datetime.now()
-    params['datetime__gte'] = (now - timedelta(hours=24)).isoformat()
-    params['datetime__lte'] = now.isoformat()  
+    params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
+    params['datetime_recording__lte'] = now.isoformat()  
     
     # Only retrieve certain fields
     params['only'] = 'species_code, datetime, confidence'
@@ -257,8 +287,63 @@ def get_most_active_species(n=10, min_conf=0.5):
         detections[species]['total_detections'] = sum(detections[species]['detections'])
     
     return detections
+
+def get_species_stats(species_code, min_conf=0.5, hours=24, limit=1000, max_results=50):
     
-if __name__ == '__main__':
+    url = cfg.API_BASE_URL + 'detections'
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    params = {}
+    
+    # Project name
+    params['project_name'] = cfg.PROJECT_NAME
+    
+    # Minimum confidence
+    params['confidence_gte'] = min_conf
+    
+    # Only detections with audio
+    #params['has_media'] = True
+    
+    # Only detections of species_code
+    params['species_code'] = species_code
+    
+    # We only want detections from the last x hours
+    # so we have to set datetime_gte and datetime_lte
+    now = datetime.utcnow()
+    params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
+    params['datetime_recording__lte'] = now.isoformat()  
+    
+    # Only retrieve certain fields
+    params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'
+    
+    # Pagination/limit
+    params['limit'] = limit
+    
+    # Send request
+    response = requests.get(url, headers=headers, params=params)
+    try:
+        response = response.json()
+    except:
+        # Empty response
+        return []
+        
+    # Randomly remove some detections if there are too many
+    if len(response) > max_results:
+        response = random.sample(response, max_results)
+        
+    # For each detection, get the confidence score
+    for item in response:
+        # format date
+        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
+        # compute confidence as percentage
+        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100) / 10.0
+    
+    return response
+    
+if __name__ == '__main__':    
+    
     
     #print('Number of detections in the last 24 hours:', get_total_detections(days=1)['total_detections'])
     #print('Number of detections with confidence >= 0.5:', get_total_detections(min_conf=0.5)['total_detections'])
@@ -266,6 +351,10 @@ if __name__ == '__main__':
     #print(get_last_n_detections())
     #print(get_most_active_species())
     
-    print(get_recorder_data())
+    #print(get_recorder_data(min_conf=0.5, days=2))
+                                
+    #print(get_species_stats('norcar', hours=24))
+    
+    print(get_inventory_data())
     
     

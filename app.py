@@ -30,6 +30,8 @@ app = dash.Dash(
     suppress_callback_exceptions=True,  # Suppress the warning for dynamic callbacks
     title="SWAMP",
     update_title=None,
+    #requests_pathname_prefix="/swamp/",
+    #routes_pathname_prefix="/swamp/",
 )
 
 # Enable CORS
