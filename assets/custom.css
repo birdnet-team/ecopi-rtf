@@ -491,7 +491,8 @@ nav .navbar-nav {
 }
 
 .species-main-content {
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .species-header {
@@ -520,11 +521,11 @@ nav .navbar-nav {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); /* Gradient background */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)); /* Gradient background */
     color: white;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
     box-sizing: border-box;
 }
 
@@ -534,7 +535,7 @@ nav .navbar-nav {
 
 .species-info-row {
     margin-top: 0px;
-    padding: 15px;
+    padding: 0px;
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 5px;
@@ -556,7 +557,7 @@ nav .navbar-nav {
 
 .recent-detections-heading {
     margin-top: 5px;
-    margin-left: 15px;
+    margin-left: 0px;
 }
 
 .detections-table {

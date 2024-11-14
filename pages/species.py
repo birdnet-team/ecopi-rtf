@@ -36,11 +36,10 @@ def species_page_content(species_id, species_stats):
                             [
                                 dbc.Col(
                                     [
-                                        html.H4(f"{species_data['common_name']}", className="species-overlay-text"),
-                                        html.H6(f"{species_data['scientific_name']}", className="species-overlay-text"),
+                                        html.H3(f"{species_data['common_name']}", className="species-overlay-text"),
+                                        html.H5(f"{species_data['scientific_name']}", className="species-overlay-text"),
                                     ],
-                                    width=9,
-                                    xs=7
+                                    width=12,
                                 ),
                             ],
                             className="species-overlay-row"
