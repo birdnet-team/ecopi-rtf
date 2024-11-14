@@ -612,11 +612,11 @@ nav .navbar-nav {
     z-index: 10; 
 }
 
-/* #popup {
+#popup {
     ::part(canvases) {
         display: none;
     }
-} */
+}
 
 #popup {
     position: fixed;
@@ -658,12 +658,6 @@ nav .navbar-nav {
 @media only screen and (min-width: 900px) {
     #popup {
         width: 800px;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    #popup {
-        width: 1100px;
     }
 }
 

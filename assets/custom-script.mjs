@@ -19,15 +19,17 @@ function openPlayer(data) {
         progressColor: 'rgb(100, 0, 100)',
         // url: audioUrl,
         url: "./assets/example.mp3",
-        sampleRate: 22050,
+        sampleRate: 32000,
+        
     });
     
     wavesurfer.registerPlugin(
         Spectrogram.create({
-          height: 400,
+          maxFrequency: 12000,
           splitChannels: false,
-          frequencyMax: 12000,
+          fftSamples: 1024,
           labels: false,
+          
         }),
       )
 
