@@ -147,7 +147,7 @@ def footer_content():
                                 [
                                     html.H5("BirdNET - Bird Sound Identification"),
                                     html.P(
-                                        "BirdNET is an advanced AI for bird call identification. BirdNET is supported by Jake Holshuh (Cornell class of '69) and the Arthur Vining Davis Foundation. Our work at the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform wildlife and habitat conservation.",
+                                        "BirdNET is an advanced AI for bird call identification and poweres this project. BirdNET is supported by Jake Holshuh (Cornell class of '69) and the Arthur Vining Davis Foundation. Our work at the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform wildlife and habitat conservation.",
                                         style={"textAlign": "justify"},
                                     ),
                                     html.P(
