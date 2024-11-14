@@ -217,6 +217,7 @@ def register_species_callbacks(app):
         function(n_clicks, audio_id) {
             const dataElements = document.querySelectorAll("data");
             let dataElement = null;
+            let nextDataElement = null;
 
             for (let i = 0; i < dataElements.length; i++) {
                 const elementId = JSON.parse(dataElements[i].id);
@@ -232,7 +233,7 @@ def register_species_callbacks(app):
                 data.common_name = speciesData.common_name;
                 data.scientific_name = speciesData.scientific_name;
                 data.confidence *= 10;
-                
+
                 openPlayer(data);
                 return dataElement.value;
             } else {

@@ -7,8 +7,15 @@ def popup_player():
             html.Div(id="popup-backdrop", className="d-none"),
             html.Div(id='popup', className='d-flex flex-column justify-content-between', children=[
                 html.Div(id='popup-content', children=[ 
-                    html.H5("common_name", className="card-title", id="popup-com-name"),
-                    html.P("scientific_name", className="card-subtitle mb-2 text-muted", id="popup-sci-name"),
+                    dbc.Row([
+                        dbc.Col([
+                            html.H5("common_name", className="card-title", id="popup-com-name"),
+                            html.P("scientific_name", className="card-subtitle mb-2 text-muted", id="popup-sci-name")]),
+                        dbc.Col([
+                            html.A(html.I(className="bi bi-x-lg"), id='close-popup-button')
+                        ],
+                        class_name="d-flex justify-content-end"),
+                    ]),
                     html.Div(id="popup-audio-container"),
                     dbc.Row(
                         [
@@ -41,8 +48,11 @@ def popup_player():
                         className="align-items-end mt-3",
                     ),
                 ]),
-                html.Div(id='popup-footer', className="d-flex justify-content-center mt-3",children=[
-                html.Button('Close', id='close-popup-button')]),
+                html.Div(id='popup-footer', className="d-flex justify-content-evenly mt-3",children=[
+                            html.A(html.I(className="bi bi-skip-start-fill"), id='popup-previous-button'),
+                            html.A(html.I(className="bi bi-arrow-counterclockwise"), id='popup-replay-button'),
+                            html.A(html.I(className="bi bi-skip-end-fill"), id='popup-next-button')
+                ]),
             ])
         ]
     )

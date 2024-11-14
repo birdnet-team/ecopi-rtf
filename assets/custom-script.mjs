@@ -68,7 +68,19 @@ function openPlayer(data) {
         confidenceBar.style.backgroundColor = "#296239"
     }
 
-    const closeButton = document.querySelector("#close-popup-button");
+    let closeButton = document.querySelector("#close-popup-button");
+    let replayButton = document.querySelector("#popup-replay-button");
+    let nextButton = document.querySelector("#popup-next-button");
+    let previousButton = document.querySelector("#popup-previous-button");
+
+    replayButton.replaceWith(replayButton.cloneNode(true));
+    nextButton.replaceWith(nextButton.cloneNode(true));
+    previousButton.replaceWith(previousButton.cloneNode(true));
+
+    closeButton = document.querySelector("#close-popup-button");
+    replayButton = document.querySelector("#popup-replay-button");
+    nextButton = document.querySelector("#popup-next-button");
+    previousButton = document.querySelector("#popup-previous-button");
 
     const playerElement = document.querySelector("#popup");
     playerElement.classList.add("visible");
@@ -82,6 +94,23 @@ function openPlayer(data) {
     backdrop.addEventListener("click", () => {
         closePlayer(wavesurfer)
     }, {once: true});
+
+    replayButton.addEventListener("click", () => {
+        wavesurfer.setTime(0);
+        wavesurfer.play();
+    });
+
+    if (data.nextDataElementId) {
+        nextButton.classList.remove("disabled");
+    } else {
+        nextButton.classList.add("disabled");
+    }
+    if (data.previousDataElementId) {
+        previousButton.classList.remove("disabled");
+
+    } else {
+        previousButton.classList.add("disabled");
+    }
 }
 
 window.openPlayer = openPlayer

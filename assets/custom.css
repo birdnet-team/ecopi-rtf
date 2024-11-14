@@ -613,17 +613,14 @@ nav .navbar-nav {
     z-index: 990;
 }
 
-#close-popup-button {
-    background-color: #36824b; 
-    color: white; 
-    border: none; 
-    border-radius: 20px; 
-    padding: 10px 20px; 
-    font-size: 1rem;
-    display: flex; 
-    align-items: center; 
-    cursor: pointer; 
-    z-index: 10; 
+#close-popup-button:hover,
+#popup-replay-button:hover {
+    cursor: pointer;
+}
+
+#popup-next-button.disabled,
+#popup-previous-button.disabled {
+    color: gray;
 }
 
 #popup {
