@@ -5,6 +5,7 @@ from dash.dependencies import Input, Output
 from utils import data_processor as dp
 from utils import plots
 
+from widgets.popup_player import popup_player
 from widgets.stats_bar import stats_bar
 from widgets.active_species import active_species
 from widgets.recent_detections import recent_detections
@@ -103,6 +104,7 @@ def main_page_content():
                 fluid=True,
                 className="main-content",
             ),
+            popup_player(),
         ]
     )
 

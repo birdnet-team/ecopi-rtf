@@ -1,6 +1,7 @@
 from dash import html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH
+import json
 
 from utils import data_processor as dp
 
@@ -90,6 +91,10 @@ def recent_detections():
                                 controls=True,
                                 className="d-none",
                             ),
+                            html.Data(
+                                id={"type": "audio-data", "index": idx},
+                                value=json.dumps(data),
+                            )
                         ]
                     ),
                 ],
@@ -118,43 +123,27 @@ def register_recent_detections_callbacks(app):
     app.clientside_callback(
         """
         function(n_clicks, audio_id) {
-            const audioElements = document.querySelectorAll("audio");
-            let audioElement = null;
-            let iconElement = null;
+            const dataElements = document.querySelectorAll("data");
+            let dataElement = null;
 
-            for (let i = 0; i < audioElements.length; i++) {
-                const elementId = JSON.parse(audioElements[i].id).index;
-                if (elementId === audio_id["index"]) {
-                    audioElement = audioElements[i];
-                    iconElement = document.getElementById(`play-icon-${elementId}`);
-                } else {
-                    audioElements[i].pause();
-                    document.getElementById(`play-icon-${elementId}`).className = "bi bi-play-circle-fill";
+            for (let i = 0; i < dataElements.length; i++) {
+                const elementId = JSON.parse(dataElements[i].id);
+                if (elementId.type === 'audio-data' && elementId.index === audio_id["index"]) {
+                    dataElement = dataElements[i];
                 }
             }
             
-            if (audioElement) {
-                if (audioElement.paused) {
-                    audioElement.currentTime = 0;
-                    audioElement.play();
-                    iconElement.className = "bi bi-pause-circle-fill";
+            if (dataElement) {
+                data = JSON.parse(dataElement.value);
 
-                    // Add event listener for when the audio playback finishes
-                    audioElement.onended = function() {
-                        iconElement.className = "bi bi-play-circle-fill";
-                    };
-                } else {
-                    audioElement.pause();
-                    iconElement.className = "bi bi-play-circle-fill";
-                }
-
-                return audioElement.src;
+                openPlayer(data);
+                return dataElement.value;
             } else {
                 throw new Error("Audio element not found: " + audio_id);
             }
         }
         """,
-        Output({"type": "audio", "index": MATCH}, "src"),
+        Output({"type": "audio-data", "index": MATCH}, "value"),
         [Input({"type": "play-icon", "index": MATCH}, "n_clicks")],
         [State({"type": "audio", "index": MATCH}, "id")],
         prevent_initial_call=True,
