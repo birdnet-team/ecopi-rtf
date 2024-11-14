@@ -44,7 +44,12 @@ def species_page_content(species_id, species_stats):
                                         html.H3(f"{species_data['common_name']}", className="species-overlay-text"),
                                         html.H5(f"{species_data['scientific_name']}", className="species-overlay-text"),
                                     ],
-                                    width=12,
+                                    width=9,
+                                ),
+                                dbc.Col(
+                                    html.H6(f"Photo: {species_data['image_author']}", className="very-small-text species-overlay-text"),
+                                    width=3,
+                                    className="d-flex align-items-end justify-content-end"
                                 ),
                             ],
                             className="species-overlay-row"
