@@ -4,30 +4,30 @@ from dash.dependencies import Input, Output, State
 
 from utils import data_processor as dp
 
-def species_page_content(species_id):
+def get_confidence_color(confidence):
+    if confidence < 33:
+        return "#B31B1B"
+    elif confidence < 50:
+        return "#FF672E"
+    elif confidence < 75:
+        return "#FFBC10"
+    elif confidence < 85:
+        return "#D9EB6F"
+    elif confidence < 90:
+        return "#A3BC09"
+    else:
+        return "#296239"
+
+def species_page_content(species_id, species_stats):
     species_data = dp.get_species_data(species_id)
-    species_stats = dp.get_species_stats(species_id)
     
     total_detections = len(species_stats)
     most_recent_detection = species_stats[0]['datetime'] if species_stats else 'N/A'
     
-    def get_confidence_color(confidence):
-        if confidence < 33:
-            return "#B31B1B"
-        elif confidence < 50:
-            return "#FF672E"
-        elif confidence < 75:
-            return "#FFBC10"
-        elif confidence < 85:
-            return "#D9EB6F"
-        elif confidence < 90:
-            return "#A3BC09"
-        else:
-            return "#296239"
-    
     return html.Div(
         [
             dcc.Store(id="species-id-store", data=species_id),  # Store the species_id
+            dcc.Store(id="species-stats-store", data=species_stats),  # Store the species_stats
             html.Div(
                 [
                     html.Img(src=species_data["image_url_highres"], className="species-header-image"),
@@ -82,9 +82,45 @@ def species_page_content(species_id):
                             html.Thead(
                                 html.Tr(
                                     [
-                                        html.Th("Date", id="date-header", n_clicks=0),
-                                        html.Th("Score", id="score-header", n_clicks=0),
-                                        html.Th("Recorder", id="recorder-header", n_clicks=0),
+                                        html.Th(
+                                            [
+                                                html.Div(
+                                                    [
+                                                        "Date",
+                                                        html.I(className="bi bi-arrow-down-up")
+                                                    ],
+                                                    className="sortable-header"
+                                                )
+                                            ],
+                                            id="date-header",
+                                            n_clicks=0
+                                        ),
+                                        html.Th(
+                                            [
+                                                html.Div(
+                                                    [
+                                                        "Score",
+                                                        html.I(className="bi bi-arrow-down-up")
+                                                    ],
+                                                    className="sortable-header"
+                                                )
+                                            ],
+                                            id="score-header",
+                                            n_clicks=0
+                                        ),
+                                        html.Th(
+                                            [
+                                                html.Div(
+                                                    [
+                                                        "Recorder",
+                                                        html.I(className="bi bi-arrow-down-up")
+                                                    ],
+                                                    className="sortable-header"
+                                                )
+                                            ],
+                                            id="recorder-header",
+                                            n_clicks=0
+                                        ),
                                         html.Th("Audio"),
                                     ]
                                 )
@@ -114,36 +150,20 @@ def register_species_callbacks(app):
         [State("date-header", "n_clicks_timestamp"),
          State("score-header", "n_clicks_timestamp"),
          State("recorder-header", "n_clicks_timestamp"),
-         State("species-id-store", "data")]
+         State("species-stats-store", "data")]
     )
-    def update_table(date_clicks, score_clicks, recorder_clicks, date_ts, score_ts, recorder_ts, species_id):
-        species_stats = dp.get_species_stats(species_id)
-        
+    def update_table(date_clicks, score_clicks, recorder_clicks, date_ts, score_ts, recorder_ts, species_stats):
         # Initialize timestamps to 0 if they are None
         date_ts = date_ts or 0
         score_ts = score_ts or 0
         recorder_ts = recorder_ts or 0
         
         if date_ts > score_ts and date_ts > recorder_ts:
-            species_stats = sorted(species_stats, key=lambda x: x["datetime"], reverse=date_clicks % 2 == 1)
+            species_stats = sorted(species_stats, key=lambda x: x["datetime"], reverse=date_clicks % 2 == 0)
         elif score_ts > date_ts and score_ts > recorder_ts:
-            species_stats = sorted(species_stats, key=lambda x: x["confidence"], reverse=score_clicks % 2 == 1)
+            species_stats = sorted(species_stats, key=lambda x: x["confidence"], reverse=score_clicks % 2 == 0)
         elif recorder_ts > date_ts and recorder_ts > score_ts:
-            species_stats = sorted(species_stats, key=lambda x: x["recorder_field_id"], reverse=recorder_clicks % 2 == 1)
-        
-        def get_confidence_color(confidence):
-            if confidence < 33:
-                return "#B31B1B"
-            elif confidence < 50:
-                return "#FF672E"
-            elif confidence < 75:
-                return "#FFBC10"
-            elif confidence < 85:
-                return "#D9EB6F"
-            elif confidence < 90:
-                return "#A3BC09"
-            else:
-                return "#296239"
+            species_stats = sorted(species_stats, key=lambda x: x["recorder_field_id"], reverse=recorder_clicks % 2 == 0)
         
         rows = [
             html.Tr(
@@ -173,3 +193,7 @@ def register_species_callbacks(app):
         ]
         
         return rows
+
+def display_species_page(species_id):
+    species_stats = dp.get_species_stats(species_id)
+    return species_page_content(species_id, species_stats)

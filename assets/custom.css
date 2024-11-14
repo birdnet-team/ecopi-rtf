@@ -563,7 +563,23 @@ nav .navbar-nav {
     margin-top: 20px;
 }
 
-.detections-table th,
+.detections-table th {
+    position: relative;
+    text-align: center; /* Center the text in the header */
+    cursor: pointer; /* Make the entire header clickable */
+}
+
+.detections-table th .sortable-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detections-table th .bi-arrow-down-up {
+    font-size: 0.8em;
+    margin-left: 5px; /* Add some space between the text and the icon */
+}
+
 .detections-table td {
     text-align: center;
     vertical-align: middle;

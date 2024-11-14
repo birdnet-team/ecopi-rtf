@@ -8,6 +8,9 @@ import numpy as np
 
 import config as cfg 
 
+# Set random seed
+random.seed(42)
+
 def get_current_week():
     
     # Return current week 1..48 (4 weeks per month)
@@ -330,8 +333,8 @@ def get_species_stats(species_code, min_conf=0.5, hours=24, limit=1000, max_resu
         return []
         
     # Randomly remove some detections if there are too many
-    #if len(response) > max_results:
-    #    response = random.sample(response, max_results)
+    if len(response) > max_results:
+        response = random.sample(response, max_results)
         
     # For each detection, get the confidence score
     for item in response:
