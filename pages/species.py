@@ -21,8 +21,11 @@ def get_confidence_color(confidence):
 def species_page_content(species_id, species_stats):
     species_data = dp.get_species_data(species_id)
     
-    total_detections = len(species_stats)
+    total_detections = dp.get_total_detections(species_list=[species_id], days=-1, min_count=0)['total_detections']
     most_recent_detection = species_stats[0]['datetime'] if species_stats else 'N/A'
+    
+    # Sort species_stats by score
+    species_stats = sorted(species_stats, key=lambda x: x["confidence"], reverse=True)
     
     return html.Div(
         [
@@ -55,7 +58,7 @@ def species_page_content(species_id, species_stats):
                         [
                             dbc.Col(
                                 [
-                                    html.H6(f"{total_detections} detections (24h)"),
+                                    html.H6(f"{total_detections:,} detections"),
                                     html.H6(
                                         [
                                             html.I(className="bi bi-clock"),  # Clock icon

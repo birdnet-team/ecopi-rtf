@@ -136,9 +136,10 @@ def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=5):
     # Count entries
     detections = {}
     for item in response:
-        if item['species_code'] not in detections and (len(species_list) == 0 or item['species_code'] in species_list):
-            detections[item['species_code']] = 0
-        detections[item['species_code']] += item['species_count']
+        if len(species_list) == 0 or item['species_code'] in species_list:
+            if item['species_code'] not in detections:
+                detections[item['species_code']] = 0
+            detections[item['species_code']] += item['species_count']
         
     # Sort by count
     detections = {k: v for k, v in sorted(detections.items(), key=lambda item: item[1], reverse=True)}
@@ -344,7 +345,7 @@ def get_species_stats(species_code, min_conf=0.5, hours=168, limit=1000, max_res
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100) / 10.0
         
     # Sort by confidence
-    response = sorted(response, key=lambda x: x['confidence'], reverse=True)      
+    response = sorted(response, key=lambda x: x['datetime'], reverse=True)      
     
     # Limit to max_results
     response = response[:max_results]         
