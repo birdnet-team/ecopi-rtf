@@ -20,7 +20,7 @@ def recent_detections():
                             html.Div(
                                 html.Div(
                                     [html.I(className="bi bi-play-circle-fill", id=f"play-icon-{idx}")],
-                                    id={"type": "play-icon", "index": idx},
+                                    id={"type": "recent-detections-play-icon", "index": idx},
                                 ),
                                 className="play-icon-overlay",
                             ),
@@ -85,14 +85,8 @@ def recent_detections():
                                 ],
                                 className="align-items-end",
                             ),
-                            html.Audio(
-                                id={"type": "audio", "index": idx},
-                                src=data["url_media"],
-                                controls=True,
-                                className="d-none",
-                            ),
                             html.Data(
-                                id={"type": "audio-data", "index": idx},
+                                id={"type": "recent-detections-audio-data", "index": idx},
                                 value=json.dumps(data),
                             )
                         ]
@@ -128,7 +122,7 @@ def register_recent_detections_callbacks(app):
 
             for (let i = 0; i < dataElements.length; i++) {
                 const elementId = JSON.parse(dataElements[i].id);
-                if (elementId.type === 'audio-data' && elementId.index === audio_id["index"]) {
+                if (elementId.type === 'recent-detections-audio-data' && elementId.index === audio_id["index"]) {
                     dataElement = dataElements[i];
                 }
             }
@@ -143,8 +137,8 @@ def register_recent_detections_callbacks(app):
             }
         }
         """,
-        Output({"type": "audio-data", "index": MATCH}, "value"),
-        [Input({"type": "play-icon", "index": MATCH}, "n_clicks")],
-        [State({"type": "audio", "index": MATCH}, "id")],
+        Output({"type": "recent-detections-audio-data", "index": MATCH}, "value"),
+        [Input({"type": "recent-detections-play-icon", "index": MATCH}, "n_clicks")],
+        [State({"type": "recent-detections-audio-data", "index": MATCH}, "id")],
         prevent_initial_call=True,
     )

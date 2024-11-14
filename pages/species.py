@@ -1,7 +1,9 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output, State
+from dash.dependencies import Input, Output, State, MATCH
+import json
 
+from widgets.popup_player import popup_player
 from utils import data_processor as dp
 
 def species_page_content(species_id):
@@ -47,6 +49,11 @@ def species_page_content(species_id):
                         ),
                         className="species-overlay",
                     ),
+                    html.Data(
+                        className="species-data",
+                        id={"type": "species-data", "index": 0},
+                        value=json.dumps(species_data),
+                    )
                 ],
                 className="species-header",
             ),
@@ -101,6 +108,7 @@ def species_page_content(species_id):
                 fluid=True,
                 className="species-main-content",
             ),
+            popup_player(),
         ],
         className="species-page-content"
     )
@@ -153,23 +161,65 @@ def register_species_callbacks(app):
                         [
                             html.Span(
                                 className="confidence-dot",
-                                style={"background-color": get_confidence_color(detection["confidence"] * 10)}
+                                style={"backgroundColor": get_confidence_color(detection["confidence"] * 10)}
                             ),
                             f" {detection['confidence']}"
                         ]
                     ),
                     html.Td(detection["recorder_field_id"]),
                     html.Td(
-                        html.A(
-                            html.I(className="bi bi-play-circle-fill"),
-                            href=detection["url_media"],
-                            target="_blank",
-                            className="play-button"
-                        ),
+                        [
+                            html.A(
+                                html.I(className="bi bi-play-circle-fill"),
+                                # href=detection["url_media"],
+                                target="_blank",
+                                className="play-button",
+                                id={"type": "species-play-icon", "index": idx}
+                            ),
+                            html.Data(
+                                id={"type": "species-audio-data", "index": idx},
+                                value=json.dumps(detection),
+                            )
+                        ],
                         className="text-center"
                     ),
                 ]
-            ) for detection in species_stats
+            ) for idx, detection in enumerate(species_stats)
         ]
         
         return rows
+
+    # Client-side callback for playing audio when play icon is clicked
+    app.clientside_callback(
+        """
+        function(n_clicks, audio_id) {
+            const dataElements = document.querySelectorAll("data");
+            let dataElement = null;
+
+            for (let i = 0; i < dataElements.length; i++) {
+                const elementId = JSON.parse(dataElements[i].id);
+                if (elementId.type === 'species-audio-data' && elementId.index === audio_id["index"]) {
+                    dataElement = dataElements[i];
+                }
+            }
+            
+            if (dataElement) {
+                let speciesDataElement = document.querySelector(".species-data");
+                let speciesData = JSON.parse(speciesDataElement.value);
+                let data = JSON.parse(dataElement.value);
+                data.common_name = speciesData.common_name;
+                data.scientific_name = speciesData.scientific_name;
+                data.confidence *= 10;
+                
+                openPlayer(data);
+                return dataElement.value;
+            } else {
+                throw new Error("Audio element not found: " + audio_id);
+            }
+        }
+        """,
+        Output({"type": "species-audio-data", "index": MATCH}, "value"),
+        [Input({"type": "species-play-icon", "index": MATCH}, "n_clicks")],
+        [State({"type": "species-audio-data", "index": MATCH}, "id")],
+        prevent_initial_call=True,
+    )
