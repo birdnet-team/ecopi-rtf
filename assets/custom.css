@@ -584,12 +584,12 @@ nav .navbar-nav {
       display 0.75s allow-discrete;
 }
 
-@media only screen and (min-width: 600px) {
+
+@media only screen and (max-width: 360px) {
     #popup {
-        width: 500px;
+        width: 240px;
     }
 }
-
 
 @media only screen and (min-width: 360px) {
     #popup {
@@ -597,11 +597,24 @@ nav .navbar-nav {
     }
 }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (min-width: 600px) {
     #popup {
-        width: 240px;
+        width: 500px;
     }
 }
+
+@media only screen and (min-width: 900px) {
+    #popup {
+        width: 800px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #popup {
+        width: 1100px;
+    }
+}
+
 
 #popup.visible {
     display: block;

@@ -38,7 +38,7 @@ def popup_player():
                                 className="d-flex align-items-center justify-content-center",
                             ),
                         ],
-                        className="align-items-end",
+                        className="align-items-end mt-3",
                     ),
                 ]),
                 html.Div(id='popup-footer', className="d-flex justify-content-center mt-3",children=[
