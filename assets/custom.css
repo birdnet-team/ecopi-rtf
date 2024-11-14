@@ -541,9 +541,6 @@ nav .navbar-nav {
     border-radius: 5px;
 }
 
-.species-info-row .col {
-}
-
 .learn-more-btn {
     background-color: #36824b; 
     border-radius: 20px;
@@ -678,18 +675,10 @@ nav .navbar-nav {
     }
 }
 
-
 #popup.visible {
     display: block;
     top: 50%;
     opacity: 1;
-}
-
-@starting-style {
-    #popup.visible {
-        top: 100%;
-        opacity: 0;
-    }
 }
 
 
