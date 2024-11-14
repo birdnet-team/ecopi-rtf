@@ -13,7 +13,7 @@ import config as cfg
 from pages.main import main_page_content, register_main_callbacks
 from pages.dashboard import dashboard_page_content
 from pages.recorder import recorder_page_content
-from pages.species import species_page_content, register_species_callbacks
+from pages.species import species_page_content, register_species_callbacks, display_species_page
 from pages.about import about_page_content
 
 # Import callback registration function for recent detections
@@ -147,7 +147,7 @@ def footer_content():
                                 [
                                     html.H5("BirdNET - Bird Sound Identification"),
                                     html.P(
-                                        "BirdNET is an advanced AI for bird call identification. BirdNET is supported by Jake Holshuh (Cornell class of '69) and the Arthur Vining Davis Foundation. Our work at the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform wildlife and habitat conservation.",
+                                        "BirdNET is an advanced AI for bird call identification and poweres this project. BirdNET is supported by Jake Holshuh (Cornell class of '69) and the Arthur Vining Davis Foundation. Our work at the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform wildlife and habitat conservation.",
                                         style={"textAlign": "justify"},
                                     ),
                                     html.P(
@@ -207,7 +207,7 @@ def display_page(pathname):
         return recorder_page_content(recorder_id)
     elif pathname.startswith("/species/"):
         species_id = pathname.split("/")[-1]
-        return species_page_content(species_id)
+        return display_species_page(species_id)
     elif pathname == "/about":
         return about_page_content()
     else:

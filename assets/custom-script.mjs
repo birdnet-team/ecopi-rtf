@@ -51,7 +51,7 @@ function openPlayer(data) {
     const recorderElement = document.querySelector("#popup-recorder");
     recorderElement.textContent = `Recorder: #${data.recorder_field_id}`;
     const confidenceElement = document.querySelector("#popup-confidence-text");
-    confidenceElement.textContent = `${data.confidence / 10}`;
+    confidenceElement.textContent = `${(data.confidence / 10).toFixed(1)}`;
     const confidenceBar = document.querySelector("#popup-confidence-bar");
     const confidence = data.confidence;
     if (confidence < 33) {

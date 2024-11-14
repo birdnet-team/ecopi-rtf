@@ -8,6 +8,9 @@ import numpy as np
 
 import config as cfg 
 
+# Set random seed
+random.seed(42)
+
 def get_current_week():
     
     # Return current week 1..48 (4 weeks per month)
@@ -133,9 +136,10 @@ def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=5):
     # Count entries
     detections = {}
     for item in response:
-        if item['species_code'] not in detections and (len(species_list) == 0 or item['species_code'] in species_list):
-            detections[item['species_code']] = 0
-        detections[item['species_code']] += item['species_count']
+        if len(species_list) == 0 or item['species_code'] in species_list:
+            if item['species_code'] not in detections:
+                detections[item['species_code']] = 0
+            detections[item['species_code']] += item['species_count']
         
     # Sort by count
     detections = {k: v for k, v in sorted(detections.items(), key=lambda item: item[1], reverse=True)}
@@ -288,7 +292,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24):
     
     return detections
 
-def get_species_stats(species_code, min_conf=0.5, hours=24, limit=1000, max_results=50):
+def get_species_stats(species_code, min_conf=0.5, hours=168, limit=1000, max_results=50):
     
     url = cfg.API_BASE_URL + 'detections'
     
@@ -311,9 +315,9 @@ def get_species_stats(species_code, min_conf=0.5, hours=24, limit=1000, max_resu
     
     # We only want detections from the last x hours
     # so we have to set datetime_gte and datetime_lte
-    #now = datetime.utcnow()
-    #params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
-    #params['datetime_recording__lte'] = now.isoformat()  
+    now = datetime.utcnow()
+    params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
+    params['datetime_recording__lte'] = now.isoformat()  
     
     # Only retrieve certain fields
     params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'
@@ -341,7 +345,7 @@ def get_species_stats(species_code, min_conf=0.5, hours=24, limit=1000, max_resu
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100) / 10.0
         
     # Sort by confidence
-    response = sorted(response, key=lambda x: x['confidence'], reverse=True)      
+    response = sorted(response, key=lambda x: x['datetime'], reverse=True)      
     
     # Limit to max_results
     response = response[:max_results]         

@@ -491,7 +491,8 @@ nav .navbar-nav {
 }
 
 .species-main-content {
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .species-header {
@@ -520,11 +521,11 @@ nav .navbar-nav {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); /* Gradient background */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)); /* Gradient background */
     color: white;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
     box-sizing: border-box;
 }
 
@@ -534,13 +535,10 @@ nav .navbar-nav {
 
 .species-info-row {
     margin-top: 0px;
-    padding: 15px;
+    padding: 0px;
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 5px;
-}
-
-.species-info-row .col {
 }
 
 .learn-more-btn {
@@ -556,14 +554,30 @@ nav .navbar-nav {
 
 .recent-detections-heading {
     margin-top: 5px;
-    margin-left: 15px;
+    margin-left: 0px;
 }
 
 .detections-table {
     margin-top: 20px;
 }
 
-.detections-table th,
+.detections-table th {
+    position: relative;
+    text-align: center; /* Center the text in the header */
+    cursor: pointer; /* Make the entire header clickable */
+}
+
+.detections-table th .sortable-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detections-table th .bi-arrow-down-up {
+    font-size: 0.8em;
+    margin-left: 5px; /* Add some space between the text and the icon */
+}
+
 .detections-table td {
     text-align: center;
     vertical-align: middle;
@@ -661,18 +675,10 @@ nav .navbar-nav {
     }
 }
 
-
 #popup.visible {
     display: block;
     top: 50%;
     opacity: 1;
-}
-
-@starting-style {
-    #popup.visible {
-        top: 100%;
-        opacity: 0;
-    }
 }
 
 
