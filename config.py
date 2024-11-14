@@ -20,7 +20,7 @@ API_BASE_URL = 'https://api.ecopi.de/api/v0.1/' #https://api.ecopi.de/api/v0.1/m
 
 
 # AMiC project configuration
-"""pages/
+
 PROJECT_NAME = 'pam_in_chemnitz' #'099_swamp'#
 SPECIES_DATA = load_species_data(project='amic')
 DEPLOYMENT_LAT = 50.832
@@ -32,9 +32,10 @@ RECORDERS = {
     3: {'id': '0269', 'lat': 42.476863, 'lon': -76.445881},
     4: {'id': '0270', 'lat': 42.479265, 'lon': -76.442721}
 }
-"""
+
 
 # SWAMP project configuration
+"""
 PROJECT_NAME = '099_swamp'
 SPECIES_DATA = load_species_data(project='swamp')
 DEPLOYMENT_LAT = 42.479723
@@ -51,3 +52,4 @@ RECORDERS = {
     8: {'id': '0275', 'lat': 42.479265, 'lon': -76.442721},
     9: {'id': '0276', 'lat': 42.479723, 'lon': -76.451566},
 }
+"""

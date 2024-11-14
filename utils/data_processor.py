@@ -304,16 +304,16 @@ def get_species_stats(species_code, min_conf=0.5, hours=24, limit=1000, max_resu
     params['confidence_gte'] = min_conf
     
     # Only detections with audio
-    #params['has_media'] = True
+    params['has_media'] = True
     
     # Only detections of species_code
     params['species_code'] = species_code
     
     # We only want detections from the last x hours
     # so we have to set datetime_gte and datetime_lte
-    now = datetime.utcnow()
-    params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
-    params['datetime_recording__lte'] = now.isoformat()  
+    #now = datetime.utcnow()
+    #params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
+    #params['datetime_recording__lte'] = now.isoformat()  
     
     # Only retrieve certain fields
     params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'
@@ -330,8 +330,8 @@ def get_species_stats(species_code, min_conf=0.5, hours=24, limit=1000, max_resu
         return []
         
     # Randomly remove some detections if there are too many
-    if len(response) > max_results:
-        response = random.sample(response, max_results)
+    #if len(response) > max_results:
+    #    response = random.sample(response, max_results)
         
     # For each detection, get the confidence score
     for item in response:
@@ -339,6 +339,12 @@ def get_species_stats(species_code, min_conf=0.5, hours=24, limit=1000, max_resu
         item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
         # compute confidence as percentage
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100) / 10.0
+        
+    # Sort by confidence
+    response = sorted(response, key=lambda x: x['confidence'], reverse=True)      
+    
+    # Limit to max_results
+    response = response[:max_results]         
     
     return response
     
@@ -353,8 +359,8 @@ if __name__ == '__main__':
     
     #print(get_recorder_data(min_conf=0.5, days=2))
                                 
-    #print(get_species_stats('norcar', hours=24))
+    print(get_species_stats('norcar', hours=24))
     
-    print(get_inventory_data())
+    #print(get_inventory_data())
     
     

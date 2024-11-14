@@ -484,14 +484,20 @@ nav .navbar-nav {
 /* SPECIES PAGE */
 
 .species-page-content {
-    padding: 0;
-    margin: 0;
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container */
+    padding: 0 0px; /* Add some padding to the sides */
+
+}
+
+.species-main-content {
+    padding: 15px;
 }
 
 .species-header {
     position: relative;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0;
 }
@@ -526,6 +532,17 @@ nav .navbar-nav {
     margin: 0;
 }
 
+.species-info-row {
+    margin-top: 0px;
+    padding: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+}
+
+.species-info-row .col {
+}
+
 .learn-more-btn {
     background-color: #36824b; 
     border-radius: 20px;
@@ -537,6 +554,39 @@ nav .navbar-nav {
     text-decoration: none;
 }
 
+.recent-detections-heading {
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+.detections-table {
+    margin-top: 20px;
+}
+
+.detections-table th,
+.detections-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.play-button {
+    color: #36824b;
+    font-size: 1.5em;
+}
+
+.play-button:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.confidence-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
 
 
 
