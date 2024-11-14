@@ -177,7 +177,7 @@ def register_species_callbacks(app):
                                 className="confidence-dot",
                                 style={"background-color": get_confidence_color(detection["confidence"] * 10)}
                             ),
-                            f" {detection['confidence']}"
+                            f" {int(detection['confidence'] * 10) / 10.0}"
                         ]
                     ),
                     html.Td(detection["recorder_field_id"]),
