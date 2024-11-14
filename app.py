@@ -13,7 +13,7 @@ import config as cfg
 from pages.main import main_page_content, register_main_callbacks
 from pages.dashboard import dashboard_page_content
 from pages.recorder import recorder_page_content
-from pages.species import species_page_content
+from pages.species import species_page_content, register_species_callbacks
 from pages.about import about_page_content
 
 # Import callback registration function for recent detections
@@ -30,6 +30,8 @@ app = dash.Dash(
     suppress_callback_exceptions=True,  # Suppress the warning for dynamic callbacks
     title="SWAMP",
     update_title=None,
+    #requests_pathname_prefix="/swamp/",
+    #routes_pathname_prefix="/swamp/",
 )
 
 # Enable CORS
@@ -219,6 +221,9 @@ register_main_callbacks(app)
 
 # Register callbacks from recent_detections.py
 register_recent_detections_callbacks(app)
+
+# Register callbacks from species.py
+register_species_callbacks(app)
 
 # App server
 server = app.server
