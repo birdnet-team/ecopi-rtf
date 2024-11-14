@@ -64,7 +64,7 @@ def nav_bar():
                     # Logo, Divider, and Title in a single row
                     dbc.Row(
                         [
-                            dbc.Col(html.Img(src="/assets/clo-logo-bird.png", className="header-logo"), width="auto"),
+                            dbc.Col(dcc.Link(html.Img(src="/assets/clo-logo-bird.png", className="header-logo"), href="/"), width="auto"),
                             dbc.Col(html.Div(className="divider"), width="auto"),
                             dbc.Col(dbc.NavbarBrand("SWAMP", className="ml-0"), width="auto"),
                         ],
@@ -112,7 +112,7 @@ def nav_bar():
             className="mb-0 navbar-border",
             sticky="top",
         )
-
+    
 # Define the footer content
 def footer_content():
     return html.Footer(
