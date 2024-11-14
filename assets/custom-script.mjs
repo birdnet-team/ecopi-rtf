@@ -17,8 +17,9 @@ function openPlayer(data) {
         container: '#popup-audio-container',
         waveColor: 'rgb(200, 0, 200)',
         progressColor: 'rgb(100, 0, 100)',
-        //url: audioUrl,
-        url: "./assets/example.mp3",
+        // url: audioUrl, // Production 
+        // url: "./assets/example.mp3", // For main page
+        url: "../assets/example.mp3", // for species page
         sampleRate: 32000,
         
     });
