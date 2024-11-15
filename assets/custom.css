@@ -618,6 +618,12 @@ nav .navbar-nav {
     cursor: pointer;
 }
 
+#popup-next-button,
+#popup-previous-button {
+    color: inherit;
+    cursor: pointer;
+}
+
 #popup-next-button.disabled,
 #popup-previous-button.disabled {
     color: gray;

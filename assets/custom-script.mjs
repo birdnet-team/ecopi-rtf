@@ -9,7 +9,12 @@ function closePlayer(wavesurfer) {
     wavesurfer.destroy();
 } 
 
-function openPlayer(data) {
+function openPlayer(index) {
+    const dataListElement = document.querySelector("#audio-data-list");
+    console.log(dataListElement.value);
+    const dataList = JSON.parse(dataListElement.value)
+    console.log(dataList);
+    let data = dataList[index];
     console.log(data);
     const audioUrl = data.url_media;
 
@@ -100,14 +105,21 @@ function openPlayer(data) {
         wavesurfer.play();
     });
 
-    if (data.nextDataElementId) {
+    if (index < dataList.length - 1) {
         nextButton.classList.remove("disabled");
+        nextButton.addEventListener("click", () => {
+            closePlayer(wavesurfer);
+            openPlayer(index + 1);
+        });
     } else {
         nextButton.classList.add("disabled");
     }
-    if (data.previousDataElementId) {
+    if (index > 0) {
         previousButton.classList.remove("disabled");
-
+        previousButton.addEventListener("click", () => {
+            closePlayer(wavesurfer);
+            openPlayer(index - 1);
+        });
     } else {
         previousButton.classList.add("disabled");
     }

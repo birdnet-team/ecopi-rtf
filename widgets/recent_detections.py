@@ -8,8 +8,10 @@ from utils import data_processor as dp
 def recent_detections():
     last_detections = dp.get_last_n_detections()
     cards = []
+    datalist = []
 
     for idx, (species, data) in enumerate(last_detections.items()):
+        datalist.append(data)
         confidence_score = data['confidence'] * 10
         card = dbc.Col(
             dbc.Card(
@@ -86,8 +88,7 @@ def recent_detections():
                                 className="align-items-end",
                             ),
                             html.Data(
-                                id={"type": "recent-detections-audio-data", "index": idx},
-                                value=json.dumps(data),
+                                id={"type": "recent-detections-output-placeholder", "index": idx}
                             )
                         ]
                     ),
@@ -110,35 +111,20 @@ def recent_detections():
     else:
         placeholder = None
 
-    return cards, placeholder
+    data = html.Data(id="audio-data-list", value=json.dumps(datalist))
+
+    return cards, placeholder, data
 
 def register_recent_detections_callbacks(app):
     # Client-side callback for playing audio when play icon is clicked
     app.clientside_callback(
         """
         function(n_clicks, audio_id) {
-            const dataElements = document.querySelectorAll("data");
-            let dataElement = null;
-
-            for (let i = 0; i < dataElements.length; i++) {
-                const elementId = JSON.parse(dataElements[i].id);
-                if (elementId.type === 'recent-detections-audio-data' && elementId.index === audio_id["index"]) {
-                    dataElement = dataElements[i];
-                }
-            }
-            
-            if (dataElement) {
-                data = JSON.parse(dataElement.value);
-
-                openPlayer(data);
-                return dataElement.value;
-            } else {
-                throw new Error("Audio element not found: " + audio_id);
-            }
+            openPlayer(audio_id["index"]);
         }
         """,
-        Output({"type": "recent-detections-audio-data", "index": MATCH}, "value"),
+        Output({"type": "recent-detections-output-placeholder", "index": MATCH}, "value"),
         [Input({"type": "recent-detections-play-icon", "index": MATCH}, "n_clicks")],
-        [State({"type": "recent-detections-audio-data", "index": MATCH}, "id")],
+        [State({"type": "recent-detections-play-icon", "index": MATCH}, "id")],
         prevent_initial_call=True,
     )
