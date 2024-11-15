@@ -4,6 +4,8 @@ import dash_bootstrap_components as dbc
 from utils import data_processor as dp
 from utils import plots
 
+import config as cfg
+
 def recording_units():
     try:
         recorder_data = dp.get_recorder_data()
@@ -35,21 +37,21 @@ def recording_units():
                             dbc.Col(
                                 dcc.Link(
                                     html.Div(f"#{r}", className="small-text"),
-                                    href=f"/recorder/{r}"
+                                    href=f"{cfg.SITE_ROOT}/recorder/{r}"
                                 ),
                                 width=2
                             ),
                             dbc.Col(
                                 dcc.Link(
                                     html.Div(f"{max(1, recorder_data[r]['detections'])} | {max(1, len(recorder_data[r]['species_counts']))}", className="small-text"),
-                                    href=f"/recorder/{r}"
+                                    href=f"{cfg.SITE_ROOT}/recorder/{r}"
                                 ),
                                 width=8
                             ),
                             dbc.Col(
                                 dcc.Link(
                                     html.Div(html.I(className="bi bi-graph-up"), className="small-text"),
-                                    href=f"/recorder/{r}"
+                                    href=f"{cfg.SITE_ROOT}/recorder/{r}"
                                 ),
                                 width=2
                             ),

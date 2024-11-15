@@ -11,12 +11,14 @@ from widgets.active_species import active_species
 from widgets.recent_detections import recent_detections
 from widgets.recording_units import recording_units
 
+import config as cfg
+
 def main_page_content():
     return html.Div(
         [
             html.Div(
                 [
-                    html.Img(src="/assets/swamp_header.jpg", className="header-graphic"),
+                    html.Img(src=cfg.SITE_ROOT + "/assets/swamp_header.jpg", className="header-graphic"),
                     html.Div(
                         [
                             html.H1("SWAMP: Sapsucker Woods Acoustic Monitoring Project"),
@@ -74,7 +76,7 @@ def main_page_content():
                             dbc.Col(
                                 [
                                     html.H5("Haikubox", className="text-center"),
-                                    html.Img(src="/assets/haikubox_teaser.png", className="img-fluid"),
+                                    html.Img(src=cfg.SITE_ROOT + "/assets/haikubox_teaser.png", className="img-fluid"),
                                     html.P("Haikubox is an innovative tool designed for bird enthusiasts and conservationists who want to keep track of the birds visiting their backyards. Using advanced AI-powered sound recognition, Haikubox listens to bird calls and automatically identifies species in real-time. It's a hands-free solution that provides continuous monitoring, making it ideal for anyone curious about local bird activity without needing to have expert knowledge.", className="text-justify mt-4"),
                                     html.Div(
                                         html.A("Visit the Haikubox website", href="https://www.haikubox.com", target="_blank", className="btn btn-href mt-4"),
@@ -87,7 +89,7 @@ def main_page_content():
                             dbc.Col(
                                 [
                                     html.H5("BirdWeather", className="text-center"),
-                                    html.Img(src="/assets/birdweather_teaser.png", className="img-fluid"),
+                                    html.Img(src=cfg.SITE_ROOT + "/assets/birdweather_teaser.png", className="img-fluid"),
                                     html.P("BirdWeather is an advanced bird monitoring platform that connects bird enthusiasts with real-time data about bird species visiting their area. BirdWeather allows users to identify bird species based on their calls, without the need for expert-level birdwatching knowledge. The platform is designed to provide continuous, automated monitoring, making it a perfect solution for those interested in observing bird activity in their backyard.", className="text-justify mt-4"),
                                     html.Div(
                                         html.A("Visit the BirdWeather website", href="https://www.birdweather.com", target="_blank", className="btn btn-href mt-4"),

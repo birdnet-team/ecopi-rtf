@@ -62,7 +62,7 @@ We use Gunicorn to run the app in production. You can run the app with the follo
 gunicorn app:server --bind 0.0.0.0:8050 --workers 4
 ```
 
-The app will be available at `http://localhost:8050/`. You can specify the number of workers to run with the `--workers` flag based on the number of cores available on your machine. Make sure to set 'debug=False' in the app.py file before running the app in production.
+The app will be available at `http://localhost:8050/`. You can specify the number of workers to run with the `--workers` flag based on the number of cores available on your machine. Make sure to set 'debug=False' in the app.py file before running the app in production. You also may have to set `SITE_ROOT` in the config when using URL forwarding in your domain.
 
 ## License
 

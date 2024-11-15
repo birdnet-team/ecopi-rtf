@@ -5,6 +5,8 @@ import json
 
 from utils import data_processor as dp
 
+import config as cfg
+
 def recent_detections():
     last_detections = dp.get_last_n_detections()
     cards = []
@@ -32,7 +34,7 @@ def recent_detections():
                             #),
                             html.A(
                                 html.I(className="bi bi-bar-chart-fill"),
-                                href=f"/species/{species}",
+                                href=f"{cfg.SITE_ROOT}/species/{species}",
                                 className="chart-icon-overlay",
                             ),
                             html.Div(

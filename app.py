@@ -30,8 +30,7 @@ app = dash.Dash(
     suppress_callback_exceptions=True,  # Suppress the warning for dynamic callbacks
     title="SWAMP",
     update_title=None,
-    #requests_pathname_prefix="/swamp/",
-    #routes_pathname_prefix="/swamp/",
+    requests_pathname_prefix="/" if cfg.SITE_ROOT == "" else cfg.SITE_ROOT + "/",
 )
 
 # Enable CORS
@@ -64,7 +63,7 @@ def nav_bar():
                     # Logo, Divider, and Title in a single row
                     dbc.Row(
                         [
-                            dbc.Col(dcc.Link(html.Img(src="/assets/clo-logo-bird.png", className="header-logo"), href="/"), width="auto"),
+                            dbc.Col(dcc.Link(html.Img(src=cfg.SITE_ROOT + "/assets/clo-logo-bird.png", className="header-logo"), href=cfg.SITE_ROOT + "/"), width="auto"),
                             dbc.Col(html.Div(className="divider"), width="auto"),
                             dbc.Col(dbc.NavbarBrand("SWAMP", className="ml-0"), width="auto"),
                         ],
@@ -81,22 +80,22 @@ def nav_bar():
                                             html.I(className="bi bi-house-door-fill home-icon"),
                                             html.Span("Home", className="home-text")
                                         ],
-                                        href="/",
+                                        href=cfg.SITE_ROOT + "/",
                                         className="nav-link",
                                         id="nav-home"
                                     )
                                 ),
-                                dbc.NavItem(dcc.Link("Dashboard", href="/dashboard", className="nav-link", id="nav-dashboard")),
+                                dbc.NavItem(dcc.Link("Dashboard", href=cfg.SITE_ROOT + "/dashboard", className="nav-link", id="nav-dashboard")),
                                 dbc.DropdownMenu(
                                     label="Recorders",
                                     children=[
                                         dbc.DropdownMenuItem(
-                                            dcc.Link(f"Recorder {recorder_id}", href=f"/recorder/{recorder_id}", className="dropdown-item")
+                                            dcc.Link(f"Recorder {recorder_id}", href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}", className="dropdown-item")
                                         ) for recorder_id in cfg.RECORDERS.keys()
                                     ],
                                     nav=True,
                                 ),
-                                dbc.NavItem(dcc.Link("About", href="/about", className="nav-link", id="nav-about")),
+                                dbc.NavItem(dcc.Link("About", href=cfg.SITE_ROOT + "/about", className="nav-link", id="nav-about")),
                             ],
                             className="ml-auto",
                             navbar=True,
@@ -118,7 +117,7 @@ def footer_content():
     return html.Footer(
         [
             # Top Logo
-            html.Div(html.Img(src="/assets/cornell-lab-logo-full-white.png", className="footer-logo")),
+            html.Div(html.Img(src=cfg.SITE_ROOT + "/assets/cornell-lab-logo-full-white.png", className="footer-logo")),
             # Two-column content, responsive to single column on narrow screens
             dbc.Container(
                 dbc.Row(
@@ -166,7 +165,7 @@ def footer_content():
                 className="footer-content",
             ),
             # Bottom Logo
-            html.Div(html.Img(src="/assets/cornell-logo-white.png", className="footer-logo")),
+            html.Div(html.Img(src=cfg.SITE_ROOT + "/assets/cornell-logo-white.png", className="footer-logo")),
             # Copyright text
             html.P("© 2024 Cornell University"),
         ],
@@ -190,27 +189,28 @@ def toggle_navbar_collapse(n, is_open):
     [Input("url", "pathname")]
 )
 def update_active_nav(pathname):
-    home_class = "nav-link active-nav" if pathname == "/" else "nav-link"
-    dashboard_class = "nav-link active-nav" if pathname == "/dashboard" else "nav-link"
-    about_class = "nav-link active-nav" if pathname == "/about" else "nav-link"
+    home_class = "nav-link active-nav" if pathname == cfg.SITE_ROOT + "/" else "nav-link"
+    dashboard_class = "nav-link active-nav" if pathname == cfg.SITE_ROOT + "/dashboard" else "nav-link"
+    about_class = "nav-link active-nav" if pathname == cfg.SITE_ROOT + "/about" else "nav-link"
     return home_class, dashboard_class, about_class
 
 # Callback to update the page content based on the URL
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    if pathname == "/":
+    if pathname == cfg.SITE_ROOT + "/":
         return main_page_content()
-    elif pathname == "/dashboard":
+    elif pathname == cfg.SITE_ROOT + "/dashboard":
         return dashboard_page_content()
-    elif pathname.startswith("/recorder/"):
+    elif pathname.startswith(cfg.SITE_ROOT + "/recorder/"):
         recorder_id = pathname.split("/")[-1]
         return recorder_page_content(recorder_id)
-    elif pathname.startswith("/species/"):
+    elif pathname.startswith(cfg.SITE_ROOT + "/species/"):
         species_id = pathname.split("/")[-1]
         return display_species_page(species_id)
-    elif pathname == "/about":
+    elif pathname == cfg.SITE_ROOT + "/about":
         return about_page_content()
     else:
+        print(f"404 Page Not Found: {pathname}")
         return "404 Page Not Found"
 
 # Layout of the Dash app
