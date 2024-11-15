@@ -11,20 +11,17 @@ function closePlayer(wavesurfer) {
 
 function openPlayer(index) {
     const dataListElement = document.querySelector("#audio-data-list");
-    console.log(dataListElement.value);
     const dataList = JSON.parse(dataListElement.value)
-    console.log(dataList);
     let data = dataList[index];
-    console.log(data);
     const audioUrl = data.url_media;
 
     const wavesurfer = WaveSurfer.create({
         container: '#popup-audio-container',
         waveColor: 'rgb(200, 0, 200)',
         progressColor: 'rgb(100, 0, 100)',
-        // url: audioUrl, // Production 
+        url: audioUrl, // Production 
         // url: "./assets/example.mp3", // For main page
-        url: "../assets/example.mp3", // for species page
+        // url: "../assets/example.mp3", // for species page
         sampleRate: 32000,
         
     });
