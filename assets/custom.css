@@ -628,7 +628,7 @@ nav .navbar-nav {
 
 #popup-next-button.disabled,
 #popup-previous-button.disabled {
-    color: gray;
+    color: rgb(222, 222, 222);
 }
 
 #popup {
