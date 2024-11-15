@@ -58,6 +58,7 @@ def main_page_content():
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="last-detections", className="mt-4"),
+                    html.Div(id="last-detections-data-container", className="d-none"),
                     dbc.Spinner(html.Div(id="no-detections-placeholder", className="spinner"), color="#b31b1b"),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
@@ -136,7 +137,8 @@ def register_main_callbacks(app):
     @app.callback(
         [
             Output("last-detections", "children"), 
-            Output("no-detections-placeholder", "children")
+            Output("no-detections-placeholder", "children"),
+            Output("last-detections-data-container", "children")
         ], 
         [Input("url", "pathname")]
     )

@@ -9,17 +9,19 @@ function closePlayer(wavesurfer) {
     wavesurfer.destroy();
 } 
 
-function openPlayer(data) {
-    console.log(data);
+function openPlayer(index) {
+    const dataListElement = document.querySelector("#audio-data-list");
+    const dataList = JSON.parse(dataListElement.value)
+    let data = dataList[index];
     const audioUrl = data.url_media;
 
     const wavesurfer = WaveSurfer.create({
         container: '#popup-audio-container',
         waveColor: 'rgb(200, 0, 200)',
         progressColor: 'rgb(100, 0, 100)',
-        // url: audioUrl, // Production 
+        url: audioUrl, // Production 
         // url: "./assets/example.mp3", // For main page
-        url: "../assets/example.mp3", // for species page
+        // url: "../assets/example.mp3", // for species page
         sampleRate: 32000,
         
     });
@@ -68,7 +70,19 @@ function openPlayer(data) {
         confidenceBar.style.backgroundColor = "#296239"
     }
 
-    const closeButton = document.querySelector("#close-popup-button");
+    let closeButton = document.querySelector("#close-popup-button");
+    let replayButton = document.querySelector("#popup-replay-button");
+    let nextButton = document.querySelector("#popup-next-button");
+    let previousButton = document.querySelector("#popup-previous-button");
+
+    replayButton.replaceWith(replayButton.cloneNode(true));
+    nextButton.replaceWith(nextButton.cloneNode(true));
+    previousButton.replaceWith(previousButton.cloneNode(true));
+
+    closeButton = document.querySelector("#close-popup-button");
+    replayButton = document.querySelector("#popup-replay-button");
+    nextButton = document.querySelector("#popup-next-button");
+    previousButton = document.querySelector("#popup-previous-button");
 
     const playerElement = document.querySelector("#popup");
     playerElement.classList.add("visible");
@@ -82,6 +96,30 @@ function openPlayer(data) {
     backdrop.addEventListener("click", () => {
         closePlayer(wavesurfer)
     }, {once: true});
+
+    replayButton.addEventListener("click", () => {
+        wavesurfer.setTime(0);
+        wavesurfer.play();
+    });
+
+    if (index < dataList.length - 1) {
+        nextButton.classList.remove("disabled");
+        nextButton.addEventListener("click", () => {
+            closePlayer(wavesurfer);
+            openPlayer(index + 1);
+        });
+    } else {
+        nextButton.classList.add("disabled");
+    }
+    if (index > 0) {
+        previousButton.classList.remove("disabled");
+        previousButton.addEventListener("click", () => {
+            closePlayer(wavesurfer);
+            openPlayer(index - 1);
+        });
+    } else {
+        previousButton.classList.add("disabled");
+    }
 }
 
 window.openPlayer = openPlayer
