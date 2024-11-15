@@ -506,6 +506,8 @@ nav .navbar-nav {
 .species-header-image {
     width: 100%;
     height: auto;
+    max-height: 800px;
+    object-fit: cover;
     display: block;
     margin: 0;
     padding: 0;
