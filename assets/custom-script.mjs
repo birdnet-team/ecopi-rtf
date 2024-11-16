@@ -37,11 +37,13 @@ function openPlayer(index) {
     
     wavesurfer.registerPlugin(
         Spectrogram.create({
-          maxFrequency: 12000,
+          frequencyMax: 12000,
           splitChannels: false,
-          fftSamples: 1024,
+          fftSamples: 256,
           labels: false,
-          height: 200,
+          labelsBackground: '#3339',
+          height: 150, //this is a bug in wavesurfer and we have to wait untul it is fixed - spectrogram height is not working (seems to work only if spec is greater than height)
+          scale: 'linear',
         }),
       )
 
