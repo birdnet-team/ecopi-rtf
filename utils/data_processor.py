@@ -57,9 +57,20 @@ def get_species_data(species):
     # This is example data, we'll parse this from the species data later
     data['common_name'] = cfg.SPECIES_DATA[species]['common_name']
     data['scientific_name'] = cfg.SPECIES_DATA[species]['sci_name']
-    data['ebird_url'] = 'https://ebird.org/species/' + cfg.SPECIES_DATA[species]['new_ebird_code']
-    data['image_url'] = cfg.SPECIES_DATA[species]['image']['src'] + '/320'
-    data['image_url_highres'] = cfg.SPECIES_DATA[species]['image']['src'] + '/640'
+    data['ebird_url'] = 'https://ebird.org/species/' + cfg.SPECIES_DATA[species]['new_ebird_code'] if not cfg.SPECIES_DATA[species]['new_ebird_code'].startswith('t-') else 'https://search.macaulaylibrary.org/catalog?taxonCode=' + cfg.SPECIES_DATA[species]['new_ebird_code']
+    
+    # Low res species image
+    if cfg.SPECIES_DATA[species]['image']['src'].find('birds.cornell.edu') > 0:
+        data['image_url'] = cfg.SPECIES_DATA[species]['image']['src'] + '/320'
+    else:
+        data['image_url'] = cfg.SITE_ROOT + cfg.SPECIES_DATA[species]['image']['src']
+    
+    # High res species image
+    if cfg.SPECIES_DATA[species]['image']['src'].find('birds.cornell.edu') > 0:
+        data['image_url_highres'] = cfg.SPECIES_DATA[species]['image']['src'] + '/640'
+    else:
+        data['image_url_highres'] = cfg.SITE_ROOT + cfg.SPECIES_DATA[species]['image']['src']
+    
     data['image_author'] = cfg.SPECIES_DATA[species]['image']['author']
     data['frequency'] = cfg.SPECIES_DATA[species]['frequencies'][get_current_week()] / 100
     data['species_code'] = species 
