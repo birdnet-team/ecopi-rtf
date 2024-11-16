@@ -1,5 +1,6 @@
 import WaveSurfer from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/wavesurfer.esm.js'
 import Spectrogram from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/plugins/spectrogram.esm.js'
+import Minimap from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/minimap.esm.js';
 
 function closePlayer(wavesurfer) {
     const playerElement = document.querySelector("#popup");
@@ -17,14 +18,22 @@ function openPlayer(index) {
 
     const wavesurfer = WaveSurfer.create({
         container: '#popup-audio-container',
-        waveColor: 'rgb(200, 0, 200)',
-        progressColor: 'rgb(100, 0, 100)',
+        progressColor: '#FFF',
         url: audioUrl, // Production 
         // url: "./assets/example.mp3", // For main page
         // url: "../assets/example.mp3", // for species page
         sampleRate: 32000,
-        
+        height: 0,
     });
+
+    wavesurfer.registerPlugin(
+        Minimap.create({
+          height: 30,
+          waveColor: '#6D6762',
+          progressColor: '#2E261F',
+          normalize: true,
+        }),
+    )
     
     wavesurfer.registerPlugin(
         Spectrogram.create({
@@ -32,7 +41,7 @@ function openPlayer(index) {
           splitChannels: false,
           fftSamples: 1024,
           labels: false,
-          
+          height: 200,
         }),
       )
 
