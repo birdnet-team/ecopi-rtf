@@ -1,6 +1,7 @@
 import WaveSurfer from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/wavesurfer.esm.js'
 import Spectrogram from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/plugins/spectrogram.esm.js'
 import Minimap from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/minimap.esm.js';
+import colormap from 'https://cdn.jsdelivr.net/npm/colormap@2.3.2/+esm'
 
 function closePlayer(wavesurfer) {
     const playerElement = document.querySelector("#popup");
@@ -15,6 +16,14 @@ function openPlayer(index) {
     const dataList = JSON.parse(dataListElement.value)
     let data = dataList[index];
     const audioUrl = data.url_media;
+
+    // Generate the colormap array
+    const customColormap = colormap({
+        colormap: 'magma',
+        nshades: 256,
+        format: 'rgba',
+        alpha: 1
+    }).map(color => [color[0] / 255, color[1] / 255, color[2] / 255, color[3]]);    
 
     const wavesurfer = WaveSurfer.create({
         container: '#popup-audio-container',
@@ -44,6 +53,7 @@ function openPlayer(index) {
           labelsBackground: '#3339',
           height: 150, //this is a bug in wavesurfer and we have to wait untul it is fixed - spectrogram height is not working (seems to work only if spec is greater than height)
           scale: 'linear',
+          colorMap: 'roseus' //customColormap,
         }),
       )
 
