@@ -5,6 +5,7 @@ import json
 
 from widgets.popup_player import popup_player
 from utils import data_processor as dp
+from utils import plots
 
 def get_confidence_color(confidence):
     if confidence < 33:
@@ -28,6 +29,10 @@ def species_page_content(species_id, species_stats):
     
     # Sort species_stats by score
     species_stats = sorted(species_stats, key=lambda x: x["confidence"], reverse=True)
+    
+    # Get hourly activity data for this species
+    activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*7, species_list=[species_id])
+    hourly_plot = plots.get_hourly_detections_plot(activity_data[species_id]['detections'], plot_sun_moon=True)
     
     return html.Div(
         [
@@ -71,7 +76,7 @@ def species_page_content(species_id, species_stats):
                         [
                             dbc.Col(
                                 [
-                                    html.H6(f"{total_detections:,} detections"),
+                                    html.H5(f"{total_detections:,} detections"),
                                     html.H6(
                                         [
                                             html.I(className="bi bi-clock"),  # Clock icon
@@ -90,6 +95,12 @@ def species_page_content(species_id, species_stats):
                             ),
                         ],
                         className="species-info-row"
+                    ),
+                    html.H5("Daily activity (past week):", className="recent-detections-heading"),
+                    dcc.Graph(
+                        figure=hourly_plot,
+                        config={"displayModeBar": False, "staticPlot": True},
+                        className="species-daily-activity-plot"
                     ),
                     html.H5("Recent detections:", className="recent-detections-heading"),
                     dbc.Table(

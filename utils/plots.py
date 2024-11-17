@@ -113,20 +113,20 @@ def get_hourly_detections_plot(detections, plot_sun_moon=False):
         
         fig.add_annotation(
             x=sunrise_hour,
-            y=0.75,
+            y=0.85,
             text=sun_icon,
             showarrow=False,
-            font=dict(size=10, color=sun_color),
+            font=dict(size=14, color=sun_color),
             xanchor='center',
             yanchor='middle'
         )
         
         fig.add_annotation(
             x=sunset_hour,
-            y=0.75,
+            y=0.85,
             text=moon_icon,
             showarrow=False,
-            font=dict(size=10, color=moon_color),
+            font=dict(size=14, color=moon_color),
             xanchor='center',
             yanchor='middle'
         )

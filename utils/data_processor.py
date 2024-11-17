@@ -238,7 +238,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000):
     
     return last_n
 
-def get_most_active_species(n=10, min_conf=0.5, hours=24):
+def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[]):
     
     url = cfg.API_BASE_URL + 'detections'
     
@@ -272,11 +272,18 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24):
     # Parse detections
     detections = {}
     for item in response:
+        
         # Is species in species data?
         if not is_in_species_data(item['species_code']):
             continue
+        
+        # Is species in species_list?
+        if len(species_list) > 0 and item['species_code'] not in species_list:
+            continue
+        
         if item['species_code'] not in detections:
             detections[item['species_code']] = {'detections': np.zeros(24, dtype=int)}
+            
         # format date
         hour = int(item['datetime'].split(' ')[1].split(':')[0])
         detections[item['species_code']]['detections'][hour] += 1
