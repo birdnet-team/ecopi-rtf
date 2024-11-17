@@ -13,7 +13,7 @@ import config as cfg
 from pages.main import main_page_content, register_main_callbacks
 from pages.dashboard import dashboard_page_content
 from pages.recorder import recorder_page_content
-from pages.species import species_page_content, register_species_callbacks, display_species_page
+from pages.species import register_species_callbacks, display_species_page
 from pages.about import about_page_content
 
 # Import callback registration function for recent detections
@@ -43,6 +43,8 @@ def app_layout():
             dcc.Location(id="url", refresh=False),  # Track the URL
             dcc.Store(id="audio-store"),  # Store for audio URLs
             dcc.Store(id="play-audio-store"),  # Store for the audio to be played
+            dcc.Store(id="species-stats-store"),  # Store for species stats
+            dcc.Store(id="species-data-store"),   # Store for species data
             
             # Header Section with Logo and Navigation Bar
             nav_bar(),
@@ -206,6 +208,7 @@ def display_page(pathname):
         return recorder_page_content(recorder_id)
     elif pathname.startswith(cfg.SITE_ROOT + "/species/"):
         species_id = pathname.split("/")[-1]
+        # Only pass species_id now, data loading happens in callback
         return display_species_page(species_id)
     elif pathname == cfg.SITE_ROOT + "/about":
         return about_page_content()

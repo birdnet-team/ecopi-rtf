@@ -535,6 +535,22 @@ nav .navbar-nav {
     margin: 0;
 }
 
+#species-loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+#species-main-content {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+#species-main-content.visible {
+    opacity: 1;
+}
+
 .species-info-row {
     margin-top: 0px;
     padding: 0px;
