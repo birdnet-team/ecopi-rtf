@@ -121,8 +121,10 @@ def register_species_callbacks(app):
             Output("species-loading-container", "children"),
             Output("detections-table-body", "children"),
             Output("detections-data-container", "children"),
-            Output("species-main-content", "style"),  # Add style output
-            Output("species-loading-container", "style")  # Add style output
+            Output("species-main-content", "style"),
+            Output("species-loading-container", "style"),
+            Output("species-stats-store", "data"),
+            Output("species-data-store", "data")
         ],
         [Input("species-id-store", "data")],
         prevent_initial_call=False
@@ -161,6 +163,9 @@ def register_species_callbacks(app):
             config={"displayModeBar": False, "staticPlot": True},
             className="species-daily-activity-plot"
         )
+        
+        # Sort species stats by score
+        species_stats = sorted(species_stats, key=lambda x: x["confidence"], reverse=True)
 
         # Create table rows
         rows = []
@@ -191,54 +196,57 @@ def register_species_callbacks(app):
             detection_data["common_name"] = species_data["common_name"]
             detection_data["scientific_name"] = species_data["scientific_name"]
             detection_data["confidence"] = detection_data["confidence"] * 10
-            data_list.append(detection_data)
+            data_list.append(detection_data)      
+
+        # Store data for later use (moved after data_list creation)
+        stored_data = {
+            "species_stats": species_stats,
+            "species_data": species_data,
+            "data_list": data_list
+        }
 
         return (
             info_row, 
             plot, 
-            None,  # Remove spinner
+            None,
             rows, 
             html.Data(id="audio-data-list", value=json.dumps(data_list)),
-            {"opacity": "1"},  # Show content with fade in
-            {"height": "0px"}  # hide loading container
+            {"opacity": "1"},
+            {"height": "0px"},
+            species_stats,    # Store stats
+            species_data     # Store data
         )
 
     @app.callback(
-        [Output("detections-table-body", "children", allow_duplicate=True)],
+        Output("detections-table-body", "children", allow_duplicate=True),
         [
             Input("date-header", "n_clicks"),
             Input("score-header", "n_clicks"),
             Input("recorder-header", "n_clicks")
         ],
         [
-            State("date-header", "n_clicks_timestamp"),
-            State("score-header", "n_clicks_timestamp"),
-            State("recorder-header", "n_clicks_timestamp"),
             State("species-stats-store", "data"),
             State("species-data-store", "data")
         ],
         prevent_initial_call=True
     )
-    def sort_table(date_clicks, score_clicks, recorder_clicks,
-                  date_ts, score_ts, recorder_ts,
-                  species_stats, species_data):
+    def sort_table(date_clicks, score_clicks, recorder_clicks, species_stats, species_data):
         if not species_stats:
             raise PreventUpdate
 
         ctx = callback_context
+        if not ctx.triggered:
+            raise PreventUpdate
+
         trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
         
-        date_ts = date_ts or 0
-        score_ts = score_ts or 0
-        recorder_ts = recorder_ts or 0
-        
-        if date_ts > score_ts and date_ts > recorder_ts:
+        if trigger_id == "date-header":
             species_stats = sorted(species_stats, key=lambda x: x["datetime"], 
                                 reverse=date_clicks % 2 == 0)
-        elif score_ts > date_ts and score_ts > recorder_ts:
+        elif trigger_id == "score-header":
             species_stats = sorted(species_stats, key=lambda x: x["confidence"], 
                                 reverse=score_clicks % 2 == 0)
-        elif recorder_ts > date_ts and recorder_ts > score_ts:
+        elif trigger_id == "recorder-header":
             species_stats = sorted(species_stats, key=lambda x: x["recorder_field_id"], 
                                 reverse=recorder_clicks % 2 == 0)
         
@@ -265,7 +273,7 @@ def register_species_callbacks(app):
                 ], className="text-center"),
             ]))
 
-        return [rows]
+        return rows
 
     app.clientside_callback(
         """
