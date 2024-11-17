@@ -218,7 +218,10 @@ def register_species_callbacks(app):
         )
 
     @app.callback(
-        Output("detections-table-body", "children", allow_duplicate=True),
+        [
+            Output("detections-table-body", "children", allow_duplicate=True),
+            Output("detections-data-container", "children", allow_duplicate=True)
+        ],
         [
             Input("date-header", "n_clicks"),
             Input("score-header", "n_clicks"),
@@ -251,6 +254,7 @@ def register_species_callbacks(app):
                                 reverse=recorder_clicks % 2 == 0)
         
         rows = []
+        data_list = []
         for idx, detection in enumerate(species_stats):
             rows.append(html.Tr([
                 html.Td(detection["datetime"]),
@@ -272,8 +276,19 @@ def register_species_callbacks(app):
                     html.Data(id={"type": "species-output-placeholder", "index": idx})
                 ], className="text-center"),
             ]))
+            
+            # Create new data_list with sorted order
+            detection_data = detection.copy()
+            detection_data["common_name"] = species_data["common_name"]
+            detection_data["scientific_name"] = species_data["scientific_name"]
+            detection_data["confidence"] = detection_data["confidence"] * 10
+            data_list.append(detection_data)
 
-        return rows
+        # Return both rows and updated audio data list
+        return [
+            rows,
+            html.Data(id="audio-data-list", value=json.dumps(data_list))
+        ]
 
     app.clientside_callback(
         """
