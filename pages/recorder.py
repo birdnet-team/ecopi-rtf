@@ -159,16 +159,24 @@ def register_recorder_callbacks(app):
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
                 html.Td([
-                    html.Div([
-                        html.Img(
-                            src=detection["species_thumbnail"],
-                            className="species-thumbnail"
-                        ),
-                        html.Span(
-                            detection["common_name"],
-                            className="species-name"
-                        )
-                    ], className="species-column")
+                    html.A(
+                        html.Div([
+                            html.Img(
+                                src=detection["species_thumbnail"],
+                                className="species-thumbnail"
+                            ),
+                            html.Span(
+                                detection["common_name"],
+                                className="species-name"
+                            ),
+                            html.Span(
+                                html.I(className="bi bi-bar-chart-fill"),
+                                style={"marginLeft": "auto"}
+                            )
+                        ], className="species-column"),
+                        href=f"{cfg.SITE_ROOT}/species/{detection['species_code']}",
+                        style={"cursor": "pointer", "textDecoration": "none", "color": "inherit"}
+                    )
                 ]),
                 html.Td([
                     html.A(
@@ -254,16 +262,24 @@ def register_recorder_callbacks(app):
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
                 html.Td([
-                    html.Div([
-                        html.Img(
-                            src=detection["species_thumbnail"],
-                            className="species-thumbnail"
-                        ),
-                        html.Span(
-                            detection["common_name"],
-                            className="species-name"
-                        )
-                    ], className="species-column")
+                    html.A(
+                        html.Div([
+                            html.Img(
+                                src=detection["species_thumbnail"],
+                                className="species-thumbnail"
+                            ),
+                            html.Span(
+                                detection["common_name"],
+                                className="species-name"
+                            ),
+                            html.Span(
+                                html.I(className="bi bi-bar-chart-fill"),
+                                style={"marginLeft": "auto"}
+                            )
+                        ], className="species-column"),
+                        href=f"{cfg.SITE_ROOT}/species/{detection['species_code']}",
+                        style={"cursor": "pointer", "textDecoration": "none", "color": "inherit"}
+                    )
                 ]),
                 html.Td([
                     html.A(
