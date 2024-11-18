@@ -386,9 +386,10 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     
     # We only want detections from the last x hours
     # so we have to set datetime_gte and datetime_lte
-    now = datetime.now(UTC)
-    params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
-    params['datetime_recording__lte'] = now.isoformat()  
+    if hours > 0:
+        now = datetime.now(UTC)
+        params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
+        params['datetime_recording__lte'] = now.isoformat()  
     
     # Only retrieve certain fields
     params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'

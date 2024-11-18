@@ -116,7 +116,9 @@ nav .navbar-nav {
     background-color: #b31b1b; /* Color of the bar */
 }
 
-
+#nav-dashboard {
+    display: none;
+}
 
 .header-graphic {
     width: 100%;

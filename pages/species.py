@@ -185,7 +185,7 @@ def register_species_callbacks(app):
                 html.Td([
                     html.A(
                         html.Div(
-                            f"# {detection['recorder_field_id']}",
+                            f"#{detection['recorder_field_id']}",
                             className="recorder-cell"
                         ),
                         href=f"{cfg.SITE_ROOT}/recorder/{detection['recorder_field_id']}",
@@ -279,7 +279,7 @@ def register_species_callbacks(app):
                 html.Td([
                     html.A(
                         html.Div(
-                            f"# {detection['recorder_field_id']}",
+                            f"#{detection['recorder_field_id']}",
                             className="recorder-cell"
                         ),
                         href=f"{cfg.SITE_ROOT}/recorder/{detection['recorder_field_id']}",

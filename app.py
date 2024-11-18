@@ -93,7 +93,7 @@ def nav_bar():
                                     label="Recorders",
                                     children=[
                                         dbc.DropdownMenuItem(
-                                            dcc.Link(f"Recorder {recorder_id}", href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}", className="dropdown-item")
+                                            dcc.Link(f"Recorder #{recorder_id}", href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}", className="dropdown-item")
                                         ) for recorder_id in cfg.RECORDERS.keys()
                                     ],
                                     nav=True,
