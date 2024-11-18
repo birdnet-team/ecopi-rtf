@@ -715,6 +715,12 @@ nav .navbar-nav {
     vertical-align: middle;
 }
 
+@media (max-width: 640px) {
+    .species-thumbnail {
+        display: none;
+    }
+}
+
 .species-name {
     vertical-align: middle;
 }
