@@ -716,7 +716,7 @@ nav .navbar-nav {
 }
 
 @media (max-width: 640px) {
-    .species-thumbnail {
+    .hide-on-small-screens {
         display: none;
     }
 }

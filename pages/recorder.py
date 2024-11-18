@@ -163,14 +163,14 @@ def register_recorder_callbacks(app):
                         html.Div([
                             html.Img(
                                 src=detection["species_thumbnail"],
-                                className="species-thumbnail"
+                                className="species-thumbnail hide-on-small-screens"
                             ),
                             html.Span(
                                 detection["common_name"],
                                 className="species-name"
                             ),
                             html.Span(
-                                html.I(className="bi bi-bar-chart-fill"),
+                                html.I(className="bi bi-bar-chart-fill hide-on-small-screens"),
                                 style={"marginLeft": "auto"}
                             )
                         ], className="species-column"),
@@ -266,14 +266,14 @@ def register_recorder_callbacks(app):
                         html.Div([
                             html.Img(
                                 src=detection["species_thumbnail"],
-                                className="species-thumbnail"
+                                className="species-thumbnail hide-on-small-screens"
                             ),
                             html.Span(
                                 detection["common_name"],
                                 className="species-name"
                             ),
                             html.Span(
-                                html.I(className="bi bi-bar-chart-fill"),
+                                html.I(className="bi bi-bar-chart-fill hide-on-small-screens"),
                                 style={"marginLeft": "auto"}
                             )
                         ], className="species-column"),
