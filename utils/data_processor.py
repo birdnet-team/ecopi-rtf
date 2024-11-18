@@ -3,7 +3,8 @@ sys.path.append('..')
 
 import requests
 import random
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, UTC 
+import pytz
 import numpy as np
 
 import config as cfg 
@@ -15,6 +16,18 @@ def get_current_week():
     
     # Return current week 1..48 (4 weeks per month)
     return datetime.now().isocalendar()[1]
+
+def to_local_time(utc_time, time_format='24h'):
+    
+    # Convert UTC time to local time
+    utc_time = datetime.strptime(utc_time, '%Y/%d/%m - %H:%M')
+    timezone = pytz.timezone(cfg.TIMEZONE)
+    local_time = utc_time.astimezone(timezone)
+    
+    if time_format == '12h':    
+        return local_time.strftime('%Y/%d/%m - %I:%M %p')
+    else:
+        return local_time.strftime('%Y/%d/%m - %H:%M')
 
 def is_in_species_data(species_code):
     
@@ -215,6 +228,10 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000):
         detections[item['species_code']].append(item)
         # format date
         item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
+        
+        # convert to local time
+        item['datetime'] = to_local_time(item['datetime'], cfg.TIME_FORMAT)
+        
         # compute confidence as percentage
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100)
         
@@ -284,8 +301,12 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[]):
         if item['species_code'] not in detections:
             detections[item['species_code']] = {'detections': np.zeros(24, dtype=int)}
             
+        # convert to local time
+        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
+        item['datetime'] = to_local_time(item['datetime'], time_format='24h')
+        
         # format date
-        hour = int(item['datetime'].split(' ')[1].split(':')[0])
+        hour = int(item['datetime'].split(' - ')[1].split(':')[0])
         detections[item['species_code']]['detections'][hour] += 1
         
     # Convert np array to list
@@ -333,7 +354,7 @@ def get_species_stats(species_code, min_conf=0.5, hours=168, limit=1000, max_res
     
     # We only want detections from the last x hours
     # so we have to set datetime_gte and datetime_lte
-    now = datetime.utcnow()
+    now = datetime.now(UTC)
     params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
     params['datetime_recording__lte'] = now.isoformat()  
     
@@ -357,8 +378,13 @@ def get_species_stats(species_code, min_conf=0.5, hours=168, limit=1000, max_res
         
     # For each detection, get the confidence score
     for item in response:
+        
         # format date
         item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
+        
+        # convert to local time
+        item['datetime'] = to_local_time(item['datetime'], cfg.TIME_FORMAT)
+        
         # compute confidence as percentage
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100) / 10.0
         
@@ -373,16 +399,16 @@ def get_species_stats(species_code, min_conf=0.5, hours=168, limit=1000, max_res
 if __name__ == '__main__':    
     
     
-    #print('Number of detections in the last 24 hours:', get_total_detections(days=1)['total_detections'])
-    #print('Number of detections with confidence >= 0.5:', get_total_detections(min_conf=0.5)['total_detections'])
+    print('Number of detections in the last 24 hours:', get_total_detections(days=1)['total_detections'])
+    print('Number of detections with confidence >= 0.5:', get_total_detections(min_conf=0.5)['total_detections'])
     
-    #print(get_last_n_detections())
-    #print(get_most_active_species())
+    print(get_last_n_detections())
+    print(get_most_active_species())
     
-    #print(get_recorder_data(min_conf=0.5, days=2))
+    print(get_recorder_data(min_conf=0.5, days=2))
                                 
     print(get_species_stats('norcar', hours=24))
     
-    #print(get_inventory_data())
+    print(get_inventory_data())
     
     

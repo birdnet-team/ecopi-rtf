@@ -26,6 +26,7 @@ SPECIES_DATA = load_species_data(project='amic')
 DEPLOYMENT_LAT = 50.832
 DEPLOYMENT_LON = 12.924
 TIMEZONE = 'Europe/Berlin'
+TIME_FORMAT = '24h'
 RECORDERS = {
     1: {'id': '0271', 'lat': 42.479723, 'lon': -76.451566},
     2: {'id': '0829', 'lat': 42.479005, 'lon': -76.454030},
@@ -40,6 +41,7 @@ SPECIES_DATA = load_species_data(project='swamp')
 DEPLOYMENT_LAT = 42.479723
 DEPLOYMENT_LON = -76.451566
 TIMEZONE = 'America/New_York'
+TIME_FORMAT = '12h'
 RECORDERS = {
     1: {'id': '0271', 'lat': 42.479723, 'lon': -76.451566},
     2: {'id': '0829', 'lat': 42.479005, 'lon': -76.454030},

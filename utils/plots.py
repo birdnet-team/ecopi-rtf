@@ -48,7 +48,7 @@ def get_hourly_detections_plot(detections, plot_sun_moon=False):
     log_detections = [np.log1p(val) for val in normalized_detections]  # np.log1p is used to avoid log(0)
     
     # Convert UTC detections to local time
-    log_detections = utc_to_local(log_detections)
+    #log_detections = utc_to_local(log_detections)
     
     # Create two sets of bars: one for blue and one for gray
     blue_bars = [val if val != 0 else 0 for val in log_detections]
