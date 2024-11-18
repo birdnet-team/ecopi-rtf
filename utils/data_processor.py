@@ -42,7 +42,7 @@ def get_confidence_score(species, confidence):
         species_freq = 10
         
     # Blend confidence and frequency as weighted average
-    confidence = int((confidence * 0.7) + (species_freq * 0.3))
+    confidence = int((confidence * 0.75) + (species_freq * 0.25))
     
     return min(100, max(1, confidence))
 
