@@ -626,6 +626,76 @@ nav .navbar-nav {
     vertical-align: middle;
 }
 
+/* Recorder page styles - reusing species page classes where possible */
+.recorder-header {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.recorder-header-image {
+    width: 100%;
+    height: auto;
+    max-height: 800px;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.recorder-info-row {
+    margin-top: 0px;
+    padding: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+}
+
+#recorder-loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+#recorder-main-content {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+#recorder-main-content.visible {
+    opacity: 1;
+}
+
+/* Recorder table styles */
+.recorder-detections-table {
+    margin-top: 20px;
+}
+
+.recorder-detections-table th {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.recorder-detections-table th .sortable-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recorder-detections-table th .bi-arrow-down-up {
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+.recorder-detections-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
 /* PLAYER WIDGET */
 #popup-backdrop {
     position: fixed;

@@ -21,7 +21,8 @@ SITE_ROOT = '' # '' for dev and '/swamp' for production
 
 # AMiC project configuration
 """
-PROJECT_NAME = 'pam_in_chemnitz' #'099_swamp'#
+PROJECT_NAME = 'pam_in_chemnitz'
+RECORDER_GROUP = 39
 SPECIES_DATA = load_species_data(project='amic')
 DEPLOYMENT_LAT = 50.832
 DEPLOYMENT_LON = 12.924
@@ -37,6 +38,7 @@ RECORDERS = {
 
 # SWAMP project configuration
 PROJECT_NAME = '099_swamp'
+RECORDER_GROUP = 99
 SPECIES_DATA = load_species_data(project='swamp')
 DEPLOYMENT_LAT = 42.479723
 DEPLOYMENT_LON = -76.451566
