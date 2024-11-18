@@ -142,7 +142,7 @@ def register_species_callbacks(app):
         # Create info row
         info_row = dbc.Row([
             dbc.Col([
-                html.H5(f"{total_detections:,} detections"),
+                html.H5(f"{total_detections:,} total detections"),
                 html.H6([
                     html.I(className="bi bi-clock"),
                     f" {species_stats[0]['datetime'] if species_stats else 'N/A'}"

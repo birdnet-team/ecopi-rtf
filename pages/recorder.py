@@ -2,12 +2,11 @@ from dash import html, dcc, callback_context, no_update
 from dash.exceptions import PreventUpdate
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH
-import json
-
-import config as cfg
 
 from widgets.popup_player import popup_player
 from utils import data_processor as dp
+import config as cfg
+import json
 
 def get_confidence_color(confidence):
     if confidence < 33:
@@ -43,7 +42,7 @@ def create_recorder_table_headers():
                     "Species",
                     html.I(className="bi bi-arrow-down-up")
                 ], className="sortable-header")
-            ], id="recorder-species-header", n_clicks=0),
+            ], id="recorder-species-header", n_clicks=0, className="species-column-header"),
             html.Th("Audio"),
         ])
     )
@@ -135,7 +134,7 @@ def register_recorder_callbacks(app):
         # Create info row
         info_row = dbc.Row([
             dbc.Col([
-                html.H5(f"{total_detections:,} detections"),
+                html.H5(f"{total_detections:,} total detections"),
                 html.H6([
                     html.I(className="bi bi-clock"),
                     f" {recorder_stats[0]['datetime'] if recorder_stats else 'N/A'}"
@@ -159,7 +158,18 @@ def register_recorder_callbacks(app):
                     ),
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
-                html.Td(detection["common_name"]),
+                html.Td([
+                    html.Div([
+                        html.Img(
+                            src=detection["species_thumbnail"],
+                            className="species-thumbnail"
+                        ),
+                        html.Span(
+                            detection["common_name"],
+                            className="species-name"
+                        )
+                    ], className="species-column")
+                ]),
                 html.Td([
                     html.A(
                         html.I(className="bi bi-play-circle-fill"),
@@ -243,7 +253,18 @@ def register_recorder_callbacks(app):
                     ),
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
-                html.Td(detection["common_name"]),
+                html.Td([
+                    html.Div([
+                        html.Img(
+                            src=detection["species_thumbnail"],
+                            className="species-thumbnail"
+                        ),
+                        html.Span(
+                            detection["common_name"],
+                            className="species-name"
+                        )
+                    ], className="species-column")
+                ]),
                 html.Td([
                     html.A(
                         html.I(className="bi bi-play-circle-fill"),
@@ -255,12 +276,7 @@ def register_recorder_callbacks(app):
                 ], className="text-center"),
             ]))
             
-            # Create new data_list with sorted order
-            detection_data = detection.copy()
-            detection_data["common_name"] = detection["common_name"]
-            detection_data["scientific_name"] = detection["scientific_name"]
-            detection_data["confidence"] = detection["confidence"] * 10
-            data_list.append(detection_data)
+            data_list.append(detection)
 
         return [
             rows,

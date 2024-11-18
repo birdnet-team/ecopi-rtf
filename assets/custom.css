@@ -696,6 +696,27 @@ nav .navbar-nav {
     vertical-align: middle;
 }
 
+.species-column-header {
+    width: 40%;
+}
+
+.species-column {
+    display: flex;
+    align-items: center;
+}
+
+.species-thumbnail {
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.species-name {
+    vertical-align: middle;
+}
+
 /* PLAYER WIDGET */
 #popup-backdrop {
     position: fixed;
