@@ -1,10 +1,16 @@
 import pandas as pd
+
 import plotly.graph_objs as go
 import plotly.express as px
+
+from dash import html
+import dash_leaflet as dl
+
 import pytz
 from astral import LocationInfo
 from astral.sun import sun
 from datetime import datetime
+
 import config as cfg
 import numpy as np
 
@@ -211,3 +217,57 @@ def get_recorder_map(data):
     
     return fig
 
+def get_leaflet_map(data):
+    
+    # Convert the nested dictionary to a DataFrame
+    df = pd.DataFrame.from_dict(data, orient='index')
+    
+    # Add recorder IDs to the DataFrame
+    df['id'] = df.index
+    
+    # Add coordinates from cfg.RECORDERS to the DataFrame
+    df['lat'] = df['id'].apply(lambda x: cfg.RECORDERS[x]['lat'])
+    df['lon'] = df['id'].apply(lambda x: cfg.RECORDERS[x]['lon'])
+    
+    # Calculate the bounding box for the recorder locations
+    min_lat = df['lat'].min()
+    max_lat = df['lat'].max()
+    min_lon = df['lon'].min()
+    max_lon = df['lon'].max()
+    
+    # Calculate the center of the bounding box
+    center_lat = (min_lat + max_lat) / 2
+    center_lon = (min_lon + max_lon) / 2
+    
+    # Create a list of CircleMarkers for each recorder
+    markers = [
+        dl.CircleMarker(
+            center=[row['lat'], row['lon']],
+            radius=12,
+            color='#296239' if row['is_ok'] else '#B31B1B',
+            fill=True,
+            fillOpacity=0.7,
+            children=[
+                dl.Tooltip([
+                    html.Div([
+                        html.B(f"#{row['id']}"),
+                        #html.Br(),
+                        #f"{row['current_status']}",
+                    ])
+                ], permanent=True)
+            ]
+        ) for idx, row in df.iterrows()
+    ]
+    
+    # Create the Leaflet map
+    leaflet_map = dl.Map(
+        children=[
+            dl.TileLayer(),
+            dl.LayerGroup(markers)
+        ],
+        center=[center_lat, center_lon],
+        zoom=15,
+        style={'width': '100%', 'height': '500px'}
+    )
+    
+    return leaflet_map

@@ -7,3 +7,4 @@ numpy
 astral
 gunicorn
 flask-Cors
+dash-leaflet

@@ -45,13 +45,13 @@ DEPLOYMENT_LON = -76.451566
 TIMEZONE = 'America/New_York'
 TIME_FORMAT = '12h'
 RECORDERS = {
-    1: {'id': '0271', 'lat': 42.479723, 'lon': -76.451566, 'habitat': 'Forest'},
-    2: {'id': '0829', 'lat': 42.479005, 'lon': -76.454030, 'habitat': 'Grassland'},
-    3: {'id': '0269', 'lat': 42.476863, 'lon': -76.445881, 'habitat': 'Wetland'},
-    4: {'id': '0270', 'lat': 42.479265, 'lon': -76.442721, 'habitat': 'Forest'},
-    5: {'id': '0272', 'lat': 42.479723, 'lon': -76.451566, 'habitat': 'Forest'},
-    7: {'id': '0274', 'lat': 42.476863, 'lon': -76.445881, 'habitat': 'Grassland'},
-    8: {'id': '0275', 'lat': 42.479265, 'lon': -76.442721, 'habitat': 'Grassland'},
-    9: {'id': '0276', 'lat': 42.479723, 'lon': -76.451566, 'habitat': 'Urban'},
-    10: {'id': '0277', 'lat': 42.479005, 'lon': -76.454030, 'habitat': 'Urban'},
+    1: {'id': '0271', 'lat': 42.475, 'lon': -76.445, 'habitat': 'Forest'},
+    2: {'id': '0829', 'lat': 42.478, 'lon': -76.451, 'habitat': 'Grassland'},
+    3: {'id': '0269', 'lat': 42.469, 'lon': -76.449, 'habitat': 'Wetland'},
+    4: {'id': '0270', 'lat': 42.480, 'lon': -76.453, 'habitat': 'Forest'},
+    5: {'id': '0272', 'lat': 42.481, 'lon': -76.451, 'habitat': 'Forest'},
+    7: {'id': '0274', 'lat': 42.472, 'lon': -76.446, 'habitat': 'Grassland'},
+    8: {'id': '0275', 'lat': 42.480, 'lon': -76.457, 'habitat': 'Grassland'},
+    9: {'id': '0276', 'lat': 42.476, 'lon': -76.451, 'habitat': 'Urban'},
+    10: {'id': '0277', 'lat': 42.479, 'lon': -76.450, 'habitat': 'Urban'},
 }

@@ -73,7 +73,9 @@ def get_recorder_state(recorder_id):
         
     last_update = to_local_time(datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M'), cfg.TIME_FORMAT)
     
-    return {'current_status': current_status, 'last_update': last_update, 'voltage': last_status['voltage'], 'cpu_temp': last_status['cpu_temp']}
+    is_ok = True if time_since_last_status.total_seconds() < 3600 * 24 else False
+    
+    return {'current_status': current_status, 'last_update': last_update, 'voltage': last_status['voltage'], 'cpu_temp': last_status['cpu_temp'], 'is_ok': is_ok}
 
 def get_recorder_location(recorder_id):
     
