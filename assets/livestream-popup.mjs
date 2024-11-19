@@ -87,8 +87,6 @@ function openLivestream(url) {
         cancelAnimationFrame(animationId);
     };
 
-    audioElement.play();
-
     const playerElement = document.querySelector("#livestream-popup");
     playerElement.classList.add("visible");
 
@@ -97,6 +95,8 @@ function openLivestream(url) {
 
     let closeButton = document.querySelector("#close-livestream-popup-button");
     let livestreamPlayButton = document.querySelector("#livestream-popup-play-button");
+    livestreamPlayButton.children[0].classList.remove('bi-play-fill');
+    livestreamPlayButton.children[0].classList.add('bi-pause-fill');
 
 
     livestreamPlayButton.addEventListener("click", () => {
@@ -117,6 +117,8 @@ function openLivestream(url) {
     backdrop.addEventListener("click", () => {
         closeLivestream(audioContext, audioElement, resizeEventListener)
     }, {once: true});
+
+    audioElement.play();
 }
 
 window.openLivestream = openLivestream
