@@ -55,7 +55,10 @@ def recorder_page_header(recorder_id):
                 dbc.Row(
                     [
                         dbc.Col(
-                            html.H3(f"Recorder #{recorder_id}", className="species-overlay-text"),
+                            [
+                                html.H3(f"Recorder #{recorder_id}", className="species-overlay-text"),
+                                html.H5("Habitat type: " + cfg.RECORDERS[int(recorder_id)]['habitat'], className="species-overlay-text"),
+                            ],
                             width=12,
                         ),
                     ],
