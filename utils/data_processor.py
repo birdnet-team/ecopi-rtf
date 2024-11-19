@@ -46,7 +46,7 @@ def get_confidence_score(species, confidence):
     
     return min(100, max(1, confidence))
 
-def get_recorder_stats(recorder_id):
+def get_recorder_state(recorder_id):
     
     url = 'https://api.ecopi.de/api/v0.1/recorderstates/'
     
@@ -64,7 +64,16 @@ def get_recorder_stats(recorder_id):
     response = requests.get(url, headers=headers, params=params)
     response = response.json()
     
-    return response[0]
+    last_status = response[0]
+    time_since_last_status = datetime.now() - datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')
+    
+    current_status = 'Sleeping'
+    if time_since_last_status.total_seconds() < 60 * 15 and not last_status['task'] == 'Finished':
+        current_status = 'Listening'
+        
+    last_update = to_local_time(datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M'), cfg.TIME_FORMAT)
+    
+    return {'current_status': current_status, 'last_update': last_update, 'voltage': last_status['voltage'], 'cpu_temp': last_status['cpu_temp']}
 
 def get_recorder_location(recorder_id):
     
@@ -442,10 +451,10 @@ if __name__ == '__main__':
                                 
     #print(get_species_stats('norcar', hours=24))
     
-    #print(get_recorder_stats(9))
+    print(get_recorder_state(9))
     #print(get_recorder_location(9))
     
-    print(get_total_detections(min_conf=0.5, species_list=['norcar'], days=-1))
-    print(get_total_detections(min_conf=0.5, days=-1, recorder_list=[9]))
+    #print(get_total_detections(min_conf=0.5, species_list=['norcar'], days=-1))
+    #print(get_total_detections(min_conf=0.5, days=-1, recorder_list=[9]))
     
     

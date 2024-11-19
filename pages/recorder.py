@@ -121,7 +121,7 @@ def register_recorder_callbacks(app):
 
         # Load recorder data
         recorder_id = int(recorder_id)
-        recorder_info = dp.get_recorder_stats(recorder_id)
+        recorder_info = dp.get_recorder_state(recorder_id)
         total_detections = dp.get_total_detections(recorder_list=[recorder_id], days=-1, min_count=0)['total_detections']
         recorder_stats = dp.get_species_stats(recorder_id=recorder_id)
         
@@ -137,9 +137,15 @@ def register_recorder_callbacks(app):
                 html.H5(f"{total_detections:,} total detections"),
                 html.H6([
                     html.I(className="bi bi-clock"),
-                    f" {recorder_stats[0]['datetime'] if recorder_stats else 'N/A'}"
+                    f" {recorder_info['last_update'] if recorder_info else 'N/A'}"
                 ], className="small-text"),
-            ], width=12),
+            ], width=6),
+            dbc.Col([
+                html.H5(f"Current status: {recorder_info['current_status'] if recorder_info else 'N/A'}"),
+                html.H6([
+                    f"Voltage: {recorder_info['voltage'] if recorder_info else 'N/A'} V | CPU Temp: {recorder_info['cpu_temp'] if recorder_info else 'N/A'} °C"
+                ], className="small-text"),
+            ], width=6, className="text-right"),
         ], className="species-info-row")
 
         # Sort recorder stats by date
