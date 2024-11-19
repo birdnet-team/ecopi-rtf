@@ -18,7 +18,8 @@ def recording_units():
             [
                 #html.Div("Recorder map", className="text-center small-text mb-2"),
                 leaflet_map
-            ]
+            ],
+            className="full-width"  # Ensure the map component takes full width
         )
         
         recorder_stats = []
@@ -69,13 +70,14 @@ def recording_units():
             dbc.Row(
                 [
                     dbc.Col(map_component, 
-                            md=12,
-                            xs=12
+                            width=12  # Ensure the map column takes full width
                         )
-                ]
+                ],
+                className="full-width"  # Ensure the row takes full width
             ),
             dbc.Row(
-                recorder_stats
+                recorder_stats,
+                className="full-width"  # Ensure the row takes full width
             )            
         ]
         

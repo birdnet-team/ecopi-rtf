@@ -70,6 +70,12 @@ a {
     font-size: 0.7em; 
 }
 
+.full-width {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 /* Additional styles */
 .header-logo {
     max-height: 25px;
@@ -213,7 +219,7 @@ nav .navbar-nav {
 .stat-row {
     background-color: #2e261f;
     color: white; 
-    padding: 1px 30px; 
+    padding: 1px 15px; 
     text-align: center; 
     margin: 0; 
     margin-left: auto; 
@@ -236,7 +242,7 @@ nav .navbar-nav {
 }
 
 .main-content {
-    padding: 30px;
+    padding: 15px;
     max-width: 1200px;
 }
 
