@@ -627,7 +627,8 @@ nav .navbar-nav {
 }
 
 /* PLAYER WIDGET */
-#popup-backdrop {
+#popup-backdrop,
+#livestream-popup-backdrop {
     position: fixed;
     top: 0;
     right: 0;
@@ -637,6 +638,7 @@ nav .navbar-nav {
     z-index: 990;
 }
 
+#close-livestream-popup-button:hover,
 #close-popup-button:hover,
 #popup-replay-button:hover {
     cursor: pointer;
@@ -659,7 +661,8 @@ nav .navbar-nav {
     }
 }
 
-#popup {
+#popup,
+#livestream-popup {
     position: fixed;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -679,30 +682,35 @@ nav .navbar-nav {
 
 
 @media only screen and (max-width: 360px) {
-    #popup {
+    #popup,
+    #livestream-popup  {
         width: 240px;
     }
 }
 
 @media only screen and (min-width: 360px) {
-    #popup {
+    #popup,
+    #livestream-popup  {
         width: 360px;
     }
 }
 
 @media only screen and (min-width: 600px) {
-    #popup {
+    #popup,
+    #livestream-popup  {
         width: 500px;
     }
 }
 
 @media only screen and (min-width: 900px) {
-    #popup {
+    #popup,
+    #livestream-popup  {
         width: 800px;
     }
 }
 
-#popup.visible {
+#popup.visible,
+#livestream-popup.visible  {
     display: block;
     top: 50%;
     opacity: 1;

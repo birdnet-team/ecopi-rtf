@@ -6,6 +6,7 @@ from utils import data_processor as dp
 from utils import plots
 
 from widgets.popup_player import popup_player
+from widgets.livestream_popup_player import livestream_popup_player
 from widgets.stats_bar import stats_bar
 from widgets.active_species import active_species
 from widgets.recent_detections import recent_detections
@@ -28,8 +29,10 @@ def main_page_content():
                     ),
                     html.Button(
                         [html.I(className="bi bi-volume-up-fill"), " Listen live"],
+                        id="listen-live-button",
                         className="listen-live-button"
                     ),
+                    html.Data(id="livestream-output-placeholder", value=""),
                 ],
                 style={"position": "relative"}
             ),
@@ -108,6 +111,7 @@ def main_page_content():
                 className="main-content",
             ),
             popup_player(),
+            livestream_popup_player(),
         ]
     )
 
@@ -162,3 +166,15 @@ def register_main_callbacks(app):
     )
     def update_recorder_stats(pathname):
         return recording_units()
+    
+    # Client-side callback for opening the livestream popup
+    app.clientside_callback(
+        """
+        function(n_clicks) {
+            openLivestream('https://mp3s.nc.u-tokyo.ac.jp/Fuji_CyberForest.mp3');
+        }
+        """,
+        Output("livestream-output-placeholder", "value"),
+        [Input("listen-live-button", "n_clicks")],
+        prevent_initial_call=True,
+    )

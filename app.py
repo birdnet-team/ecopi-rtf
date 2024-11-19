@@ -27,6 +27,10 @@ app = dash.Dash(
         # "/assets/custom.css", # Not required
         "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css",
     ],
+    external_scripts=[
+        "https://d3js.org/d3.v6.min.js",
+        "https://d3js.org/d3-scale-chromatic.v1.min.js"
+    ],
     suppress_callback_exceptions=True,  # Suppress the warning for dynamic callbacks
     title="SWAMP",
     update_title=None,
