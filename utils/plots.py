@@ -244,7 +244,7 @@ def get_leaflet_map(data):
         dl.CircleMarker(
             center=[row['lat'], row['lon']],
             radius=12,
-            color='#296239' if row['is_ok'] else '#B31B1B',
+            color=row['status_color'],
             fill=True,
             fillOpacity=0.7,
             children=[

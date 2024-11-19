@@ -65,17 +65,24 @@ def get_recorder_state(recorder_id):
     response = response.json()
     
     last_status = response[0]
-    time_since_last_status = datetime.now() - datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')
+    time_since_last_status = datetime.now() - datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')    
     
-    current_status = 'Sleeping'
-    if time_since_last_status.total_seconds() < 60 * 15 and not last_status['task'] == 'Finished':
-        current_status = 'Listening'
         
     last_update = to_local_time(datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M'), cfg.TIME_FORMAT)
     
     is_ok = True if time_since_last_status.total_seconds() < 3600 * 24 else False
     
-    return {'current_status': current_status, 'last_update': last_update, 'voltage': last_status['voltage'], 'cpu_temp': last_status['cpu_temp'], 'is_ok': is_ok}
+    current_status = 'Ok | Sleeping'
+    status_color = '#457999' # Blue
+    if time_since_last_status.total_seconds() < 60 * 15 and not last_status['task'] == 'Finished':
+        current_status = 'Ok | Listening'
+        status_color = '#36824b' # Green
+        
+    if not is_ok:
+        current_status = 'Error | Offline'
+        status_color = '#DF1E12' # Red
+    
+    return {'current_status': current_status, 'status_color': status_color, 'last_update': last_update, 'voltage': last_status['voltage'], 'cpu_temp': last_status['cpu_temp'], 'is_ok': is_ok}
 
 def get_recorder_location(recorder_id):
     
