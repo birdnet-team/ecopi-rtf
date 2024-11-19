@@ -12,7 +12,7 @@ import config as cfg
 # Import page content functions
 from pages.main import main_page_content, register_main_callbacks
 from pages.dashboard import dashboard_page_content
-from pages.recorder import recorder_page_content
+from pages.recorder import display_recorder_page, register_recorder_callbacks
 from pages.species import register_species_callbacks, display_species_page
 from pages.about import about_page_content
 
@@ -24,14 +24,13 @@ app = dash.Dash(
     __name__,
     external_stylesheets=[
         dbc.themes.BOOTSTRAP,
-        # "/assets/custom.css", # Not required
         "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css",
     ],
     external_scripts=[
         "https://d3js.org/d3.v6.min.js",
         "https://d3js.org/d3-scale-chromatic.v1.min.js"
     ],
-    suppress_callback_exceptions=True,  # Suppress the warning for dynamic callbacks
+    suppress_callback_exceptions=True,
     title="SWAMP",
     update_title=None,
     requests_pathname_prefix="/" if cfg.SITE_ROOT == "" else cfg.SITE_ROOT + "/",
@@ -49,6 +48,8 @@ def app_layout():
             dcc.Store(id="play-audio-store"),  # Store for the audio to be played
             dcc.Store(id="species-stats-store"),  # Store for species stats
             dcc.Store(id="species-data-store"),   # Store for species data
+            dcc.Store(id="recorder-stats-store"),  # Store for recorder stats
+            dcc.Store(id="recorder-data-store"),   # Store for recorder data
             
             # Header Section with Logo and Navigation Bar
             nav_bar(),
@@ -96,7 +97,7 @@ def nav_bar():
                                     label="Recorders",
                                     children=[
                                         dbc.DropdownMenuItem(
-                                            dcc.Link(f"Recorder {recorder_id}", href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}", className="dropdown-item")
+                                            dcc.Link(f"Recorder #{recorder_id}", href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}", className="dropdown-item")
                                         ) for recorder_id in cfg.RECORDERS.keys()
                                     ],
                                     nav=True,
@@ -122,9 +123,7 @@ def nav_bar():
 def footer_content():
     return html.Footer(
         [
-            # Top Logo
             html.Div(html.Img(src=cfg.SITE_ROOT + "/assets/cornell-lab-logo-full-white.png", className="footer-logo")),
-            # Two-column content, responsive to single column on narrow screens
             dbc.Container(
                 dbc.Row(
                     [
@@ -170,9 +169,7 @@ def footer_content():
                 fluid=True,
                 className="footer-content",
             ),
-            # Bottom Logo
             html.Div(html.Img(src=cfg.SITE_ROOT + "/assets/cornell-logo-white.png", className="footer-logo")),
-            # Copyright text
             html.P("© 2024 Cornell University"),
         ],
         className="footer",
@@ -209,10 +206,9 @@ def display_page(pathname):
         return dashboard_page_content()
     elif pathname.startswith(cfg.SITE_ROOT + "/recorder/"):
         recorder_id = pathname.split("/")[-1]
-        return recorder_page_content(recorder_id)
+        return display_recorder_page(recorder_id)
     elif pathname.startswith(cfg.SITE_ROOT + "/species/"):
         species_id = pathname.split("/")[-1]
-        # Only pass species_id now, data loading happens in callback
         return display_species_page(species_id)
     elif pathname == cfg.SITE_ROOT + "/about":
         return about_page_content()
@@ -223,14 +219,11 @@ def display_page(pathname):
 # Layout of the Dash app
 app.layout = app_layout()
 
-# Register callbacks from main.py
+# Register callbacks
 register_main_callbacks(app)
-
-# Register callbacks from recent_detections.py
 register_recent_detections_callbacks(app)
-
-# Register callbacks from species.py
 register_species_callbacks(app)
+register_recorder_callbacks(app)
 
 # App server
 server = app.server

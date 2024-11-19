@@ -42,13 +42,13 @@ def get_confidence_score(species, confidence):
         species_freq = 10
         
     # Blend confidence and frequency as weighted average
-    confidence = int((confidence * 0.7) + (species_freq * 0.3))
+    confidence = int((confidence * 0.75) + (species_freq * 0.25))
     
     return min(100, max(1, confidence))
 
-def get_inventory_data():
+def get_recorder_state(recorder_id):
     
-    url = cfg.API_BASE_URL + 'recorders/'
+    url = 'https://api.ecopi.de/api/v0.1/recorderstates/'
     
     headers = {
         'Authorization': f'Token {cfg.API_TOKEN}'
@@ -58,10 +58,48 @@ def get_inventory_data():
     # Project name
     params['project_name'] = cfg.PROJECT_NAME
     
+    # Recorder ID
+    params['recorder_field_id'] = recorder_id
+    
     response = requests.get(url, headers=headers, params=params)
     response = response.json()
     
-    return response
+    last_status = response[0]
+    time_since_last_status = datetime.now() - datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')    
+    
+        
+    last_update = to_local_time(datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M'), cfg.TIME_FORMAT)
+    
+    is_ok = True if time_since_last_status.total_seconds() < 3600 * 24 else False
+    
+    current_status = 'Ok | Sleeping'
+    status_color = '#457999' # Blue
+    if time_since_last_status.total_seconds() < 60 * 15 and not last_status['task'] == 'Finished':
+        current_status = 'Ok | Listening'
+        status_color = '#36824b' # Green
+        
+    if not is_ok:
+        current_status = 'Error | Offline'
+        status_color = '#DF1E12' # Red
+    
+    return {'current_status': current_status, 'status_color': status_color, 'last_update': last_update, 'voltage': last_status['voltage'], 'cpu_temp': last_status['cpu_temp'], 'is_ok': is_ok}
+
+def get_recorder_location(recorder_id):
+    
+    url = f"https://api.ecopi.de/api/v0.1/recorders/recordergroup/{cfg.RECORDER_GROUP}/"
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    params = {}
+    
+    # Recorder ID
+    params['recorder_field_id'] = recorder_id
+    
+    response = requests.get(url, headers=headers, params=params)
+    response = response.json()
+    
+    return [response[0]['lat'], response[0]['lon']]
 
 def get_species_data(species):
     
@@ -71,6 +109,12 @@ def get_species_data(species):
     data['common_name'] = cfg.SPECIES_DATA[species]['common_name']
     data['scientific_name'] = cfg.SPECIES_DATA[species]['sci_name']
     data['ebird_url'] = 'https://ebird.org/species/' + cfg.SPECIES_DATA[species]['new_ebird_code'] if not cfg.SPECIES_DATA[species]['new_ebird_code'].startswith('t-') else 'https://search.macaulaylibrary.org/catalog?taxonCode=' + cfg.SPECIES_DATA[species]['new_ebird_code']
+    
+    # Thumbnail image
+    if cfg.SPECIES_DATA[species]['image']['src'].find('birds.cornell.edu') > 0:
+        data['thumbnail_url'] = cfg.SPECIES_DATA[species]['image']['src'] + '/160'
+    else:
+        data['thumbnail_url'] = cfg.SITE_ROOT + cfg.SPECIES_DATA[species]['image']['src']
     
     # Low res species image
     if cfg.SPECIES_DATA[species]['image']['src'].find('birds.cornell.edu') > 0:
@@ -136,7 +180,7 @@ def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=5):
     
     return recorder_data
 
-def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=5):
+def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-1, min_count=5):
     
     url = cfg.API_BASE_URL + 'meta/project/' + cfg.PROJECT_NAME + '/detections/recorderspeciescounts/'
     
@@ -160,10 +204,11 @@ def get_total_detections(min_conf=0.5, species_list=[], days=-1, min_count=5):
     # Count entries
     detections = {}
     for item in response:
-        if len(species_list) == 0 or item['species_code'] in species_list:
-            if item['species_code'] not in detections:
-                detections[item['species_code']] = 0
-            detections[item['species_code']] += item['species_count']
+        if len(recorder_list) == 0 or item['recorder_field_id'] in recorder_list:
+            if len(species_list) == 0 or item['species_code'] in species_list:
+                if item['species_code'] not in detections:
+                    detections[item['species_code']] = 0
+                detections[item['species_code']] += item['species_count']
         
     # Sort by count
     detections = {k: v for k, v in sorted(detections.items(), key=lambda item: item[1], reverse=True)}
@@ -331,7 +376,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[]):
     
     return detections
 
-def get_species_stats(species_code, min_conf=0.5, hours=168, limit=1000, max_results=50):
+def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=168, limit=1000, max_results=50):
     
     url = cfg.API_BASE_URL + 'detections'
     
@@ -350,13 +395,19 @@ def get_species_stats(species_code, min_conf=0.5, hours=168, limit=1000, max_res
     params['has_media'] = True
     
     # Only detections of species_code
-    params['species_code'] = species_code
+    if not species_code is None:
+        params['species_code'] = species_code
+    
+    # Recorder field ID
+    if not recorder_id is None:
+        params['recorder_field_id'] = recorder_id
     
     # We only want detections from the last x hours
     # so we have to set datetime_gte and datetime_lte
-    now = datetime.now(UTC)
-    params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
-    params['datetime_recording__lte'] = now.isoformat()  
+    if hours > 0:
+        now = datetime.now(UTC)
+        params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
+        params['datetime_recording__lte'] = now.isoformat()  
     
     # Only retrieve certain fields
     params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'
@@ -399,16 +450,20 @@ def get_species_stats(species_code, min_conf=0.5, hours=168, limit=1000, max_res
 if __name__ == '__main__':    
     
     
-    print('Number of detections in the last 24 hours:', get_total_detections(days=1)['total_detections'])
-    print('Number of detections with confidence >= 0.5:', get_total_detections(min_conf=0.5)['total_detections'])
+    #print('Number of detections in the last 24 hours:', get_total_detections(days=1)['total_detections'])
+    #print('Number of detections with confidence >= 0.5:', get_total_detections(min_conf=0.5)['total_detections'])
     
-    print(get_last_n_detections())
-    print(get_most_active_species())
+    #print(get_last_n_detections())
+    #print(get_most_active_species())
     
-    print(get_recorder_data(min_conf=0.5, days=2))
+    #print(get_recorder_data(min_conf=0.5, days=2))
                                 
-    print(get_species_stats('norcar', hours=24))
+    #print(get_species_stats('norcar', hours=24))
     
-    print(get_inventory_data())
+    print(get_recorder_state(9))
+    #print(get_recorder_location(9))
+    
+    #print(get_total_detections(min_conf=0.5, species_list=['norcar'], days=-1))
+    #print(get_total_detections(min_conf=0.5, days=-1, recorder_list=[9]))
     
     

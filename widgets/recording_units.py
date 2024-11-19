@@ -8,73 +8,77 @@ import config as cfg
 
 def recording_units():
     try:
-        recorder_data = dp.get_recorder_data()
-        map_figure = plots.get_recorder_map(recorder_data)
+        recorder_data = {}
+        for recorder_id in cfg.RECORDERS:
+            recorder_data[recorder_id] = dp.get_recorder_state(recorder_id)
+            
+        leaflet_map = plots.get_leaflet_map(recorder_data)
         
         map_component = html.Div(
             [
-                html.Div("Recorder map", className="text-center small-text mb-2"),
-                dcc.Graph(figure=map_figure, config={"staticPlot": True}, id="map-container", className="mb-2")
-            ]
+                #html.Div("Recorder map", className="text-center small-text mb-2"),
+                leaflet_map
+            ],
+            className="full-width"  # Ensure the map component takes full width
         )
         
         recorder_stats = []
         
-        recorder_stats.append(
-            dbc.Row(
-                [
-                    dbc.Col(html.Div("Detections | Species (24h)", className="small-text text-center mb-2"), width=12)
-                ],
-                className="recorder-stats-heading"
-            )
-        )
-        
-        for r in recorder_data:
+        # For each recorder, create a card with the recorder ID, current status, habitat, CPU temp, voltage, and last update
+        for recorder_id, data in recorder_data.items():
+            status_color = data.get('status_color', '#36824b')
+            
             recorder_stats.append(
                 dbc.Col(
-                    dbc.Row(
-                        [
-                            dbc.Col(
-                                dcc.Link(
-                                    html.Div(f"#{r}", className="small-text"),
-                                    href=f"{cfg.SITE_ROOT}/recorder/{r}"
+                    dcc.Link(
+                        dbc.Card(
+                            [
+                                dbc.CardHeader(
+                                    [
+                                        html.Span(
+                                            className="status-circle",
+                                            style={"backgroundColor": status_color, "borderRadius": "50%", "display": "inline-block", "width": "10px", "height": "10px", "marginRight": "10px"}
+                                        ),
+                                        f"Recorder #{recorder_id}",
+                                        html.I(className="bi bi-bar-chart-fill", style={"float": "right"})
+                                    ],
+                                    className="small-text"
                                 ),
-                                width=2
-                            ),
-                            dbc.Col(
-                                dcc.Link(
-                                    html.Div(f"{max(1, recorder_data[r]['detections'])} | {max(1, len(recorder_data[r]['species_counts']))}", className="small-text"),
-                                    href=f"{cfg.SITE_ROOT}/recorder/{r}"
-                                ),
-                                width=8
-                            ),
-                            dbc.Col(
-                                dcc.Link(
-                                    html.Div(html.I(className="bi bi-graph-up"), className="small-text"),
-                                    href=f"{cfg.SITE_ROOT}/recorder/{r}"
-                                ),
-                                width=2
-                            ),
-                        ],
-                        className="recorder-info",
+                                dbc.CardBody(
+                                    [
+                                        html.H6([html.B("Status: "), f"{data['current_status']}"], className="very-small-text"),
+                                        html.H6([html.B("Habitat: "), f"{cfg.RECORDERS[recorder_id]['habitat']}"], className="very-small-text"),
+                                        html.H6([html.B("CPU Temp: "), f"{data['cpu_temp']} °C"], className="very-small-text"),
+                                        html.H6([html.B("Voltage: "), f"{data['voltage'] if data['voltage'] is not None else 'N/A'} V"], className="very-small-text"),
+                                        html.H6([html.B("Last Update: "), f"{data['last_update']}"], className="very-small-text")
+                                    ]
+                                )
+                            ],
+                            className="mt-3"  # Add top margin to each card
+                        ),
+                        href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}",
+                        style={"textDecoration": "none", "color": "inherit"}
                     ),
-                    width=12,
-                )        
-            )
-            
+                    lg=4,
+                    md=4,
+                    sm=6,
+                    xs=12
+                )
+            )        
+                    
         children = [
             dbc.Row(
                 [
                     dbc.Col(map_component, 
-                            md=9,
-                            xs=12
-                        ),
-                    dbc.Col(recorder_stats, 
-                            md=3,
-                            xs=12
+                            width=12  # Ensure the map column takes full width
                         )
-                ]
-            )
+                ],
+                className="full-width"  # Ensure the row takes full width
+            ),
+            dbc.Row(
+                recorder_stats,
+                className="full-width"  # Ensure the row takes full width
+            )            
         ]
         
         placeholder = None

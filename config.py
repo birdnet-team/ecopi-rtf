@@ -21,35 +21,37 @@ SITE_ROOT = '' # '' for dev and '/swamp' for production
 
 # AMiC project configuration
 """
-PROJECT_NAME = 'pam_in_chemnitz' #'099_swamp'#
+PROJECT_NAME = 'pam_in_chemnitz'
+RECORDER_GROUP = 39
 SPECIES_DATA = load_species_data(project='amic')
 DEPLOYMENT_LAT = 50.832
 DEPLOYMENT_LON = 12.924
 TIMEZONE = 'Europe/Berlin'
 TIME_FORMAT = '24h'
 RECORDERS = {
-    1: {'id': '0271', 'lat': 42.479723, 'lon': -76.451566},
-    2: {'id': '0829', 'lat': 42.479005, 'lon': -76.454030},
-    3: {'id': '0269', 'lat': 42.476863, 'lon': -76.445881},
-    4: {'id': '0270', 'lat': 42.479265, 'lon': -76.442721}
+    1: {'id': '0271', 'lat': 42.479723, 'lon': -76.451566, 'habitat': 'Urban'},
+    2: {'id': '0829', 'lat': 42.479005, 'lon': -76.454030, 'habitat': 'Urban'},
+    3: {'id': '0269', 'lat': 42.476863, 'lon': -76.445881, 'habitat': 'Urban'},
+    4: {'id': '0270', 'lat': 42.479265, 'lon': -76.442721, 'habitat': 'Forest'},
 }
 """
 
 # SWAMP project configuration
 PROJECT_NAME = '099_swamp'
+RECORDER_GROUP = 99
 SPECIES_DATA = load_species_data(project='swamp')
 DEPLOYMENT_LAT = 42.479723
 DEPLOYMENT_LON = -76.451566
 TIMEZONE = 'America/New_York'
 TIME_FORMAT = '12h'
 RECORDERS = {
-    1: {'id': '0271', 'lat': 42.479723, 'lon': -76.451566},
-    2: {'id': '0829', 'lat': 42.479005, 'lon': -76.454030},
-    3: {'id': '0269', 'lat': 42.476863, 'lon': -76.445881},
-    4: {'id': '0270', 'lat': 42.479265, 'lon': -76.442721},
-    5: {'id': '0272', 'lat': 42.479723, 'lon': -76.451566},
-    6: {'id': '0273', 'lat': 42.479005, 'lon': -76.454030},
-    7: {'id': '0274', 'lat': 42.476863, 'lon': -76.445881},
-    8: {'id': '0275', 'lat': 42.479265, 'lon': -76.442721},
-    9: {'id': '0276', 'lat': 42.479723, 'lon': -76.451566},
+    1: {'id': '0271', 'lat': 42.475, 'lon': -76.445, 'habitat': 'Forest'},
+    2: {'id': '0829', 'lat': 42.478, 'lon': -76.451, 'habitat': 'Grassland'},
+    3: {'id': '0269', 'lat': 42.469, 'lon': -76.449, 'habitat': 'Wetland'},
+    4: {'id': '0270', 'lat': 42.480, 'lon': -76.453, 'habitat': 'Forest'},
+    5: {'id': '0272', 'lat': 42.481, 'lon': -76.451, 'habitat': 'Forest'},
+    7: {'id': '0274', 'lat': 42.472, 'lon': -76.446, 'habitat': 'Grassland'},
+    8: {'id': '0275', 'lat': 42.480, 'lon': -76.457, 'habitat': 'Grassland'},
+    9: {'id': '0276', 'lat': 42.476, 'lon': -76.451, 'habitat': 'Urban'},
+    10: {'id': '0277', 'lat': 42.479, 'lon': -76.450, 'habitat': 'Urban'},
 }

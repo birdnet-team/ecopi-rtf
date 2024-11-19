@@ -70,6 +70,12 @@ a {
     font-size: 0.7em; 
 }
 
+.full-width {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 /* Additional styles */
 .header-logo {
     max-height: 25px;
@@ -116,11 +122,13 @@ nav .navbar-nav {
     background-color: #b31b1b; /* Color of the bar */
 }
 
-
+#nav-dashboard {
+    display: none;
+}
 
 .header-graphic {
     width: 100%;
-    max-height: 800px; /* Adjust the height as needed */
+    max-height: 1024px; /* Adjust the height as needed */
     object-fit: cover; /* Ensures the image covers the entire width */
     margin-bottom: 0; /* Remove bottom margin */
 }
@@ -130,6 +138,7 @@ nav .navbar-nav {
     top: 0;
     left: 0;
     width: 45%;
+    max-width: 800px;
     height: 100%;
     background-color: rgba(46, 38, 31, .6); /* Black with 50% transparency */
     backdrop-filter: blur(3px); /* For modern browsers */
@@ -140,7 +149,7 @@ nav .navbar-nav {
     flex-direction: column;
     justify-content: center; /* Center items vertically */
     align-items: flex-start; /* Align items to the left */
-    padding: 30px;
+    padding: 50px;
     box-sizing: border-box;
 }
 
@@ -210,7 +219,7 @@ nav .navbar-nav {
 .stat-row {
     background-color: #2e261f;
     color: white; 
-    padding: 1px 30px; 
+    padding: 1px 15px; 
     text-align: center; 
     margin: 0; 
     margin-left: auto; 
@@ -233,7 +242,7 @@ nav .navbar-nav {
 }
 
 .main-content {
-    padding: 30px;
+    padding: 15px;
     max-width: 1200px;
 }
 
@@ -256,6 +265,10 @@ nav .navbar-nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.text-right {
+    text-align: right;
 }
 
 .text-justify {
@@ -623,6 +636,103 @@ nav .navbar-nav {
     height: 10px;
     border-radius: 50%;
     margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Recorder page styles - reusing species page classes where possible */
+.recorder-header {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.recorder-header-image {
+    width: 100%;
+    height: auto;
+    max-height: 800px;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.recorder-info-row {
+    margin-top: 0px;
+    padding: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+}
+
+#recorder-loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+#recorder-main-content {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+#recorder-main-content.visible {
+    opacity: 1;
+}
+
+/* Recorder table styles */
+.recorder-detections-table {
+    margin-top: 20px;
+}
+
+.recorder-detections-table th {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.recorder-detections-table th .sortable-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recorder-detections-table th .bi-arrow-down-up {
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+.recorder-detections-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.species-column-header {
+    width: 40%;
+}
+
+.species-column {
+    display: flex;
+    align-items: center;
+}
+
+.species-thumbnail {
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+@media (max-width: 640px) {
+    .hide-on-small-screens {
+        display: none;
+    }
+}
+
+.species-name {
     vertical-align: middle;
 }
 

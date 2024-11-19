@@ -4,6 +4,8 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH
 import json
 
+import config as cfg
+
 from widgets.popup_player import popup_player
 from utils import data_processor as dp
 from utils import plots
@@ -142,7 +144,7 @@ def register_species_callbacks(app):
         # Create info row
         info_row = dbc.Row([
             dbc.Col([
-                html.H5(f"{total_detections:,} detections"),
+                html.H5(f"{total_detections:,} total detections"),
                 html.H6([
                     html.I(className="bi bi-clock"),
                     f" {species_stats[0]['datetime'] if species_stats else 'N/A'}"
@@ -180,7 +182,16 @@ def register_species_callbacks(app):
                     ),
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
-                html.Td(detection["recorder_field_id"]),
+                html.Td([
+                    html.A(
+                        html.Div(
+                            f"#{detection['recorder_field_id']}",
+                            className="recorder-cell"
+                        ),
+                        href=f"{cfg.SITE_ROOT}/recorder/{detection['recorder_field_id']}",
+                        style={"cursor": "pointer", "textDecoration": "none", "color": "inherit", "display": "block"}
+                    )
+                ]),
                 html.Td([
                     html.A(
                         html.I(className="bi bi-play-circle-fill"),
@@ -265,7 +276,16 @@ def register_species_callbacks(app):
                     ),
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
-                html.Td(detection["recorder_field_id"]),
+                html.Td([
+                    html.A(
+                        html.Div(
+                            f"#{detection['recorder_field_id']}",
+                            className="recorder-cell"
+                        ),
+                        href=f"{cfg.SITE_ROOT}/recorder/{detection['recorder_field_id']}",
+                        style={"cursor": "pointer", "textDecoration": "none", "color": "inherit", "display": "block"}
+                    )
+                ]),
                 html.Td([
                     html.A(
                         html.I(className="bi bi-play-circle-fill"),
