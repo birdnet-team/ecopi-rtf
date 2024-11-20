@@ -1,16 +1,12 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output, State, MATCH
-import json
-
 from utils import data_processor as dp
-
+import json
 import config as cfg
 
-def recent_detections():
-    last_detections = dp.get_last_n_detections(n=12)
-    show_more = True if len(last_detections) == 12 else False
-    num_cards = 8
+def detections_page_content():
+    # Fetch the last 24 detections
+    last_detections = dp.get_last_n_detections(n=24)
     cards = []
     datalist = []
 
@@ -26,7 +22,7 @@ def recent_detections():
                             html.Div(
                                 html.Div(
                                     [html.I(className="bi bi-play-circle-fill", id=f"play-icon-{idx}")],
-                                    id={"type": "recent-detections-play-icon", "index": idx},
+                                    id={"type": "detections-play-icon", "index": idx},
                                 ),
                                 className="play-icon-overlay",
                             ),
@@ -86,7 +82,7 @@ def recent_detections():
                                 className="align-items-end",
                             ),
                             html.Data(
-                                id={"type": "recent-detections-output-placeholder", "index": idx}
+                                id={"type": "detections-output-placeholder", "index": idx}
                             )
                         ]
                     ),
@@ -101,8 +97,6 @@ def recent_detections():
             xl=3,
         )
         cards.append(card)
-        if len(cards) >= num_cards:
-            break
 
     if not cards:
         placeholder = html.P("Uuups...something went wrong. Please try to reload.", 
@@ -113,22 +107,17 @@ def recent_detections():
 
     data = html.Data(id="audio-data-list", value=json.dumps(datalist))
 
-    if show_more:
-        show_more_button = dbc.Button("Show more detections", href=f"{cfg.SITE_ROOT}/detections", className="btn-href mt-3")
-        cards.append(dbc.Row(dbc.Col(show_more_button, width="auto", className="mx-auto"), className=" full-width"))
-
-    return cards, placeholder, data
-
-def register_recent_detections_callbacks(app):
-    # Client-side callback for playing audio when play icon is clicked
-    app.clientside_callback(
-        """
-        function(n_clicks, audio_id) {
-            openPlayer(audio_id["index"]);
-        }
-        """,
-        Output({"type": "recent-detections-output-placeholder", "index": MATCH}, "value"),
-        [Input({"type": "recent-detections-play-icon", "index": MATCH}, "n_clicks")],
-        [State({"type": "recent-detections-play-icon", "index": MATCH}, "id")],
-        prevent_initial_call=True,
+    return html.Div(
+        [
+            dbc.Container(
+                [
+                    html.H3("Recent detections", className="mt-2 mb-2"),
+                    html.P("This list shows species detections from the last 12 hours sorted by confidence score. Click the 'Play' button to listen to the recorded sounds or click the 'Chart' icon to see more stats about this species.", className="text-muted"),
+                    dbc.Row(cards),
+                    data
+                ],
+                fluid=True,
+            ),
+        ],
+        className="main-content"  # Apply the main-content class for styling
     )

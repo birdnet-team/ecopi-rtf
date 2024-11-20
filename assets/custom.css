@@ -242,8 +242,9 @@ nav .navbar-nav {
 }
 
 .main-content {
-    padding: 15px;
     max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
 }
 
 .divider-heading {
@@ -276,8 +277,22 @@ nav .navbar-nav {
 }
 
 .btn-href {
-    color: white;
-    background-color: #36824b; ;
+    background-color: #36824b; 
+    color: white; 
+    border: none; 
+    border-radius: 20px; 
+    padding: 7px 20px; 
+    font-size: 1rem;
+    display: flex; 
+    align-items: center; 
+    cursor: pointer; 
+    z-index: 10; 
+    text-decoration: none;
+}
+
+.btn-href:hover {
+    background-color: white;
+    color: #36824b;
     text-decoration: none;
 }
 

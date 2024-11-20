@@ -14,6 +14,7 @@ from pages.main import main_page_content, register_main_callbacks
 from pages.dashboard import dashboard_page_content
 from pages.recorder import display_recorder_page, register_recorder_callbacks
 from pages.species import register_species_callbacks, display_species_page
+from pages.detections import detections_page_content
 from pages.about import about_page_content
 
 # Import callback registration function for recent detections
@@ -93,6 +94,7 @@ def nav_bar():
                                     )
                                 ),
                                 dbc.NavItem(dcc.Link("Dashboard", href=cfg.SITE_ROOT + "/dashboard", className="nav-link", id="nav-dashboard")),
+                                dbc.NavItem(dcc.Link("Detections", href=cfg.SITE_ROOT + "/detections", className="nav-link", id="nav-detections")),
                                 dbc.DropdownMenu(
                                     label="Recorders",
                                     children=[
@@ -188,14 +190,16 @@ def toggle_navbar_collapse(n, is_open):
 @app.callback(
     [Output("nav-home", "className"),
      Output("nav-dashboard", "className"),
+     Output("nav-detections", "className"),
      Output("nav-about", "className")],
     [Input("url", "pathname")]
 )
 def update_active_nav(pathname):
     home_class = "nav-link active-nav" if pathname == cfg.SITE_ROOT + "/" else "nav-link"
     dashboard_class = "nav-link active-nav" if pathname == cfg.SITE_ROOT + "/dashboard" else "nav-link"
+    detections_class = "nav-link active-nav" if pathname == cfg.SITE_ROOT + "/detections" else "nav-link"
     about_class = "nav-link active-nav" if pathname == cfg.SITE_ROOT + "/about" else "nav-link"
-    return home_class, dashboard_class, about_class
+    return home_class, dashboard_class, detections_class, about_class
 
 # Callback to update the page content based on the URL
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
@@ -210,6 +214,8 @@ def display_page(pathname):
     elif pathname.startswith(cfg.SITE_ROOT + "/species/"):
         species_id = pathname.split("/")[-1]
         return display_species_page(species_id)
+    elif pathname == cfg.SITE_ROOT + "/detections":
+        return detections_page_content()
     elif pathname == cfg.SITE_ROOT + "/about":
         return about_page_content()
     else:
