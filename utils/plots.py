@@ -218,7 +218,6 @@ def get_recorder_map(data):
     return fig
 
 def get_leaflet_map(data):
-    
     # Convert the nested dictionary to a DataFrame
     df = pd.DataFrame.from_dict(data, orient='index')
     
@@ -267,7 +266,10 @@ def get_leaflet_map(data):
         ],
         center=[center_lat, center_lon],
         zoom=15,
-        style={'width': '100%', 'height': '500px'}
+        style={'width': '100%', 'height': '500px'},
+        scrollWheelZoom=False,  # Disable scroll wheel zoom
+        touchZoom=True,  # Enable touch zoom
+        zoomControl=True  # Enable zoom controls
     )
     
     return leaflet_map
