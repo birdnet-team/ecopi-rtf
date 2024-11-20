@@ -49,7 +49,7 @@ def recording_units():
                                         html.H6([html.B("Status: "), f"{data['current_status']}"], className="very-small-text"),
                                         html.H6([html.B("Habitat: "), f"{cfg.RECORDERS[recorder_id]['habitat']}"], className="very-small-text"),
                                         html.H6([html.B("CPU Temp: "), f"{data['cpu_temp']} °C"], className="very-small-text"),
-                                        html.H6([html.B("Voltage: "), f"{data['voltage'] if data['voltage'] is not None else 'N/A'} V"], className="very-small-text"),
+                                        html.H6([html.B("Battery: "), f"{data['battery'] if data['battery'] is not None else 'N/A'} %"], className="very-small-text"),
                                         html.H6([html.B("Last Update: "), f"{data['last_update']}"], className="very-small-text")
                                     ]
                                 )
@@ -59,10 +59,10 @@ def recording_units():
                         href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}",
                         style={"textDecoration": "none", "color": "inherit"}
                     ),
-                    lg=4,
+                    lg=3,
                     md=4,
-                    sm=6,
-                    xs=12
+                    sm=4,
+                    xs=6
                 )
             )        
                     

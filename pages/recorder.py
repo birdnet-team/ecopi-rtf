@@ -144,10 +144,9 @@ def register_recorder_callbacks(app):
                 ], className="small-text"),
             ], width=6),
             dbc.Col([
-                html.H5(f"Current status: {recorder_info['current_status'] if recorder_info else 'N/A'}"),
-                html.H6([
-                    f"Voltage: {recorder_info['voltage'] if recorder_info else 'N/A'} V | CPU Temp: {recorder_info['cpu_temp'] if recorder_info else 'N/A'} °C"
-                ], className="small-text"),
+                html.H5(f"Status: {recorder_info['current_status'].split(' | ')[-1] if recorder_info else 'N/A'}"),
+                html.H6([f"Battery: {recorder_info['battery'] if recorder_info else 'N/A'} %"], className="small-text"),
+                html.H6([f"CPU Temp: {recorder_info['cpu_temp'] if recorder_info else 'N/A'} °C"], className="small-text"),
             ], width=6, className="text-right"),
         ], className="species-info-row")
 

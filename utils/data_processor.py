@@ -46,6 +46,19 @@ def get_confidence_score(species, confidence):
     
     return min(100, max(1, confidence))
 
+def get_battery_status(voltage):
+    
+    # Convert voltage to percentage
+    # Everything above 12 is 100%, eveything below 8.5 is 10%, scale inbetween
+    if not voltage is None:
+        voltage = min(12, max(8.5, voltage))
+    else:
+        voltage = 8.5
+    
+    battery_level = max(10, int((voltage - 8.5) / (12 - 8.5) * 100) // 10 * 10)
+    
+    return str(battery_level) if battery_level > 10 else '< 10'
+
 def get_recorder_state(recorder_id):
     
     url = 'https://api.ecopi.de/api/v0.1/recorderstates/'
@@ -73,16 +86,21 @@ def get_recorder_state(recorder_id):
     is_ok = True if time_since_last_status.total_seconds() < 3600 * 24 else False
     
     current_status = 'Ok | Sleeping'
-    status_color = '#457999' # Blue
+    status_color = '#69A0C2' # Blue
     if time_since_last_status.total_seconds() < 60 * 15 and not last_status['task'] == 'Finished':
         current_status = 'Ok | Listening'
         status_color = '#36824b' # Green
         
     if not is_ok:
         current_status = 'Error | Offline'
-        status_color = '#DF1E12' # Red
+        status_color = '#DAD5BC' # Gray
     
-    return {'current_status': current_status, 'status_color': status_color, 'last_update': last_update, 'voltage': last_status['voltage'], 'cpu_temp': last_status['cpu_temp'], 'is_ok': is_ok}
+    return {'current_status': current_status, 
+            'status_color': status_color, 
+            'last_update': last_update, 
+            'battery': get_battery_status(last_status['voltage']),
+            'cpu_temp': last_status['cpu_temp'], 
+            'is_ok': is_ok}
 
 def get_recorder_location(recorder_id):
     
@@ -108,7 +126,8 @@ def get_species_data(species):
     # This is example data, we'll parse this from the species data later
     data['common_name'] = cfg.SPECIES_DATA[species]['common_name']
     data['scientific_name'] = cfg.SPECIES_DATA[species]['sci_name']
-    data['ebird_url'] = 'https://ebird.org/species/' + cfg.SPECIES_DATA[species]['new_ebird_code'] if not cfg.SPECIES_DATA[species]['new_ebird_code'].startswith('t-') else 'https://search.macaulaylibrary.org/catalog?taxonCode=' + cfg.SPECIES_DATA[species]['new_ebird_code']
+    #data['ebird_url'] = 'https://ebird.org/species/' + cfg.SPECIES_DATA[species]['new_ebird_code'] if not cfg.SPECIES_DATA[species]['new_ebird_code'].startswith('t-') else 'https://search.macaulaylibrary.org/catalog?taxonCode=' + cfg.SPECIES_DATA[species]['new_ebird_code']
+    data['ebird_url'] = 'https://www.allaboutbirds.org/guide/' + cfg.SPECIES_DATA[species]['new_ebird_code'] if not cfg.SPECIES_DATA[species]['new_ebird_code'].startswith('t-') else 'https://search.macaulaylibrary.org/catalog?taxonCode=' + cfg.SPECIES_DATA[species]['new_ebird_code']
     
     # Thumbnail image
     if cfg.SPECIES_DATA[species]['image']['src'].find('birds.cornell.edu') > 0:
