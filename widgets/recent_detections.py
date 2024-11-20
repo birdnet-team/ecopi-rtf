@@ -7,10 +7,9 @@ from utils import data_processor as dp
 
 import config as cfg
 
-def recent_detections():
-    last_detections = dp.get_last_n_detections(n=12)
-    show_more = True if len(last_detections) == 12 else False
-    num_cards = 8
+def recent_detections(num_cards=8, hours=24):
+    last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours)
+    show_more = True if len(last_detections) >= 12 else False
     cards = []
     datalist = []
 
