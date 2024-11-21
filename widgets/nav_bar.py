@@ -22,7 +22,7 @@ def nav_bar():
                         dbc.Nav(
                             [
                                 dbc.NavItem(
-                                    dcc.Link(
+                                    dbc.NavLink(
                                         [
                                             html.I(className="bi bi-house-door-fill home-icon"),
                                             html.Span("Home", className="home-text")
@@ -32,8 +32,8 @@ def nav_bar():
                                         id="nav-home"
                                     )
                                 ),
-                                dbc.NavItem(dcc.Link("Dashboard", href=cfg.SITE_ROOT + "/dashboard", className="nav-link", id="nav-dashboard")),
-                                dbc.NavItem(dcc.Link("Detections", href=cfg.SITE_ROOT + "/detections", className="nav-link", id="nav-detections")),
+                                dbc.NavItem(dbc.NavLink("Dashboard", href=cfg.SITE_ROOT + "/dashboard", className="nav-link", id="nav-dashboard")),
+                                dbc.NavItem(dbc.NavLink("Detections", href=cfg.SITE_ROOT + "/detections", className="nav-link", id="nav-detections")),
                                 dbc.DropdownMenu(
                                     label="Recorders",
                                     children=[
@@ -43,8 +43,8 @@ def nav_bar():
                                     ],
                                     nav=True,
                                 ),
-                                dbc.NavItem(dcc.Link("About", href=cfg.SITE_ROOT + "/about", className="nav-link", id="nav-about")),
-                                dbc.NavItem(html.A("Donate", href="https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR", className="nav-link", id="nav-donate", target="_blank")),
+                                dbc.NavItem(dbc.NavLink("About", href=cfg.SITE_ROOT + "/about", className="nav-link", id="nav-about")),
+                                dbc.NavItem(html.A("Donate", href="https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR", className="nav-link nav-donate", id="nav-donate", target="_blank")),
                             ],
                             className="ml-auto",
                             navbar=True,

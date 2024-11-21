@@ -126,6 +126,12 @@ nav .navbar-nav {
     background-color: #b31b1b; /* Color of the bar */
 }
 
+@media (max-width: 768px) {
+    .nav-link.active-nav::after {
+        content: none;
+    }
+}
+
 #nav-dashboard {
     display: none;
 }

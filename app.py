@@ -68,11 +68,24 @@ def app_layout():
 # Callback to toggle the collapse on small screens
 @app.callback(
     Output("navbar-collapse", "is_open"),
-    [Input("navbar-toggler", "n_clicks")],
+    [Input("navbar-toggler", "n_clicks"),
+     Input("nav-home", "n_clicks"),
+     Input("nav-dashboard", "n_clicks"),
+     Input("nav-detections", "n_clicks"),
+     Input("nav-about", "n_clicks"),
+     Input("nav-donate", "n_clicks")],
     [State("navbar-collapse", "is_open")],
 )
-def toggle_navbar_collapse(n, is_open):
-    return not is_open if n else is_open
+def toggle_navbar_collapse(n_toggler, n_home, n_dashboard, n_detections, n_about, n_donate, is_open):
+    ctx = dash.callback_context
+    if not ctx.triggered:
+        return is_open
+    else:
+        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        if button_id == "navbar-toggler":
+            return not is_open
+        else:
+            return False
 
 # Callback to update the active nav link based on the URL
 @app.callback(
