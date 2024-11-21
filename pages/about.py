@@ -48,7 +48,7 @@ def about_page_content():
                                 ],
                                 width=12,
                                 md=3,
-                                className="order-first order-md-last bg-light p-3 mb-3 mt-3 about-sidebar",
+                                className="order-first order-md-last bg-light p-3 mb-3 about-sidebar",
                             ),
                             dbc.Col(
                                 [

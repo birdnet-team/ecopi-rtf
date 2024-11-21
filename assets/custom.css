@@ -162,7 +162,7 @@ nav .navbar-nav {
 
 .header-graphic {
     width: 100%;
-    max-height: 1024px; /* Adjust the height as needed */
+    max-height: 900px; /* Adjust the height as needed */
     object-fit: cover; /* Ensures the image covers the entire width */
     margin-bottom: 0; /* Remove bottom margin */
 }
@@ -806,6 +806,8 @@ nav .navbar-nav {
 
 .about-sidebar{
     height: 300px;
+    margin-top: -16px;
+    padding-top: 20px;
 }
 
 .recorder-image {
