@@ -130,6 +130,28 @@ nav .navbar-nav {
     display: none;
 }
 
+#nav-donate {
+    color: white;
+    background-color: #b31b1b;
+    margin-top: -8px;
+    padding-top: 15px;
+    width: 100px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    #nav-donate {
+        color: #666;
+        background-color: inherit;
+        margin-top: 0;
+        padding-top: 0;
+        width: auto;
+        text-align: inherit;
+        margin-left: 0;
+    }
+}
+
 .header-graphic {
     width: 100%;
     max-height: 1024px; /* Adjust the height as needed */

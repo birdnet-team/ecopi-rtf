@@ -44,6 +44,7 @@ def nav_bar():
                                     nav=True,
                                 ),
                                 dbc.NavItem(dcc.Link("About", href=cfg.SITE_ROOT + "/about", className="nav-link", id="nav-about")),
+                                dbc.NavItem(html.A("Donate", href="https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR", className="nav-link", id="nav-donate", target="_blank")),
                             ],
                             className="ml-auto",
                             navbar=True,
