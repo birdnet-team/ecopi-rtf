@@ -796,6 +796,52 @@ nav .navbar-nav {
     vertical-align: middle;
 }
 
+/* About page */
+.about-link {
+    color: #36824b;
+    font-weight: 400;
+}
+
+.about-sidebar{
+    height: 300px;
+}
+
+.recorder-image {
+    width: 100%;
+    max-width: 350px; /* Adjust as needed */
+    height: auto;
+    border-radius: 5px;
+    margin: 0 20px 20px 0; /* Adjust margins as needed */
+}
+
+.float-left {
+    float: left;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.team-image {
+    width: 90%;
+    max-width: 175px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.team-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.partner-logo{
+    width: 100%;
+    max-width: 200px;
+}
+
 /* PLAYER WIDGET */
 #popup-backdrop,
 #livestream-popup-backdrop {
