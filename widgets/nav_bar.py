@@ -10,9 +10,9 @@ def nav_bar():
                     # Logo, Divider, and Title in a single row
                     dbc.Row(
                         [
-                            dbc.Col(dcc.Link(html.Img(src=cfg.SITE_ROOT + "/assets/clo-logo-bird.png", className="header-logo"), href=cfg.SITE_ROOT + "/"), width="auto"),
-                            dbc.Col(html.Div(className="divider"), width="auto"),
-                            dbc.Col(dbc.NavbarBrand("SWAMP", className="ml-0"), width="auto"),
+                            dbc.Col(dcc.Link(html.Img(src=cfg.SITE_ROOT + "/assets/clo_swamp_short_horizontal_black.png", className="header-logo"), href=cfg.SITE_ROOT + "/"), width="auto"),
+                            #dbc.Col(html.Div(className="divider"), width="auto"),
+                            #dbc.Col(dbc.NavbarBrand("SWAMP", className="ml-0"), width="auto"),
                         ],
                         align="center",
                         className="light",
