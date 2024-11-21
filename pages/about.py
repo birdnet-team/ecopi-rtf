@@ -52,7 +52,7 @@ def about_page_content():
                             ),
                             dbc.Col(
                                 [
-                                    html.H3(id="about-goals", children="Project Goals", className="mb-3"),
+                                    html.H4(id="about-goals", children="Project Goals", className="mb-3"),
                                     html.P([
                                         "The Sapsucker Woods Acoustic Monitoring Project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Sapsucker Woods, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area. ",
                                         html.P(),
@@ -63,7 +63,7 @@ def about_page_content():
                                         #"The Sapsucker Woods Acoustic Monitoring Project is as much about fostering curiosity and engagement as it is about research. By bringing the sounds of nature to life, it encourages visitors to explore the rich soundscapes of the woods and discover the stories they tell about the world around us."
                                     ]),
                                     
-                                    html.H3(id="about-pam", children="Acoustic Monitoring", className="mb-3"),
+                                    html.H4(id="about-pam", children="Acoustic Monitoring", className="mb-3"),
                                     html.P([
                                         "Acoustic monitoring is a valuable method for studying ecosystems and biodiversity. By recording and analyzing soundscapes, it allows researchers to detect species presence and behavior without disturbing their habitats. This approach is particularly useful for monitoring elusive or nocturnal species such as birds, bats, and frogs. ",
                                         html.P(),
@@ -74,7 +74,7 @@ def about_page_content():
                                         "AI-driven acoustic monitoring has already contributed to conservation successes, such as tracking endangered species, monitoring habitat recovery, and identifying environmental changes. By combining long-term acoustic data with AI, researchers gain valuable insights to support effective conservation strategies."
                                     ]),
                                     
-                                    html.H3(id="about-recorder", children="Recording Units", className="mb-3"),
+                                    html.H4(id="about-recorder", children="Recording Units", className="mb-3"),
                                     html.Div(
                                         [
                                             html.Img(src=cfg.SITE_ROOT + "/assets/content-img/swamp_recording_unit.jpg", className="recorder-image float-left"),
@@ -94,7 +94,7 @@ def about_page_content():
                                         className="clearfix"
                                     ),
                                     
-                                    html.H3(id="about-ai", children="AI-powered Sound ID", className="mb-3"),
+                                    html.H4(id="about-ai", children="AI-powered Sound ID", className="mb-3"),
                                     html.P([
                                         "BirdNET is an AI-powered tool that identifies bird species based on their calls and songs. At its core, BirdNET uses a neural network, a type of machine learning model inspired by the structure of the human brain. Neural networks are particularly effective at recognizing patterns in complex datasets, such as sound recordings. ",
                                         html.P(),
@@ -105,7 +105,7 @@ def about_page_content():
                                         "BirdNET is widely used in conservation efforts to monitor bird populations, study migration patterns, and identify areas of concern for endangered species. Its ability to process recordings automatically and at scale provides researchers with valuable data to support habitat protection and conservation strategies."
                                     ]),
                                     
-                                    html.H3(id="about-team", children="Meet the Team", className="mb-4"),
+                                    html.H4(id="about-team", children="Meet the Team", className="mb-4"),
                                     dbc.Row(
                                         [
                                             dbc.Col(
@@ -171,7 +171,7 @@ def about_page_content():
                                         ]
                                     ),
                                     
-                                    html.H3(id="about-partners", children="Partners", className="mb-3"),
+                                    html.H4(id="about-partners", children="Partners", className="mb-3"),
                                     html.P("The SWAMP project is a collaboration between the Cornell Lab of Ornithology, Chemnitz University of Technology, and OekoFor GbR."),
                                     dbc.Row(
                                         [
@@ -197,11 +197,11 @@ def about_page_content():
                                         className="mt-4 mb-4",
                                     ),                                    
                                     
-                                    html.H3(id="about-funding", children="Funding", className="mb-3"),
+                                    html.H4(id="about-funding", children="Funding", className="mb-3"),
                                     html.P("This project is supported by Jake Holshuh (Cornell class of ’69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats."),
                                     html.P("The German Federal Ministry of Education and Research is funding the development of BirdNET through the project \"BirdNET+\" (FKZ 01|S22072). Additionally, the German Federal Ministry of Environment, Nature Conservation and Nuclear Safety is funding the development of BirdNET through the project \"DeepBirdDetect\" (FKZ 67KI31040E)."),
                                     
-                                    html.H3(id="about-contact", children="Contact", className="mb-3"),
+                                    html.H4(id="about-contact", children="Contact", className="mb-3"),
                                     html.P([
                                         "Dr. Holger Klinck",
                                         html.Br(),
