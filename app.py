@@ -16,6 +16,8 @@ from pages.recorder import display_recorder_page, register_recorder_callbacks
 from pages.species import register_species_callbacks, display_species_page
 from pages.detections import detections_page_content
 from pages.about import about_page_content
+from widgets.footer import footer_content
+from widgets.nav_bar import nav_bar
 
 # Import callback registration function for recent detections
 from widgets.recent_detections import register_recent_detections_callbacks
@@ -62,121 +64,7 @@ def app_layout():
             footer_content(),
         ]
     )
-
-# Define nav bar
-def nav_bar():    
-    return dbc.Navbar(
-            dbc.Container(
-                [
-                    # Logo, Divider, and Title in a single row
-                    dbc.Row(
-                        [
-                            dbc.Col(dcc.Link(html.Img(src=cfg.SITE_ROOT + "/assets/clo-logo-bird.png", className="header-logo"), href=cfg.SITE_ROOT + "/"), width="auto"),
-                            dbc.Col(html.Div(className="divider"), width="auto"),
-                            dbc.Col(dbc.NavbarBrand("SWAMP", className="ml-0"), width="auto"),
-                        ],
-                        align="center",
-                        className="light",
-                    ),
-                    dbc.NavbarToggler(id="navbar-toggler"),
-                    dbc.Collapse(
-                        dbc.Nav(
-                            [
-                                dbc.NavItem(
-                                    dcc.Link(
-                                        [
-                                            html.I(className="bi bi-house-door-fill home-icon"),
-                                            html.Span("Home", className="home-text")
-                                        ],
-                                        href=cfg.SITE_ROOT + "/",
-                                        className="nav-link",
-                                        id="nav-home"
-                                    )
-                                ),
-                                dbc.NavItem(dcc.Link("Dashboard", href=cfg.SITE_ROOT + "/dashboard", className="nav-link", id="nav-dashboard")),
-                                dbc.NavItem(dcc.Link("Detections", href=cfg.SITE_ROOT + "/detections", className="nav-link", id="nav-detections")),
-                                dbc.DropdownMenu(
-                                    label="Recorders",
-                                    children=[
-                                        dbc.DropdownMenuItem(
-                                            dcc.Link(f"Recorder #{recorder_id}", href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}", className="dropdown-item")
-                                        ) for recorder_id in cfg.RECORDERS.keys()
-                                    ],
-                                    nav=True,
-                                ),
-                                dbc.NavItem(dcc.Link("About", href=cfg.SITE_ROOT + "/about", className="nav-link", id="nav-about")),
-                            ],
-                            className="ml-auto",
-                            navbar=True,
-                        ),
-                        id="navbar-collapse",
-                        navbar=True,
-                    ),
-                ],
-                fluid=True,
-            ),
-            color="light",
-            dark=False,
-            className="mb-0 navbar-border",
-            sticky="top",
-        )
     
-# Define the footer content
-def footer_content():
-    return html.Footer(
-        [
-            html.Div(html.Img(src=cfg.SITE_ROOT + "/assets/cornell-lab-logo-full-white.png", className="footer-logo")),
-            dbc.Container(
-                dbc.Row(
-                    [
-                        dbc.Col(
-                            html.Div(
-                                [
-                                    html.H5("K. Lisa Yang Center for Conservation Bioacoustics"),
-                                    html.P(
-                                        "We collect and interpret sounds in nature by developing, applying, and sharing innovative conservation technologies across relevant scales to inform and advance the conservation of wildlife and habitats.",
-                                        style={"textAlign": "justify"},
-                                    ),
-                                    html.H5("SWAMP"),
-                                    html.P(
-                                        "The Sapsucker Woods Acoustic Monitoring Project (SWAMP) is an effort to study bird biodiversity in Sapsucker Woods through acoustic monitoring and advanced AI models for bird call identification. SWAMP is a collaboration between Cornell University, Chemnitz University of Technology and OekoFor GbR.",
-                                        style={"textAlign": "justify"},
-                                    ),
-                                ],
-                                style={"paddingRight": "5px"},
-                            ),
-                            width=12,
-                            md=6,
-                        ),
-                        dbc.Col(
-                            html.Div(
-                                [
-                                    html.H5("BirdNET - Bird Sound Identification"),
-                                    html.P(
-                                        "BirdNET is an advanced AI for bird call identification and poweres this project. BirdNET is supported by Jake Holshuh (Cornell class of '69) and the Arthur Vining Davis Foundation. Our work at the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform wildlife and habitat conservation.",
-                                        style={"textAlign": "justify"},
-                                    ),
-                                    html.P(
-                                        "The German Federal Ministry of Education and Research is funding the development of BirdNET through the project 'BirdNET+' (FKZ 01|S22072). Additionally, the German Federal Ministry of Environment, Nature Conservation and Nuclear Safety is funding the development of BirdNET through the project 'DeepBirdDetect' (FKZ 67KI31040E).",
-                                        style={"textAlign": "justify"},
-                                    ),
-                                ],
-                                style={"paddingLeft": "5px"},
-                            ),
-                            width=12,
-                            md=6,
-                        ),
-                    ]
-                ),
-                fluid=True,
-                className="footer-content",
-            ),
-            html.Div(html.Img(src=cfg.SITE_ROOT + "/assets/cornell-logo-white.png", className="footer-logo")),
-            html.P("© 2024 Cornell University"),
-        ],
-        className="footer",
-    )
-
 # Callback to toggle the collapse on small screens
 @app.callback(
     Output("navbar-collapse", "is_open"),
