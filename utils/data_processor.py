@@ -239,7 +239,7 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
 
     return total_detections
 
-def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000):
+def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5):
     
     url = cfg.API_BASE_URL + 'detections'
     
@@ -299,6 +299,9 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000):
         # compute confidence as percentage
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100)
         
+    # Remove species with less than min_count detections
+    detections = {k: v for k, v in detections.items() if len(v) >= min_count}
+        
     # For each species, sort by confidence and then randomly select 1 detection from the top 10
     last_n = {}
     for species in detections:
@@ -319,7 +322,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000):
     
     return last_n
 
-def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[]):
+def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_count=5):
     
     url = cfg.API_BASE_URL + 'detections'
     
@@ -376,6 +379,9 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[]):
     # Convert np array to list
     for species in detections:
         detections[species]['detections'] = detections[species]['detections'].tolist()
+        
+    # Remove species with less than min_count detections
+    detections = {k: v for k, v in detections.items() if sum(v['detections']) >= min_count}
         
     # Sort by sum of detections
     detections = {k: v for k, v in sorted(detections.items(), key=lambda item: sum(item[1]['detections']), reverse=True)}
