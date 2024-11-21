@@ -1,7 +1,7 @@
 import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output, State, MATCH
+from dash.dependencies import Input, Output, State, MATCH, ALL
 from flask_cors import CORS
 
 from utils import data_processor as dp
@@ -69,14 +69,16 @@ def app_layout():
 @app.callback(
     Output("navbar-collapse", "is_open"),
     [Input("navbar-toggler", "n_clicks"),
+     Input("nav-logo", "n_clicks"),
      Input("nav-home", "n_clicks"),
      Input("nav-dashboard", "n_clicks"),
      Input("nav-detections", "n_clicks"),
      Input("nav-about", "n_clicks"),
-     Input("nav-donate", "n_clicks")],
+     Input("nav-donate", "n_clicks"),
+     Input({"type": "nav-recorder", "index": ALL}, "n_clicks")],
     [State("navbar-collapse", "is_open")],
 )
-def toggle_navbar_collapse(n_toggler, n_home, n_dashboard, n_detections, n_about, n_donate, is_open):
+def toggle_navbar_collapse(n_toggler, n_logo, n_home, n_dashboard, n_detections, n_about, n_donate, n_recorders, is_open):
     ctx = dash.callback_context
     if not ctx.triggered:
         return is_open

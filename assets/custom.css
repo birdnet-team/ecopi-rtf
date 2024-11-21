@@ -83,6 +83,8 @@ a {
 /* Additional styles */
 .header-logo {
     max-height: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .divider {
@@ -139,8 +141,8 @@ nav .navbar-nav {
 #nav-donate {
     color: white;
     background-color: #b31b1b;
-    margin-top: -8px;
-    padding-top: 15px;
+    margin-top: -9px;
+    padding-top: 16px;
     width: 100px;
     text-align: center;
     margin-left: 10px;
@@ -150,7 +152,7 @@ nav .navbar-nav {
     #nav-donate {
         color: #666;
         background-color: inherit;
-        margin-top: 0;
+        margin-top: 7px;
         padding-top: 0;
         width: auto;
         text-align: inherit;
