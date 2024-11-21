@@ -8,7 +8,10 @@ def active_species():
     species_data = dp.get_most_active_species(n=8, min_conf=0.5)
     plot_rows = []
 
-    max_detections = max(data['total_detections'] for data in species_data.values())
+    try:
+        max_detections = max(data['total_detections'] for data in species_data.values())
+    except:
+        max_detections = 1
 
     for index, (species, data) in enumerate(species_data.items()):
         plot_sun_moon = True if index == 0 else False
