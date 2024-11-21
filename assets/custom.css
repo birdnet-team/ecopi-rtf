@@ -70,6 +70,10 @@ a {
     font-size: 0.7em; 
 }
 
+.bold-text {
+    font-weight: 700; 
+}
+
 .full-width {
     width: 100%;
     margin: 0;
@@ -270,6 +274,10 @@ nav .navbar-nav {
 
 .text-right {
     text-align: right;
+}
+
+.text-left {
+    text-align: left;
 }
 
 .text-justify {
@@ -493,7 +501,7 @@ nav .navbar-nav {
 
 .footer .footer-content {
     padding: 20px;
-    max-width: 1024px;
+    max-width: 1200px;
 }
 
 .footer p {
@@ -507,6 +515,15 @@ nav .navbar-nav {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
 }
 
 /* SPECIES PAGE */

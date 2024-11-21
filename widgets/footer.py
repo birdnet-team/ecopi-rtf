@@ -12,43 +12,139 @@ def footer_content():
                 dbc.Row(
                     [
                         dbc.Col(
-                            html.Div(
-                                [
-                                    html.H5("K. Lisa Yang Center for Conservation Bioacoustics"),
-                                    html.P(
-                                        "We collect and interpret sounds in nature by developing, applying, and sharing innovative conservation technologies across relevant scales to inform and advance the conservation of wildlife and habitats.",
-                                        style={"textAlign": "justify"},
-                                    ),
-                                    html.H5("SWAMP"),
-                                    html.P(
-                                        "The Sapsucker Woods Acoustic Monitoring Project (SWAMP) is an effort to study bird biodiversity in Sapsucker Woods through acoustic monitoring and advanced AI models for bird call identification. SWAMP is a collaboration between Cornell University, Chemnitz University of Technology and OekoFor GbR.",
-                                        style={"textAlign": "justify"},
-                                    ),
-                                ],
-                                style={"paddingRight": "5px"},
-                            ),
-                            width=12,
-                            md=6,
+                            [
+                                html.H6("Site Links", className="small-text bold-text"),
+                                html.Div(
+                                    [
+                                        html.A("Home", href=f"{cfg.SITE_ROOT}/", className="footer-link small-text"),
+                                        html.Br(),
+                                        html.A("Detections", href=f"{cfg.SITE_ROOT}/detections", className="footer-link small-text"),
+                                        html.Br(),
+                                        html.A("Recording units", href=f"{cfg.SITE_ROOT}/recorder/1", className="footer-link small-text"),
+                                        html.Br(),
+                                        html.A("About the project", href=f"{cfg.SITE_ROOT}/about", className="footer-link small-text"),
+                                    ],
+                                    className=""
+                                )
+                            ],
+                            width=6,
+                            md=4,
+                            lg=2,
+                            className="mb-4 text-left"
                         ),
                         dbc.Col(
-                            html.Div(
-                                [
-                                    html.H5("BirdNET - Bird Sound Identification"),
-                                    html.P(
-                                        "BirdNET is an advanced AI for bird call identification and poweres this project. BirdNET is supported by Jake Holshuh (Cornell class of '69) and the Arthur Vining Davis Foundation. Our work at the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform wildlife and habitat conservation.",
-                                        style={"textAlign": "justify"},
-                                    ),
-                                    html.P(
-                                        "The German Federal Ministry of Education and Research is funding the development of BirdNET through the project 'BirdNET+' (FKZ 01|S22072). Additionally, the German Federal Ministry of Environment, Nature Conservation and Nuclear Safety is funding the development of BirdNET through the project 'DeepBirdDetect' (FKZ 67KI31040E).",
-                                        style={"textAlign": "justify"},
-                                    ),
-                                ],
-                                style={"paddingLeft": "5px"},
-                            ),
-                            width=12,
-                            md=6,
+                            [
+                                html.H5("K. Lisa Yang Center for Conservation Bioacoustics", className="small-text bold-text"),
+                                html.Div(
+                                    [
+                                        html.A("Center", href="https://www.birds.cornell.edu/ccb/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Our values", href="https://www.birds.cornell.edu/ccb/our-values/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Research", href="https://www.birds.cornell.edu/ccb/research/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Technology", href="https://www.birds.cornell.edu/ccb/technology/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Education", href="https://www.birds.cornell.edu/ccb/education/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Publications", href="https://www.birds.cornell.edu/ccb/publications/", className="footer-link small-text", target="_blank"),
+                                    ],
+                                    className=""
+                                )
+                            ],
+                            width=6,
+                            md=4,
+                            lg=2,
+                            className="mb-4 text-left"
                         ),
-                    ]
+                        dbc.Col(
+                            [
+                                html.H5("Explore More", className="small-text bold-text"),
+                                html.Div(
+                                    [
+                                        html.A("Bird Cams", href="https://www.allaboutbirds.org/cams/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Birds of the World", href="https://birdsoftheworld.org/bow/home", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("eBird Status and Trends", href="https://science.ebird.org/status-and-trends", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Our Youtube Videos", href="https://www.youtube.com/labofornithology", className="footer-link small-text", target="_blank"),
+                                    ],
+                                    className=""
+                                )
+                            ],
+                            width=6,
+                            md=4,
+                            lg=2,
+                            className="mb-4 text-left"
+                        ),
+                        dbc.Col(
+                            [
+                                html.H5("Lifelong Learning", className="small-text bold-text"),
+                                html.Div(
+                                    [
+                                        html.A("Online Courses", href="https://academy.allaboutbirds.org/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Bird Walks & Events", href="https://www.birds.cornell.edu/home/visit/events/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Spring Field Ornithology", href="https://academy.allaboutbirds.org/product/spring-field-ornithology-northeast/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("K–12 Education", href="https://www.birds.cornell.edu/k12", className="footer-link small-text", target="_blank"),
+                                    ],
+                                    className=""
+                                )
+                            ],
+                            width=6,
+                            md=4,
+                            lg=2,
+                            className="mb-4 text-left"
+                        ),
+                        dbc.Col(
+                            [
+                                html.H5("Support Our Cause", className="small-text bold-text"),
+                                html.Div(
+                                    [
+                                        html.A("Join the Lab", href="https://join.birds.cornell.edu/page/150611/donate/1?ea.tracking.id=WXXXXX14C", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Donate", href="https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Monthly Giving", href="https://give.birds.cornell.edu/page/99134/donate/1?ea.tracking.id=BCF", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Membership Services", href="https://www.birds.cornell.edu/home/members/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Shop for Our Cause", href="https://www.birds.cornell.edu/home/shop-for-our-cause/", className="footer-link small-text", target="_blank"),
+                                    ],
+                                    className=""
+                                )
+                            ],
+                            width=6,
+                            md=4,
+                            lg=2,
+                            className="mb-4 text-left"
+                        ),
+                        dbc.Col(
+                            [
+                                html.H5("About", className="small-text bold-text"),
+                                html.Div(
+                                    [
+                                        html.A("Cornell Lab of Ornithology", href="http://birds.cornell.edu/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Web Accessibility Assistance", href="https://www.birds.cornell.edu/home/web-accessibility-assistance/", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Privacy Policy", href="https://privacy.cornell.edu/information-use-cornell", className="footer-link small-text", target="_blank"),
+                                        html.Br(),
+                                        html.A("Terms of Use", href="https://www.birds.cornell.edu/home/terms-of-use/", className="footer-link small-text", target="_blank"),
+                                    ],
+                                    className=""
+                                )
+                            ],
+                            width=6,
+                            md=4,
+                            lg=2,
+                            className="mb-4 text-left"
+                        ),
+                    ],
+                    className="justify-content-center"
                 ),
                 fluid=True,
                 className="footer-content",
