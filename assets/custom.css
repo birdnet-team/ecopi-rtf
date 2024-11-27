@@ -520,6 +520,7 @@ nav .navbar-nav {
 
 .footer-logo {
     max-height: 50px;
+    max-width: 300px;
 }
 
 .footer {

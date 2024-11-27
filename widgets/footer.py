@@ -7,7 +7,7 @@ import config as cfg
 def footer_content():
     return html.Footer(
         [
-            html.Div(html.Img(src=cfg.SITE_ROOT + "/assets/cornell-lab-logo-full-white.png", className="footer-logo")),
+            html.Div(html.Img(src=cfg.SITE_ROOT + "/assets/clo_yangcenterconservationbioacoustics_horizontal_white.png", className="footer-logo")),
             dbc.Container(
                 dbc.Row(
                     [
