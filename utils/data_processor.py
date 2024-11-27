@@ -272,11 +272,10 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
     return total_detections
 
 def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5):
-    
     url = cfg.API_BASE_URL + 'detections'
     
     headers = {
-        'Authorization': f'Token {cfg.API_TOKEN}'
+        'Authorization': f'Token ' + cfg.API_TOKEN
     }
     params = {}
     
@@ -289,26 +288,37 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5):
     # Only detections with audio
     params['has_media'] = True
     
-    # We only want detections from the last x hours
-    # so we have to set datetime_gte and datetime_lte
-    now = datetime.now()
-    params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
-    params['datetime_recording__lte'] = now.isoformat()  
-    
     # Only retrieve certain fields
     params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'
     
     # Pagination/limit
     params['limit'] = limit
     
-    # Send request
-    response = requests.get(url, headers=headers, params=params)
+    def fetch_detections(hours):
+        if hours > 0:
+            now = datetime.now()
+            params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
+            params['datetime_recording__lte'] = now.isoformat()
+        else:
+            params.pop('datetime_recording__gte', None)
+            params.pop('datetime_recording__lte', None)
+        
+        # Send request
+        response = requests.get(url, headers=headers, params=params)
+        try:
+            response = response.json()
+        except:
+            # Empty response
+            return []
+        
+        return response
     
-    try:
-        response = response.json()
-    except:
-        # Empty response
-        return {}
+    # Initial fetch
+    response = fetch_detections(hours)
+    
+    # Retry with hours set to -1 if the initial response is empty
+    if not response:
+        response = fetch_detections(-1)
     
     # Parse detections
     detections = {}
@@ -431,8 +441,9 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     for species in detections:
         detections[species]['detections'] = detections[species]['detections'].tolist()
         
-    # Remove species with less than min_count detections
-    detections = {k: v for k, v in detections.items() if sum(v['detections']) >= min_count}
+    # Remove species with less than min_count detections (but only if we have at least one species with more than min_count detections, if we don't, keep all species)
+    if len([k for k, v in detections.items() if sum(v['detections']) >= min_count]) > 0:
+        detections = {k: v for k, v in detections.items() if sum(v['detections']) >= min_count}
         
     # Sort by sum of detections
     detections = {k: v for k, v in sorted(detections.items(), key=lambda item: sum(item[1]['detections']), reverse=True)}
