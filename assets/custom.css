@@ -87,6 +87,23 @@ a {
     margin-bottom: 5px;
 }
 
+.header-logo-short {
+    display: none;
+}
+
+.header-logo-long {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .header-logo-short {
+        display: block;
+    }
+    .header-logo-long {
+        display: none;
+    }
+}
+
 .divider {
     border-left: 1px solid rgb(46, 46, 46); 
     height: 25px; 

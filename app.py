@@ -69,7 +69,8 @@ def app_layout():
 @app.callback(
     Output("navbar-collapse", "is_open"),
     [Input("navbar-toggler", "n_clicks"),
-     Input("nav-logo", "n_clicks"),
+     Input("nav-logo-short", "n_clicks"),
+     Input("nav-logo-long", "n_clicks"),
      Input("nav-home", "n_clicks"),
      Input("nav-dashboard", "n_clicks"),
      Input("nav-detections", "n_clicks"),
@@ -78,7 +79,7 @@ def app_layout():
      Input({"type": "nav-recorder", "index": ALL}, "n_clicks")],
     [State("navbar-collapse", "is_open")],
 )
-def toggle_navbar_collapse(n_toggler, n_logo, n_home, n_dashboard, n_detections, n_about, n_donate, n_recorders, is_open):
+def toggle_navbar_collapse(n_toggler, n_logo_short, n_logo_long, n_home, n_dashboard, n_detections, n_about, n_donate, n_recorders, is_open):
     ctx = dash.callback_context
     if not ctx.triggered:
         return is_open
