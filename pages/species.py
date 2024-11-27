@@ -139,7 +139,7 @@ def register_species_callbacks(app):
         species_data = dp.get_species_data(species_id)
         species_stats = dp.get_species_stats(species_id)
         total_detections = dp.get_total_detections(species_list=[species_id], days=-1, min_count=0)['total_detections']
-        activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*7, species_list=[species_id])
+        activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*7, species_list=[species_id], min_count=0)
         
         # Create info row
         info_row = dbc.Row([

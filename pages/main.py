@@ -171,7 +171,7 @@ def register_main_callbacks(app):
     app.clientside_callback(
         """
         function(n_clicks) {
-            openLivestream('https://mp3s.nc.u-tokyo.ac.jp/Fuji_CyberForest.mp3');
+            openLivestream('http://35.211.83.179:8000/ssw');
         }
         """,
         Output("livestream-output-placeholder", "value"),

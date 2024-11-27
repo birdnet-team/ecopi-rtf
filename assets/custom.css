@@ -238,6 +238,7 @@ nav .navbar-nav {
     align-items: center; 
     cursor: pointer; 
     z-index: 10; 
+    display: none; /* for now, hide the button */
 }
 
 .listen-live-button i {
@@ -778,6 +779,7 @@ nav .navbar-nav {
 .species-column {
     display: flex;
     align-items: center;
+    text-align: left !important;
 }
 
 .species-thumbnail {

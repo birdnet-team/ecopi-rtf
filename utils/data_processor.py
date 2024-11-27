@@ -15,16 +15,46 @@ random.seed(42)
 def get_current_week():
     
     # Return current week 1..48 (4 weeks per month)
-    return datetime.now().isocalendar()[1]
+    return min(48, max(1, int(datetime.now().isocalendar()[1] / 52 * 48)))
+
+def date_to_last_seen(date, time_format='24h'):
+    # Convert date to '16 hrs ago' or '2 days ago'
+    # below 1hr use minutes
+    # below 48 hrs use hours
+    # above 48 hrs use days
+    try:
+        if time_format == '12h':
+            date = datetime.strptime(date, '%Y/%d/%m - %I:%M %p')
+        else:
+            date = datetime.strptime(date, '%Y/%d/%m - %H:%M')
+    except ValueError:
+        # Try the other format if the first one fails
+        try:
+            date = datetime.strptime(date, '%Y/%d/%m - %H:%M')
+        except ValueError:
+            date = datetime.strptime(date, '%Y/%d/%m - %I:%M %p')
+    
+    delta = datetime.now() - date
+    
+    if delta.total_seconds() < 60 * 60:
+        return str(int(delta.total_seconds() / 60)) + ' mins ago'
+    
+    if delta.total_seconds() < 60 * 60 * 48:
+        return str(int(delta.total_seconds() / 3600)) + ' hrs ago'
+    
+    return str(int(delta.total_seconds() / 3600 / 24)) + ' days ago'
 
 def to_local_time(utc_time, time_format='24h'):
-    
     # Convert UTC time to local time
-    utc_time = datetime.strptime(utc_time, '%Y/%d/%m - %H:%M')
+    try:
+        utc_time = datetime.strptime(utc_time, '%Y/%d/%m - %I:%M %p')
+    except ValueError:
+        utc_time = datetime.strptime(utc_time, '%Y/%d/%m - %H:%M')
+    
     timezone = pytz.timezone(cfg.TIMEZONE)
     local_time = utc_time.astimezone(timezone)
     
-    if time_format == '12h':    
+    if time_format == '12h':
         return local_time.strftime('%Y/%d/%m - %I:%M %p')
     else:
         return local_time.strftime('%Y/%d/%m - %H:%M')
@@ -37,7 +67,7 @@ def get_confidence_score(species, confidence):
     
     week = get_current_week()
     try:
-        species_freq = cfg.SPECIES_DATA[species]['frequencies'][week]
+        species_freq = cfg.SPECIES_DATA[species]['frequencies'][week - 1]
     except:
         species_freq = 10
         
@@ -78,10 +108,9 @@ def get_recorder_state(recorder_id):
     response = response.json()
     
     last_status = response[0]
-    time_since_last_status = datetime.now() - datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')    
     
-        
-    last_update = to_local_time(datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M'), cfg.TIME_FORMAT)
+    time_since_last_status = datetime.now() - datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')            
+    last_update = datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
     
     is_ok = True if time_since_last_status.total_seconds() < 3600 * 24 else False
     
@@ -97,7 +126,7 @@ def get_recorder_state(recorder_id):
     
     return {'current_status': current_status, 
             'status_color': status_color, 
-            'last_update': last_update, 
+            'last_update': date_to_last_seen(last_update),
             'battery': get_battery_status(last_status['voltage']),
             'cpu_temp': last_status['cpu_temp'], 
             'is_ok': is_ok}
@@ -122,6 +151,9 @@ def get_recorder_location(recorder_id):
 def get_species_data(species):
     
     data = {}
+    
+    if not species in cfg.SPECIES_DATA:
+        return data
     
     # This is example data, we'll parse this from the species data later
     data['common_name'] = cfg.SPECIES_DATA[species]['common_name']
@@ -148,7 +180,7 @@ def get_species_data(species):
         data['image_url_highres'] = cfg.SITE_ROOT + cfg.SPECIES_DATA[species]['image']['src']
     
     data['image_author'] = cfg.SPECIES_DATA[species]['image']['author']
-    data['frequency'] = cfg.SPECIES_DATA[species]['frequencies'][get_current_week()] / 100
+    data['frequency'] = cfg.SPECIES_DATA[species]['frequencies'][get_current_week() - 1] / 100
     data['species_code'] = species 
     
     return data
@@ -323,7 +355,6 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5):
     return last_n
 
 def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_count=5):
-    
     url = cfg.API_BASE_URL + 'detections'
     
     headers = {
@@ -337,21 +368,41 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     # Minimum confidence
     params['confidence_gte'] = min_conf
     
-    # We only want detections from the last 24 hours
-    # so we have to set datetime_gte and datetime_lte
-    now = datetime.now()
-    params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
-    params['datetime_recording__lte'] = now.isoformat()  
-    
     # Only retrieve certain fields
     params['only'] = 'species_code, datetime, confidence'
+    
+    # set species code if species_list has len == 1
+    if len(species_list) == 1:
+        params['species_code'] = species_list[0]
     
     # Pagination/limit
     params['limit'] = 'None'
     
-    # Send request
-    response = requests.get(url, headers=headers, params=params)
-    response = response.json()
+    def fetch_detections(hours):
+        if hours > 0:
+            now = datetime.now(UTC)
+            params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
+            params['datetime_recording__lte'] = now.isoformat()
+        else:
+            params.pop('datetime_recording__gte', None)
+            params.pop('datetime_recording__lte', None)  
+        
+        # Send request
+        response = requests.get(url, headers=headers, params=params)
+        try:
+            response = response.json()
+        except:
+            # Empty response
+            return []
+        
+        return response
+    
+    # Initial fetch
+    response = fetch_detections(hours)
+    
+    # Retry with hours set to -1 if the initial response is empty
+    if not response:
+        response = fetch_detections(-1)
     
     # Parse detections
     detections = {}
@@ -402,7 +453,6 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     return detections
 
 def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=168, limit=1000, max_results=50):
-    
     url = cfg.API_BASE_URL + 'detections'
     
     headers = {
@@ -420,41 +470,47 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     params['has_media'] = True
     
     # Only detections of species_code
-    if not species_code is None:
+    if species_code is not None:
         params['species_code'] = species_code
     
     # Recorder field ID
-    if not recorder_id is None:
+    if recorder_id is not None:
         params['recorder_field_id'] = recorder_id
-    
-    # We only want detections from the last x hours
-    # so we have to set datetime_gte and datetime_lte
-    if hours > 0:
-        now = datetime.now(UTC)
-        params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
-        params['datetime_recording__lte'] = now.isoformat()  
-    
+        
     # Only retrieve certain fields
     params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'
     
     # Pagination/limit
     params['limit'] = limit
     
-    # Send request
-    response = requests.get(url, headers=headers, params=params)
-    try:
-        response = response.json()
-    except:
-        # Empty response
-        return []
+    def fetch_detections(hours):
+        if hours > 0:
+            now = datetime.now(UTC)
+            params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
+            params['datetime_recording__lte'] = now.isoformat()
+        else:
+            params.pop('datetime_recording__gte', None)
+            params.pop('datetime_recording__lte', None)     
         
-    # Randomly remove some detections if there are too many
-    #if len(response) > max_results:
-    #    response = random.sample(response, max_results)
+        # Send request
+        response = requests.get(url, headers=headers, params=params)
+        try:
+            response = response.json()
+        except:
+            # Empty response
+            return []
         
+        return response
+    
+    # Initial fetch
+    response = fetch_detections(hours)
+    
+    # Retry with hours set to -1 if the initial response is empty
+    if not response:
+        response = fetch_detections(-1)
+    
     # For each detection, get the confidence score
     for item in response:
-        
         # format date
         item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
         
@@ -463,17 +519,18 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
         
         # compute confidence as percentage
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100) / 10.0
-        
+    
     # Sort by confidence
-    response = sorted(response, key=lambda x: x['datetime'], reverse=True)      
+    response = sorted(response, key=lambda x: x['datetime'], reverse=True)
     
     # Limit to max_results
-    response = response[:max_results]         
+    response = response[:max_results]
     
     return response
     
 if __name__ == '__main__':    
     
+    #print('Current week: ', get_current_week())
     
     #print('Number of detections in the last 24 hours:', get_total_detections(days=1)['total_detections'])
     #print('Number of detections with confidence >= 0.5:', get_total_detections(min_conf=0.5)['total_detections'])
@@ -481,11 +538,13 @@ if __name__ == '__main__':
     #print(get_last_n_detections())
     #print(get_most_active_species())
     
+    print(get_most_active_species(n=1, min_conf=0.5, hours=24*7, species_list=['whbnut']))
+    
     #print(get_recorder_data(min_conf=0.5, days=2))
                                 
     #print(get_species_stats('norcar', hours=24))
     
-    print(get_recorder_state(9))
+    #print(get_recorder_state(10))
     #print(get_recorder_location(9))
     
     #print(get_total_detections(min_conf=0.5, species_list=['norcar'], days=-1))
