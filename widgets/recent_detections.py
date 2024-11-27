@@ -9,7 +9,7 @@ import config as cfg
 
 def recent_detections(num_cards=8, hours=24):
     last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours)
-    show_more = True if len(last_detections) >= 12 else False
+    show_more = True if len(last_detections) >= 12 and num_cards <= 12 else False
     cards = []
     datalist = []
 
