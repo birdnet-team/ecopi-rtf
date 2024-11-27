@@ -17,7 +17,7 @@ def load_species_data(project='amic'):
 API_TOKEN = os.getenv('API_TOKEN')
 MAPBOX_TOKEN = os.getenv('MAPBOX_TOKEN')
 API_BASE_URL = 'https://api.ecopi.de/api/v0.1/'
-SITE_ROOT = '/swamp' # '' for dev and '/swamp' for production
+SITE_ROOT = '' # '' for dev and '/swamp' for production
 
 # AMiC project configuration
 """
