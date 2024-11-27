@@ -50,7 +50,7 @@ def create_recorder_table_headers():
 def recorder_page_header(recorder_id):
     return html.Div(
         [
-            html.Img(src=cfg.SITE_ROOT + "/assets/recorder_img/dummy_recorder.jpg", className="species-header-image"),
+            html.Img(src=cfg.SITE_ROOT + "/assets/recorder_img/" + cfg.RECORDERS[int(recorder_id)]['img'], className="species-header-image"),
             html.Div(
                 dbc.Row(
                     [

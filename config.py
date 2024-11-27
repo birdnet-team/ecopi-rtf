@@ -17,7 +17,7 @@ def load_species_data(project='amic'):
 API_TOKEN = os.getenv('API_TOKEN')
 MAPBOX_TOKEN = os.getenv('MAPBOX_TOKEN')
 API_BASE_URL = 'https://api.ecopi.de/api/v0.1/'
-SITE_ROOT = '' # '' for dev and '/swamp' for production
+SITE_ROOT = '/swamp' # '' for dev and '/swamp' for production
 
 # AMiC project configuration
 """
@@ -45,13 +45,14 @@ DEPLOYMENT_LON = -76.451566
 TIMEZONE = 'America/New_York'
 TIME_FORMAT = '12h'
 RECORDERS = {
-    1: {'id': '0271', 'lat': 42.475, 'lon': -76.445, 'habitat': 'Forest'},
-    2: {'id': '0829', 'lat': 42.478, 'lon': -76.451, 'habitat': 'Grassland'},
-    3: {'id': '0269', 'lat': 42.469, 'lon': -76.449, 'habitat': 'Wetland'},
-    4: {'id': '0270', 'lat': 42.480, 'lon': -76.453, 'habitat': 'Forest'},
-    5: {'id': '0272', 'lat': 42.481, 'lon': -76.451, 'habitat': 'Forest'},
-    7: {'id': '0274', 'lat': 42.472, 'lon': -76.446, 'habitat': 'Grassland'},
-    8: {'id': '0275', 'lat': 42.480, 'lon': -76.457, 'habitat': 'Grassland'},
-    9: {'id': '0276', 'lat': 42.476, 'lon': -76.451, 'habitat': 'Urban'},
-    10: {'id': '0277', 'lat': 42.479, 'lon': -76.450, 'habitat': 'Urban'},
+    1: {'id': '0271', 'lat': 42.475, 'lon': -76.445, 'habitat': 'Forest', 'img': 'dummy_recorder.jpg'},
+    2: {'id': '0829', 'lat': 42.478, 'lon': -76.451, 'habitat': 'Grassland', 'img': 'dummy_recorder.jpg'},
+    3: {'id': '0269', 'lat': 42.469, 'lon': -76.449, 'habitat': 'Wetland', 'img': 'dummy_recorder.jpg'},
+    4: {'id': '0270', 'lat': 42.480, 'lon': -76.453, 'habitat': 'Forest', 'img': 'dummy_recorder.jpg'},
+    5: {'id': '0272', 'lat': 42.4796, 'lon': -76.4514, 'habitat': 'Pond', 'img': 'swamp_unit_5.jpg'},
+    7: {'id': '0274', 'lat': 42.472, 'lon': -76.446, 'habitat': 'Grassland', 'img': 'dummy_recorder.jpg'},
+    8: {'id': '0275', 'lat': 42.480, 'lon': -76.457, 'habitat': 'Grassland', 'img': 'dummy_recorder.jpg'},
+    9: {'id': '0276', 'lat': 42.476, 'lon': -76.451, 'habitat': 'Urban', 'img': 'dummy_recorder.jpg'},
+    10: {'id': '0277', 'lat': 42.4742, 'lon': -76.4488, 'habitat': 'Shrubs and pond', 'img': 'swamp_unit_10.jpg'},
+
 }
