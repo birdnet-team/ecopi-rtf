@@ -24,15 +24,15 @@ def date_to_last_seen(date, time_format='24h'):
     # above 48 hrs use days
     try:
         if time_format == '12h':
-            date = datetime.strptime(date, '%Y/%d/%m - %I:%M %p')
+            date = datetime.strptime(date, '%m/%d/%Y - %I:%M %p')
         else:
-            date = datetime.strptime(date, '%Y/%d/%m - %H:%M')
+            date = datetime.strptime(date, '%m/%d/%Y - %H:%M')
     except ValueError:
         # Try the other format if the first one fails
         try:
-            date = datetime.strptime(date, '%Y/%d/%m - %H:%M')
+            date = datetime.strptime(date, '%m/%d/%Y - %H:%M')
         except ValueError:
-            date = datetime.strptime(date, '%Y/%d/%m - %I:%M %p')
+            date = datetime.strptime(date, '%m/%d/%Y - %I:%M %p')
     
     delta = datetime.now() - date
     
@@ -47,17 +47,17 @@ def date_to_last_seen(date, time_format='24h'):
 def to_local_time(utc_time, time_format='24h'):
     # Convert UTC time to local time
     try:
-        utc_time = datetime.strptime(utc_time, '%Y/%d/%m - %I:%M %p')
+        utc_time = datetime.strptime(utc_time, '%m/%d/%Y - %I:%M %p')
     except ValueError:
-        utc_time = datetime.strptime(utc_time, '%Y/%d/%m - %H:%M')
+        utc_time = datetime.strptime(utc_time, '%m/%d/%Y - %H:%M')
     
     timezone = pytz.timezone(cfg.TIMEZONE)
     local_time = utc_time.astimezone(timezone)
     
     if time_format == '12h':
-        return local_time.strftime('%Y/%d/%m - %I:%M %p')
+        return local_time.strftime('%m/%d/%Y - %I:%M %p')
     else:
-        return local_time.strftime('%Y/%d/%m - %H:%M')
+        return local_time.strftime('%m/%d/%Y - %H:%M')
 
 def is_in_species_data(species_code):
     
@@ -110,7 +110,7 @@ def get_recorder_state(recorder_id):
     last_status = response[0]
     
     time_since_last_status = datetime.now() - datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')            
-    last_update = datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
+    last_update = datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y - %H:%M')
     
     is_ok = True if time_since_last_status.total_seconds() < 3600 * 24 else False
     
@@ -333,7 +333,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5):
             detections[item['species_code']] = []
         detections[item['species_code']].append(item)
         # format date
-        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
+        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y - %H:%M')
         
         # convert to local time
         item['datetime'] = to_local_time(item['datetime'], cfg.TIME_FORMAT)
@@ -430,7 +430,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
             detections[item['species_code']] = {'detections': np.zeros(24, dtype=int)}
             
         # convert to local time
-        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
+        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y - %H:%M')
         item['datetime'] = to_local_time(item['datetime'], time_format='24h')
         
         # format date
@@ -523,7 +523,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     # For each detection, get the confidence score
     for item in response:
         # format date
-        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%Y/%d/%m - %H:%M')
+        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y - %H:%M')
         
         # convert to local time
         item['datetime'] = to_local_time(item['datetime'], cfg.TIME_FORMAT)
