@@ -530,6 +530,9 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
         
         # compute confidence as percentage
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100) / 10.0
+        
+    # Remmove species not in species data
+    response = [item for item in response if is_in_species_data(item['species_code'])]
     
     # Sort by confidence
     response = sorted(response, key=lambda x: x['datetime'], reverse=True)
