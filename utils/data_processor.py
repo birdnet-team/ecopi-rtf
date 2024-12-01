@@ -19,7 +19,7 @@ def get_current_week():
 
 def date_to_last_seen(date, time_format='24h'):
     # Convert date to '16 hrs ago' or '2 days ago'
-    # below 1hr use minutes
+    # below 1 hr use minutes
     # below 48 hrs use hours
     # above 48 hrs use days
     try:
@@ -36,13 +36,19 @@ def date_to_last_seen(date, time_format='24h'):
     
     delta = datetime.now() - date
     
+    if delta.total_seconds() < 60:
+        return '1 min ago'
+    
     if delta.total_seconds() < 60 * 60:
-        return str(int(delta.total_seconds() / 60)) + ' mins ago'
+        mins = int(delta.total_seconds() / 60)
+        return f"{mins} min{'s' if mins > 1 else ''} ago"
     
     if delta.total_seconds() < 60 * 60 * 48:
-        return str(int(delta.total_seconds() / 3600)) + ' hrs ago'
+        hrs = int(delta.total_seconds() / 3600)
+        return f"{hrs} hr{'s' if hrs > 1 else ''} ago"
     
-    return str(int(delta.total_seconds() / 3600 / 24)) + ' days ago'
+    days = int(delta.total_seconds() / 3600 / 24)
+    return f"{days} day{'s' if days > 1 else ''} ago"
 
 def to_local_time(utc_time, time_format='24h'):
     # Convert UTC time to local time
