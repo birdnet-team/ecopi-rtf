@@ -126,7 +126,7 @@ def register_recorder_callbacks(app):
         recorder_id = int(recorder_id)
         recorder_info = dp.get_recorder_state(recorder_id)
         total_detections = dp.get_total_detections(recorder_list=[recorder_id], days=-1, min_count=0)['total_detections']
-        recorder_stats = dp.get_species_stats(recorder_id=recorder_id)
+        recorder_stats = dp.get_species_stats(recorder_id=recorder_id, max_results=25)
         
         # Get additional species info for each detection
         for detection in recorder_stats:
