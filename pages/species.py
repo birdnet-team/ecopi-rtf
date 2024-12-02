@@ -92,7 +92,7 @@ def display_species_page(species_id):
             dbc.Container(
                 [
                     html.Div(id="species-info-row"),
-                    html.H5("Daily activity (past week):", className="recent-detections-heading"),
+                    html.H5("Hourly activity (past month):", className="recent-detections-heading"),
                     html.Div(id="species-activity-plot"),
                     html.H5("Recent detections:", className="recent-detections-heading"),
                     dbc.Table(
@@ -137,9 +137,9 @@ def register_species_callbacks(app):
 
         # Load all required data
         species_data = dp.get_species_data(species_id)
-        species_stats = dp.get_species_stats(species_id)
+        species_stats = dp.get_species_stats(species_id, max_results=25)
         total_detections = dp.get_total_detections(species_list=[species_id], days=-1, min_count=0)['total_detections']
-        activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*7, species_list=[species_id], min_count=0)
+        activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*30, species_list=[species_id], min_count=0)
         
         # Create info row
         info_row = dbc.Row([
@@ -147,7 +147,7 @@ def register_species_callbacks(app):
                 html.H5(f"{total_detections:,} total detections"),
                 html.H6([
                     html.I(className="bi bi-clock"),
-                    f" {species_stats[0]['datetime'] if species_stats else 'N/A'}"
+                    f" {dp.date_to_last_seen(species_stats[0]['datetime'], time_format=cfg.TIME_FORMAT) if species_stats else 'N/A'}"
                 ], className="small-text"),
             ], width=9, xs=7),
             dbc.Col(
