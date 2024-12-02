@@ -1,5 +1,6 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
+from datetime import datetime
 
 import config as cfg
 
@@ -31,10 +32,9 @@ def footer_content():
                         ),
                         dbc.Col(
                             [
-                                html.H5("K. Lisa Yang Center for Conservation Bioacoustics", className="small-text bold-text"),
+                                html.H5("Yang Center", className="small-text bold-text"),
                                 html.Ul(
                                     [
-                                        html.Li(html.A("Center", href="https://www.birds.cornell.edu/ccb/", className="footer-link small-text", target="_blank")),
                                         html.Li(html.A("Our values", href="https://www.birds.cornell.edu/ccb/our-values/", className="footer-link small-text", target="_blank")),
                                         html.Li(html.A("Research", href="https://www.birds.cornell.edu/ccb/research/", className="footer-link small-text", target="_blank")),
                                         html.Li(html.A("Technology", href="https://www.birds.cornell.edu/ccb/technology/", className="footer-link small-text", target="_blank")),
@@ -129,7 +129,7 @@ def footer_content():
                 className="footer-content",
             ),
             html.Div(html.Img(src=cfg.SITE_ROOT + "/assets/logo_img/cornell-logo-white.png", className="footer-logo")),
-            html.P("© 2024 Cornell University"),
+            html.P(f"© {datetime.now().strftime('%Y')} Cornell University"),
         ],
         className="footer",
     )
