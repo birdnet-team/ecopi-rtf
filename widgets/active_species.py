@@ -67,6 +67,20 @@ def active_species():
         )
         
         plot_rows.append(plot_row)
+        
+    # Append a sentence on what the chart shows
+    plot_rows.append(
+        dbc.Row(
+            dbc.Col([
+                html.P(),
+                html.Div("Dark blue bars show hourly detections of a species. Light blue bars represent nighttime, while light yellow bars represent daytime.",
+                       className="text-muted",
+                       style={"text-align": "center", "width": "100%"}),
+                ],
+                className="m-2"
+            )
+        )
+    )
 
     if not plot_rows:
         placeholder = html.P("Uuups...something went wrong. Please try to reload.", 
