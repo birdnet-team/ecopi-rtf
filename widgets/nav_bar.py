@@ -13,7 +13,7 @@ def nav_bar():
                         dbc.Col(
                             dcc.Link(
                                 html.Img(
-                                    src=cfg.SITE_ROOT + "/assets/clo_swamp_short_mobile_horizontal_color.png",
+                                    src=cfg.SITE_ROOT + "/assets/logo_img/clo_swamp_short_mobile_horizontal_color.png",
                                     className="header-logo header-logo-short",
                                     id="nav-logo-short"
                                 ),
@@ -24,7 +24,7 @@ def nav_bar():
                         dbc.Col(
                             dcc.Link(
                                 html.Img(
-                                    src=cfg.SITE_ROOT + "/assets/clo_swamp_short_horizontal_color.png",
+                                    src=cfg.SITE_ROOT + "/assets/logo_img/clo_swamp_short_horizontal_color.png",
                                     className="header-logo header-logo-long",
                                     id="nav-logo-long"
                                 ),

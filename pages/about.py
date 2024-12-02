@@ -6,7 +6,7 @@ import config as cfg
 def about_page_header():
     return html.Div(
         [
-            html.Img(src=cfg.SITE_ROOT + f"/assets/ssw_img/ssw_about_header_{random.randint(1, 5)}.jpg", className="species-header-image"),
+            html.Img(src=cfg.SITE_ROOT + f"/assets/header_img/ssw_about_header_{random.randint(1, 5)}.jpg", className="species-header-image"),
             html.Div(
                 dbc.Row(
                     [
@@ -77,7 +77,7 @@ def about_page_content():
                                     html.H4(id="about-recorder", children="Recording Units", className="mb-3"),
                                     html.Div(
                                         [
-                                            html.Img(src=cfg.SITE_ROOT + "/assets/content-img/swamp_recording_unit.jpg", className="recorder-image float-left"),
+                                            html.Img(src=cfg.SITE_ROOT + "/assets/content_img/swamp_recording_unit.jpg", className="recorder-image float-left"),
                                             html.P([
                                                 "Our recording units are designed to operate in remote and challenging environments. They are solar-powered, weather-resistant, and connected to the internet, enabling the automatic upload of recorded sounds to a central server for analysis. ",
                                                 html.P(),
@@ -110,7 +110,7 @@ def about_page_content():
                                         [
                                             dbc.Col(
                                                 [                                                    
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content-img/stefan.png", className="team-image"),
+                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/stefan.png", className="team-image"),
                                                     html.H5("Stefan Kahl", className="team-name"),
                                                     html.H6("Project lead and web development")
                                                 ],
@@ -120,7 +120,7 @@ def about_page_content():
                                             ),
                                             dbc.Col(
                                                 [
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content-img/felix.png", className="team-image"),
+                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/felix.png", className="team-image"),
                                                     html.H5("Felix Günther", className="team-name"),
                                                     html.H6("Backend development")
                                                 ],
@@ -130,7 +130,7 @@ def about_page_content():
                                             ),
                                             dbc.Col(
                                                 [
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content-img/patrick.png", className="team-image"),
+                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/patrick.png", className="team-image"),
                                                     html.H5("Patrick T. Chaopricha", className="team-name"),
                                                     html.H6("Hardware deployment")
                                                 ],
@@ -140,7 +140,7 @@ def about_page_content():
                                             ),
                                             dbc.Col(
                                                 [
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content-img/max.png", className="team-image"),
+                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/max.png", className="team-image"),
                                                     html.H5("Max Mauermann", className="team-name"),
                                                     html.H6("Web development")
                                                 ],
@@ -150,7 +150,7 @@ def about_page_content():
                                             ),
                                             dbc.Col(
                                                 [
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content-img/josef.png", className="team-image"),
+                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/josef.png", className="team-image"),
                                                     html.H5("Josef Haupt", className="team-name"),
                                                     html.H6("AI development")
                                                 ],
@@ -160,7 +160,7 @@ def about_page_content():
                                             ),
                                             dbc.Col(
                                                 [
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content-img/raja.png", className="team-image"),
+                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/raja.png", className="team-image"),
                                                     html.H5("Raja Seifert", className="team-name"),
                                                     html.H6("Visual design")
                                                 ],
@@ -176,19 +176,19 @@ def about_page_content():
                                     dbc.Row(
                                         [
                                             dbc.Col(
-                                                html.Img(src=cfg.SITE_ROOT + "/assets/logo-img/logo_box_lab.png", className="partner-logo"),
+                                                html.Img(src=cfg.SITE_ROOT + "/assets/logo_img/logo_box_lab.png", className="partner-logo"),
                                                 sm=4,
                                                 xs=6,
                                                 className="text-center mb-4"
                                             ),
                                             dbc.Col(
-                                                html.Img(src=cfg.SITE_ROOT + "/assets/logo-img/logo_box_tuc.png", className="partner-logo"),
+                                                html.Img(src=cfg.SITE_ROOT + "/assets/logo_img/logo_box_tuc.png", className="partner-logo"),
                                                 sm=4,
                                                 xs=6,
                                                 className="text-center mb-4"
                                             ),
                                             dbc.Col(
-                                                html.Img(src=cfg.SITE_ROOT + "/assets/logo-img/logo_box_oekofor.png", className="partner-logo"),
+                                                html.Img(src=cfg.SITE_ROOT + "/assets/logo_img/logo_box_oekofor.png", className="partner-logo"),
                                                 sm=4,
                                                 xs=12,
                                                 className="text-center mb-4"
