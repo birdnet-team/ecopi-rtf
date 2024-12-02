@@ -5,7 +5,7 @@ from utils import data_processor as dp
 from utils import plots
 
 def active_species():
-    species_data = dp.get_most_active_species(n=8, min_conf=0.5)
+    species_data = dp.get_most_active_species(n=8, min_conf=0.5, hours=7*24)
     plot_rows = []
 
     try:
