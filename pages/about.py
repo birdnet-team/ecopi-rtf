@@ -56,20 +56,14 @@ def about_page_content():
                                     html.P([
                                         "The Sapsucker Woods Acoustic Monitoring Project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Sapsucker Woods, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area. ",
                                         html.P(),
-                                        "The project uses solar-powered recording units equipped with BirdNET software to capture and analyze bird songs and other natural sounds in real-time. These recordings provide a window into the daily rhythms of the woods, revealing which species are active and when. Visitors can see the results of this technology on interactive displays, learning about the species identified and the patterns uncovered. ",
-                                        html.P(),
-                                        "In addition to its educational role, the project demonstrates the potential of acoustic monitoring for gathering insights into wildlife activity. By continuously collecting and analyzing sound data, it highlights how such methods can help us better understand and connect with the environment. ",
-                                        #html.P(),
-                                        #"The Sapsucker Woods Acoustic Monitoring Project is as much about fostering curiosity and engagement as it is about research. By bringing the sounds of nature to life, it encourages visitors to explore the rich soundscapes of the woods and discover the stories they tell about the world around us."
+                                        "The project uses solar-powered recording units equipped with BirdNET software to capture and analyze bird songs and other natural sounds in real-time. These recordings provide a window into the daily rhythms of the woods, revealing which species are active and when.",
                                     ]),
                                     
                                     html.H4(id="about-pam", children="Acoustic Monitoring", className="mb-3"),
                                     html.P([
-                                        "Acoustic monitoring is a valuable method for studying ecosystems and biodiversity. By recording and analyzing soundscapes, it allows researchers to detect species presence and behavior without disturbing their habitats. This approach is particularly useful for monitoring elusive or nocturnal species such as birds, bats, and frogs. ",
+                                        "Acoustic monitoring is a valuable method for studying ecosystems and biodiversity. By recording and analyzing soundscapes, it allows researchers to detect species presence and behavior without disturbing their habitats.",
                                         html.P(),
                                         "One of the main benefits of acoustic monitoring is its ability to provide long-term data. Continuous recording over extended periods helps reveal patterns in species activity, seasonal changes, and responses to environmental factors. This data is crucial for tracking ecosystem health and assessing conservation efforts. ",
-                                        html.P(),
-                                        "Advances in artificial intelligence have greatly enhanced acoustic monitoring. AI-powered tools, like BirdNET, can automatically identify species from their sounds, significantly reducing the time required for manual analysis. This enables researchers to process large datasets more efficiently and focus on conservation actions. ",
                                         html.P(),
                                         "AI-driven acoustic monitoring has already contributed to conservation successes, such as tracking endangered species, monitoring habitat recovery, and identifying environmental changes. By combining long-term acoustic data with AI, researchers gain valuable insights to support effective conservation strategies."
                                     ]),
@@ -100,7 +94,8 @@ def about_page_content():
                                         html.P(),
                                         "To analyze sounds, BirdNET converts audio recordings into spectrograms, which are visual representations of sound showing frequency, intensity, and time. These spectrograms highlight the unique acoustic patterns of bird calls and songs, much like a fingerprint for each species. The neural network is trained to recognize these patterns using a large dataset of labeled bird sounds. ",
                                         html.P(),
-                                        "By applying visual pattern recognition to these spectrograms, BirdNET can detect and identify specific bird species with high accuracy. This approach is efficient, scalable, and well-suited for analyzing large audio datasets, making it an essential tool for biodiversity monitoring. ",
+                                        # Image of assets/content_img/birdnet_how_it_works.jpg in full width on all screen
+                                        html.Img(src=cfg.SITE_ROOT + "/assets/content_img/birdnet_how_it_works.jpg", className="full-width p-4"),
                                         html.P(),
                                         "BirdNET is widely used in conservation efforts to monitor bird populations, study migration patterns, and identify areas of concern for endangered species. Its ability to process recordings automatically and at scale provides researchers with valuable data to support habitat protection and conservation strategies."
                                     ]),
