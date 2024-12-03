@@ -300,6 +300,7 @@ def register_recorder_callbacks(app):
                 ], className="text-center"),
             ]))
             
+            detection['confidence'] = detection['confidence'] * 10
             data_list.append(detection)
 
         return [
