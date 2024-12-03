@@ -173,7 +173,7 @@ def register_main_callbacks(app):
     app.clientside_callback(
         """
         function(n_clicks) {
-            openLivestream('http://35.211.83.179:8000/ssw');
+            openLivestream('https://birdnetlive.duckdns.org/ssw');
         }
         """,
         Output("livestream-output-placeholder", "value"),
