@@ -179,7 +179,7 @@ nav .navbar-nav {
 
 .header-graphic {
     width: 100%;
-    max-height: 900px; /* Adjust the height as needed */
+    max-height: 850px; /* Adjust the height as needed */
     object-fit: cover; /* Ensures the image covers the entire width */
     margin-bottom: 0; /* Remove bottom margin */
 }
