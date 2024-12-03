@@ -45,14 +45,14 @@ DEPLOYMENT_LON = -76.451566
 TIMEZONE = 'America/New_York'
 TIME_FORMAT = '12h'
 RECORDERS = {
-    1: {'id': '0271', 'lat': 42.475, 'lon': -76.445, 'habitat': 'Forest', 'img': 'dummy_recorder.jpg'},
-    2: {'id': '0829', 'lat': 42.478, 'lon': -76.451, 'habitat': 'Grassland', 'img': 'dummy_recorder.jpg'},
-    3: {'id': '0269', 'lat': 42.469, 'lon': -76.449, 'habitat': 'Wetland', 'img': 'dummy_recorder.jpg'},
-    4: {'id': '0270', 'lat': 42.480, 'lon': -76.453, 'habitat': 'Forest', 'img': 'dummy_recorder.jpg'},
-    5: {'id': '0272', 'lat': 42.4796, 'lon': -76.4514, 'habitat': 'Pond', 'img': 'swamp_unit_5.jpg'},
-    7: {'id': '0274', 'lat': 42.472, 'lon': -76.446, 'habitat': 'Grassland', 'img': 'dummy_recorder.jpg'},
-    8: {'id': '0275', 'lat': 42.480, 'lon': -76.457, 'habitat': 'Grassland', 'img': 'dummy_recorder.jpg'},
-    9: {'id': '0276', 'lat': 42.476, 'lon': -76.451, 'habitat': 'Urban', 'img': 'dummy_recorder.jpg'},
+    1: {'id': '0271', 'lat': 42.4786, 'lon': -76.4405, 'habitat': 'Shrubs & meadow', 'img': 'dummy_recorder.jpg'},
+    2: {'id': '0829', 'lat': 42.4777, 'lon': -76.4412, 'habitat': 'Open meadow', 'img': 'dummy_recorder.jpg'},
+    3: {'id': '0269', 'lat': 42.4769, 'lon': -76.4415, 'habitat': 'Shrubs & meadow', 'img': 'dummy_recorder.jpg'},
+    4: {'id': '0270', 'lat': 42.4778, 'lon': -76.4470, 'habitat': 'Forest', 'img': 'dummy_recorder.jpg'},
+    5: {'id': '0272', 'lat': 42.4796, 'lon': -76.4514, 'habitat': 'Feeder garden & pond', 'img': 'swamp_unit_5.jpg'},
+    7: {'id': '0275', 'lat': 42.4801, 'lon': -76.4543, 'habitat': 'Forest & pond', 'img': 'swamp_unit_7.jpg'},
+    8: {'id': '0276', 'lat': 42.4782, 'lon': -76.4547, 'habitat': 'Forest', 'img': 'swamp_unit_8.jpg'},
+    9: {'id': '0274', 'lat': 42.4755, 'lon': -76.4525, 'habitat': 'Forest', 'img': 'dummy_recorder.jpg'},
     10: {'id': '0277', 'lat': 42.4742, 'lon': -76.4488, 'habitat': 'Shrubs and pond', 'img': 'swamp_unit_10.jpg'},
 
 }
