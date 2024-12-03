@@ -92,9 +92,8 @@ def about_page_content():
                                     html.P([
                                         "BirdNET is an AI-powered tool that identifies bird species based on their calls and songs. At its core, BirdNET uses a neural network, a type of machine learning model inspired by the structure of the human brain. Neural networks are particularly effective at recognizing patterns in complex datasets, such as sound recordings. ",
                                         html.P(),
-                                        "To analyze sounds, BirdNET converts audio recordings into spectrograms, which are visual representations of sound showing frequency, intensity, and time. These spectrograms highlight the unique acoustic patterns of bird calls and songs, much like a fingerprint for each species. The neural network is trained to recognize these patterns using a large dataset of labeled bird sounds. ",
+                                        "To analyze sounds, BirdNET converts audio recordings into spectrograms, which are visual representations of sound showing frequency, amplitude, and time. These spectrograms highlight the unique acoustic patterns of bird calls and songs, much like a fingerprint for each species. The neural network is trained to recognize these patterns using a large dataset of labeled bird sounds. ",
                                         html.P(),
-                                        # Image of assets/content_img/birdnet_how_it_works.jpg in full width on all screen
                                         html.Img(src=cfg.SITE_ROOT + "/assets/content_img/birdnet_how_it_works.jpg", className="full-width p-4"),
                                         html.P(),
                                         "BirdNET is widely used in conservation efforts to monitor bird populations, study migration patterns, and identify areas of concern for endangered species. Its ability to process recordings automatically and at scale provides researchers with valuable data to support habitat protection and conservation strategies."
@@ -127,7 +126,7 @@ def about_page_content():
                                                 [
                                                     html.Img(src=cfg.SITE_ROOT + "/assets/content_img/patrick.png", className="team-image"),
                                                     html.H5("Patrick T. Chaopricha", className="team-name"),
-                                                    html.H6("Hardware deployment")
+                                                    html.H6("Hardware programming")
                                                 ],
                                                 width=6,
                                                 md=4,
