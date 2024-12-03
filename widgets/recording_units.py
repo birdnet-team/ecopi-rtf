@@ -59,7 +59,7 @@ def recording_units():
                         href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}",
                         style={"textDecoration": "none", "color": "inherit"}
                     ),
-                    lg=3,
+                    lg=4,
                     md=4,
                     sm=4,
                     xs=6
