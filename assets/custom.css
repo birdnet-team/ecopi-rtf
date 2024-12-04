@@ -920,6 +920,10 @@ nav .navbar-nav {
       display 0.75s allow-discrete;
 }
 
+#livestream-popup-play-button {
+    display: none;
+}
+
 
 @media only screen and (max-width: 360px) {
     #popup,

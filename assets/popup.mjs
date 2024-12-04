@@ -46,6 +46,8 @@ function openPlayer(index) {
         }),
     )
     
+    // https://wavesurfer.xyz/docs/types/plugins_spectrogram.SpectrogramPluginOptions
+
     wavesurfer.registerPlugin(
         Spectrogram.create({
           frequencyMax: 12000,

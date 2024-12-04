@@ -4,7 +4,7 @@ let canvasCtx;
 let analyser;
 let dataArray;
 let bufferLength;
-const zoomFactor = 0.25; // This might need to be adjusted according to the livestream
+const zoomFactor = 0.75; // This might need to be adjusted according to the livestream
 
 function closeLivestream(audioContext, audioElement, resizeEventListener) {
     const playerElement = document.querySelector("#livestream-popup");

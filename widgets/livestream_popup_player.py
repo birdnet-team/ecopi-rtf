@@ -37,7 +37,8 @@ def livestream_popup_player():
                         id="livestream-popup-footer",
                         className="d-flex justify-content-evenly mt-3",
                         children=[
-                            html.A(html.H4(className="bi bi-pause-fill"), id='livestream-popup-play-button'),],
+                            html.A(html.H4(className="bi bi-pause-fill"), id='livestream-popup-play-button'),
+                            ],
                     ),
                 ],
             ),
