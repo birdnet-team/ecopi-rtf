@@ -51,11 +51,14 @@ function openPlayer(index) {
           frequencyMax: 12000,
           splitChannels: false,
           fftSamples: 256,
+          frequencyMin: 300,
           labels: false,
           labelsBackground: '#3339',
           height: 150, //this is a bug in wavesurfer and we have to wait untul it is fixed - spectrogram height is not working (seems to work only if spec is greater than height)
           scale: 'linear',
-          colorMap: 'roseus' //customColormap,
+          colorMap: 'roseus', //customColormap,
+          gainDB: 35,
+          rangeDB: 100,
         }),
       )
 
