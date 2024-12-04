@@ -23,7 +23,6 @@ function resizeCanvas() {
     canvasCtx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
 }
 
-
 function draw() {
     animationId = requestAnimationFrame(draw);
 
@@ -51,8 +50,6 @@ function draw() {
     }
 }
 
-
-
 function openLivestream(url) {
     const livestreamPopup = document.querySelector("#livestream-popup-content");
     const audioElement = document.createElement('audio');
@@ -67,7 +64,18 @@ function openLivestream(url) {
     analyser = audioContext.createAnalyser();
     const source = audioContext.createMediaElementSource(audioElement);
 
-    source.connect(analyser);
+    // Create a gain node to adjust gainDB
+    const gainNode = audioContext.createGain();
+    gainNode.gain.value = Math.pow(10, 35 / 20); // Convert gainDB to linear scale
+
+    // Create a biquad filter to set fmin
+    const biquadFilter = audioContext.createBiquadFilter();
+    biquadFilter.type = "highpass";
+    biquadFilter.frequency.value = 300; // Set fmin to 300 Hz
+
+    source.connect(biquadFilter);
+    biquadFilter.connect(gainNode);
+    gainNode.connect(analyser);
     analyser.connect(audioContext.destination);
 
     analyser.fftSize = 2048;
@@ -97,7 +105,6 @@ function openLivestream(url) {
     let livestreamPlayButton = document.querySelector("#livestream-popup-play-button");
     livestreamPlayButton.children[0].classList.remove('bi-play-fill');
     livestreamPlayButton.children[0].classList.add('bi-pause-fill');
-
 
     livestreamPlayButton.addEventListener("click", () => {
         if (audioElement.paused) {
