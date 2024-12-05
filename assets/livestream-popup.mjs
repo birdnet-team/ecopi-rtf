@@ -35,12 +35,15 @@ function draw() {
     // Calculate the number of bins to display based on the zoom factor
     const displayBufferLength = Math.floor(bufferLength * zoomFactor);
 
+    // Define the number of low frequency pixels to skip
+    const skipPixels = 15; // Adjust this value as needed (to adjust for the server-side highpass filter)
+
     // Draw the new FFT data using the Viridis colormap
-    for (let i = 0; i < displayBufferLength; i++) {
+    for (let i = skipPixels; i < displayBufferLength; i++) {
         const value = dataArray[i];
         const percent = value / 255;
-        const y = canvas.height - (i / displayBufferLength) * canvas.height;
-        const barHeight = canvas.height / displayBufferLength;
+        const y = canvas.height - ((i - skipPixels) / (displayBufferLength - skipPixels)) * canvas.height;
+        const barHeight = canvas.height / (displayBufferLength - skipPixels);
 
         // Use the Viridis colormap
         const color = d3.interpolateMagma(percent);
@@ -71,7 +74,7 @@ function openLivestream(url) {
     // Create a biquad filter to set fmin
     const biquadFilter = audioContext.createBiquadFilter();
     biquadFilter.type = "highpass";
-    biquadFilter.frequency.value = 300; // Set fmin to 300 Hz
+    biquadFilter.frequency.value = 500; // Set fmin to 300 Hz
 
     source.connect(biquadFilter);
     biquadFilter.connect(gainNode);
