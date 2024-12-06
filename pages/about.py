@@ -157,9 +157,9 @@ def about_page_content():
                                             ),
                                             dbc.Col(
                                                 [
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/raja.png", className="team-image"),
-                                                    html.H5("Raja Seifert", className="team-name"),
-                                                    html.H6("Visual design")
+                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/isabella.png", className="team-image"),
+                                                    html.H5("Isabella Marshall", className="team-name"),
+                                                    html.H6("Field Ops")
                                                 ],
                                                 width=6,
                                                 md=4,
