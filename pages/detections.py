@@ -14,7 +14,7 @@ def detections_page_content():
             dbc.Container(
                 [
                     html.H3("Recent detections", className="mt-2 mb-2"),
-                    html.P("This list shows some randomly selected species detections sorted by confidence score. Click the 'Play' button to listen to the recorded sounds or click the 'Chart' icon to see more stats about this species.", className="text-muted"),
+                    html.P("This list shows randomly selected species detections sorted by confidence score. Click the 'Play' button to listen to the recorded sounds or click the 'Chart' icon to see more stats about this species.", className="text-muted"),
                     dbc.Row(cards),
                     data
                 ],
