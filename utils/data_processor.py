@@ -87,11 +87,11 @@ def get_battery_status(voltage):
     # Convert voltage to percentage
     # Everything above 12 is 100%, eveything below 8.5 is 10%, scale inbetween
     if not voltage is None:
-        voltage = min(12, max(8.5, voltage))
+        voltage = min(12.6, max(8.5, voltage))
     else:
         voltage = 8.5
     
-    battery_level = max(10, int((voltage - 8.5) / (12 - 8.5) * 100) // 10 * 10)
+    battery_level = max(10, int((voltage - 8.5) / (12.6 - 8.5) * 100) // 10 * 10)
     
     return str(battery_level) if battery_level > 10 else '< 10'
 

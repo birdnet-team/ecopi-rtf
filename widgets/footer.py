@@ -21,6 +21,7 @@ def footer_content():
                                         html.Li(html.A("Detections", href=f"{cfg.SITE_ROOT}/detections", className="footer-link small-text")),
                                         html.Li(html.A("Recording units", href=f"{cfg.SITE_ROOT}/recorder/1", className="footer-link small-text")),
                                         html.Li(html.A("About the project", href=f"{cfg.SITE_ROOT}/about", className="footer-link small-text")),
+                                        html.Li(html.A("Contact", href=f"{cfg.SITE_ROOT}/about#about-contact", className="footer-link small-text")),
                                     ],
                                     className="list-unstyled"
                                 )

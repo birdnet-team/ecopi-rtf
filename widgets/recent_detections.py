@@ -7,7 +7,7 @@ from utils import data_processor as dp
 
 import config as cfg
 
-def recent_detections(num_cards=8, hours=24):
+def recent_detections(num_cards=8, hours=72):
     last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=5)    
     if len(last_detections) < 4:
         last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=1)

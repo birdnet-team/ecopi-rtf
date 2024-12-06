@@ -57,6 +57,8 @@ def about_page_content():
                                         "The Sapsucker Woods Acoustic Monitoring Project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Sapsucker Woods, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area. ",
                                         html.P(),
                                         "The project uses solar-powered recording units equipped with BirdNET software to capture and analyze bird songs and other natural sounds in real-time. These recordings provide a window into the daily rhythms of the woods, revealing which species are active and when.",
+                                        html.P(),
+                                        html.B("Note: No voice is recorded. Our recording devices use an AI model that recognizes human conversations and discards them.", className="bold-text"),
                                     ]),
                                     
                                     html.H4(id="about-pam", children="Acoustic Monitoring", className="mb-3"),
@@ -70,12 +72,13 @@ def about_page_content():
                                     
                                     html.H4(id="about-recorder", children="Recording Units", className="mb-3"),
                                     html.Div(
-                                        [
-                                            html.Img(src=cfg.SITE_ROOT + "/assets/content_img/swamp_recording_unit.jpg", className="recorder-image float-left"),
+                                        [                                            
                                             html.P([
-                                                "Our recording units are designed to operate in remote and challenging environments. They are solar-powered, weather-resistant, and connected to the internet, enabling the automatic upload of recorded sounds to a central server for analysis. ",
+                                                "Our recording units are designed to operate in remote and challenging environments. They are solar-powered, weather-resistant, and connected to the internet, enabling the automatic upload of recorded sounds to a central server. ",
                                                 html.P(),
                                                 "Each unit is built around a Raspberry Pi computer equipped with a sound card and a Sleepy Pi module for power management. They run BirdNET software for sound identification and use a SIM card dongle for internet connectivity, making them effective even in isolated locations. ",
+                                                html.P(),
+                                                html.Img(src=cfg.SITE_ROOT + "/assets/content_img/swamp_recording_unit.jpg", className="full-width"),
                                                 html.P(),
                                                 "Powered by a battery and a 10W solar panel, the units follow an hourly recording schedule to conserve energy. They record for a few minutes each hour, focusing on capturing activity during the most vocal periods of the day. ",
                                                 html.P(),
@@ -146,7 +149,7 @@ def about_page_content():
                                                 [
                                                     html.Img(src=cfg.SITE_ROOT + "/assets/content_img/josef.png", className="team-image"),
                                                     html.H5("Josef Haupt", className="team-name"),
-                                                    html.H6("AI development")
+                                                    html.H6("Web development")
                                                 ],
                                                 width=6,
                                                 md=4,

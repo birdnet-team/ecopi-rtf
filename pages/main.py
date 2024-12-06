@@ -21,7 +21,7 @@ def main_page_content():
         [
             html.Div(
                 [
-                    html.Img(src=cfg.SITE_ROOT + f"/assets/header_img/ssw_main_header_{random.randint(1, 1)}.jpg", className="header-graphic"),
+                    html.Img(src=cfg.SITE_ROOT + f"/assets/header_img/ssw_main_header_{random.randint(1, 2)}.jpg", className="header-graphic"),
                     html.Div(
                         [
                             html.H1("SWAMP: Sapsucker Woods Acoustic Monitoring Project"),
