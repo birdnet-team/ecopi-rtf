@@ -8,6 +8,7 @@ from utils import data_processor as dp
 from utils import plots
 
 import config as cfg
+from utils.stats import increment_site_views
 
 # Import page content functions
 from pages.main import main_page_content, register_main_callbacks
@@ -109,18 +110,24 @@ def update_active_nav(pathname):
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
     if pathname == cfg.SITE_ROOT + "/":
+        increment_site_views('main page')
         return main_page_content()
     elif pathname == cfg.SITE_ROOT + "/dashboard":
+        increment_site_views('dashboard')
         return dashboard_page_content()
     elif pathname.startswith(cfg.SITE_ROOT + "/recorder/"):
         recorder_id = pathname.split("/")[-1]
+        increment_site_views(f'recorder {recorder_id}')
         return display_recorder_page(recorder_id)
     elif pathname.startswith(cfg.SITE_ROOT + "/species/"):
         species_id = pathname.split("/")[-1]
+        increment_site_views(f'species {species_id}')
         return display_species_page(species_id)
     elif pathname == cfg.SITE_ROOT + "/detections":
+        increment_site_views('detections')
         return detections_page_content()
     elif pathname == cfg.SITE_ROOT + "/about":
+        increment_site_views('about')
         return about_page_content()
     else:
         print(f"404 Page Not Found: {pathname}")

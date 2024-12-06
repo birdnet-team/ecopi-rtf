@@ -18,6 +18,7 @@ API_TOKEN = os.getenv('API_TOKEN')
 MAPBOX_TOKEN = os.getenv('MAPBOX_TOKEN')
 API_BASE_URL = 'https://api.ecopi.de/api/v0.1/'
 SITE_ROOT = '' # '' for dev and '/swamp' for production
+SITE_VIEWS_LOG = 'site_views.csv'
 
 # AMiC project configuration
 """
