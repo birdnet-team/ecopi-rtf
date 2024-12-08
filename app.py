@@ -3,6 +3,7 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH, ALL
 from flask_cors import CORS
+from flask import request
 
 from utils import data_processor as dp
 from utils import plots
@@ -109,25 +110,26 @@ def update_active_nav(pathname):
 # Callback to update the page content based on the URL
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
+    user_agent = request.headers.get('User-Agent')
     if pathname == cfg.SITE_ROOT + "/":
-        increment_site_views('main page')
+        increment_site_views('main page', user_agent)
         return main_page_content()
     elif pathname == cfg.SITE_ROOT + "/dashboard":
-        increment_site_views('dashboard')
+        increment_site_views('dashboard', user_agent)
         return dashboard_page_content()
     elif pathname.startswith(cfg.SITE_ROOT + "/recorder/"):
         recorder_id = pathname.split("/")[-1]
-        increment_site_views(f'recorder {recorder_id}')
+        increment_site_views(f'recorder {recorder_id}', user_agent)
         return display_recorder_page(recorder_id)
     elif pathname.startswith(cfg.SITE_ROOT + "/species/"):
         species_id = pathname.split("/")[-1]
-        increment_site_views(f'species {species_id}')
+        increment_site_views(f'species {species_id}', user_agent)
         return display_species_page(species_id)
     elif pathname == cfg.SITE_ROOT + "/detections":
-        increment_site_views('detections')
+        increment_site_views('detections', user_agent)
         return detections_page_content()
     elif pathname == cfg.SITE_ROOT + "/about":
-        increment_site_views('about')
+        increment_site_views('about', user_agent)
         return about_page_content()
     else:
         print(f"404 Page Not Found: {pathname}")

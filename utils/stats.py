@@ -4,7 +4,14 @@ from datetime import datetime
 
 import config as cfg
 
-def increment_site_views(site):
+def user_agent_to_fingerprint(user_agent):
+    
+    # Turn the user_agent string into a 10 digit fingerprint
+    fingerprint = sum([ord(c) for c in user_agent]) % 10000000000
+    
+    return fingerprint
+
+def increment_site_views(site, user_agent):
 
     # Get the current timestamp
     timestamp = datetime.now().isoformat()
@@ -17,8 +24,8 @@ def increment_site_views(site):
         writer = csv.writer(file)
         if not file_exists:
             # Write the header if the file does not exist
-            writer.writerow(["timestamp", "site"])
-        writer.writerow([timestamp, site])
+            writer.writerow(["timestamp", "site", "user_agent"])
+        writer.writerow([timestamp, site, user_agent_to_fingerprint(user_agent)])
 
     return timestamp
 
