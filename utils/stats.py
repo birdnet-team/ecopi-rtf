@@ -6,7 +6,9 @@ import config as cfg
 
 def user_agent_to_fingerprint(user_agent):
     
-    # Turn the user_agent string into a 10 digit fingerprint
+    # Turn the user_agent string into a fingerprint
+    # this is very simplisic, but we just want to have a rough estimate
+    # of the number of unique users
     fingerprint = sum([ord(c) for c in user_agent]) % 10000000000
     
     return fingerprint
