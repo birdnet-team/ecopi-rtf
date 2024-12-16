@@ -85,13 +85,13 @@ def get_confidence_score(species, confidence):
 def get_battery_status(voltage):
     
     # Convert voltage to percentage
-    # Everything above 12 is 100%, eveything below 8.5 is 10%, scale inbetween
+    # Everything above 12 is 100%, eveything below 9 is 10%, scale inbetween
     if not voltage is None:
-        voltage = min(12.6, max(8.5, voltage))
+        voltage = min(12, max(9, voltage))
     else:
-        voltage = 8.5
+        voltage = 9
     
-    battery_level = max(10, int((voltage - 8.5) / (12.6 - 8.5) * 100) // 10 * 10)
+    battery_level = max(10, int((voltage - 9) / (12 - 9) * 100) // 10 * 10)
     
     return str(battery_level) if battery_level > 10 else '< 10'
 
@@ -558,13 +558,13 @@ if __name__ == '__main__':
     #print(get_last_n_detections())
     #print(get_most_active_species())
     
-    print(get_most_active_species(n=1, min_conf=0.5, hours=24*7, species_list=['whbnut']))
+    #print(get_most_active_species(n=1, min_conf=0.5, hours=24*7, species_list=['whbnut']))
     
     #print(get_recorder_data(min_conf=0.5, days=2))
                                 
     #print(get_species_stats('norcar', hours=24))
     
-    #print(get_recorder_state(10))
+    print(get_recorder_state(5))
     #print(get_recorder_location(9))
     
     #print(get_total_detections(min_conf=0.5, species_list=['norcar'], days=-1))
