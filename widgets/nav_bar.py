@@ -13,7 +13,7 @@ def nav_bar():
                         dbc.Col(
                             dcc.Link(
                                 html.Img(
-                                    src=cfg.SITE_ROOT + "/assets/logo_img/clo_swamp_short_mobile_horizontal_color.png",
+                                    src=cfg.SITE_ROOT + f"/assets/logo_img/{cfg.LOGO_MOBILE}",
                                     className="header-logo header-logo-short",
                                     id="nav-logo-short"
                                 ),
@@ -24,7 +24,7 @@ def nav_bar():
                         dbc.Col(
                             dcc.Link(
                                 html.Img(
-                                    src=cfg.SITE_ROOT + "/assets/logo_img/clo_swamp_short_horizontal_color.png",
+                                    src=cfg.SITE_ROOT + f"/assets/logo_img/{cfg.LOGO_DESKTOP}",
                                     className="header-logo header-logo-long",
                                     id="nav-logo-long"
                                 ),
@@ -63,7 +63,7 @@ def nav_bar():
                                 nav=True,
                             ),
                             dbc.NavItem(dbc.NavLink("About", href=cfg.SITE_ROOT + "/about", className="nav-link", id="nav-about")),
-                            dbc.NavItem(html.A("Donate", href="https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR", className="nav-link nav-donate", id="nav-donate", target="_blank")),
+                            dbc.NavItem(html.A("Donate", href=cfg.DONATION_URL, className="nav-link nav-donate", id="nav-donate", target="_blank")),
                         ],
                         className="ml-auto",
                         navbar=True,

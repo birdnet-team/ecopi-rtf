@@ -21,18 +21,18 @@ def main_page_content():
         [
             html.Div(
                 [
-                    html.Img(src=cfg.SITE_ROOT + f"/assets/header_img/ssw_main_header_{random.randint(1, 2)}.jpg", className="header-graphic"),
+                    html.Img(src=cfg.SITE_ROOT + f"/assets/header_img/{random.choice(cfg.MAIN_HEADER_IMG_LIST)}", className="header-graphic"),
                     html.Div(
                         [
-                            html.H1("SWAMP: Sapsucker Woods Acoustic Monitoring Project"),
-                            html.H2("AI-powered acoustic monitoring"),
+                            html.H1(cfg.PROJECT_MAIN_TITLE),
+                            html.H2(cfg.PROJECT_SUBTITLE),
                         ],
                         className="header-overlay"
                     ),
                     html.Button(
                         [html.I(className="bi bi-volume-up-fill"), " Listen live"],
                         id="listen-live-button",
-                        className="listen-live-button"
+                        className="listen-live-button" if len(cfg.LIVE_STREAM_URL) > 0 else "d-none",
                     ),
                     html.Data(id="livestream-output-placeholder", value=""),
                 ],
@@ -44,11 +44,11 @@ def main_page_content():
                 [
                     html.Div(
                         [
-                            html.H1("SWAMP: Sapsucker Woods Acoustic Monitoring Project"),
+                            html.H1(cfg.PROJECT_MAIN_TITLE),
                         ],
                         className="header-text"
                     ),
-                    html.H5("We listen to the sounds of the animals in Sapsucker Woods and track species diversity over large spatio-temporal scales.", 
+                    html.H5(cfg.PROJECT_SUBTITLE_DESC, 
                             className="text-center d-none d-lg-block"),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
@@ -171,11 +171,7 @@ def register_main_callbacks(app):
     
     # Client-side callback for opening the livestream popup
     app.clientside_callback(
-        """
-        function(n_clicks) {
-            openLivestream('https://birdnetlive.duckdns.org/ssw');
-        }
-        """,
+        "function(n_clicks) {openLivestream('" + cfg.LIVE_STREAM_URL + "');}",
         Output("livestream-output-placeholder", "value"),
         [Input("listen-live-button", "n_clicks")],
         prevent_initial_call=True,

@@ -6,7 +6,7 @@ import config as cfg
 def about_page_header():
     return html.Div(
         [
-            html.Img(src=cfg.SITE_ROOT + f"/assets/header_img/ssw_about_header_{random.randint(1, 5)}.jpg", className="species-header-image"),
+            html.Img(src=cfg.SITE_ROOT + f"/assets/header_img/{random.choice(cfg.ABOUT_HEADER_IMG_LIST)}", className="species-header-image"),
             html.Div(
                 dbc.Row(
                     [

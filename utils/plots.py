@@ -88,7 +88,7 @@ def get_hourly_detections_plot(detections, plot_sun_moon=False):
     fig.add_trace(go.Bar(
         x=list(range(24)),
         y=blue_bars,
-        marker_color='#385B75',
+        marker_color=cfg.PLOT_PRIMARY_COLOR,
         showlegend=False
     ))
     
@@ -114,8 +114,8 @@ def get_hourly_detections_plot(detections, plot_sun_moon=False):
         moon_icon = "☽"  # Unicode for moon
         
         # Determine the color based on the detection value at sunrise and sunset hours
-        sun_color = "white" if log_detections[sunrise_hour] > 0.6 else "#385B75"
-        moon_color = "white" if log_detections[sunset_hour] > 0.6 else "#385B75"
+        sun_color = "white" if log_detections[sunrise_hour] > 0.6 else cfg.PLOT_PRIMARY_COLOR
+        moon_color = "white" if log_detections[sunset_hour] > 0.6 else cfg.PLOT_PRIMARY_COLOR
         
         fig.add_annotation(
             x=sunrise_hour,

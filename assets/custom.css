@@ -115,7 +115,7 @@ nav .navbar-nav {
 }
 
 .navbar-border {
-    border-top: 5px solid #b31b1b; /* 3px red border */
+    border-top: 5px solid var(--primary-color); /* 3px red border */
 }
 
 .home-text {
@@ -142,7 +142,7 @@ nav .navbar-nav {
     left: 0;
     width: 100%;
     height: 3px; /* Height of the bar */
-    background-color: #b31b1b; /* Color of the bar */
+    background-color: var(--primary-color); /* Color of the bar */
 }
 
 @media (max-width: 768px) {
@@ -157,7 +157,7 @@ nav .navbar-nav {
 
 #nav-donate {
     color: white;
-    background-color: #b31b1b;
+    background-color: var(--primary-color);
     margin-top: -9px;
     padding-top: 16px;
     width: 100px;
@@ -269,7 +269,7 @@ nav .navbar-nav {
 }
 
 .stat-row {
-    background-color: #2e261f;
+    background-color: var(--secondary-color);
     color: white; 
     padding: 1px 15px; 
     text-align: center; 
@@ -541,11 +541,11 @@ nav .navbar-nav {
 }
 
 .footer {
-    background-color: #2e261f;
+    background-color: var(--secondary-color);
     padding: 20px;
     color: white;
     text-align: center;
-    border-bottom: 5px solid #b31b1b;
+    border-bottom: 5px solid var(--primary-color);
 }
 
 .footer .footer-content {

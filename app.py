@@ -24,6 +24,12 @@ from widgets.nav_bar import nav_bar
 # Import callback registration function for recent detections
 from widgets.recent_detections import register_recent_detections_callbacks
 
+# Set dynamic CSS colors
+with open('assets/colors.css', 'w') as file:
+    file.write(
+        f""":root {{\n\t--primary-color: {cfg.PRIMARY_COLOR};\n\t--secondary-color: {cfg.SECONDARY_COLOR};\n}}"""
+        )
+
 # Initialize Dash app
 app = dash.Dash(
     __name__,

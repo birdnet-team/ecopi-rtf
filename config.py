@@ -35,6 +35,56 @@ RECORDERS = {
     3: {'id': '0269', 'lat': 42.476863, 'lon': -76.445881, 'habitat': 'Urban'},
     4: {'id': '0270', 'lat': 42.479265, 'lon': -76.442721, 'habitat': 'Forest'},
 }
+MAIN_HEADER_IMG_LIST = ['swamp_main_header_1.jpg', 'swamp_main_header_2.jpg']
+ABOUT_HEADER_IMG_LIST = ['ssw_about_header_1.jpg', 'ssw_about_header_2.jpg', 'ssw_about_header_3.jpg', 'ssw_about_header_4.jpg', 'ssw_about_header_5.jpg']
+LIVE_STREAM_URL = 'https://birdnetlive.duckdns.org/ssw'
+DONATION_URL = 'https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR'
+PROJECT_MAIN_TITLE = 'SWAMP: Sapsucker Woods Acoustic Monitoring Project'
+PROJECT_SUBTITLE = 'AI-powered acoustic monitoring'
+PROJECT_SUBTITLE_DESC = 'We listen to the sounds of the animals in Sapsucker Woods and track species diversity over large spatio-temporal scales.'
+PRIMARY_COLOR = '#b31b1b'
+SECONDARY_COLOR = '#2e261f'
+PLOT_PRIMARY_COLOR = '#385B75'
+PLOT_PRIMARY_COLOR = '#385B75'
+LOGO_MOBILE = 'clo_swamp_short_mobile_horizontal_color.png'
+LOGO_DESKTOP = 'clo_swamp_short_horizontal_color.png'
+"""
+
+# Neeracher Ried project configuration
+"""
+PROJECT_NAME = '017_neerach_ried'
+RECORDER_GROUP = 39
+SPECIES_DATA = load_species_data(project='neeracherried')
+DEPLOYMENT_LAT = 47.500
+DEPLOYMENT_LON = 8.4790
+TIMEZONE = 'Europe/Berlin'
+TIME_FORMAT = '24h'
+RECORDERS = {
+    1: {'id': '0357', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    2: {'id': '0368', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    3: {'id': '0518', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    4: {'id': '0517', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    5: {'id': '0525', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    6: {'id': '0523', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    7: {'id': '0516', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    8: {'id': '0513', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    9: {'id': '0358', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    10: {'id': '0526', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    11: {'id': '0524', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    12: {'id': '0378', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+}
+MAIN_HEADER_IMG_LIST = ['blnr_main_header_1.jpg']
+ABOUT_HEADER_IMG_LIST = ['blnr_about_header_1.jpg']
+LIVE_STREAM_URL = ''
+DONATION_URL = 'https://www.birdlife.ch/en/content/donations'
+PROJECT_MAIN_TITLE = 'Neeracherried Acoustic Monitoring Project'
+PROJECT_SUBTITLE = 'AI-powered acoustic monitoring'
+PROJECT_SUBTITLE_DESC = 'We listen to the sounds of the birds in Neeracherried and track species diversity over large spatio-temporal scales.'
+PRIMARY_COLOR = '#6cae3d'
+SECONDARY_COLOR = '#3b6da8'
+PLOT_PRIMARY_COLOR = '#385B75'
+LOGO_MOBILE = 'birdlife_ch_logo_bird.png'
+LOGO_DESKTOP = 'birdlife_ch_logo_bird.png'
 """
 
 # SWAMP project configuration
@@ -57,3 +107,15 @@ RECORDERS = {
     10: {'id': '0277', 'lat': 42.4742, 'lon': -76.4488, 'habitat': 'Shrubs and pond', 'img': 'swamp_unit_10.jpg'},
 
 }
+MAIN_HEADER_IMG_LIST = ['ssw_main_header_1.jpg', 'ssw_main_header_2.jpg']
+ABOUT_HEADER_IMG_LIST = ['ssw_about_header_1.jpg', 'ssw_about_header_2.jpg', 'ssw_about_header_3.jpg', 'ssw_about_header_4.jpg', 'ssw_about_header_5.jpg']
+LIVE_STREAM_URL = 'https://birdnetlive.duckdns.org/ssw'
+DONATION_URL = 'https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR'
+PROJECT_MAIN_TITLE = 'SWAMP: Sapsucker Woods Acoustic Monitoring Project'
+PROJECT_SUBTITLE = 'AI-powered acoustic monitoring'
+PROJECT_SUBTITLE_DESC = 'We listen to the sounds of the animals in Sapsucker Woods and track species diversity over large spatio-temporal scales.'
+PRIMARY_COLOR = '#b31b1b'
+SECONDARY_COLOR = '#2e261f'
+PLOT_PRIMARY_COLOR = '#385B75'
+LOGO_MOBILE = 'clo_swamp_short_mobile_horizontal_color.png'
+LOGO_DESKTOP = 'clo_swamp_short_horizontal_color.png'
