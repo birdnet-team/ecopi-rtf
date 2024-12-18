@@ -21,7 +21,6 @@ SITE_ROOT = '' # '' for dev and '/swamp' for production
 SITE_VIEWS_LOG = 'site_views.csv'
 
 # AMiC project configuration
-"""
 PROJECT_NAME = 'pam_in_chemnitz'
 RECORDER_GROUP = 39
 SPECIES_DATA = load_species_data(project='amic')
@@ -30,25 +29,25 @@ DEPLOYMENT_LON = 12.924
 TIMEZONE = 'Europe/Berlin'
 TIME_FORMAT = '24h'
 RECORDERS = {
-    1: {'id': '0271', 'lat': 42.479723, 'lon': -76.451566, 'habitat': 'Urban'},
-    2: {'id': '0829', 'lat': 42.479005, 'lon': -76.454030, 'habitat': 'Urban'},
-    3: {'id': '0269', 'lat': 42.476863, 'lon': -76.445881, 'habitat': 'Urban'},
-    4: {'id': '0270', 'lat': 42.479265, 'lon': -76.442721, 'habitat': 'Forest'},
+    1: {'id': '0271', 'lat': 50.850533, 'lon': 12.890730, 'habitat': 'Urban', 'img': 'amic_unit_1.jpg'},
+    2: {'id': '0829', 'lat': 50.850231, 'lon': 12.890473, 'habitat': 'Urban', 'img': 'amic_unit_2.jpg'},
+    3: {'id': '0269', 'lat': 50.850022, 'lon': 12.890146, 'habitat': 'Urban', 'img': 'amic_unit_3.jpg'},
+    4: {'id': '0270', 'lat': 50.849055, 'lon': 12.889994, 'habitat': 'Forest', 'img': 'amic_unit_4.jpg'}
 }
-MAP_ZOOM_LEVEL = 15
-MAIN_HEADER_IMG_LIST = ['swamp_main_header_1.jpg', 'swamp_main_header_2.jpg']
-ABOUT_HEADER_IMG_LIST = ['ssw_about_header_1.jpg', 'ssw_about_header_2.jpg', 'ssw_about_header_3.jpg', 'ssw_about_header_4.jpg', 'ssw_about_header_5.jpg']
-LIVE_STREAM_URL = 'https://birdnetlive.duckdns.org/ssw'
-DONATION_URL = 'https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR'
-PROJECT_MAIN_TITLE = 'SWAMP: Sapsucker Woods Acoustic Monitoring Project'
+MAP_ZOOM_LEVEL = 17
+MAIN_HEADER_IMG_LIST = ['amic_main_header_1.jpg']
+ABOUT_HEADER_IMG_LIST = ['amic_about_header_1.jpg']
+LIVE_STREAM_URL = ''
+DONATION_URL = ''
+PROJECT_MAIN_TITLE = 'AMiC: Acoustic Monitoring in Chemnitz'
 PROJECT_SUBTITLE = 'AI-powered acoustic monitoring'
-PROJECT_SUBTITLE_DESC = 'We listen to the sounds of the animals in Sapsucker Woods and track species diversity over large spatio-temporal scales.'
-PRIMARY_COLOR = '#b31b1b'
-SECONDARY_COLOR = '#2e261f'
+PROJECT_SUBTITLE_DESC = 'We listen to the sounds of the animals in Chemnitzs and track species diversity over large spatio-temporal scales.'
+PRIMARY_COLOR = '#f3e441'
+SECONDARY_COLOR = '#2b5182'
 PLOT_PRIMARY_COLOR = '#385B75'
-BUTTON_COLOR = '#36824b'
-LOGO_MOBILE = 'clo_swamp_short_mobile_horizontal_color.png'
-LOGO_DESKTOP = 'clo_swamp_short_horizontal_color.png'
+BUTTON_COLOR = '#2b5182'
+LOGO_MOBILE = 'amic_logo_short.png'
+LOGO_DESKTOP = 'amic_logo_wide.png'
 LEARN_MORE_BASE_URL = 'https://ebird.org/species/'
 FOOTER_LINKS = {
     "Site Links": [
@@ -57,6 +56,13 @@ FOOTER_LINKS = {
         {"name": "Recording units", "href": f"{SITE_ROOT}/recorder/1"},
         {"name": "About the project", "href": f"{SITE_ROOT}/about"},
         {"name": "Contact", "href": f"{SITE_ROOT}/about#about-contact"},
+    ],
+    "Botanical Garden Chemnitz": [
+        {"name": "ABout", "href": "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden", "target": "_blank"},
+        {"name": "History", "href": "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden/history", "target": "_blank"},
+        {"name": "School Biology Center", "href": "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden/school-biology-centre", "target": "_blank"},
+        {"name": "Park Map", "href": "https://d2vw8mc5mcb3gm.cloudfront.net/fileadmin/chemnitz/media/leben-in-chemnitz/freizeit/botanischer_garten/botanischer_garten_parkplan.pdf", "target": "_blank"},
+        
     ],
     "OekoFor": [
         {"name": "OekoFor", "href": "https://www.oekofor.de/en/", "target": "_blank"},
@@ -89,9 +95,9 @@ FOOTER_LINKS = {
     ]
 }
 COPYRIGHT_HOLDERS = "TU Chemnitz"
-FOOTER_TOP_LOGO = 'clo_yangcenterconservationbioacoustics_horizontal_white.png'
-FOOTER_BOTTOM_LOGOS = ['cornell-logo-white.png']
-"""
+FOOTER_TOP_LOGO = 'chemnitz_logo_white.png'
+FOOTER_BOTTOM_LOGOS = ['oekofor_logo_white.png', 'clo_yangcenterconservationbioacoustics_horizontal_white.png', 'tuc_logo_white.png']
+
 
 # Neeracher Ried project configuration
 """
@@ -179,6 +185,7 @@ FOOTER_BOTTOM_LOGOS = ['oekofor_logo_white.png', 'clo_yangcenterconservationbioa
 """
 
 # SWAMP project configuration
+"""
 PROJECT_NAME = '099_swamp'
 RECORDER_GROUP = 99
 SPECIES_DATA = load_species_data(project='swamp')
@@ -257,3 +264,4 @@ FOOTER_LINKS = {
 COPYRIGHT_HOLDERS = "Cornell University"
 FOOTER_TOP_LOGO = 'clo_yangcenterconservationbioacoustics_horizontal_white.png'
 FOOTER_BOTTOM_LOGOS = ['cornell-logo-white.png']
+"""

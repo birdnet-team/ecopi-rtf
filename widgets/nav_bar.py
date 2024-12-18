@@ -63,7 +63,7 @@ def nav_bar():
                                 nav=True,
                             ),
                             dbc.NavItem(dbc.NavLink("About", href=cfg.SITE_ROOT + "/about", className="nav-link", id="nav-about")),
-                            dbc.NavItem(html.A("Donate", href=cfg.DONATION_URL, className="nav-link nav-donate", id="nav-donate", target="_blank")),
+                            dbc.NavItem(html.A("Donate", href=cfg.DONATION_URL, className="nav-link nav-donate" if cfg.DONATION_URL else "d-none", id="nav-donate", target="_blank")),
                         ],
                         className="ml-auto",
                         navbar=True,
