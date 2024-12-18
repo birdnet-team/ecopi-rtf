@@ -50,6 +50,44 @@ BUTTON_COLOR = '#36824b'
 LOGO_MOBILE = 'clo_swamp_short_mobile_horizontal_color.png'
 LOGO_DESKTOP = 'clo_swamp_short_horizontal_color.png'
 LEARN_MORE_BASE_URL = 'https://ebird.org/species/'
+FOOTER_LINKS = {
+    "Site Links": [
+        {"name": "Home", "href": f"{SITE_ROOT}/"},
+        {"name": "Detections", "href": f"{SITE_ROOT}/detections"},
+        {"name": "Recording units", "href": f"{SITE_ROOT}/recorder/1"},
+        {"name": "About the project", "href": f"{SITE_ROOT}/about"},
+        {"name": "Contact", "href": f"{SITE_ROOT}/about#about-contact"},
+    ],
+    "OekoFor": [
+        {"name": "OekoFor", "href": "https://www.oekofor.de/en/", "target": "_blank"},
+        {"name": "About us", "href": "https://www.oekofor.de/en/#about", "target": "_blank"},
+        {"name": "Services", "href": "https://www.oekofor.de/en/#services", "target": "_blank"},
+        {"name": "ecoPi", "href": "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", "target": "_blank"},
+        {"name": "Contact", "href": "https://www.oekofor.de/en/#contact", "target": "_blank"},
+        
+    ],
+    "Yang Center": [
+        {"name": "Our values", "href": "https://www.birds.cornell.edu/ccb/our-values/", "target": "_blank"},
+        {"name": "Research", "href": "https://www.birds.cornell.edu/ccb/research/", "target": "_blank"},
+        {"name": "Technology", "href": "https://www.birds.cornell.edu/ccb/technology/", "target": "_blank"},
+        {"name": "Education", "href": "https://www.birds.cornell.edu/ccb/education/", "target": "_blank"},
+        {"name": "Publications", "href": "https://www.birds.cornell.edu/ccb/publications/", "target": "_blank"},
+    ],
+    "TU Chemnitz": [
+        {"name": "University", "href": "https://www.tu-chemnitz.de/index.html.en", "target": "_blank"},
+        {"name": "Degree programs", "href": "https://www.tu-chemnitz.de/studierendenservice/zsb/studiengaenge/en/", "target": "_blank"},
+        {"name": "International Office", "href": "https://www.tu-chemnitz.de/international/index.php.en", "target": "_blank"},
+        {"name": "Research", "href": "https://www.tu-chemnitz.de/forschung/index.php.en", "target": "_blank"},
+        {"name": "Computer Science", "href": "https://www.tu-chemnitz.de/informatik/index.php.en", "target": "_blank"},
+        
+    ],
+    "About": [
+        {"name": "Legal Notice", "href": "https://www.tu-chemnitz.de/tu/impressum.html", "target": "_blank"},
+        {"name": "Privacy Policy", "href": "https://www.tu-chemnitz.de/tu/datenschutz.html", "target": "_blank"},
+        {"name": "Accessibility", "href": "https://www.tu-chemnitz.de/tu/barrierefreiheit.html", "target": "_blank"},
+        {"name": "Media Data", "href": "https://www.tu-chemnitz.de/transfer/fundraising/mediadaten.php", "target": "_blank"},
+    ]
+}
 """
 
 # Neeracher Ried project configuration
@@ -89,6 +127,48 @@ BUTTON_COLOR = '#6cae3d'
 LOGO_MOBILE = 'birdlife_ch_logo_bird.png'
 LOGO_DESKTOP = 'birdlife_ch_logo_bird.png'
 LEARN_MORE_BASE_URL = 'https://ebird.org/species/'
+FOOTER_LINKS = {
+    "Site Links": [
+        {"name": "Home", "href": f"{SITE_ROOT}/"},
+        {"name": "Detections", "href": f"{SITE_ROOT}/detections"},
+        {"name": "Recording units", "href": f"{SITE_ROOT}/recorder/1"},
+        {"name": "About the project", "href": f"{SITE_ROOT}/about"},
+        {"name": "Contact", "href": f"{SITE_ROOT}/about#about-contact"},
+    ],
+    "BirdLife": [
+        {"name": "Projects", "href": "https://www.birdlife.ch/en/content/projects", "target": "_blank"},
+        {"name": "Visitor centers", "href": "https://www.birdlife.ch/en/content/visitor-centres-0", "target": "_blank"},
+        {"name": "Membership", "href": "https://www.birdlife.ch/en/membership", "target": "_blank"},
+        {"name": "Support our work", "href": "https://www.birdlife.ch/en/content/support-our-work", "target": "_blank"},
+    ],
+    "OekoFor": [
+        {"name": "About us", "href": "https://www.oekofor.de/en/#about", "target": "_blank"},
+        {"name": "Services", "href": "https://www.oekofor.de/en/#services", "target": "_blank"},
+        {"name": "ecoPi", "href": "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", "target": "_blank"},
+        {"name": "Contact", "href": "https://www.oekofor.de/en/#contact", "target": "_blank"},
+        
+    ],
+    "Yang Center": [
+        {"name": "Our values", "href": "https://www.birds.cornell.edu/ccb/our-values/", "target": "_blank"},
+        {"name": "Research", "href": "https://www.birds.cornell.edu/ccb/research/", "target": "_blank"},
+        {"name": "Technology", "href": "https://www.birds.cornell.edu/ccb/technology/", "target": "_blank"},
+        {"name": "Education", "href": "https://www.birds.cornell.edu/ccb/education/", "target": "_blank"},
+        {"name": "Publications", "href": "https://www.birds.cornell.edu/ccb/publications/", "target": "_blank"},
+    ],
+    "TU Chemnitz": [
+        {"name": "University", "href": "https://www.tu-chemnitz.de/index.html.en", "target": "_blank"},
+        {"name": "Degree programs", "href": "https://www.tu-chemnitz.de/studierendenservice/zsb/studiengaenge/en/", "target": "_blank"},
+        {"name": "International Office", "href": "https://www.tu-chemnitz.de/international/index.php.en", "target": "_blank"},
+        {"name": "Research", "href": "https://www.tu-chemnitz.de/forschung/index.php.en", "target": "_blank"},
+        {"name": "Computer Science", "href": "https://www.tu-chemnitz.de/informatik/index.php.en", "target": "_blank"},
+        
+    ],
+    "About": [
+        {"name": "Legal Notice", "href": "https://www.tu-chemnitz.de/tu/impressum.html", "target": "_blank"},
+        {"name": "Privacy Policy", "href": "https://www.tu-chemnitz.de/tu/datenschutz.html", "target": "_blank"},
+        {"name": "Accessibility", "href": "https://www.tu-chemnitz.de/tu/barrierefreiheit.html", "target": "_blank"},
+    ]
+}
 
 # SWAMP project configuration
 """
@@ -126,4 +206,45 @@ BUTTON_COLOR = '#36824b'
 LOGO_MOBILE = 'clo_swamp_short_mobile_horizontal_color.png'
 LOGO_DESKTOP = 'clo_swamp_short_horizontal_color.png'
 LEARN_MORE_BASE_URL = 'https://www.allaboutbirds.org/guide/'
+FOOTER_LINKS = {
+    "Site Links": [
+        {"name": "Home", "href": f"{SITE_ROOT}/"},
+        {"name": "Detections", "href": f"{SITE_ROOT}/detections"},
+        {"name": "Recording units", "href": f"{SITE_ROOT}/recorder/1"},
+        {"name": "About the project", "href": f"{SITE_ROOT}/about"},
+        {"name": "Contact", "href": f"{SITE_ROOT}/about#about-contact"},
+    ],
+    "Yang Center": [
+        {"name": "Our values", "href": "https://www.birds.cornell.edu/ccb/our-values/", "target": "_blank"},
+        {"name": "Research", "href": "https://www.birds.cornell.edu/ccb/research/", "target": "_blank"},
+        {"name": "Technology", "href": "https://www.birds.cornell.edu/ccb/technology/", "target": "_blank"},
+        {"name": "Education", "href": "https://www.birds.cornell.edu/ccb/education/", "target": "_blank"},
+        {"name": "Publications", "href": "https://www.birds.cornell.edu/ccb/publications/", "target": "_blank"},
+    ],
+    "Explore More": [
+        {"name": "Bird Cams", "href": "https://www.allaboutbirds.org/cams/", "target": "_blank"},
+        {"name": "Birds of the World", "href": "https://birdsoftheworld.org/bow/home", "target": "_blank"},
+        {"name": "eBird Status and Trends", "href": "https://science.ebird.org/status-and-trends", "target": "_blank"},
+        {"name": "Our Youtube Videos", "href": "https://www.youtube.com/labofornithology", "target": "_blank"},
+    ],
+    "Lifelong Learning": [
+        {"name": "Online Courses", "href": "https://academy.allaboutbirds.org/", "target": "_blank"},
+        {"name": "Bird Walks & Events", "href": "https://www.birds.cornell.edu/home/visit/events/", "target": "_blank"},
+        {"name": "Spring Field Ornithology", "href": "https://academy.allaboutbirds.org/product/spring-field-ornithology-northeast/", "target": "_blank"},
+        {"name": "K–12 Education", "href": "https://www.birds.cornell.edu/k12", "target": "_blank"},
+    ],
+    "Support Our Cause": [
+        {"name": "Join the Lab", "href": "https://join.birds.cornell.edu/page/150611/donate/1?ea.tracking.id=WXXXXX14C", "target": "_blank"},
+        {"name": "Donate", "href": "https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR", "target": "_blank"},
+        {"name": "Monthly Giving", "href": "https://give.birds.cornell.edu/page/99134/donate/1?ea.tracking.id=BCF", "target": "_blank"},
+        {"name": "Membership Services", "href": "https://www.birds.cornell.edu/home/members/", "target": "_blank"},
+        {"name": "Shop for Our Cause", "href": "https://www.birds.cornell.edu/home/shop-for-our-cause/", "target": "_blank"},
+    ],
+    "About": [
+        {"name": "Cornell Lab of Ornithology", "href": "http://birds.cornell.edu/", "target": "_blank"},
+        {"name": "Web Accessibility Assistance", "href": "https://www.birds.cornell.edu/home/web-accessibility-assistance/", "target": "_blank"},
+        {"name": "Privacy Policy", "href": "https://privacy.cornell.edu/information-use-cornell", "target": "_blank"},
+        {"name": "Terms of Use", "href": "https://www.birds.cornell.edu/home/terms-of-use/", "target": "_blank"},
+    ],
+}
 """
