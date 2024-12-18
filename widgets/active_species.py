@@ -73,7 +73,7 @@ def active_species():
         dbc.Row(
             dbc.Col([
                 html.P(),
-                html.Div("Dark blue bars show hourly detections of a species. Light blue bars represent nighttime, while light yellow bars represent daytime.",
+                html.Div("Dark blue bars show hourly detections; light blue marks nighttime, light yellow marks daytime, and numbers denote detections.",
                        className="text-muted",
                        style={"text-align": "center", "width": "100%"}),
                 ],
