@@ -265,7 +265,7 @@ def get_leaflet_map(data):
             dl.LayerGroup(markers)
         ],
         center=[center_lat, center_lon],
-        zoom=15,
+        zoom=cfg.MAP_ZOOM_LEVEL,
         style={'width': '100%', 'height': '500px'},
         scrollWheelZoom=False,  # Disable scroll wheel zoom
         touchZoom=True,  # Enable touch zoom

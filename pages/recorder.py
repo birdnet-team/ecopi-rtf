@@ -75,7 +75,7 @@ def display_recorder_page(recorder_id):
         dcc.Store(id="recorder-id-store", data=recorder_id),
         recorder_page_header(recorder_id),
         html.Div(
-            dbc.Spinner(color="#b31b1b"),
+            dbc.Spinner(color=cfg.PRIMARY_COLOR),
             id="recorder-loading-container",
         ),
         html.Div([

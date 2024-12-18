@@ -35,6 +35,7 @@ RECORDERS = {
     3: {'id': '0269', 'lat': 42.476863, 'lon': -76.445881, 'habitat': 'Urban'},
     4: {'id': '0270', 'lat': 42.479265, 'lon': -76.442721, 'habitat': 'Forest'},
 }
+MAP_ZOOM_LEVEL = 15
 MAIN_HEADER_IMG_LIST = ['swamp_main_header_1.jpg', 'swamp_main_header_2.jpg']
 ABOUT_HEADER_IMG_LIST = ['ssw_about_header_1.jpg', 'ssw_about_header_2.jpg', 'ssw_about_header_3.jpg', 'ssw_about_header_4.jpg', 'ssw_about_header_5.jpg']
 LIVE_STREAM_URL = 'https://birdnetlive.duckdns.org/ssw'
@@ -45,34 +46,34 @@ PROJECT_SUBTITLE_DESC = 'We listen to the sounds of the animals in Sapsucker Woo
 PRIMARY_COLOR = '#b31b1b'
 SECONDARY_COLOR = '#2e261f'
 PLOT_PRIMARY_COLOR = '#385B75'
-PLOT_PRIMARY_COLOR = '#385B75'
+BUTTON_COLOR = '#36824b'
 LOGO_MOBILE = 'clo_swamp_short_mobile_horizontal_color.png'
 LOGO_DESKTOP = 'clo_swamp_short_horizontal_color.png'
 """
 
 # Neeracher Ried project configuration
-"""
 PROJECT_NAME = '017_neerach_ried'
-RECORDER_GROUP = 39
+RECORDER_GROUP = 45
 SPECIES_DATA = load_species_data(project='neeracherried')
 DEPLOYMENT_LAT = 47.500
 DEPLOYMENT_LON = 8.4790
 TIMEZONE = 'Europe/Berlin'
 TIME_FORMAT = '24h'
 RECORDERS = {
-    1: {'id': '0357', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
-    2: {'id': '0368', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
-    3: {'id': '0518', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
-    4: {'id': '0517', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
-    5: {'id': '0525', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
-    6: {'id': '0523', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
-    7: {'id': '0516', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
-    8: {'id': '0513', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
-    9: {'id': '0358', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
-    10: {'id': '0526', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
-    11: {'id': '0524', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
-    12: {'id': '0378', 'lat': 47.500, 'lon': 8.4790, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    1: {'id': '0357', 'lat': 47.50141, 'lon': 8.48344, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'}, 
+    2: {'id': '0368', 'lat': 47.50364, 'lon': 8.483333, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'}, 
+    3: {'id': '0518', 'lat': 47.50269, 'lon': 8.48399, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    4: {'id': '0517', 'lat': 47.50026, 'lon': 8.48248, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    5: {'id': '0525', 'lat': 47.50249, 'lon': 8.48239, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    6: {'id': '0523', 'lat': 47.50016, 'lon': 8.48449, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    7: {'id': '0516', 'lat': 47.50095, 'lon': 8.48666, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    8: {'id': '0513', 'lat': 47.50006, 'lon': 8.48592, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    9: {'id': '0358', 'lat': 47.50255, 'lon': 8.48767, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    10: {'id': '0526', 'lat': 47.50372, 'lon': 8.48661, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    11: {'id': '0524', 'lat': 47.50464, 'lon': 8.48788, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
+    12: {'id': '0378', 'lat': 47.503143, 'lon': 8.488629, 'habitat': 'Raised bog', 'img': 'dummy_recorder.jpg'},
 }
+MAP_ZOOM_LEVEL = 16
 MAIN_HEADER_IMG_LIST = ['blnr_main_header_1.jpg']
 ABOUT_HEADER_IMG_LIST = ['blnr_about_header_1.jpg']
 LIVE_STREAM_URL = ''
@@ -82,12 +83,13 @@ PROJECT_SUBTITLE = 'AI-powered acoustic monitoring'
 PROJECT_SUBTITLE_DESC = 'We listen to the sounds of the birds in Neeracherried and track species diversity over large spatio-temporal scales.'
 PRIMARY_COLOR = '#6cae3d'
 SECONDARY_COLOR = '#3b6da8'
-PLOT_PRIMARY_COLOR = '#385B75'
+PLOT_PRIMARY_COLOR = '#486f9c'
+BUTTON_COLOR = '#6cae3d'
 LOGO_MOBILE = 'birdlife_ch_logo_bird.png'
 LOGO_DESKTOP = 'birdlife_ch_logo_bird.png'
-"""
 
 # SWAMP project configuration
+"""
 PROJECT_NAME = '099_swamp'
 RECORDER_GROUP = 99
 SPECIES_DATA = load_species_data(project='swamp')
@@ -107,6 +109,7 @@ RECORDERS = {
     10: {'id': '0277', 'lat': 42.4742, 'lon': -76.4488, 'habitat': 'Shrubs and pond', 'img': 'swamp_unit_10.jpg'},
 
 }
+MAP_ZOOM_LEVEL = 15
 MAIN_HEADER_IMG_LIST = ['ssw_main_header_1.jpg', 'ssw_main_header_2.jpg']
 ABOUT_HEADER_IMG_LIST = ['ssw_about_header_1.jpg', 'ssw_about_header_2.jpg', 'ssw_about_header_3.jpg', 'ssw_about_header_4.jpg', 'ssw_about_header_5.jpg']
 LIVE_STREAM_URL = 'https://birdnetlive.duckdns.org/ssw'
@@ -117,5 +120,7 @@ PROJECT_SUBTITLE_DESC = 'We listen to the sounds of the animals in Sapsucker Woo
 PRIMARY_COLOR = '#b31b1b'
 SECONDARY_COLOR = '#2e261f'
 PLOT_PRIMARY_COLOR = '#385B75'
+BUTTON_COLOR = '#36824b'
 LOGO_MOBILE = 'clo_swamp_short_mobile_horizontal_color.png'
 LOGO_DESKTOP = 'clo_swamp_short_horizontal_color.png'
+"""

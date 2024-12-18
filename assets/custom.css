@@ -245,7 +245,7 @@ nav .navbar-nav {
     position: absolute;
     bottom: 20px; 
     right: 20px; 
-    background-color: #36824b; 
+    background-color: var(--button-color); 
     color: white; 
     border: none; 
     border-radius: 20px; 
@@ -333,7 +333,7 @@ nav .navbar-nav {
 }
 
 .btn-href {
-    background-color: #36824b; 
+    background-color: var(--button-color); 
     color: white; 
     border: none; 
     border-radius: 20px; 
@@ -348,7 +348,7 @@ nav .navbar-nav {
 
 .btn-href:hover {
     background-color: white;
-    color: #36824b;
+    color: var(--button-color);
     text-decoration: none;
 }
 
@@ -388,7 +388,7 @@ nav .navbar-nav {
 
 .total-detections-bar-fill {
     height: 100%;
-    background-color: #385B75;
+    background-color: var(--plot-primary-color);
 }
 
 .species-info {
@@ -517,7 +517,7 @@ nav .navbar-nav {
 }
 
 .recorder-info:hover {
-    background-color: #36824b;
+    background-color: var(--button-color);
     color: white;
 }
 
@@ -654,13 +654,13 @@ nav .navbar-nav {
 }
 
 .learn-more-btn {
-    background-color: #36824b; 
+    background-color: var(--button-color); 
     border-radius: 20px;
 }
 
 .learn-more-btn:hover {
     background-color: white;
-    color: #36824b;
+    color: var(--button-color);
     text-decoration: none;
 }
 
@@ -702,7 +702,7 @@ nav .navbar-nav {
 }
 
 .play-button {
-    color: #36824b;
+    color: var(--button-color);
     font-size: 1.5em;
 }
 
@@ -820,7 +820,7 @@ nav .navbar-nav {
 
 /* About page */
 .about-link {
-    color: #36824b;
+    color: var(--button-color);
     font-weight: 400;
 }
 

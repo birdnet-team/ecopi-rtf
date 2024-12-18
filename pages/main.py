@@ -56,7 +56,7 @@ def main_page_content():
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="most-active-species", className="mt-4"),
-                    dbc.Spinner(html.Div(id="no-active-species-placeholder", className="spinner"), color="#b31b1b"),
+                    dbc.Spinner(html.Div(id="no-active-species-placeholder", className="spinner"), color=cfg.PRIMARY_COLOR),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
                         html.H5("Recent detections", className="divider-heading"),
@@ -64,14 +64,14 @@ def main_page_content():
                     ]),
                     dbc.Row(id="last-detections", className="mt-4"),
                     html.Div(id="last-detections-data-container", className="d-none"),
-                    dbc.Spinner(html.Div(id="no-detections-placeholder", className="spinner"), color="#b31b1b"),
+                    dbc.Spinner(html.Div(id="no-detections-placeholder", className="spinner"), color=cfg.PRIMARY_COLOR),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
                         html.H5("Recording units", className="divider-heading"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="recorder-stats", className="mt-4"),
-                    dbc.Spinner(html.Div(id="no-recorder-stats-placeholder", className="spinner"), color="#b31b1b"),
+                    dbc.Spinner(html.Div(id="no-recorder-stats-placeholder", className="spinner"), color=cfg.PRIMARY_COLOR),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
                         html.H5("DIY backyard monitoring", className="divider-heading"),

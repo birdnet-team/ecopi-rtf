@@ -137,6 +137,23 @@ def get_recorder_state(recorder_id):
             'cpu_temp': last_status['cpu_temp'], 
             'is_ok': is_ok}
 
+def get_recorder_group():
+    
+    url = f"https://api.ecopi.de/api/v0.1/recordergroups/"
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    params = {}
+    
+    # Project name
+    params['project_name'] = cfg.PROJECT_NAME
+    
+    response = requests.get(url, headers=headers, params=params)
+    response = response.json()
+    
+    return response
+
 def get_recorder_location(recorder_id):
     
     url = f"https://api.ecopi.de/api/v0.1/recorders/recordergroup/{cfg.RECORDER_GROUP}/"
@@ -564,8 +581,10 @@ if __name__ == '__main__':
                                 
     #print(get_species_stats('norcar', hours=24))
     
-    print(get_recorder_state(5))
-    #print(get_recorder_location(9))
+    #print(get_recorder_state(5))
+    #print(get_recorder_group())
+    for i in range(1, 13):
+        print(f"#{i}: {get_recorder_location(i)}")
     
     #print(get_total_detections(min_conf=0.5, species_list=['norcar'], days=-1))
     #print(get_total_detections(min_conf=0.5, days=-1, recorder_list=[9]))

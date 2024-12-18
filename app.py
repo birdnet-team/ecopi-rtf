@@ -27,7 +27,7 @@ from widgets.recent_detections import register_recent_detections_callbacks
 # Set dynamic CSS colors
 with open('assets/colors.css', 'w') as file:
     file.write(
-        f""":root {{\n\t--primary-color: {cfg.PRIMARY_COLOR};\n\t--secondary-color: {cfg.SECONDARY_COLOR};\n}}"""
+        f""":root {{\n\t--primary-color: {cfg.PRIMARY_COLOR};\n\t--secondary-color: {cfg.SECONDARY_COLOR};\n\t--button-color: {cfg.BUTTON_COLOR};\n\t--plot-primary-color: {cfg.PLOT_PRIMARY_COLOR};\n}}"""
         )
 
 # Initialize Dash app
