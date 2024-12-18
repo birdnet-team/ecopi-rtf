@@ -27,9 +27,21 @@ def footer_content():
             )
         )
 
+    footer_bottom_logos = []
+    num_logos = len(cfg.FOOTER_BOTTOM_LOGOS)
+    for logo in cfg.FOOTER_BOTTOM_LOGOS:
+        footer_bottom_logos.append(
+            dbc.Col(
+                html.Div(html.Img(src=cfg.SITE_ROOT + f"/assets/logo_img/{logo}", className="footer-logo"), className="footer-logo-container"),
+                width=12,
+                md=int(12 / num_logos),
+                className="text-center"
+            )
+        )
+
     return html.Footer(
         [
-            html.Div(html.Img(src=cfg.SITE_ROOT + "/assets/logo_img/clo_yangcenterconservationbioacoustics_horizontal_white.png", className="footer-logo")),
+            html.Div(html.Img(src=cfg.SITE_ROOT + f"/assets/logo_img/{cfg.FOOTER_TOP_LOGO}", className="footer-logo")),
             dbc.Container(
                 dbc.Row(
                     footer_columns,
@@ -38,8 +50,15 @@ def footer_content():
                 fluid=True,
                 className="footer-content",
             ),
-            html.Div(html.Img(src=cfg.SITE_ROOT + "/assets/logo_img/cornell-logo-white.png", className="footer-logo")),
-            html.P(f"© {datetime.now().strftime('%Y')} Cornell University"),
+            dbc.Container(
+                dbc.Row(
+                    footer_bottom_logos,
+                    className="justify-content-center"
+                ),
+                fluid=True,
+                className="footer-bottom-logos",
+            ),
+            html.P(f"© {datetime.now().strftime('%Y')} {cfg.COPYRIGHT_HOLDERS}"),
         ],
         className="footer",
     )

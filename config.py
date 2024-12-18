@@ -88,6 +88,9 @@ FOOTER_LINKS = {
         {"name": "Media Data", "href": "https://www.tu-chemnitz.de/transfer/fundraising/mediadaten.php", "target": "_blank"},
     ]
 }
+COPYRIGHT_HOLDERS = "TU Chemnitz"
+FOOTER_TOP_LOGO = 'clo_yangcenterconservationbioacoustics_horizontal_white.png'
+FOOTER_BOTTOM_LOGOS = ['cornell-logo-white.png']
 """
 
 # Neeracher Ried project configuration
@@ -169,6 +172,9 @@ FOOTER_LINKS = {
         {"name": "Accessibility", "href": "https://www.tu-chemnitz.de/tu/barrierefreiheit.html", "target": "_blank"},
     ]
 }
+COPYRIGHT_HOLDERS = "TU Chemnitz"
+FOOTER_TOP_LOGO = 'birdlife_ch_logo_white.png'
+FOOTER_BOTTOM_LOGOS = ['oekofor_logo_white.png', 'clo_yangcenterconservationbioacoustics_horizontal_white.png', 'tuc_logo_white.png'] #['tuc_logo_white.png']#
 
 # SWAMP project configuration
 """
@@ -247,4 +253,7 @@ FOOTER_LINKS = {
         {"name": "Terms of Use", "href": "https://www.birds.cornell.edu/home/terms-of-use/", "target": "_blank"},
     ],
 }
+COPYRIGHT_HOLDERS = "Cornell University"
+FOOTER_TOP_LOGO = 'clo_yangcenterconservationbioacoustics_horizontal_white.png'
+FOOTER_BOTTOM_LOGOS = ['cornell-logo-white.png']
 """

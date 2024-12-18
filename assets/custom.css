@@ -560,10 +560,24 @@ nav .navbar-nav {
     letter-spacing: 0.02em; /* Adjust letter spacing for footer paragraphs */
 }
 
+.footer-bottom-logos {
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
 .footer .footer-logo {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    max-width: 275px;
+    max-height: 60px;
 }
 
 .footer-link {
