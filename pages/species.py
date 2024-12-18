@@ -84,7 +84,7 @@ def display_species_page(species_id):
         dcc.Store(id="species-id-store", data=species_id),
         species_page_header(species_data),
         html.Div(
-            dbc.Spinner(color="#b31b1b"),
+            dbc.Spinner(color=cfg.PRIMARY_COLOR),
             id="species-loading-container",
         ),
         # Hide initial content
