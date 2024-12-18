@@ -94,6 +94,7 @@ FOOTER_BOTTOM_LOGOS = ['cornell-logo-white.png']
 """
 
 # Neeracher Ried project configuration
+"""
 PROJECT_NAME = '017_neerach_ried'
 RECORDER_GROUP = 45
 SPECIES_DATA = load_species_data(project='neeracherried')
@@ -174,10 +175,10 @@ FOOTER_LINKS = {
 }
 COPYRIGHT_HOLDERS = "TU Chemnitz"
 FOOTER_TOP_LOGO = 'birdlife_ch_logo_white.png'
-FOOTER_BOTTOM_LOGOS = ['oekofor_logo_white.png', 'clo_yangcenterconservationbioacoustics_horizontal_white.png', 'tuc_logo_white.png'] #['tuc_logo_white.png']#
+FOOTER_BOTTOM_LOGOS = ['oekofor_logo_white.png', 'clo_yangcenterconservationbioacoustics_horizontal_white.png', 'tuc_logo_white.png']
+"""
 
 # SWAMP project configuration
-"""
 PROJECT_NAME = '099_swamp'
 RECORDER_GROUP = 99
 SPECIES_DATA = load_species_data(project='swamp')
@@ -256,4 +257,3 @@ FOOTER_LINKS = {
 COPYRIGHT_HOLDERS = "Cornell University"
 FOOTER_TOP_LOGO = 'clo_yangcenterconservationbioacoustics_horizontal_white.png'
 FOOTER_BOTTOM_LOGOS = ['cornell-logo-white.png']
-"""
