@@ -182,7 +182,7 @@ def get_species_data(species):
     data['common_name'] = cfg.SPECIES_DATA[species]['common_name']
     data['scientific_name'] = cfg.SPECIES_DATA[species]['sci_name']
     #data['ebird_url'] = 'https://ebird.org/species/' + cfg.SPECIES_DATA[species]['new_ebird_code'] if not cfg.SPECIES_DATA[species]['new_ebird_code'].startswith('t-') else 'https://search.macaulaylibrary.org/catalog?taxonCode=' + cfg.SPECIES_DATA[species]['new_ebird_code']
-    data['ebird_url'] = 'https://www.allaboutbirds.org/guide/' + cfg.SPECIES_DATA[species]['new_ebird_code'] if not cfg.SPECIES_DATA[species]['new_ebird_code'].startswith('t-') else 'https://search.macaulaylibrary.org/catalog?taxonCode=' + cfg.SPECIES_DATA[species]['new_ebird_code']
+    data['ebird_url'] = cfg.LEARN_MORE_BASE_URL + cfg.SPECIES_DATA[species]['new_ebird_code'] if not cfg.SPECIES_DATA[species]['new_ebird_code'].startswith('t-') else 'https://search.macaulaylibrary.org/catalog?taxonCode=' + cfg.SPECIES_DATA[species]['new_ebird_code']
     
     # Thumbnail image
     if cfg.SPECIES_DATA[species]['image']['src'].find('birds.cornell.edu') > 0:

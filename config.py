@@ -49,6 +49,7 @@ PLOT_PRIMARY_COLOR = '#385B75'
 BUTTON_COLOR = '#36824b'
 LOGO_MOBILE = 'clo_swamp_short_mobile_horizontal_color.png'
 LOGO_DESKTOP = 'clo_swamp_short_horizontal_color.png'
+LEARN_MORE_BASE_URL = 'https://ebird.org/species/'
 """
 
 # Neeracher Ried project configuration
@@ -87,6 +88,7 @@ PLOT_PRIMARY_COLOR = '#486f9c'
 BUTTON_COLOR = '#6cae3d'
 LOGO_MOBILE = 'birdlife_ch_logo_bird.png'
 LOGO_DESKTOP = 'birdlife_ch_logo_bird.png'
+LEARN_MORE_BASE_URL = 'https://ebird.org/species/'
 
 # SWAMP project configuration
 """
@@ -123,4 +125,5 @@ PLOT_PRIMARY_COLOR = '#385B75'
 BUTTON_COLOR = '#36824b'
 LOGO_MOBILE = 'clo_swamp_short_mobile_horizontal_color.png'
 LOGO_DESKTOP = 'clo_swamp_short_horizontal_color.png'
+LEARN_MORE_BASE_URL = 'https://www.allaboutbirds.org/guide/'
 """
