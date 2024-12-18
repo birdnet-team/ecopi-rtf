@@ -34,7 +34,8 @@ def footer_content():
             dbc.Col(
                 html.Div(html.Img(src=cfg.SITE_ROOT + f"/assets/logo_img/{logo}", className="footer-logo"), className="footer-logo-container"),
                 width=12,
-                md=int(12 / num_logos),
+                md=6,
+                lg=int(12 / num_logos),
                 className="text-center"
             )
         )

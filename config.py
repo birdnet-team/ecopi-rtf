@@ -41,11 +41,11 @@ LIVE_STREAM_URL = ''
 DONATION_URL = ''
 PROJECT_MAIN_TITLE = 'AMiC: Acoustic Monitoring in Chemnitz'
 PROJECT_SUBTITLE = 'AI-powered acoustic monitoring'
-PROJECT_SUBTITLE_DESC = 'We listen to the sounds of the animals in Chemnitzs and track species diversity over large spatio-temporal scales.'
-PRIMARY_COLOR = '#f3e441'
-SECONDARY_COLOR = '#2b5182'
+PROJECT_SUBTITLE_DESC = 'We listen to the sounds of birds and investigate how traffic noise impacts their natural behavior.'
+PRIMARY_COLOR = '#385B75'
+SECONDARY_COLOR = '#2c3b47'
 PLOT_PRIMARY_COLOR = '#385B75'
-BUTTON_COLOR = '#2b5182'
+BUTTON_COLOR = '#385B75'
 LOGO_MOBILE = 'amic_logo_short.png'
 LOGO_DESKTOP = 'amic_logo_wide.png'
 LEARN_MORE_BASE_URL = 'https://ebird.org/species/'
@@ -58,7 +58,7 @@ FOOTER_LINKS = {
         {"name": "Contact", "href": f"{SITE_ROOT}/about#about-contact"},
     ],
     "Botanical Garden Chemnitz": [
-        {"name": "ABout", "href": "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden", "target": "_blank"},
+        {"name": "About", "href": "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden", "target": "_blank"},
         {"name": "History", "href": "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden/history", "target": "_blank"},
         {"name": "School Biology Center", "href": "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden/school-biology-centre", "target": "_blank"},
         {"name": "Park Map", "href": "https://d2vw8mc5mcb3gm.cloudfront.net/fileadmin/chemnitz/media/leben-in-chemnitz/freizeit/botanischer_garten/botanischer_garten_parkplan.pdf", "target": "_blank"},
@@ -96,8 +96,7 @@ FOOTER_LINKS = {
 }
 COPYRIGHT_HOLDERS = "TU Chemnitz"
 FOOTER_TOP_LOGO = 'chemnitz_logo_white.png'
-FOOTER_BOTTOM_LOGOS = ['oekofor_logo_white.png', 'clo_yangcenterconservationbioacoustics_horizontal_white.png', 'tuc_logo_white.png']
-
+FOOTER_BOTTOM_LOGOS = ['oekofor_logo_white.png', 'yang_logo_white.png', 'tuc_logo_white.png']
 
 # Neeracher Ried project configuration
 """
@@ -181,7 +180,7 @@ FOOTER_LINKS = {
 }
 COPYRIGHT_HOLDERS = "TU Chemnitz"
 FOOTER_TOP_LOGO = 'birdlife_ch_logo_white.png'
-FOOTER_BOTTOM_LOGOS = ['oekofor_logo_white.png', 'clo_yangcenterconservationbioacoustics_horizontal_white.png', 'tuc_logo_white.png']
+FOOTER_BOTTOM_LOGOS = ['oekofor_logo_white.png', 'yang_logo_white.png', 'tuc_logo_white.png']
 """
 
 # SWAMP project configuration
@@ -262,6 +261,6 @@ FOOTER_LINKS = {
     ],
 }
 COPYRIGHT_HOLDERS = "Cornell University"
-FOOTER_TOP_LOGO = 'clo_yangcenterconservationbioacoustics_horizontal_white.png'
+FOOTER_TOP_LOGO = 'yang_logo_white.png'
 FOOTER_BOTTOM_LOGOS = ['cornell-logo-white.png']
 """
