@@ -24,7 +24,7 @@ def main_page_content():
                     html.Img(src=cfg.SITE_ROOT + f"/assets/header_img/{random.choice(cfg.MAIN_HEADER_IMG_LIST)}", className="header-graphic"),
                     html.Div(
                         [
-                            html.H1(cfg.PROJECT_MAIN_TITLE),
+                            html.H1(cfg.PROJECT_ACRONYM + ': ' + cfg.PROJECT_MAIN_TITLE),
                             html.H2(cfg.PROJECT_SUBTITLE),
                         ],
                         className="header-overlay"

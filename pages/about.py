@@ -12,8 +12,8 @@ def about_page_header():
                     [
                         dbc.Col(
                             [
-                                html.H3("SWAMP", className="species-overlay-text"),
-                                html.H5("Sapsucker Woods Acoustic Monitoring Project", className="species-overlay-text"),
+                                html.H3(cfg.PROJECT_ACRONYM, className="species-overlay-text"),
+                                html.H5(cfg.PROJECT_MAIN_TITLE, className="species-overlay-text"),
                             ],
                             width=12,
                         ),
@@ -27,6 +27,22 @@ def about_page_header():
     )
 
 def about_page_content():
+    
+    team_members = []
+    for member in cfg.TEAM_MEMBERS:
+        team_members.append(
+            dbc.Col(
+                [
+                    html.Img(src=cfg.SITE_ROOT + f"/assets/content_img/{member['img']}", className="team-image"),
+                    html.H6(member["name"], className="team-name"),
+                    html.P(member["role"])
+                ],
+                width=6,
+                md=4,
+                className="mb-4 text-center"
+            )
+        )
+    
     return html.Div(
         [
             about_page_header(),
@@ -54,7 +70,7 @@ def about_page_content():
                                 [
                                     html.H4(id="about-goals", children="Project Goals", className="mb-3"),
                                     html.P([
-                                        "The Sapsucker Woods Acoustic Monitoring Project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Sapsucker Woods, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area. ",
+                                        cfg.PROJECT_GOAL,
                                         html.P(),
                                         "The project uses solar-powered recording units equipped with BirdNET software to capture and analyze bird songs and other natural sounds in real-time. These recordings provide a window into the daily rhythms of the woods, revealing which species are active and when.",
                                         html.P(),
@@ -103,73 +119,9 @@ def about_page_content():
                                     ]),
                                     
                                     html.H4(id="about-team", children="Meet the Team", className="mb-4"),
-                                    dbc.Row(
-                                        [
-                                            dbc.Col(
-                                                [                                                    
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/stefan.png", className="team-image"),
-                                                    html.H5("Stefan Kahl", className="team-name"),
-                                                    html.H6("Project lead and web development")
-                                                ],
-                                                width=6,
-                                                md=4,
-                                                className="mb-4 text-center"
-                                            ),
-                                            dbc.Col(
-                                                [
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/felix.png", className="team-image"),
-                                                    html.H5("Felix Günther", className="team-name"),
-                                                    html.H6("Backend development")
-                                                ],
-                                                width=6,
-                                                md=4,
-                                                className="mb-4 text-center"
-                                            ),
-                                            dbc.Col(
-                                                [
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/patrick.png", className="team-image"),
-                                                    html.H5("Patrick T. Chaopricha", className="team-name"),
-                                                    html.H6("Hardware programming")
-                                                ],
-                                                width=6,
-                                                md=4,
-                                                className="mb-4 text-center"
-                                            ),
-                                            dbc.Col(
-                                                [
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/max.png", className="team-image"),
-                                                    html.H5("Max Mauermann", className="team-name"),
-                                                    html.H6("Web development")
-                                                ],
-                                                width=6,
-                                                md=4,
-                                                className="mb-4 text-center"
-                                            ),
-                                            dbc.Col(
-                                                [
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/josef.png", className="team-image"),
-                                                    html.H5("Josef Haupt", className="team-name"),
-                                                    html.H6("Web development")
-                                                ],
-                                                width=6,
-                                                md=4,
-                                                className="mb-4 text-center"
-                                            ),
-                                            dbc.Col(
-                                                [
-                                                    html.Img(src=cfg.SITE_ROOT + "/assets/content_img/isabella.png", className="team-image"),
-                                                    html.H5("Isabella Marshall", className="team-name"),
-                                                    html.H6("Field Ops")
-                                                ],
-                                                width=6,
-                                                md=4,
-                                                className="mb-4 text-center"
-                                            ),
-                                        ]
-                                    ),
-                                    
+                                    dbc.Row(team_members),                           
                                     html.H4(id="about-partners", children="Partners", className="mb-3"),
-                                    html.P("The SWAMP project is a collaboration between the Cornell Lab of Ornithology, Chemnitz University of Technology, and OekoFor GbR."),
+                                    html.P("This project is a collaboration between the Cornell Lab of Ornithology, Chemnitz University of Technology, and OekoFor GbR."),
                                     dbc.Row(
                                         [
                                             dbc.Col(
@@ -196,28 +148,33 @@ def about_page_content():
                                     
                                     html.H4(id="about-funding", children="Funding", className="mb-3"),
                                     html.P("This project is supported by Jake Holshuh (Cornell class of ’69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats."),
-                                    html.P("The German Federal Ministry of Education and Research is funding the development of BirdNET through the project \"BirdNET+\" (FKZ 01|S22072). Additionally, the German Federal Ministry of Environment, Nature Conservation and Nuclear Safety is funding the development of BirdNET through the project \"DeepBirdDetect\" (FKZ 67KI31040E)."),
+                                    html.P("The development of BirdNET is supported by the German Federal Ministry of Education and Research through the project “BirdNET+” (FKZ 01|S22072). The German Federal Ministry for the Environment, Nature Conservation and Nuclear Safety contributes through the “DeepBirdDetect” project (FKZ 67KI31040E). In addition, the Deutsche Bundesstiftung Umwelt supports BirdNET through the project “RangerSound” (project 39263/01)."),
                                     
                                     html.H4(id="about-contact", children="Contact", className="mb-3"),
                                     html.P([
-                                        "Dr. Holger Klinck",
+                                        "Dr. Stefan Kahl",
                                         html.Br(),
-                                        "John W. Fitzpatrick Director of the K. Lisa Yang Center for Conservation Bioacoustics,",
+                                        "K. Lisa Yang Center for Conservation Bioacoustics,",
                                         html.Br(),
-                                        "Cornell Lab of Ornithology,",
-                                        html.Br(),
-                                        "Cornell University",
+                                        "Cornell Lab of Ornithology, Cornell University",
                                         html.Br(),
                                         html.Br(),
-                                        "Mailing address:",
+                                        "Mailing address (USA):",
                                         html.Br(),
                                         "159 Sapsucker Woods Road",
                                         html.Br(),
                                         "Ithaca, NY 14850, USA",
                                         html.Br(),
                                         html.Br(),
+                                        "Mailing address (Germany):",
+                                        html.Br(),
+                                        "Straße der Nationen 62",
+                                        html.Br(),
+                                        "DE-09111, Chemnitz, Germany",
+                                        html.Br(),
+                                        html.Br(),
                                         "Email: ",
-                                        html.A("ccb-birdnet@cornell.edu", href="mailto:ccb-birdnet@cornell.edu", className="about-link"),
+                                        html.A("stefan.kahl@cornell.edu", href="mailto:stefan.kahl@cornell.edu", className="about-link"),
                                     ]),
                                 ],
                                 width=12,

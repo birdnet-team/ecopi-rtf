@@ -21,6 +21,7 @@ SITE_ROOT = '' # '' for dev and '/swamp' for production
 SITE_VIEWS_LOG = 'site_views.csv'
 
 # AMiC project configuration
+"""
 PROJECT_NAME = 'pam_in_chemnitz'
 RECORDER_GROUP = 39
 SPECIES_DATA = load_species_data(project='amic')
@@ -39,9 +40,11 @@ MAIN_HEADER_IMG_LIST = ['amic_main_header_1.jpg']
 ABOUT_HEADER_IMG_LIST = ['amic_about_header_1.jpg']
 LIVE_STREAM_URL = ''
 DONATION_URL = ''
-PROJECT_MAIN_TITLE = 'AMiC: Acoustic Monitoring in Chemnitz'
+PROJECT_ACRONYM = 'AMiC'
+PROJECT_MAIN_TITLE = 'Acoustic Monitoring in Chemnitz'
 PROJECT_SUBTITLE = 'AI-powered acoustic monitoring'
 PROJECT_SUBTITLE_DESC = 'We listen to the sounds of birds and investigate how traffic noise impacts their natural behavior.'
+PROJECT_GOAL = 'The Acoustic Monitoring in Chemnitz project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of the birds in the Botanical Garden, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area.'
 PRIMARY_COLOR = '#385B75'
 SECONDARY_COLOR = '#2c3b47'
 PLOT_PRIMARY_COLOR = '#385B75'
@@ -61,16 +64,13 @@ FOOTER_LINKS = {
         {"name": "About", "href": "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden", "target": "_blank"},
         {"name": "History", "href": "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden/history", "target": "_blank"},
         {"name": "School Biology Center", "href": "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden/school-biology-centre", "target": "_blank"},
-        {"name": "Park Map", "href": "https://d2vw8mc5mcb3gm.cloudfront.net/fileadmin/chemnitz/media/leben-in-chemnitz/freizeit/botanischer_garten/botanischer_garten_parkplan.pdf", "target": "_blank"},
-        
+        {"name": "Park Map", "href": "https://d2vw8mc5mcb3gm.cloudfront.net/fileadmin/chemnitz/media/leben-in-chemnitz/freizeit/botanischer_garten/botanischer_garten_parkplan.pdf", "target": "_blank"},       
     ],
     "OekoFor": [
-        {"name": "OekoFor", "href": "https://www.oekofor.de/en/", "target": "_blank"},
         {"name": "About us", "href": "https://www.oekofor.de/en/#about", "target": "_blank"},
         {"name": "Services", "href": "https://www.oekofor.de/en/#services", "target": "_blank"},
         {"name": "ecoPi", "href": "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", "target": "_blank"},
-        {"name": "Contact", "href": "https://www.oekofor.de/en/#contact", "target": "_blank"},
-        
+        {"name": "Contact", "href": "https://www.oekofor.de/en/#contact", "target": "_blank"},        
     ],
     "Yang Center": [
         {"name": "Our values", "href": "https://www.birds.cornell.edu/ccb/our-values/", "target": "_blank"},
@@ -91,15 +91,21 @@ FOOTER_LINKS = {
         {"name": "Legal Notice", "href": "https://www.tu-chemnitz.de/tu/impressum.html", "target": "_blank"},
         {"name": "Privacy Policy", "href": "https://www.tu-chemnitz.de/tu/datenschutz.html", "target": "_blank"},
         {"name": "Accessibility", "href": "https://www.tu-chemnitz.de/tu/barrierefreiheit.html", "target": "_blank"},
-        {"name": "Media Data", "href": "https://www.tu-chemnitz.de/transfer/fundraising/mediadaten.php", "target": "_blank"},
     ]
 }
 COPYRIGHT_HOLDERS = "TU Chemnitz"
 FOOTER_TOP_LOGO = 'chemnitz_logo_white.png'
 FOOTER_BOTTOM_LOGOS = ['oekofor_logo_white.png', 'yang_logo_white.png', 'tuc_logo_white.png']
+TEAM_MEMBERS = [
+    {"name": "Stefan Kahl", "role": "Project lead and web development", "img": "stefan.png"},
+    {"name": "Felix Günther", "role": "Backend development", "img": "felix.png"},
+    {"name": "Raja Seifert", "role": "Visual design", "img": "raja.png"},
+    {"name": "Max Mauermann", "role": "Web development", "img": "max.png"},
+    {"name": "Josef Haupt", "role": "Web development", "img": "josef.png"},
+]
+"""
 
 # Neeracher Ried project configuration
-"""
 PROJECT_NAME = '017_neerach_ried'
 RECORDER_GROUP = 45
 SPECIES_DATA = load_species_data(project='neeracherried')
@@ -126,9 +132,11 @@ MAIN_HEADER_IMG_LIST = ['blnr_main_header_1.jpg']
 ABOUT_HEADER_IMG_LIST = ['blnr_about_header_1.jpg']
 LIVE_STREAM_URL = ''
 DONATION_URL = 'https://www.birdlife.ch/en/content/donations'
+PROJECT_ACRONYM = 'BirdLife'
 PROJECT_MAIN_TITLE = 'Neeracherried Acoustic Monitoring Project'
 PROJECT_SUBTITLE = 'AI-powered acoustic monitoring'
 PROJECT_SUBTITLE_DESC = 'We listen to the sounds of the birds in Neeracherried and track species diversity over large spatio-temporal scales.'
+PROJECT_GOAL = 'The Neeracherried Acoustic Monitoring Project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Neeracherried, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area.'
 PRIMARY_COLOR = '#6cae3d'
 SECONDARY_COLOR = '#3b6da8'
 PLOT_PRIMARY_COLOR = '#486f9c'
@@ -154,8 +162,7 @@ FOOTER_LINKS = {
         {"name": "About us", "href": "https://www.oekofor.de/en/#about", "target": "_blank"},
         {"name": "Services", "href": "https://www.oekofor.de/en/#services", "target": "_blank"},
         {"name": "ecoPi", "href": "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", "target": "_blank"},
-        {"name": "Contact", "href": "https://www.oekofor.de/en/#contact", "target": "_blank"},
-        
+        {"name": "Contact", "href": "https://www.oekofor.de/en/#contact", "target": "_blank"},        
     ],
     "Yang Center": [
         {"name": "Our values", "href": "https://www.birds.cornell.edu/ccb/our-values/", "target": "_blank"},
@@ -181,7 +188,14 @@ FOOTER_LINKS = {
 COPYRIGHT_HOLDERS = "TU Chemnitz"
 FOOTER_TOP_LOGO = 'birdlife_ch_logo_white.png'
 FOOTER_BOTTOM_LOGOS = ['oekofor_logo_white.png', 'yang_logo_white.png', 'tuc_logo_white.png']
-"""
+TEAM_MEMBERS = [
+    {"name": "Hendrik Reers", "role": "Project lead", "img": "hendrik.png"},
+    {"name": "Stefan Kahl", "role": "Web development", "img": "stefan.png"},
+    {"name": "Felix Günther", "role": "Backend development", "img": "felix.png"},
+    {"name": "Max Mauermann", "role": "Web development", "img": "max.png"},
+    {"name": "Josef Haupt", "role": "Web development", "img": "josef.png"},
+]
+
 
 # SWAMP project configuration
 """
@@ -209,9 +223,11 @@ MAIN_HEADER_IMG_LIST = ['ssw_main_header_1.jpg', 'ssw_main_header_2.jpg']
 ABOUT_HEADER_IMG_LIST = ['ssw_about_header_1.jpg', 'ssw_about_header_2.jpg', 'ssw_about_header_3.jpg', 'ssw_about_header_4.jpg', 'ssw_about_header_5.jpg']
 LIVE_STREAM_URL = 'https://birdnetlive.duckdns.org/ssw'
 DONATION_URL = 'https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR'
-PROJECT_MAIN_TITLE = 'SWAMP: Sapsucker Woods Acoustic Monitoring Project'
+PROJECT_ACRONYM = 'SWAMP'
+PROJECT_MAIN_TITLE = 'Sapsucker Woods Acoustic Monitoring Project'
 PROJECT_SUBTITLE = 'AI-powered acoustic monitoring'
 PROJECT_SUBTITLE_DESC = 'We listen to the sounds of the animals in Sapsucker Woods and track species diversity over large spatio-temporal scales.'
+PROJECT_GOAL = 'The Sapsucker Woods Acoustic Monitoring Project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Sapsucker Woods, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area.'
 PRIMARY_COLOR = '#b31b1b'
 SECONDARY_COLOR = '#2e261f'
 PLOT_PRIMARY_COLOR = '#385B75'
@@ -263,4 +279,12 @@ FOOTER_LINKS = {
 COPYRIGHT_HOLDERS = "Cornell University"
 FOOTER_TOP_LOGO = 'yang_logo_white.png'
 FOOTER_BOTTOM_LOGOS = ['cornell-logo-white.png']
+TEAM_MEMBERS = [
+    {"name": "Stefan Kahl", "role": "Project lead and web development", "img": "stefan.png"},
+    {"name": "Felix Günther", "role": "Backend development", "img": "felix.png"},
+    {"name": "Patrick T. Chaopricha", "role": "Hardware programming", "img": "patrick.png"},
+    {"name": "Max Mauermann", "role": "Web development", "img": "max.png"},
+    {"name": "Josef Haupt", "role": "Web development", "img": "josef.png"},
+    {"name": "Isabella Marshall", "role": "Field ops", "img": "isabella.png"},
+]
 """
