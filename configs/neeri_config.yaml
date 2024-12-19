@@ -1,0 +1,79 @@
+PROJECT_NAME: '017_neerach_ried'
+RECORDER_GROUP: 45
+SPECIES_DATA: neeracherried_species_info.json
+DEPLOYMENT_LAT: 47.500
+DEPLOYMENT_LON: 8.4790
+TIMEZONE: 'Europe/Berlin'
+TIME_FORMAT: '24h'
+RECORDERS:
+  1: {id: '0357', lat: 47.50141, lon: 8.48344, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+  2: {id: '0368', lat: 47.50364, lon: 8.483333, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+  3: {id: '0518', lat: 47.50269, lon: 8.48399, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+  4: {id: '0517', lat: 47.50026, lon: 8.48248, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+  5: {id: '0525', lat: 47.50249, lon: 8.48239, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+  6: {id: '0523', lat: 47.50016, lon: 8.48449, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+  7: {id: '0516', lat: 47.50095, lon: 8.48666, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+  8: {id: '0513', lat: 47.50006, lon: 8.48592, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+  9: {id: '0358', lat: 47.50255, lon: 8.48767, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+  10: {id: '0526', lat: 47.50372, lon: 8.48661, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+  11: {id: '0524', lat: 47.50464, lon: 8.48788, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+  12: {id: '0378', lat: 47.503143, lon: 8.488629, habitat: 'Raised bog', img: 'dummy_recorder.jpg'}
+MAP_ZOOM_LEVEL: 16
+MAIN_HEADER_IMG_LIST: ['blnr_main_header_1.jpg']
+ABOUT_HEADER_IMG_LIST: ['blnr_about_header_1.jpg']
+LIVE_STREAM_URL: ''
+DONATION_URL: 'https://www.birdlife.ch/en/content/donations'
+PROJECT_ACRONYM: 'BirdLife'
+PROJECT_MAIN_TITLE: 'Neeracherried Acoustic Monitoring Project'
+PROJECT_SUBTITLE: 'AI-powered acoustic monitoring'
+PROJECT_SUBTITLE_DESC: 'We listen to the sounds of the birds in Neeracherried and track species diversity over large spatio-temporal scales.'
+PROJECT_GOAL: 'The Neeracherried Acoustic Monitoring Project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Neeracherried, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area.'
+PRIMARY_COLOR: '#6cae3d'
+SECONDARY_COLOR: '#3b6da8'
+PLOT_PRIMARY_COLOR: '#486f9c'
+BUTTON_COLOR: '#6cae3d'
+LOGO_MOBILE: 'birdlife_ch_logo_bird.png'
+LOGO_DESKTOP: 'birdlife_ch_logo_bird.png'
+LEARN_MORE_BASE_URL: 'https://ebird.org/species/'
+FOOTER_LINKS:
+  Site Links:
+    - {name: "Home", href: "/"}
+    - {name: "Detections", href: "/detections"}
+    - {name: "Recording units", href: "/recorder/1"}
+    - {name: "About the project", href: "/about"}
+    - {name: "Contact", href: "/about#about-contact"}
+  BirdLife:
+    - {name: "Projects", href: "https://www.birdlife.ch/en/content/projects", target: "_blank"}
+    - {name: "Visitor centers", href: "https://www.birdlife.ch/en/content/visitor-centres-0", target: "_blank"}
+    - {name: "Membership", href: "https://www.birdlife.ch/en/membership", target: "_blank"}
+    - {name: "Support our work", href: "https://www.birdlife.ch/en/content/support-our-work", target: "_blank"}
+  OekoFor:
+    - {name: "About us", href: "https://www.oekofor.de/en/#about", target: "_blank"}
+    - {name: "Services", href: "https://www.oekofor.de/en/#services", target: "_blank"}
+    - {name: "ecoPi", href: "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", target: "_blank"}
+    - {name: "Contact", href: "https://www.oekofor.de/en/#contact", target: "_blank"}
+  Yang Center:
+    - {name: "Our values", href: "https://www.birds.cornell.edu/ccb/our-values/", target: "_blank"}
+    - {name: "Research", href: "https://www.birds.cornell.edu/ccb/research/", target: "_blank"}
+    - {name: "Technology", href: "https://www.birds.cornell.edu/ccb/technology/", target: "_blank"}
+    - {name: "Education", href: "https://www.birds.cornell.edu/ccb/education/", target: "_blank"}
+    - {name: "Publications", href: "https://www.birds.cornell.edu/ccb/publications/", target: "_blank"}
+  TU Chemnitz:
+    - {name: "University", href: "https://www.tu-chemnitz.de/index.html.en", target: "_blank"}
+    - {name: "Degree programs", href: "https://www.tu-chemnitz.de/studierendenservice/zsb/studiengaenge/en/", target: "_blank"}
+    - {name: "International Office", href: "https://www.tu-chemnitz.de/international/index.php.en", target: "_blank"}
+    - {name: "Research", href: "https://www.tu-chemnitz.de/forschung/index.php.en", target: "_blank"}
+    - {name: "Computer Science", href: "https://www.tu-chemnitz.de/informatik/index.php.en", target: "_blank"}
+  About:
+    - {name: "Legal Notice", href: "https://www.tu-chemnitz.de/tu/impressum.html", target: "_blank"}
+    - {name: "Privacy Policy", href: "https://www.tu-chemnitz.de/tu/datenschutz.html", target: "_blank"}
+    - {name: "Accessibility", href: "https://www.tu-chemnitz.de/tu/barrierefreiheit.html", target: "_blank"}
+COPYRIGHT_HOLDERS: "TU Chemnitz"
+FOOTER_TOP_LOGO: 'birdlife_ch_logo_white.png'
+FOOTER_BOTTOM_LOGOS: ['oekofor_logo_white.png', 'yang_logo_white.png', 'tuc_logo_white.png']
+TEAM_MEMBERS:
+  - {name: "Hendrik Reers", role: "Project lead", img: "hendrik.png"}
+  - {name: "Stefan Kahl", role: "Web development", img: "stefan.png"}
+  - {name: "Felix Günther", role: "Backend development", img: "felix.png"}
+  - {name: "Max Mauermann", role: "Web development", img: "max.png"}
+  - {name: "Josef Haupt", role: "Web development", img: "josef.png"}

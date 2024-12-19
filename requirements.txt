@@ -8,3 +8,4 @@ astral
 gunicorn
 flask-Cors
 dash-leaflet
+pyyaml

@@ -1,0 +1,78 @@
+project_name: '099_swamp'
+recorder_group: 99
+species_data: 'swamp'
+deployment_lat: 42.479723
+deployment_lon: -76.451566
+timezone: 'America/New_York'
+time_format: '12h'
+recorders:
+  1: {id: '0271', lat: 42.4786, lon: -76.4407, habitat: 'Shrubs & trees', img: 'swamp_unit_1.jpg'}
+  2: {id: '0829', lat: 42.4768, lon: -76.4396, habitat: 'Shrubs & meadow', img: 'swamp_unit_2.jpg'}
+  3: {id: '0269', lat: 42.4769, lon: -76.4426, habitat: 'Shrubs & meadow', img: 'swamp_unit_3.jpg'}
+  4: {id: '0270', lat: 42.4769, lon: -76.4442, habitat: 'Shrubs & trees', img: 'swamp_unit_4.jpg'}
+  5: {id: '0272', lat: 42.4796, lon: -76.4514, habitat: 'Feeder garden & pond', img: 'swamp_unit_5.jpg'}
+  7: {id: '0275', lat: 42.4801, lon: -76.4543, habitat: 'Trees & pond', img: 'swamp_unit_7.jpg'}
+  8: {id: '0276', lat: 42.4782, lon: -76.4547, habitat: 'Forest', img: 'swamp_unit_8.jpg'}
+  9: {id: '0274', lat: 42.4753, lon: -76.4451, habitat: 'Forest clearing', img: 'swamp_unit_9.jpg'}
+  10: {id: '0277', lat: 42.4742, lon: -76.4488, habitat: 'Shrubs and pond', img: 'swamp_unit_10.jpg'}
+map_zoom_level: 15
+main_header_img_list: ['ssw_main_header_1.jpg', 'ssw_main_header_2.jpg']
+about_header_img_list: ['ssw_about_header_1.jpg', 'ssw_about_header_2.jpg', 'ssw_about_header_3.jpg', 'ssw_about_header_4.jpg', 'ssw_about_header_5.jpg']
+live_stream_url: 'https://birdnetlive.duckdns.org/ssw'
+donation_url: 'https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR'
+project_acronym: 'SWAMP'
+project_main_title: 'Sapsucker Woods Acoustic Monitoring Project'
+project_subtitle: 'AI-powered acoustic monitoring'
+project_subtitle_desc: 'We listen to the sounds of the animals in Sapsucker Woods and track species diversity over large spatio-temporal scales.'
+project_goal: 'The Sapsucker Woods Acoustic Monitoring Project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Sapsucker Woods, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area.'
+primary_color: '#b31b1b'
+secondary_color: '#2e261f'
+plot_primary_color: '#385B75'
+button_color: '#36824b'
+logo_mobile: 'clo_swamp_short_mobile_horizontal_color.png'
+logo_desktop: 'clo_swamp_short_horizontal_color.png'
+learn_more_base_url: 'https://www.allaboutbirds.org/guide/'
+footer_links:
+  Site Links:
+    - {name: "Home", href: "/"}
+    - {name: "Detections", href: "/detections"}
+    - {name: "Recording units", href: "/recorder/1"}
+    - {name: "About the project", href: "/about"}
+    - {name: "Contact", href: "/about#about-contact"}
+  Yang Center:
+    - {name: "Our values", href: "https://www.birds.cornell.edu/ccb/our-values/", target: "_blank"}
+    - {name: "Research", href: "https://www.birds.cornell.edu/ccb/research/", target: "_blank"}
+    - {name: "Technology", href: "https://www.birds.cornell.edu/ccb/technology/", target: "_blank"}
+    - {name: "Education", href: "https://www.birds.cornell.edu/ccb/education/", target: "_blank"}
+    - {name: "Publications", href: "https://www.birds.cornell.edu/ccb/publications/", target: "_blank"}
+  Explore More:
+    - {name: "Bird Cams", href: "https://www.allaboutbirds.org/cams/", target: "_blank"}
+    - {name: "Birds of the World", href: "https://birdsoftheworld.org/bow/home", target: "_blank"}
+    - {name: "eBird Status and Trends", href: "https://science.ebird.org/status-and-trends", target: "_blank"}
+    - {name: "Our Youtube Videos", href: "https://www.youtube.com/labofornithology", target: "_blank"}
+  Lifelong Learning:
+    - {name: "Online Courses", href: "https://academy.allaboutbirds.org/", target: "_blank"}
+    - {name: "Bird Walks & Events", href: "https://www.birds.cornell.edu/home/visit/events/", target: "_blank"}
+    - {name: "Spring Field Ornithology", href: "https://academy.allaboutbirds.org/product/spring-field-ornithology-northeast/", target: "_blank"}
+    - {name: "K–12 Education", href: "https://www.birds.cornell.edu/k12", target: "_blank"}
+  Support Our Cause:
+    - {name: "Join the Lab", href: "https://join.birds.cornell.edu/page/150611/donate/1?ea.tracking.id=WXXXXX14C", target: "_blank"}
+    - {name: "Donate", href: "https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR", target: "_blank"}
+    - {name: "Monthly Giving", href: "https://give.birds.cornell.edu/page/99134/donate/1?ea.tracking.id=BCF", target: "_blank"}
+    - {name: "Membership Services", href: "https://www.birds.cornell.edu/home/members/", target: "_blank"}
+    - {name: "Shop for Our Cause", href: "https://www.birds.cornell.edu/home/shop-for-our-cause/", target: "_blank"}
+  About:
+    - {name: "Cornell Lab of Ornithology", href: "http://birds.cornell.edu/", target: "_blank"}
+    - {name: "Web Accessibility Assistance", href: "https://www.birds.cornell.edu/home/web-accessibility-assistance/", target: "_blank"}
+    - {name: "Privacy Policy", href: "https://privacy.cornell.edu/information-use-cornell", target: "_blank"}
+    - {name: "Terms of Use", href: "https://www.birds.cornell.edu/home/terms-of-use/", target: "_blank"}
+copyright_holders: 'Cornell University'
+footer_top_logo: 'yang_logo_white.png'
+footer_bottom_logos: ['cornell-logo-white.png']
+team_members:
+  - {name: "Stefan Kahl", role: "Project lead and web development", img: "stefan.png"}
+  - {name: "Felix Günther", role: "Backend development", img: "felix.png"}
+  - {name: "Patrick T. Chaopricha", role: "Hardware programming", img: "patrick.png"}
+  - {name: "Max Mauermann", role: "Web development", img: "max.png"}
+  - {name: "Josef Haupt", role: "Web development", img: "josef.png"}
+  - {name: "Isabella Marshall", role: "Field ops", img: "isabella.png"}
