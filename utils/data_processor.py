@@ -198,7 +198,7 @@ def get_species_data(species):
     
     # High res species image
     if cfg.SPECIES_DATA[species]['image']['src'].find('birds.cornell.edu') > 0:
-        data['image_url_highres'] = cfg.SPECIES_DATA[species]['image']['src'] + '/640'
+        data['image_url_highres'] = cfg.SPECIES_DATA[species]['image']['src'] + '/900'
     else:
         data['image_url_highres'] = cfg.SITE_ROOT + cfg.SPECIES_DATA[species]['image']['src']
     
