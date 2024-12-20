@@ -59,7 +59,7 @@ def footer_content():
                 fluid=True,
                 className="footer-bottom-logos",
             ),
-            html.P(f"© {datetime.now().strftime('%Y')} {cfg.COPYRIGHT_HOLDERS}"),
+            html.P(f"© {datetime.now().strftime('%Y')} {cfg.COPYRIGHT_HOLDERS}" if len(cfg.COPYRIGHT_HOLDERS) > 0 else ""),
         ],
         className="footer",
     )

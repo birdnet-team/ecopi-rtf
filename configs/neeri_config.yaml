@@ -70,7 +70,7 @@ FOOTER_LINKS:
     - {name: "Legal Notice", href: "https://www.tu-chemnitz.de/tu/impressum.html", target: "_blank"}
     - {name: "Privacy Policy", href: "https://www.tu-chemnitz.de/tu/datenschutz.html", target: "_blank"}
     - {name: "Accessibility", href: "https://www.tu-chemnitz.de/tu/barrierefreiheit.html", target: "_blank"}
-COPYRIGHT_HOLDERS: "TU Chemnitz"
+COPYRIGHT_HOLDERS: ""
 FOOTER_TOP_LOGO: 'birdlife_ch_logo_white.png'
 FOOTER_BOTTOM_LOGOS: ['oekofor_logo_white.png', 'yang_logo_white.png', 'tuc_logo_white.png']
 TEAM_MEMBERS:
