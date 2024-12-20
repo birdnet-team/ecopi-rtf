@@ -1,6 +1,6 @@
 PROJECT_NAME: '017_neerach_ried'
 RECORDER_GROUP: 45
-SPECIES_DATA: neeracherried_species_info.json
+SPECIES_DATA: neeracherried
 DEPLOYMENT_LAT: 47.500
 DEPLOYMENT_LON: 8.4790
 TIMEZONE: 'Europe/Berlin'

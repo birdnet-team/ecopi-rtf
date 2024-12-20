@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def load_species_data(project='amic'):
+def load_species_data(project='swamp'):
     # Get the absolute path to the JSON file
     base_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(base_dir, 'assets', project + '_species_info.json')
@@ -30,33 +30,33 @@ config_file = os.getenv('CONFIG_FILE', 'configs/swamp_config.yaml')
 config = load_config(config_file)
 
 # Load project configuration from yaml
-PROJECT_NAME = config['project_name']
-RECORDER_GROUP = config['recorder_group']
-SPECIES_DATA = load_species_data(project=config['species_data'])
-DEPLOYMENT_LAT = config['deployment_lat']
-DEPLOYMENT_LON = config['deployment_lon']
-TIMEZONE = config['timezone']
-TIME_FORMAT = config['time_format']
-RECORDERS = config['recorders']
-MAP_ZOOM_LEVEL = config['map_zoom_level']
-MAIN_HEADER_IMG_LIST = config['main_header_img_list']
-ABOUT_HEADER_IMG_LIST = config['about_header_img_list']
-LIVE_STREAM_URL = config['live_stream_url']
-DONATION_URL = config['donation_url']
-PROJECT_ACRONYM = config['project_acronym']
-PROJECT_MAIN_TITLE = config['project_main_title']
-PROJECT_SUBTITLE = config['project_subtitle']
-PROJECT_SUBTITLE_DESC = config['project_subtitle_desc']
-PROJECT_GOAL = config['project_goal']
-PRIMARY_COLOR = config['primary_color']
-SECONDARY_COLOR = config['secondary_color']
-PLOT_PRIMARY_COLOR = config['plot_primary_color']
-BUTTON_COLOR = config['button_color']
-LOGO_MOBILE = config['logo_mobile']
-LOGO_DESKTOP = config['logo_desktop']
-LEARN_MORE_BASE_URL = config['learn_more_base_url']
-FOOTER_LINKS = config['footer_links']
-COPYRIGHT_HOLDERS = config['copyright_holders']
-FOOTER_TOP_LOGO = config['footer_top_logo']
-FOOTER_BOTTOM_LOGOS = config['footer_bottom_logos']
-TEAM_MEMBERS = config['team_members']
+PROJECT_NAME = config['PROJECT_NAME']
+RECORDER_GROUP = config['RECORDER_GROUP']
+SPECIES_DATA = load_species_data(project=config['SPECIES_DATA'])
+DEPLOYMENT_LAT = config['DEPLOYMENT_LAT']
+DEPLOYMENT_LON = config['DEPLOYMENT_LON']
+TIMEZONE = config['TIMEZONE']
+TIME_FORMAT = config['TIME_FORMAT']
+RECORDERS = config['RECORDERS']
+MAP_ZOOM_LEVEL = config['MAP_ZOOM_LEVEL']
+MAIN_HEADER_IMG_LIST = config['MAIN_HEADER_IMG_LIST']
+ABOUT_HEADER_IMG_LIST = config['ABOUT_HEADER_IMG_LIST']
+LIVE_STREAM_URL = config['LIVE_STREAM_URL']
+DONATION_URL = config['DONATION_URL']
+PROJECT_ACRONYM = config['PROJECT_ACRONYM']
+PROJECT_MAIN_TITLE = config['PROJECT_MAIN_TITLE']
+PROJECT_SUBTITLE = config['PROJECT_SUBTITLE']
+PROJECT_SUBTITLE_DESC = config['PROJECT_SUBTITLE_DESC']
+PROJECT_GOAL = config['PROJECT_GOAL']
+PRIMARY_COLOR = config['PRIMARY_COLOR']
+SECONDARY_COLOR = config['SECONDARY_COLOR']
+PLOT_PRIMARY_COLOR = config['PLOT_PRIMARY_COLOR']
+BUTTON_COLOR = config['BUTTON_COLOR']
+LOGO_MOBILE = config['LOGO_MOBILE']
+LOGO_DESKTOP = config['LOGO_DESKTOP']
+LEARN_MORE_BASE_URL = config['LEARN_MORE_BASE_URL']
+FOOTER_LINKS = config['FOOTER_LINKS']
+COPYRIGHT_HOLDERS = config['COPYRIGHT_HOLDERS']
+FOOTER_TOP_LOGO = config['FOOTER_TOP_LOGO']
+FOOTER_BOTTOM_LOGOS = config['FOOTER_BOTTOM_LOGOS']
+TEAM_MEMBERS = config['TEAM_MEMBERS']

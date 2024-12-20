@@ -1,6 +1,6 @@
 PROJECT_NAME: 'pam_in_chemnitz'
 RECORDER_GROUP: 39
-SPECIES_DATA: amic_species_info.json
+SPECIES_DATA: amic
 DEPLOYMENT_LAT: 50.832
 DEPLOYMENT_LON: 12.924
 TIMEZONE: 'Europe/Berlin'

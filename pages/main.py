@@ -44,7 +44,7 @@ def main_page_content():
                 [
                     html.Div(
                         [
-                            html.H1(cfg.PROJECT_MAIN_TITLE),
+                            html.H1(cfg.PROJECT_ACRONYM + ': ' + cfg.PROJECT_MAIN_TITLE),
                         ],
                         className="header-text"
                     ),
