@@ -1,10 +1,20 @@
-# BirdNET ecoPi Real Time Frontend (ecoPi-RTF)
+# ecoPi Real-Time Frontend (ecoPi-RTF)
 
-This is a web application for visualizing data recorded by the **ecoPi**. 
+This is a web application based on Dash for visualizing data recorded with **ecoPi** real-time audio recorders. The application allows users to explore the data collected by ecoPi and learn more about the species present in the monitored areas. 
 
 ecoPi is a recording device used in various projects to perform acoustic monitoring and study the biodiversity of birds and other wildlife. The device collects audio data in real-time, which is then processed using machine learning models to identify species. The ecoPi Real Time Frontend (ecoPi-RTF) web application allows users to explore the data collected by ecoPi and learn more about the species present in the monitored areas.
 
 To learn more about the recording units, visit the [OekoFor website](https://www.oekofor.de/de/portfolio/erfassungstechnik/).
+
+We currently support these monitoring projects:
+
+- SWAMP: Sapsucker Woods Acoustic Monitoring Project - [birdnet.cornell.edu/swamp](https://birdnet.cornell.edu/swamp/)
+- AMiC: Acoustic Monitoring in Chemnitz - [birdnet.cornell.edu/amic](https://birdnet.cornell.edu/amic/)
+- BirdLife Neeracherried Acoustic Monitoring Project - [birdnet.cornell.edu/neeri](https://birdnet.cornell.edu/neeri/)
+
+Interested? Want to host your own project? Please don't hesitate to contact us at [ccb-birdnet@cornell.edu](mailto:ccb-birdnet@cornell.edu).
+
+**ecoPi-RTF** is a collaboration between the [K. Lisa Yang Center for Conservation Bioacoustics](https://www.birds.cornell.edu/ccb/) at the [Cornell Lab of Ornithology](https://www.birds.cornell.edu), [Chemnitz University of Technology](https://www.tu-chemnitz.de/index.html.en), and [OekoFor GbR](https://www.oekofor.de/).
 
 ## Setup for development
 
@@ -28,19 +38,15 @@ source .venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-4. Create a file `.env` and add your API token to the `API_TOKEN` key
+4. Create a file `.env` and add your OekoFor API key to the `API_TOKEN` key
 
 ```bash
 API_TOKEN=<your api token>
 ```
 
-5. You'll also need a mapbox token. Add your token to the `.env` file as follows:
+**Note:** You'll need an OekoFor API key to run the app. Please send an email to [info@oekofor.de](mailto:info@oekofor.de) to request API access.
 
-```bash
-MAPBOX_TOKEN=<your mapbox token>
-```
-
-6. Add these additional environment variables to the `.env` file:
+5. Add these additional environment variables to the `.env` file:
 
 ```bash
 CONFIG_FILE=configs/swamp_config.yaml
@@ -48,21 +54,35 @@ SITE_ROOT=''
 PORT=8050
 ```
 
+**Note:** If you want to create a new project, you can create a new config file in the `configs` directory and copy the `swamp_config.yaml` file as a template.
+
 ## Running the app
 
 This is a Dash app, so you can run it with the following command:
 
 ```bash
-python3 app.py --config_file configs/swamp_config.yaml --site_root /swamp --port 8050
+python3 app.py
 ```
 
 The app will be available at `http://localhost:8050/`.
 
-Note: You'll need an OekoFor API key to run the app. Please send an email to [info@oekofor.de](mailto:info@oekofor.de) to request an API key.
+You can also specify config files, site root (in case of URL forwarding), and dedicated port using command line arguments:
+
+```bash
+python3 app.py --config_file configs/swamp_config.yaml --site_root /swamp --port 8050
+```
 
 ## Running the app in production
 
-We use Gunicorn to run the app in production. You can run the app with the following command:
+We use Gunicorn to run the app in production. 
+
+Install Gunicorn with the following command:
+
+```bash
+sudo apt-get install gunicorn
+```
+
+You can now run the app with the following command:
 
 ```bash
 gunicorn app:server --bind 0.0.0.0:8050 --workers 4 --env CONFIG_FILE=configs/swamp_config.yaml --env SITE_ROOT=/swamp
