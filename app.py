@@ -1,3 +1,4 @@
+import shutil
 import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
@@ -29,6 +30,9 @@ with open('assets/colors.css', 'w') as file:
     file.write(
         f""":root {{\n\t--primary-color: {cfg.PRIMARY_COLOR};\n\t--secondary-color: {cfg.SECONDARY_COLOR};\n\t--button-color: {cfg.BUTTON_COLOR};\n\t--plot-primary-color: {cfg.PLOT_PRIMARY_COLOR};\n}}"""
         )
+    
+# Copy favicon
+shutil.copyfile('assets/' + cfg.FAVICON, 'assets/favicon.ico')
 
 # Initialize Dash app
 app = dash.Dash(
