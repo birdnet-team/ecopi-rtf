@@ -25,7 +25,7 @@ parser = argparse.ArgumentParser(description='Launch the ecoPi-RTF app with spec
 parser.add_argument('--config_file', type=str, default=os.getenv('CONFIG_FILE', 'configs/swamp_config.yaml'), help='Path to the configuration YAML file.')
 parser.add_argument('--site_root', type=str, default=os.getenv('SITE_ROOT', ''), help='Site root for the application.')
 parser.add_argument('--port', type=int, default=int(os.getenv('PORT', 8050)), help='Port to run the server on.')
-args = parser.parse_args()
+args, unknown = parser.parse_known_args()
 
 # Load the chosen configuration file
 config = load_config(args.config_file)
