@@ -1,12 +1,10 @@
-# SWAMP - Web app
+# BirdNET ecoPi Real Time Frontend (ecoPi-RTF)
 
-This is a web application for the **Sapsucker Woods Acoustic Monitoring Project (SWAMP)**. 
+This is a web application for visualizing data recorded by the **ecoPi**. 
 
-SWAMP is a project that uses acoustic monitoring to study the biodiversity of birds in Sapsucker Woods, Ithaca, NY. We use real-time recording units to collect audio data, which is then processed using machine learning models to identify bird species. The web application allows users to explore the data collected by SWAMP and learn more about the bird species present in the Sapsucker Woods bird sanctuary.
+ecoPi is a recording device used in various projects to perform acoustic monitoring and study the biodiversity of birds and other wildlife. The device collects audio data in real-time, which is then processed using machine learning models to identify species. The ecoPi Real Time Frontend (ecoPi-RTF) web application allows users to explore the data collected by ecoPi and learn more about the species present in the monitored areas.
 
-Please check out the [SWAMP website](https://birdnet.cornell.edu/swamp) for more information about the project and to access the web app.
-
-We use recording units developed by OekoFor GbR. To learn more about the recording units, visit the [OekoFor website](https://www.oekofor.de/de/portfolio/erfassungstechnik/).
+To learn more about the recording units, visit the [OekoFor website](https://www.oekofor.de/de/portfolio/erfassungstechnik/).
 
 ## Setup for development
 
@@ -40,6 +38,14 @@ API_TOKEN=<your api token>
 
 ```bash
 MAPBOX_TOKEN=<your mapbox token>
+```
+
+6. Add these additional environment variables to the `.env` file:
+
+```bash
+CONFIG_FILE=configs/swamp_config.yaml
+SITE_ROOT=''
+PORT=8050
 ```
 
 ## Running the app
