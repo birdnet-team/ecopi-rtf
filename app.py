@@ -26,13 +26,10 @@ from widgets.nav_bar import nav_bar
 from widgets.recent_detections import register_recent_detections_callbacks
 
 # Set dynamic CSS colors
-with open('assets/colors.css', 'w') as file:
+with open(f"assets/style/{cfg.PROJECT_ACRONYM.lower()}_colors.css", 'w') as file:
     file.write(
         f""":root {{\n\t--primary-color: {cfg.PRIMARY_COLOR};\n\t--secondary-color: {cfg.SECONDARY_COLOR};\n\t--button-color: {cfg.BUTTON_COLOR};\n\t--plot-primary-color: {cfg.PLOT_PRIMARY_COLOR};\n}}"""
         )
-    
-# Copy favicon
-shutil.copyfile('assets/' + cfg.FAVICON, 'assets/favicon.ico')
 
 # Initialize Dash app
 app = dash.Dash(
@@ -53,6 +50,28 @@ app = dash.Dash(
 
 # Enable CORS
 CORS(app.server)
+
+# Define custom index string to include custom favicon and CSS
+app.index_string = f"""
+<!DOCTYPE html>
+<html>
+    <head>
+        {{%metas%}}
+        <title>{{%title%}}</title>
+        <link rel="icon" type="image/x-icon" href="{cfg.SITE_ROOT}/assets/{cfg.FAVICON}">
+        {{%css%}}
+        <link rel="stylesheet" href="{cfg.SITE_ROOT}/assets/style/{cfg.PROJECT_ACRONYM.lower()}_colors.css">
+    </head>
+    <body>
+        {{%app_entry%}}
+        <footer>
+            {{%config%}}
+            {{%scripts%}}
+            {{%renderer%}}
+        </footer>
+    </body>
+</html>
+"""
 
 # Define overall layout
 def app_layout():
