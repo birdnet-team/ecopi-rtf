@@ -1,6 +1,7 @@
 import json
 import os
 import yaml
+import argparse
 
 from dotenv import load_dotenv
 
@@ -19,15 +20,15 @@ def load_config(config_file):
     with open(config_file, 'r') as file:
         return yaml.safe_load(file)
 
-API_TOKEN = os.getenv('API_TOKEN')
-MAPBOX_TOKEN = os.getenv('MAPBOX_TOKEN')
-API_BASE_URL = 'https://api.ecopi.de/api/v0.1/'
-SITE_ROOT = '' # '' for dev and '/swamp' for production
-SITE_VIEWS_LOG = 'site_views.csv'
+# Parse command-line arguments
+parser = argparse.ArgumentParser(description='Launch the ecoPi-RTF app with specified configuration.')
+parser.add_argument('--config_file', type=str, default=os.getenv('CONFIG_FILE', 'configs/swamp_config.yaml'), help='Path to the configuration YAML file.')
+parser.add_argument('--site_root', type=str, default=os.getenv('SITE_ROOT', ''), help='Site root for the application.')
+parser.add_argument('--port', type=int, default=int(os.getenv('PORT', 8050)), help='Port to run the server on.')
+args = parser.parse_args()
 
 # Load the chosen configuration file
-config_file = os.getenv('CONFIG_FILE', 'configs/swamp_config.yaml')
-config = load_config(config_file)
+config = load_config(args.config_file)
 
 # Load project configuration from yaml
 PROJECT_NAME = config['PROJECT_NAME']
@@ -60,3 +61,12 @@ COPYRIGHT_HOLDERS = config['COPYRIGHT_HOLDERS']
 FOOTER_TOP_LOGO = config['FOOTER_TOP_LOGO']
 FOOTER_BOTTOM_LOGOS = config['FOOTER_BOTTOM_LOGOS']
 TEAM_MEMBERS = config['TEAM_MEMBERS']
+
+# Set site root and port from arguments
+SITE_ROOT = args.site_root
+PORT = args.port
+
+API_TOKEN = os.getenv('API_TOKEN')
+MAPBOX_TOKEN = os.getenv('MAPBOX_TOKEN')
+API_BASE_URL = 'https://api.ecopi.de/api/v0.1/'
+SITE_VIEWS_LOG = 'site_views.csv'

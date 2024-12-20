@@ -47,7 +47,7 @@ MAPBOX_TOKEN=<your mapbox token>
 This is a Dash app, so you can run it with the following command:
 
 ```bash
-python3 app.py
+python3 app.py --config_file configs/swamp_config.yaml --site_root /swamp --port 8050
 ```
 
 The app will be available at `http://localhost:8050/`.
@@ -59,10 +59,10 @@ Note: You'll need an OekoFor API key to run the app. Please send an email to [in
 We use Gunicorn to run the app in production. You can run the app with the following command:
 
 ```bash
-gunicorn app:server --bind 0.0.0.0:8050 --workers 4
+gunicorn app:server --bind 0.0.0.0:8050 --workers 4 --env CONFIG_FILE=configs/swamp_config.yaml --env SITE_ROOT=/swamp
 ```
 
-The app will be available at `http://localhost:8050/`. You can specify the number of workers to run with the `--workers` flag based on the number of cores available on your machine. Make sure to set 'debug=False' in the app.py file before running the app in production. You also may have to set `SITE_ROOT` in the config when using URL forwarding in your domain.
+The app will be available at `http://localhost:8050/`. You can specify the number of workers to run with the `--workers` flag based on the number of cores available on your machine. Make sure to set 'debug=False' in the app.py file before running the app in production. You also may have to set `SITE_ROOT` in when using URL forwarding in your domain.
 
 ## License
 
