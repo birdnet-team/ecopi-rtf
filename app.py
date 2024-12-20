@@ -46,7 +46,7 @@ app = dash.Dash(
         "https://d3js.org/d3-scale-chromatic.v1.min.js"
     ],
     suppress_callback_exceptions=True,
-    title="SWAMP",
+    title=cfg.PAGE_TITLE,
     update_title=None,
     requests_pathname_prefix="/" if cfg.SITE_ROOT == "" else cfg.SITE_ROOT + "/",
 )
