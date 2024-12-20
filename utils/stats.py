@@ -26,8 +26,8 @@ def increment_site_views(site, user_agent):
         writer = csv.writer(file)
         if not file_exists:
             # Write the header if the file does not exist
-            writer.writerow(["timestamp", "site", "user_agent"])
-        writer.writerow([timestamp, site, user_agent_to_fingerprint(user_agent)])
+            writer.writerow(["timestamp", "project", "site", "user_agent"])
+        writer.writerow([timestamp, cfg.PROJECT_ACRONYM, site, user_agent_to_fingerprint(user_agent)])
 
     return timestamp
 
