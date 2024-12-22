@@ -69,6 +69,14 @@ def is_in_species_data(species_code):
     
     return species_code in cfg.SPECIES_DATA
 
+def is_blacklisted(species_code):
+    
+    # Is in species data?
+    if not is_in_species_data(species_code):
+        return True
+    
+    return cfg.SPECIES_DATA[species_code]['blacklisted']
+
 def get_confidence_score(species, confidence):
     
     week = get_current_week()
@@ -241,7 +249,7 @@ def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=5):
         
     # Only keep species with count >= min_count
     for recorder in recorder_data:
-        recorder_data[recorder]['species_counts'] = {k: v for k, v in recorder_data[recorder]['species_counts'].items() if v >= min_count}
+        recorder_data[recorder]['species_counts'] = {k: v for k, v in recorder_data[recorder]['species_counts'].items() if v >= min_count and not is_blacklisted(k)}
     
     # Add recorder metadata
     for recorder in recorder_data:
@@ -286,6 +294,9 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
         
     # Sort by count
     detections = {k: v for k, v in sorted(detections.items(), key=lambda item: item[1], reverse=True)}
+    
+    # Only keep non-blacklisted species
+    detections = {k: v for k, v in detections.items() if not is_blacklisted(k)}
     
     # Only keep species with count >= min_count
     detections = {k: v for k, v in detections.items() if v >= min_count}
@@ -351,6 +362,9 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5):
             continue
         # Is species in species data?
         if not is_in_species_data(item['species_code']):
+            continue
+        # Is species blacklisted?
+        if is_blacklisted(item['species_code']):
             continue
         if item['species_code'] not in detections:
             detections[item['species_code']] = []
@@ -443,6 +457,10 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
         
         # Is species in species data?
         if not is_in_species_data(item['species_code']):
+            continue
+        
+        # Is species blacklisted?
+        if is_blacklisted(item['species_code']):
             continue
         
         # Is species in species_list?
