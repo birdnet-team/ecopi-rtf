@@ -187,7 +187,10 @@ def get_species_data(species):
         return data
     
     # This is example data, we'll parse this from the species data later
-    data['common_name'] = cfg.SPECIES_DATA[species]['common_name']
+    if cfg.SITE_LOCALE.lower() in ['de', 'fr', 'cs'] and 'common_name_' + cfg.SITE_LOCALE.lower() in cfg.SPECIES_DATA[species]:
+        data['common_name'] = cfg.SPECIES_DATA[species]['common_name_' + cfg.SITE_LOCALE.lower()]
+    else:
+        data['common_name'] = cfg.SPECIES_DATA[species]['common_name']
     data['scientific_name'] = cfg.SPECIES_DATA[species]['sci_name']
     #data['ebird_url'] = 'https://ebird.org/species/' + cfg.SPECIES_DATA[species]['new_ebird_code'] if not cfg.SPECIES_DATA[species]['new_ebird_code'].startswith('t-') else 'https://search.macaulaylibrary.org/catalog?taxonCode=' + cfg.SPECIES_DATA[species]['new_ebird_code']
     data['ebird_url'] = cfg.LEARN_MORE_BASE_URL + cfg.SPECIES_DATA[species]['new_ebird_code'] if not cfg.SPECIES_DATA[species]['new_ebird_code'].startswith('t-') else 'https://search.macaulaylibrary.org/catalog?taxonCode=' + cfg.SPECIES_DATA[species]['new_ebird_code']
