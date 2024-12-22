@@ -262,6 +262,10 @@ nav .navbar-nav {
     margin-right: 5px; /* Space between icon and text */
 }
 
+.listen-live-button:active {
+    background-color: var(--button-color); 
+}
+
 .stat-row-container {
     max-width: 1150px;
     margin-left: auto;
@@ -350,6 +354,10 @@ nav .navbar-nav {
     background-color: white;
     color: var(--button-color);
     text-decoration: none;
+}
+
+.btn-href:active {
+    background-color: var(--button-color); 
 }
 
 .spinner {
@@ -530,6 +538,10 @@ nav .navbar-nav {
     color: white; 
 }
 
+.recorder-info:active {
+    background-color: var(--button-color);
+}
+
 .chart-icon {
     font-size: 1.2em;
     margin-left: 10px;
@@ -678,6 +690,10 @@ nav .navbar-nav {
     text-decoration: none;
 }
 
+.learn-more-btn:active {
+    background-color: var(--button-color); 
+}
+
 .species-daily-activity-plot {
     height: 90px;
     margin-top: 10px;
@@ -723,6 +739,10 @@ nav .navbar-nav {
 .play-button:hover {
     color: #0056b3;
     text-decoration: none;
+}
+
+.play-button:active {
+    color: var(--button-color);
 }
 
 .confidence-dot {
