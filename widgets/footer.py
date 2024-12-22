@@ -14,7 +14,7 @@ def footer_content():
                     html.H5(section, className="small-text bold-text"),
                     html.Ul(
                         [
-                            html.Li(html.A(link["name"], href=link["href"], className="footer-link small-text", target=link.get("target", "_self")))
+                            html.Li(html.A(link["name"], href=cfg.SITE_ROOT + link["href"] if link["href"].startswith("/") else link["href"], className="footer-link small-text", target=link.get("target", "_self")))
                             for link in links
                         ],
                         className="list-unstyled"
