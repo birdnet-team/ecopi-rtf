@@ -190,7 +190,7 @@ def update_locale(n_clicks, href):
 )
 def reload_page(locale):
     if locale:
-        return dcc.Location(href="/", id="dummy-location")
+        return dcc.Location(href=cfg.SITE_ROOT + "/", id="dummy-location")
     return ""
 
 # Layout of the Dash app
