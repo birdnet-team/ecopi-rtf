@@ -61,7 +61,8 @@
     "blacklisted": false,
     "common_name_de": "Kohlmeise",
     "common_name_fr": "M\u00e9sange charbonni\u00e8re",
-    "common_name_cs": "S\u00fdkora ko\u0148adra"
+    "common_name_cs": "S\u00fdkora ko\u0148adra",
+    "common_name_it": "Cinciallegra"
   },
   "blutit": {
     "common_name": "Eurasian Blue Tit",
@@ -125,7 +126,8 @@
     "blacklisted": false,
     "common_name_de": "Blaumeise",
     "common_name_fr": "M\u00e9sange bleue",
-    "common_name_cs": "S\u00fdkora mod\u0159inka"
+    "common_name_cs": "S\u00fdkora mod\u0159inka",
+    "common_name_it": "Cinciarella"
   },
   "grswoo": {
     "common_name": "Great Spotted Woodpecker",
@@ -189,7 +191,8 @@
     "blacklisted": false,
     "common_name_de": "Buntspecht",
     "common_name_fr": "Pic \u00e9peiche",
-    "common_name_cs": "Strakapoud velk\u00fd"
+    "common_name_cs": "Strakapoud velk\u00fd",
+    "common_name_it": "Picchio rosso maggiore"
   },
   "carcro1": {
     "common_name": "Carrion Crow",
@@ -253,7 +256,8 @@
     "blacklisted": false,
     "common_name_de": "Rabenkr\u00e4he",
     "common_name_fr": "Corneille noire",
-    "common_name_cs": "Vr\u00e1na \u010dern\u00e1"
+    "common_name_cs": "Vr\u00e1na \u010dern\u00e1",
+    "common_name_it": "Cornacchia nera"
   },
   "eurnut2": {
     "common_name": "Eurasian Nuthatch",
@@ -317,7 +321,8 @@
     "blacklisted": false,
     "common_name_de": "Kleiber",
     "common_name_fr": "Sittelle torchepot",
-    "common_name_cs": "Brhl\u00edk lesn\u00ed"
+    "common_name_cs": "Brhl\u00edk lesn\u00ed",
+    "common_name_it": "Picchio muratore"
   },
   "eurbla": {
     "common_name": "Eurasian Blackbird",
@@ -381,7 +386,8 @@
     "blacklisted": false,
     "common_name_de": "Amsel",
     "common_name_fr": "Merle noir",
-    "common_name_cs": "Kos \u010dern\u00fd"
+    "common_name_cs": "Kos \u010dern\u00fd",
+    "common_name_it": "Merlo"
   },
   "eutspa": {
     "common_name": "Eurasian Tree Sparrow",
@@ -445,7 +451,8 @@
     "blacklisted": false,
     "common_name_de": "Feldsperling",
     "common_name_fr": "Moineau friquet",
-    "common_name_cs": "Vrabec poln\u00ed"
+    "common_name_cs": "Vrabec poln\u00ed",
+    "common_name_it": "Passera mattugia"
   },
   "cowpig1": {
     "common_name": "Common Wood-Pigeon",
@@ -509,7 +516,8 @@
     "blacklisted": false,
     "common_name_de": "Ringeltaube",
     "common_name_fr": "Pigeon ramier",
-    "common_name_cs": "Holub h\u0159ivn\u00e1\u010d"
+    "common_name_cs": "Holub h\u0159ivn\u00e1\u010d",
+    "common_name_it": "Colombaccio"
   },
   "eurrob1": {
     "common_name": "European Robin",
@@ -573,7 +581,8 @@
     "blacklisted": false,
     "common_name_de": "Rotkehlchen",
     "common_name_fr": "Rougegorge familier",
-    "common_name_cs": "\u010cervenka obecn\u00e1"
+    "common_name_cs": "\u010cervenka obecn\u00e1",
+    "common_name_it": "Pettirosso"
   },
   "comcha": {
     "common_name": "Common Chaffinch",
@@ -637,7 +646,8 @@
     "blacklisted": false,
     "common_name_de": "Buchfink",
     "common_name_fr": "Pinson des arbres",
-    "common_name_cs": "P\u011bnkava obecn\u00e1"
+    "common_name_cs": "P\u011bnkava obecn\u00e1",
+    "common_name_it": "Fringuello"
   },
   "combuz1": {
     "common_name": "Common Buzzard",
@@ -701,7 +711,8 @@
     "blacklisted": false,
     "common_name_de": "M\u00e4usebussard",
     "common_name_fr": "Buse variable",
-    "common_name_cs": "K\u00e1n\u011b lesn\u00ed"
+    "common_name_cs": "K\u00e1n\u011b lesn\u00ed",
+    "common_name_it": "Poiana"
   },
   "eurgre1": {
     "common_name": "European Greenfinch",
@@ -765,7 +776,8 @@
     "blacklisted": false,
     "common_name_de": "Gr\u00fcnfink",
     "common_name_fr": "Verdier d'Europe",
-    "common_name_cs": "Zvonek zelen\u00fd"
+    "common_name_cs": "Zvonek zelen\u00fd",
+    "common_name_it": "Verdone"
   },
   "yellow2": {
     "common_name": "Yellowhammer",
@@ -829,7 +841,8 @@
     "blacklisted": false,
     "common_name_de": "Goldammer",
     "common_name_fr": "Bruant jaune",
-    "common_name_cs": "Strnad obecn\u00fd"
+    "common_name_cs": "Strnad obecn\u00fd",
+    "common_name_it": "Zigolo giallo"
   },
   "eursta": {
     "common_name": "European Starling",
@@ -893,7 +906,8 @@
     "blacklisted": false,
     "common_name_de": "Star",
     "common_name_fr": "\u00c9tourneau sansonnet",
-    "common_name_cs": "\u0160pa\u010dek obecn\u00fd"
+    "common_name_cs": "\u0160pa\u010dek obecn\u00fd",
+    "common_name_it": "Storno"
   },
   "eurjay1": {
     "common_name": "Eurasian Jay",
@@ -957,7 +971,8 @@
     "blacklisted": false,
     "common_name_de": "Eichelh\u00e4her",
     "common_name_fr": "Geai des ch\u00eanes",
-    "common_name_cs": "Sojka obecn\u00e1"
+    "common_name_cs": "Sojka obecn\u00e1",
+    "common_name_it": "Ghiandaia"
   },
   "eurgol": {
     "common_name": "European Goldfinch",
@@ -1021,7 +1036,8 @@
     "blacklisted": false,
     "common_name_de": "Stieglitz",
     "common_name_fr": "Chardonneret \u00e9l\u00e9gant",
-    "common_name_cs": "Stehl\u00edk obecn\u00fd"
+    "common_name_cs": "Stehl\u00edk obecn\u00fd",
+    "common_name_it": "Cardellino"
   },
   "blackc1": {
     "common_name": "Eurasian Blackcap",
@@ -1085,7 +1101,8 @@
     "blacklisted": false,
     "common_name_de": "M\u00f6nchsgrasm\u00fccke",
     "common_name_fr": "Fauvette \u00e0 t\u00eate noire",
-    "common_name_cs": "P\u011bnice \u010dernohlav\u00e1"
+    "common_name_cs": "P\u011bnice \u010dernohlav\u00e1",
+    "common_name_it": "Capinera"
   },
   "eugwoo2": {
     "common_name": "Eurasian Green Woodpecker",
@@ -1149,7 +1166,8 @@
     "blacklisted": false,
     "common_name_de": "Gr\u00fcnspecht",
     "common_name_fr": "Pic vert",
-    "common_name_cs": "\u017dluna zelen\u00e1"
+    "common_name_cs": "\u017dluna zelen\u00e1",
+    "common_name_it": "Picchio verde"
   },
   "comrav": {
     "common_name": "Common Raven",
@@ -1213,7 +1231,8 @@
     "blacklisted": false,
     "common_name_de": "Kolkrabe",
     "common_name_fr": "Grand Corbeau",
-    "common_name_cs": "Krkavec velk\u00fd"
+    "common_name_cs": "Krkavec velk\u00fd",
+    "common_name_it": "Corvo imperiale"
   },
   "comchi1": {
     "common_name": "Common Chiffchaff",
@@ -1277,7 +1296,8 @@
     "blacklisted": false,
     "common_name_de": "Zilpzalp",
     "common_name_fr": "Pouillot v\u00e9loce",
-    "common_name_cs": "Budn\u00ed\u010dek men\u0161\u00ed"
+    "common_name_cs": "Budn\u00ed\u010dek men\u0161\u00ed",
+    "common_name_it": "Lu\u00ec piccolo"
   },
   "eurkes": {
     "common_name": "Eurasian Kestrel",
@@ -1341,7 +1361,8 @@
     "blacklisted": false,
     "common_name_de": "Turmfalke",
     "common_name_fr": "Faucon cr\u00e9cerelle",
-    "common_name_cs": "Po\u0161tolka obecn\u00e1"
+    "common_name_cs": "Po\u0161tolka obecn\u00e1",
+    "common_name_it": "Gheppio"
   },
   "skylar": {
     "common_name": "Eurasian Skylark",
@@ -1405,7 +1426,8 @@
     "blacklisted": false,
     "common_name_de": "Feldlerche",
     "common_name_fr": "Alouette des champs",
-    "common_name_cs": "Sk\u0159ivan poln\u00ed"
+    "common_name_cs": "Sk\u0159ivan poln\u00ed",
+    "common_name_it": "Allodola"
   },
   "sonthr1": {
     "common_name": "Song Thrush",
@@ -1469,7 +1491,8 @@
     "blacklisted": true,
     "common_name_de": "Singdrossel",
     "common_name_fr": "Grive musicienne",
-    "common_name_cs": "Drozd zp\u011bvn\u00fd"
+    "common_name_cs": "Drozd zp\u011bvn\u00fd",
+    "common_name_it": "Tordo bottaccio"
   },
   "mallar3": {
     "common_name": "Mallard",
@@ -1533,7 +1556,8 @@
     "blacklisted": false,
     "common_name_de": "Stockente",
     "common_name_fr": "Canard colvert",
-    "common_name_cs": "Kachna divok\u00e1"
+    "common_name_cs": "Kachna divok\u00e1",
+    "common_name_it": "Germano reale"
   },
   "winwre4": {
     "common_name": "Eurasian Wren",
@@ -1597,7 +1621,8 @@
     "blacklisted": false,
     "common_name_de": "Zaunk\u00f6nig",
     "common_name_fr": "Troglodyte mignon",
-    "common_name_cs": "St\u0159\u00edzl\u00edk obecn\u00fd"
+    "common_name_cs": "St\u0159\u00edzl\u00edk obecn\u00fd",
+    "common_name_it": "Scricciolo"
   },
   "martit2": {
     "common_name": "Marsh Tit",
@@ -1661,7 +1686,8 @@
     "blacklisted": false,
     "common_name_de": "Sumpfmeise",
     "common_name_fr": "M\u00e9sange nonnette",
-    "common_name_cs": "S\u00fdkora babka"
+    "common_name_cs": "S\u00fdkora babka",
+    "common_name_it": "Cincia bigia"
   },
   "graher1": {
     "common_name": "Gray Heron",
@@ -1725,7 +1751,8 @@
     "blacklisted": false,
     "common_name_de": "Graureiher",
     "common_name_fr": "H\u00e9ron cendr\u00e9",
-    "common_name_cs": "Volavka popelav\u00e1"
+    "common_name_cs": "Volavka popelav\u00e1",
+    "common_name_it": "Airone cenerino"
   },
   "eurmag1": {
     "common_name": "Eurasian Magpie",
@@ -1789,7 +1816,8 @@
     "blacklisted": false,
     "common_name_de": "Elster",
     "common_name_fr": "Pie bavarde",
-    "common_name_cs": "Straka obecn\u00e1"
+    "common_name_cs": "Straka obecn\u00e1",
+    "common_name_it": "Gazza"
   },
   "shttre1": {
     "common_name": "Short-toed Treecreeper",
@@ -1853,7 +1881,8 @@
     "blacklisted": false,
     "common_name_de": "Gartenbauml\u00e4ufer",
     "common_name_fr": "Grimpereau des jardins",
-    "common_name_cs": "\u0160oup\u00e1lek kr\u00e1tkoprst\u00fd"
+    "common_name_cs": "\u0160oup\u00e1lek kr\u00e1tkoprst\u00fd",
+    "common_name_it": "Rampichino comune"
   },
   "whiwag": {
     "common_name": "White Wagtail",
@@ -1917,7 +1946,8 @@
     "blacklisted": false,
     "common_name_de": "Bachstelze",
     "common_name_fr": "Bergeronnette grise",
-    "common_name_cs": "Konipas b\u00edl\u00fd"
+    "common_name_cs": "Konipas b\u00edl\u00fd",
+    "common_name_it": "Ballerina bianca"
   },
   "redkit1": {
     "common_name": "Red Kite",
@@ -1981,7 +2011,8 @@
     "blacklisted": false,
     "common_name_de": "Rotmilan",
     "common_name_fr": "Milan royal",
-    "common_name_cs": "Lu\u0148\u00e1k \u010derven\u00fd"
+    "common_name_cs": "Lu\u0148\u00e1k \u010derven\u00fd",
+    "common_name_it": "Nibbio reale"
   },
   "coatit2": {
     "common_name": "Coal Tit",
@@ -2045,7 +2076,8 @@
     "blacklisted": false,
     "common_name_de": "Tannenmeise",
     "common_name_fr": "M\u00e9sange noire",
-    "common_name_cs": "S\u00fdkora uheln\u00ed\u010dek"
+    "common_name_cs": "S\u00fdkora uheln\u00ed\u010dek",
+    "common_name_it": "Cincia mora"
   },
   "houspa": {
     "common_name": "House Sparrow",
@@ -2109,7 +2141,8 @@
     "blacklisted": false,
     "common_name_de": "Haussperling",
     "common_name_fr": "Moineau domestique",
-    "common_name_cs": "Vrabec dom\u00e1c\u00ed"
+    "common_name_cs": "Vrabec dom\u00e1c\u00ed",
+    "common_name_it": "Passera oltremontana"
   },
   "blared1": {
     "common_name": "Black Redstart",
@@ -2173,7 +2206,8 @@
     "blacklisted": false,
     "common_name_de": "Hausrotschwanz",
     "common_name_fr": "Rougequeue noir",
-    "common_name_cs": "Rehek dom\u00e1c\u00ed"
+    "common_name_cs": "Rehek dom\u00e1c\u00ed",
+    "common_name_it": "Codirosso spazzacamino"
   },
   "comswi": {
     "common_name": "Common Swift",
@@ -2237,7 +2271,8 @@
     "blacklisted": false,
     "common_name_de": "Mauersegler",
     "common_name_fr": "Martinet noir",
-    "common_name_cs": "Ror\u00fds obecn\u00fd"
+    "common_name_cs": "Ror\u00fds obecn\u00fd",
+    "common_name_it": "Rondone comune"
   },
   "firecr1": {
     "common_name": "Common Firecrest",
@@ -2301,7 +2336,8 @@
     "blacklisted": false,
     "common_name_de": "Sommergoldh\u00e4hnchen",
     "common_name_fr": "Roitelet triple-bandeau",
-    "common_name_cs": "Kr\u00e1l\u00ed\u010dek ohniv\u00fd"
+    "common_name_cs": "Kr\u00e1l\u00ed\u010dek ohniv\u00fd",
+    "common_name_it": "Fiorrancino"
   },
   "eursis": {
     "common_name": "Eurasian Siskin",
@@ -2365,7 +2401,8 @@
     "blacklisted": false,
     "common_name_de": "Erlenzeisig",
     "common_name_fr": "Tarin des aulnes",
-    "common_name_cs": "\u010c\u00ed\u017eek lesn\u00ed"
+    "common_name_cs": "\u010c\u00ed\u017eek lesn\u00ed",
+    "common_name_it": "Lucherino"
   },
   "leswhi4": {
     "common_name": "Lesser Whitethroat",
@@ -2429,7 +2466,8 @@
     "blacklisted": false,
     "common_name_de": "Klappergrasm\u00fccke",
     "common_name_fr": "Fauvette babillarde",
-    "common_name_cs": "P\u011bnice pok\u0159ovn\u00ed"
+    "common_name_cs": "P\u011bnice pok\u0159ovn\u00ed",
+    "common_name_it": "Bigiarella"
   },
   "eurjac": {
     "common_name": "Eurasian Jackdaw",
@@ -2493,7 +2531,8 @@
     "blacklisted": false,
     "common_name_de": "Dohle",
     "common_name_fr": "Choucas des tours",
-    "common_name_cs": "Kavka obecn\u00e1"
+    "common_name_cs": "Kavka obecn\u00e1",
+    "common_name_it": "Taccola"
   },
   "barswa": {
     "common_name": "Barn Swallow",
@@ -2557,7 +2596,8 @@
     "blacklisted": false,
     "common_name_de": "Rauchschwalbe",
     "common_name_fr": "Hirondelle rustique",
-    "common_name_cs": "Vla\u0161tovka obecn\u00e1"
+    "common_name_cs": "Vla\u0161tovka obecn\u00e1",
+    "common_name_it": "Rondine"
   },
   "fieldf": {
     "common_name": "Fieldfare",
@@ -2621,7 +2661,8 @@
     "blacklisted": false,
     "common_name_de": "Wacholderdrossel",
     "common_name_fr": "Grive litorne",
-    "common_name_cs": "Drozd kv\u00ed\u010dala"
+    "common_name_cs": "Drozd kv\u00ed\u010dala",
+    "common_name_it": "Cesena"
   },
   "brambl": {
     "common_name": "Brambling",
@@ -2685,7 +2726,8 @@
     "blacklisted": false,
     "common_name_de": "Bergfink",
     "common_name_fr": "Pinson du Nord",
-    "common_name_cs": "P\u011bnkava jikavec"
+    "common_name_cs": "P\u011bnkava jikavec",
+    "common_name_it": "Peppola"
   },
   "lottit1": {
     "common_name": "Long-tailed Tit",
@@ -2749,7 +2791,8 @@
     "blacklisted": false,
     "common_name_de": "Schwanzmeise",
     "common_name_fr": "Orite \u00e0 longue queue",
-    "common_name_cs": "Mlyna\u0159\u00edk dlouhoocas\u00fd"
+    "common_name_cs": "Mlyna\u0159\u00edk dlouhoocas\u00fd",
+    "common_name_it": "Codibugnolo"
   },
   "hawfin": {
     "common_name": "Hawfinch",
@@ -2813,7 +2856,8 @@
     "blacklisted": false,
     "common_name_de": "Kernbei\u00dfer",
     "common_name_fr": "Gros-bec casse-noyaux",
-    "common_name_cs": "Dlask tlustozob\u00fd"
+    "common_name_cs": "Dlask tlustozob\u00fd",
+    "common_name_it": "Frosone"
   },
   "manduc": {
     "common_name": "Mandarin Duck",
@@ -2877,7 +2921,8 @@
     "blacklisted": false,
     "common_name_de": "Mandarinente",
     "common_name_fr": "Canard mandarin",
-    "common_name_cs": "Kachni\u010dka mandar\u00ednsk\u00e1"
+    "common_name_cs": "Kachni\u010dka mandar\u00ednsk\u00e1",
+    "common_name_it": "Anatra mandarina"
   },
   "goldcr1": {
     "common_name": "Goldcrest",
@@ -2941,7 +2986,8 @@
     "blacklisted": false,
     "common_name_de": "Wintergoldh\u00e4hnchen",
     "common_name_fr": "Roitelet hupp\u00e9",
-    "common_name_cs": "Kr\u00e1l\u00ed\u010dek obecn\u00fd"
+    "common_name_cs": "Kr\u00e1l\u00ed\u010dek obecn\u00fd",
+    "common_name_it": "Regolo"
   },
   "rocpig": {
     "common_name": "Rock Pigeon",
@@ -3005,7 +3051,8 @@
     "blacklisted": false,
     "common_name_de": "Felsentaube",
     "common_name_fr": "Pigeon biset",
-    "common_name_cs": "Holub skaln\u00ed"
+    "common_name_cs": "Holub skaln\u00ed",
+    "common_name_it": "Piccione selvatico"
   },
   "eurcoo": {
     "common_name": "Eurasian Coot",
@@ -3069,7 +3116,8 @@
     "blacklisted": false,
     "common_name_de": "Bl\u00e4sshuhn",
     "common_name_fr": "Foulque macroule",
-    "common_name_cs": "Lyska \u010dern\u00e1"
+    "common_name_cs": "Lyska \u010dern\u00e1",
+    "common_name_it": "Folaga"
   },
   "eurbul": {
     "common_name": "Eurasian Bullfinch",
@@ -3133,7 +3181,8 @@
     "blacklisted": false,
     "common_name_de": "Gimpel",
     "common_name_fr": "Bouvreuil pivoine",
-    "common_name_cs": "H\u00fdl obecn\u00fd"
+    "common_name_cs": "H\u00fdl obecn\u00fd",
+    "common_name_it": "Ciuffolotto"
   },
   "tawowl1": {
     "common_name": "Tawny Owl",
@@ -3197,7 +3246,8 @@
     "blacklisted": false,
     "common_name_de": "Waldkauz",
     "common_name_fr": "Chouette hulotte",
-    "common_name_cs": "Pu\u0161t\u00edk obecn\u00fd"
+    "common_name_cs": "Pu\u0161t\u00edk obecn\u00fd",
+    "common_name_it": "Allocco"
   },
   "tufduc": {
     "common_name": "Tufted Duck",
@@ -3261,7 +3311,8 @@
     "blacklisted": false,
     "common_name_de": "Reiherente",
     "common_name_fr": "Fuligule morillon",
-    "common_name_cs": "Pol\u00e1k chochola\u010dka"
+    "common_name_cs": "Pol\u00e1k chochola\u010dka",
+    "common_name_it": "Moretta"
   },
   "eurser1": {
     "common_name": "European Serin",
@@ -3325,7 +3376,8 @@
     "blacklisted": false,
     "common_name_de": "Girlitz",
     "common_name_fr": "Serin cini",
-    "common_name_cs": "Zvonohl\u00edk zahradn\u00ed"
+    "common_name_cs": "Zvonohl\u00edk zahradn\u00ed",
+    "common_name_it": "Verzellino"
   },
   "stodov1": {
     "common_name": "Stock Dove",
@@ -3389,7 +3441,8 @@
     "blacklisted": false,
     "common_name_de": "Hohltaube",
     "common_name_fr": "Pigeon colombin",
-    "common_name_cs": "Holub doup\u0148\u00e1k"
+    "common_name_cs": "Holub doup\u0148\u00e1k",
+    "common_name_it": "Colombella"
   },
   "eurtre1": {
     "common_name": "Eurasian Treecreeper",
@@ -3453,7 +3506,8 @@
     "blacklisted": false,
     "common_name_de": "Waldbauml\u00e4ufer",
     "common_name_fr": "Grimpereau des bois",
-    "common_name_cs": "\u0160oup\u00e1lek dlouhoprst\u00fd"
+    "common_name_cs": "\u0160oup\u00e1lek dlouhoprst\u00fd",
+    "common_name_it": "Rampichino alpestre"
   },
   "comred2": {
     "common_name": "Common Redstart",
@@ -3517,7 +3571,8 @@
     "blacklisted": false,
     "common_name_de": "Gartenrotschwanz",
     "common_name_fr": "Rougequeue \u00e0 front blanc",
-    "common_name_cs": "Rehek zahradn\u00ed"
+    "common_name_cs": "Rehek zahradn\u00ed",
+    "common_name_it": "Codirosso comune"
   },
   "wlwwar": {
     "common_name": "Willow Warbler",
@@ -3581,7 +3636,8 @@
     "blacklisted": false,
     "common_name_de": "Fitis",
     "common_name_fr": "Pouillot fitis",
-    "common_name_cs": "Budn\u00ed\u010dek v\u011bt\u0161\u00ed"
+    "common_name_cs": "Budn\u00ed\u010dek v\u011bt\u0161\u00ed",
+    "common_name_it": "Lu\u00ec grosso"
   },
   "comqua1": {
     "common_name": "Common Quail",
@@ -3645,7 +3701,8 @@
     "blacklisted": false,
     "common_name_de": "Wachtel",
     "common_name_fr": "Caille des bl\u00e9s",
-    "common_name_cs": "K\u0159epelka poln\u00ed"
+    "common_name_cs": "K\u0159epelka poln\u00ed",
+    "common_name_it": "Quaglia"
   },
   "cretit2": {
     "common_name": "Crested Tit",
@@ -3709,7 +3766,8 @@
     "blacklisted": false,
     "common_name_de": "Haubenmeise",
     "common_name_fr": "M\u00e9sange hupp\u00e9e",
-    "common_name_cs": "S\u00fdkora paruk\u00e1\u0159ka"
+    "common_name_cs": "S\u00fdkora paruk\u00e1\u0159ka",
+    "common_name_it": "Cincia dal ciuffo"
   },
   "grywag": {
     "common_name": "Gray Wagtail",
@@ -3773,7 +3831,8 @@
     "blacklisted": false,
     "common_name_de": "Gebirgsstelze",
     "common_name_fr": "Bergeronnette des ruisseaux",
-    "common_name_cs": "Konipas horsk\u00fd"
+    "common_name_cs": "Konipas horsk\u00fd",
+    "common_name_it": "Ballerina gialla"
   },
   "garwar1": {
     "common_name": "Garden Warbler",
@@ -3837,7 +3896,8 @@
     "blacklisted": false,
     "common_name_de": "Gartengrasm\u00fccke",
     "common_name_fr": "Fauvette des jardins",
-    "common_name_cs": "P\u011bnice slav\u00edkov\u00e1"
+    "common_name_cs": "P\u011bnice slav\u00edkov\u00e1",
+    "common_name_it": "Beccafico"
   },
   "grcgre1": {
     "common_name": "Great Crested Grebe",
@@ -3901,7 +3961,8 @@
     "blacklisted": false,
     "common_name_de": "Haubentaucher",
     "common_name_fr": "Gr\u00e8be hupp\u00e9",
-    "common_name_cs": "Pot\u00e1pka roh\u00e1\u010d"
+    "common_name_cs": "Pot\u00e1pka roh\u00e1\u010d",
+    "common_name_it": "Svasso maggiore"
   },
   "blawoo1": {
     "common_name": "Black Woodpecker",
@@ -3965,7 +4026,8 @@
     "blacklisted": false,
     "common_name_de": "Schwarzspecht",
     "common_name_fr": "Pic noir",
-    "common_name_cs": "Datel \u010dern\u00fd"
+    "common_name_cs": "Datel \u010dern\u00fd",
+    "common_name_it": "Picchio nero"
   },
   "egygoo": {
     "common_name": "Egyptian Goose",
@@ -4029,7 +4091,8 @@
     "blacklisted": false,
     "common_name_de": "Nilgans",
     "common_name_fr": "Ouette d'\u00c9gypte",
-    "common_name_cs": "Husice nilsk\u00e1"
+    "common_name_cs": "Husice nilsk\u00e1",
+    "common_name_it": "Oca egiziana"
   },
   "comkin1": {
     "common_name": "Common Kingfisher",
@@ -4093,7 +4156,8 @@
     "blacklisted": false,
     "common_name_de": "Eisvogel",
     "common_name_fr": "Martin-p\u00eacheur d'Europe",
-    "common_name_cs": "Led\u0148\u00e1\u010dek \u0159\u00ed\u010dn\u00ed"
+    "common_name_cs": "Led\u0148\u00e1\u010dek \u0159\u00ed\u010dn\u00ed",
+    "common_name_it": "Martin pescatore"
   },
   "rook1": {
     "common_name": "Rook",
@@ -4157,7 +4221,8 @@
     "blacklisted": false,
     "common_name_de": "Saatkr\u00e4he",
     "common_name_fr": "Corbeau freux",
-    "common_name_cs": "Havran poln\u00ed"
+    "common_name_cs": "Havran poln\u00ed",
+    "common_name_it": "Corvo comune"
   },
   "wiltit1": {
     "common_name": "Willow Tit",
@@ -4221,7 +4286,8 @@
     "blacklisted": false,
     "common_name_de": "Weidenmeise",
     "common_name_fr": "M\u00e9sange bor\u00e9ale",
-    "common_name_cs": "S\u00fdkora lu\u017en\u00ed"
+    "common_name_cs": "S\u00fdkora lu\u017en\u00ed",
+    "common_name_it": "Cincia alpestre"
   },
   "dunnoc1": {
     "common_name": "Dunnock",
@@ -4285,7 +4351,8 @@
     "blacklisted": false,
     "common_name_de": "Heckenbraunelle",
     "common_name_fr": "Accenteur mouchet",
-    "common_name_cs": "P\u011bvu\u0161ka modr\u00e1"
+    "common_name_cs": "P\u011bvu\u0161ka modr\u00e1",
+    "common_name_it": "Passera scopaiola"
   },
   "lesred1": {
     "common_name": "Lesser Redpoll",
@@ -4410,7 +4477,8 @@
     "blacklisted": false,
     "common_name_de": "Wasseramsel",
     "common_name_fr": "Cincle plongeur",
-    "common_name_cs": "Skorec vodn\u00ed"
+    "common_name_cs": "Skorec vodn\u00ed",
+    "common_name_it": "Merlo acquaiolo"
   },
   "rebshr1": {
     "common_name": "Red-backed Shrike",
@@ -4474,7 +4542,8 @@
     "blacklisted": false,
     "common_name_de": "Neunt\u00f6ter",
     "common_name_fr": "Pie-gri\u00e8che \u00e9corcheur",
-    "common_name_cs": "\u0164uh\u00fdk obecn\u00fd"
+    "common_name_cs": "\u0164uh\u00fdk obecn\u00fd",
+    "common_name_it": "Averla piccola"
   },
   "spofly1": {
     "common_name": "Spotted Flycatcher",
@@ -4538,7 +4607,8 @@
     "blacklisted": false,
     "common_name_de": "Grauschn\u00e4pper",
     "common_name_fr": "Gobemouche gris",
-    "common_name_cs": "Lejsek \u0161ed\u00fd"
+    "common_name_cs": "Lejsek \u0161ed\u00fd",
+    "common_name_it": "Pigliamosche/Pigliamosche tirrenico"
   },
   "grecor": {
     "common_name": "Great Cormorant",
@@ -4602,7 +4672,8 @@
     "blacklisted": false,
     "common_name_de": "Kormoran",
     "common_name_fr": "Grand Cormoran",
-    "common_name_cs": "Kormor\u00e1n velk\u00fd"
+    "common_name_cs": "Kormor\u00e1n velk\u00fd",
+    "common_name_it": "Cormorano"
   },
   "woowar": {
     "common_name": "Wood Warbler",
@@ -4666,7 +4737,8 @@
     "blacklisted": false,
     "common_name_de": "Waldlaubs\u00e4nger",
     "common_name_fr": "Pouillot siffleur",
-    "common_name_cs": "Budn\u00ed\u010dek lesn\u00ed"
+    "common_name_cs": "Budn\u00ed\u010dek lesn\u00ed",
+    "common_name_it": "Lu\u00ec verde"
   },
   "eurlin1": {
     "common_name": "Eurasian Linnet",
@@ -4730,7 +4802,8 @@
     "blacklisted": false,
     "common_name_de": "Bluth\u00e4nfling",
     "common_name_fr": "Linotte m\u00e9lodieuse",
-    "common_name_cs": "Konopka obecn\u00e1"
+    "common_name_cs": "Konopka obecn\u00e1",
+    "common_name_it": "Fanello"
   },
   "grewhi1": {
     "common_name": "Greater Whitethroat",
@@ -4794,7 +4867,8 @@
     "blacklisted": false,
     "common_name_de": "Dorngrasm\u00fccke",
     "common_name_fr": "Fauvette grisette",
-    "common_name_cs": "P\u011bnice hn\u011bdok\u0159\u00eddl\u00e1"
+    "common_name_cs": "P\u011bnice hn\u011bdok\u0159\u00eddl\u00e1",
+    "common_name_it": "Sterpazzola"
   },
   "redwin": {
     "common_name": "Redwing",
@@ -4858,7 +4932,8 @@
     "blacklisted": false,
     "common_name_de": "Rotdrossel",
     "common_name_fr": "Grive mauvis",
-    "common_name_cs": "Drozd cvr\u010dala"
+    "common_name_cs": "Drozd cvr\u010dala",
+    "common_name_it": "Tordo sassello"
   },
   "eupfly1": {
     "common_name": "European Pied Flycatcher",
@@ -4922,7 +4997,8 @@
     "blacklisted": false,
     "common_name_de": "Trauerschn\u00e4pper",
     "common_name_fr": "Gobemouche noir",
-    "common_name_cs": "Lejsek \u010dernohlav\u00fd"
+    "common_name_cs": "Lejsek \u010dernohlav\u00fd",
+    "common_name_it": "Balia nera"
   },
   "eurspa1": {
     "common_name": "Eurasian Sparrowhawk",
@@ -4986,7 +5062,8 @@
     "blacklisted": false,
     "common_name_de": "Sperber",
     "common_name_fr": "\u00c9pervier d'Europe",
-    "common_name_cs": "Krahujec obecn\u00fd"
+    "common_name_cs": "Krahujec obecn\u00fd",
+    "common_name_it": "Sparviere"
   },
   "gragoo": {
     "common_name": "Graylag Goose",
@@ -5050,7 +5127,8 @@
     "blacklisted": false,
     "common_name_de": "Graugans",
     "common_name_fr": "Oie cendr\u00e9e",
-    "common_name_cs": "Husa velk\u00e1"
+    "common_name_cs": "Husa velk\u00e1",
+    "common_name_it": "Oca selvatica"
   },
   "comcuc": {
     "common_name": "Common Cuckoo",
@@ -5114,7 +5192,8 @@
     "blacklisted": false,
     "common_name_de": "Kuckuck",
     "common_name_fr": "Coucou gris",
-    "common_name_cs": "Kuka\u010dka obecn\u00e1"
+    "common_name_cs": "Kuka\u010dka obecn\u00e1",
+    "common_name_it": "Cuculo"
   },
   "commer": {
     "common_name": "Common Merganser",
@@ -5178,7 +5257,8 @@
     "blacklisted": false,
     "common_name_de": "G\u00e4nses\u00e4ger",
     "common_name_fr": "Grand Harle",
-    "common_name_cs": "Mor\u010d\u00e1k velk\u00fd"
+    "common_name_cs": "Mor\u010d\u00e1k velk\u00fd",
+    "common_name_it": "Smergo maggiore"
   },
   "eucdov": {
     "common_name": "Eurasian Collared-Dove",
@@ -5242,7 +5322,8 @@
     "blacklisted": false,
     "common_name_de": "T\u00fcrkentaube",
     "common_name_fr": "Tourterelle turque",
-    "common_name_cs": "Hrdli\u010dka zahradn\u00ed"
+    "common_name_cs": "Hrdli\u010dka zahradn\u00ed",
+    "common_name_it": "Tortora dal collare"
   },
   "misthr1": {
     "common_name": "Mistle Thrush",
@@ -5306,7 +5387,8 @@
     "blacklisted": false,
     "common_name_de": "Misteldrossel",
     "common_name_fr": "Grive draine",
-    "common_name_cs": "Drozd br\u00e1vn\u00edk"
+    "common_name_cs": "Drozd br\u00e1vn\u00edk",
+    "common_name_it": "Tordela"
   },
   "bkhgul": {
     "common_name": "Black-headed Gull",
@@ -5370,7 +5452,8 @@
     "blacklisted": false,
     "common_name_de": "Lachm\u00f6we",
     "common_name_fr": "Mouette rieuse",
-    "common_name_cs": "Racek chechtav\u00fd"
+    "common_name_cs": "Racek chechtav\u00fd",
+    "common_name_it": "Gabbiano comune"
   },
   "whisto1": {
     "common_name": "White Stork",
@@ -5434,7 +5517,8 @@
     "blacklisted": false,
     "common_name_de": "Wei\u00dfstorch",
     "common_name_fr": "Cigogne blanche",
-    "common_name_cs": "\u010c\u00e1p b\u00edl\u00fd"
+    "common_name_cs": "\u010c\u00e1p b\u00edl\u00fd",
+    "common_name_it": "Cicogna bianca"
   },
   "gyfwoo1": {
     "common_name": "Gray-headed Woodpecker",
@@ -5498,7 +5582,8 @@
     "blacklisted": false,
     "common_name_de": "Grauspecht",
     "common_name_fr": "Pic cendr\u00e9",
-    "common_name_cs": "\u017dluna \u0161ed\u00e1"
+    "common_name_cs": "\u017dluna \u0161ed\u00e1",
+    "common_name_it": "Picchio cenerino"
   },
   "cohmar1": {
     "common_name": "Western House-Martin",
@@ -5562,7 +5647,8 @@
     "blacklisted": false,
     "common_name_de": "Mehlschwalbe",
     "common_name_fr": "Hirondelle de fen\u00eatre",
-    "common_name_cs": "Ji\u0159i\u010dka obecn\u00e1"
+    "common_name_cs": "Ji\u0159i\u010dka obecn\u00e1",
+    "common_name_it": "Balestruccio"
   },
   "litgre1": {
     "common_name": "Little Grebe",
@@ -5626,7 +5712,8 @@
     "blacklisted": false,
     "common_name_de": "Zwergtaucher",
     "common_name_fr": "Gr\u00e8be castagneux",
-    "common_name_cs": "Pot\u00e1pka mal\u00e1"
+    "common_name_cs": "Pot\u00e1pka mal\u00e1",
+    "common_name_it": "Tuffetto"
   },
   "compoc": {
     "common_name": "Common Pochard",
@@ -5690,7 +5777,8 @@
     "blacklisted": false,
     "common_name_de": "Tafelente",
     "common_name_fr": "Fuligule milouin",
-    "common_name_cs": "Pol\u00e1k velk\u00fd"
+    "common_name_cs": "Pol\u00e1k velk\u00fd",
+    "common_name_it": "Moriglione"
   },
   "eurwar1": {
     "common_name": "Common Reed Warbler",
@@ -5754,7 +5842,8 @@
     "blacklisted": false,
     "common_name_de": "Teichrohrs\u00e4nger",
     "common_name_fr": "Rousserolle effarvatte",
-    "common_name_cs": "R\u00e1kosn\u00edk obecn\u00fd"
+    "common_name_cs": "R\u00e1kosn\u00edk obecn\u00fd",
+    "common_name_it": "Cannaiola comune"
   },
   "hoocro1": {
     "common_name": "Hooded Crow",
@@ -5815,10 +5904,11 @@
       0.0
     ],
     "new_ebird_code": "hoocro1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Nebelkr\u00e4he",
     "common_name_fr": "Corneille mantel\u00e9e",
-    "common_name_cs": "Vr\u00e1na \u0161ed\u00e1"
+    "common_name_cs": "Vr\u00e1na \u0161ed\u00e1",
+    "common_name_it": "Cornacchia grigia"
   },
   "commoo3": {
     "common_name": "Eurasian Moorhen",
@@ -5882,7 +5972,8 @@
     "blacklisted": false,
     "common_name_de": "Teichhuhn",
     "common_name_fr": "Gallinule poule-d'eau",
-    "common_name_cs": "Sl\u00edpka zelenonoh\u00e1"
+    "common_name_cs": "Sl\u00edpka zelenonoh\u00e1",
+    "common_name_it": "Gallinella d'acqua"
   },
   "norgos": {
     "common_name": "Eurasian Goshawk",
@@ -5946,7 +6037,8 @@
     "blacklisted": false,
     "common_name_de": "Habicht",
     "common_name_fr": "Autour des palombes",
-    "common_name_cs": "Jest\u0159\u00e1b lesn\u00ed"
+    "common_name_cs": "Jest\u0159\u00e1b lesn\u00ed",
+    "common_name_it": "Astore"
   },
   "greegr": {
     "common_name": "Great Egret",
@@ -6010,7 +6102,8 @@
     "blacklisted": false,
     "common_name_de": "Silberreiher",
     "common_name_fr": "Grande Aigrette",
-    "common_name_cs": "Volavka b\u00edl\u00e1"
+    "common_name_cs": "Volavka b\u00edl\u00e1",
+    "common_name_it": "Airone bianco maggiore"
   },
   "wooduc": {
     "common_name": "Wood Duck",
@@ -6074,7 +6167,8 @@
     "blacklisted": false,
     "common_name_de": "Brautente",
     "common_name_fr": "Canard branchu",
-    "common_name_cs": "Kachni\u010dka karol\u00ednsk\u00e1"
+    "common_name_cs": "Kachni\u010dka karol\u00ednsk\u00e1",
+    "common_name_it": "Anatra sposa"
   },
   "eugori2": {
     "common_name": "Eurasian Golden Oriole",
@@ -6138,7 +6232,8 @@
     "blacklisted": false,
     "common_name_de": "Pirol",
     "common_name_fr": "Loriot d'Europe",
-    "common_name_cs": "\u017dluva hajn\u00ed"
+    "common_name_cs": "\u017dluva hajn\u00ed",
+    "common_name_it": "Rigogolo"
   },
   "norhar1": {
     "common_name": "Hen Harrier",
@@ -6202,7 +6297,8 @@
     "blacklisted": false,
     "common_name_de": "Kornweihe",
     "common_name_fr": "Busard Saint-Martin",
-    "common_name_cs": "Mot\u00e1k pilich"
+    "common_name_cs": "Mot\u00e1k pilich",
+    "common_name_it": "Albanella reale"
   },
   "blakit1": {
     "common_name": "Black Kite",
@@ -6266,7 +6362,8 @@
     "blacklisted": false,
     "common_name_de": "Schwarzmilan",
     "common_name_fr": "Milan noir",
-    "common_name_cs": "Lu\u0148\u00e1k hn\u011bd\u00fd"
+    "common_name_cs": "Lu\u0148\u00e1k hn\u011bd\u00fd",
+    "common_name_it": "Nibbio bruno"
   },
   "marwar3": {
     "common_name": "Marsh Warbler",
@@ -6330,7 +6427,8 @@
     "blacklisted": false,
     "common_name_de": "Sumpfrohrs\u00e4nger",
     "common_name_fr": "Rousserolle verderolle",
-    "common_name_cs": "R\u00e1kosn\u00edk zp\u011bvn\u00fd"
+    "common_name_cs": "R\u00e1kosn\u00edk zp\u011bvn\u00fd",
+    "common_name_it": "Cannaiola verdognola"
   },
   "ictwar1": {
     "common_name": "Icterine Warbler",
@@ -6394,7 +6492,8 @@
     "blacklisted": false,
     "common_name_de": "Gelbsp\u00f6tter",
     "common_name_fr": "Hypola\u00efs ict\u00e9rine",
-    "common_name_cs": "Sedmihl\u00e1sek hajn\u00ed"
+    "common_name_cs": "Sedmihl\u00e1sek hajn\u00ed",
+    "common_name_it": "Canapino maggiore"
   },
   "perfal": {
     "common_name": "Peregrine Falcon",
@@ -6458,7 +6557,8 @@
     "blacklisted": false,
     "common_name_de": "Wanderfalke",
     "common_name_fr": "Faucon p\u00e8lerin",
-    "common_name_cs": "Sokol st\u011bhovav\u00fd"
+    "common_name_cs": "Sokol st\u011bhovav\u00fd",
+    "common_name_it": "Falco pellegrino"
   },
   "comcra": {
     "common_name": "Common Crane",
@@ -6522,7 +6622,8 @@
     "blacklisted": false,
     "common_name_de": "Kranich",
     "common_name_fr": "Grue cendr\u00e9e",
-    "common_name_cs": "Je\u0159\u00e1b popelav\u00fd"
+    "common_name_cs": "Je\u0159\u00e1b popelav\u00fd",
+    "common_name_it": "Gru"
   },
   "rolhaw": {
     "common_name": "Rough-legged Hawk",
@@ -6586,7 +6687,8 @@
     "blacklisted": false,
     "common_name_de": "Raufu\u00dfbussard",
     "common_name_fr": "Buse pattue",
-    "common_name_cs": "K\u00e1n\u011b rousn\u00e1"
+    "common_name_cs": "K\u00e1n\u011b rousn\u00e1",
+    "common_name_it": "Poiana calzata"
   },
   "mutswa": {
     "common_name": "Mute Swan",
@@ -6650,7 +6752,8 @@
     "blacklisted": false,
     "common_name_de": "H\u00f6ckerschwan",
     "common_name_fr": "Cygne tubercul\u00e9",
-    "common_name_cs": "Labu\u0165 velk\u00e1"
+    "common_name_cs": "Labu\u0165 velk\u00e1",
+    "common_name_it": "Cigno reale"
   },
   "comsan": {
     "common_name": "Common Sandpiper",
@@ -6714,7 +6817,8 @@
     "blacklisted": false,
     "common_name_de": "Flussuferl\u00e4ufer",
     "common_name_fr": "Chevalier guignette",
-    "common_name_cs": "Pis\u00edk obecn\u00fd"
+    "common_name_cs": "Pis\u00edk obecn\u00fd",
+    "common_name_it": "Piro piro piccolo"
   },
   "eutdov": {
     "common_name": "European Turtle-Dove",
@@ -6778,7 +6882,8 @@
     "blacklisted": false,
     "common_name_de": "Turteltaube",
     "common_name_fr": "Tourterelle des bois",
-    "common_name_cs": "Hrdli\u010dka divok\u00e1"
+    "common_name_cs": "Hrdli\u010dka divok\u00e1",
+    "common_name_it": "Tortora selvatica"
   },
   "norlap": {
     "common_name": "Northern Lapwing",
@@ -6842,7 +6947,8 @@
     "blacklisted": false,
     "common_name_de": "Kiebitz",
     "common_name_fr": "Vanneau hupp\u00e9",
-    "common_name_cs": "\u010cejka chocholat\u00e1"
+    "common_name_cs": "\u010cejka chocholat\u00e1",
+    "common_name_it": "Pavoncella"
   },
   "norshr1": {
     "common_name": "Great Gray Shrike",
@@ -6906,7 +7012,8 @@
     "blacklisted": false,
     "common_name_de": "Raubw\u00fcrger",
     "common_name_fr": "Pie-gri\u00e8che grise",
-    "common_name_cs": "\u0164uh\u00fdk \u0161ed\u00fd"
+    "common_name_cs": "\u0164uh\u00fdk \u0161ed\u00fd",
+    "common_name_it": "Averla maggiore"
   },
   "meapip1": {
     "common_name": "Meadow Pipit",
@@ -6970,7 +7077,8 @@
     "blacklisted": false,
     "common_name_de": "Wiesenpieper",
     "common_name_fr": "Pipit farlouse",
-    "common_name_cs": "Lindu\u0161ka lu\u010dn\u00ed"
+    "common_name_cs": "Lindu\u0161ka lu\u010dn\u00ed",
+    "common_name_it": "Pispola"
   },
   "blasto1": {
     "common_name": "Black Stork",
@@ -7034,7 +7142,8 @@
     "blacklisted": false,
     "common_name_de": "Schwarzstorch",
     "common_name_fr": "Cigogne noire",
-    "common_name_cs": "\u010c\u00e1p \u010dern\u00fd"
+    "common_name_cs": "\u010c\u00e1p \u010dern\u00fd",
+    "common_name_it": "Cicogna nera"
   },
   "eurnut1": {
     "common_name": "Eurasian Nutcracker",
@@ -7159,7 +7268,8 @@
     "blacklisted": false,
     "common_name_de": "Steppenm\u00f6we",
     "common_name_fr": "Go\u00e9land pontique",
-    "common_name_cs": "Racek b\u011blohlav\u00fd"
+    "common_name_cs": "Racek b\u011blohlav\u00fd",
+    "common_name_it": "Gabbiano reale pontico"
   },
   "redcro": {
     "common_name": "Red Crossbill",
@@ -7223,7 +7333,8 @@
     "blacklisted": false,
     "common_name_de": "Fichtenkreuzschnabel",
     "common_name_fr": "Bec-crois\u00e9 des sapins",
-    "common_name_cs": "K\u0159ivka obecn\u00e1"
+    "common_name_cs": "K\u0159ivka obecn\u00e1",
+    "common_name_it": "Crociere comune"
   },
   "leswoo1": {
     "common_name": "Lesser Spotted Woodpecker",
@@ -7287,7 +7398,8 @@
     "blacklisted": false,
     "common_name_de": "Kleinspecht",
     "common_name_fr": "Pic \u00e9peichette",
-    "common_name_cs": "Strakapoud mal\u00fd"
+    "common_name_cs": "Strakapoud mal\u00fd",
+    "common_name_it": "Picchio rosso minore"
   },
   "eupowl1": {
     "common_name": "Eurasian Pygmy-Owl",
@@ -7351,7 +7463,8 @@
     "blacklisted": false,
     "common_name_de": "Sperlingskauz",
     "common_name_fr": "Chev\u00eachette d'Europe",
-    "common_name_cs": "Kul\u00ed\u0161ek nejmen\u0161\u00ed"
+    "common_name_cs": "Kul\u00ed\u0161ek nejmen\u0161\u00ed",
+    "common_name_it": "Civetta nana"
   },
   "eurwry": {
     "common_name": "Eurasian Wryneck",
@@ -7415,7 +7528,8 @@
     "blacklisted": false,
     "common_name_de": "Wendehals",
     "common_name_fr": "Torcol fourmilier",
-    "common_name_cs": "Krutihlav obecn\u00fd"
+    "common_name_cs": "Krutihlav obecn\u00fd",
+    "common_name_it": "Torcicollo"
   },
   "gnwtea": {
     "common_name": "Green-winged Teal",
@@ -7479,7 +7593,8 @@
     "blacklisted": false,
     "common_name_de": "Krickente",
     "common_name_fr": "Sarcelle d'hiver",
-    "common_name_cs": "\u010c\u00edrka obecn\u00e1"
+    "common_name_cs": "\u010c\u00edrka obecn\u00e1",
+    "common_name_it": "Alzavola"
   },
   "mewgul": {
     "common_name": "Common Gull",
@@ -7543,7 +7658,8 @@
     "blacklisted": false,
     "common_name_de": "Sturmm\u00f6we",
     "common_name_fr": "Go\u00e9land cendr\u00e9",
-    "common_name_cs": "Racek bou\u0159n\u00ed"
+    "common_name_cs": "Racek bou\u0159n\u00ed",
+    "common_name_it": "Gavina"
   },
   "trepip": {
     "common_name": "Tree Pipit",
@@ -7607,7 +7723,8 @@
     "blacklisted": false,
     "common_name_de": "Baumpieper",
     "common_name_fr": "Pipit des arbres",
-    "common_name_cs": "Lindu\u0161ka lesn\u00ed"
+    "common_name_cs": "Lindu\u0161ka lesn\u00ed",
+    "common_name_it": "Prispolone"
   },
   "tunbeg1": {
     "common_name": "Tundra Bean-Goose",
@@ -7671,7 +7788,8 @@
     "blacklisted": false,
     "common_name_de": "Tundrasaatgans",
     "common_name_fr": "Oie de la toundra",
-    "common_name_cs": "Husa tundrov\u00e1"
+    "common_name_cs": "Husa tundrov\u00e1",
+    "common_name_it": "Oca granaiola della tundra"
   },
   "comred": {
     "common_name": "Common Redpoll",
@@ -7796,7 +7914,8 @@
     "blacklisted": false,
     "common_name_de": "Rohrammer",
     "common_name_fr": "Bruant des roseaux",
-    "common_name_cs": "Strnad r\u00e1kosn\u00ed"
+    "common_name_cs": "Strnad r\u00e1kosn\u00ed",
+    "common_name_it": "Migliarino di palude"
   },
   "eueowl1": {
     "common_name": "Eurasian Eagle-Owl",
@@ -7860,7 +7979,8 @@
     "blacklisted": false,
     "common_name_de": "Uhu",
     "common_name_fr": "Grand-duc d'Europe",
-    "common_name_cs": "V\u00fdr velk\u00fd"
+    "common_name_cs": "V\u00fdr velk\u00fd",
+    "common_name_it": "Gufo reale"
   },
   "grnsan": {
     "common_name": "Green Sandpiper",
@@ -7924,7 +8044,8 @@
     "blacklisted": false,
     "common_name_de": "Waldwasserl\u00e4ufer",
     "common_name_fr": "Chevalier cul-blanc",
-    "common_name_cs": "Vodou\u0161 kropenat\u00fd"
+    "common_name_cs": "Vodou\u0161 kropenat\u00fd",
+    "common_name_it": "Piro piro culbianco"
   },
   "rudshe": {
     "common_name": "Ruddy Shelduck",
@@ -7988,7 +8109,8 @@
     "blacklisted": false,
     "common_name_de": "Rostgans",
     "common_name_fr": "Tadorne casarca",
-    "common_name_cs": "Husice rezav\u00e1"
+    "common_name_cs": "Husice rezav\u00e1",
+    "common_name_it": "Casarca"
   },
   "spocra1": {
     "common_name": "Spotted Crake",
@@ -8052,7 +8174,8 @@
     "blacklisted": false,
     "common_name_de": "T\u00fcpfelsumpfhuhn",
     "common_name_fr": "Marouette ponctu\u00e9e",
-    "common_name_cs": "Ch\u0159\u00e1stal kropenat\u00fd"
+    "common_name_cs": "Ch\u0159\u00e1stal kropenat\u00fd",
+    "common_name_it": "Voltolino"
   },
   "grrwar1": {
     "common_name": "Great Reed Warbler",
@@ -8116,7 +8239,8 @@
     "blacklisted": false,
     "common_name_de": "Drosselrohrs\u00e4nger",
     "common_name_fr": "Rousserolle turdo\u00efde",
-    "common_name_cs": "R\u00e1kosn\u00edk velk\u00fd"
+    "common_name_cs": "R\u00e1kosn\u00edk velk\u00fd",
+    "common_name_it": "Cannareccione"
   },
   "norsho": {
     "common_name": "Northern Shoveler",
@@ -8180,7 +8304,8 @@
     "blacklisted": false,
     "common_name_de": "L\u00f6ffelente",
     "common_name_fr": "Canard souchet",
-    "common_name_cs": "L\u017ei\u010d\u00e1k pestr\u00fd"
+    "common_name_cs": "L\u017ei\u010d\u00e1k pestr\u00fd",
+    "common_name_it": "Mestolone"
   },
   "hergul": {
     "common_name": "Herring Gull",
@@ -8305,7 +8430,8 @@
     "blacklisted": false,
     "common_name_de": "Heidelerche",
     "common_name_fr": "Alouette lulu",
-    "common_name_cs": "Sk\u0159ivan lesn\u00ed"
+    "common_name_cs": "Sk\u0159ivan lesn\u00ed",
+    "common_name_it": "Tottavilla"
   },
   "banswa": {
     "common_name": "Bank Swallow",
@@ -8369,7 +8495,8 @@
     "blacklisted": false,
     "common_name_de": "Uferschwalbe",
     "common_name_fr": "Hirondelle de rivage",
-    "common_name_cs": "B\u0159ehule \u0159\u00ed\u010dn\u00ed"
+    "common_name_cs": "B\u0159ehule \u0159\u00ed\u010dn\u00ed",
+    "common_name_it": "Topino"
   },
   "osprey": {
     "common_name": "Osprey",
@@ -8433,7 +8560,8 @@
     "blacklisted": false,
     "common_name_de": "Fischadler",
     "common_name_fr": "Balbuzard p\u00eacheur",
-    "common_name_cs": "Orlovec \u0159\u00ed\u010dn\u00ed"
+    "common_name_cs": "Orlovec \u0159\u00ed\u010dn\u00ed",
+    "common_name_it": "Falco pescatore"
   },
   "bohwax": {
     "common_name": "Bohemian Waxwing",
@@ -8497,7 +8625,8 @@
     "blacklisted": false,
     "common_name_de": "Seidenschwanz",
     "common_name_fr": "Jaseur bor\u00e9al",
-    "common_name_cs": "Brkoslav severn\u00ed"
+    "common_name_cs": "Brkoslav severn\u00ed",
+    "common_name_it": "Beccofrusone"
   },
   "miswoo1": {
     "common_name": "Middle Spotted Woodpecker",
@@ -8561,7 +8690,8 @@
     "blacklisted": false,
     "common_name_de": "Mittelspecht",
     "common_name_fr": "Pic mar",
-    "common_name_cs": "Strakapoud prost\u0159edn\u00ed"
+    "common_name_cs": "Strakapoud prost\u0159edn\u00ed",
+    "common_name_it": "Picchio rosso mezzano"
   },
   "gwfgoo": {
     "common_name": "Greater White-fronted Goose",
@@ -8625,7 +8755,8 @@
     "blacklisted": false,
     "common_name_de": "Bl\u00e4ssgans",
     "common_name_fr": "Oie rieuse",
-    "common_name_cs": "Husa b\u011blo\u010del\u00e1"
+    "common_name_cs": "Husa b\u011blo\u010del\u00e1",
+    "common_name_it": "Oca lombardella"
   },
   "hoopoe": {
     "common_name": "Eurasian Hoopoe",
@@ -8689,7 +8820,8 @@
     "blacklisted": false,
     "common_name_de": "Wiedehopf",
     "common_name_fr": "Huppe fasci\u00e9e",
-    "common_name_cs": "Dudek chocholat\u00fd"
+    "common_name_cs": "Dudek chocholat\u00fd",
+    "common_name_it": "Upupa"
   },
   "twite1": {
     "common_name": "Twite",
@@ -8753,7 +8885,8 @@
     "blacklisted": false,
     "common_name_de": "Bergh\u00e4nfling",
     "common_name_fr": "Linotte \u00e0 bec jaune",
-    "common_name_cs": "Konopka \u017elutozob\u00e1"
+    "common_name_cs": "Konopka \u017elutozob\u00e1",
+    "common_name_it": "Fanello nordico"
   },
   "comgol": {
     "common_name": "Common Goldeneye",
@@ -8817,7 +8950,8 @@
     "blacklisted": false,
     "common_name_de": "Schellente",
     "common_name_fr": "Garrot \u00e0 oeil d'or",
-    "common_name_cs": "Hohol severn\u00ed"
+    "common_name_cs": "Hohol severn\u00ed",
+    "common_name_it": "Quattrocchi"
   },
   "eurwig": {
     "common_name": "Eurasian Wigeon",
@@ -8881,7 +9015,8 @@
     "blacklisted": false,
     "common_name_de": "Pfeifente",
     "common_name_fr": "Canard siffleur",
-    "common_name_cs": "Hv\u00edzd\u00e1k eurasijsk\u00fd"
+    "common_name_cs": "Hv\u00edzd\u00e1k eurasijsk\u00fd",
+    "common_name_it": "Fischione"
   },
   "sedwar1": {
     "common_name": "Sedge Warbler",
@@ -8945,7 +9080,8 @@
     "blacklisted": false,
     "common_name_de": "Schilfrohrs\u00e4nger",
     "common_name_fr": "Phragmite des joncs",
-    "common_name_cs": "R\u00e1kosn\u00edk prou\u017ekovan\u00fd"
+    "common_name_cs": "R\u00e1kosn\u00edk prou\u017ekovan\u00fd",
+    "common_name_it": "Forapaglie comune"
   },
   "comnig1": {
     "common_name": "Common Nightingale",
@@ -9009,7 +9145,8 @@
     "blacklisted": false,
     "common_name_de": "Nachtigall",
     "common_name_fr": "Rossignol philom\u00e8le",
-    "common_name_cs": "Slav\u00edk obecn\u00fd"
+    "common_name_cs": "Slav\u00edk obecn\u00fd",
+    "common_name_it": "Usignolo"
   },
   "cogwar1": {
     "common_name": "Common Grasshopper Warbler",
@@ -9073,7 +9210,8 @@
     "blacklisted": false,
     "common_name_de": "Feldschwirl",
     "common_name_fr": "Locustelle tachet\u00e9e",
-    "common_name_cs": "Cvr\u010dilka zelen\u00e1"
+    "common_name_cs": "Cvr\u010dilka zelen\u00e1",
+    "common_name_it": "Forapaglie macchiettato"
   },
   "borowl": {
     "common_name": "Boreal Owl",
@@ -9137,7 +9275,8 @@
     "blacklisted": false,
     "common_name_de": "Raufu\u00dfkauz",
     "common_name_fr": "Nyctale de Tengmalm",
-    "common_name_cs": "S\u00fdc rousn\u00fd"
+    "common_name_cs": "S\u00fdc rousn\u00fd",
+    "common_name_it": "Civetta capogrosso"
   },
   "eargre": {
     "common_name": "Eared Grebe",
@@ -9201,7 +9340,8 @@
     "blacklisted": false,
     "common_name_de": "Schwarzhalstaucher",
     "common_name_fr": "Gr\u00e8be \u00e0 cou noir",
-    "common_name_cs": "Pot\u00e1pka \u010dernokrk\u00e1"
+    "common_name_cs": "Pot\u00e1pka \u010dernokrk\u00e1",
+    "common_name_it": "Svasso piccolo"
   },
   "eugplo": {
     "common_name": "European Golden-Plover",
@@ -9265,7 +9405,8 @@
     "blacklisted": false,
     "common_name_de": "Goldregenpfeifer",
     "common_name_fr": "Pluvier dor\u00e9",
-    "common_name_cs": "Kul\u00edk zlat\u00fd"
+    "common_name_cs": "Kul\u00edk zlat\u00fd",
+    "common_name_it": "Piviere dorato"
   },
   "euhbuz1": {
     "common_name": "European Honey-buzzard",
@@ -9329,7 +9470,8 @@
     "blacklisted": false,
     "common_name_de": "Wespenbussard",
     "common_name_fr": "Bondr\u00e9e apivore",
-    "common_name_cs": "V\u010delojed lesn\u00ed"
+    "common_name_cs": "V\u010delojed lesn\u00ed",
+    "common_name_it": "Falco pecchiaiolo"
   },
   "dunlin": {
     "common_name": "Dunlin",
@@ -9393,7 +9535,8 @@
     "blacklisted": false,
     "common_name_de": "Alpenstrandl\u00e4ufer",
     "common_name_fr": "B\u00e9casseau variable",
-    "common_name_cs": "Jesp\u00e1k obecn\u00fd"
+    "common_name_cs": "Jesp\u00e1k obecn\u00fd",
+    "common_name_it": "Piovanello pancianera"
   },
   "comter": {
     "common_name": "Common Tern",
@@ -9457,7 +9600,8 @@
     "blacklisted": false,
     "common_name_de": "Flussseeschwalbe",
     "common_name_fr": "Sterne pierregarin",
-    "common_name_cs": "Ryb\u00e1k obecn\u00fd"
+    "common_name_cs": "Ryb\u00e1k obecn\u00fd",
+    "common_name_it": "Sterna comune"
   },
   "arcloo": {
     "common_name": "Arctic Loon",
@@ -9521,7 +9665,8 @@
     "blacklisted": false,
     "common_name_de": "Prachttaucher",
     "common_name_fr": "Plongeon arctique",
-    "common_name_cs": "Pot\u00e1plice severn\u00ed"
+    "common_name_cs": "Pot\u00e1plice severn\u00ed",
+    "common_name_it": "Strolaga mezzana"
   },
   "eursco1": {
     "common_name": "Eurasian Scops-Owl",
@@ -9585,7 +9730,8 @@
     "blacklisted": false,
     "common_name_de": "Zwergohreule",
     "common_name_fr": "Petit-duc scops",
-    "common_name_cs": "V\u00fdre\u010dek mal\u00fd"
+    "common_name_cs": "V\u00fdre\u010dek mal\u00fd",
+    "common_name_it": "Assiolo"
   },
   "crelar2": {
     "common_name": "Crested Lark",
@@ -9649,7 +9795,8 @@
     "blacklisted": false,
     "common_name_de": "Haubenlerche",
     "common_name_fr": "Cochevis hupp\u00e9",
-    "common_name_cs": "Chocholou\u0161 obecn\u00fd"
+    "common_name_cs": "Chocholou\u0161 obecn\u00fd",
+    "common_name_it": "Cappellaccia"
   },
   "watrai1": {
     "common_name": "Water Rail",
@@ -9713,7 +9860,8 @@
     "blacklisted": false,
     "common_name_de": "Wasserralle",
     "common_name_fr": "R\u00e2le d'eau",
-    "common_name_cs": "Ch\u0159\u00e1stal vodn\u00ed"
+    "common_name_cs": "Ch\u0159\u00e1stal vodn\u00ed",
+    "common_name_it": "Porciglione"
   },
   "comred1": {
     "common_name": "Common Redshank",
@@ -9777,7 +9925,8 @@
     "blacklisted": false,
     "common_name_de": "Rotschenkel",
     "common_name_fr": "Chevalier gambette",
-    "common_name_cs": "Vodou\u0161 rudonoh\u00fd"
+    "common_name_cs": "Vodou\u0161 rudonoh\u00fd",
+    "common_name_it": "Pettegola"
   },
   "medgul1": {
     "common_name": "Mediterranean Gull",
@@ -9841,7 +9990,8 @@
     "blacklisted": false,
     "common_name_de": "Schwarzkopfm\u00f6we",
     "common_name_fr": "Mouette m\u00e9lanoc\u00e9phale",
-    "common_name_cs": "Racek \u010dernohlav\u00fd"
+    "common_name_cs": "Racek \u010dernohlav\u00fd",
+    "common_name_it": "Gabbiano corallino"
   },
   "ruff": {
     "common_name": "Ruff",
@@ -9905,7 +10055,8 @@
     "blacklisted": false,
     "common_name_de": "Kampfl\u00e4ufer",
     "common_name_fr": "Combattant vari\u00e9",
-    "common_name_cs": "Jesp\u00e1k bojovn\u00fd"
+    "common_name_cs": "Jesp\u00e1k bojovn\u00fd",
+    "common_name_it": "Combattente"
   },
   "litsti": {
     "common_name": "Little Stint",
@@ -9969,7 +10120,8 @@
     "blacklisted": false,
     "common_name_de": "Zwergstrandl\u00e4ufer",
     "common_name_fr": "B\u00e9casseau minute",
-    "common_name_cs": "Jesp\u00e1k mal\u00fd"
+    "common_name_cs": "Jesp\u00e1k mal\u00fd",
+    "common_name_it": "Gambecchio comune"
   },
   "grebit1": {
     "common_name": "Great Bittern",
@@ -10033,7 +10185,8 @@
     "blacklisted": false,
     "common_name_de": "Rohrdommel",
     "common_name_fr": "Butor \u00e9toil\u00e9",
-    "common_name_cs": "Buka\u010d velk\u00fd"
+    "common_name_cs": "Buka\u010d velk\u00fd",
+    "common_name_it": "Tarabuso"
   },
   "piecro1": {
     "common_name": "Pied Crow",
@@ -10097,7 +10250,8 @@
     "blacklisted": false,
     "common_name_de": "Schildrabe",
     "common_name_fr": "Corbeau pie",
-    "common_name_cs": "Vr\u00e1na \u010dernob\u00edl\u00e1"
+    "common_name_cs": "Vr\u00e1na \u010dernob\u00edl\u00e1",
+    "common_name_it": "Corvo bianco e nero"
   },
   "blkter": {
     "common_name": "Black Tern",
@@ -10161,7 +10315,8 @@
     "blacklisted": false,
     "common_name_de": "Trauerseeschwalbe",
     "common_name_fr": "Guifette noire",
-    "common_name_cs": "Ryb\u00e1k \u010dern\u00fd"
+    "common_name_cs": "Ryb\u00e1k \u010dern\u00fd",
+    "common_name_it": "Mignattino comune"
   },
   "grseag1": {
     "common_name": "Greater Spotted Eagle",
@@ -10225,7 +10380,8 @@
     "blacklisted": false,
     "common_name_de": "Schelladler",
     "common_name_fr": "Aigle criard",
-    "common_name_cs": "Orel volav\u00fd"
+    "common_name_cs": "Orel volav\u00fd",
+    "common_name_it": "Aquila anatraia maggiore"
   },
   "comgre": {
     "common_name": "Common Greenshank",
@@ -10289,7 +10445,8 @@
     "blacklisted": false,
     "common_name_de": "Gr\u00fcnschenkel",
     "common_name_fr": "Chevalier aboyeur",
-    "common_name_cs": "Vodou\u0161 \u0161ed\u00fd"
+    "common_name_cs": "Vodou\u0161 \u0161ed\u00fd",
+    "common_name_it": "Pantana"
   },
   "woosan": {
     "common_name": "Wood Sandpiper",
@@ -10353,7 +10510,8 @@
     "blacklisted": false,
     "common_name_de": "Bruchwasserl\u00e4ufer",
     "common_name_fr": "Chevalier sylvain",
-    "common_name_cs": "Vodou\u0161 bahenn\u00ed"
+    "common_name_cs": "Vodou\u0161 bahenn\u00ed",
+    "common_name_it": "Piro piro boschereccio"
   },
   "whinch1": {
     "common_name": "Whinchat",
@@ -10417,7 +10575,8 @@
     "blacklisted": false,
     "common_name_de": "Braunkehlchen",
     "common_name_fr": "Tarier des pr\u00e9s",
-    "common_name_cs": "Bramborn\u00ed\u010dek hn\u011bd\u00fd"
+    "common_name_cs": "Bramborn\u00ed\u010dek hn\u011bd\u00fd",
+    "common_name_it": "Stiaccino"
   },
   "gadwal": {
     "common_name": "Gadwall",
@@ -10481,7 +10640,8 @@
     "blacklisted": false,
     "common_name_de": "Schnatterente",
     "common_name_fr": "Canard chipeau",
-    "common_name_cs": "Kop\u0159ivka obecn\u00e1"
+    "common_name_cs": "Kop\u0159ivka obecn\u00e1",
+    "common_name_it": "Canapiglia"
   },
   "eubeat1": {
     "common_name": "European Bee-eater",
@@ -10545,7 +10705,8 @@
     "blacklisted": false,
     "common_name_de": "Bienenfresser",
     "common_name_fr": "Gu\u00eapier d'Europe",
-    "common_name_cs": "Vlha pestr\u00e1"
+    "common_name_cs": "Vlha pestr\u00e1",
+    "common_name_it": "Gruccione"
   },
   "litowl1": {
     "common_name": "Little Owl",
@@ -10609,7 +10770,8 @@
     "blacklisted": false,
     "common_name_de": "Steinkauz",
     "common_name_fr": "Chev\u00eache d'Ath\u00e9na",
-    "common_name_cs": "S\u00fd\u010dek obecn\u00fd"
+    "common_name_cs": "S\u00fd\u010dek obecn\u00fd",
+    "common_name_it": "Civetta"
   },
   "comshe": {
     "common_name": "Common Shelduck",
@@ -10673,7 +10835,8 @@
     "blacklisted": false,
     "common_name_de": "Brandgans",
     "common_name_fr": "Tadorne de Belon",
-    "common_name_cs": "Husice li\u0161\u010d\u00ed"
+    "common_name_cs": "Husice li\u0161\u010d\u00ed",
+    "common_name_it": "Volpoca"
   },
   "grypar": {
     "common_name": "Gray Partridge",
@@ -10737,7 +10900,8 @@
     "blacklisted": false,
     "common_name_de": "Rebhuhn",
     "common_name_fr": "Perdrix grise",
-    "common_name_cs": "Koroptev poln\u00ed"
+    "common_name_cs": "Koroptev poln\u00ed",
+    "common_name_it": "Starna"
   },
   "eurdot": {
     "common_name": "Eurasian Dotterel",
@@ -10801,7 +10965,8 @@
     "blacklisted": false,
     "common_name_de": "Mornellregenpfeifer",
     "common_name_fr": "Pluvier guignard",
-    "common_name_cs": "Kul\u00edk hn\u011bd\u00fd"
+    "common_name_cs": "Kul\u00edk hn\u011bd\u00fd",
+    "common_name_it": "Piviere tortolino"
   },
   "smew": {
     "common_name": "Smew",
@@ -10865,7 +11030,8 @@
     "blacklisted": false,
     "common_name_de": "Zwergs\u00e4ger",
     "common_name_fr": "Harle piette",
-    "common_name_cs": "Mor\u010d\u00e1k mal\u00fd"
+    "common_name_cs": "Mor\u010d\u00e1k mal\u00fd",
+    "common_name_it": "Pesciaiola"
   },
   "tawpip1": {
     "common_name": "Tawny Pipit",
@@ -10929,7 +11095,8 @@
     "blacklisted": false,
     "common_name_de": "Brachpieper",
     "common_name_fr": "Pipit rousseline",
-    "common_name_cs": "Lindu\u0161ka \u00fahorn\u00ed"
+    "common_name_cs": "Lindu\u0161ka \u00fahorn\u00ed",
+    "common_name_it": "Calandro"
   },
   "cangoo": {
     "common_name": "Canada Goose",
@@ -10993,7 +11160,8 @@
     "blacklisted": false,
     "common_name_de": "Kanadagans",
     "common_name_fr": "Bernache du Canada",
-    "common_name_cs": "Berne\u0161ka velk\u00e1"
+    "common_name_cs": "Berne\u0161ka velk\u00e1",
+    "common_name_it": "Oca canadese maggiore"
   },
   "gresca": {
     "common_name": "Greater Scaup",
@@ -11057,7 +11225,8 @@
     "blacklisted": false,
     "common_name_de": "Bergente",
     "common_name_fr": "Fuligule milouinan",
-    "common_name_cs": "Pol\u00e1k kaholka"
+    "common_name_cs": "Pol\u00e1k kaholka",
+    "common_name_it": "Moretta grigia"
   },
   "yelgul1": {
     "common_name": "Yellow-legged Gull",
@@ -11121,7 +11290,8 @@
     "blacklisted": false,
     "common_name_de": "Mittelmeerm\u00f6we",
     "common_name_fr": "Go\u00e9land leucoph\u00e9e",
-    "common_name_cs": "Racek st\u0159edomo\u0159sk\u00fd"
+    "common_name_cs": "Racek st\u0159edomo\u0159sk\u00fd",
+    "common_name_it": "Gabbiano reale"
   },
   "wooshr1": {
     "common_name": "Woodchat Shrike",
@@ -11185,7 +11355,8 @@
     "blacklisted": false,
     "common_name_de": "Rotkopfw\u00fcrger",
     "common_name_fr": "Pie-gri\u00e8che \u00e0 t\u00eate rousse",
-    "common_name_cs": "\u0164uh\u00fdk rudohlav\u00fd"
+    "common_name_cs": "\u0164uh\u00fdk rudohlav\u00fd",
+    "common_name_it": "Averla capirossa"
   },
   "eaywag1": {
     "common_name": "Western Yellow Wagtail",
@@ -11249,7 +11420,8 @@
     "blacklisted": false,
     "common_name_de": "Schafstelze",
     "common_name_fr": "Bergeronnette printani\u00e8re",
-    "common_name_cs": "Konipas lu\u010dn\u00ed"
+    "common_name_cs": "Konipas lu\u010dn\u00ed",
+    "common_name_it": "Cutrettola"
   },
   "sheowl": {
     "common_name": "Short-eared Owl",
@@ -11313,7 +11485,8 @@
     "blacklisted": false,
     "common_name_de": "Sumpfohreule",
     "common_name_fr": "Hibou des marais",
-    "common_name_cs": "Kalous pustovka"
+    "common_name_cs": "Kalous pustovka",
+    "common_name_it": "Gufo di palude"
   },
   "stonec4": {
     "common_name": "European Stonechat",
@@ -11377,7 +11550,8 @@
     "blacklisted": false,
     "common_name_de": "Schwarzkehlchen",
     "common_name_fr": "Tarier p\u00e2tre",
-    "common_name_cs": "Bramborn\u00ed\u010dek \u010dernohlav\u00fd"
+    "common_name_cs": "Bramborn\u00ed\u010dek \u010dernohlav\u00fd",
+    "common_name_it": "Saltimpalo"
   },
   "barwar1": {
     "common_name": "Barred Warbler",
@@ -11441,7 +11615,8 @@
     "blacklisted": false,
     "common_name_de": "Sperbergrasm\u00fccke",
     "common_name_fr": "Fauvette \u00e9pervi\u00e8re",
-    "common_name_cs": "P\u011bnice vla\u0161sk\u00e1"
+    "common_name_cs": "P\u011bnice vla\u0161sk\u00e1",
+    "common_name_it": "Bigia padovana"
   },
   "reffal1": {
     "common_name": "Red-footed Falcon",
@@ -11505,7 +11680,8 @@
     "blacklisted": false,
     "common_name_de": "Rotfu\u00dffalke",
     "common_name_fr": "Faucon kobez",
-    "common_name_cs": "Po\u0161tolka rudonoh\u00e1"
+    "common_name_cs": "Po\u0161tolka rudonoh\u00e1",
+    "common_name_it": "Falco cuculo"
   },
   "rinouz1": {
     "common_name": "Ring Ouzel",
@@ -11569,7 +11745,8 @@
     "blacklisted": false,
     "common_name_de": "Ringdrossel",
     "common_name_fr": "Merle \u00e0 plastron",
-    "common_name_cs": "Kos horsk\u00fd"
+    "common_name_cs": "Kos horsk\u00fd",
+    "common_name_it": "Merlo dal collare"
   },
   "whoswa": {
     "common_name": "Whooper Swan",
@@ -11633,7 +11810,8 @@
     "blacklisted": false,
     "common_name_de": "Singschwan",
     "common_name_fr": "Cygne chanteur",
-    "common_name_cs": "Labu\u0165 zp\u011bvn\u00e1"
+    "common_name_cs": "Labu\u0165 zp\u011bvn\u00e1",
+    "common_name_it": "Cigno selvatico"
   },
   "litbit1": {
     "common_name": "Little Bittern",
@@ -11697,7 +11875,8 @@
     "blacklisted": false,
     "common_name_de": "Zwergdommel",
     "common_name_fr": "Blongios nain",
-    "common_name_cs": "Buk\u00e1\u010dek mal\u00fd"
+    "common_name_cs": "Buk\u00e1\u010dek mal\u00fd",
+    "common_name_it": "Tarabusino"
   },
   "litgul": {
     "common_name": "Little Gull",
@@ -11761,7 +11940,8 @@
     "blacklisted": false,
     "common_name_de": "Zwergm\u00f6we",
     "common_name_fr": "Mouette pygm\u00e9e",
-    "common_name_cs": "Racek mal\u00fd"
+    "common_name_cs": "Racek mal\u00fd",
+    "common_name_it": "Gabbianello"
   },
   "brnowl": {
     "common_name": "Barn Owl",
@@ -11825,7 +12005,8 @@
     "blacklisted": false,
     "common_name_de": "Amerikaschleiereule",
     "common_name_fr": "Effraie d'Am\u00e9rique",
-    "common_name_cs": "Sova americk\u00e1"
+    "common_name_cs": "Sova americk\u00e1",
+    "common_name_it": "American Barn Owl"
   },
   "wemhar1": {
     "common_name": "Western Marsh Harrier",
@@ -11889,7 +12070,8 @@
     "blacklisted": false,
     "common_name_de": "Rohrweihe",
     "common_name_fr": "Busard des roseaux",
-    "common_name_cs": "Mot\u00e1k pochop"
+    "common_name_cs": "Mot\u00e1k pochop",
+    "common_name_it": "Falco di palude"
   },
   "norpin": {
     "common_name": "Northern Pintail",
@@ -11953,7 +12135,8 @@
     "blacklisted": false,
     "common_name_de": "Spie\u00dfente",
     "common_name_fr": "Canard pilet",
-    "common_name_cs": "Ostralka \u0161t\u00edhl\u00e1"
+    "common_name_cs": "Ostralka \u0161t\u00edhl\u00e1",
+    "common_name_it": "Codone"
   },
   "blueth": {
     "common_name": "Bluethroat",
@@ -12017,7 +12200,8 @@
     "blacklisted": false,
     "common_name_de": "Blaukehlchen",
     "common_name_fr": "Gorgebleue \u00e0 miroir",
-    "common_name_cs": "Slav\u00edk modr\u00e1\u010dek"
+    "common_name_cs": "Slav\u00edk modr\u00e1\u010dek",
+    "common_name_it": "Pettazzurro"
   },
   "norwhe": {
     "common_name": "Northern Wheatear",
@@ -12081,7 +12265,8 @@
     "blacklisted": false,
     "common_name_de": "Steinschm\u00e4tzer",
     "common_name_fr": "Traquet motteux",
-    "common_name_cs": "B\u011blo\u0159it \u0161ed\u00fd"
+    "common_name_cs": "B\u011blo\u0159it \u0161ed\u00fd",
+    "common_name_it": "Culbianco"
   },
   "bearee1": {
     "common_name": "Bearded Reedling",
@@ -12145,7 +12330,8 @@
     "blacklisted": false,
     "common_name_de": "Bartmeise",
     "common_name_fr": "Panure \u00e0 moustaches",
-    "common_name_cs": "S\u00fdko\u0159ice vousat\u00e1"
+    "common_name_cs": "S\u00fdko\u0159ice vousat\u00e1",
+    "common_name_it": "Basettino"
   },
   "nohowl": {
     "common_name": "Northern Hawk Owl",
@@ -12209,7 +12395,8 @@
     "blacklisted": false,
     "common_name_de": "Sperbereule",
     "common_name_fr": "\u00c9pervi\u00e8re bor\u00e9ale",
-    "common_name_cs": "Sovice krahujov\u00e1"
+    "common_name_cs": "Sovice krahujov\u00e1",
+    "common_name_it": "Northern Hawk Owl"
   },
   "horgre": {
     "common_name": "Horned Grebe",
@@ -12273,7 +12460,8 @@
     "blacklisted": false,
     "common_name_de": "Ohrentaucher",
     "common_name_fr": "Gr\u00e8be esclavon",
-    "common_name_cs": "Pot\u00e1pka \u017elutoroh\u00e1"
+    "common_name_cs": "Pot\u00e1pka \u017elutoroh\u00e1",
+    "common_name_it": "Svasso cornuto"
   },
   "litcra1": {
     "common_name": "Little Crake",
@@ -12337,7 +12525,8 @@
     "blacklisted": false,
     "common_name_de": "Kleinsumpfhuhn",
     "common_name_fr": "Marouette poussin",
-    "common_name_cs": "Ch\u0159\u00e1stal mal\u00fd"
+    "common_name_cs": "Ch\u0159\u00e1stal mal\u00fd",
+    "common_name_it": "Schiribilla"
   },
   "eurwoo": {
     "common_name": "Eurasian Woodcock",
@@ -12401,7 +12590,8 @@
     "blacklisted": false,
     "common_name_de": "Waldschnepfe",
     "common_name_fr": "B\u00e9casse des bois",
-    "common_name_cs": "Sluka lesn\u00ed"
+    "common_name_cs": "Sluka lesn\u00ed",
+    "common_name_it": "Beccaccia"
   },
   "ortbun1": {
     "common_name": "Ortolan Bunting",
@@ -12465,7 +12655,8 @@
     "blacklisted": false,
     "common_name_de": "Ortolan",
     "common_name_fr": "Bruant ortolan",
-    "common_name_cs": "Strnad zahradn\u00ed"
+    "common_name_cs": "Strnad zahradn\u00ed",
+    "common_name_it": "Ortolano"
   },
   "comsni": {
     "common_name": "Common Snipe",
@@ -12529,7 +12720,8 @@
     "blacklisted": false,
     "common_name_de": "Bekassine",
     "common_name_fr": "B\u00e9cassine des marais",
-    "common_name_cs": "Bekasina otavn\u00ed"
+    "common_name_cs": "Bekasina otavn\u00ed",
+    "common_name_it": "Beccaccino"
   },
   "lirplo": {
     "common_name": "Little Ringed Plover",
@@ -12593,7 +12785,8 @@
     "blacklisted": false,
     "common_name_de": "Flussregenpfeifer",
     "common_name_fr": "Pluvier petit-gravelot",
-    "common_name_cs": "Kul\u00edk \u0159\u00ed\u010dn\u00ed"
+    "common_name_cs": "Kul\u00edk \u0159\u00ed\u010dn\u00ed",
+    "common_name_it": "Corriere piccolo"
   },
   "corbun1": {
     "common_name": "Corn Bunting",
@@ -12657,7 +12850,8 @@
     "blacklisted": false,
     "common_name_de": "Grauammer",
     "common_name_fr": "Bruant proyer",
-    "common_name_cs": "Strnad lu\u010dn\u00ed"
+    "common_name_cs": "Strnad lu\u010dn\u00ed",
+    "common_name_it": "Strillozzo"
   },
   "jacsni": {
     "common_name": "Jack Snipe",
@@ -12721,7 +12915,8 @@
     "blacklisted": false,
     "common_name_de": "Zwergschnepfe",
     "common_name_fr": "B\u00e9cassine sourde",
-    "common_name_cs": "Slu\u010dka mal\u00e1"
+    "common_name_cs": "Slu\u010dka mal\u00e1",
+    "common_name_it": "Frullino"
   },
   "loeowl": {
     "common_name": "Long-eared Owl",
@@ -12785,7 +12980,8 @@
     "blacklisted": false,
     "common_name_de": "Waldohreule",
     "common_name_fr": "Hibou moyen-duc",
-    "common_name_cs": "Kalous u\u0161at\u00fd"
+    "common_name_cs": "Kalous u\u0161at\u00fd",
+    "common_name_it": "Gufo comune"
   },
   "savwar1": {
     "common_name": "Savi's Warbler",
@@ -12849,7 +13045,8 @@
     "blacklisted": false,
     "common_name_de": "Rohrschwirl",
     "common_name_fr": "Locustelle luscinio\u00efde",
-    "common_name_cs": "Cvr\u010dilka slav\u00edkov\u00e1"
+    "common_name_cs": "Cvr\u010dilka slav\u00edkov\u00e1",
+    "common_name_it": "Salciaiola"
   },
   "whteag": {
     "common_name": "White-tailed Eagle",
@@ -12913,7 +13110,8 @@
     "blacklisted": false,
     "common_name_de": "Seeadler",
     "common_name_fr": "Pygargue \u00e0 queue blanche",
-    "common_name_cs": "Orel mo\u0159sk\u00fd"
+    "common_name_cs": "Orel mo\u0159sk\u00fd",
+    "common_name_it": "Aquila di mare"
   },
   "palhar1": {
     "common_name": "Pallid Harrier",
@@ -12977,7 +13175,8 @@
     "blacklisted": false,
     "common_name_de": "Steppenweihe",
     "common_name_fr": "Busard p\u00e2le",
-    "common_name_cs": "Mot\u00e1k stepn\u00ed"
+    "common_name_cs": "Mot\u00e1k stepn\u00ed",
+    "common_name_it": "Albanella pallida"
   },
   "gargan": {
     "common_name": "Garganey",
@@ -13041,7 +13240,8 @@
     "blacklisted": false,
     "common_name_de": "Kn\u00e4kente",
     "common_name_fr": "Sarcelle d'\u00e9t\u00e9",
-    "common_name_cs": "\u010c\u00edrka modr\u00e1"
+    "common_name_cs": "\u010c\u00edrka modr\u00e1",
+    "common_name_it": "Marzaiola"
   },
   "merlin": {
     "common_name": "Merlin",
@@ -13105,7 +13305,8 @@
     "blacklisted": false,
     "common_name_de": "Merlin",
     "common_name_fr": "Faucon \u00e9merillon",
-    "common_name_cs": "D\u0159eml\u00edk tundrov\u00fd"
+    "common_name_cs": "D\u0159eml\u00edk tundrov\u00fd",
+    "common_name_it": "Smeriglio"
   },
   "rebfly": {
     "common_name": "Red-breasted Flycatcher",
@@ -13169,7 +13370,8 @@
     "blacklisted": false,
     "common_name_de": "Zwergschn\u00e4pper",
     "common_name_fr": "Gobemouche nain",
-    "common_name_cs": "Lejsek mal\u00fd"
+    "common_name_cs": "Lejsek mal\u00fd",
+    "common_name_it": "Pigliamosche pettirosso"
   },
   "eurhob": {
     "common_name": "Eurasian Hobby",
@@ -13233,7 +13435,8 @@
     "blacklisted": false,
     "common_name_de": "Baumfalke",
     "common_name_fr": "Faucon hobereau",
-    "common_name_cs": "Ost\u0159\u00ed\u017e lesn\u00ed"
+    "common_name_cs": "Ost\u0159\u00ed\u017e lesn\u00ed",
+    "common_name_it": "Lodolaio"
   },
   "lbbgul": {
     "common_name": "Lesser Black-backed Gull",
@@ -13297,7 +13500,8 @@
     "blacklisted": false,
     "common_name_de": "Heringsm\u00f6we",
     "common_name_fr": "Go\u00e9land brun",
-    "common_name_cs": "Racek \u017elutonoh\u00fd"
+    "common_name_cs": "Racek \u017elutonoh\u00fd",
+    "common_name_it": "Zafferano"
   },
   "corcra": {
     "common_name": "Corn Crake",
@@ -13361,7 +13565,8 @@
     "blacklisted": false,
     "common_name_de": "Wachtelk\u00f6nig",
     "common_name_fr": "R\u00e2le des gen\u00eats",
-    "common_name_cs": "Ch\u0159\u00e1stal poln\u00ed"
+    "common_name_cs": "Ch\u0159\u00e1stal poln\u00ed",
+    "common_name_it": "Re di quaglie"
   },
   "snoowl1": {
     "common_name": "Snowy Owl",
@@ -13425,7 +13630,8 @@
     "blacklisted": false,
     "common_name_de": "Schneeeule",
     "common_name_fr": "Harfang des neiges",
-    "common_name_cs": "Sovice sn\u011b\u017en\u00ed"
+    "common_name_cs": "Sovice sn\u011b\u017en\u00ed",
+    "common_name_it": "Snowy Owl"
   },
   "bklkit": {
     "common_name": "Black-legged Kittiwake",
@@ -13489,7 +13695,8 @@
     "blacklisted": false,
     "common_name_de": "Dreizehenm\u00f6we",
     "common_name_fr": "Mouette tridactyle",
-    "common_name_cs": "Racek t\u0159\u00edprst\u00fd"
+    "common_name_cs": "Racek t\u0159\u00edprst\u00fd",
+    "common_name_it": "Gabbiano tridattilo"
   },
   "euptit1": {
     "common_name": "Eurasian Penduline-Tit",
@@ -13553,7 +13760,8 @@
     "blacklisted": false,
     "common_name_de": "Beutelmeise",
     "common_name_fr": "R\u00e9miz penduline",
-    "common_name_cs": "Moudivl\u00e1\u010dek lu\u017en\u00ed"
+    "common_name_cs": "Moudivl\u00e1\u010dek lu\u017en\u00ed",
+    "common_name_it": "Pendolino"
   },
   "recpoc": {
     "common_name": "Red-crested Pochard",
@@ -13617,7 +13825,8 @@
     "blacklisted": false,
     "common_name_de": "Kolbenente",
     "common_name_fr": "Nette rousse",
-    "common_name_cs": "Zrzohl\u00e1vka rudozob\u00e1"
+    "common_name_cs": "Zrzohl\u00e1vka rudozob\u00e1",
+    "common_name_it": "Fistione turco"
   },
   "eurwar2": {
     "common_name": "River Warbler",
@@ -13681,6 +13890,7 @@
     "blacklisted": false,
     "common_name_de": "Schlagschwirl",
     "common_name_fr": "Locustelle fluviatile",
-    "common_name_cs": "Cvr\u010dilka \u0159\u00ed\u010dn\u00ed"
+    "common_name_cs": "Cvr\u010dilka \u0159\u00ed\u010dn\u00ed",
+    "common_name_it": "Locustella fluviatile"
   }
 }

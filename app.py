@@ -1,10 +1,11 @@
-import shutil
 import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH, ALL
 from flask_cors import CORS
 from flask import request
+
+import json
 
 from utils import data_processor as dp
 from utils import plots
@@ -84,6 +85,8 @@ def app_layout():
             dcc.Store(id="species-data-store"),   # Store for species data
             dcc.Store(id="recorder-stats-store"),  # Store for recorder stats
             dcc.Store(id="recorder-data-store"),   # Store for recorder data
+            dcc.Store(id="locale-store"),  # Store for selected locale
+            html.Div(id="dummy-output"),  # Dummy output for page reload
             
             # Header Section with Logo and Navigation Bar
             nav_bar(),
@@ -107,10 +110,11 @@ def app_layout():
      Input("nav-detections", "n_clicks"),
      Input("nav-about", "n_clicks"),
      Input("nav-donate", "n_clicks"),
-     Input({"type": "nav-recorder", "index": ALL}, "n_clicks")],
+     Input({"type": "nav-recorder", "index": ALL}, "n_clicks"),
+     Input({"type": "nav-locale", "index": ALL}, "n_clicks")],
     [State("navbar-collapse", "is_open")],
 )
-def toggle_navbar_collapse(n_toggler, n_logo_short, n_logo_long, n_home, n_dashboard, n_detections, n_about, n_donate, n_recorders, is_open):
+def toggle_navbar_collapse(n_toggler, n_logo_short, n_logo_long, n_home, n_dashboard, n_detections, n_about, n_donate, n_recorders, n_locales, is_open):
     ctx = dash.callback_context
     if not ctx.triggered:
         return is_open
@@ -163,6 +167,31 @@ def display_page(pathname):
     else:
         print(f"404 Page Not Found: {pathname}")
         return "404 Page Not Found"
+
+# Callback to update the site locale based on the selected language
+@app.callback(
+    [Output("locale-store", "data"), Output("locale-label", "children")],
+    [Input({"type": "nav-locale", "index": ALL}, "n_clicks")],
+    [State("url", "href")]
+)
+def update_locale(n_clicks, href):
+    ctx = dash.callback_context
+    if not ctx.triggered:
+        return "", f" {cfg.SITE_LOCALE.upper()}"
+    else:
+        locale = json.loads(ctx.triggered[0]['prop_id'].split('.')[0])['index']
+        cfg.SITE_LOCALE = locale
+        return locale, f" {locale.upper()}"
+
+# Callback to reload the page when the locale is updated
+@app.callback(
+    Output("dummy-output", "children"),
+    [Input("locale-store", "data")]
+)
+def reload_page(locale):
+    if locale:
+        return dcc.Location(href="/", id="dummy-location")
+    return ""
 
 # Layout of the Dash app
 app.layout = app_layout()

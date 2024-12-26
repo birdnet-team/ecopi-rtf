@@ -63,6 +63,21 @@ def nav_bar():
                                 nav=True,
                             ),
                             dbc.NavItem(dbc.NavLink("About", href=cfg.SITE_ROOT + "/about", className="nav-link", id="nav-about")),
+                            dbc.DropdownMenu(
+                                label=[
+                                    html.I(className="bi bi-globe"),
+                                    html.Span(id="locale-label", children=f" {cfg.SITE_LOCALE.upper()}")
+                                ],
+                                children=[
+                                    dbc.DropdownMenuItem(
+                                        language, href="#", className="dropdown-item", id={"type": "nav-locale", "index": locale}
+                                    ) for language, locale in cfg.SUPPORTED_SITE_LOCALES.items()
+                                ],
+                                nav=True,
+                                in_navbar=True,
+                                right=True,
+                                id="locale-dropdown-menu"
+                            ),
                             dbc.NavItem(html.A("Donate", href=cfg.DONATION_URL, className="nav-link nav-donate" if cfg.DONATION_URL else "d-none", id="nav-donate", target="_blank")),
                         ],
                         className="ml-auto",
