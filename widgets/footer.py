@@ -5,7 +5,7 @@ from datetime import datetime
 import config as cfg
 
 # Define the footer content
-def footer_content():
+def footer_content(locale):
     footer_columns = []
     for section, links in cfg.FOOTER_LINKS.items():
         footer_columns.append(

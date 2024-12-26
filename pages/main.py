@@ -16,7 +16,7 @@ from widgets.recording_units import recording_units
 
 import config as cfg
 
-def main_page_content():
+def main_page_content(locale):
     return html.Div(
         [
             html.Div(
@@ -146,28 +146,28 @@ def register_main_callbacks(app):
             Output("no-detections-placeholder", "children"),
             Output("last-detections-data-container", "children")
         ], 
-        [Input("url", "pathname")]
+        [Input("url", "pathname"), Input("locale-store", "data")]
     )
-    def update_last_detections(pathname):
-        return recent_detections()
+    def update_last_detections(pathname, locale):
+        return recent_detections(locale=locale)
 
     @app.callback(
         [
             Output("most-active-species", "children"),
             Output("no-active-species-placeholder", "children")
         ],
-        [Input("url", "pathname")]
+        [Input("url", "pathname"), Input("locale-store", "data")]
     )
-    def update_most_active_species(pathname):
-        return active_species()
+    def update_most_active_species(pathname, locale):
+        return active_species(locale)
 
     @app.callback(
         [Output('recorder-stats', 'children'),
          Output('no-recorder-stats-placeholder', 'children')],
-        [Input('url', 'pathname')]
+        [Input('url', 'pathname'), Input("locale-store", "data")]
     )
-    def update_recorder_stats(pathname):
-        return recording_units()
+    def update_recorder_stats(pathname, locale):
+        return recording_units(locale)
     
     # Client-side callback for opening the livestream popup
     app.clientside_callback(

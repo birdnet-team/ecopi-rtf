@@ -22,7 +22,7 @@ def get_confidence_color(confidence):
     else:
         return "#296239"
 
-def create_recorder_table_headers():
+def create_recorder_table_headers(locale):
     return html.Thead(
         html.Tr([
             html.Th([
@@ -47,7 +47,7 @@ def create_recorder_table_headers():
         ])
     )
 
-def recorder_page_header(recorder_id):
+def recorder_page_header(recorder_id, locale):
     return html.Div(
         [
             html.Img(src=cfg.SITE_ROOT + "/assets/recorder_img/" + cfg.RECORDERS[int(recorder_id)]['img'], className="species-header-image"),
@@ -70,10 +70,10 @@ def recorder_page_header(recorder_id):
         className="species-header",
     )
 
-def display_recorder_page(recorder_id):
+def display_recorder_page(recorder_id, locale):
     return html.Div([
         dcc.Store(id="recorder-id-store", data=recorder_id),
-        recorder_page_header(recorder_id),
+        recorder_page_header(recorder_id, locale),
         html.Div(
             dbc.Spinner(color=cfg.PRIMARY_COLOR),
             id="recorder-loading-container",
@@ -85,7 +85,7 @@ def display_recorder_page(recorder_id):
                     html.H5("Recent detections:", className="recent-detections-heading"),
                     dbc.Table(
                         [
-                            create_recorder_table_headers(),
+                            create_recorder_table_headers(locale),
                             html.Tbody(id="recorder-detections-table-body")
                         ],
                         bordered=True,
@@ -116,23 +116,25 @@ def register_recorder_callbacks(app):
             Output("recorder-data-store", "data")
         ],
         [Input("recorder-id-store", "data")],
+        [State("locale-store", "data")],
         prevent_initial_call=False
     )
-    def update_recorder_content(recorder_id):
+    def update_recorder_content(recorder_id, locale):
         if not recorder_id:
             raise PreventUpdate
 
         # Load recorder data
         recorder_id = int(recorder_id)
-        recorder_info = dp.get_recorder_state(recorder_id)
+        recorder_info = dp.get_recorder_state(recorder_id, locale)
         total_detections = dp.get_total_detections(recorder_list=[recorder_id], days=-1, min_count=0)['total_detections']
         recorder_stats = dp.get_species_stats(recorder_id=recorder_id, max_results=25)
         
         # Get additional species info for each detection
         for detection in recorder_stats:
-            detection["common_name"] = dp.get_species_data(detection["species_code"])["common_name"]
-            detection["scientific_name"] = dp.get_species_data(detection["species_code"])["scientific_name"]
-            detection["species_thumbnail"] = dp.get_species_data(detection["species_code"])["thumbnail_url"]
+            species_data = dp.get_species_data(detection["species_code"], locale)
+            detection["common_name"] = species_data["common_name"]
+            detection["scientific_name"] = species_data["scientific_name"]
+            detection["species_thumbnail"] = species_data["thumbnail_url"]
         
         # Create info row
         info_row = dbc.Row([

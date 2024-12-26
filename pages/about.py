@@ -3,7 +3,7 @@ import dash_bootstrap_components as dbc
 import random
 import config as cfg
 
-def about_page_header():
+def about_page_header(locale):
     return html.Div(
         [
             html.Img(src=cfg.SITE_ROOT + f"/assets/header_img/{random.choice(cfg.ABOUT_HEADER_IMG_LIST)}", className="species-header-image"),
@@ -26,7 +26,7 @@ def about_page_header():
         className="species-header",
     )
 
-def about_page_content():
+def about_page_content(locale):
     
     team_members = []
     for member in cfg.TEAM_MEMBERS:
@@ -45,7 +45,7 @@ def about_page_content():
     
     return html.Div(
         [
-            about_page_header(),
+            about_page_header(locale),
             dbc.Container(
                 [
                     # Two columns

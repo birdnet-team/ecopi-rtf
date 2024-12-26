@@ -24,7 +24,7 @@ def get_confidence_color(confidence):
     else:
         return "#296239"
 
-def create_table_headers():
+def create_table_headers(locale):
     return html.Thead(
         html.Tr([
             html.Th([
@@ -49,7 +49,7 @@ def create_table_headers():
         ])
     )
 
-def species_page_header(species_data):
+def species_page_header(species_data, locale):
     return html.Div(
         [
             html.Img(src=species_data["image_url_highres"], className="species-header-image"),
@@ -77,12 +77,12 @@ def species_page_header(species_data):
         className="species-header",
     )
 
-def display_species_page(species_id):
-    species_data = dp.get_species_data(species_id)
+def display_species_page(species_id, locale):
+    species_data = dp.get_species_data(species_id, locale)
     
     return html.Div([
         dcc.Store(id="species-id-store", data=species_id),
-        species_page_header(species_data),
+        species_page_header(species_data, locale),
         html.Div(
             dbc.Spinner(color=cfg.PRIMARY_COLOR),
             id="species-loading-container",
@@ -97,7 +97,7 @@ def display_species_page(species_id):
                     html.H5("Recent detections:", className="recent-detections-heading"),
                     dbc.Table(
                         [
-                            create_table_headers(),
+                            create_table_headers(locale),
                             html.Tbody(id="detections-table-body")
                         ],
                         bordered=True,
@@ -129,17 +129,18 @@ def register_species_callbacks(app):
             Output("species-data-store", "data")
         ],
         [Input("species-id-store", "data")],
+        [State("locale-store", "data")],
         prevent_initial_call=False
     )
-    def update_species_content(species_id):
+    def update_species_content(species_id, locale):
         if not species_id:
             raise PreventUpdate
 
         # Load all required data
-        species_data = dp.get_species_data(species_id)
+        species_data = dp.get_species_data(species_id, locale)
         species_stats = dp.get_species_stats(species_id, max_results=25)
         total_detections = dp.get_total_detections(species_list=[species_id], days=-1, min_count=0)['total_detections']
-        activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*30, species_list=[species_id], min_count=0)
+        activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*30, species_list=[species_id], min_count=0, locale=locale)
         
         # Create info row
         info_row = dbc.Row([

@@ -6,11 +6,11 @@ from utils import plots
 
 import config as cfg
 
-def recording_units():
+def recording_units(locale):
     try:
         recorder_data = {}
         for recorder_id in cfg.RECORDERS:
-            recorder_data[recorder_id] = dp.get_recorder_state(recorder_id)
+            recorder_data[recorder_id] = dp.get_recorder_state(recorder_id, locale)
             
         leaflet_map = plots.get_leaflet_map(recorder_data)
         

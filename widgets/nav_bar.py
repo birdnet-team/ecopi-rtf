@@ -3,7 +3,7 @@ import dash_bootstrap_components as dbc
 
 import config as cfg
 
-def nav_bar():    
+def nav_bar(locale):    
     return dbc.Navbar(
         dbc.Container(
             [
@@ -66,7 +66,7 @@ def nav_bar():
                             dbc.DropdownMenu(
                                 label=[
                                     html.I(className="bi bi-globe"),
-                                    html.Span(id="locale-label", children=f" {cfg.SITE_LOCALE.upper()}")
+                                    html.Span(id="locale-label", children=f" {locale.upper()}")
                                 ],
                                 children=[
                                     dbc.DropdownMenuItem(

@@ -115,7 +115,7 @@ def get_battery_status(voltage):
     
     return str(battery_level) if battery_level > 10 else '< 10'
 
-def get_recorder_state(recorder_id):
+def get_recorder_state(recorder_id, locale):
     
     url = 'https://api.ecopi.de/api/v0.1/recorderstates/'
     
@@ -191,16 +191,15 @@ def get_recorder_location(recorder_id):
     
     return [response[0]['lat'], response[0]['lon']]
 
-def get_species_data(species):
+def get_species_data(species, locale):
     
     data = {}
     
     if not species in cfg.SPECIES_DATA:
         return data
     
-    # This is example data, we'll parse this from the species data later
-    if cfg.SITE_LOCALE.lower() in cfg.SUPPORTED_SITE_LOCALES.values() and 'common_name_' + cfg.SITE_LOCALE.lower() in cfg.SPECIES_DATA[species]:
-        data['common_name'] = cfg.SPECIES_DATA[species]['common_name_' + cfg.SITE_LOCALE.lower()]
+    if locale.lower() in cfg.SUPPORTED_SITE_LOCALES.values() and 'common_name_' + locale.lower() in cfg.SPECIES_DATA[species]:
+        data['common_name'] = cfg.SPECIES_DATA[species]['common_name_' + locale.lower()]
     else:
         data['common_name'] = cfg.SPECIES_DATA[species]['common_name']
     data['scientific_name'] = cfg.SPECIES_DATA[species]['sci_name']
@@ -324,7 +323,7 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
 
     return total_detections
 
-def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5):
+def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, locale='en'):
     url = cfg.API_BASE_URL + 'detections'
     
     headers = {
@@ -419,13 +418,13 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5):
     
     # Add species data
     for species in last_n:
-        species_data = get_species_data(species)
+        species_data = get_species_data(species, locale)
         for key, value in species_data.items():
             last_n[species][key] = value
     
     return last_n
 
-def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_count=5):
+def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_count=5, locale='en'):
     url = cfg.API_BASE_URL + 'detections'
     
     headers = {
@@ -521,7 +520,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     
     # Add species data
     for species in detections:
-        species_data = get_species_data(species)
+        species_data = get_species_data(species, locale)
         for key, value in species_data.items():
             detections[species][key] = value
         detections[species]['total_detections'] = sum(detections[species]['detections'])

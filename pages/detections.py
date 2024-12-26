@@ -5,9 +5,9 @@ import dash_bootstrap_components as dbc
 from widgets.recent_detections import recent_detections
 from widgets.popup_player import popup_player
 
-def detections_page_content():
+def detections_page_content(locale):
     # Use the recent_detections widget to get the cards, placeholder, and data
-    cards, placeholder, data = recent_detections(num_cards=24, hours=72)
+    cards, placeholder, data = recent_detections(num_cards=24, hours=72, locale=locale)
 
     return html.Div(
         [

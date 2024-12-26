@@ -85,20 +85,31 @@ def app_layout():
             dcc.Store(id="species-data-store"),   # Store for species data
             dcc.Store(id="recorder-stats-store"),  # Store for recorder stats
             dcc.Store(id="recorder-data-store"),   # Store for recorder data
-            dcc.Store(id="locale-store", data=cfg.SITE_LOCALE),  # Store for selected locale
+            dcc.Store(id="locale-store", data=cfg.DEFAULT_SITE_LOCALE),  # Store for selected locale
             html.Div(id="dummy-output"),  # Dummy output for page reload
-            
+            html.Div(id="dynamic-layout")  # Dynamic layout based on locale
+        ]
+    )
+
+# Callback to update the dynamic layout based on the locale
+@app.callback(
+    Output("dynamic-layout", "children"),
+    [Input("locale-store", "data")]
+)
+def update_layout(locale):
+    return html.Div(
+        [
             # Header Section with Logo and Navigation Bar
-            nav_bar(),
+            nav_bar(locale),
             
             # Content will be rendered here based on the URL
             html.Div(id="page-content"),
             
             # Footer Section
-            footer_content(),
+            footer_content(locale),
         ]
     )
-    
+
 # Callback to toggle the collapse on small screens
 @app.callback(
     Output("navbar-collapse", "is_open"),
@@ -144,27 +155,26 @@ def update_active_nav(pathname):
 @app.callback(Output("page-content", "children"), [Input("url", "pathname"), Input("locale-store", "data")])
 def display_page(pathname, locale):
     user_agent = request.headers.get('User-Agent')
-    cfg.SITE_LOCALE = locale  # Update the locale based on the stored value
     if pathname == cfg.SITE_ROOT + "/":
         increment_site_views('main page', user_agent)
-        return main_page_content()
+        return main_page_content(locale)
     elif pathname == cfg.SITE_ROOT + "/dashboard":
         increment_site_views('dashboard', user_agent)
-        return dashboard_page_content()
+        return dashboard_page_content(locale)
     elif pathname.startswith(cfg.SITE_ROOT + "/recorder/"):
         recorder_id = pathname.split("/")[-1]
         increment_site_views(f'recorder {recorder_id}', user_agent)
-        return display_recorder_page(recorder_id)
+        return display_recorder_page(recorder_id, locale)
     elif pathname.startswith(cfg.SITE_ROOT + "/species/"):
         species_id = pathname.split("/")[-1]
         increment_site_views(f'species {species_id}', user_agent)
-        return display_species_page(species_id)
+        return display_species_page(species_id, locale)
     elif pathname == cfg.SITE_ROOT + "/detections":
         increment_site_views('detections', user_agent)
-        return detections_page_content()
+        return detections_page_content(locale)
     elif pathname == cfg.SITE_ROOT + "/about":
         increment_site_views('about', user_agent)
-        return about_page_content()
+        return about_page_content(locale)
     else:
         print(f"404 Page Not Found: {pathname}")
         return "404 Page Not Found"
