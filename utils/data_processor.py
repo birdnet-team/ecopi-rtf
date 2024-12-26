@@ -187,7 +187,7 @@ def get_species_data(species):
         return data
     
     # This is example data, we'll parse this from the species data later
-    if cfg.SITE_LOCALE.lower() in ['de', 'fr', 'cs'] and 'common_name_' + cfg.SITE_LOCALE.lower() in cfg.SPECIES_DATA[species]:
+    if cfg.SITE_LOCALE.lower() in cfg.SUPPORTED_SITE_LOCALES.values() and 'common_name_' + cfg.SITE_LOCALE.lower() in cfg.SPECIES_DATA[species]:
         data['common_name'] = cfg.SPECIES_DATA[species]['common_name_' + cfg.SITE_LOCALE.lower()]
     else:
         data['common_name'] = cfg.SPECIES_DATA[species]['common_name']

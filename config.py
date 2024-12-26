@@ -72,5 +72,5 @@ API_TOKEN = os.getenv('API_TOKEN')
 MAPBOX_TOKEN = os.getenv('MAPBOX_TOKEN')
 API_BASE_URL = 'https://api.ecopi.de/api/v0.1/'
 SITE_VIEWS_LOG = 'site_views.csv'
-SUPPORTED_SITE_LOCALES = {'English': 'en', 'Deutsch': 'de', 'Français': 'fr', 'Čeština': 'cs'}
+SUPPORTED_SITE_LOCALES = {'English': 'en', 'Deutsch': 'de', 'Italiano': 'it', 'Français': 'fr', 'Čeština': 'cs'}
 SITE_LOCALE = 'en'
