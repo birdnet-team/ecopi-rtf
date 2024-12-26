@@ -170,18 +170,18 @@ def display_page(pathname):
 
 # Callback to update the site locale based on the selected language
 @app.callback(
-    Output("locale-store", "data"),
+    [Output("locale-store", "data"), Output("locale-label", "children")],
     [Input({"type": "nav-locale", "index": ALL}, "n_clicks")],
     [State("url", "href")]
 )
 def update_locale(n_clicks, href):
     ctx = dash.callback_context
     if not ctx.triggered:
-        return ""
+        return "", f" {cfg.SITE_LOCALE.upper()}"
     else:
         locale = json.loads(ctx.triggered[0]['prop_id'].split('.')[0])['index']
         cfg.SITE_LOCALE = locale
-        return locale
+        return locale, f" {locale.upper()}"
 
 # Callback to reload the page when the locale is updated
 @app.callback(
