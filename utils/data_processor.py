@@ -77,7 +77,7 @@ def is_blacklisted(species_code):
     
     return cfg.SPECIES_DATA[species_code]['blacklisted']
 
-def get_confidence_score(species, confidence):
+def get_species_frequency(species):
     
     week = get_current_week()
     try:
@@ -85,8 +85,20 @@ def get_confidence_score(species, confidence):
     except:
         species_freq = 10
         
+    return species_freq
+
+def get_confidence_score(species, confidence):
+    
+    # Get eBird species frequency
+    species_freq = get_species_frequency(species)
+        
     # Blend confidence and frequency as weighted average
-    confidence = int((confidence * 0.75) + (species_freq * 0.25))
+    if species_freq > 50:
+        confidence = int(confidence)
+    elif species_freq > 0.0 and species_freq <= 50:
+        confidence = int((confidence * 0.75) + (species_freq * 0.25))
+    else:
+        confidence = 0
     
     return min(100, max(1, confidence))
 
@@ -301,6 +313,10 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
     # Only keep non-blacklisted species
     detections = {k: v for k, v in detections.items() if not is_blacklisted(k)}
     
+    # If day == 1, remove species with species_freq == 0
+    if days == 1:
+        detections = {k: v for k, v in detections.items() if get_species_frequency(k) > 0}
+    
     # Only keep species with count >= min_count
     detections = {k: v for k, v in detections.items() if v >= min_count}
     
@@ -369,17 +385,22 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5):
         # Is species blacklisted?
         if is_blacklisted(item['species_code']):
             continue
-        if item['species_code'] not in detections:
-            detections[item['species_code']] = []
-        detections[item['species_code']].append(item)
+        
+        # compute confidence as percentage
+        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100)
+        
+        if item['confidence'] < 10:
+            continue
+        
         # format date
         item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y - %H:%M')
         
         # convert to local time
-        item['datetime'] = to_local_time(item['datetime'], cfg.TIME_FORMAT)
+        item['datetime'] = to_local_time(item['datetime'], cfg.TIME_FORMAT)    
         
-        # compute confidence as percentage
-        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100)
+        if item['species_code'] not in detections:
+            detections[item['species_code']] = []
+        detections[item['species_code']].append(item)
         
     # Remove species with less than min_count detections
     detections = {k: v for k, v in detections.items() if len(v) >= min_count}
@@ -577,6 +598,9 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
         
     # Remmove species not in species data
     response = [item for item in response if is_in_species_data(item['species_code'])]
+    
+    # Remove low confidence detections
+    response = [item for item in response if item['confidence'] >= 2]
     
     # Sort by confidence
     response = sorted(response, key=lambda x: x['datetime'], reverse=True)

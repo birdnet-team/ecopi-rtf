@@ -5904,7 +5904,7 @@
       0.0
     ],
     "new_ebird_code": "hoocro1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Nebelkr\u00e4he",
     "common_name_fr": "Corneille mantel\u00e9e",
     "common_name_cs": "Vr\u00e1na \u0161ed\u00e1",
