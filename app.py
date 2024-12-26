@@ -85,7 +85,7 @@ def app_layout():
             dcc.Store(id="species-data-store"),   # Store for species data
             dcc.Store(id="recorder-stats-store"),  # Store for recorder stats
             dcc.Store(id="recorder-data-store"),   # Store for recorder data
-            dcc.Store(id="locale-store"),  # Store for selected locale
+            dcc.Store(id="locale-store", data=cfg.SITE_LOCALE),  # Store for selected locale
             html.Div(id="dummy-output"),  # Dummy output for page reload
             
             # Header Section with Logo and Navigation Bar
@@ -141,9 +141,10 @@ def update_active_nav(pathname):
     return home_class, dashboard_class, detections_class, about_class
 
 # Callback to update the page content based on the URL
-@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
-def display_page(pathname):
+@app.callback(Output("page-content", "children"), [Input("url", "pathname"), Input("locale-store", "data")])
+def display_page(pathname, locale):
     user_agent = request.headers.get('User-Agent')
+    cfg.SITE_LOCALE = locale  # Update the locale based on the stored value
     if pathname == cfg.SITE_ROOT + "/":
         increment_site_views('main page', user_agent)
         return main_page_content()
@@ -172,25 +173,27 @@ def display_page(pathname):
 @app.callback(
     [Output("locale-store", "data"), Output("locale-label", "children")],
     [Input({"type": "nav-locale", "index": ALL}, "n_clicks")],
-    [State("url", "href")]
+    [State("locale-store", "data")]
 )
-def update_locale(n_clicks, href):
+def update_locale(n_clicks, current_locale):
     ctx = dash.callback_context
     if not ctx.triggered:
-        return "", f" {cfg.SITE_LOCALE.upper()}"
+        return current_locale, f" {current_locale.upper()}"
     else:
         locale = json.loads(ctx.triggered[0]['prop_id'].split('.')[0])['index']
-        cfg.SITE_LOCALE = locale
-        return locale, f" {locale.upper()}"
+        if locale != current_locale:
+            return locale, f" {locale.upper()}"
+        return current_locale, f" {current_locale.upper()}"
 
 # Callback to reload the page when the locale is updated
 @app.callback(
     Output("dummy-output", "children"),
-    [Input("locale-store", "data")]
+    [Input("locale-store", "data")],
+    [State("url", "href")]
 )
-def reload_page(locale):
-    if locale:
-        return dcc.Location(href=cfg.SITE_ROOT + "/", id="dummy-location")
+def reload_page(locale, href):
+    if locale and href:
+        return dcc.Location(href=href, id="dummy-location")
     return ""
 
 # Layout of the Dash app
