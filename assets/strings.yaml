@@ -82,6 +82,10 @@ main_page_title:
   en: "Main Page"
   de: "Startseite"
 
+main_listen_live:
+  en: "Listen live"
+  de: "Live zuhören"
+
 main_most_active_species:
   en: "Most active species (7 days)"
   de: "Aktivste Arten (7 Tage)"
