@@ -39,7 +39,44 @@ projects:
     project_goal:
       en: "The Neeracherried Acoustic Monitoring Project combines technology and visitor engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Neeracherried, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area."
       de: "Das akustische Monitoring-Projekt im Neeracherried kombiniert Technologie und die Einbeziehung von Besuchern, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren.Besucher können den Stimmen der Vögel des Neeracherried lauschen und erfahren, wie moderne Instrumente zur Erforschung der Vogelwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt in diesem Areal zu entwickeln."
-    
+
+# Habitat strings
+habitat_urban:
+  en: "Urban"
+  de: "Urban"
+
+habitat_forest:
+  en: "Forest"
+  de: "Wald"
+
+habitat_forest_clearing:
+  en: "Forest clearing"
+  de: "Waldlichtung"
+
+habitat_raised_bog:
+  en: "Raised bog"
+  de: "Hochmoor"
+
+habitat_shrubs_and_trees:
+  en: "Shrubs & trees"
+  de: "Sträucher & Bäume"
+
+habitat_shrubs_and_meadow:
+  en: "Shrubs & meadow"
+  de: "Sträucher & Wiese"
+
+habitat_shrubs_and_pond:
+  en: "Shrubs & pond"
+  de: "Sträucher & Teich"
+
+habitat_trees_and_pond:
+  en: "Trees & pond"
+  de: "Bäume & Teich"
+
+habitat_feeder_garden_and_pond:
+  en: "Feeder garden & pond"
+  de: "Futterplatz & Teich"
+
 # General site strings
 main_page_title:
   en: "Main Page"

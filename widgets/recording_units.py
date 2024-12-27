@@ -49,7 +49,7 @@ def recording_units(locale):
                                 dbc.CardBody(
                                     [
                                         html.H6([html.B(f"{strings.get('widget_units_status')}: "), f"{data['current_status']}"], className="very-small-text"),
-                                        html.H6([html.B(f"{strings.get('widget_units_habitat')}: "), f"{cfg.RECORDERS[recorder_id]['habitat']}"], className="very-small-text"),
+                                        html.H6([html.B(f"{strings.get('widget_units_habitat')}: "), f"{strings.get(cfg.RECORDERS[recorder_id]['habitat'])}"], className="very-small-text"),
                                         html.H6([html.B(f"{strings.get('widget_units_cpu_temp')}: "), f"{data['cpu_temp']} °C"], className="very-small-text"),
                                         html.H6([html.B(f"{strings.get('widget_units_battery')}: "), f"{data['battery'] if data['battery'] is not None else 'N/A'} %"], className="very-small-text"),
                                         html.H6([html.B(f"{strings.get('widget_units_last_update')}: "), f"{data['last_update']}"], className="very-small-text")
