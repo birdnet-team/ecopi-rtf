@@ -1,3 +1,46 @@
+# Project-specific strings
+projects:
+  swamp:
+    project_main_title:
+      en: "Sapsucker Woods Acoustic Monitoring Project"
+      de: "Sapsucker Woods Acoustic Monitoring Project"
+    project_subtitle:
+      en: "AI-powered acoustic monitoring"
+      de: "KI-gestütztes akustisches Monitoring"
+    project_subtitle_desc:
+      en: "We listen to the sounds of the animals in Sapsucker Woods and track species diversity over time."
+      de: "Wir lauschen den Stimmen der Tiere in den Sapsucker Woods und verfolgen die Artenvielfalt im Laufe der Zeit."
+    project_goal:
+      en: "The Sapsucker Woods Acoustic Monitoring Project combines technology and visitor engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Sapsucker Woods, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area."
+      de: "Das Sapsucker Woods Acoustic Monitoring Project kombiniert Technologie und die Einbeziehung von Besuchern, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren. Die Besucher können den Klängen der Sapsucker Woods lauschen und erfahren, wie moderne Instrumente zur Erforschung der Tierwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt der Tierwelt in diesem Areal zu entwickeln."
+  amic:
+    project_main_title:
+      en: "Acoustic Monitoring in Chemnitz"
+      de: "Akustisches Monitoring in Chemnitz"
+    project_subtitle:
+      en: "AI-powered acoustic monitoring"
+      de: "KI-gestütztes akustisches Monitoring"
+    project_subtitle_desc:
+      en: "We listen to the sounds of birds and investigate how traffic noise impacts their natural behavior."
+      de: "Wir lauschen den Stimmen der Vögel und untersuchen, wie Verkehrslärm ihr natürliches Verhalten beeinflusst."
+    project_goal:
+      en: "The Acoustic Monitoring in Chemnitz project combines technology and visitor engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of the birds in the Botanical Garden, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area."
+      de: "Das Projekt 'Akustisches Monitoring in Chemnitz' kombiniert Technologie und die Einbeziehung der Besucher, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren. Besucher können den Stimmen der Vögel des Botanischen Gartens lauschen und erfahren, wie moderne Instrumente zur Erforschung der Vogelwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt in diesem Areal zu entwickeln."
+  neeri:
+    project_main_title:
+      en: "Neeracherried Acoustic Monitoring Project"
+      de: "Akustisches Monitoring im Neeracherried"
+    project_subtitle:
+      en: "AI-powered acoustic monitoring"
+      de: "KI-gestütztes akustisches Monitoring"
+    project_subtitle_desc:
+      en: "We listen to the sounds of the birds in Neeracherried and track species diversity over time."
+      de: "Wir lauschen den Stimmen der Vögel im Neeracherried und verfolgen die Artenvielfalt im Laufe der Zeit."
+    project_goal:
+      en: "The Neeracherried Acoustic Monitoring Project combines technology and visitor engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Neeracherried, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area."
+      de: "Das akustische Monitoring-Projekt im Neeracherried kombiniert Technologie und die Einbeziehung von Besuchern, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren.Besucher können den Stimmen der Vögel des Neeracherried lauschen und erfahren, wie moderne Instrumente zur Erforschung der Vogelwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt in diesem Areal zu entwickeln."
+    
+# General site strings
 main_page_title:
   en: "Main Page"
   de: "Startseite"

@@ -1,3 +1,4 @@
+PROJECT_ID: 'neeri'
 PROJECT_NAME: '017_neerach_ried'
 RECORDER_GROUP: 45
 SPECIES_DATA: neeracherried
@@ -24,7 +25,6 @@ ABOUT_HEADER_IMG_LIST: ['neeri_about_header_1.jpg']
 LIVE_STREAM_URL: ''
 DONATION_URL: 'https://www.birdlife.ch/en/content/donations'
 PROJECT_ACRONYM: 'BirdLife'
-PROJECT_MAIN_TITLE: 'Neeracherried Acoustic Monitoring Project'
 PROJECT_SUBTITLE: 'AI-powered acoustic monitoring'
 PROJECT_SUBTITLE_DESC: 'We listen to the sounds of the birds in Neeracherried and track species diversity over time.'
 PROJECT_GOAL: 'The Neeracherried Acoustic Monitoring Project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Neeracherried, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area.'

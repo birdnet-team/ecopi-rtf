@@ -31,6 +31,7 @@ args, unknown = parser.parse_known_args()
 config = load_config(args.config_file)
 
 # Load project configuration from yaml
+PROJECT_ID = config['PROJECT_ID']
 PROJECT_NAME = config['PROJECT_NAME']
 RECORDER_GROUP = config['RECORDER_GROUP']
 SPECIES_DATA = load_species_data(project=config['SPECIES_DATA'])
@@ -45,7 +46,6 @@ ABOUT_HEADER_IMG_LIST = config['ABOUT_HEADER_IMG_LIST']
 LIVE_STREAM_URL = config['LIVE_STREAM_URL']
 DONATION_URL = config['DONATION_URL']
 PROJECT_ACRONYM = config['PROJECT_ACRONYM']
-PROJECT_MAIN_TITLE = config['PROJECT_MAIN_TITLE']
 PROJECT_SUBTITLE = config['PROJECT_SUBTITLE']
 PROJECT_SUBTITLE_DESC = config['PROJECT_SUBTITLE_DESC']
 PROJECT_GOAL = config['PROJECT_GOAL']

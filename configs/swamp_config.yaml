@@ -1,3 +1,4 @@
+PROJECT_ID: 'swamp'
 PROJECT_NAME: '099_swamp'
 RECORDER_GROUP: 99
 SPECIES_DATA: 'swamp'
@@ -21,7 +22,6 @@ ABOUT_HEADER_IMG_LIST: ['ssw_about_header_1.jpg', 'ssw_about_header_2.jpg', 'ssw
 LIVE_STREAM_URL: 'https://birdnetlive.duckdns.org/ssw'
 DONATION_URL: 'https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR'
 PROJECT_ACRONYM: 'SWAMP'
-PROJECT_MAIN_TITLE: 'Sapsucker Woods Acoustic Monitoring Project'
 PROJECT_SUBTITLE: 'AI-powered acoustic monitoring'
 PROJECT_SUBTITLE_DESC: 'We listen to the sounds of the animals in Sapsucker Woods and track species diversity over large spatio-temporal scales.'
 PROJECT_GOAL: 'The Sapsucker Woods Acoustic Monitoring Project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Sapsucker Woods, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area.'

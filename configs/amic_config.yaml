@@ -1,3 +1,4 @@
+PROJECT_ID: 'amic'
 PROJECT_NAME: 'pam_in_chemnitz'
 RECORDER_GROUP: 39
 SPECIES_DATA: amic
@@ -16,7 +17,6 @@ ABOUT_HEADER_IMG_LIST: ['amic_about_header_1.jpg']
 LIVE_STREAM_URL: ''
 DONATION_URL: ''
 PROJECT_ACRONYM: 'AMiC'
-PROJECT_MAIN_TITLE: 'Acoustic Monitoring in Chemnitz'
 PROJECT_SUBTITLE: 'AI-powered acoustic monitoring'
 PROJECT_SUBTITLE_DESC: 'We listen to the sounds of birds and investigate how traffic noise impacts their natural behavior.'
 PROJECT_GOAL: 'The Acoustic Monitoring in Chemnitz project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of the birds in the Botanical Garden, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area.'

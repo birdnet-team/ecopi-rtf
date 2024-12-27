@@ -19,7 +19,7 @@ import config as cfg
 
 def main_page_content(locale):
     
-    strings = Strings(locale)
+    strings = Strings(locale, project=cfg.PROJECT_ID)
     
     return html.Div(
         [
@@ -28,8 +28,8 @@ def main_page_content(locale):
                     html.Img(src=cfg.SITE_ROOT + f"/assets/header_img/{random.choice(cfg.MAIN_HEADER_IMG_LIST)}", className="header-graphic"),
                     html.Div(
                         [
-                            html.H1(cfg.PROJECT_ACRONYM + ': ' + cfg.PROJECT_MAIN_TITLE),
-                            html.H2(cfg.PROJECT_SUBTITLE),
+                            html.H1(cfg.PROJECT_ACRONYM + ': ' + strings.get('project_main_title')),
+                            html.H2(strings.get('project_subtitle')),
                         ],
                         className="header-overlay"
                     ),
@@ -48,11 +48,11 @@ def main_page_content(locale):
                 [
                     html.Div(
                         [
-                            html.H1(cfg.PROJECT_ACRONYM + ': ' + cfg.PROJECT_MAIN_TITLE),
+                            html.H1(cfg.PROJECT_ACRONYM + ': ' + strings.get('project_main_title')),
                         ],
                         className="header-text"
                     ),
-                    html.H5(cfg.PROJECT_SUBTITLE_DESC, 
+                    html.H5(strings.get('project_subtitle_desc'), 
                             className="text-center d-none d-lg-block"),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
