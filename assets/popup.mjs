@@ -3,15 +3,14 @@ import Spectrogram from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/plugi
 import Minimap from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/minimap.esm.js';
 import colormap from 'https://cdn.jsdelivr.net/npm/colormap@2.3.2/+esm';
 
-
 function closePlayer(wavesurfer) {
     const playerElement = document.querySelector("#popup");
     const backdrop = document.querySelector("#popup-backdrop");
     playerElement.classList.remove("visible");
     backdrop.classList.add("d-none");
+    wavesurfer.stop();
     wavesurfer.destroy();
 } 
-
 
 function openPlayer(index) {
     const dataListElement = document.querySelector("#audio-data-list");
