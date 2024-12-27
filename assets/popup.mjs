@@ -33,14 +33,14 @@ function openPlayer(index) {
         url: audioUrl, // Production 
         // url: "./assets/example.mp3", // For main page
         // url: "../assets/example.mp3", // for species page
-        sampleRate: 32000,
+        sampleRate: 48000, //For some reason, wavesurfer renders the spectrogram until fmax of sampleRate/4 instead of sampleRate/2 - maybe another bug?
         height: 0,
     });
 
     wavesurfer.registerPlugin(
         Minimap.create({
           height: 30,
-          waveColor: '#6D6762',
+          waveColor: '#a89f98',
           progressColor: '#2E261F',
           normalize: true,
         }),
@@ -52,11 +52,11 @@ function openPlayer(index) {
         Spectrogram.create({
           frequencyMax: 12000,
           splitChannels: false,
-          fftSamples: 256,
+          fftSamples: 512,
           frequencyMin: 300,
           labels: false,
           labelsBackground: '#3339',
-          height: 150, //this is a bug in wavesurfer and we have to wait untul it is fixed - spectrogram height is not working (seems to work only if spec is greater than height)
+          height: 150,
           scale: 'linear',
           colorMap: 'roseus', //customColormap,
           gainDB: 35,
