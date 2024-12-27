@@ -56,7 +56,7 @@ function openPlayer(index) {
           frequencyMin: 300,
           labels: false,
           labelsBackground: '#3339',
-          height: 175,
+          height: 150,
           scale: 'linear',
           colorMap: 'roseus', //customColormap,
           gainDB: 35,
