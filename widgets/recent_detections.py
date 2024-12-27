@@ -4,10 +4,12 @@ from dash.dependencies import Input, Output, State, MATCH
 import json
 
 from utils import data_processor as dp
+from utils.strings import Strings
 
 import config as cfg
 
 def recent_detections(num_cards=8, hours=72, locale="en"):
+    strings = Strings(locale)
     last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=5, locale=locale)   
     if len(last_detections) < 4:
         last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=1, locale=locale)
@@ -38,7 +40,7 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
                                 className="chart-icon-overlay",
                             ),
                             html.Div(
-                                f"Photo: {data['image_author']}",
+                                f"{strings.get('misc_photo')}: {data['image_author']}",
                                 className="photo-author-overlay",
                             ),
                         ],
@@ -52,8 +54,8 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
                                 [
                                     dbc.Col(
                                         [
-                                            html.Div(f"Date: {data['datetime']}", className="very-small-text"),
-                                            html.Div(f"Recorder: #{data['recorder_field_id']}", className="very-small-text"),
+                                            html.Div(f"{strings.get('misc_date')}: {data['datetime']}", className="very-small-text"),
+                                            html.Div(f"{strings.get('nav_recorder')}: #{data['recorder_field_id']}", className="very-small-text"),
                                         ],
                                         width=9,
                                     ),
@@ -107,7 +109,7 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
             break
 
     if not cards:
-        placeholder = html.P("Uuups...something went wrong. Please try to reload.", 
+        placeholder = html.P(strings.get('widget_error_no_data'), 
                              className="text-muted",
                              style={"text-align": "center", "width": "100%"})
     else:
@@ -116,7 +118,7 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
     data = html.Data(id="audio-data-list", value=json.dumps(datalist))
 
     if show_more:
-        show_more_button = dbc.Button("Show more detections", href=f"{cfg.SITE_ROOT}/detections", className="btn-href mt-3")
+        show_more_button = dbc.Button(strings.get('widget_recent_detections_show_more'), href=f"{cfg.SITE_ROOT}/detections", className="btn-href mt-3")
         cards.append(dbc.Row(dbc.Col(show_more_button, width="auto", className="mx-auto"), className=" full-width"))
 
     return cards, placeholder, data

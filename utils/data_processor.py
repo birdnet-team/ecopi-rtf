@@ -7,6 +7,8 @@ from datetime import datetime, timedelta, UTC
 import pytz
 import numpy as np
 
+from utils.strings import Strings
+
 import config as cfg 
 
 # Set random seed
@@ -17,11 +19,8 @@ def get_current_week():
     # Return current week 1..48 (4 weeks per month)
     return min(48, max(1, int(datetime.now().isocalendar()[1] / 52 * 48)))
 
-def date_to_last_seen(date, time_format='24h'):
-    # Convert date to '16 hrs ago' or '2 days ago'
-    # below 1 hr use minutes
-    # below 48 hrs use hours
-    # above 48 hrs use days
+def date_to_last_seen(date, time_format='24h', locale='en'):
+    strings = Strings(locale)
     try:
         if time_format == '12h':
             date = datetime.strptime(date, '%m/%d/%Y - %I:%M %p')
@@ -37,18 +36,20 @@ def date_to_last_seen(date, time_format='24h'):
     delta = datetime.now() - date
     
     if delta.total_seconds() < 60:
-        return '1 min ago'
+        return f"{strings.get('dp_time_delta_ago_prefix')} 1 {strings.get('dp_time_delta_min')} {strings.get('dp_time_delta_ago_postfix')}"
     
     if delta.total_seconds() < 60 * 60:
         mins = int(delta.total_seconds() / 60)
-        return f"{mins} min{'s' if mins > 1 else ''} ago"
+        return f"{strings.get('dp_time_delta_ago_prefix')} {mins} {strings.get('dp_time_delta_min')} {strings.get('dp_time_delta_ago_postfix')}"
     
     if delta.total_seconds() < 60 * 60 * 48:
         hrs = int(delta.total_seconds() / 3600)
-        return f"{hrs} hr{'s' if hrs > 1 else ''} ago"
+        hr_str = strings.get('dp_time_delta_hr') if hrs == 1 else strings.get('dp_time_delta_hrs')
+        return f"{strings.get('dp_time_delta_ago_prefix')} {hrs} {hr_str} {strings.get('dp_time_delta_ago_postfix')}"
     
     days = int(delta.total_seconds() / 3600 / 24)
-    return f"{days} day{'s' if days > 1 else ''} ago"
+    day_str = strings.get('dp_time_delta_day') if days == 1 else strings.get('dp_time_delta_days')
+    return f"{strings.get('dp_time_delta_ago_prefix')} {days} {day_str} {strings.get('dp_time_delta_ago_postfix')}"
 
 def to_local_time(utc_time, time_format='24h'):
     # Convert UTC time to local time
@@ -117,6 +118,8 @@ def get_battery_status(voltage):
 
 def get_recorder_state(recorder_id, locale):
     
+    strings = Strings(locale)
+    
     url = 'https://api.ecopi.de/api/v0.1/recorderstates/'
     
     headers = {
@@ -140,19 +143,19 @@ def get_recorder_state(recorder_id, locale):
     
     is_ok = True if time_since_last_status.total_seconds() < 3600 * 24 else False
     
-    current_status = 'Ok | Sleeping'
+    current_status = f"Ok | {strings.get('dp_recorder_status_sleeping')}"
     status_color = '#69A0C2' # Blue
     if time_since_last_status.total_seconds() < 60 * 15 and not last_status['task'] == 'Finished':
-        current_status = 'Ok | Listening'
+        current_status = f"Ok | {strings.get('dp_recorder_status_listening')}"
         status_color = '#36824b' # Green
         
     if not is_ok:
-        current_status = 'Error | Offline'
+        current_status = f"{strings.get('dp_recorder_status_error')} | {strings.get('dp_recorder_status_offline')}"
         status_color = '#DAD5BC' # Gray
     
     return {'current_status': current_status, 
             'status_color': status_color, 
-            'last_update': date_to_last_seen(last_update),
+            'last_update': date_to_last_seen(last_update, locale=locale),
             'battery': get_battery_status(last_status['voltage']),
             'cpu_temp': last_status['cpu_temp'], 
             'is_ok': is_ok}

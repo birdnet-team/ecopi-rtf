@@ -3,10 +3,13 @@ import dash_bootstrap_components as dbc
 
 from utils import data_processor as dp
 from utils import plots
+from utils.strings import Strings
 
 def active_species(locale):
     species_data = dp.get_most_active_species(n=8, min_conf=0.5, hours=7*24, locale=locale)
     plot_rows = []
+
+    strings = Strings(locale)
 
     try:
         max_detections = max(data['total_detections'] for data in species_data.values())
@@ -67,26 +70,26 @@ def active_species(locale):
         )
         
         plot_rows.append(plot_row)
-        
-    # Append a sentence on what the chart shows
-    plot_rows.append(
-        dbc.Row(
-            dbc.Col([
-                html.P(),
-                html.Div("Dark blue bars show hourly detections; light blue marks nighttime, light yellow marks daytime, and numbers denote detections.",
-                       className="text-muted",
-                       style={"text-align": "center", "width": "100%"}),
-                ],
-                className="m-2"
-            )
-        )
-    )
 
     if not plot_rows:
-        placeholder = html.P("Uuups...something went wrong. Please try to reload.", 
+        placeholder = html.P(string.gest('widget_error_no_data'), 
                              className="text-muted",
                              style={"text-align": "center", "width": "100%"})
     else:
         placeholder = None
+        
+        # Append a sentence on what the chart shows
+        plot_rows.append(
+            dbc.Row(
+                dbc.Col([
+                    html.P(),
+                    html.Div(strings.get('widget_active_species_description'),
+                        className="text-muted",
+                        style={"text-align": "center", "width": "100%"}),
+                    ],
+                    className="m-2"
+                )
+            )
+        )
 
     return plot_rows, placeholder

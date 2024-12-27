@@ -1,76 +1,188 @@
 main_page_title:
   en: "Main Page"
-  de: "Hauptseite"
-  fr: "Page Principale"
-  it: "Pagina Principale"
-  cs: "Hlavní Stránka"
+  de: "Startseite"
 
-most_active_species:
+main_most_active_species:
   en: "Most active species (7 days)"
   de: "Aktivste Arten (7 Tage)"
-  fr: "Espèces les plus actives (7 jours)"
-  it: "Specie più attive (7 giorni)"
-  cs: "Nejaktivnější druhy (7 dní)"
 
-recent_detections:
+main_recent_detections:
   en: "Recent detections"
-  de: "Aktuelle Erkennungen"
-  fr: "Détections récentes"
-  it: "Rilevamenti recenti"
-  cs: "Nedávné detekce"
+  de: "Aktuelle Detektionen"
 
-recording_units:
+main_recording_units:
   en: "Recording units"
-  de: "Aufnahmeeinheiten"
-  fr: "Unités d'enregistrement"
-  it: "Unità di registrazione"
-  cs: "Záznamové jednotky"
+  de: "Akustische Rekorder"
 
-diy_backyard_monitoring:
+main_diy_backyard_monitoring:
   en: "DIY backyard monitoring"
-  de: "DIY Hinterhofüberwachung"
-  fr: "Surveillance de jardin DIY"
-  it: "Monitoraggio del cortile fai-da-te"
-  cs: "DIY monitorování dvorku"
+  de: "DIY Gartenmonitoring"
 
-haikubox:
+main_haikubox:
   en: "Haikubox"
   de: "Haikubox"
-  fr: "Haikubox"
-  it: "Haikubox"
-  cs: "Haikubox"
 
-haikubox_description:
+main_haikubox_description:
   en: "Haikubox is an innovative tool designed for bird enthusiasts and conservationists who want to keep track of the birds visiting their backyards. Using advanced AI-powered sound recognition, Haikubox listens to bird calls and automatically identifies species in real-time. It's a hands-free solution that provides continuous monitoring, making it ideal for anyone curious about local bird activity without needing to have expert knowledge."
-  de: "Haikubox ist ein innovatives Werkzeug für Vogelbegeisterte und Naturschützer, die die Vögel in ihrem Garten im Auge behalten möchten. Mit fortschrittlicher KI-gestützter Schallerkennung hört Haikubox Vogelrufe und identifiziert automatisch Arten in Echtzeit. Es ist eine freihändige Lösung, die kontinuierliche Überwachung bietet und sich ideal für alle eignet, die sich für die lokale Vogelaktivität interessieren, ohne Expertenwissen zu benötigen."
-  fr: "Haikubox est un outil innovant conçu pour les passionnés d'oiseaux et les conservationnistes qui souhaitent suivre les oiseaux visitant leur jardin. Utilisant une reconnaissance sonore avancée alimentée par l'IA, Haikubox écoute les appels des oiseaux et identifie automatiquement les espèces en temps réel. C'est une solution mains libres qui offre une surveillance continue, idéale pour quiconque curieux de l'activité des oiseaux locaux sans avoir besoin de connaissances expertes."
-  it: "Haikubox è uno strumento innovativo progettato per gli appassionati di uccelli e i conservazionisti che vogliono tenere traccia degli uccelli che visitano i loro giardini. Utilizzando il riconoscimento sonoro avanzato alimentato dall'IA, Haikubox ascolta i richiami degli uccelli e identifica automaticamente le specie in tempo reale. È una soluzione a mani libere che offre un monitoraggio continuo, rendendola ideale per chiunque sia curioso dell'attività degli uccelli locali senza bisogno di conoscenze esperte."
-  cs: "Haikubox je inovativní nástroj navržený pro nadšence do ptáků a ochránce přírody, kteří chtějí sledovat ptáky navštěvující jejich zahrady. Pomocí pokročilého rozpoznávání zvuku poháněného AI Haikubox poslouchá ptačí zpěv a automaticky identifikuje druhy v reálném čase. Je to bezdotykové řešení, které poskytuje nepřetržité monitorování, což je ideální pro každého, kdo se zajímá o místní ptačí aktivitu, aniž by potřeboval odborné znalosti."
+  de: "Haikubox ist ein innovatives Werkzeug für Vogelbegeisterte und Naturliebhaber:innen, die die Vögel in ihrem Garten im Auge behalten möchten. Mit fortschrittlicher KI-gestützter Audio-Erkennung lauscht Haikubox den Vogelrufen und identifiziert automatisch alle Arten in Echtzeit. Haikubox ist eine wartungsarme Lösung, die eine kontinuierliche Überwachung ermöglicht und sich ideal für alle eignet, die sich für die lokale Vogelaktivität interessieren, ohne dabei Spezialwissen zu erfordern."
 
-visit_haikubox_website:
+main_visit_haikubox_website:
   en: "Visit the Haikubox website"
-  de: "Besuchen Sie die Haikubox-Website"
-  fr: "Visitez le site Web de Haikubox"
-  it: "Visita il sito web di Haikubox"
-  cs: "Navštivte web Haikubox"
+  de: "Zur Website von Haikubox"
 
-birdweather:
+main_birdweather:
   en: "BirdWeather"
   de: "BirdWeather"
-  fr: "BirdWeather"
-  it: "BirdWeather"
-  cs: "BirdWeather"
 
-birdweather_description:
+main_birdweather_description:
   en: "BirdWeather is an advanced bird monitoring platform that connects bird enthusiasts with real-time data about bird species visiting their area. BirdWeather allows users to identify bird species based on their calls, without the need for expert-level birdwatching knowledge. The platform is designed to provide continuous, automated monitoring, making it a perfect solution for those interested in observing bird activity in their backyard."
-  de: "BirdWeather ist eine fortschrittliche Vogelüberwachungsplattform, die Vogelbegeisterte mit Echtzeitdaten über Vogelarten verbindet, die ihre Gegend besuchen. BirdWeather ermöglicht es Benutzern, Vogelarten anhand ihrer Rufe zu identifizieren, ohne dass Expertenwissen im Bereich Vogelbeobachtung erforderlich ist. Die Plattform ist so konzipiert, dass sie eine kontinuierliche, automatisierte Überwachung bietet und somit eine perfekte Lösung für alle ist, die sich für die Beobachtung der Vogelaktivität in ihrem Garten interessieren."
-  fr: "BirdWeather est une plateforme avancée de surveillance des oiseaux qui connecte les passionnés d'oiseaux avec des données en temps réel sur les espèces d'oiseaux visitant leur région. BirdWeather permet aux utilisateurs d'identifier les espèces d'oiseaux en fonction de leurs appels, sans avoir besoin de connaissances expertes en ornithologie. La plateforme est conçue pour fournir une surveillance continue et automatisée, ce qui en fait une solution parfaite pour ceux qui s'intéressent à l'observation de l'activité des oiseaux dans leur jardin."
-  it: "BirdWeather è una piattaforma avanzata di monitoraggio degli uccelli che collega gli appassionati di uccelli con dati in tempo reale sulle specie di uccelli che visitano la loro area. BirdWeather consente agli utenti di identificare le specie di uccelli in base ai loro richiami, senza la necessità di conoscenze esperte di birdwatching. La piattaforma è progettata per fornire un monitoraggio continuo e automatizzato, rendendola una soluzione perfetta per coloro che sono interessati a osservare l'attività degli uccelli nel loro giardino."
-  cs: "BirdWeather je pokročilá platforma pro monitorování ptáků, která spojuje nadšence do ptáků s daty v reálném čase o druzích ptáků navštěvujících jejich oblast. BirdWeather umožňuje uživatelům identifikovat druhy ptáků podle jejich volání, aniž by potřebovali odborné znalosti o pozorování ptáků. Platforma je navržena tak, aby poskytovala nepřetržité, automatizované monitorování, což z ní činí dokonalé řešení pro ty, kteří se zajímají o pozorování ptačí aktivity na jejich dvorku."
+  de: "BirdWeather ist eine fortschrittliche Monitoring-Plattform, die Vogelbegeisterte mit Echtzeitdaten über lokale Vogelarten versorgt. BirdWeather ermöglicht es, Vogelarten anhand ihrer Rufe zu identifizieren, ohne dass Spezialwissen über Vogelbeobachtung erforderlich ist. Die Plattform ist so konzipiert, dass sie eine kontinuierliche Überwachung bietet und somit eine perfekte Lösung für alle ist, die sich für die Beobachtung der Vogelaktivität interessieren."
 
-visit_birdweather_website:
+main_visit_birdweather_website:
   en: "Visit the BirdWeather website"
-  de: "Besuchen Sie die BirdWeather-Website"
-  fr: "Visitez le site Web de BirdWeather"
-  it: "Visita il sito web di BirdWeather"
-  cs: "Navštivte web BirdWeather"
+  de: "Zur Website von BirdWeather"
+
+nav_home:
+  en: "Home"
+  de: "Startseite"
+
+nav_dashboard:
+  en: "Dashboard"
+  de: "Dashboard"
+
+nav_detections:
+  en: "Detections"
+  de: "Detektionen"
+
+nav_recorder_top:
+  en: "Recorders"
+  de: "Rekorder"
+
+nav_recorder:
+  en: "Recorder"
+  de: "Rekorder"
+
+nav_about:
+  en: "About"
+  de: "Infos"
+
+stats_bar_detections_24h:
+  en: "Detections (24h)"
+  de: "Detektionen (24h)"
+
+stats_bar_species_24h:
+  en: "Species (24h)"
+  de: "Arten (24h)"
+
+stats_bar_detections_total:
+  en: "Detections (total)"
+  de: "Detektionen (gesamt)"
+
+stats_bar_audio_total:
+  en: "Audio (total)"
+  de: "Audio (gesamt)"
+
+widget_active_species_description:
+  en: "Dark blue bars show hourly detections; light blue marks nighttime, light yellow marks daytime, and numbers denote detections."
+  de: "Dunkelblaue Balken zeigen stündliche Detektionen; hellblaue Markierungen zeigen die Nacht, hellgelbe den Tag, und Zahlen die Anzahl der Detektionen."
+
+widget_recent_detections_show_more:
+  en: "Show more detections"
+  de: "Mehr Detektionen anzeigen"
+
+widget_units_status:
+  en: "Status"
+  de: "Status"
+
+widget_units_habitat:
+  en: "Habitat"
+  de: "Habitat"
+
+widget_units_cpu_temp:
+  en: "CPU Temp."
+  de: "CPU Temp."
+
+widget_units_battery:
+  en: "Battery"
+  de: "Batterie"
+
+widget_units_last_update:
+  en: "Last update"
+  de: "Letztes Update"
+
+widget_error_no_data:
+  en: "Ooops...something went wrong. Please try to reload."
+  de: "Uuups...da ist etwas schief gelaufen. Bitte laden Sie die Seite neu."
+
+dp_recorder_status_sleeping:
+  en: "Sleeping"
+  de: "Schläft"
+
+dp_recorder_status_listening:
+  en: "Listening"
+  de: "Nimmt auf"
+
+dp_recorder_status_error:
+  en: "Error"
+  de: "Fehler"
+
+dp_recorder_status_offline:
+  en: "Offline"
+  de: "Offline"
+
+dp_time_delta_min:
+  en: "min"
+  de: "min"
+  fr: "min"
+  it: "min"
+  cs: "min"
+
+dp_time_delta_hr:
+  en: "hr"
+  de: "std"
+  fr: "h"
+  it: "ora"
+  cs: "hod"
+
+dp_time_delta_hrs:
+  en: "hrs"
+  de: "std"
+  fr: "h"
+  it: "ore"
+  cs: "hod"
+
+dp_time_delta_day:
+  en: "day"
+  de: "Tag"
+  fr: "jour"
+  it: "giorno"
+  cs: "den"
+
+dp_time_delta_days:
+  en: "days"
+  de: "Tage"
+  fr: "jours"
+  it: "giorni"
+  cs: "dny"
+
+dp_time_delta_ago_prefix:
+  en: ""
+  de: "Vor"
+  fr: "Il y a"
+  it: ""
+  cs: "Před"
+
+dp_time_delta_ago_postfix:
+  en: "ago"
+  de: ""
+  fr: ""
+  it: "fa"
+  cs: ""
+
+misc_photo:
+  en: "Photo"
+  de: "Foto"
+
+misc_date:
+  en: "Date"
+  de: "Datum"

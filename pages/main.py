@@ -18,6 +18,7 @@ from widgets.recording_units import recording_units
 import config as cfg
 
 def main_page_content(locale):
+    
     strings = Strings(locale)
     
     return html.Div(
@@ -41,7 +42,7 @@ def main_page_content(locale):
                 ],
                 style={"position": "relative"}
             ),
-            stats_bar(),
+            stats_bar(locale),
             html.Div(className="h-spacer"),
             dbc.Container(
                 [
@@ -55,14 +56,14 @@ def main_page_content(locale):
                             className="text-center d-none d-lg-block"),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
-                        html.H5(strings.get('most_active_species'), className="divider-heading"),
+                        html.H5(strings.get('main_most_active_species'), className="divider-heading"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="most-active-species", className="mt-4"),
                     dbc.Spinner(html.Div(id="no-active-species-placeholder", className="spinner"), color=cfg.PRIMARY_COLOR),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
-                        html.H5(strings.get('recent_detections'), className="divider-heading"),
+                        html.H5(strings.get('main_recent_detections'), className="divider-heading"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="last-detections", className="mt-4"),
@@ -70,25 +71,25 @@ def main_page_content(locale):
                     dbc.Spinner(html.Div(id="no-detections-placeholder", className="spinner"), color=cfg.PRIMARY_COLOR),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
-                        html.H5(strings.get('recording_units'), className="divider-heading"),
+                        html.H5(strings.get('main_recording_units'), className="divider-heading"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="recorder-stats", className="mt-4"),
                     dbc.Spinner(html.Div(id="no-recorder-stats-placeholder", className="spinner"), color=cfg.PRIMARY_COLOR),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
-                        html.H5(strings.get('diy_backyard_monitoring'), className="divider-heading"),
+                        html.H5(strings.get('main_diy_backyard_monitoring'), className="divider-heading"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(
                         [
                             dbc.Col(
                                 [
-                                    html.H5(strings.get('haikubox'), className="text-center"),
+                                    html.H5(strings.get('main_haikubox'), className="text-center"),
                                     html.Img(src=cfg.SITE_ROOT + "/assets/content_img/haikubox_teaser.png", className="img-fluid"),
-                                    html.P(strings.get('haikubox_description'), className="text-justify mt-4"),
+                                    html.P(strings.get('main_haikubox_description'), className="text-justify mt-4"),
                                     html.Div(
-                                        html.A(strings.get('visit_haikubox_website'), href="https://www.haikubox.com", target="_blank", className="btn btn-href mt-4"),
+                                        html.A(strings.get('main_visit_haikubox_website'), href="https://www.haikubox.com", target="_blank", className="btn btn-href mt-4"),
                                         className="d-flex justify-content-center mb-4"
                                     ),
                                 ],
@@ -97,11 +98,11 @@ def main_page_content(locale):
                             ),
                             dbc.Col(
                                 [
-                                    html.H5(strings.get('birdweather'), className="text-center"),
+                                    html.H5(strings.get('main_birdweather'), className="text-center"),
                                     html.Img(src=cfg.SITE_ROOT + "/assets/content_img/birdweather_teaser.png", className="img-fluid"),
-                                    html.P(strings.get('birdweather_description'), className="text-justify mt-4"),
+                                    html.P(strings.get('main_birdweather_description'), className="text-justify mt-4"),
                                     html.Div(
-                                        html.A(strings.get('visit_birdweather_website'), href="https://www.birdweather.com", target="_blank", className="btn btn-href mt-4"),
+                                        html.A(strings.get('main_visit_birdweather_website'), href="https://www.birdweather.com", target="_blank", className="btn btn-href mt-4"),
                                         className="d-flex justify-content-center mb-4"
                                     ),
                                 ],
