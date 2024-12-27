@@ -1,0 +1,76 @@
+main_page_title:
+  en: "Main Page"
+  de: "Hauptseite"
+  fr: "Page Principale"
+  it: "Pagina Principale"
+  cs: "Hlavní Stránka"
+
+most_active_species:
+  en: "Most active species (7 days)"
+  de: "Aktivste Arten (7 Tage)"
+  fr: "Espèces les plus actives (7 jours)"
+  it: "Specie più attive (7 giorni)"
+  cs: "Nejaktivnější druhy (7 dní)"
+
+recent_detections:
+  en: "Recent detections"
+  de: "Aktuelle Erkennungen"
+  fr: "Détections récentes"
+  it: "Rilevamenti recenti"
+  cs: "Nedávné detekce"
+
+recording_units:
+  en: "Recording units"
+  de: "Aufnahmeeinheiten"
+  fr: "Unités d'enregistrement"
+  it: "Unità di registrazione"
+  cs: "Záznamové jednotky"
+
+diy_backyard_monitoring:
+  en: "DIY backyard monitoring"
+  de: "DIY Hinterhofüberwachung"
+  fr: "Surveillance de jardin DIY"
+  it: "Monitoraggio del cortile fai-da-te"
+  cs: "DIY monitorování dvorku"
+
+haikubox:
+  en: "Haikubox"
+  de: "Haikubox"
+  fr: "Haikubox"
+  it: "Haikubox"
+  cs: "Haikubox"
+
+haikubox_description:
+  en: "Haikubox is an innovative tool designed for bird enthusiasts and conservationists who want to keep track of the birds visiting their backyards. Using advanced AI-powered sound recognition, Haikubox listens to bird calls and automatically identifies species in real-time. It's a hands-free solution that provides continuous monitoring, making it ideal for anyone curious about local bird activity without needing to have expert knowledge."
+  de: "Haikubox ist ein innovatives Werkzeug für Vogelbegeisterte und Naturschützer, die die Vögel in ihrem Garten im Auge behalten möchten. Mit fortschrittlicher KI-gestützter Schallerkennung hört Haikubox Vogelrufe und identifiziert automatisch Arten in Echtzeit. Es ist eine freihändige Lösung, die kontinuierliche Überwachung bietet und sich ideal für alle eignet, die sich für die lokale Vogelaktivität interessieren, ohne Expertenwissen zu benötigen."
+  fr: "Haikubox est un outil innovant conçu pour les passionnés d'oiseaux et les conservationnistes qui souhaitent suivre les oiseaux visitant leur jardin. Utilisant une reconnaissance sonore avancée alimentée par l'IA, Haikubox écoute les appels des oiseaux et identifie automatiquement les espèces en temps réel. C'est une solution mains libres qui offre une surveillance continue, idéale pour quiconque curieux de l'activité des oiseaux locaux sans avoir besoin de connaissances expertes."
+  it: "Haikubox è uno strumento innovativo progettato per gli appassionati di uccelli e i conservazionisti che vogliono tenere traccia degli uccelli che visitano i loro giardini. Utilizzando il riconoscimento sonoro avanzato alimentato dall'IA, Haikubox ascolta i richiami degli uccelli e identifica automaticamente le specie in tempo reale. È una soluzione a mani libere che offre un monitoraggio continuo, rendendola ideale per chiunque sia curioso dell'attività degli uccelli locali senza bisogno di conoscenze esperte."
+  cs: "Haikubox je inovativní nástroj navržený pro nadšence do ptáků a ochránce přírody, kteří chtějí sledovat ptáky navštěvující jejich zahrady. Pomocí pokročilého rozpoznávání zvuku poháněného AI Haikubox poslouchá ptačí zpěv a automaticky identifikuje druhy v reálném čase. Je to bezdotykové řešení, které poskytuje nepřetržité monitorování, což je ideální pro každého, kdo se zajímá o místní ptačí aktivitu, aniž by potřeboval odborné znalosti."
+
+visit_haikubox_website:
+  en: "Visit the Haikubox website"
+  de: "Besuchen Sie die Haikubox-Website"
+  fr: "Visitez le site Web de Haikubox"
+  it: "Visita il sito web di Haikubox"
+  cs: "Navštivte web Haikubox"
+
+birdweather:
+  en: "BirdWeather"
+  de: "BirdWeather"
+  fr: "BirdWeather"
+  it: "BirdWeather"
+  cs: "BirdWeather"
+
+birdweather_description:
+  en: "BirdWeather is an advanced bird monitoring platform that connects bird enthusiasts with real-time data about bird species visiting their area. BirdWeather allows users to identify bird species based on their calls, without the need for expert-level birdwatching knowledge. The platform is designed to provide continuous, automated monitoring, making it a perfect solution for those interested in observing bird activity in their backyard."
+  de: "BirdWeather ist eine fortschrittliche Vogelüberwachungsplattform, die Vogelbegeisterte mit Echtzeitdaten über Vogelarten verbindet, die ihre Gegend besuchen. BirdWeather ermöglicht es Benutzern, Vogelarten anhand ihrer Rufe zu identifizieren, ohne dass Expertenwissen im Bereich Vogelbeobachtung erforderlich ist. Die Plattform ist so konzipiert, dass sie eine kontinuierliche, automatisierte Überwachung bietet und somit eine perfekte Lösung für alle ist, die sich für die Beobachtung der Vogelaktivität in ihrem Garten interessieren."
+  fr: "BirdWeather est une plateforme avancée de surveillance des oiseaux qui connecte les passionnés d'oiseaux avec des données en temps réel sur les espèces d'oiseaux visitant leur région. BirdWeather permet aux utilisateurs d'identifier les espèces d'oiseaux en fonction de leurs appels, sans avoir besoin de connaissances expertes en ornithologie. La plateforme est conçue pour fournir une surveillance continue et automatisée, ce qui en fait une solution parfaite pour ceux qui s'intéressent à l'observation de l'activité des oiseaux dans leur jardin."
+  it: "BirdWeather è una piattaforma avanzata di monitoraggio degli uccelli che collega gli appassionati di uccelli con dati in tempo reale sulle specie di uccelli che visitano la loro area. BirdWeather consente agli utenti di identificare le specie di uccelli in base ai loro richiami, senza la necessità di conoscenze esperte di birdwatching. La piattaforma è progettata per fornire un monitoraggio continuo e automatizzato, rendendola una soluzione perfetta per coloro che sono interessati a osservare l'attività degli uccelli nel loro giardino."
+  cs: "BirdWeather je pokročilá platforma pro monitorování ptáků, která spojuje nadšence do ptáků s daty v reálném čase o druzích ptáků navštěvujících jejich oblast. BirdWeather umožňuje uživatelům identifikovat druhy ptáků podle jejich volání, aniž by potřebovali odborné znalosti o pozorování ptáků. Platforma je navržena tak, aby poskytovala nepřetržité, automatizované monitorování, což z ní činí dokonalé řešení pro ty, kteří se zajímají o pozorování ptačí aktivity na jejich dvorku."
+
+visit_birdweather_website:
+  en: "Visit the BirdWeather website"
+  de: "Besuchen Sie die BirdWeather-Website"
+  fr: "Visitez le site Web de BirdWeather"
+  it: "Visita il sito web di BirdWeather"
+  cs: "Navštivte web BirdWeather"

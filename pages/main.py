@@ -6,6 +6,7 @@ import random
 
 from utils import data_processor as dp
 from utils import plots
+from utils.strings import Strings
 
 from widgets.popup_player import popup_player
 from widgets.livestream_popup_player import livestream_popup_player
@@ -17,6 +18,8 @@ from widgets.recording_units import recording_units
 import config as cfg
 
 def main_page_content(locale):
+    strings = Strings(locale)
+    
     return html.Div(
         [
             html.Div(
@@ -52,14 +55,14 @@ def main_page_content(locale):
                             className="text-center d-none d-lg-block"),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
-                        html.H5("Most active species (7 days)", className="divider-heading"),
+                        html.H5(strings.get('most_active_species'), className="divider-heading"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="most-active-species", className="mt-4"),
                     dbc.Spinner(html.Div(id="no-active-species-placeholder", className="spinner"), color=cfg.PRIMARY_COLOR),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
-                        html.H5("Recent detections", className="divider-heading"),
+                        html.H5(strings.get('recent_detections'), className="divider-heading"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="last-detections", className="mt-4"),
@@ -67,25 +70,25 @@ def main_page_content(locale):
                     dbc.Spinner(html.Div(id="no-detections-placeholder", className="spinner"), color=cfg.PRIMARY_COLOR),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
-                        html.H5("Recording units", className="divider-heading"),
+                        html.H5(strings.get('recording_units'), className="divider-heading"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="recorder-stats", className="mt-4"),
                     dbc.Spinner(html.Div(id="no-recorder-stats-placeholder", className="spinner"), color=cfg.PRIMARY_COLOR),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
-                        html.H5("DIY backyard monitoring", className="divider-heading"),
+                        html.H5(strings.get('diy_backyard_monitoring'), className="divider-heading"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(
                         [
                             dbc.Col(
                                 [
-                                    html.H5("Haikubox", className="text-center"),
+                                    html.H5(strings.get('haikubox'), className="text-center"),
                                     html.Img(src=cfg.SITE_ROOT + "/assets/content_img/haikubox_teaser.png", className="img-fluid"),
-                                    html.P("Haikubox is an innovative tool designed for bird enthusiasts and conservationists who want to keep track of the birds visiting their backyards. Using advanced AI-powered sound recognition, Haikubox listens to bird calls and automatically identifies species in real-time. It's a hands-free solution that provides continuous monitoring, making it ideal for anyone curious about local bird activity without needing to have expert knowledge.", className="text-justify mt-4"),
+                                    html.P(strings.get('haikubox_description'), className="text-justify mt-4"),
                                     html.Div(
-                                        html.A("Visit the Haikubox website", href="https://www.haikubox.com", target="_blank", className="btn btn-href mt-4"),
+                                        html.A(strings.get('visit_haikubox_website'), href="https://www.haikubox.com", target="_blank", className="btn btn-href mt-4"),
                                         className="d-flex justify-content-center mb-4"
                                     ),
                                 ],
@@ -94,11 +97,11 @@ def main_page_content(locale):
                             ),
                             dbc.Col(
                                 [
-                                    html.H5("BirdWeather", className="text-center"),
+                                    html.H5(strings.get('birdweather'), className="text-center"),
                                     html.Img(src=cfg.SITE_ROOT + "/assets/content_img/birdweather_teaser.png", className="img-fluid"),
-                                    html.P("BirdWeather is an advanced bird monitoring platform that connects bird enthusiasts with real-time data about bird species visiting their area. BirdWeather allows users to identify bird species based on their calls, without the need for expert-level birdwatching knowledge. The platform is designed to provide continuous, automated monitoring, making it a perfect solution for those interested in observing bird activity in their backyard.", className="text-justify mt-4"),
+                                    html.P(strings.get('birdweather_description'), className="text-justify mt-4"),
                                     html.Div(
-                                        html.A("Visit the BirdWeather website", href="https://www.birdweather.com", target="_blank", className="btn btn-href mt-4"),
+                                        html.A(strings.get('visit_birdweather_website'), href="https://www.birdweather.com", target="_blank", className="btn btn-href mt-4"),
                                         className="d-flex justify-content-center mb-4"
                                     ),
                                 ],
