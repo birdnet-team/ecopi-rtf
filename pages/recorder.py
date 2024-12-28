@@ -1,3 +1,5 @@
+import json
+
 from dash import html, dcc, callback_context, no_update
 from dash.exceptions import PreventUpdate
 import dash_bootstrap_components as dbc
@@ -5,8 +7,8 @@ from dash.dependencies import Input, Output, State, MATCH
 
 from widgets.popup_player import popup_player
 from utils import data_processor as dp
+from utils.strings import Strings
 import config as cfg
-import json
 
 def get_confidence_color(confidence):
     if confidence < 33:
@@ -23,31 +25,33 @@ def get_confidence_color(confidence):
         return "#296239"
 
 def create_recorder_table_headers(locale):
+    strings = Strings(locale)
     return html.Thead(
         html.Tr([
             html.Th([
                 html.Div([
-                    "Date",
+                    strings.get('recorder_table_header_date'),
                     html.I(className="bi bi-arrow-down-up")
                 ], className="sortable-header")
             ], id="recorder-date-header", n_clicks=0),
             html.Th([
                 html.Div([
-                    "Score",
+                    strings.get('recorder_table_header_score'),
                     html.I(className="bi bi-arrow-down-up")
                 ], className="sortable-header")
             ], id="recorder-score-header", n_clicks=0),
             html.Th([
                 html.Div([
-                    "Species",
+                    strings.get('recorder_table_header_species'),
                     html.I(className="bi bi-arrow-down-up")
                 ], className="sortable-header")
             ], id="recorder-species-header", n_clicks=0, className="species-column-header"),
-            html.Th("Audio"),
+            html.Th(strings.get('recorder_table_header_audio')),
         ])
     )
 
 def recorder_page_header(recorder_id, locale):
+    strings = Strings(locale)
     return html.Div(
         [
             html.Img(src=cfg.SITE_ROOT + "/assets/recorder_img/" + cfg.RECORDERS[int(recorder_id)]['img'], className="species-header-image"),
@@ -56,8 +60,8 @@ def recorder_page_header(recorder_id, locale):
                     [
                         dbc.Col(
                             [
-                                html.H3(f"Recorder #{recorder_id}", className="species-overlay-text"),
-                                html.H5("Habitat type: " + cfg.RECORDERS[int(recorder_id)]['habitat'], className="species-overlay-text"),
+                                html.H3(f"{strings.get('nav_recorder')} #{recorder_id}", className="species-overlay-text"),
+                                html.H5(strings.get('widget_units_habitat') + ": " + strings.get(cfg.RECORDERS[int(recorder_id)]['habitat']), className="species-overlay-text"),
                             ],
                             width=12,
                         ),
@@ -71,6 +75,7 @@ def recorder_page_header(recorder_id, locale):
     )
 
 def display_recorder_page(recorder_id, locale):
+    strings = Strings(locale)
     return html.Div([
         dcc.Store(id="recorder-id-store", data=recorder_id),
         recorder_page_header(recorder_id, locale),
@@ -82,7 +87,7 @@ def display_recorder_page(recorder_id, locale):
             dbc.Container(
                 [
                     html.Div(id="recorder-info-row"),
-                    html.H5("Recent detections:", className="recent-detections-heading"),
+                    html.H5(strings.get('main_recent_detections') + ":", className="recent-detections-heading"),
                     dbc.Table(
                         [
                             create_recorder_table_headers(locale),
@@ -120,6 +125,8 @@ def register_recorder_callbacks(app):
         prevent_initial_call=False
     )
     def update_recorder_content(recorder_id, locale):
+        strings = Strings(locale)
+        
         if not recorder_id:
             raise PreventUpdate
 
@@ -139,16 +146,16 @@ def register_recorder_callbacks(app):
         # Create info row
         info_row = dbc.Row([
             dbc.Col([
-                html.H5(f"{total_detections:,} total detections"),
+                html.H5(f"{total_detections:,} {strings.get('recorder_total_detections')}"),
                 html.H6([
                     html.I(className="bi bi-clock"),
                     f" {recorder_info['last_update'] if recorder_info else 'N/A'}"
                 ], className="small-text"),
             ], width=6),
             dbc.Col([
-                html.H5(f"Status: {recorder_info['current_status'].split(' | ')[-1] if recorder_info else 'N/A'}"),
-                html.H6([f"Battery: {recorder_info['battery'] if recorder_info else 'N/A'} %"], className="small-text"),
-                html.H6([f"CPU Temp: {recorder_info['cpu_temp'] if recorder_info else 'N/A'} °C"], className="small-text"),
+                html.H5(f"{strings.get('widget_units_status')}: {recorder_info['current_status'].split(' | ')[-1] if recorder_info else 'N/A'}"),
+                html.H6([f"{strings.get('widget_units_battery')}: {recorder_info['battery'] if recorder_info else 'N/A'} %"], className="small-text"),
+                html.H6([f"{strings.get('widget_units_cpu_temp')}: {recorder_info['cpu_temp'] if recorder_info else 'N/A'} °C"], className="small-text"),
             ], width=6, className="text-right"),
         ], className="species-info-row")
 

@@ -27,7 +27,7 @@ BUTTON_COLOR: '#385B75'
 FAVICON: 'amic_favicon.ico'
 PAGE_TITLE: 'AMiC'
 LOGO_MOBILE: 'amic_logo_short.png'
-LOGO_DESKTOP: 'amic_logo_wide.png'
+LOGO_DESKTOP: 'amic_logo_short.png'
 LEARN_MORE_BASE_URL: 'https://ebird.org/species/'
 FOOTER_LINKS:
   Site Links:

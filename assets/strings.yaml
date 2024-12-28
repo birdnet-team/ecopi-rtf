@@ -126,6 +126,35 @@ main_visit_birdweather_website:
   en: "Visit the BirdWeather website"
   de: "Zur Website von BirdWeather"
 
+det_recent_detections:
+  en: "Recent detections"
+  de: "Aktuelle Detektionen"
+
+det_description:
+  en: "This list shows randomly selected species detections sorted by confidence score. Click the 'Play' button to listen to the recorded sounds or click the 'Chart' icon to see more stats about this species."
+  de: "Diese Liste zeigt zufällig ausgewählte Arten, sortiert nach Konfidenz-Score. Klicken Sie auf die „Play“-Schaltfläche, um die aufgenommenen Stimmen anzuhören, oder klicken Sie auf das „Diagramm“-Symbol, um weitere Statistiken zu dieser Art anzuzeigen."
+
+recorder_table_header_date:
+  en: "Date"
+  de: "Datum"
+
+recorder_table_header_score:
+  en: "Score"
+  de: "Score"
+
+recorder_table_header_species:
+  en: "Species"
+  de: "Art"
+
+recorder_table_header_audio:
+  en: "Audio"
+  de: "Audio"
+
+recorder_total_detections:
+  en: "total detections"
+  de: "Detektionen insgesamt"
+
+# Widget strings
 nav_home:
   en: "Home"
   de: "Startseite"
@@ -198,6 +227,7 @@ widget_error_no_data:
   en: "Ooops...something went wrong. Please try to reload."
   de: "Uuups...da ist etwas schief gelaufen. Bitte laden Sie die Seite neu."
 
+# Data processor strings
 dp_recorder_status_sleeping:
   en: "Sleeping"
   de: "Schläft"
@@ -263,6 +293,7 @@ dp_time_delta_ago_postfix:
   it: "fa"
   cs: ""
 
+# Misc strings
 misc_photo:
   en: "Photo"
   de: "Foto"
