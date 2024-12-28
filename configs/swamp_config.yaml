@@ -72,9 +72,9 @@ COPYRIGHT_HOLDERS: 'Cornell University'
 FOOTER_TOP_LOGO: 'yang_logo_white.png'
 FOOTER_BOTTOM_LOGOS: ['cornell-logo-white.png']
 TEAM_MEMBERS:
-  - {name: "Stefan Kahl", role: "Project lead and web development", img: "stefan.png"}
-  - {name: "Felix Günther", role: "Backend development", img: "felix.png"}
-  - {name: "Patrick T. Chaopricha", role: "Hardware programming", img: "patrick.png"}
-  - {name: "Max Mauermann", role: "Web development", img: "max.png"}
-  - {name: "Josef Haupt", role: "Web development", img: "josef.png"}
-  - {name: "Isabella Marshall", role: "Field ops", img: "isabella.png"}
+  - {name: "Stefan Kahl", role: "about_team_role_project_lead_and_web", img: "stefan.png"}
+  - {name: "Felix Günther", role: "about_team_role_backend", img: "felix.png"}
+  - {name: "Patrick T. Chaopricha", role: "about_team_role_hardware", img: "patrick.png"}
+  - {name: "Max Mauermann", role: "about_team_role_web", img: "max.png"}
+  - {name: "Josef Haupt", role: "about_team_role_web", img: "josef.png"}
+  - {name: "Isabella Marshall", role: "about_team_role_field_ops", img: "isabella.png"}

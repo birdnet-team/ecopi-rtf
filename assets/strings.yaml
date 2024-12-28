@@ -154,6 +154,130 @@ recorder_total_detections:
   en: "total detections"
   de: "Detektionen insgesamt"
 
+about_team_role_project_lead:
+  en: "Project lead"
+  de: "Projekteitung"
+
+about_team_role_project_lead_and_web:
+  en: "Project lead & web development"
+  de: "Projekteitung & Web-Entwicklung"
+
+about_team_role_backend:
+  en: "Backend development"
+  de: "Backend-Entwicklung"
+
+about_team_role_design:
+  en: "Visual design"
+  de: "Grafikdesign"
+
+about_team_role_web:
+  en: "Web development"
+  de: "Web-Entwicklung"
+
+about_team_role_hardware:
+  en: "Hardware programming"
+  de: "Hardware-Programmierung"
+
+about_team_role_field_ops:
+  en: "Field ops"
+  de: "Field ops"
+
+about_headline_project_goals:
+  en: "Project goals"
+  de: "Projektziele"
+
+about_headline_acoustic_monitoring:
+  en: "Acoustic monitoring"
+  de: "Akustisches Monitoring"
+
+about_headline_recording_units:
+  en: "Recording units"
+  de: "Akustische Rekorder"
+
+about_headline_ai_sound_id:
+  en: "AI-powered sound ID"
+  de: "KI-gestützte Arterkennung"
+
+about_headline_meet_the_team:
+  en: "Meet the team"
+  de: "Das Team"
+
+about_headline_partners:
+  en: "Partners"
+  de: "Partner"
+
+about_headline_funding:
+  en: "Funding"
+  de: "Förderung"
+
+about_headline_contact:
+  en: "Contact"
+  de: "Kontakt"
+
+about_mailing_us:
+  en: "Mailing address (USA)"
+  de: "Postanschrift (USA)"
+
+about_mailing_de:
+  en: "Mailing address (Germany)"
+  de: "Postanschrift (Deutschland)"
+
+about_project_goal_2:
+  en: "The project uses solar-powered recording units equipped with BirdNET software to capture and analyze bird songs and other natural sounds in real-time. These recordings provide a window into the daily rhythms of nature, revealing which species are active and when."
+  de: "Das Projekt verwendet solarbetriebene akustische Rekorder, die mit der BirdNET-Software ausgestattet sind, um Vogelstimmen und andere Naturgeräusche in Echtzeit aufzunehmen und zu analysieren. Diese Aufnahmen geben einen Einblick in den täglichen Rhythmus der Natur und zeigen, welche Arten wann aktiv sind."
+
+about_no_voice_note:
+  en: "Note: No voice is recorded. Our recording devices use an AI model that recognizes human conversations and discards them."
+  de: "Hinweis: Es wird keine Stimme aufgezeichnet. Unsere Aufnahmegeräte verwenden ein KI-Modell, das menschliche Unterhaltungen erkennt und verwirft."
+
+about_acoustic_monitoring_1:
+  en: "Acoustic monitoring is a valuable method for studying ecosystems and biodiversity. By recording and analyzing soundscapes, it allows researchers to detect species presence and behavior without disturbing their habitats."
+  de: "Akustisches Monitoring ist eine wichtige Methode zur Untersuchung von Ökosystemen und Biodiversität. Durch die Aufzeichnung und Analyse von Klanglandschaften (sog. 'Soundscapes)') können Forscher die Anwesenheit und das Verhalten von Arten erkennen, ohne ihre Lebensräume zu stören."
+about_acoustic_monitoring_2:
+  en: "One of the main benefits of acoustic monitoring is its ability to provide long-term data. Continuous recording over extended periods helps reveal patterns in species activity, seasonal changes, and responses to environmental factors. This data is crucial for tracking ecosystem health and assessing conservation efforts."
+  de: "Einer der Hauptvorteile des akustischen Monitorings ist die Möglichkeit, Langzeitdaten zu erfassen. Durch kontinuierliche Aufzeichnungen über längere Zeiträume hinweg können Muster in der Aktivität von Arten, saisonale Veränderungen und Reaktionen auf Umweltfaktoren aufgedeckt werden. Diese Daten sind entscheidend für die Überwachung des Zustands von Ökosystemen und die Kontrolle von Naturschutzmaßnahmen."
+about_acoustic_monitoring_3:
+  en: "AI-driven acoustic monitoring has already contributed to conservation successes, such as tracking endangered species, monitoring habitat recovery, and identifying environmental changes. By combining long-term acoustic data with AI, researchers gain valuable insights to support effective conservation strategies."
+  de: "KI-gestütztes akustisches Monitoring hat bereits zum Naturschutz beigetragen, wie z.B. bei der Verfolgung gefährdeter Arten, der Überwachung von Habitatsrestauration und der Identifizierung von Umweltveränderungen. Durch die Kombination von Langzeit-Akustikdaten mit KI gewinnen Forschende wertvolle Einblicke, um effektive Naturschutzstrategien zu entwickeln."
+
+about_recording_units_1:
+  en: "Our recording units are designed to operate in remote and challenging environments. They are solar-powered, weather-resistant, and connected to the internet, enabling the automatic upload of recorded sounds to a central server."
+  de: "Unsere akustischen Rekorder sind für den Einsatz in abgelegenen und anspruchsvollen Umgebungen konzipiert. Sie sind solarbetrieben, wetterfest und mit dem Internet verbunden, was das automatische Hochladen der aufgezeichneten Geräusche auf einen zentralen Server ermöglicht."
+about_recording_units_2:
+  en: "Each unit is built around a Raspberry Pi computer equipped with a sound card and a Sleepy Pi module for power management. They run BirdNET software for sound identification and use a SIM card dongle for internet connectivity, making them effective even in isolated locations."
+  de: "Jeder Rekorder basiert auf einem Raspberry Pi-Computer, der mit einer Soundkarte und einem Sleepy Pi-Modul zur Energieverwaltung ausgestattet ist. Sie verwenden die BirdNET-Software zur Geräuschkennung und nutzen ein SIM-Karten-Dongle für die Internetverbindung, wodurch sie auch an abgelegenen Standorten kommunizieren können."
+about_recording_units_3:
+  en: "Powered by a battery and a 10W solar panel, the units follow an hourly recording schedule to conserve energy. They record for a few minutes each hour, focusing on capturing activity during the most vocal periods of the day."
+  de: "Betrieben durch eine Batterie und ein 10W-Solarpanel folgen die Einheiten einem stündlichen Aufnahmeplan, um Energie zu sparen. Sie zeichnen jede Stunde für einige Minuten auf und konzentrieren sich dabei auf die Erfassung der Tierstimmen während der aktivsten Zeiten des Tages."
+about_recording_units_4:
+  en: "These units are manufactured by OekoFor GbR in Germany, a company that specializes in ecological monitoring equipment. They are used in various projects worldwide, contributing to real-time monitoring systems that support research and conservation."
+  de: "Die Rekorder werden von der OekoFor GbR in Deutschland hergestellt, einem Unternehmen, das sich auf ökologische Erfassungsmethoden spezialisiert hat. Sie werden in verschiedenen Projekten weltweit eingesetzt und tragen so zum Echtzeit-Monitoring bei, das Forschung und Naturschutz unterstützt."
+about_recording_units_5:
+  en: "By providing reliable data on soundscapes and species activity, the units play an important role in understanding and preserving ecosystems."
+  de: "Durch die Bereitstellung zuverlässiger Daten zu Soundscapes und Artenaktivitäten spielen die Rekorder eine wichtige Rolle beim Verständnis und dem Erhalt von Ökosystemen."
+
+about_ai_sound_id_1:
+  en: "BirdNET is an AI-powered tool that identifies (bird) species based on their calls and songs. At its core, BirdNET uses a neural network, a type of machine learning model inspired by the structure of the human brain. Neural networks are particularly effective at recognizing patterns in complex datasets, such as sound recordings."
+  de: "BirdNET ist ein KI-gestützte Software-Werkezug, das Tierarten anhand ihrer Rufe und Gesänge identifiziert. Im Kern verwendet BirdNET ein künstliches neuronales Netzwerk, eine Art von maschinellem Lernmodell, das von der Struktur des menschlichen Gehirns inspiriert ist. Neuronale Netzwerke sind besonders effektiv bei der Erkennung von Mustern in komplexen Datensätzen wie z.B. Audioaufnahmen."
+about_ai_sound_id_2:
+  en: "To analyze sounds, BirdNET converts audio recordings into spectrograms, which are visual representations of sound showing frequency, amplitude, and time. These spectrograms highlight the unique acoustic patterns of bird calls and songs, much like a fingerprint for each species. The neural network is trained to recognize these patterns using a large dataset of labeled bird sounds."
+  de: "Um Geräusche zu analysieren, wandelt BirdNET Audioaufnahmen in Spektrogramme um, die visuelle Darstellungen von Schall sind und Frequenz, Amplitude und Zeit zweidimensional darstellen. Diese Spektrogramme heben die einzigartigen akustischen Muster von Vogelrufen und -gesängen hervor, ähnlich wie ein Fingerabdruck für jede Art. Das neuronale Netzwerk wird darauf trainiert, diese Muster anhand eines großen Datensatzes von vorher bestimmten Geräuschen zu erkennen."
+about_ai_sound_id_3:
+  en: "BirdNET is widely used in conservation efforts to monitor animal populations, study migration patterns, and identify areas of concern for endangered species. Its ability to process recordings automatically and at scale provides researchers with valuable data to support habitat protection and conservation strategies."
+  de: "BirdNET wird häufig in Naturschutzprojekten eingesetzt, um z.B. Vogelpopulationen zu überwachen, Migrationsmuster zu untersuchen und Handlunsgbedarfe für gefährdete Arten zu identifizieren. Die Fähigkeit, Aufnahmen automatisch und in großem Maßstab zu verarbeiten, liefert Forschenden wertvolle Daten zur Unterstützung des Lebensraumschutzes und zur Entwicklung von Naturschutzstrategien."
+
+about_partnership:
+  en: "This project is a collaboration between the Cornell Lab of Ornithology, Chemnitz University of Technology, and OekoFor GbR."
+  de: "Dieses Projekt ist eine Zusammenarbeit zwischen dem Cornell Lab of Ornithology, der Technischen Universität Chemnitz und der OekoFor GbR."
+
+about_funding_1:
+  en: "This project is supported by Jake Holshuh (Cornell class of ’69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats."
+  de: "Dieses Projekt wird großzügig unterstützt von Jake Holshuh (Cornell Jahrgang '69) und den Arthur Vining Davis Foundations. Dank der Förderung von K. Lisa Yang kann unsere Arbeit am K. Lisa Yang Center for Conservation Bioacoustics innovative Technologien vorantreiben, die den Schutz von Wildtieren und ihren Lebensräumen fördern und zur Aufklärung beitragen."
+
+about_funding_2:
+  en: "The development of BirdNET is supported by the German Federal Ministry of Education and Research through the project “BirdNET+” (FKZ 01|S22072). The German Federal Ministry for the Environment, Nature Conservation, Nuclear Safety and Consumer Protection contributes through the “DeepBirdDetect” project (FKZ 67KI31040E). In addition, the Deutsche Bundesstiftung Umwelt supports BirdNET through the project “RangerSound” (project 39263/01)."
+  de: "Die Entwicklung von BirdNET wird vom Bundesministerium für Bildung und Forschung durch das Projekt „BirdNET+“ (FKZ 01|S22072) gefördert. Das Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz beteiligt sich mit dem Projekt „DeepBirdDetect“ (FKZ 67KI31040E). Darüber hinaus unterstützt die Deutsche Bundesstiftung Umwelt BirdNET durch das Projekt „RangerSound“ (Projekt 39263/01)."
+
 # Widget strings
 nav_home:
   en: "Home"
