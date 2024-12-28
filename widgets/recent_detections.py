@@ -34,7 +34,7 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
                                 ),
                                 className="play-icon-overlay",
                             ),
-                            html.A(
+                            dcc.Link(
                                 html.I(className="bi bi-bar-chart-fill"),
                                 href=f"{cfg.SITE_ROOT}/species/{species}",
                                 className="chart-icon-overlay",

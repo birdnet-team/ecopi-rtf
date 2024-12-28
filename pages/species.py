@@ -189,7 +189,7 @@ def register_species_callbacks(app):
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
                 html.Td([
-                    html.A(
+                    dcc.Link(
                         html.Div(
                             f"#{detection['recorder_field_id']}",
                             className="recorder-cell"
@@ -288,7 +288,7 @@ def register_species_callbacks(app):
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
                 html.Td([
-                    html.A(
+                    dcc.Link(
                         html.Div(
                             f"#{detection['recorder_field_id']}",
                             className="recorder-cell"

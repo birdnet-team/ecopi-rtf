@@ -176,7 +176,7 @@ def register_recorder_callbacks(app):
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
                 html.Td([
-                    html.A(
+                    dcc.Link(
                         html.Div([
                             html.Img(
                                 src=detection["species_thumbnail"],
@@ -284,7 +284,7 @@ def register_recorder_callbacks(app):
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
                 html.Td([
-                    html.A(
+                    dcc.Link(
                         html.Div([
                             html.Img(
                                 src=detection["species_thumbnail"],
