@@ -22,9 +22,6 @@ ABOUT_HEADER_IMG_LIST: ['ssw_about_header_1.jpg', 'ssw_about_header_2.jpg', 'ssw
 LIVE_STREAM_URL: 'https://birdnetlive.duckdns.org/ssw'
 DONATION_URL: 'https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR'
 PROJECT_ACRONYM: 'SWAMP'
-PROJECT_SUBTITLE: 'AI-powered acoustic monitoring'
-PROJECT_SUBTITLE_DESC: 'We listen to the sounds of the animals in Sapsucker Woods and track species diversity over large spatio-temporal scales.'
-PROJECT_GOAL: 'The Sapsucker Woods Acoustic Monitoring Project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Sapsucker Woods, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area.'
 PRIMARY_COLOR: '#b31b1b'
 SECONDARY_COLOR: '#2e261f'
 PLOT_PRIMARY_COLOR: '#385B75'
@@ -35,39 +32,39 @@ LOGO_MOBILE: 'clo_swamp_short_mobile_horizontal_color.png'
 LOGO_DESKTOP: 'clo_swamp_short_horizontal_color.png'
 LEARN_MORE_BASE_URL: 'https://www.allaboutbirds.org/guide/'
 FOOTER_LINKS:
-  Site Links:
-    - {name: "Home", href: "/"}
-    - {name: "Detections", href: "/detections"}
-    - {name: "Recording units", href: "/recorder/1"}
-    - {name: "About the project", href: "/about"}
-    - {name: "Contact", href: "/about#about-contact"}
-  Yang Center:
-    - {name: "Our values", href: "https://www.birds.cornell.edu/ccb/our-values/", target: "_blank"}
-    - {name: "Research", href: "https://www.birds.cornell.edu/ccb/research/", target: "_blank"}
-    - {name: "Technology", href: "https://www.birds.cornell.edu/ccb/technology/", target: "_blank"}
-    - {name: "Education", href: "https://www.birds.cornell.edu/ccb/education/", target: "_blank"}
-    - {name: "Publications", href: "https://www.birds.cornell.edu/ccb/publications/", target: "_blank"}
-  Explore More:
-    - {name: "Bird Cams", href: "https://www.allaboutbirds.org/cams/", target: "_blank"}
-    - {name: "Birds of the World", href: "https://birdsoftheworld.org/bow/home", target: "_blank"}
-    - {name: "eBird Status and Trends", href: "https://science.ebird.org/status-and-trends", target: "_blank"}
-    - {name: "Our Youtube Videos", href: "https://www.youtube.com/labofornithology", target: "_blank"}
-  Lifelong Learning:
-    - {name: "Online Courses", href: "https://academy.allaboutbirds.org/", target: "_blank"}
-    - {name: "Bird Walks & Events", href: "https://www.birds.cornell.edu/home/visit/events/", target: "_blank"}
-    - {name: "Spring Field Ornithology", href: "https://academy.allaboutbirds.org/product/spring-field-ornithology-northeast/", target: "_blank"}
-    - {name: "K–12 Education", href: "https://www.birds.cornell.edu/k12", target: "_blank"}
-  Support Our Cause:
-    - {name: "Join the Lab", href: "https://join.birds.cornell.edu/page/150611/donate/1?ea.tracking.id=WXXXXX14C", target: "_blank"}
-    - {name: "Donate", href: "https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR", target: "_blank"}
-    - {name: "Monthly Giving", href: "https://give.birds.cornell.edu/page/99134/donate/1?ea.tracking.id=BCF", target: "_blank"}
-    - {name: "Membership Services", href: "https://www.birds.cornell.edu/home/members/", target: "_blank"}
-    - {name: "Shop for Our Cause", href: "https://www.birds.cornell.edu/home/shop-for-our-cause/", target: "_blank"}
-  About:
-    - {name: "Cornell Lab of Ornithology", href: "http://birds.cornell.edu/", target: "_blank"}
-    - {name: "Web Accessibility Assistance", href: "https://www.birds.cornell.edu/home/web-accessibility-assistance/", target: "_blank"}
-    - {name: "Privacy Policy", href: "https://privacy.cornell.edu/information-use-cornell", target: "_blank"}
-    - {name: "Terms of Use", href: "https://www.birds.cornell.edu/home/terms-of-use/", target: "_blank"}
+  widget_footer_link_section_site:
+    - {name: "widget_footer_site_links_home", href: "/"}
+    - {name: "widget_footer_site_links_detections", href: "/detections"}
+    - {name: "widget_footer_site_links_recording_units", href: "/recorder/1"}
+    - {name: "widget_footer_site_links_about_the_project", href: "/about"}
+    - {name: "widget_footer_site_links_contact", href: "/about#about-contact"}
+  widget_footer_link_section_yang_center:
+    - {name: "widget_footer_yang_center_our_values", href: "https://www.birds.cornell.edu/ccb/our-values/", target: "_blank"}
+    - {name: "widget_footer_yang_center_research", href: "https://www.birds.cornell.edu/ccb/research/", target: "_blank"}
+    - {name: "widget_footer_yang_center_technology", href: "https://www.birds.cornell.edu/ccb/technology/", target: "_blank"}
+    - {name: "widget_footer_yang_center_education", href: "https://www.birds.cornell.edu/ccb/education/", target: "_blank"}
+    - {name: "widget_footer_yang_center_publications", href: "https://www.birds.cornell.edu/ccb/publications/", target: "_blank"}
+  widget_footer_link_section_explore:
+    - {name: "widget_footer_explore_more_bird_cams", href: "https://www.allaboutbirds.org/cams/", target: "_blank"}
+    - {name: "widget_footer_explore_more_birds_of_the_world", href: "https://birdsoftheworld.org/bow/home", target: "_blank"}
+    - {name: "widget_footer_explore_more_ebird_status_and_trends", href: "https://science.ebird.org/status-and-trends", target: "_blank"}
+    - {name: "widget_footer_explore_more_our_youtube_videos", href: "https://www.youtube.com/labofornithology", target: "_blank"}
+  widget_footer_link_section_learning:
+    - {name: "widget_footer_lifelong_learning_online_courses", href: "https://academy.allaboutbirds.org/", target: "_blank"}
+    - {name: "widget_footer_lifelong_learning_bird_walks_and_events", href: "https://www.birds.cornell.edu/home/visit/events/", target: "_blank"}
+    - {name: "widget_footer_lifelong_learning_spring_field_ornithology", href: "https://academy.allaboutbirds.org/product/spring-field-ornithology-northeast/", target: "_blank"}
+    - {name: "widget_footer_lifelong_learning_k12_education", href: "https://www.birds.cornell.edu/k12", target: "_blank"}
+  widget_footer_link_section_support:
+    - {name: "widget_footer_support_our_cause_join_the_lab", href: "https://join.birds.cornell.edu/page/150611/donate/1?ea.tracking.id=WXXXXX14C", target: "_blank"}
+    - {name: "widget_footer_support_our_cause_donate", href: "https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR", target: "_blank"}
+    - {name: "widget_footer_support_our_cause_monthly_giving", href: "https://give.birds.cornell.edu/page/99134/donate/1?ea.tracking.id=BCF", target: "_blank"}
+    - {name: "widget_footer_support_our_cause_membership_services", href: "https://www.birds.cornell.edu/home/members/", target: "_blank"}
+    - {name: "widget_footer_support_our_cause_shop_for_our_cause", href: "https://www.birds.cornell.edu/home/shop-for-our-cause/", target: "_blank"}
+  widget_footer_link_section_about:
+    - {name: "widget_footer_about_cornell_lab_of_ornithology", href: "http://birds.cornell.edu/", target: "_blank"}
+    - {name: "widget_footer_about_web_accessibility_assistance", href: "https://www.birds.cornell.edu/home/web-accessibility-assistance/", target: "_blank"}
+    - {name: "widget_footer_about_privacy_policy", href: "https://privacy.cornell.edu/information-use-cornell", target: "_blank"}
+    - {name: "widget_footer_about_terms_of_use", href: "https://www.birds.cornell.edu/home/terms-of-use/", target: "_blank"}
 COPYRIGHT_HOLDERS: 'Cornell University'
 FOOTER_TOP_LOGO: 'yang_logo_white.png'
 FOOTER_BOTTOM_LOGOS: ['cornell-logo-white.png']

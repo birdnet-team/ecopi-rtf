@@ -34,7 +34,7 @@ def main_page_content(locale):
                         className="header-overlay"
                     ),
                     html.Button(
-                        [html.I(className="bi bi-volume-up-fill"), f" {strings.get('listen_live')}"],
+                        [html.I(className="bi bi-volume-up-fill"), f" {strings.get('main_listen_live')}"],
                         id="listen-live-button",
                         className="listen-live-button" if len(cfg.LIVE_STREAM_URL) > 0 else "d-none",
                     ),

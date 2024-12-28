@@ -83,7 +83,7 @@ def nav_bar(locale):
                                 right=True,
                                 id="locale-dropdown-menu"
                             ),
-                            dbc.NavItem(html.A("Donate", href=cfg.DONATION_URL, className="nav-link nav-donate" if cfg.DONATION_URL else "d-none", id="nav-donate", target="_blank")),
+                            dbc.NavItem(html.A(strings.get('nav_donate'), href=cfg.DONATION_URL, className="nav-link nav-donate" if cfg.DONATION_URL else "d-none", id="nav-donate", target="_blank")),
                         ],
                         className="ml-auto",
                         navbar=True,

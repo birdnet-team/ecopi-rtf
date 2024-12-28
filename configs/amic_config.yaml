@@ -17,9 +17,6 @@ ABOUT_HEADER_IMG_LIST: ['amic_about_header_1.jpg']
 LIVE_STREAM_URL: ''
 DONATION_URL: ''
 PROJECT_ACRONYM: 'AMiC'
-PROJECT_SUBTITLE: 'AI-powered acoustic monitoring'
-PROJECT_SUBTITLE_DESC: 'We listen to the sounds of birds and investigate how traffic noise impacts their natural behavior.'
-PROJECT_GOAL: 'The Acoustic Monitoring in Chemnitz project combines technology and community engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of the birds in the Botanical Garden, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area.'
 PRIMARY_COLOR: '#385B75'
 SECONDARY_COLOR: '#2c3b47'
 PLOT_PRIMARY_COLOR: '#385B75'
@@ -30,38 +27,38 @@ LOGO_MOBILE: 'amic_logo_short.png'
 LOGO_DESKTOP: 'amic_logo_short.png'
 LEARN_MORE_BASE_URL: 'https://ebird.org/species/'
 FOOTER_LINKS:
-  Site Links:
-    - {name: "Home", href: "/"}
-    - {name: "Detections", href: "/detections"}
-    - {name: "Recording units", href: "/recorder/1"}
-    - {name: "About the project", href: "/about"}
-    - {name: "Contact", href: "/about#about-contact"}
-  Botanical Garden Chemnitz:
-    - {name: "About", href: "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden", target: "_blank"}
-    - {name: "History", href: "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden/history", target: "_blank"}
-    - {name: "School Biology Center", href: "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden/school-biology-centre", target: "_blank"}
-    - {name: "Park Map", href: "https://d2vw8mc5mcb3gm.cloudfront.net/fileadmin/chemnitz/media/leben-in-chemnitz/freizeit/botanischer_garten/botanischer_garten_parkplan.pdf", target: "_blank"}
-  OekoFor:
-    - {name: "About us", href: "https://www.oekofor.de/en/#about", target: "_blank"}
-    - {name: "Services", href: "https://www.oekofor.de/en/#services", target: "_blank"}
-    - {name: "ecoPi", href: "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", target: "_blank"}
-    - {name: "Contact", href: "https://www.oekofor.de/en/#contact", target: "_blank"}
-  Yang Center:
-    - {name: "Our values", href: "https://www.birds.cornell.edu/ccb/our-values/", target: "_blank"}
-    - {name: "Research", href: "https://www.birds.cornell.edu/ccb/research/", target: "_blank"}
-    - {name: "Technology", href: "https://www.birds.cornell.edu/ccb/technology/", target: "_blank"}
-    - {name: "Education", href: "https://www.birds.cornell.edu/ccb/education/", target: "_blank"}
-    - {name: "Publications", href: "https://www.birds.cornell.edu/ccb/publications/", target: "_blank"}
-  TU Chemnitz:
-    - {name: "University", href: "https://www.tu-chemnitz.de/index.html.en", target: "_blank"}
-    - {name: "Degree programs", href: "https://www.tu-chemnitz.de/studierendenservice/zsb/studiengaenge/en/", target: "_blank"}
-    - {name: "International Office", href: "https://www.tu-chemnitz.de/international/index.php.en", target: "_blank"}
-    - {name: "Research", href: "https://www.tu-chemnitz.de/forschung/index.php.en", target: "_blank"}
-    - {name: "Computer Science", href: "https://www.tu-chemnitz.de/informatik/index.php.en", target: "_blank"}
-  About:
-    - {name: "Legal Notice", href: "https://www.tu-chemnitz.de/tu/impressum.html", target: "_blank"}
-    - {name: "Privacy Policy", href: "https://www.tu-chemnitz.de/tu/datenschutz.html", target: "_blank"}
-    - {name: "Accessibility", href: "https://www.tu-chemnitz.de/tu/barrierefreiheit.html", target: "_blank"}
+  widget_footer_link_section_site:
+    - {name: "widget_footer_site_links_home", href: "/"}
+    - {name: "widget_footer_site_links_detections", href: "/detections"}
+    - {name: "widget_footer_site_links_recording_units", href: "/recorder/1"}
+    - {name: "widget_footer_site_links_about_the_project", href: "/about"}
+    - {name: "widget_footer_site_links_contact", href: "/about#about-contact"}
+  widget_footer_link_section_botanical_garden:
+    - {name: "widget_footer_botanical_garden_chemnitz_about", href: "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden", target: "_blank"}
+    - {name: "widget_footer_botanical_garden_chemnitz_history", href: "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden/history", target: "_blank"}
+    - {name: "widget_footer_botanical_garden_chemnitz_school_biology_center", href: "https://www.chemnitz.de/en/living-in-chemnitz/leisure-time/botanical-garden/school-biology-centre", target: "_blank"}
+    - {name: "widget_footer_botanical_garden_chemnitz_park_map", href: "https://d2vw8mc5mcb3gm.cloudfront.net/fileadmin/chemnitz/media/leben-in-chemnitz/freizeit/botanischer_garten/botanischer_garten_parkplan.pdf", target: "_blank"}
+  widget_footer_link_section_oekofor:
+    - {name: "widget_footer_oekofor_about_us", href: "https://www.oekofor.de/en/#about", target: "_blank"}
+    - {name: "widget_footer_oekofor_services", href: "https://www.oekofor.de/en/#services", target: "_blank"}
+    - {name: "widget_footer_oekofor_ecopi", href: "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", target: "_blank"}
+    - {name: "widget_footer_oekofor_contact", href: "https://www.oekofor.de/en/#contact", target: "_blank"}
+  widget_footer_link_section_yang_center:
+    - {name: "widget_footer_yang_center_our_values", href: "https://www.birds.cornell.edu/ccb/our-values/", target: "_blank"}
+    - {name: "widget_footer_yang_center_research", href: "https://www.birds.cornell.edu/ccb/research/", target: "_blank"}
+    - {name: "widget_footer_yang_center_technology", href: "https://www.birds.cornell.edu/ccb/technology/", target: "_blank"}
+    - {name: "widget_footer_yang_center_education", href: "https://www.birds.cornell.edu/ccb/education/", target: "_blank"}
+    - {name: "widget_footer_yang_center_publications", href: "https://www.birds.cornell.edu/ccb/publications/", target: "_blank"}
+  widget_footer_link_section_tuc:
+    - {name: "widget_footer_tu_chemnitz_university", href: "https://www.tu-chemnitz.de/index.html.en", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_degree_programs", href: "https://www.tu-chemnitz.de/studierendenservice/zsb/studiengaenge/en/", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_international_office", href: "https://www.tu-chemnitz.de/international/index.php.en", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_research", href: "https://www.tu-chemnitz.de/forschung/index.php.en", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_computer_science", href: "https://www.tu-chemnitz.de/informatik/index.php.en", target: "_blank"}
+  widget_footer_link_section_about:
+    - {name: "widget_footer_about_web_accessibility_assistance", href: "https://www.birds.cornell.edu/home/web-accessibility-assistance/", target: "_blank"}
+    - {name: "widget_footer_about_privacy_policy", href: "https://privacy.cornell.edu/information-use-cornell", target: "_blank"}
+    - {name: "widget_footer_about_terms_of_use", href: "https://www.birds.cornell.edu/home/terms-of-use/", target: "_blank"}
 COPYRIGHT_HOLDERS: ""
 FOOTER_TOP_LOGO: 'birdnet_logo_white.png'
 FOOTER_BOTTOM_LOGOS: ['oekofor_logo_white.png', 'yang_logo_white.png', 'tuc_logo_white.png']

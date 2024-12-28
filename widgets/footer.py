@@ -3,18 +3,20 @@ import dash_bootstrap_components as dbc
 from datetime import datetime
 
 import config as cfg
+from utils.strings import Strings
 
 # Define the footer content
 def footer_content(locale):
+    strings = Strings(locale, project=cfg.PROJECT_ID)
     footer_columns = []
     for section, links in cfg.FOOTER_LINKS.items():
         footer_columns.append(
             dbc.Col(
                 [
-                    html.H5(section, className="small-text bold-text"),
+                    html.H5(strings.get(section), className="small-text bold-text"),
                     html.Ul(
                         [
-                            html.Li(html.A(link["name"], href=cfg.SITE_ROOT + link["href"] if link["href"].startswith("/") else link["href"], className="footer-link small-text", target=link.get("target", "_self")))
+                            html.Li(html.A(strings.get(link["name"]), href=cfg.SITE_ROOT + link["href"] if link["href"].startswith("/") else link["href"], className="footer-link small-text", target=link.get("target", "_self")))
                             for link in links
                         ],
                         className="list-unstyled"

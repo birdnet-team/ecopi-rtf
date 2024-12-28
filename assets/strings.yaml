@@ -152,7 +152,7 @@ recorder_table_header_audio:
 
 recorder_total_detections:
   en: "total detections"
-  de: "Detektionen insgesamt"
+  de: "Detektionen gesamt"
 
 about_team_role_project_lead:
   en: "Project lead"
@@ -228,7 +228,7 @@ about_project_goal_2:
 
 about_no_voice_note:
   en: "Note: No voice is recorded. Our recording devices use an AI model that recognizes human conversations and discards them."
-  de: "Hinweis: Es wird keine Stimme aufgezeichnet. Unsere Aufnahmegeräte verwenden ein KI-Modell, das menschliche Unterhaltungen erkennt und verwirft."
+  de: "Hinweis: Es werden keine Stimmen aufgezeichnet. Unsere Aufnahmegeräte verwenden ein KI-Modell, das menschliche Unterhaltungen erkennt und verwirft."
 
 about_acoustic_monitoring_1:
   en: "Acoustic monitoring is a valuable method for studying ecosystems and biodiversity. By recording and analyzing soundscapes, it allows researchers to detect species presence and behavior without disturbing their habitats."
@@ -303,6 +303,10 @@ nav_about:
   en: "About"
   de: "Infos"
 
+nav_donate:
+  en: "Donate"
+  de: "Spenden"
+
 stats_bar_detections_24h:
   en: "Detections (24h)"
   de: "Detektionen (24h)"
@@ -350,6 +354,222 @@ widget_units_last_update:
 widget_error_no_data:
   en: "Ooops...something went wrong. Please try to reload."
   de: "Uuups...da ist etwas schief gelaufen. Bitte laden Sie die Seite neu."
+
+widget_footer_link_section_site:
+  en: "Site links"
+  de: "Website Links"
+
+widget_footer_link_section_botanical_garden:
+  en: "Botanical Garden"
+  de: "Botanischer Garten"
+
+widget_footer_link_section_birdlife:
+  en: "BirdLife"
+  de: "BirdLife"  
+
+widget_footer_link_section_oekofor:
+  en: "OekoFor"
+  de: "OekoFor"  
+
+widget_footer_link_section_yang_center:
+  en: "Yang Center"
+  de: "Yang Center"  
+
+widget_footer_link_section_tuc:
+  en: "Chemnitz University"
+  de: "TU Chemnitz"  
+
+widget_footer_link_section_explore:
+  en: "Explore More"
+  de: "Mehr entdecken"  
+
+widget_footer_link_section_learning:
+  en: "Lifelong Learning"
+  de: "Lebenslanges lernen"  
+
+widget_footer_link_section_support:
+  en: "Support Our Cause"
+  de: "Unterstützen" 
+
+widget_footer_link_section_about:
+  en: "About"
+  de: "Informationen"  
+
+widget_footer_site_links_home:
+  en: "Home"
+  de: "Startseite"
+
+widget_footer_site_links_detections:
+  en: "Detections"
+  de: "Detektionen"
+
+widget_footer_site_links_recording_units:
+  en: "Recording units"
+  de: "Rekorder"
+
+widget_footer_site_links_about_the_project:
+  en: "About the project"
+  de: "Infos zum Projekt"
+
+widget_footer_site_links_contact:
+  en: "Contact"
+  de: "Kontakt"
+
+widget_footer_yang_center_our_values:
+  en: "Our values"
+  de: "Unsere Werte"
+
+widget_footer_yang_center_research:
+  en: "Research"
+  de: "Forschung"
+
+widget_footer_yang_center_technology:
+  en: "Technology"
+  de: "Technologie"
+
+widget_footer_yang_center_education:
+  en: "Education"
+  de: "Bildung"
+
+widget_footer_yang_center_publications:
+  en: "Publications"
+  de: "Publikationen"
+
+widget_footer_explore_more_bird_cams:
+  en: "Bird Cams"
+  de: "Webcams"
+
+widget_footer_explore_more_birds_of_the_world:
+  en: "Birds of the World"
+  de: "Birds of the World"
+
+widget_footer_explore_more_ebird_status_and_trends:
+  en: "eBird Status and Trends"
+  de: "eBird Status und Trends"
+
+widget_footer_explore_more_our_youtube_videos:
+  en: "Our Youtube Videos"
+  de: "Unsere Youtube-Videos"
+
+widget_footer_lifelong_learning_online_courses:
+  en: "Online Courses"
+  de: "Online-Kurse"
+
+widget_footer_lifelong_learning_bird_walks_and_events:
+  en: "Bird Walks & Events"
+  de: "Vogelwanderungen"
+
+widget_footer_lifelong_learning_spring_field_ornithology:
+  en: "Spring Field Ornithology"
+  de: "Frühlings-Ornithologie"
+
+widget_footer_lifelong_learning_k12_education:
+  en: "K–12 Education"
+  de: "K–12 Bildung"
+
+widget_footer_support_our_cause_join_the_lab:
+  en: "Join the Lab"
+  de: "Mitglied werden"
+
+widget_footer_support_our_cause_donate:
+  en: "Donate"
+  de: "Spenden"
+
+widget_footer_support_our_cause_monthly_giving:
+  en: "Monthly Giving"
+  de: "Monatliche Spenden"
+
+widget_footer_support_our_cause_membership_services:
+  en: "Membership Services"
+  de: "Mitgliederdienste"
+
+widget_footer_support_our_cause_shop_for_our_cause:
+  en: "Shop for Our Cause"
+  de: "Einkaufen für den guten Zweck"
+
+widget_footer_about_cornell_lab_of_ornithology:
+  en: "Cornell Lab of Ornithology"
+  de: "Cornell Lab of Ornithology"
+
+widget_footer_about_web_accessibility_assistance:
+  en: "Web Accessibility Assistance"
+  de: "Hilfe zur Web-Barrierefreiheit"
+
+widget_footer_about_privacy_policy:
+  en: "Privacy Policy"
+  de: "Datenschutz"
+
+widget_footer_about_terms_of_use:
+  en: "Terms of Use"
+  de: "Nutzungsbedingungen"
+
+widget_footer_botanical_garden_chemnitz_about:
+  en: "About"
+  de: "Infos"
+
+widget_footer_botanical_garden_chemnitz_history:
+  en: "History"
+  de: "Geschichte"
+
+widget_footer_botanical_garden_chemnitz_school_biology_center:
+  en: "School Biology Center"
+  de: "Schulbiologiezentrum"
+
+widget_footer_botanical_garden_chemnitz_park_map:
+  en: "Park Map"
+  de: "Parkplan"
+
+widget_footer_oekofor_about_us:
+  en: "About us"
+  de: "Infos"
+
+widget_footer_oekofor_services:
+  en: "Services"
+  de: "Dienstleistungen"
+
+widget_footer_oekofor_ecopi:
+  en: "ecoPi"
+  de: "ecoPi"
+
+widget_footer_oekofor_contact:
+  en: "Contact"
+  de: "Kontakt"
+
+widget_footer_birdlife_projects:
+  en: "Projects"
+  de: "Projekte"
+
+widget_footer_birdlife_visitor_centers:
+  en: "Visitor centers"
+  de: "Besucherzentren"
+
+widget_footer_birdlife_membership:
+  en: "Membership"
+  de: "Mitgliedschaft"
+
+widget_footer_birdlife_support_our_work:
+  en: "Support our work"
+  de: "Unterstützen Sie uns"
+
+widget_footer_tu_chemnitz_university:
+  en: "University"
+  de: "Universität"
+
+widget_footer_tu_chemnitz_degree_programs:
+  en: "Degree Programs"
+  de: "Studiengänge"
+
+widget_footer_tu_chemnitz_international_office:
+  en: "International Office"
+  de: "Internationales"
+
+widget_footer_tu_chemnitz_research:
+  en: "Research"
+  de: "Forschung"
+
+widget_footer_tu_chemnitz_computer_science:
+  en: "Computer Science"
+  de: "Informatik"
 
 # Data processor strings
 dp_recorder_status_sleeping:
