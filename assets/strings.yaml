@@ -150,6 +150,18 @@ recorder_table_header_audio:
   en: "Audio"
   de: "Audio"
 
+species_table_header_recorder:
+  en: "Recorder"
+  de: "Rekorder"
+
+species_hourly_activity:
+  en: "Hourly activity (past month)"
+  de: "Stündliche Aktivität (letzter Monat)"
+
+species_learn_more:
+  en: "Learn more"
+  de: "Mehr Infos"
+
 recorder_total_detections:
   en: "total detections"
   de: "Detektionen gesamt"

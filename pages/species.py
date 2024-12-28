@@ -9,6 +9,7 @@ import config as cfg
 from widgets.popup_player import popup_player
 from utils import data_processor as dp
 from utils import plots
+from utils.strings import Strings
 
 def get_confidence_color(confidence):
     if confidence < 33:
@@ -25,31 +26,33 @@ def get_confidence_color(confidence):
         return "#296239"
 
 def create_table_headers(locale):
+    strings = Strings(locale)
     return html.Thead(
         html.Tr([
             html.Th([
                 html.Div([
-                    "Date",
+                    strings.get('recorder_table_header_date'),
                     html.I(className="bi bi-arrow-down-up")
                 ], className="sortable-header")
             ], id="date-header", n_clicks=0),
             html.Th([
                 html.Div([
-                    "Score",
+                    strings.get('recorder_table_header_score'),
                     html.I(className="bi bi-arrow-down-up")
                 ], className="sortable-header")
             ], id="score-header", n_clicks=0),
             html.Th([
                 html.Div([
-                    "Recorder",
+                    strings.get('species_table_header_recorder'),
                     html.I(className="bi bi-arrow-down-up")
                 ], className="sortable-header")
             ], id="recorder-header", n_clicks=0),
-            html.Th("Audio"),
+            html.Th(strings.get('recorder_table_header_audio')),
         ])
     )
 
 def species_page_header(species_data, locale):
+    strings = Strings(locale)
     return html.Div(
         [
             html.Img(src=species_data["image_url_highres"], className="species-header-image"),
@@ -64,7 +67,7 @@ def species_page_header(species_data, locale):
                             width=9,
                         ),
                         dbc.Col(
-                            html.H6(f"Photo: {species_data['image_author']}", className="very-small-text species-overlay-text"),
+                            html.H6(f"{strings.get('misc_photo')}: {species_data['image_author']}", className="very-small-text species-overlay-text"),
                             width=3,
                             className="d-flex align-items-end justify-content-end"
                         ),
@@ -79,7 +82,7 @@ def species_page_header(species_data, locale):
 
 def display_species_page(species_id, locale):
     species_data = dp.get_species_data(species_id, locale)
-    
+    strings = Strings(locale)
     return html.Div([
         dcc.Store(id="species-id-store", data=species_id),
         species_page_header(species_data, locale),
@@ -92,9 +95,9 @@ def display_species_page(species_id, locale):
             dbc.Container(
                 [
                     html.Div(id="species-info-row"),
-                    html.H5("Hourly activity (past month):", className="recent-detections-heading"),
+                    html.H5(f"{strings.get('species_hourly_activity')}:", className="recent-detections-heading"),
                     html.Div(id="species-activity-plot"),
-                    html.H5("Recent detections:", className="recent-detections-heading"),
+                    html.H5(f"{strings.get('det_recent_detections')}:", className="recent-detections-heading"),
                     dbc.Table(
                         [
                             create_table_headers(locale),
@@ -135,6 +138,7 @@ def register_species_callbacks(app):
     def update_species_content(species_id, locale):
         if not species_id:
             raise PreventUpdate
+        strings = Strings(locale)
 
         # Load all required data
         species_data = dp.get_species_data(species_id, locale)
@@ -145,14 +149,14 @@ def register_species_callbacks(app):
         # Create info row
         info_row = dbc.Row([
             dbc.Col([
-                html.H5(f"{total_detections:,} total detections"),
+                html.H5(f"{total_detections:,} {strings.get('recorder_total_detections')}"),
                 html.H6([
                     html.I(className="bi bi-clock"),
-                    f" {dp.date_to_last_seen(species_stats[0]['datetime'], time_format=cfg.TIME_FORMAT) if species_stats else 'N/A'}"
+                    f" {dp.date_to_last_seen(species_stats[0]['datetime'], time_format=cfg.TIME_FORMAT, locale=locale) if species_stats else 'N/A'}"
                 ], className="small-text"),
             ], width=9, xs=7),
             dbc.Col(
-                html.A("Learn more", href=species_data["ebird_url"], 
+                html.A(strings.get('species_learn_more'), href=species_data["ebird_url"], 
                       target="_blank", className="btn btn-href learn-more-btn"),
                 width=3, xs=5,
                 className="d-flex align-items-start justify-content-end"
