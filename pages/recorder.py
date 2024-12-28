@@ -211,6 +211,8 @@ def register_recorder_callbacks(app):
             detection_data["common_name"] = detection["common_name"]
             detection_data["scientific_name"] = detection["scientific_name"]
             detection_data["confidence"] = detection["confidence"] * 10
+            detection_data['datetime'] = f"{strings.get('recorder_table_header_date')}: {detection_data['datetime']}"
+            detection_data['recorder_field_id'] = f"{strings.get('species_table_header_recorder')}: #{detection_data['recorder_field_id']}"
             data_list.append(detection_data)
 
         stored_data = {
@@ -242,13 +244,16 @@ def register_recorder_callbacks(app):
         ],
         [
             State("recorder-stats-store", "data"),
-            State("recorder-data-store", "data")
+            State("recorder-data-store", "data"),
+            State("locale-store", "data")
         ],
         prevent_initial_call=True
     )
-    def sort_table(date_clicks, score_clicks, species_clicks, recorder_stats, recorder_data):
+    def sort_table(date_clicks, score_clicks, species_clicks, recorder_stats, recorder_data, locale):
         if not recorder_stats:
             raise PreventUpdate
+
+        strings = Strings(locale)
 
         ctx = callback_context
         if not ctx.triggered:
@@ -309,8 +314,14 @@ def register_recorder_callbacks(app):
                 ], className="text-center"),
             ]))
             
-            detection['confidence'] = detection['confidence'] * 10
-            data_list.append(detection)
+            # Create new data_list with sorted order
+            detection_data = detection.copy()
+            detection_data["common_name"] = detection["common_name"]
+            detection_data["scientific_name"] = detection["scientific_name"]
+            detection_data["confidence"] = detection["confidence"] * 10
+            detection_data['datetime'] = f"{strings.get('recorder_table_header_date')}: {detection_data['datetime']}"
+            detection_data['recorder_field_id'] = f"{strings.get('species_table_header_recorder')}: #{detection_data['recorder_field_id']}"
+            data_list.append(detection_data)
 
         return [
             rows,

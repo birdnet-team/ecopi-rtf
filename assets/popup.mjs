@@ -76,9 +76,9 @@ function openPlayer(index) {
     const sciNameElement = document.querySelector("#popup-sci-name");
     sciNameElement.textContent = data.scientific_name;
     const dateElement = document.querySelector("#popup-date");
-    dateElement.textContent = `Date: ${data.datetime}`;
+    dateElement.textContent = `${data.datetime}`;
     const recorderElement = document.querySelector("#popup-recorder");
-    recorderElement.textContent = `Recorder: #${data.recorder_field_id}`;
+    recorderElement.textContent = `${data.recorder_field_id}`;
     const confidenceElement = document.querySelector("#popup-confidence-text");
     confidenceElement.textContent = `${(data.confidence / 10).toFixed(1)}`;
     const confidenceBar = document.querySelector("#popup-confidence-bar");

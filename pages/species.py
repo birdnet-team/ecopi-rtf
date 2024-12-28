@@ -138,6 +138,7 @@ def register_species_callbacks(app):
     def update_species_content(species_id, locale):
         if not species_id:
             raise PreventUpdate
+        
         strings = Strings(locale)
 
         # Load all required data
@@ -212,6 +213,8 @@ def register_species_callbacks(app):
             detection_data["common_name"] = species_data["common_name"]
             detection_data["scientific_name"] = species_data["scientific_name"]
             detection_data["confidence"] = detection_data["confidence"] * 10
+            detection_data['datetime'] = f"{strings.get('recorder_table_header_date')}: {detection_data['datetime']}"
+            detection_data['recorder_field_id'] = f"{strings.get('species_table_header_recorder')}: #{detection_data['recorder_field_id']}"
             data_list.append(detection_data)      
 
         # Store data for later use (moved after data_list creation)
@@ -245,13 +248,16 @@ def register_species_callbacks(app):
         ],
         [
             State("species-stats-store", "data"),
-            State("species-data-store", "data")
+            State("species-data-store", "data"),
+            State("locale-store", "data")
         ],
         prevent_initial_call=True
     )
-    def sort_table(date_clicks, score_clicks, recorder_clicks, species_stats, species_data):
+    def sort_table(date_clicks, score_clicks, recorder_clicks, species_stats, species_data, locale):
         if not species_stats:
             raise PreventUpdate
+
+        strings = Strings(locale)
 
         ctx = callback_context
         if not ctx.triggered:
@@ -307,6 +313,8 @@ def register_species_callbacks(app):
             detection_data["common_name"] = species_data["common_name"]
             detection_data["scientific_name"] = species_data["scientific_name"]
             detection_data["confidence"] = detection_data["confidence"] * 10
+            detection_data['datetime'] = f"{strings.get('recorder_table_header_date')}: {detection_data['datetime']}"
+            detection_data['recorder_field_id'] = f"{strings.get('species_table_header_recorder')}: #{detection_data['recorder_field_id']}"
             data_list.append(detection_data)
 
         # Return both rows and updated audio data list
