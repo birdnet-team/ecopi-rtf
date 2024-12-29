@@ -184,7 +184,7 @@ def register_recorder_callbacks(app):
                             ),
                             html.Span(
                                 detection["common_name"],
-                                className="species-name"
+                                className="species-name truncate"  # Apply the truncate class here
                             ),
                             html.Span(
                                 html.I(className="bi bi-bar-chart-fill hide-on-small-screens"),
@@ -292,7 +292,7 @@ def register_recorder_callbacks(app):
                             ),
                             html.Span(
                                 detection["common_name"],
-                                className="species-name"
+                                className="species-name truncate"  # Apply the truncate class here
                             ),
                             html.Span(
                                 html.I(className="bi bi-bar-chart-fill hide-on-small-screens"),
