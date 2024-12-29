@@ -250,7 +250,7 @@ recorder_table_header_score:
   en: "Score"
   de: "Score"
   fr: "Score"
-  it: "Punteggio"
+  it: "Punti"
   cs: "Skóre"
 
 recorder_table_header_species:
@@ -270,8 +270,8 @@ recorder_table_header_audio:
 species_table_header_recorder:
   en: "Recorder"
   de: "Rekorder"
-  fr: "Enregistreur"
-  it: "Registratore"
+  fr: "Unité"
+  it: "Unità"
   cs: "Rekordér"
 
 species_hourly_activity:
