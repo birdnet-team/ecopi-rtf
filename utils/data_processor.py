@@ -21,17 +21,20 @@ def get_current_week():
 
 def date_to_last_seen(date, time_format='24h', locale='en'):
     strings = Strings(locale)
-    try:
-        if time_format == '12h':
-            date = datetime.strptime(date, cfg.DATE_FORMAT + ' - %I:%M %p')
-        else:
-            date = datetime.strptime(date, cfg.DATE_FORMAT + ' - %H:%M')
-    except ValueError:
-        # Try the other format if the first one fails
+    date_formats = [
+        cfg.DATE_FORMAT + ' - %I:%M %p',
+        cfg.DATE_FORMAT + ' - %H:%M',
+        '%m/%d/%Y - %I:%M %p',
+        '%m/%d/%Y - %H:%M'
+    ]
+    for fmt in date_formats:
         try:
-            date = datetime.strptime(date, cfg.DATE_FORMAT + ' - %H:%M')
+            date = datetime.strptime(date, fmt)
+            break
         except ValueError:
-            date = datetime.strptime(date, cfg.DATE_FORMAT + ' - %I:%M %p')
+            continue
+    else:
+        raise ValueError(f"Date {date} does not match any expected format.")
     
     delta = datetime.now() - date
     
