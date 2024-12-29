@@ -136,24 +136,26 @@ def clean_cache(cache_dir, max_age=7200):
 def make_request(url, headers, params, cache_timeout=3600):
     
     # Does the cache directory exist?
-    if not os.path.exists(cfg.CACHE_DIR):
-        os.makedirs(cfg.CACHE_DIR, exist_ok=True)
+    cache_dir = cfg.make_cache_dir(cfg.CACHE_DIR)
         
     # Clean the cache
-    clean_cache(cfg.CACHE_DIR)
+    clean_cache(cache_dir)
     
     # Create a unique cache key
     cache_key = hashlib.md5((url + json.dumps(headers) + json.dumps(params)).encode()).hexdigest()
-    cache_file = os.path.join(cfg.CACHE_DIR, cache_key)
+    cache_file = os.path.join(cache_dir, cache_key)
 
     # Check if the cache file exists and is still valid
     if os.path.exists(cache_file):
-        with open(cache_file, 'r') as f:
-            cached_data = json.load(f)
-            timestamp = cached_data['timestamp']
-            if time.time() - timestamp < cache_timeout:
-                #print(f"Using cached data for {url}")
-                return cached_data['response']
+        try:
+            with open(cache_file, 'r') as f:
+                cached_data = json.load(f)
+                timestamp = cached_data['timestamp']
+                if time.time() - timestamp < cache_timeout:
+                    #print(f"Using cached data for {url}")
+                    return cached_data['response']
+        except:
+            pass
 
     # Send the request
     response = requests.get(url, headers=headers, params=params)
@@ -330,7 +332,6 @@ def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=5):
     return recorder_data
 
 def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-1, min_count=5):
-    
     url = cfg.API_BASE_URL + 'meta/project/' + cfg.PROJECT_NAME + '/detections/recorderspeciescounts/'
     
     headers = {
@@ -345,21 +346,31 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
     if days < 0:
         params['start_date'] = datetime(2023, 1, 1).strftime('%Y-%m-%d')
     else:
-        params['start_date'] = (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%d')
+        params['start_date'] = (datetime.now(UTC).replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
     
     response = make_request(url, headers, params, cache_timeout=3600)
     
     # Count entries
     detections = {}
     for item in response:
-        if len(recorder_list) == 0 or item['recorder_field_id'] in recorder_list:
-            if len(species_list) == 0 or item['species_code'] in species_list:
-                if item['species_code'] not in detections:
-                    detections[item['species_code']] = 0
-                detections[item['species_code']] += item['species_count']
+        recorder_id = item['recorder_field_id']
+        species_code = item['species_code']
+        species_count = item['species_count']
         
-    # Sort by count
-    detections = {k: v for k, v in sorted(detections.items(), key=lambda item: item[1], reverse=True)}
+        if len(recorder_list) == 0 or recorder_id in recorder_list:
+            if len(species_list) == 0 or species_code in species_list:
+                if species_code not in detections:
+                    detections[species_code] = {'total_count': 0, 'recorders': {}}
+                
+                detections[species_code]['total_count'] += species_count
+                
+                if recorder_id not in detections[species_code]['recorders']:
+                    detections[species_code]['recorders'][recorder_id] = 0
+                
+                detections[species_code]['recorders'][recorder_id] += species_count
+    
+    # Sort by total count
+    detections = {k: v for k, v in sorted(detections.items(), key=lambda item: item[1]['total_count'], reverse=True)}
     
     # Only keep non-blacklisted species
     detections = {k: v for k, v in detections.items() if not is_blacklisted(k)}
@@ -368,10 +379,10 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
     if days == 1:
         detections = {k: v for k, v in detections.items() if get_species_frequency(k) > 0}
     
-    # Only keep species with count >= min_count
-    detections = {k: v for k, v in detections.items() if v >= min_count}
+    # Only keep species with total count >= min_count
+    detections = {k: v for k, v in detections.items() if v['total_count'] >= min_count}
     
-    total_detections = {'total_detections': sum(detections.values()), 'species_counts': detections}
+    total_detections = {'total_detections': sum(v['total_count'] for v in detections.values()), 'species_counts': detections}
 
     return total_detections
 
@@ -664,10 +675,10 @@ if __name__ == '__main__':
     
     #print(get_recorder_state(5))
     #print(get_recorder_group())
-    for i in range(1, 13):
-        print(f"#{i}: {get_recorder_location(i)}")
+    #for i in range(1, 13):
+    #    print(f"#{i}: {get_recorder_location(i)}")
     
-    #print(get_total_detections(min_conf=0.5, species_list=['norcar'], days=-1))
+    print(get_total_detections(min_conf=0.5, species_list=['eurnut2'], days=-1))
     #print(get_total_detections(min_conf=0.5, days=-1, recorder_list=[9]))
     
     

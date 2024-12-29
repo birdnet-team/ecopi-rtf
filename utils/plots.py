@@ -228,6 +228,16 @@ def get_leaflet_map(data):
     df['lat'] = df['id'].apply(lambda x: cfg.RECORDERS[x]['lat'])
     df['lon'] = df['id'].apply(lambda x: cfg.RECORDERS[x]['lon'])
     
+    # Normalize and apply log scale to detections
+    if 'detections' not in df.columns:
+        df['normalized_detections'] = 2  # Default value if no detections are available
+    else:    
+          # np.log1p is used to avoid log(0)
+        # Normalize detections to fall between 1 and 6 for radius mapping
+        detections_min = df['detections'].min()
+        detections_max = df['detections'].max()
+        df['normalized_detections'] = 1 + (np.log1p(df['detections']) - np.log1p(detections_min)) * 4 / (np.log1p(detections_max) - np.log1p(detections_min))
+    
     # Calculate the bounding box for the recorder locations
     min_lat = df['lat'].min()
     max_lat = df['lat'].max()
@@ -242,16 +252,14 @@ def get_leaflet_map(data):
     markers = [
         dl.CircleMarker(
             center=[row['lat'], row['lon']],
-            radius=12,
-            color=row['status_color'],
+            radius=row['normalized_detections'] * 6,  # Adjust the multiplier as needed
+            color='#69A0C2' if 'detections' in row else row['status_color'],
             fill=True,
             fillOpacity=0.7,
             children=[
                 dl.Tooltip([
-                    html.Div([
-                        html.B(f"#{row['id']}"),
-                        #html.Br(),
-                        #f"{row['current_status']}",
+                    html.Div([                        
+                        html.B(f"#{row['id']} ({row['detections']})") if 'detections' in row else html.B(f"#{row['id']}"),
                     ])
                 ], permanent=True)
             ]
