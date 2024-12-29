@@ -161,10 +161,10 @@ def make_request(url, headers, params, cache_timeout=3600):
         response_data = response.json()
     except:
         # Empty response
-        return []
+        response_data = []
 
     # Cache the response if it's not empty
-    if response_data:
+    if len(response_data) > 0:
         with open(cache_file, 'w') as f:
             json.dump({'timestamp': time.time(), 'response': response_data}, f)
 
