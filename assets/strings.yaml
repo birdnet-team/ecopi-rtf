@@ -4,601 +4,1069 @@ projects:
     project_main_title:
       en: "Sapsucker Woods Acoustic Monitoring Project"
       de: "Sapsucker Woods Acoustic Monitoring Project"
+      fr: "Sapsucker Woods Acoustic Monitoring Project"
+      it: "Sapsucker Woods Acoustic Monitoring Project"
+      cs: "Sapsucker Woods Acoustic Monitoring Project"
     project_subtitle:
       en: "AI-powered acoustic monitoring"
       de: "KI-gestütztes akustisches Monitoring"
+      fr: "Surveillance acoustique alimentée par l'IA"
+      it: "Monitoraggio acustico alimentato dall'IA"
+      cs: "Akustické monitorování poháněné AI"
     project_subtitle_desc:
       en: "We listen to the sounds of the animals in Sapsucker Woods and track species diversity over time."
       de: "Wir lauschen den Stimmen der Tiere in den Sapsucker Woods und verfolgen die Artenvielfalt im Laufe der Zeit."
+      fr: "Nous écoutons les sons des animaux dans les Sapsucker Woods et suivons la diversité des espèces au fil du temps."
+      it: "Ascoltiamo i suoni degli animali nei Sapsucker Woods e monitoriamo la diversità delle specie nel tempo."
+      cs: "Posloucháme zvuky zvířat v Sapsucker Woods a sledujeme rozmanitost druhů v průběhu času."
     project_goal:
       en: "The Sapsucker Woods Acoustic Monitoring Project combines technology and visitor engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Sapsucker Woods, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area."
       de: "Das Sapsucker Woods Acoustic Monitoring Project kombiniert Technologie und die Einbeziehung von Besuchern, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren. Die Besucher können den Klängen der Sapsucker Woods lauschen und erfahren, wie moderne Instrumente zur Erforschung der Tierwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt der Tierwelt in diesem Areal zu entwickeln."
+      fr: "Le Projet de Surveillance Acoustique de Sapsucker Woods combine technologie et engagement des visiteurs pour démontrer la puissance de la surveillance acoustique dans la compréhension du monde naturel. En écoutant les sons de Sapsucker Woods, les visiteurs peuvent explorer comment des outils avancés sont utilisés pour étudier la faune et apprécier davantage la diversité des oiseaux dans la région."
+      it: "Il Progetto di Monitoraggio Acustico di Sapsucker Woods combina tecnologia e coinvolgimento dei visitatori per mostrare il potere del monitoraggio acustico nella comprensione del mondo naturale. Ascoltando i suoni dei Sapsucker Woods, i visitatori possono esplorare come vengono utilizzati strumenti avanzati per studiare la fauna selvatica e apprezzare meglio la diversità degli uccelli nella zona."
+      cs: "Projekt Akustického Monitorování Sapsucker Woods kombinuje technologii a zapojení návštěvníků, aby ukázal sílu akustického monitorování při porozumění přírodnímu světu. Posloucháním zvuků Sapsucker Woods mohou návštěvníci prozkoumat, jak jsou pokročilé nástroje používány ke studiu divoké přírody a lépe ocenit rozmanitost ptactva v oblasti."
   amic:
     project_main_title:
       en: "Acoustic Monitoring in Chemnitz"
       de: "Akustisches Monitoring in Chemnitz"
+      fr: "Acoustic Monitoring in Chemnitz"
+      it: "Acoustic Monitoring in Chemnitz"
+      cs: "Acoustic Monitoring in Chemnitz"
     project_subtitle:
       en: "AI-powered acoustic monitoring"
       de: "KI-gestütztes akustisches Monitoring"
+      fr: "Surveillance acoustique alimentée par l'IA"
+      it: "Monitoraggio acustico alimentato dall'IA"
+      cs: "Akustické monitorování poháněné AI"
     project_subtitle_desc:
       en: "We listen to the sounds of birds and investigate how traffic noise impacts their natural behavior."
       de: "Wir lauschen den Stimmen der Vögel und untersuchen, wie Verkehrslärm ihr natürliches Verhalten beeinflusst."
+      fr: "Nous écoutons les sons des oiseaux et étudions comment le bruit du trafic affecte leur comportement naturel."
+      it: "Ascoltiamo i suoni degli uccelli e studiamo come il rumore del traffico influisce sul loro comportamento naturale."
+      cs: "Posloucháme zvuky ptáků a zkoumáme, jak dopravní hluk ovlivňuje jejich přirozené chování."
     project_goal:
       en: "The Acoustic Monitoring in Chemnitz project combines technology and visitor engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of the birds in the Botanical Garden, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area."
       de: "Das Projekt 'Akustisches Monitoring in Chemnitz' kombiniert Technologie und die Einbeziehung der Besucher, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren. Besucher können den Stimmen der Vögel des Botanischen Gartens lauschen und erfahren, wie moderne Instrumente zur Erforschung der Vogelwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt in diesem Areal zu entwickeln."
+      fr: "Le projet de Surveillance Acoustique à Chemnitz combine technologie et engagement des visiteurs pour démontrer la puissance de la surveillance acoustique dans la compréhension du monde naturel. En écoutant les sons des oiseaux dans le Jardin Botanique, les visiteurs peuvent explorer comment des outils avancés sont utilisés pour étudier la faune et apprécier davantage la diversité des oiseaux dans la région."
+      it: "Il progetto di Monitoraggio Acustico a Chemnitz combina tecnologia e coinvolgimento dei visitatori per mostrare il potere del monitoraggio acustico nella comprensione del mondo naturale. Ascoltando i suoni degli uccelli nel Giardino Botanico, i visitatori possono esplorare come vengono utilizzati strumenti avanzati per studiare la fauna selvatica e apprezzare meglio la diversità degli uccelli nella zona."
+      cs: "Projekt Akustického Monitorování v Chemnitzu kombinuje technologii a zapojení návštěvníků, aby ukázal sílu akustického monitorování při porozumění přírodnímu světu. Posloucháním zvuků ptáků v Botanické zahradě mohou návštěvníci prozkoumat, jak jsou pokročilé nástroje používány ke studiu divoké přírody a lépe ocenit rozmanitost ptactva v oblasti."
   neeri:
     project_main_title:
       en: "Neeracherried Acoustic Monitoring Project"
       de: "Akustisches Monitoring im Neeracherried"
+      fr: "Projet de Surveillance Acoustique de Neeracherried"
+      it: "Progetto di Monitoraggio Acustico di Neeracherried"
+      cs: "Projekt Akustického Monitorování Neeracherried"
     project_subtitle:
       en: "AI-powered acoustic monitoring"
       de: "KI-gestütztes akustisches Monitoring"
+      fr: "Surveillance acoustique alimentée par l'IA"
+      it: "Monitoraggio acustico alimentato dall'IA"
+      cs: "Akustické monitorování poháněné AI"
     project_subtitle_desc:
       en: "We listen to the sounds of the birds in Neeracherried and track species diversity over time."
       de: "Wir lauschen den Stimmen der Vögel im Neeracherried und verfolgen die Artenvielfalt im Laufe der Zeit."
+      fr: "Nous écoutons les sons des oiseaux à Neeracherried et suivons la diversité des espèces au fil du temps."
+      it: "Ascoltiamo i suoni degli uccelli a Neeracherried e monitoriamo la diversità delle specie nel tempo."
+      cs: "Posloucháme zvuky ptáků v Neeracherried a sledujeme rozmanitost druhů v průběhu času."
     project_goal:
       en: "The Neeracherried Acoustic Monitoring Project combines technology and visitor engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Neeracherried, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area."
       de: "Das akustische Monitoring-Projekt im Neeracherried kombiniert Technologie und die Einbeziehung von Besuchern, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren.Besucher können den Stimmen der Vögel des Neeracherried lauschen und erfahren, wie moderne Instrumente zur Erforschung der Vogelwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt in diesem Areal zu entwickeln."
+      fr: "Le Projet de Surveillance Acoustique de Neeracherried combine technologie et engagement des visiteurs pour démontrer la puissance de la surveillance acoustique dans la compréhension du monde naturel. En écoutant les sons de Neeracherried, les visiteurs peuvent explorer comment des outils avancés sont utilisés pour étudier la faune et apprécier davantage la diversité des oiseaux dans la région."
+      it: "Il Progetto di Monitoraggio Acustico di Neeracherried combina tecnologia e coinvolgimento dei visitatori per mostrare il potere del monitoraggio acustico nella comprensione del mondo naturale. Ascoltando i suoni di Neeracherried, i visitatori possono esplorare come vengono utilizzati strumenti avanzati per studiare la fauna selvatica e apprezzare meglio la diversità degli uccelli nella zona."
+      cs: "Projekt Akustického Monitorování Neeracherried kombinuje technologii a zapojení návštěvníků, aby ukázal sílu akustického monitorování při porozumění přírodnímu světu. Posloucháním zvuků Neeracherried mohou návštěvníci prozkoumat, jak jsou pokročilé nástroje používány ke studiu divoké přírody a lépe ocenit rozmanitost ptactva v oblasti."
 
 # Habitat strings
 habitat_urban:
   en: "Urban"
   de: "Urban"
+  fr: "Urbain"
+  it: "Urbano"
+  cs: "Městský"
 
 habitat_forest:
   en: "Forest"
   de: "Wald"
+  fr: "Forêt"
+  it: "Foresta"
+  cs: "Les"
 
 habitat_forest_clearing:
   en: "Forest clearing"
   de: "Waldlichtung"
+  fr: "Clairière forestière"
+  it: "Radura forestale"
+  cs: "Lesní mýtina"
 
 habitat_raised_bog:
   en: "Raised bog"
   de: "Hochmoor"
+  fr: "Tourbière surélevée"
+  it: "Torbiere rialzate"
+  cs: "Vyvýšené rašeliniště"
 
 habitat_shrubs_and_trees:
   en: "Shrubs & trees"
   de: "Sträucher & Bäume"
+  fr: "Arbustes & arbres"
+  it: "Arbusti & alberi"
+  cs: "Keře & stromy"
 
 habitat_shrubs_and_meadow:
   en: "Shrubs & meadow"
   de: "Sträucher & Wiese"
+  fr: "Arbustes & prairie"
+  it: "Arbusti & prato"
+  cs: "Keře & louka"
 
 habitat_shrubs_and_pond:
   en: "Shrubs & pond"
   de: "Sträucher & Teich"
+  fr: "Arbustes & étang"
+  it: "Arbusti & stagno"
+  cs: "Keře & rybník"
 
 habitat_trees_and_pond:
   en: "Trees & pond"
   de: "Bäume & Teich"
+  fr: "Arbres & étang"
+  it: "Alberi & stagno"
+  cs: "Stromy & rybník"
 
 habitat_feeder_garden_and_pond:
   en: "Feeder garden & pond"
   de: "Futterplatz & Teich"
+  fr: "Jardin de nourrissage & étang"
+  it: "Giardino di alimentazione & stagno"
+  cs: "Krmný zahrada & rybník"
 
 # General site strings
 main_page_title:
   en: "Main Page"
   de: "Startseite"
+  fr: "Page Principale"
+  it: "Pagina Principale"
+  cs: "Hlavní Stránka"
 
 main_listen_live:
   en: "Listen live"
   de: "Live zuhören"
+  fr: "Écouter en direct"
+  it: "Ascolta dal vivo"
+  cs: "Poslouchejte živě"
 
 main_most_active_species:
   en: "Most active species (7 days)"
   de: "Aktivste Arten (7 Tage)"
+  fr: "Espèces les plus actives (7 jours)"
+  it: "Specie più attive (7 giorni)"
+  cs: "Nejaktivnější druhy (7 dní)"
 
 main_recent_detections:
   en: "Recent detections"
   de: "Aktuelle Detektionen"
+  fr: "Détections récentes"
+  it: "Rilevamenti recenti"
+  cs: "Nedávné detekce"
 
 main_recording_units:
   en: "Recording units"
   de: "Akustische Rekorder"
+  fr: "Unités d'enregistrement"
+  it: "Unità di registrazione"
+  cs: "Záznamové jednotky"
 
 main_diy_backyard_monitoring:
   en: "DIY backyard monitoring"
   de: "DIY Gartenmonitoring"
+  fr: "Surveillance de jardin DIY"
+  it: "Monitoraggio fai-da-te del giardino"
+  cs: "DIY monitorování zahrady"
 
 main_haikubox:
   en: "Haikubox"
   de: "Haikubox"
+  fr: "Haikubox"
+  it: "Haikubox"
+  cs: "Haikubox"
 
 main_haikubox_description:
   en: "Haikubox is an innovative tool designed for bird enthusiasts and conservationists who want to keep track of the birds visiting their backyards. Using advanced AI-powered sound recognition, Haikubox listens to bird calls and automatically identifies species in real-time. It's a hands-free solution that provides continuous monitoring, making it ideal for anyone curious about local bird activity without needing to have expert knowledge."
   de: "Haikubox ist ein innovatives Werkzeug für Vogelbegeisterte und Naturliebhaber:innen, die die Vögel in ihrem Garten im Auge behalten möchten. Mit fortschrittlicher KI-gestützter Audio-Erkennung lauscht Haikubox den Vogelrufen und identifiziert automatisch alle Arten in Echtzeit. Haikubox ist eine wartungsarme Lösung, die eine kontinuierliche Überwachung ermöglicht und sich ideal für alle eignet, die sich für die lokale Vogelaktivität interessieren, ohne dabei Spezialwissen zu erfordern."
+  fr: "Haikubox est un outil innovant conçu pour les passionnés d'oiseaux et les conservationnistes qui souhaitent suivre les oiseaux visitant leurs jardins. Utilisant une reconnaissance sonore avancée alimentée par l'IA, Haikubox écoute les chants des oiseaux et identifie automatiquement les espèces en temps réel. C'est une solution mains libres qui offre une surveillance continue, ce qui la rend idéale pour quiconque curieux de l'activité des oiseaux locaux sans avoir besoin de connaissances expertes."
+  it: "Haikubox è uno strumento innovativo progettato per gli appassionati di uccelli e i conservazionisti che vogliono tenere traccia degli uccelli che visitano i loro giardini. Utilizzando il riconoscimento sonoro avanzato alimentato dall'IA, Haikubox ascolta i richiami degli uccelli e identifica automaticamente le specie in tempo reale. È una soluzione senza mani che fornisce un monitoraggio continuo, rendendola ideale per chiunque sia curioso dell'attività degli uccelli locali senza bisogno di conoscenze esperte."
+  cs: "Haikubox je inovativní nástroj navržený pro nadšence do ptáků a ochránce přírody, kteří chtějí sledovat ptáky navštěvující jejich zahrady. Pomocí pokročilého rozpoznávání zvuku poháněného AI Haikubox poslouchá ptačí zpěv a automaticky identifikuje druhy v reálném čase. Je to bezdotykové řešení, které poskytuje nepřetržité monitorování, což je ideální pro každého, kdo se zajímá o místní ptačí aktivitu, aniž by potřeboval odborné znalosti."
 
 main_visit_haikubox_website:
   en: "Visit the Haikubox website"
   de: "Zur Website von Haikubox"
+  fr: "Visitez le site Web de Haikubox"
+  it: "Visita il sito web di Haikubox"
+  cs: "Navštivte web Haikubox"
 
 main_birdweather:
   en: "BirdWeather"
   de: "BirdWeather"
+  fr: "BirdWeather"
+  it: "BirdWeather"
+  cs: "BirdWeather"
 
 main_birdweather_description:
   en: "BirdWeather is an advanced bird monitoring platform that connects bird enthusiasts with real-time data about bird species visiting their area. BirdWeather allows users to identify bird species based on their calls, without the need for expert-level birdwatching knowledge. The platform is designed to provide continuous, automated monitoring, making it a perfect solution for those interested in observing bird activity in their backyard."
   de: "BirdWeather ist eine fortschrittliche Monitoring-Plattform, die Vogelbegeisterte mit Echtzeitdaten über lokale Vogelarten versorgt. BirdWeather ermöglicht es, Vogelarten anhand ihrer Rufe zu identifizieren, ohne dass Spezialwissen über Vogelbeobachtung erforderlich ist. Die Plattform ist so konzipiert, dass sie eine kontinuierliche Überwachung bietet und somit eine perfekte Lösung für alle ist, die sich für die Beobachtung der Vogelaktivität interessieren."
+  fr: "BirdWeather est une plateforme de surveillance des oiseaux avancée qui connecte les passionnés d'oiseaux avec des données en temps réel sur les espèces d'oiseaux visitant leur région. BirdWeather permet aux utilisateurs d'identifier les espèces d'oiseaux en fonction de leurs appels, sans avoir besoin de connaissances expertes en ornithologie. La plateforme est conçue pour fournir une surveillance continue et automatisée, ce qui en fait une solution parfaite pour ceux qui souhaitent observer l'activité des oiseaux dans leur jardin."
+  it: "BirdWeather è una piattaforma avanzata di monitoraggio degli uccelli che collega gli appassionati di uccelli con dati in tempo reale sulle specie di uccelli che visitano la loro area. BirdWeather consente agli utenti di identificare le specie di uccelli in base ai loro richiami, senza la necessità di conoscenze esperte di birdwatching. La piattaforma è progettata per fornire un monitoraggio continuo e automatizzato, rendendola una soluzione perfetta per coloro che sono interessati a osservare l'attività degli uccelli nel loro giardino."
+  cs: "BirdWeather je pokročilá platforma pro monitorování ptáků, která spojuje nadšence do ptáků s daty v reálném čase o druzích ptáků navštěvujících jejich oblast. BirdWeather umožňuje uživatelům identifikovat druhy ptáků podle jejich volání, aniž by potřebovali odborné znalosti o pozorování ptáků. Platforma je navržena tak, aby poskytovala nepřetržité, automatizované monitorování, což z ní činí dokonalé řešení pro ty, kteří se zajímají o pozorování ptačí aktivity ve své zahradě."
 
 main_visit_birdweather_website:
   en: "Visit the BirdWeather website"
   de: "Zur Website von BirdWeather"
+  fr: "Visitez le site Web de BirdWeather"
+  it: "Visita il sito web di BirdWeather"
+  cs: "Navštivte web BirdWeather"
 
 det_recent_detections:
   en: "Recent detections"
   de: "Aktuelle Detektionen"
+  fr: "Détections récentes"
+  it: "Rilevamenti recenti"
+  cs: "Nedávné detekce"
 
 det_description:
   en: "This list shows randomly selected species detections sorted by confidence score. Click the 'Play' button to listen to the recorded sounds or click the 'Chart' icon to see more stats about this species."
   de: "Diese Liste zeigt zufällig ausgewählte Arten, sortiert nach Konfidenz-Score. Klicken Sie auf die „Play“-Schaltfläche, um die aufgenommenen Stimmen anzuhören, oder klicken Sie auf das „Diagramm“-Symbol, um weitere Statistiken zu dieser Art anzuzeigen."
+  fr: "Cette liste montre des détections d'espèces sélectionnées au hasard triées par score de confiance. Cliquez sur le bouton 'Play' pour écouter les sons enregistrés ou cliquez sur l'icône 'Chart' pour voir plus de statistiques sur cette espèce."
+  it: "Questo elenco mostra rilevamenti di specie selezionati casualmente ordinati per punteggio di fiducia. Clicca sul pulsante 'Play' per ascoltare i suoni registrati o clicca sull'icona 'Chart' per vedere più statistiche su questa specie."
+  cs: "Tento seznam ukazuje náhodně vybrané detekce druhů seřazené podle skóre důvěry. Klikněte na tlačítko 'Play' pro poslech nahraných zvuků nebo klikněte na ikonu 'Chart' pro zobrazení dalších statistik o tomto druhu."
 
 recorder_table_header_date:
   en: "Date"
   de: "Datum"
+  fr: "Date"
+  it: "Data"
+  cs: "Datum"
 
 recorder_table_header_score:
   en: "Score"
   de: "Score"
+  fr: "Score"
+  it: "Punteggio"
+  cs: "Skóre"
 
 recorder_table_header_species:
   en: "Species"
   de: "Art"
+  fr: "Espèce"
+  it: "Specie"
+  cs: "Druh"
 
 recorder_table_header_audio:
   en: "Audio"
   de: "Audio"
+  fr: "Audio"
+  it: "Audio"
+  cs: "Audio"
 
 species_table_header_recorder:
   en: "Recorder"
   de: "Rekorder"
+  fr: "Enregistreur"
+  it: "Registratore"
+  cs: "Rekordér"
 
 species_hourly_activity:
   en: "Hourly activity (past month)"
   de: "Stündliche Aktivität (letzter Monat)"
+  fr: "Activité horaire (mois dernier)"
+  it: "Attività oraria (ultimo mese)"
+  cs: "Hodinová aktivita (poslední měsíc)"
 
 species_learn_more:
   en: "Learn more"
   de: "Mehr Infos"
+  fr: "En savoir plus"
+  it: "Scopri di più"
+  cs: "Zjistit více"
 
 recorder_total_detections:
   en: "total detections"
   de: "Detektionen gesamt"
+  fr: "détections totales"
+  it: "rilevamenti totali"
+  cs: "celkem detekcí"
 
 about_team_role_project_lead:
   en: "Project lead"
-  de: "Projekteitung"
+  de: "Projektleitung"
+  fr: "Chef de projet"
+  it: "Responsabile del progetto"
+  cs: "Vedoucí projektu"
 
 about_team_role_project_lead_and_web:
   en: "Project lead & web development"
-  de: "Projekteitung & Web-Entwicklung"
+  de: "Projektleitung & Web-Entwicklung"
+  fr: "Chef de projet & développement web"
+  it: "Responsabile del progetto & sviluppo web"
+  cs: "Vedoucí projektu & vývoj webu"
 
 about_team_role_backend:
   en: "Backend development"
   de: "Backend-Entwicklung"
+  fr: "Développement backend"
+  it: "Sviluppo backend"
+  cs: "Vývoj backendu"
 
 about_team_role_design:
   en: "Visual design"
   de: "Grafikdesign"
+  fr: "Design visuel"
+  it: "Design visivo"
+  cs: "Grafický design"
 
 about_team_role_web:
   en: "Web development"
   de: "Web-Entwicklung"
+  fr: "Développement web"
+  it: "Sviluppo web"
+  cs: "Vývoj webu"
 
 about_team_role_hardware:
   en: "Hardware programming"
   de: "Hardware-Programmierung"
+  fr: "Programmation matérielle"
+  it: "Programmazione hardware"
+  cs: "Programování hardwaru"
 
 about_team_role_field_ops:
   en: "Field ops"
   de: "Field ops"
+  fr: "Opérations sur le terrain"
+  it: "Operazioni sul campo"
+  cs: "Field ops"
 
 about_headline_project_goals:
   en: "Project goals"
   de: "Projektziele"
+  fr: "Objectifs du projet"
+  it: "Obiettivi del progetto"
+  cs: "Cíle projektu"
 
 about_headline_acoustic_monitoring:
   en: "Acoustic monitoring"
   de: "Akustisches Monitoring"
+  fr: "Surveillance acoustique"
+  it: "Monitoraggio acustico"
+  cs: "Akustické monitorování"
 
 about_headline_recording_units:
   en: "Recording units"
   de: "Akustische Rekorder"
+  fr: "Unités d'enregistrement"
+  it: "Unità di registrazione"
+  cs: "Záznamové jednotky"
 
 about_headline_ai_sound_id:
   en: "AI-powered sound ID"
   de: "KI-gestützte Arterkennung"
+  fr: "Identification sonore par IA"
+  it: "Identificazione sonora con IA"
+  cs: "AI-poháněná identifikace zvuku"
 
 about_headline_meet_the_team:
   en: "Meet the team"
   de: "Das Team"
+  fr: "Rencontrez l'équipe"
+  it: "Incontra il team"
+  cs: "Seznamte se s týmem"
 
 about_headline_partners:
   en: "Partners"
   de: "Partner"
+  fr: "Partenaires"
+  it: "Partner"
+  cs: "Partneři"
 
 about_headline_funding:
   en: "Funding"
   de: "Förderung"
+  fr: "Financement"
+  it: "Finanziamento"
+  cs: "Financování"
 
 about_headline_contact:
   en: "Contact"
   de: "Kontakt"
+  fr: "Contact"
+  it: "Contatto"
+  cs: "Kontakt"
 
 about_mailing_us:
   en: "Mailing address (USA)"
   de: "Postanschrift (USA)"
+  fr: "Adresse postale (États-Unis)"
+  it: "Indirizzo postale (USA)"
+  cs: "Poštovní adresa (USA)"
 
 about_mailing_de:
   en: "Mailing address (Germany)"
   de: "Postanschrift (Deutschland)"
+  fr: "Adresse postale (Allemagne)"
+  it: "Indirizzo postale (Germania)"
+  cs: "Poštovní adresa (Německo)"
 
+# About site text strings
 about_project_goal_2:
   en: "The project uses solar-powered recording units equipped with BirdNET software to capture and analyze bird songs and other natural sounds in real-time. These recordings provide a window into the daily rhythms of nature, revealing which species are active and when."
   de: "Das Projekt verwendet solarbetriebene akustische Rekorder, die mit der BirdNET-Software ausgestattet sind, um Vogelstimmen und andere Naturgeräusche in Echtzeit aufzunehmen und zu analysieren. Diese Aufnahmen geben einen Einblick in den täglichen Rhythmus der Natur und zeigen, welche Arten wann aktiv sind."
+  fr: "Le projet utilise des unités d'enregistrement alimentées par énergie solaire équipées du logiciel BirdNET pour capturer et analyser les chants d'oiseaux et autres sons naturels en temps réel. Ces enregistrements offrent une fenêtre sur les rythmes quotidiens de la nature, révélant quelles espèces sont actives et quand."
+  it: "Il progetto utilizza unità di registrazione alimentate a energia solare equipaggiate con il software BirdNET per catturare e analizzare i canti degli uccelli e altri suoni naturali in tempo reale. Queste registrazioni offrono una finestra sui ritmi quotidiani della natura, rivelando quali specie sono attive e quando."
+  cs: "Projekt používá solárně napájené záznamové jednotky vybavené softwarem BirdNET k zachycení a analýze ptačích zpěvů a dalších přírodních zvuků v reálném čase. Tyto nahrávky poskytují pohled do denních rytmů přírody a odhalují, které druhy jsou aktivní a kdy."
 
 about_no_voice_note:
   en: "Note: No voice is recorded. Our recording devices use an AI model that recognizes human conversations and discards them."
   de: "Hinweis: Es werden keine Stimmen aufgezeichnet. Unsere Aufnahmegeräte verwenden ein KI-Modell, das menschliche Unterhaltungen erkennt und verwirft."
+  fr: "Remarque : Aucune voix n'est enregistrée. Nos dispositifs d'enregistrement utilisent un modèle d'IA qui reconnaît les conversations humaines et les ignore."
+  it: "Nota: Nessuna voce viene registrata. I nostri dispositivi di registrazione utilizzano un modello AI che riconosce e scarta le conversazioni umane."
+  cs: "Poznámka: Žádné hlasy nejsou nahrávány. Naše záznamová zařízení používají AI model, který rozpoznává lidské rozhovory a ignoruje je."
 
 about_acoustic_monitoring_1:
   en: "Acoustic monitoring is a valuable method for studying ecosystems and biodiversity. By recording and analyzing soundscapes, it allows researchers to detect species presence and behavior without disturbing their habitats."
   de: "Akustisches Monitoring ist eine wichtige Methode zur Untersuchung von Ökosystemen und Biodiversität. Durch die Aufzeichnung und Analyse von Klanglandschaften (sog. 'Soundscapes)') können Forscher die Anwesenheit und das Verhalten von Arten erkennen, ohne ihre Lebensräume zu stören."
+  fr: "La surveillance acoustique est une méthode précieuse pour étudier les écosystèmes et la biodiversité. En enregistrant et en analysant les paysages sonores, elle permet aux chercheurs de détecter la présence et le comportement des espèces sans perturber leurs habitats."
+  it: "Il monitoraggio acustico è un metodo prezioso per studiare gli ecosistemi e la biodiversità. Registrando e analizzando i paesaggi sonori, consente ai ricercatori di rilevare la presenza e il comportamento delle specie senza disturbare i loro habitat."
+  cs: "Akustické monitorování je cennou metodou pro studium ekosystémů a biodiverzity. Nahráváním a analýzou zvukových krajin umožňuje vědcům detekovat přítomnost a chování druhů, aniž by rušili jejich stanoviště."
+
 about_acoustic_monitoring_2:
   en: "One of the main benefits of acoustic monitoring is its ability to provide long-term data. Continuous recording over extended periods helps reveal patterns in species activity, seasonal changes, and responses to environmental factors. This data is crucial for tracking ecosystem health and assessing conservation efforts."
   de: "Einer der Hauptvorteile des akustischen Monitorings ist die Möglichkeit, Langzeitdaten zu erfassen. Durch kontinuierliche Aufzeichnungen über längere Zeiträume hinweg können Muster in der Aktivität von Arten, saisonale Veränderungen und Reaktionen auf Umweltfaktoren aufgedeckt werden. Diese Daten sind entscheidend für die Überwachung des Zustands von Ökosystemen und die Kontrolle von Naturschutzmaßnahmen."
+  fr: "L'un des principaux avantages de la surveillance acoustique est sa capacité à fournir des données à long terme. L'enregistrement continu sur de longues périodes aide à révéler les schémas d'activité des espèces, les changements saisonniers et les réponses aux facteurs environnementaux. Ces données sont cruciales pour suivre la santé des écosystèmes et évaluer les efforts de conservation."
+  it: "Uno dei principali vantaggi del monitoraggio acustico è la capacità di fornire dati a lungo termine. Le registrazioni continue per periodi prolungati aiutano a rivelare schemi nell'attività delle specie, cambiamenti stagionali e risposte ai fattori ambientali. Questi dati sono cruciali per monitorare la salute degli ecosistemi e valutare gli sforzi di conservazione."
+  cs: "Jednou z hlavních výhod akustického monitorování je jeho schopnost poskytovat dlouhodobá data. Nepřetržité nahrávání po delší dobu pomáhá odhalit vzorce v aktivitě druhů, sezónní změny a reakce na environmentální faktory. Tato data jsou klíčová pro sledování zdraví ekosystémů a hodnocení ochranářských snah."
+
 about_acoustic_monitoring_3:
   en: "AI-driven acoustic monitoring has already contributed to conservation successes, such as tracking endangered species, monitoring habitat recovery, and identifying environmental changes. By combining long-term acoustic data with AI, researchers gain valuable insights to support effective conservation strategies."
   de: "KI-gestütztes akustisches Monitoring hat bereits zum Naturschutz beigetragen, wie z.B. bei der Verfolgung gefährdeter Arten, der Überwachung von Habitatsrestauration und der Identifizierung von Umweltveränderungen. Durch die Kombination von Langzeit-Akustikdaten mit KI gewinnen Forschende wertvolle Einblicke, um effektive Naturschutzstrategien zu entwickeln."
+  fr: "La surveillance acoustique pilotée par l'IA a déjà contribué à des succès en matière de conservation, tels que le suivi des espèces en danger, la surveillance de la récupération des habitats et l'identification des changements environnementaux. En combinant des données acoustiques à long terme avec l'IA, les chercheurs obtiennent des informations précieuses pour soutenir des stratégies de conservation efficaces."
+  it: "Il monitoraggio acustico guidato dall'IA ha già contribuito a successi nella conservazione, come il monitoraggio delle specie in pericolo, la sorveglianza della ripresa degli habitat e l'identificazione dei cambiamenti ambientali. Combinando dati acustici a lungo termine con l'IA, i ricercatori ottengono preziose intuizioni per sostenere strategie di conservazione efficaci."
+  cs: "Akustické monitorování řízené AI již přispělo k úspěchům v ochraně přírody, jako je sledování ohrožených druhů, monitorování obnovy stanovišť a identifikace environmentálních změn. Kombinací dlouhodobých akustických dat s AI získávají vědci cenné poznatky na podporu účinných ochranářských strategií."
 
 about_recording_units_1:
   en: "Our recording units are designed to operate in remote and challenging environments. They are solar-powered, weather-resistant, and connected to the internet, enabling the automatic upload of recorded sounds to a central server."
   de: "Unsere akustischen Rekorder sind für den Einsatz in abgelegenen und anspruchsvollen Umgebungen konzipiert. Sie sind solarbetrieben, wetterfest und mit dem Internet verbunden, was das automatische Hochladen der aufgezeichneten Geräusche auf einen zentralen Server ermöglicht."
+  fr: "Nos unités d'enregistrement sont conçues pour fonctionner dans des environnements éloignés et difficiles. Elles sont alimentées par énergie solaire, résistantes aux intempéries et connectées à Internet, permettant le téléchargement automatique des sons enregistrés vers un serveur central."
+  it: "Le nostre unità di registrazione sono progettate per operare in ambienti remoti e impegnativi. Sono alimentate a energia solare, resistenti alle intemperie e connesse a Internet, consentendo il caricamento automatico dei suoni registrati su un server centrale."
+  cs: "Naše záznamové jednotky jsou navrženy pro provoz v odlehlých a náročných prostředích. Jsou napájeny solární energií, odolné proti povětrnostním vlivům a připojené k internetu, což umožňuje automatické nahrávání zaznamenaných zvuků na centrální server."
+
 about_recording_units_2:
   en: "Each unit is built around a Raspberry Pi computer equipped with a sound card and a Sleepy Pi module for power management. They run BirdNET software for sound identification and use a SIM card dongle for internet connectivity, making them effective even in isolated locations."
   de: "Jeder Rekorder basiert auf einem Raspberry Pi-Computer, der mit einer Soundkarte und einem Sleepy Pi-Modul zur Energieverwaltung ausgestattet ist. Sie verwenden die BirdNET-Software zur Geräuschkennung und nutzen ein SIM-Karten-Dongle für die Internetverbindung, wodurch sie auch an abgelegenen Standorten kommunizieren können."
+  fr: "Chaque unité est construite autour d'un ordinateur Raspberry Pi équipé d'une carte son et d'un module Sleepy Pi pour la gestion de l'alimentation. Elles utilisent le logiciel BirdNET pour l'identification des sons et un dongle de carte SIM pour la connectivité Internet, les rendant efficaces même dans des endroits isolés."
+  it: "Ogni unità è costruita attorno a un computer Raspberry Pi equipaggiato con una scheda audio e un modulo Sleepy Pi per la gestione dell'energia. Utilizzano il software BirdNET per l'identificazione dei suoni e un dongle SIM per la connettività Internet, rendendoli efficaci anche in località isolate."
+  cs: "Každá jednotka je postavena na počítači Raspberry Pi vybaveném zvukovou kartou a modulem Sleepy Pi pro správu napájení. Používají software BirdNET pro identifikaci zvuků a SIM kartu pro připojení k internetu, což je činí efektivními i na odlehlých místech."
+
 about_recording_units_3:
   en: "Powered by a battery and a 10W solar panel, the units follow an hourly recording schedule to conserve energy. They record for a few minutes each hour, focusing on capturing activity during the most vocal periods of the day."
   de: "Betrieben durch eine Batterie und ein 10W-Solarpanel folgen die Einheiten einem stündlichen Aufnahmeplan, um Energie zu sparen. Sie zeichnen jede Stunde für einige Minuten auf und konzentrieren sich dabei auf die Erfassung der Tierstimmen während der aktivsten Zeiten des Tages."
+  fr: "Alimentées par une batterie et un panneau solaire de 10W, les unités suivent un programme d'enregistrement horaire pour économiser de l'énergie. Elles enregistrent pendant quelques minutes chaque heure, en se concentrant sur la capture de l'activité pendant les périodes les plus vocales de la journée."
+  it: "Alimentate da una batteria e un pannello solare da 10W, le unità seguono un programma di registrazione oraria per conservare energia. Registrano per alcuni minuti ogni ora, concentrandosi sull'attività durante i periodi più vocali della giornata."
+  cs: "Napájeny baterií a 10W solárním panelem, jednotky dodržují hodinový plán nahrávání, aby šetřily energii. Nahrávají několik minut každou hodinu, zaměřují se na zachycení aktivity během nejhlasitějších období dne."
+
 about_recording_units_4:
   en: "These units are manufactured by OekoFor GbR in Germany, a company that specializes in ecological monitoring equipment. They are used in various projects worldwide, contributing to real-time monitoring systems that support research and conservation."
   de: "Die Rekorder werden von der OekoFor GbR in Deutschland hergestellt, einem Unternehmen, das sich auf ökologische Erfassungsmethoden spezialisiert hat. Sie werden in verschiedenen Projekten weltweit eingesetzt und tragen so zum Echtzeit-Monitoring bei, das Forschung und Naturschutz unterstützt."
+  fr: "Ces unités sont fabriquées par OekoFor GbR en Allemagne, une entreprise spécialisée dans les équipements de surveillance écologique. Elles sont utilisées dans divers projets à travers le monde, contribuant aux systèmes de surveillance en temps réel qui soutiennent la recherche et la conservation."
+  it: "Queste unità sono prodotte dalla OekoFor GbR in Germania, un'azienda specializzata in attrezzature per il monitoraggio ecologico. Sono utilizzate in diversi progetti in tutto il mondo, contribuendo a sistemi di monitoraggio in tempo reale che supportano ricerca e conservazione."
+  cs: "Tyto jednotky vyrábí OekoFor GbR v Německu, společnost specializující se na ekologické monitorovací zařízení. Používají se v různých projektech po celém světě, přispívají k systémům monitorování v reálném čase, které podporují výzkum a ochranu přírody."
+
 about_recording_units_5:
   en: "By providing reliable data on soundscapes and species activity, the units play an important role in understanding and preserving ecosystems."
   de: "Durch die Bereitstellung zuverlässiger Daten zu Soundscapes und Artenaktivitäten spielen die Rekorder eine wichtige Rolle beim Verständnis und dem Erhalt von Ökosystemen."
+  fr: "En fournissant des données fiables sur les paysages sonores et l'activité des espèces, les unités jouent un rôle important dans la compréhension et la préservation des écosystèmes."
+  it: "Fornendo dati affidabili sui paesaggi sonori e sull'attività delle specie, le unità svolgono un ruolo importante nella comprensione e conservazione degli ecosistemi."
+  cs: "Poskytováním spolehlivých dat o zvukových krajinách a aktivitě druhů hrají jednotky důležitou roli při pochopení a ochraně ekosystémů."
 
 about_ai_sound_id_1:
   en: "BirdNET is an AI-powered tool that identifies (bird) species based on their calls and songs. At its core, BirdNET uses a neural network, a type of machine learning model inspired by the structure of the human brain. Neural networks are particularly effective at recognizing patterns in complex datasets, such as sound recordings."
   de: "BirdNET ist ein KI-gestützte Software-Werkezug, das Tierarten anhand ihrer Rufe und Gesänge identifiziert. Im Kern verwendet BirdNET ein künstliches neuronales Netzwerk, eine Art von maschinellem Lernmodell, das von der Struktur des menschlichen Gehirns inspiriert ist. Neuronale Netzwerke sind besonders effektiv bei der Erkennung von Mustern in komplexen Datensätzen wie z.B. Audioaufnahmen."
+  fr: "BirdNET est un outil alimenté par l'IA qui identifie les espèces (d'oiseaux) en fonction de leurs appels et chants. Au cœur de BirdNET se trouve un réseau neuronal, un type de modèle d'apprentissage automatique inspiré par la structure du cerveau humain. Les réseaux neuronaux sont particulièrement efficaces pour reconnaître les motifs dans des ensembles de données complexes, tels que les enregistrements sonores."
+  it: "BirdNET è uno strumento alimentato dall'IA che identifica le specie (di uccelli) in base ai loro richiami e canti. Al suo interno, BirdNET utilizza una rete neurale, un tipo di modello di apprendimento automatico ispirato alla struttura del cervello umano. Le reti neurali sono particolarmente efficaci nel riconoscere schemi in set di dati complessi, come le registrazioni sonore."
+  cs: "BirdNET je nástroj poháněný AI, který identifikuje (ptačí) druhy na základě jejich volání a zpěvu. V jádru BirdNET používá neuronovou síť, typ modelu strojového učení inspirovaný strukturou lidského mozku. Neuronové sítě jsou zvláště účinné při rozpoznávání vzorců v komplexních datových souborech, jako jsou zvukové nahrávky."
+
 about_ai_sound_id_2:
   en: "To analyze sounds, BirdNET converts audio recordings into spectrograms, which are visual representations of sound showing frequency, amplitude, and time. These spectrograms highlight the unique acoustic patterns of bird calls and songs, much like a fingerprint for each species. The neural network is trained to recognize these patterns using a large dataset of labeled bird sounds."
   de: "Um Geräusche zu analysieren, wandelt BirdNET Audioaufnahmen in Spektrogramme um, die visuelle Darstellungen von Schall sind und Frequenz, Amplitude und Zeit zweidimensional darstellen. Diese Spektrogramme heben die einzigartigen akustischen Muster von Vogelrufen und -gesängen hervor, ähnlich wie ein Fingerabdruck für jede Art. Das neuronale Netzwerk wird darauf trainiert, diese Muster anhand eines großen Datensatzes von vorher bestimmten Geräuschen zu erkennen."
+  fr: "Pour analyser les sons, BirdNET convertit les enregistrements audio en spectrogrammes, qui sont des représentations visuelles du son montrant la fréquence, l'amplitude et le temps. Ces spectrogrammes mettent en évidence les motifs acoustiques uniques des appels et chants d'oiseaux, un peu comme une empreinte digitale pour chaque espèce. Le réseau neuronal est formé pour reconnaître ces motifs en utilisant un grand ensemble de données de sons d'oiseaux étiquetés."
+  it: "Per analizzare i suoni, BirdNET converte le registrazioni audio in spettrogrammi, che sono rappresentazioni visive del suono che mostrano frequenza, ampiezza e tempo. Questi spettrogrammi evidenziano gli schemi acustici unici dei richiami e canti degli uccelli, simili a un'impronta digitale per ogni specie. La rete neurale è addestrata a riconoscere questi schemi utilizzando un ampio set di dati di suoni di uccelli etichettati."
+  cs: "Pro analýzu zvuků BirdNET převádí zvukové nahrávky na spektrogramy, což jsou vizuální reprezentace zvuku zobrazující frekvenci, amplitudu a čas. Tyto spektrogramy zvýrazňují jedinečné akustické vzory ptačích volání a zpěvů, podobně jako otisk prstu pro každý druh. Neuronová síť je vyškolena k rozpoznávání těchto vzorů pomocí velkého datového souboru označených ptačích zvuků."
+
 about_ai_sound_id_3:
   en: "BirdNET is widely used in conservation efforts to monitor animal populations, study migration patterns, and identify areas of concern for endangered species. Its ability to process recordings automatically and at scale provides researchers with valuable data to support habitat protection and conservation strategies."
   de: "BirdNET wird häufig in Naturschutzprojekten eingesetzt, um z.B. Vogelpopulationen zu überwachen, Migrationsmuster zu untersuchen und Handlunsgbedarfe für gefährdete Arten zu identifizieren. Die Fähigkeit, Aufnahmen automatisch und in großem Maßstab zu verarbeiten, liefert Forschenden wertvolle Daten zur Unterstützung des Lebensraumschutzes und zur Entwicklung von Naturschutzstrategien."
+  fr: "BirdNET est largement utilisé dans les efforts de conservation pour surveiller les populations animales, étudier les schémas de migration et identifier les zones de préoccupation pour les espèces en danger. Sa capacité à traiter les enregistrements automatiquement et à grande échelle fournit aux chercheurs des données précieuses pour soutenir la protection des habitats et les stratégies de conservation."
+  it: "BirdNET è ampiamente utilizzato negli sforzi di conservazione per monitorare le popolazioni animali, studiare i modelli di migrazione e identificare aree critiche per le specie in pericolo. La sua capacità di elaborare automaticamente le registrazioni su larga scala fornisce ai ricercatori dati preziosi per supportare la protezione degli habitat e strategie di conservazione."
+  cs: "BirdNET je široce používán v ochranářských snahách ke sledování populací zvířat, studiu migračních vzorců a identifikaci oblastí zájmu pro ohrožené druhy. Jeho schopnost automaticky a ve velkém měřítku zpracovávat nahrávky poskytuje vědcům cenná data na podporu ochrany stanovišť a ochranářských strategií."
 
 about_partnership:
   en: "This project is a collaboration between the Cornell Lab of Ornithology, Chemnitz University of Technology, and OekoFor GbR."
   de: "Dieses Projekt ist eine Zusammenarbeit zwischen dem Cornell Lab of Ornithology, der Technischen Universität Chemnitz und der OekoFor GbR."
+  fr: "Ce projet est une collaboration entre le Cornell Lab of Ornithology, l'Université de Technologie de Chemnitz et OekoFor GbR."
+  it: "Questo progetto è una collaborazione tra il Cornell Lab of Ornithology, l'Università Tecnica di Chemnitz e OekoFor GbR."
+  cs: "Tento projekt je spoluprací mezi Cornell Lab of Ornithology, Technickou univerzitou v Chemnitzu a OekoFor GbR."
 
 about_funding_1:
   en: "This project is supported by Jake Holshuh (Cornell class of ’69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats."
   de: "Dieses Projekt wird großzügig unterstützt von Jake Holshuh (Cornell Jahrgang '69) und den Arthur Vining Davis Foundations. Dank der Förderung von K. Lisa Yang kann unsere Arbeit am K. Lisa Yang Center for Conservation Bioacoustics innovative Technologien vorantreiben, die den Schutz von Wildtieren und ihren Lebensräumen fördern und zur Aufklärung beitragen."
-
+  fr: "Ce projet est soutenu par Jake Holshuh (promotion Cornell de 1969) et les Arthur Vining Davis Foundations. Notre travail au K. Lisa Yang Center for Conservation Bioacoustics est rendu possible par la générosité de K. Lisa Yang pour faire progresser les technologies de conservation innovantes afin d'inspirer et d'informer la conservation de la faune et des habitats."
+  it: "Questo progetto è supportato da Jake Holshuh (classe Cornell del '69) e dalle Arthur Vining Davis Foundations. Il nostro lavoro presso il K. Lisa Yang Center for Conservation Bioacoustics è reso possibile dalla generosità di K. Lisa Yang per promuovere tecnologie innovative di conservazione che ispirano e informano la conservazione della fauna selvatica e degli habitat."
+  cs: "Tento projekt velkoryse podporují Jake Holshuh (ročník '69) a nadace Arthur Vining Davis Foundations. Díky financování od K. Lisy Yangové může naše práce v Centru bioakustiky ochrany přírody K. Lisy Yangové rozvíjet inovativní technologie, které podporují ochranu volně žijících živočichů a jejich stanovišť a přispívají ke vzdělávání."
+  
 about_funding_2:
   en: "The development of BirdNET is supported by the German Federal Ministry of Education and Research through the project “BirdNET+” (FKZ 01|S22072). The German Federal Ministry for the Environment, Nature Conservation, Nuclear Safety and Consumer Protection contributes through the “DeepBirdDetect” project (FKZ 67KI31040E). In addition, the Deutsche Bundesstiftung Umwelt supports BirdNET through the project “RangerSound” (project 39263/01)."
   de: "Die Entwicklung von BirdNET wird vom Bundesministerium für Bildung und Forschung durch das Projekt „BirdNET+“ (FKZ 01|S22072) gefördert. Das Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz beteiligt sich mit dem Projekt „DeepBirdDetect“ (FKZ 67KI31040E). Darüber hinaus unterstützt die Deutsche Bundesstiftung Umwelt BirdNET durch das Projekt „RangerSound“ (Projekt 39263/01)."
+  fr: "Le développement de BirdNET est soutenu par le ministère fédéral de l'éducation et de la recherche à travers le projet « BirdNET+ » (FKZ 01|S22072). Le ministère fédéral allemand de l'environnement, de la protection de la nature, de la sécurité nucléaire et de la protection des consommateurs participe au projet « DeepBirdDetect » (FKZ 67KI31040E). En outre, la Fondation fédérale allemande pour l'environnement soutient BirdNET par le biais du projet « RangerSound » (projet 39263/01)."
+  it: "Lo sviluppo di BirdNET è supportato dal Ministero Federale Tedesco dell'Istruzione e della Ricerca attraverso il progetto “BirdNET+” (FKZ 01|S22072). Il Ministero Federale Tedesco dell'Ambiente, della Conservazione della Natura, della Sicurezza Nucleare e della Protezione dei Consumatori contribuisce attraverso il progetto “DeepBirdDetect” (FKZ 67KI31040E). Inoltre, la Deutsche Bundesstiftung Umwelt supporta BirdNET attraverso il progetto “RangerSound” (progetto 39263/01)."
+  cs: "Vývoj sítě BirdNET financuje Spolkové ministerstvo pro vzdělávání a výzkum prostřednictvím projektu „BirdNET+“ (FKZ 01|S22072). Spolkové ministerstvo životního prostředí, ochrany přírody, jaderné bezpečnosti a ochrany spotřebitele se podílí projektem „DeepBirdDetect“ (FKZ 67KI31040E). Kromě toho podporuje síť BirdNET Spolková nadace pro životní prostředí prostřednictvím projektu „RangerSound“ (projekt 39263/01)."
 
 # Widget strings
 nav_home:
   en: "Home"
   de: "Startseite"
+  fr: "Accueil"
+  it: "Home"
+  cs: "Domů"
 
 nav_dashboard:
   en: "Dashboard"
   de: "Dashboard"
+  fr: "Tableau de bord"
+  it: "Dashboard"
+  cs: "Dashboard"
 
 nav_detections:
   en: "Detections"
   de: "Detektionen"
+  fr: "Détections"
+  it: "Rilevamenti"
+  cs: "Detekce"
 
 nav_recorder_top:
   en: "Recorders"
   de: "Rekorder"
+  fr: "Enregistreurs"
+  it: "Registratori"
+  cs: "Rekordéry"
 
 nav_recorder:
   en: "Recorder"
   de: "Rekorder"
+  fr: "Enregistreur"
+  it: "Registratore"
+  cs: "Rekordér"
 
 nav_about:
   en: "About"
   de: "Infos"
+  fr: "À propos"
+  it: "Informazioni"
+  cs: "O projektu"
 
 nav_donate:
   en: "Donate"
   de: "Spenden"
+  fr: "Faire un don"
+  it: "Dona"
+  cs: "Darovat"
 
 stats_bar_detections_24h:
   en: "Detections (24h)"
   de: "Detektionen (24h)"
+  fr: "Détections (24h)"
+  it: "Rilevamenti (24h)"
+  cs: "Detekce (24h)"
 
 stats_bar_species_24h:
   en: "Species (24h)"
   de: "Arten (24h)"
+  fr: "Espèces (24h)"
+  it: "Specie (24h)"
+  cs: "Druhy (24h)"
 
 stats_bar_detections_total:
   en: "Detections (total)"
   de: "Detektionen (gesamt)"
+  fr: "Détections (total)"
+  it: "Rilevamenti (totale)"
+  cs: "Detekce (celkem)"
 
 stats_bar_audio_total:
   en: "Audio (total)"
   de: "Audio (gesamt)"
+  fr: "Audio (total)"
+  it: "Audio (totale)"
+  cs: "Audio (celkem)"
 
 widget_active_species_description:
   en: "Dark blue bars show hourly detections; light blue marks nighttime, light yellow marks daytime, and numbers denote detections."
   de: "Dunkelblaue Balken zeigen stündliche Detektionen; hellblaue Markierungen zeigen die Nacht, hellgelbe den Tag, und Zahlen die Anzahl der Detektionen."
+  fr: "Les barres bleues foncées montrent les détections horaires ; le bleu clair marque la nuit, le jaune clair marque le jour, et les chiffres indiquent les détections."
+  it: "Le barre blu scuro mostrano le rilevazioni orarie; il blu chiaro segna la notte, il giallo chiaro segna il giorno e i numeri indicano le rilevazioni."
+  cs: "Tmavě modré pruhy ukazují hodinové detekce; světle modrá označuje noc, světle žlutá označuje den a čísla označují detekce."
 
 widget_recent_detections_show_more:
   en: "Show more detections"
   de: "Mehr Detektionen anzeigen"
+  fr: "Afficher plus de détections"
+  it: "Mostra più rilevamenti"
+  cs: "Zobrazit více detekcí"
 
 widget_units_status:
   en: "Status"
   de: "Status"
+  fr: "Statut"
+  it: "Stato"
+  cs: "Stav"
 
 widget_units_habitat:
   en: "Habitat"
   de: "Habitat"
+  fr: "Habitat"
+  it: "Habitat"
+  cs: "Biotop"
 
 widget_units_cpu_temp:
   en: "CPU Temp."
   de: "CPU Temp."
+  fr: "Temp. CPU"
+  it: "Temp. CPU"
+  cs: "Teplota CPU"
 
 widget_units_battery:
   en: "Battery"
   de: "Batterie"
+  fr: "Batterie"
+  it: "Batteria"
+  cs: "Baterie"
 
 widget_units_last_update:
   en: "Last update"
   de: "Letztes Update"
+  fr: "Dernière mise à jour"
+  it: "Ultimo aggiornamento"
+  cs: "Poslední aktualizace"
 
 widget_error_no_data:
   en: "Ooops...something went wrong. Please try to reload."
   de: "Uuups...da ist etwas schief gelaufen. Bitte laden Sie die Seite neu."
+  fr: "Oups... quelque chose s'est mal passé. Veuillez réessayer de recharger."
+  it: "Ops... qualcosa è andato storto. Per favore, prova a ricaricare."
+  cs: "Ups... něco se pokazilo. Zkuste prosím znovu načíst stránku."
 
 widget_footer_link_section_site:
   en: "Site links"
   de: "Website Links"
+  fr: "Liens du site"
+  it: "Link del sito"
+  cs: "Odkazy na webu"
 
 widget_footer_link_section_botanical_garden:
   en: "Botanical Garden"
   de: "Botanischer Garten"
+  fr: "Jardin botanique"
+  it: "Giardino botanico"
+  cs: "Botanická zahrada"
 
 widget_footer_link_section_birdlife:
   en: "BirdLife"
-  de: "BirdLife"  
+  de: "BirdLife"
+  fr: "BirdLife"
+  it: "BirdLife"
+  cs: "BirdLife"
 
 widget_footer_link_section_oekofor:
   en: "OekoFor"
-  de: "OekoFor"  
+  de: "OekoFor"
+  fr: "OekoFor"
+  it: "OekoFor"
+  cs: "OekoFor"
 
 widget_footer_link_section_yang_center:
   en: "Yang Center"
-  de: "Yang Center"  
+  de: "Yang Center"
+  fr: "Centre Yang"
+  it: "Centro Yang"
+  cs: "Yang Center"
 
 widget_footer_link_section_tuc:
   en: "Chemnitz University"
-  de: "TU Chemnitz"  
+  de: "TU Chemnitz"
+  fr: "Université de Chemnitz"
+  it: "Università di Chemnitz"
+  cs: "TU Chemnitz"
 
 widget_footer_link_section_explore:
   en: "Explore More"
-  de: "Mehr entdecken"  
+  de: "Mehr entdecken"
+  fr: "Explorer plus"
+  it: "Esplora di più"
+  cs: "Prozkoumat více"
 
 widget_footer_link_section_learning:
   en: "Lifelong Learning"
-  de: "Lebenslanges lernen"  
+  de: "Lebenslanges lernen"
+  fr: "Apprentissage tout au long de la vie"
+  it: "Apprendimento permanente"
+  cs: "Celoživotní učení"
 
 widget_footer_link_section_support:
   en: "Support Our Cause"
-  de: "Unterstützen" 
+  de: "Unterstützen"
+  fr: "Soutenez notre cause"
+  it: "Sostieni la nostra causa"
+  cs: "Podpořte naši věc"
 
 widget_footer_link_section_about:
   en: "About"
-  de: "Informationen"  
+  de: "Informationen"
+  fr: "À propos"
+  it: "Informazioni"
+  cs: "O projektu"
 
 widget_footer_site_links_home:
   en: "Home"
   de: "Startseite"
+  fr: "Accueil"
+  it: "Home"
+  cs: "Domů"
 
 widget_footer_site_links_detections:
   en: "Detections"
   de: "Detektionen"
+  fr: "Détections"
+  it: "Rilevamenti"
+  cs: "Detekce"
 
 widget_footer_site_links_recording_units:
   en: "Recording units"
   de: "Rekorder"
+  fr: "Unités d'enregistrement"
+  it: "Unità di registrazione"
+  cs: "Rekordéry"
 
 widget_footer_site_links_about_the_project:
   en: "About the project"
   de: "Infos zum Projekt"
+  fr: "À propos du projet"
+  it: "Informazioni sul progetto"
+  cs: "O projektu"
 
 widget_footer_site_links_contact:
   en: "Contact"
   de: "Kontakt"
+  fr: "Contact"
+  it: "Contatto"
+  cs: "Kontakt"
 
 widget_footer_yang_center_our_values:
   en: "Our values"
   de: "Unsere Werte"
+  fr: "Nos valeurs"
+  it: "I nostri valori"
+  cs: "Naše hodnoty"
 
 widget_footer_yang_center_research:
   en: "Research"
   de: "Forschung"
+  fr: "Recherche"
+  it: "Ricerca"
+  cs: "Výzkum"
 
 widget_footer_yang_center_technology:
   en: "Technology"
   de: "Technologie"
+  fr: "Technologie"
+  it: "Tecnologia"
+  cs: "Technologie"
 
 widget_footer_yang_center_education:
   en: "Education"
   de: "Bildung"
+  fr: "Éducation"
+  it: "Educazione"
+  cs: "Vzdělávání"
 
 widget_footer_yang_center_publications:
   en: "Publications"
   de: "Publikationen"
+  fr: "Publications"
+  it: "Pubblicazioni"
+  cs: "Publikace"
 
 widget_footer_explore_more_bird_cams:
   en: "Bird Cams"
   de: "Webcams"
+  fr: "Caméras d'oiseaux"
+  it: "Bird Cams"
+  cs: "Webcams"
 
 widget_footer_explore_more_birds_of_the_world:
   en: "Birds of the World"
   de: "Birds of the World"
+  fr: "Oiseaux du monde"
+  it: "Birds of the World"
+  cs: "Birds of the World"
 
 widget_footer_explore_more_ebird_status_and_trends:
   en: "eBird Status and Trends"
   de: "eBird Status und Trends"
+  fr: "Statut et tendances eBird"
+  it: "Stato e tendenze eBird"
+  cs: "eBird Status a trendy"
 
 widget_footer_explore_more_our_youtube_videos:
   en: "Our Youtube Videos"
   de: "Unsere Youtube-Videos"
+  fr: "Nos vidéos Youtube"
+  it: "I nostri video Youtube"
+  cs: "Naše Youtube videa"
 
 widget_footer_lifelong_learning_online_courses:
   en: "Online Courses"
   de: "Online-Kurse"
+  fr: "Cours en ligne"
+  it: "Corsi online"
+  cs: "Online kurzy"
 
 widget_footer_lifelong_learning_bird_walks_and_events:
   en: "Bird Walks & Events"
   de: "Vogelwanderungen"
+  fr: "Promenades et événements ornithologiques"
+  it: "Passeggiate ed eventi ornitologici"
+  cs: "Vycházky za ptáky"
 
 widget_footer_lifelong_learning_spring_field_ornithology:
   en: "Spring Field Ornithology"
   de: "Frühlings-Ornithologie"
+  fr: "Ornithologie de printemps"
+  it: "Ornitologia di primavera"
+  cs: "Jarní ornitologie"
 
 widget_footer_lifelong_learning_k12_education:
   en: "K–12 Education"
   de: "K–12 Bildung"
+  fr: "Éducation K–12"
+  it: "Educazione K–12"
+  cs: "Vzdělávání K–12"
 
 widget_footer_support_our_cause_join_the_lab:
   en: "Join the Lab"
   de: "Mitglied werden"
+  fr: "Rejoignez le Lab"
+  it: "Unisciti al Lab"
+  cs: "Připojte se k Labu"
 
 widget_footer_support_our_cause_donate:
   en: "Donate"
   de: "Spenden"
+  fr: "Faire un don"
+  it: "Dona"
+  cs: "Darovat"
 
 widget_footer_support_our_cause_monthly_giving:
   en: "Monthly Giving"
   de: "Monatliche Spenden"
+  fr: "Dons mensuels"
+  it: "Donazioni mensili"
+  cs: "Měsíční dary"
 
 widget_footer_support_our_cause_membership_services:
   en: "Membership Services"
   de: "Mitgliederdienste"
+  fr: "Services aux membres"
+  it: "Servizi per i membri"
+  cs: "Členské služby"
 
 widget_footer_support_our_cause_shop_for_our_cause:
   en: "Shop for Our Cause"
   de: "Einkaufen für den guten Zweck"
+  fr: "Boutique pour notre cause"
+  it: "Negozio per la nostra causa"
+  cs: "Nakupujte pro dobrou věc"
 
 widget_footer_about_cornell_lab_of_ornithology:
   en: "Cornell Lab of Ornithology"
   de: "Cornell Lab of Ornithology"
+  fr: "Cornell Lab of Ornithology"
+  it: "Cornell Lab of Ornithology"
+  cs: "Cornell Lab of Ornithology"
 
 widget_footer_about_web_accessibility_assistance:
   en: "Web Accessibility Assistance"
   de: "Hilfe zur Web-Barrierefreiheit"
+  fr: "Assistance à l'accessibilité Web"
+  it: "Assistenza all'accessibilità web"
+  cs: "Pomoc s přístupností webu"
 
 widget_footer_about_privacy_policy:
   en: "Privacy Policy"
   de: "Datenschutz"
+  fr: "Politique de confidentialité"
+  it: "Politica sulla privacy"
+  cs: "Ochrana osobních údajů"
 
 widget_footer_about_terms_of_use:
   en: "Terms of Use"
   de: "Nutzungsbedingungen"
+  fr: "Conditions d'utilisation"
+  it: "Termini di utilizzo"
+  cs: "Podmínky použití"
 
 widget_footer_botanical_garden_chemnitz_about:
   en: "About"
   de: "Infos"
+  fr: "À propos"
+  it: "Informazioni"
+  cs: "O projektu"
 
 widget_footer_botanical_garden_chemnitz_history:
   en: "History"
   de: "Geschichte"
+  fr: "Histoire"
+  it: "Storia"
+  cs: "Historie"
 
 widget_footer_botanical_garden_chemnitz_school_biology_center:
   en: "School Biology Center"
   de: "Schulbiologiezentrum"
+  fr: "Centre de biologie scolaire"
+  it: "Centro di biologia scolastica"
+  cs: "Školní biologické centrum"
 
 widget_footer_botanical_garden_chemnitz_park_map:
   en: "Park Map"
   de: "Parkplan"
+  fr: "Plan du parc"
+  it: "Mappa del parco"
+  cs: "Mapa parku"
 
 widget_footer_oekofor_about_us:
   en: "About us"
   de: "Infos"
+  fr: "À propos de nous"
+  it: "Chi siamo"
+  cs: "O nás"
 
 widget_footer_oekofor_services:
   en: "Services"
   de: "Dienstleistungen"
+  fr: "Services"
+  it: "Servizi"
+  cs: "Služby"
 
 widget_footer_oekofor_ecopi:
   en: "ecoPi"
   de: "ecoPi"
+  fr: "ecoPi"
+  it: "ecoPi"
+  cs: "ecoPi"
 
 widget_footer_oekofor_contact:
   en: "Contact"
   de: "Kontakt"
+  fr: "Contact"
+  it: "Contatto"
+  cs: "Kontakt"
 
 widget_footer_birdlife_projects:
   en: "Projects"
   de: "Projekte"
+  fr: "Projets"
+  it: "Progetti"
+  cs: "Projekty"
 
 widget_footer_birdlife_visitor_centers:
   en: "Visitor centers"
   de: "Besucherzentren"
+  fr: "Centres de visiteurs"
+  it: "Centri visitatori"
+  cs: "Návštěvnická centra"
 
 widget_footer_birdlife_membership:
   en: "Membership"
   de: "Mitgliedschaft"
+  fr: "Adhésion"
+  it: "Iscrizione"
+  cs: "Členství"
 
 widget_footer_birdlife_support_our_work:
   en: "Support our work"
   de: "Unterstützen Sie uns"
+  fr: "Soutenez notre travail"
+  it: "Sostieni il nostro lavoro"
+  cs: "Podpořte naši práci"
 
 widget_footer_tu_chemnitz_university:
   en: "University"
   de: "Universität"
+  fr: "Université"
+  it: "Università"
+  cs: "Univerzita"
 
 widget_footer_tu_chemnitz_degree_programs:
   en: "Degree Programs"
   de: "Studiengänge"
+  fr: "Programmes de diplôme"
+  it: "Programmi di laurea"
+  cs: "Studijní programy"
 
 widget_footer_tu_chemnitz_international_office:
   en: "International Office"
   de: "Internationales"
+  fr: "Bureau international"
+  it: "Ufficio internazionale"
+  cs: "Mezinárodní kancelář"
 
 widget_footer_tu_chemnitz_research:
   en: "Research"
   de: "Forschung"
+  fr: "Recherche"
+  it: "Ricerca"
+  cs: "Výzkum"
 
 widget_footer_tu_chemnitz_computer_science:
   en: "Computer Science"
   de: "Informatik"
+  fr: "Informatique"
+  it: "Informatica"
+  cs: "Informatika"
 
 # Data processor strings
 dp_recorder_status_sleeping:
   en: "Sleeping"
   de: "Schläft"
+  fr: "En sommeil"
+  it: "In sonno"
+  cs: "Spí"
 
 dp_recorder_status_listening:
   en: "Listening"
   de: "Nimmt auf"
+  fr: "Écoute"
+  it: "Ascolto"
+  cs: "Poslouchá"
 
 dp_recorder_status_error:
   en: "Error"
   de: "Fehler"
+  fr: "Erreur"
+  it: "Errore"
+  cs: "Chyba"
 
 dp_recorder_status_offline:
   en: "Offline"
   de: "Offline"
+  fr: "Hors ligne"
+  it: "Offline"
+  cs: "Offline"
 
 dp_time_delta_min:
   en: "min"
@@ -653,7 +1121,13 @@ dp_time_delta_ago_postfix:
 misc_photo:
   en: "Photo"
   de: "Foto"
+  fr: "Photo"
+  it: "Foto"
+  cs: "Foto"
 
 misc_date:
   en: "Date"
   de: "Datum"
+  fr: "Date"
+  it: "Data"
+  cs: "Datum"
