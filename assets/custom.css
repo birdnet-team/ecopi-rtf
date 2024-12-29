@@ -289,6 +289,13 @@ nav .navbar-nav {
     font-weight: 400;
 }
 
+.stats-bar-headline {
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .h-spacer {
     margin: 0 10px; 
 }
