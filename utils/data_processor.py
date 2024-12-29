@@ -1,6 +1,10 @@
 import sys
 sys.path.append('..')
 
+import os
+import hashlib
+import json
+import time
 import requests
 import random
 from datetime import datetime, timedelta, UTC 
@@ -119,6 +123,53 @@ def get_battery_status(voltage):
     
     return str(battery_level) if battery_level > 10 else '< 10'
 
+def clean_cache(cache_dir, max_age=7200):
+    """Remove cache files older than max_age seconds."""
+    now = time.time()
+    for filename in os.listdir(cache_dir):
+        file_path = os.path.join(cache_dir, filename)
+        if os.path.isfile(file_path):
+            file_age = now - os.path.getmtime(file_path)
+            if file_age > max_age:
+                os.remove(file_path)
+
+def make_request(url, headers, params, cache_timeout=3600):
+    
+    # Does the cache directory exist?
+    if not os.path.exists(cfg.CACHE_DIR):
+        os.makedirs(cfg.CACHE_DIR)
+        
+    # Clean the cache
+    clean_cache(cfg.CACHE_DIR)
+    
+    # Create a unique cache key
+    cache_key = hashlib.md5((url + json.dumps(headers) + json.dumps(params)).encode()).hexdigest()
+    cache_file = os.path.join(cfg.CACHE_DIR, cache_key)
+
+    # Check if the cache file exists and is still valid
+    if os.path.exists(cache_file):
+        with open(cache_file, 'r') as f:
+            cached_data = json.load(f)
+            timestamp = cached_data['timestamp']
+            if time.time() - timestamp < cache_timeout:
+                #print(f"Using cached data for {url}")
+                return cached_data['response']
+
+    # Send the request
+    response = requests.get(url, headers=headers, params=params)
+    try:
+        response_data = response.json()
+    except:
+        # Empty response
+        return []
+
+    # Cache the response if it's not empty
+    if response_data:
+        with open(cache_file, 'w') as f:
+            json.dump({'timestamp': time.time(), 'response': response_data}, f)
+
+    return response_data
+
 def get_recorder_state(recorder_id, locale):
     
     strings = Strings(locale)
@@ -136,8 +187,7 @@ def get_recorder_state(recorder_id, locale):
     # Recorder ID
     params['recorder_field_id'] = recorder_id
     
-    response = requests.get(url, headers=headers, params=params)
-    response = response.json()
+    response = make_request(url, headers, params, cache_timeout=600)
     
     last_status = response[0]
     
@@ -175,8 +225,7 @@ def get_recorder_group():
     # Project name
     params['project_name'] = cfg.PROJECT_NAME
     
-    response = requests.get(url, headers=headers, params=params)
-    response = response.json()
+    response = make_request(url, headers, params, cache_timeout=0)
     
     return response
 
@@ -192,8 +241,7 @@ def get_recorder_location(recorder_id):
     # Recorder ID
     params['recorder_field_id'] = recorder_id
     
-    response = requests.get(url, headers=headers, params=params)
-    response = response.json()
+    response = make_request(url, headers, params, cache_timeout=0)
     
     return [response[0]['lat'], response[0]['lon']]
 
@@ -254,8 +302,7 @@ def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=5):
     else:
         params['start_date'] = (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%d')
     
-    response = requests.get(url, headers=headers, params=params)
-    response = response.json()
+    response = make_request(url, headers, params, cache_timeout=600)
     
     # Count detections per recorder
     recorder_data = {}
@@ -300,8 +347,7 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
     else:
         params['start_date'] = (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%d')
     
-    response = requests.get(url, headers=headers, params=params)
-    response = response.json()
+    response = make_request(url, headers, params, cache_timeout=3600)
     
     # Count entries
     detections = {}
@@ -354,7 +400,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, 
     
     def fetch_detections(hours):
         if hours > 0:
-            now = datetime.now()
+            now = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
             params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
             params['datetime_recording__lte'] = now.isoformat()
         else:
@@ -362,12 +408,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, 
             params.pop('datetime_recording__lte', None)
         
         # Send request
-        response = requests.get(url, headers=headers, params=params)
-        try:
-            response = response.json()
-        except:
-            # Empty response
-            return []
+        response = make_request(url, headers, params, cache_timeout=3600)
         
         return response
     
@@ -456,7 +497,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     
     def fetch_detections(hours):
         if hours > 0:
-            now = datetime.now(UTC)
+            now = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
             params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
             params['datetime_recording__lte'] = now.isoformat()
         else:
@@ -464,12 +505,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
             params.pop('datetime_recording__lte', None)  
         
         # Send request
-        response = requests.get(url, headers=headers, params=params)
-        try:
-            response = response.json()
-        except:
-            # Empty response
-            return []
+        response = make_request(url, headers, params, cache_timeout=3600)
         
         return response
     
@@ -566,7 +602,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     
     def fetch_detections(hours):
         if hours > 0:
-            now = datetime.now(UTC)
+            now = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
             params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
             params['datetime_recording__lte'] = now.isoformat()
         else:
@@ -574,12 +610,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
             params.pop('datetime_recording__lte', None)     
         
         # Send request
-        response = requests.get(url, headers=headers, params=params)
-        try:
-            response = response.json()
-        except:
-            # Empty response
-            return []
+        response = make_request(url, headers, params, cache_timeout=3600)
         
         return response
     
