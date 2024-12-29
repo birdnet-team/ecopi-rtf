@@ -4,19 +4,23 @@ from dash.dependencies import Input, Output, State, MATCH
 import json
 
 from utils import data_processor as dp
+from utils.strings import Strings
 
 import config as cfg
 
-def recent_detections(num_cards=8, hours=72):
-    last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=5)    
+def recent_detections(num_cards=8, hours=72, locale="en"):
+    strings = Strings(locale)
+    last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=5, locale=locale)   
     if len(last_detections) < 4:
-        last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=1)
+        last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=1, locale=locale)
     
     show_more = True if len(last_detections) >= 12 and num_cards <= 12 else False
     cards = []
     datalist = []
 
     for idx, (species, data) in enumerate(last_detections.items()):
+        data['datetime'] = f"{strings.get('recorder_table_header_date')}: {data['datetime']}"
+        data['recorder_field_id'] = f"{strings.get('species_table_header_recorder')}: #{data['recorder_field_id']}"
         datalist.append(data)
         confidence_score = data['confidence'] * 10
         card = dbc.Col(
@@ -32,13 +36,13 @@ def recent_detections(num_cards=8, hours=72):
                                 ),
                                 className="play-icon-overlay",
                             ),
-                            html.A(
+                            dcc.Link(
                                 html.I(className="bi bi-bar-chart-fill"),
                                 href=f"{cfg.SITE_ROOT}/species/{species}",
                                 className="chart-icon-overlay",
                             ),
                             html.Div(
-                                f"Photo: {data['image_author']}",
+                                f"{strings.get('misc_photo')}: {data['image_author']}",
                                 className="photo-author-overlay",
                             ),
                         ],
@@ -52,8 +56,8 @@ def recent_detections(num_cards=8, hours=72):
                                 [
                                     dbc.Col(
                                         [
-                                            html.Div(f"Date: {data['datetime']}", className="very-small-text"),
-                                            html.Div(f"Recorder: #{data['recorder_field_id']}", className="very-small-text"),
+                                            html.Div(f"{data['datetime']}", className="very-small-text"),
+                                            html.Div(f"{data['recorder_field_id']}", className="very-small-text"),
                                         ],
                                         width=9,
                                     ),
@@ -107,7 +111,7 @@ def recent_detections(num_cards=8, hours=72):
             break
 
     if not cards:
-        placeholder = html.P("Uuups...something went wrong. Please try to reload.", 
+        placeholder = html.P(strings.get('widget_error_no_data'), 
                              className="text-muted",
                              style={"text-align": "center", "width": "100%"})
     else:
@@ -116,7 +120,7 @@ def recent_detections(num_cards=8, hours=72):
     data = html.Data(id="audio-data-list", value=json.dumps(datalist))
 
     if show_more:
-        show_more_button = dbc.Button("Show more detections", href=f"{cfg.SITE_ROOT}/detections", className="btn-href mt-3")
+        show_more_button = dbc.Button(strings.get('widget_recent_detections_show_more'), href=f"{cfg.SITE_ROOT}/detections", className="btn-href mt-3")
         cards.append(dbc.Row(dbc.Col(show_more_button, width="auto", className="mx-auto"), className=" full-width"))
 
     return cards, placeholder, data

@@ -85,20 +85,31 @@ def app_layout():
             dcc.Store(id="species-data-store"),   # Store for species data
             dcc.Store(id="recorder-stats-store"),  # Store for recorder stats
             dcc.Store(id="recorder-data-store"),   # Store for recorder data
-            dcc.Store(id="locale-store"),  # Store for selected locale
+            dcc.Store(id="locale-store", data=cfg.DEFAULT_SITE_LOCALE),  # Store for selected locale
             html.Div(id="dummy-output"),  # Dummy output for page reload
-            
+            html.Div(id="dynamic-layout")  # Dynamic layout based on locale
+        ]
+    )
+
+# Callback to update the dynamic layout based on the locale
+@app.callback(
+    Output("dynamic-layout", "children"),
+    [Input("locale-store", "data")]
+)
+def update_layout(locale):
+    return html.Div(
+        [
             # Header Section with Logo and Navigation Bar
-            nav_bar(),
+            nav_bar(locale),
             
             # Content will be rendered here based on the URL
             html.Div(id="page-content"),
             
             # Footer Section
-            footer_content(),
+            footer_content(locale),
         ]
     )
-    
+
 # Callback to toggle the collapse on small screens
 @app.callback(
     Output("navbar-collapse", "is_open"),
@@ -141,56 +152,81 @@ def update_active_nav(pathname):
     return home_class, dashboard_class, detections_class, about_class
 
 # Callback to update the page content based on the URL
-@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
-def display_page(pathname):
+@app.callback(Output("page-content", "children"), [Input("url", "pathname"), Input("locale-store", "data")])
+def display_page(pathname, locale):
     user_agent = request.headers.get('User-Agent')
-    if pathname == cfg.SITE_ROOT + "/":
-        increment_site_views('main page', user_agent)
-        return main_page_content()
-    elif pathname == cfg.SITE_ROOT + "/dashboard":
-        increment_site_views('dashboard', user_agent)
-        return dashboard_page_content()
-    elif pathname.startswith(cfg.SITE_ROOT + "/recorder/"):
-        recorder_id = pathname.split("/")[-1]
-        increment_site_views(f'recorder {recorder_id}', user_agent)
-        return display_recorder_page(recorder_id)
-    elif pathname.startswith(cfg.SITE_ROOT + "/species/"):
-        species_id = pathname.split("/")[-1]
-        increment_site_views(f'species {species_id}', user_agent)
-        return display_species_page(species_id)
-    elif pathname == cfg.SITE_ROOT + "/detections":
-        increment_site_views('detections', user_agent)
-        return detections_page_content()
-    elif pathname == cfg.SITE_ROOT + "/about":
-        increment_site_views('about', user_agent)
-        return about_page_content()
-    else:
-        print(f"404 Page Not Found: {pathname}")
-        return "404 Page Not Found"
+    path_parts = pathname.strip('/').split('/')
+    
+    # Check if the last part of the path is a locale
+    if path_parts[-1] in cfg.SUPPORTED_SITE_LOCALES.values():
+        locale = path_parts.pop()
+        pathname = '/' + '/'.join(path_parts)
+    
+    try:
+        if pathname == cfg.SITE_ROOT + "/":
+            increment_site_views('main page', user_agent)
+            return main_page_content(locale)
+        elif pathname == cfg.SITE_ROOT + "/dashboard":
+            increment_site_views('dashboard', user_agent)
+            return dashboard_page_content(locale)
+        elif pathname.startswith(cfg.SITE_ROOT + "/recorder/"):
+            recorder_id = pathname.split("/")[-1]
+            increment_site_views(f'recorder {recorder_id}', user_agent)
+            return display_recorder_page(recorder_id, locale)
+        elif pathname.startswith(cfg.SITE_ROOT + "/species/"):
+            species_id = pathname.split("/")[-1]
+            increment_site_views(f'species {species_id}', user_agent)
+            return display_species_page(species_id, locale)
+        elif pathname == cfg.SITE_ROOT + "/detections":
+            increment_site_views('detections', user_agent)
+            return detections_page_content(locale)
+        elif pathname == cfg.SITE_ROOT + "/about":
+            increment_site_views('about', user_agent)
+            return about_page_content(locale)
+        else:
+            print(f"404 Page Not Found: {pathname}")
+            return "404 Page Not Found"
+    except Exception as e:
+        print(f"Error resolving page: {e}")
+        return "An error occurred while trying to display the page. Please check the URL and try again."
+
 
 # Callback to update the site locale based on the selected language
 @app.callback(
-    [Output("locale-store", "data"), Output("locale-label", "children")],
-    [Input({"type": "nav-locale", "index": ALL}, "n_clicks")],
-    [State("url", "href")]
+    Output("locale-store", "data"),
+    [Input({"type": "nav-locale", "index": ALL}, "n_clicks"), Input("url", "pathname")],
+    [State("locale-store", "data")]
 )
-def update_locale(n_clicks, href):
+def update_locale(n_clicks, pathname, current_locale):
     ctx = dash.callback_context
+    path_parts = pathname.strip('/').split('/')
+    
+    # Check if the last part of the path is a locale
+    if path_parts[-1] in cfg.SUPPORTED_SITE_LOCALES.values():
+        locale = path_parts[-1]
+        if locale != current_locale:
+            return locale
+        return current_locale
+    
     if not ctx.triggered:
-        return "", f" {cfg.SITE_LOCALE.upper()}"
+        return current_locale
     else:
-        locale = json.loads(ctx.triggered[0]['prop_id'].split('.')[0])['index']
-        cfg.SITE_LOCALE = locale
-        return locale, f" {locale.upper()}"
-
+        try:
+            locale = json.loads(ctx.triggered[0]['prop_id'].split('.')[0])['index']
+        except (json.JSONDecodeError, KeyError):
+            return current_locale
+        if locale != current_locale:
+            return locale
+        return current_locale
 # Callback to reload the page when the locale is updated
 @app.callback(
     Output("dummy-output", "children"),
-    [Input("locale-store", "data")]
+    [Input("locale-store", "data")],
+    [State("url", "href")]
 )
-def reload_page(locale):
-    if locale:
-        return dcc.Location(href=cfg.SITE_ROOT + "/", id="dummy-location")
+def reload_page(locale, href):
+    if locale and href:
+        return dcc.Location(href=href, id="dummy-location")
     return ""
 
 # Layout of the Dash app

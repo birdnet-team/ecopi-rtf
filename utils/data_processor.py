@@ -7,6 +7,8 @@ from datetime import datetime, timedelta, UTC
 import pytz
 import numpy as np
 
+from utils.strings import Strings
+
 import config as cfg 
 
 # Set random seed
@@ -17,40 +19,42 @@ def get_current_week():
     # Return current week 1..48 (4 weeks per month)
     return min(48, max(1, int(datetime.now().isocalendar()[1] / 52 * 48)))
 
-def date_to_last_seen(date, time_format='24h'):
-    # Convert date to '16 hrs ago' or '2 days ago'
-    # below 1 hr use minutes
-    # below 48 hrs use hours
-    # above 48 hrs use days
-    try:
-        if time_format == '12h':
-            date = datetime.strptime(date, '%m/%d/%Y - %I:%M %p')
-        else:
-            date = datetime.strptime(date, '%m/%d/%Y - %H:%M')
-    except ValueError:
-        # Try the other format if the first one fails
+def date_to_last_seen(date, time_format='24h', locale='en'):
+    strings = Strings(locale)
+    date_formats = [
+        cfg.DATE_FORMAT + ' - %I:%M %p',
+        cfg.DATE_FORMAT + ' - %H:%M',
+        '%m/%d/%Y - %I:%M %p',
+        '%m/%d/%Y - %H:%M'
+    ]
+    for fmt in date_formats:
         try:
-            date = datetime.strptime(date, '%m/%d/%Y - %H:%M')
+            date = datetime.strptime(date, fmt)
+            break
         except ValueError:
-            date = datetime.strptime(date, '%m/%d/%Y - %I:%M %p')
+            continue
+    else:
+        raise ValueError(f"Date {date} does not match any expected format.")
     
     delta = datetime.now() - date
     
     if delta.total_seconds() < 60:
-        return '1 min ago'
+        return f"{strings.get('dp_time_delta_ago_prefix')} 1 {strings.get('dp_time_delta_min')} {strings.get('dp_time_delta_ago_postfix')}"
     
     if delta.total_seconds() < 60 * 60:
         mins = int(delta.total_seconds() / 60)
-        return f"{mins} min{'s' if mins > 1 else ''} ago"
+        return f"{strings.get('dp_time_delta_ago_prefix')} {mins} {strings.get('dp_time_delta_min')} {strings.get('dp_time_delta_ago_postfix')}"
     
     if delta.total_seconds() < 60 * 60 * 48:
         hrs = int(delta.total_seconds() / 3600)
-        return f"{hrs} hr{'s' if hrs > 1 else ''} ago"
+        hr_str = strings.get('dp_time_delta_hr') if hrs == 1 else strings.get('dp_time_delta_hrs')
+        return f"{strings.get('dp_time_delta_ago_prefix')} {hrs} {hr_str} {strings.get('dp_time_delta_ago_postfix')}"
     
     days = int(delta.total_seconds() / 3600 / 24)
-    return f"{days} day{'s' if days > 1 else ''} ago"
+    day_str = strings.get('dp_time_delta_day') if days == 1 else strings.get('dp_time_delta_days')
+    return f"{strings.get('dp_time_delta_ago_prefix')} {days} {day_str} {strings.get('dp_time_delta_ago_postfix')}"
 
-def to_local_time(utc_time, time_format='24h'):
+def to_local_time(utc_time, time_format='24h', date_format=cfg.DATE_FORMAT):
     # Convert UTC time to local time
     try:
         utc_time = datetime.strptime(utc_time, '%m/%d/%Y - %I:%M %p')
@@ -61,9 +65,9 @@ def to_local_time(utc_time, time_format='24h'):
     local_time = utc_time.astimezone(timezone)
     
     if time_format == '12h':
-        return local_time.strftime('%m/%d/%Y - %I:%M %p')
+        return local_time.strftime(date_format + ' - %I:%M %p')
     else:
-        return local_time.strftime('%m/%d/%Y - %H:%M')
+        return local_time.strftime(date_format + ' - %H:%M')
 
 def is_in_species_data(species_code):
     
@@ -115,7 +119,9 @@ def get_battery_status(voltage):
     
     return str(battery_level) if battery_level > 10 else '< 10'
 
-def get_recorder_state(recorder_id):
+def get_recorder_state(recorder_id, locale):
+    
+    strings = Strings(locale)
     
     url = 'https://api.ecopi.de/api/v0.1/recorderstates/'
     
@@ -140,19 +146,19 @@ def get_recorder_state(recorder_id):
     
     is_ok = True if time_since_last_status.total_seconds() < 3600 * 24 else False
     
-    current_status = 'Ok | Sleeping'
+    current_status = f"Ok | {strings.get('dp_recorder_status_sleeping')}"
     status_color = '#69A0C2' # Blue
     if time_since_last_status.total_seconds() < 60 * 15 and not last_status['task'] == 'Finished':
-        current_status = 'Ok | Listening'
+        current_status = f"Ok | {strings.get('dp_recorder_status_listening')}"
         status_color = '#36824b' # Green
         
     if not is_ok:
-        current_status = 'Error | Offline'
+        current_status = f"{strings.get('dp_recorder_status_error')} | {strings.get('dp_recorder_status_offline')}"
         status_color = '#DAD5BC' # Gray
     
     return {'current_status': current_status, 
             'status_color': status_color, 
-            'last_update': date_to_last_seen(last_update),
+            'last_update': date_to_last_seen(last_update, locale=locale),
             'battery': get_battery_status(last_status['voltage']),
             'cpu_temp': last_status['cpu_temp'], 
             'is_ok': is_ok}
@@ -191,16 +197,15 @@ def get_recorder_location(recorder_id):
     
     return [response[0]['lat'], response[0]['lon']]
 
-def get_species_data(species):
+def get_species_data(species, locale):
     
     data = {}
     
     if not species in cfg.SPECIES_DATA:
         return data
     
-    # This is example data, we'll parse this from the species data later
-    if cfg.SITE_LOCALE.lower() in cfg.SUPPORTED_SITE_LOCALES.values() and 'common_name_' + cfg.SITE_LOCALE.lower() in cfg.SPECIES_DATA[species]:
-        data['common_name'] = cfg.SPECIES_DATA[species]['common_name_' + cfg.SITE_LOCALE.lower()]
+    if locale.lower() in cfg.SUPPORTED_SITE_LOCALES.values() and 'common_name_' + locale.lower() in cfg.SPECIES_DATA[species]:
+        data['common_name'] = cfg.SPECIES_DATA[species]['common_name_' + locale.lower()]
     else:
         data['common_name'] = cfg.SPECIES_DATA[species]['common_name']
     data['scientific_name'] = cfg.SPECIES_DATA[species]['sci_name']
@@ -324,7 +329,7 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
 
     return total_detections
 
-def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5):
+def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, locale='en'):
     url = cfg.API_BASE_URL + 'detections'
     
     headers = {
@@ -419,13 +424,13 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5):
     
     # Add species data
     for species in last_n:
-        species_data = get_species_data(species)
+        species_data = get_species_data(species, locale)
         for key, value in species_data.items():
             last_n[species][key] = value
     
     return last_n
 
-def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_count=5):
+def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_count=5, locale='en'):
     url = cfg.API_BASE_URL + 'detections'
     
     headers = {
@@ -521,7 +526,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     
     # Add species data
     for species in detections:
-        species_data = get_species_data(species)
+        species_data = get_species_data(species, locale)
         for key, value in species_data.items():
             detections[species][key] = value
         detections[species]['total_detections'] = sum(detections[species]['detections'])

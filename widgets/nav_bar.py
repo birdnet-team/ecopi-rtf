@@ -1,9 +1,14 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 
+from utils.strings import Strings
+
 import config as cfg
 
-def nav_bar():    
+def nav_bar(locale):  
+    
+    strings = Strings(locale)
+      
     return dbc.Navbar(
         dbc.Container(
             [
@@ -44,41 +49,41 @@ def nav_bar():
                                 dbc.NavLink(
                                     [
                                         html.I(className="bi bi-house-door-fill home-icon"),
-                                        html.Span("Home", className="home-text")
+                                        html.Span(strings.get('nav_home'), className="home-text")
                                     ],
                                     href=cfg.SITE_ROOT + "/",
                                     className="nav-link",
                                     id="nav-home"
                                 )
                             ),
-                            dbc.NavItem(dbc.NavLink("Dashboard", href=cfg.SITE_ROOT + "/dashboard", className="nav-link", id="nav-dashboard")),
-                            dbc.NavItem(dbc.NavLink("Detections", href=cfg.SITE_ROOT + "/detections", className="nav-link", id="nav-detections")),
+                            dbc.NavItem(dbc.NavLink(strings.get('nav_dashboard'), href=cfg.SITE_ROOT + "/dashboard", className="nav-link", id="nav-dashboard")),
+                            dbc.NavItem(dbc.NavLink(strings.get('nav_detections'), href=cfg.SITE_ROOT + "/detections", className="nav-link", id="nav-detections")),
                             dbc.DropdownMenu(
-                                label="Recorders",
+                                label=strings.get('nav_recorder_top'),
                                 children=[
                                     dbc.DropdownMenuItem(
-                                        dbc.NavLink(f"Recorder #{recorder_id}", href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}", className="dropdown-item", id=f"nav-recorder-{recorder_id}")
+                                        dbc.NavLink(f"{strings.get('nav_recorder')} #{recorder_id}", href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}", className="dropdown-item", id=f"nav-recorder-{recorder_id}")
                                     ) for recorder_id in cfg.RECORDERS.keys()
                                 ],
                                 nav=True,
                             ),
-                            dbc.NavItem(dbc.NavLink("About", href=cfg.SITE_ROOT + "/about", className="nav-link", id="nav-about")),
-                            #dbc.DropdownMenu(
-                            #    label=[
-                            #        html.I(className="bi bi-globe"),
-                            #        html.Span(id="locale-label", children=f" {cfg.SITE_LOCALE.upper()}")
-                            #    ],
-                            #    children=[
-                            #        dbc.DropdownMenuItem(
-                            #            language, href="#", className="dropdown-item", id={"type": "nav-locale", "index": locale}
-                            #        ) for language, locale in cfg.SUPPORTED_SITE_LOCALES.items()
-                            #    ],
-                            #    nav=True,
-                            #    in_navbar=True,
-                            #    right=True,
-                            #    id="locale-dropdown-menu"
-                            #),
-                            dbc.NavItem(html.A("Donate", href=cfg.DONATION_URL, className="nav-link nav-donate" if cfg.DONATION_URL else "d-none", id="nav-donate", target="_blank")),
+                            dbc.NavItem(dbc.NavLink(strings.get('nav_about'), href=cfg.SITE_ROOT + "/about", className="nav-link", id="nav-about")),
+                            dbc.DropdownMenu(
+                                label=[
+                                    html.I(className="bi bi-globe"),
+                                    html.Span(id="locale-label", children=f" {locale.upper()}")
+                                ],
+                                children=[
+                                    dbc.DropdownMenuItem(
+                                        language, href="#", className="dropdown-item", id={"type": "nav-locale", "index": locale}
+                                    ) for language, locale in cfg.SUPPORTED_SITE_LOCALES.items()
+                                ],
+                                nav=True,
+                                in_navbar=True,
+                                right=True,
+                                id="locale-dropdown-menu"
+                            ),
+                            dbc.NavItem(html.A(strings.get('nav_donate'), href=cfg.DONATION_URL, className="nav-link nav-donate" if cfg.DONATION_URL else "d-none", id="nav-donate", target="_blank")),
                         ],
                         className="ml-auto",
                         navbar=True,

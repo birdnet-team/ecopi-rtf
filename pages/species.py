@@ -9,6 +9,7 @@ import config as cfg
 from widgets.popup_player import popup_player
 from utils import data_processor as dp
 from utils import plots
+from utils.strings import Strings
 
 def get_confidence_color(confidence):
     if confidence < 33:
@@ -24,32 +25,34 @@ def get_confidence_color(confidence):
     else:
         return "#296239"
 
-def create_table_headers():
+def create_table_headers(locale):
+    strings = Strings(locale)
     return html.Thead(
         html.Tr([
             html.Th([
                 html.Div([
-                    "Date",
+                    strings.get('recorder_table_header_date'),
                     html.I(className="bi bi-arrow-down-up")
                 ], className="sortable-header")
             ], id="date-header", n_clicks=0),
             html.Th([
                 html.Div([
-                    "Score",
+                    strings.get('recorder_table_header_score'),
                     html.I(className="bi bi-arrow-down-up")
                 ], className="sortable-header")
             ], id="score-header", n_clicks=0),
             html.Th([
                 html.Div([
-                    "Recorder",
+                    strings.get('species_table_header_recorder'),
                     html.I(className="bi bi-arrow-down-up")
                 ], className="sortable-header")
             ], id="recorder-header", n_clicks=0),
-            html.Th("Audio"),
+            html.Th(strings.get('recorder_table_header_audio')),
         ])
     )
 
-def species_page_header(species_data):
+def species_page_header(species_data, locale):
+    strings = Strings(locale)
     return html.Div(
         [
             html.Img(src=species_data["image_url_highres"], className="species-header-image"),
@@ -64,7 +67,7 @@ def species_page_header(species_data):
                             width=9,
                         ),
                         dbc.Col(
-                            html.H6(f"Photo: {species_data['image_author']}", className="very-small-text species-overlay-text"),
+                            html.H6(f"{strings.get('misc_photo')}: {species_data['image_author']}", className="very-small-text species-overlay-text"),
                             width=3,
                             className="d-flex align-items-end justify-content-end"
                         ),
@@ -77,12 +80,12 @@ def species_page_header(species_data):
         className="species-header",
     )
 
-def display_species_page(species_id):
-    species_data = dp.get_species_data(species_id)
-    
+def display_species_page(species_id, locale):
+    species_data = dp.get_species_data(species_id, locale)
+    strings = Strings(locale)
     return html.Div([
         dcc.Store(id="species-id-store", data=species_id),
-        species_page_header(species_data),
+        species_page_header(species_data, locale),
         html.Div(
             dbc.Spinner(color=cfg.PRIMARY_COLOR),
             id="species-loading-container",
@@ -92,12 +95,12 @@ def display_species_page(species_id):
             dbc.Container(
                 [
                     html.Div(id="species-info-row"),
-                    html.H5("Hourly activity (past month):", className="recent-detections-heading"),
+                    html.H5(f"{strings.get('species_hourly_activity')}:", className="recent-detections-heading"),
                     html.Div(id="species-activity-plot"),
-                    html.H5("Recent detections:", className="recent-detections-heading"),
+                    html.H5(f"{strings.get('det_recent_detections')}:", className="recent-detections-heading"),
                     dbc.Table(
                         [
-                            create_table_headers(),
+                            create_table_headers(locale),
                             html.Tbody(id="detections-table-body")
                         ],
                         bordered=True,
@@ -129,29 +132,32 @@ def register_species_callbacks(app):
             Output("species-data-store", "data")
         ],
         [Input("species-id-store", "data")],
+        [State("locale-store", "data")],
         prevent_initial_call=False
     )
-    def update_species_content(species_id):
+    def update_species_content(species_id, locale):
         if not species_id:
             raise PreventUpdate
+        
+        strings = Strings(locale)
 
         # Load all required data
-        species_data = dp.get_species_data(species_id)
+        species_data = dp.get_species_data(species_id, locale)
         species_stats = dp.get_species_stats(species_id, max_results=25)
         total_detections = dp.get_total_detections(species_list=[species_id], days=-1, min_count=0)['total_detections']
-        activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*30, species_list=[species_id], min_count=0)
+        activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*30, species_list=[species_id], min_count=0, locale=locale)
         
         # Create info row
         info_row = dbc.Row([
             dbc.Col([
-                html.H5(f"{total_detections:,} total detections"),
+                html.H5(f"{total_detections:,} {strings.get('recorder_total_detections')}"),
                 html.H6([
                     html.I(className="bi bi-clock"),
-                    f" {dp.date_to_last_seen(species_stats[0]['datetime'], time_format=cfg.TIME_FORMAT) if species_stats else 'N/A'}"
+                    f" {dp.date_to_last_seen(species_stats[0]['datetime'], time_format=cfg.TIME_FORMAT, locale=locale) if species_stats else 'N/A'}"
                 ], className="small-text"),
             ], width=9, xs=7),
             dbc.Col(
-                html.A("Learn more", href=species_data["ebird_url"], 
+                html.A(strings.get('species_learn_more'), href=species_data["ebird_url"], 
                       target="_blank", className="btn btn-href learn-more-btn"),
                 width=3, xs=5,
                 className="d-flex align-items-start justify-content-end"
@@ -183,7 +189,7 @@ def register_species_callbacks(app):
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
                 html.Td([
-                    html.A(
+                    dcc.Link(
                         html.Div(
                             f"#{detection['recorder_field_id']}",
                             className="recorder-cell"
@@ -207,6 +213,8 @@ def register_species_callbacks(app):
             detection_data["common_name"] = species_data["common_name"]
             detection_data["scientific_name"] = species_data["scientific_name"]
             detection_data["confidence"] = detection_data["confidence"] * 10
+            detection_data['datetime'] = f"{strings.get('recorder_table_header_date')}: {detection_data['datetime']}"
+            detection_data['recorder_field_id'] = f"{strings.get('species_table_header_recorder')}: #{detection_data['recorder_field_id']}"
             data_list.append(detection_data)      
 
         # Store data for later use (moved after data_list creation)
@@ -240,13 +248,16 @@ def register_species_callbacks(app):
         ],
         [
             State("species-stats-store", "data"),
-            State("species-data-store", "data")
+            State("species-data-store", "data"),
+            State("locale-store", "data")
         ],
         prevent_initial_call=True
     )
-    def sort_table(date_clicks, score_clicks, recorder_clicks, species_stats, species_data):
+    def sort_table(date_clicks, score_clicks, recorder_clicks, species_stats, species_data, locale):
         if not species_stats:
             raise PreventUpdate
+
+        strings = Strings(locale)
 
         ctx = callback_context
         if not ctx.triggered:
@@ -277,7 +288,7 @@ def register_species_callbacks(app):
                     f" {int(detection['confidence'] * 10) / 10.0}"
                 ]),
                 html.Td([
-                    html.A(
+                    dcc.Link(
                         html.Div(
                             f"#{detection['recorder_field_id']}",
                             className="recorder-cell"
@@ -302,6 +313,8 @@ def register_species_callbacks(app):
             detection_data["common_name"] = species_data["common_name"]
             detection_data["scientific_name"] = species_data["scientific_name"]
             detection_data["confidence"] = detection_data["confidence"] * 10
+            detection_data['datetime'] = f"{strings.get('recorder_table_header_date')}: {detection_data['datetime']}"
+            detection_data['recorder_field_id'] = f"{strings.get('species_table_header_recorder')}: #{detection_data['recorder_field_id']}"
             data_list.append(detection_data)
 
         # Return both rows and updated audio data list

@@ -1,7 +1,7 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 
-def dashboard_page_content():
+def dashboard_page_content(locale):
     return html.Div(
         [
             dbc.Container(

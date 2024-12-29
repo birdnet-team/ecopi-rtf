@@ -3,14 +3,16 @@ import dash_bootstrap_components as dbc
 
 from utils import data_processor as dp
 from utils import plots
+from utils.strings import Strings
 
 import config as cfg
 
-def recording_units():
+def recording_units(locale):
+    strings = Strings(locale)
     try:
         recorder_data = {}
         for recorder_id in cfg.RECORDERS:
-            recorder_data[recorder_id] = dp.get_recorder_state(recorder_id)
+            recorder_data[recorder_id] = dp.get_recorder_state(recorder_id, locale)
             
         leaflet_map = plots.get_leaflet_map(recorder_data)
         
@@ -39,18 +41,18 @@ def recording_units():
                                             className="status-circle",
                                             style={"backgroundColor": status_color, "borderRadius": "50%", "display": "inline-block", "width": "10px", "height": "10px", "marginRight": "10px"}
                                         ),
-                                        f"Recorder #{recorder_id}",
+                                        f"{strings.get('nav_recorder')} #{recorder_id}",
                                         html.I(className="bi bi-bar-chart-fill", style={"float": "right"})
                                     ],
                                     className="small-text"
                                 ),
                                 dbc.CardBody(
                                     [
-                                        html.H6([html.B("Status: "), f"{data['current_status']}"], className="very-small-text"),
-                                        html.H6([html.B("Habitat: "), f"{cfg.RECORDERS[recorder_id]['habitat']}"], className="very-small-text"),
-                                        html.H6([html.B("CPU Temp: "), f"{data['cpu_temp']} °C"], className="very-small-text"),
-                                        html.H6([html.B("Battery: "), f"{data['battery'] if data['battery'] is not None else 'N/A'} %"], className="very-small-text"),
-                                        html.H6([html.B("Last Update: "), f"{data['last_update']}"], className="very-small-text")
+                                        html.H6([html.B(f"{strings.get('widget_units_status')}: "), f"{data['current_status']}"], className="very-small-text"),
+                                        html.H6([html.B(f"{strings.get('widget_units_habitat')}: "), f"{strings.get(cfg.RECORDERS[recorder_id]['habitat'])}"], className="very-small-text"),
+                                        html.H6([html.B(f"{strings.get('widget_units_cpu_temp')}: "), f"{data['cpu_temp']} °C"], className="very-small-text"),
+                                        html.H6([html.B(f"{strings.get('widget_units_battery')}: "), f"{data['battery'] if data['battery'] is not None else 'N/A'} %"], className="very-small-text"),
+                                        html.H6([html.B(f"{strings.get('widget_units_last_update')}: "), f"{data['last_update']}"], className="very-small-text")
                                     ]
                                 )
                             ],

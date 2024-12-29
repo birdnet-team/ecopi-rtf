@@ -31,6 +31,7 @@ args, unknown = parser.parse_known_args()
 config = load_config(args.config_file)
 
 # Load project configuration from yaml
+PROJECT_ID = config['PROJECT_ID']
 PROJECT_NAME = config['PROJECT_NAME']
 RECORDER_GROUP = config['RECORDER_GROUP']
 SPECIES_DATA = load_species_data(project=config['SPECIES_DATA'])
@@ -38,6 +39,8 @@ DEPLOYMENT_LAT = config['DEPLOYMENT_LAT']
 DEPLOYMENT_LON = config['DEPLOYMENT_LON']
 TIMEZONE = config['TIMEZONE']
 TIME_FORMAT = config['TIME_FORMAT']
+DATE_FORMAT = config['DATE_FORMAT']
+DEFAULT_SITE_LOCALE = config['DEFAULT_SITE_LOCALE']
 RECORDERS = config['RECORDERS']
 MAP_ZOOM_LEVEL = config['MAP_ZOOM_LEVEL']
 MAIN_HEADER_IMG_LIST = config['MAIN_HEADER_IMG_LIST']
@@ -45,10 +48,6 @@ ABOUT_HEADER_IMG_LIST = config['ABOUT_HEADER_IMG_LIST']
 LIVE_STREAM_URL = config['LIVE_STREAM_URL']
 DONATION_URL = config['DONATION_URL']
 PROJECT_ACRONYM = config['PROJECT_ACRONYM']
-PROJECT_MAIN_TITLE = config['PROJECT_MAIN_TITLE']
-PROJECT_SUBTITLE = config['PROJECT_SUBTITLE']
-PROJECT_SUBTITLE_DESC = config['PROJECT_SUBTITLE_DESC']
-PROJECT_GOAL = config['PROJECT_GOAL']
 PRIMARY_COLOR = config['PRIMARY_COLOR']
 SECONDARY_COLOR = config['SECONDARY_COLOR']
 PLOT_PRIMARY_COLOR = config['PLOT_PRIMARY_COLOR']
@@ -73,4 +72,3 @@ MAPBOX_TOKEN = os.getenv('MAPBOX_TOKEN')
 API_BASE_URL = 'https://api.ecopi.de/api/v0.1/'
 SITE_VIEWS_LOG = 'site_views.csv'
 SUPPORTED_SITE_LOCALES = {'English': 'en', 'Deutsch': 'de', 'Italiano': 'it', 'Français': 'fr', 'Čeština': 'cs'}
-SITE_LOCALE = 'en'
