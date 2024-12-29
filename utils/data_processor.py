@@ -129,9 +129,12 @@ def clean_cache(cache_dir, max_age=7200):
     for filename in os.listdir(cache_dir):
         file_path = os.path.join(cache_dir, filename)
         if os.path.isfile(file_path):
-            file_age = now - os.path.getmtime(file_path)
-            if file_age > max_age:
-                os.remove(file_path)
+            try:
+                file_age = now - os.path.getmtime(file_path)
+                if file_age > max_age:
+                    os.remove(file_path)
+            except:
+                pass
 
 def make_request(url, headers, params, cache_timeout=3600):
     
