@@ -382,11 +382,7 @@ def register_species_callbacks(app):
             }
             setTimeout(function() {
                 window.dispatchEvent(new Event('resize'));
-                var mapElement = document.getElementById('species-site-map');
-                if (mapElement && mapElement._leaflet_map) {
-                    mapElement._leaflet_map.invalidateSize(true);
-                    mapElement._leaflet_map.fire('moveend');
-                }
+                
             }, 200);
             return window.dash_clientside.no_update;
         }
