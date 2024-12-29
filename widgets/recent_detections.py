@@ -19,6 +19,8 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
     datalist = []
 
     for idx, (species, data) in enumerate(last_detections.items()):
+        data['datetime'] = f"{strings.get('recorder_table_header_date')}: {data['datetime']}"
+        data['recorder_field_id'] = f"{strings.get('species_table_header_recorder')}: #{data['recorder_field_id']}"
         datalist.append(data)
         confidence_score = data['confidence'] * 10
         card = dbc.Col(
@@ -54,8 +56,8 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
                                 [
                                     dbc.Col(
                                         [
-                                            html.Div(f"{strings.get('misc_date')}: {data['datetime']}", className="very-small-text"),
-                                            html.Div(f"{strings.get('nav_recorder')}: #{data['recorder_field_id']}", className="very-small-text"),
+                                            html.Div(f"{data['datetime']}", className="very-small-text"),
+                                            html.Div(f"{data['recorder_field_id']}", className="very-small-text"),
                                         ],
                                         width=9,
                                     ),
