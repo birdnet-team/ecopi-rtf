@@ -7,6 +7,7 @@ DEPLOYMENT_LON: 12.924
 TIMEZONE: 'Europe/Berlin'
 TIME_FORMAT: '24h'
 DATE_FORMAT: '%d.%m.%Y'
+DEFAULT_SITE_LOCALE: 'de'
 RECORDERS:
   1: {id: '0271', lat: 50.850533, lon: 12.890730, habitat: 'habitat_urban', img: 'amic_unit_1.jpg'}
   2: {id: '0829', lat: 50.850231, lon: 12.890473, habitat: 'habitat_urban', img: 'amic_unit_2.jpg'}

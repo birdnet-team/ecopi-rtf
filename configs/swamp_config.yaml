@@ -7,6 +7,7 @@ DEPLOYMENT_LON: -76.451566
 TIMEZONE: 'America/New_York'
 TIME_FORMAT: '12h'
 DATE_FORMAT: '%m/%d/%Y'
+DEFAULT_SITE_LOCALE: 'en'
 RECORDERS:
   1: {id: '0271', lat: 42.4786, lon: -76.4407, habitat: 'habitat_shrubs_and_trees', img: 'swamp_unit_1.jpg'}
   2: {id: '0829', lat: 42.4768, lon: -76.4396, habitat: 'habitat_shrubs_and_meadow', img: 'swamp_unit_2.jpg'}
