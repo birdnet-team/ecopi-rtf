@@ -288,6 +288,20 @@ species_learn_more:
   it: "Scopri di più"
   cs: "Zjistit více"
 
+species_site_activity:
+  en: "Site activity (past 90 days)"
+  de: "Standortaktivität (letzte 90 Tage)"
+  it: "Attività del sito (ultimi 90 giorni)"
+  fr: "Activité du site (90 derniers jours)"
+  cs: "Aktivita na místě (posledních 90 dní)"
+
+species_site_activity_desc:
+  en: "This map shows the (vocal) activity of the species at each recording site. Larger circles indicate more activity. The numbers in brackets denote the total number of detections at that location."
+  de: "Diese Karte zeigt die (stimmliche) Aktivität der Art an jedem Aufnahmeort. Größere Kreise bedeuten mehr Aktivität. Die Zahlen in Klammern geben die Gesamtzahl der Detektionen an diesem Ort an."
+  it: "Questa mappa mostra l'attività (vocale) della specie in ciascun sito di registrazione. I cerchi più grandi indicano maggiore attività. I numeri tra parentesi indicano il numero totale di rilevamenti in quella posizione."
+  fr: "Cette carte montre l'activité (vocale) de l'espèce à chaque site d'enregistrement. Les cercles plus grands indiquent plus d'activité. Les chiffres entre parenthèses indiquent le nombre total de détections à cet endroit."
+  cs: "Tato mapa ukazuje (hlasovou) aktivitu druhu na každém záznamovém místě. Větší kruhy označují větší aktivitu. Čísla v závorkách označují celkový počet detekcí na daném místě."
+
 recorder_total_detections:
   en: "total detections"
   de: "Detektionen gesamt"

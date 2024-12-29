@@ -7,6 +7,7 @@ import json
 import config as cfg
 
 from widgets.popup_player import popup_player
+from widgets.site_activity import get_site_activity_map
 from utils import data_processor as dp
 from utils import plots
 from utils.strings import Strings
@@ -55,7 +56,7 @@ def species_page_header(species_data, locale):
     strings = Strings(locale)
     return html.Div(
         [
-            html.Img(src=species_data["image_url_highres"], className="species-header-image"),
+            html.Img(src=species_data["image_url_highres"], className="species-header-image"), 
             html.Div(
                 dbc.Row(
                     [
@@ -108,7 +109,8 @@ def display_species_page(species_id, locale):
                         responsive=True,
                         striped=True,
                         className="detections-table"
-                    )
+                    ),
+                    
                 ],
                 fluid=True,
                 className="species-main-content",
@@ -116,6 +118,7 @@ def display_species_page(species_id, locale):
         ], id="species-main-content", style={"display": "none"}),  # Hide initially
         html.Div(id="detections-data-container"),
         popup_player(),
+        html.Div(id="site-activity-map-container", style={"display": "none"}),  # Initially hide the map
     ], className="species-page-content")
 
 def register_species_callbacks(app):
@@ -129,7 +132,9 @@ def register_species_callbacks(app):
             Output("species-main-content", "style"),
             Output("species-loading-container", "style"),
             Output("species-stats-store", "data"),
-            Output("species-data-store", "data")
+            Output("species-data-store", "data"),
+            Output("site-activity-map-container", "children"),  # Add this output
+            Output("site-activity-map-container", "style"),  # Add this output
         ],
         [Input("species-id-store", "data")],
         [State("locale-store", "data")],
@@ -143,7 +148,7 @@ def register_species_callbacks(app):
 
         # Load all required data
         species_data = dp.get_species_data(species_id, locale)
-        species_stats = dp.get_species_stats(species_id, max_results=25)
+        species_stats = dp.get_species_stats(species_id, max_results=10)
         total_detections = dp.get_total_detections(species_list=[species_id], days=-1, min_count=0)['total_detections']
         activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*30, species_list=[species_id], min_count=0, locale=locale)
         
@@ -171,7 +176,7 @@ def register_species_callbacks(app):
             config={"displayModeBar": False, "staticPlot": True},
             className="species-daily-activity-plot"
         )
-        
+                
         # Sort species stats by score
         species_stats = sorted(species_stats, key=lambda x: x["confidence"], reverse=True)
 
@@ -224,6 +229,9 @@ def register_species_callbacks(app):
             "data_list": data_list
         }
 
+        # Get the site activity map
+        site_activity_map = get_site_activity_map(species_id, locale)
+
         return (
             info_row, 
             plot, 
@@ -233,7 +241,9 @@ def register_species_callbacks(app):
             {"opacity": "1"},
             {"height": "0px"},
             species_stats,    # Store stats
-            species_data     # Store data
+            species_data,     # Store data
+            site_activity_map,  # Add this return value
+            {"display": "block"}  # Add this return value
         )
 
     @app.callback(
