@@ -268,6 +268,7 @@ def get_leaflet_map(data):
     
     # Create the Leaflet map
     leaflet_map = dl.Map(
+        id='species-site-map',
         children=[
             dl.TileLayer(),
             dl.LayerGroup(markers)

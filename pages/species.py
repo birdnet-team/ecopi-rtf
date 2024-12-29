@@ -55,7 +55,8 @@ def species_page_header(species_data, locale):
     strings = Strings(locale)
     return html.Div(
         [
-            html.Img(src=species_data["image_url_highres"], className="species-header-image"),
+            html.Img(src=species_data["image_url_highres"], className="species-header-image"),            
+            html.Div(id="hidden-map-resize-trigger", style={"display": "none"}),
             html.Div(
                 dbc.Row(
                     [
@@ -371,4 +372,25 @@ def register_species_callbacks(app):
         [Input({"type": "species-play-icon", "index": MATCH}, "n_clicks")],
         [State({"type": "species-play-icon", "index": MATCH}, "id")],
         prevent_initial_call=True,
+    )
+    
+    app.clientside_callback(
+        """
+        function(mapChildren) {
+            if (!mapChildren) {
+                return window.dash_clientside.no_update;
+            }
+            setTimeout(function() {
+                window.dispatchEvent(new Event('resize'));
+                var mapElement = document.getElementById('species-site-map');
+                if (mapElement && mapElement._leaflet_map) {
+                    mapElement._leaflet_map.invalidateSize(true);
+                    mapElement._leaflet_map.fire('moveend');
+                }
+            }, 200);
+            return window.dash_clientside.no_update;
+        }
+        """,
+        Output("hidden-map-resize-trigger", "children"),
+        Input("species-site-map", "children")
     )
