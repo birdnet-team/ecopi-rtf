@@ -137,7 +137,7 @@ def make_request(url, headers, params, cache_timeout=3600):
     
     # Does the cache directory exist?
     if not os.path.exists(cfg.CACHE_DIR):
-        os.makedirs(cfg.CACHE_DIR)
+        os.makedirs(cfg.CACHE_DIR, exist_ok=True)
         
     # Clean the cache
     clean_cache(cfg.CACHE_DIR)
