@@ -63,7 +63,7 @@ FOOTER_LINKS:
     - {name: "widget_footer_about_terms_of_use", href: "https://www.birds.cornell.edu/home/terms-of-use/", target: "_blank"}
 COPYRIGHT_HOLDERS: ""
 FOOTER_TOP_LOGO: 'birdnet_logo_white.png'
-FOOTER_BOTTOM_LOGOS: ['oekofor_logo_white.png', 'yang_logo_white.png', 'tuc_logo_white.png']
+FOOTER_BOTTOM_LOGOS: ['chemnitz_logo_white.png', 'oekofor_logo_white.png', 'yang_logo_white.png', 'tuc_logo_white.png']
 TEAM_MEMBERS:
   - {name: "Stefan Kahl", role: "about_team_role_project_lead_and_web", img: "stefan.png"}
   - {name: "Felix Günther", role: "about_team_role_backend", img: "felix.png"}
