@@ -51,7 +51,7 @@ def date_to_last_seen(date, time_format='24h', locale='en'):
     day_str = strings.get('dp_time_delta_day') if days == 1 else strings.get('dp_time_delta_days')
     return f"{strings.get('dp_time_delta_ago_prefix')} {days} {day_str} {strings.get('dp_time_delta_ago_postfix')}"
 
-def to_local_time(utc_time, time_format='24h'):
+def to_local_time(utc_time, time_format='24h', date_format=cfg.DATE_FORMAT):
     # Convert UTC time to local time
     try:
         utc_time = datetime.strptime(utc_time, '%m/%d/%Y - %I:%M %p')
@@ -62,9 +62,9 @@ def to_local_time(utc_time, time_format='24h'):
     local_time = utc_time.astimezone(timezone)
     
     if time_format == '12h':
-        return local_time.strftime('%m/%d/%Y - %I:%M %p')
+        return local_time.strftime(date_format + ' - %I:%M %p')
     else:
-        return local_time.strftime('%m/%d/%Y - %H:%M')
+        return local_time.strftime(date_format + ' - %H:%M')
 
 def is_in_species_data(species_code):
     
