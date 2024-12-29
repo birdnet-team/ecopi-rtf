@@ -23,15 +23,15 @@ def date_to_last_seen(date, time_format='24h', locale='en'):
     strings = Strings(locale)
     try:
         if time_format == '12h':
-            date = datetime.strptime(date, '%m/%d/%Y - %I:%M %p')
+            date = datetime.strptime(date, cfg.DATE_FORMAT + ' - %I:%M %p')
         else:
-            date = datetime.strptime(date, '%m/%d/%Y - %H:%M')
+            date = datetime.strptime(date, cfg.DATE_FORMAT + ' - %H:%M')
     except ValueError:
         # Try the other format if the first one fails
         try:
-            date = datetime.strptime(date, '%m/%d/%Y - %H:%M')
+            date = datetime.strptime(date, cfg.DATE_FORMAT + ' - %H:%M')
         except ValueError:
-            date = datetime.strptime(date, '%m/%d/%Y - %I:%M %p')
+            date = datetime.strptime(date, cfg.DATE_FORMAT + ' - %I:%M %p')
     
     delta = datetime.now() - date
     
