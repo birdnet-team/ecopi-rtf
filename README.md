@@ -1,6 +1,6 @@
 # ecoPi Real-Time Frontend (ecoPi-RTF)
 
-This is a web application based on Dash for visualizing data recorded with **ecoPi** real-time audio recorders. The application allows users to explore the data collected by ecoPi and learn more about the species present in the monitored areas. 
+This is a web application built with Dash for visualizing data recorded with **ecoPi** real-time audio recorders. The application allows users to explore the data collected by ecoPi and learn more about the species present in the monitored areas. 
 
 ecoPi is a recording device used in various projects to perform acoustic monitoring and study the biodiversity of birds and other wildlife. The device collects audio data in real-time, which is then processed using machine learning models to identify species. The ecoPi Real Time Frontend (ecoPi-RTF) web application allows users to explore the data collected by ecoPi and learn more about the species present in the monitored areas.
 
@@ -119,7 +119,7 @@ Feel free to use birdnet for your acoustic analyses and research. If you do, ple
 
 This project is supported by Jake Holshuh (Cornell class of '69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats.
 
-The development of BirdNET is supported by the German Federal Ministry of Education and Research through the project “BirdNET+” (FKZ 01|S22072). The German Federal Ministry for the Environment, Nature Conservation and Nuclear Safety contributes through the “DeepBirdDetect” project (FKZ 67KI31040E). In addition, the Deutsche Bundesstiftung Umwelt supports BirdNET through the project “RangerSound” (project 39263/01).
+The development of BirdNET is supported by the German Federal Ministry of Education and Research through the project “BirdNET+” (FKZ 01|S22072). The German Federal Ministry for the Environment, Nature Conservation, Nuclear Safety and Consumer Protection contributes through the “DeepBirdDetect” project (FKZ 67KI31040E). In addition, the Deutsche Bundesstiftung Umwelt supports BirdNET through the project “RangerSound” (project 39263/01).
 
 ## Partners
 
