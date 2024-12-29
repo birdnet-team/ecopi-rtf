@@ -32,7 +32,7 @@ function openPlayer(index) {
         url: audioUrl, // Production 
         // url: "./assets/example.mp3", // For main page
         // url: "../assets/example.mp3", // for species page
-        sampleRate: 48000, //For some reason, wavesurfer renders the spectrogram until fmax of sampleRate/4 instead of sampleRate/2 - maybe another bug?
+        sampleRate: 48000, //For some reason, wavesurfer renders the spectrogram until fmax of sampleRate/4 instead of sampleRate/2 in some browsers - maybe another bug?
         height: 0,
     });
 
@@ -49,7 +49,7 @@ function openPlayer(index) {
 
     wavesurfer.registerPlugin(
         Spectrogram.create({
-          frequencyMax: 12000,
+          frequencyMax: 24000, // Max frequency is broken in the current version of wavesurfer.js and only works in some browsers
           splitChannels: false,
           fftSamples: 512,
           frequencyMin: 300,
