@@ -1,6 +1,7 @@
 import json
 import os
 import yaml
+import time
 import argparse
 
 from dotenv import load_dotenv
@@ -17,8 +18,23 @@ def load_species_data(project='swamp'):
         return data
     
 def load_config(config_file):
+    # Get the absolute path to the YAML file
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    config_file = os.path.join(base_dir, config_file)
+    
     with open(config_file, 'r') as file:
         return yaml.safe_load(file)
+    
+def make_cache_dir(cache_dir):    
+    # Get the absolute path to the cache directory
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    cache_dir = os.path.join(base_dir, cache_dir)
+    
+    # Create the cache directory if it doesn't exist
+    if not os.path.exists(cache_dir):
+        os.makedirs(cache_dir, exist_ok=True)
+        
+    return cache_dir
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description='Launch the ecoPi-RTF app with specified configuration.')
