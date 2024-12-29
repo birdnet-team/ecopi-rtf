@@ -232,11 +232,11 @@ def get_leaflet_map(data):
     if 'detections' not in df.columns:
         df['normalized_detections'] = 2  # Default value if no detections are available
     else:    
-          # np.log1p is used to avoid log(0)
+        # np.log1p is used to avoid log(0)
         # Normalize detections to fall between 1 and 6 for radius mapping
         detections_min = df['detections'].min()
         detections_max = df['detections'].max()
-        df['normalized_detections'] = 1 + (np.log1p(df['detections']) - np.log1p(detections_min)) * 4 / (np.log1p(detections_max) - np.log1p(detections_min))
+        df['normalized_detections'] = 0.5 + (np.log1p(df['detections']) - np.log1p(detections_min)) * 4.5 / (np.log1p(detections_max) - np.log1p(detections_min))
     
     # Calculate the bounding box for the recorder locations
     min_lat = df['lat'].min()
@@ -261,7 +261,7 @@ def get_leaflet_map(data):
                     html.Div([                        
                         html.B(f"#{row['id']} ({row['detections']})") if 'detections' in row else html.B(f"#{row['id']}"),
                     ])
-                ], permanent=True)
+                ], permanent=True, direction='right')
             ]
         ) for idx, row in df.iterrows()
     ]
@@ -274,11 +274,12 @@ def get_leaflet_map(data):
             dl.LayerGroup(markers)
         ],
         center=[center_lat, center_lon],
-        zoom=cfg.MAP_ZOOM_LEVEL,
+        #zoom=cfg.MAP_ZOOM_LEVEL,  # Initial zoom level
         style={'width': '100%', 'height': '500px'},
         scrollWheelZoom=False,  # Disable scroll wheel zoom
         touchZoom=True,  # Enable touch zoom
-        zoomControl=True  # Enable zoom controls
+        zoomControl=True,  # Enable zoom controls
+        bounds=[[min_lat, min_lon], [max_lat, max_lon]]  # Set bounds to fit all markers
     )
     
     return leaflet_map

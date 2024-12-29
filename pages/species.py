@@ -7,6 +7,7 @@ import json
 import config as cfg
 
 from widgets.popup_player import popup_player
+from widgets.site_activity import get_site_activity_map
 from utils import data_processor as dp
 from utils import plots
 from utils.strings import Strings
@@ -55,8 +56,7 @@ def species_page_header(species_data, locale):
     strings = Strings(locale)
     return html.Div(
         [
-            html.Img(src=species_data["image_url_highres"], className="species-header-image"),            
-            html.Div(id="hidden-map-resize-trigger", style={"display": "none"}),
+            html.Img(src=species_data["image_url_highres"], className="species-header-image"), 
             html.Div(
                 dbc.Row(
                     [
@@ -110,14 +110,7 @@ def display_species_page(species_id, locale):
                         striped=True,
                         className="detections-table"
                     ),
-                    html.H5(f"{strings.get('species_site_activity')}:", className="recent-detections-heading"),
-                    dbc.Row(
-                        dbc.Col(
-                            html.Div(className="mt-4 full-width", id="site-activity"),
-                            width=12
-                        )
-                    ),
-                    html.H6(strings.get('species_site_activity_desc'), className="mt-2 mb-4 small-text")
+                    
                 ],
                 fluid=True,
                 className="species-main-content",
@@ -125,7 +118,7 @@ def display_species_page(species_id, locale):
         ], id="species-main-content", style={"display": "none"}),  # Hide initially
         html.Div(id="detections-data-container"),
         popup_player(),
-        dcc.Interval(id="map-update-interval", interval=1000, n_intervals=0, max_intervals=1)  # Add interval component
+        html.Div(id="site-activity-map-container", style={"display": "none"}),  # Initially hide the map
     ], className="species-page-content")
 
 def register_species_callbacks(app):
@@ -135,12 +128,13 @@ def register_species_callbacks(app):
             Output("species-activity-plot", "children"),
             Output("species-loading-container", "children"),
             Output("detections-table-body", "children"),
-            Output("site-activity", "children"),
             Output("detections-data-container", "children"),
             Output("species-main-content", "style"),
             Output("species-loading-container", "style"),
             Output("species-stats-store", "data"),
-            Output("species-data-store", "data")
+            Output("species-data-store", "data"),
+            Output("site-activity-map-container", "children"),  # Add this output
+            Output("site-activity-map-container", "style"),  # Add this output
         ],
         [Input("species-id-store", "data")],
         [State("locale-store", "data")],
@@ -156,13 +150,7 @@ def register_species_callbacks(app):
         species_data = dp.get_species_data(species_id, locale)
         species_stats = dp.get_species_stats(species_id, max_results=10)
         total_detections = dp.get_total_detections(species_list=[species_id], days=-1, min_count=0)['total_detections']
-        site_detections = dp.get_total_detections(species_list=[species_id], days=90, min_count=0)['species_counts'][species_id]['recorders']
         activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*30, species_list=[species_id], min_count=0, locale=locale)
-        
-        recorder_data = {}
-        for recorder_id in cfg.RECORDERS:
-            recorder_data[recorder_id] = dp.get_recorder_state(recorder_id, locale)
-            recorder_data[recorder_id]['detections'] = site_detections.get(recorder_id, 0)
         
         # Create info row
         info_row = dbc.Row([
@@ -188,9 +176,6 @@ def register_species_callbacks(app):
             config={"displayModeBar": False, "staticPlot": True},
             className="species-daily-activity-plot"
         )
-        
-        # Create site activity map
-        site_activity_map = plots.get_leaflet_map(recorder_data)
                 
         # Sort species stats by score
         species_stats = sorted(species_stats, key=lambda x: x["confidence"], reverse=True)
@@ -244,36 +229,22 @@ def register_species_callbacks(app):
             "data_list": data_list
         }
 
+        # Get the site activity map
+        site_activity_map = get_site_activity_map(species_id, locale)
+
         return (
             info_row, 
             plot, 
             None,
             rows, 
-            site_activity_map,
             html.Data(id="audio-data-list", value=json.dumps(data_list)),
             {"opacity": "1"},
             {"height": "0px"},
             species_stats,    # Store stats
-            species_data     # Store data
+            species_data,     # Store data
+            site_activity_map,  # Add this return value
+            {"display": "block"}  # Add this return value
         )
-
-    @app.callback(
-        Output("site-activity-map", "children"),
-        Input("map-update-interval", "n_intervals"),
-        [State("species-id-store", "data"), State("locale-store", "data")]
-    )
-    def update_map(n_intervals, species_id, locale):
-        if n_intervals == 0:
-            raise PreventUpdate
-
-        recorder_data = {}
-        site_detections = dp.get_total_detections(species_list=[species_id], days=90, min_count=0)['species_counts'][species_id]['recorders']
-        for recorder_id in cfg.RECORDERS:
-            recorder_data[recorder_id] = dp.get_recorder_state(recorder_id, locale)
-            recorder_data[recorder_id]['detections'] = site_detections.get(recorder_id, 0)
-
-        site_activity_map = plots.get_leaflet_map(recorder_data)
-        return site_activity_map
 
     @app.callback(
         [
@@ -372,21 +343,4 @@ def register_species_callbacks(app):
         [Input({"type": "species-play-icon", "index": MATCH}, "n_clicks")],
         [State({"type": "species-play-icon", "index": MATCH}, "id")],
         prevent_initial_call=True,
-    )
-    
-    app.clientside_callback(
-        """
-        function(mapChildren) {
-            if (!mapChildren) {
-                return window.dash_clientside.no_update;
-            }
-            setTimeout(function() {
-                window.dispatchEvent(new Event('resize'));
-                
-            }, 200);
-            return window.dash_clientside.no_update;
-        }
-        """,
-        Output("hidden-map-resize-trigger", "children"),
-        Input("species-site-map", "children")
     )
