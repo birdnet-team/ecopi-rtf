@@ -6944,7 +6944,7 @@
       0.0
     ],
     "new_ebird_code": "norlap",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Kiebitz",
     "common_name_fr": "Vanneau hupp\u00e9",
     "common_name_cs": "\u010cejka chocholat\u00e1",
