@@ -485,7 +485,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, 
     
     return last_n
 
-def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_count=5, locale='en'):
+def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_count=5, recorder_list=[], locale='en'):
     url = cfg.API_BASE_URL + 'detections'
     
     headers = {
@@ -500,7 +500,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     params['confidence_gte'] = min_conf
     
     # Only retrieve certain fields
-    params['only'] = 'species_code, datetime, confidence'
+    params['only'] = 'species_code, datetime, confidence, recorder_field_id'
     
     # set species code if species_list has len == 1
     if len(species_list) == 1:
@@ -544,6 +544,10 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
         
         # Is species in species_list?
         if len(species_list) > 0 and item['species_code'] not in species_list:
+            continue
+        
+        # Is recorder in recorder_list?
+        if len(recorder_list) > 0 and item['recorder_field_id'] not in recorder_list:
             continue
         
         if item['species_code'] not in detections:

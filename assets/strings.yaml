@@ -266,6 +266,12 @@ recorder_table_header_audio:
   fr: "Audio"
   it: "Audio"
   cs: "Audio"
+recorder_most_active_species:
+  en: "Most active species (7 days, this site)"
+  de: "Aktivste Arten (7 Tage, dieser Standort)"
+  fr: "Espèces les plus actives (7 jours, ce site)"
+  it: "Specie più attive (7 giorni, questo sito)"
+  cs: "Nejaktivnější druhy (7 dní, toto místo)"
 
 species_table_header_recorder:
   en: "Recorder"

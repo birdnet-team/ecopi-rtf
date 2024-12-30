@@ -8,6 +8,7 @@ from dash.dependencies import Input, Output, State, MATCH
 from widgets.popup_player import popup_player
 from utils import data_processor as dp
 from utils.strings import Strings
+from widgets import active_species
 import config as cfg
 
 def get_confidence_color(confidence):
@@ -87,7 +88,9 @@ def display_recorder_page(recorder_id, locale):
             dbc.Container(
                 [
                     html.Div(id="recorder-info-row"),
-                    html.H5(strings.get('main_recent_detections') + ":", className="recent-detections-heading"),
+                    html.H5(f"{strings.get('recorder_most_active_species')}:", className="recent-detections-heading mb-4"),
+                    html.Div(id="recorder-activity-plot"),
+                    html.H5(strings.get('main_recent_detections') + ":", className="recent-detections-heading mt-4"),
                     dbc.Table(
                         [
                             create_recorder_table_headers(locale),
@@ -112,6 +115,7 @@ def register_recorder_callbacks(app):
     @app.callback(
         [
             Output("recorder-info-row", "children"),
+            Output("recorder-activity-plot", "children"),
             Output("recorder-loading-container", "children"),
             Output("recorder-detections-table-body", "children"),
             Output("recorder-detections-data-container", "children"),
@@ -158,6 +162,9 @@ def register_recorder_callbacks(app):
                 html.H6([f"{strings.get('widget_units_cpu_temp')}: {recorder_info['cpu_temp'] if recorder_info else 'N/A'} °C"], className="small-text"),
             ], width=6, className="text-right"),
         ], className="species-info-row")
+
+        # Create activity plot
+        active_species_plot, _ = active_species.active_species(locale, n=5, hours=7*24, recorder_list=[recorder_id], show_hint=False)
 
         # Sort recorder stats by date
         recorder_stats = sorted(recorder_stats, key=lambda x: x["confidence"], reverse=True)
@@ -223,6 +230,7 @@ def register_recorder_callbacks(app):
 
         return (
             info_row, 
+            active_species_plot,
             None,
             rows, 
             html.Data(id="audio-data-list", value=json.dumps(data_list)),

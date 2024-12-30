@@ -5,8 +5,8 @@ from utils import data_processor as dp
 from utils import plots
 from utils.strings import Strings
 
-def active_species(locale):
-    species_data = dp.get_most_active_species(n=8, min_conf=0.5, hours=7*24, locale=locale)
+def active_species(locale, n=8, hours=7*24, recorder_list=[], show_hint=True):
+    species_data = dp.get_most_active_species(n=n, min_conf=0.5, hours=hours, recorder_list=recorder_list, locale=locale)
     plot_rows = []
 
     strings = Strings(locale)
@@ -79,17 +79,18 @@ def active_species(locale):
         placeholder = None
         
         # Append a sentence on what the chart shows
-        plot_rows.append(
-            dbc.Row(
-                dbc.Col([
-                    html.P(),
-                    html.Div(strings.get('widget_active_species_description'),
-                        className="text-muted",
-                        style={"text-align": "center", "width": "100%"}),
-                    ],
-                    className="m-2"
+        if show_hint:
+            plot_rows.append(
+                dbc.Row(
+                    dbc.Col([
+                        html.P(),
+                        html.Div(strings.get('widget_active_species_description'),
+                            className="text-muted",
+                            style={"text-align": "center", "width": "100%"}),
+                        ],
+                        className="m-2"
+                    )
                 )
             )
-        )
 
     return plot_rows, placeholder
