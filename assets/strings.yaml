@@ -287,6 +287,41 @@ species_hourly_activity:
   it: "Attività oraria (ultimo mese)"
   cs: "Hodinová aktivita (poslední měsíc)"
 
+species_weekly_detections:
+  en: "Weekly vocal activity"
+  de: "Wöchentliche Rufaktivität"
+  fr: "Activité vocale hebdomadaire"
+  it: "Attività vocale settimanale"
+  cs: "Týdenní hlasová aktivita"
+
+species_wd_today:
+  en: "Today"
+  de: "Heute"
+  fr: "Aujourd'hui"
+  it: "Oggi"
+  cs: "Dnes"
+
+species_wd_frequency:
+  en: "eBird checklist frequency"
+  de: "eBird Checklisten-Frequenz"
+  fr: "Fréquence des listes eBird"
+  it: "Frequenza delle liste di controllo eBird"
+  cs: "Frekvence kontrolních seznamů eBird"
+
+species_wd_no_data:
+  en: "No data"
+  de: "Keine Daten"
+  fr: "Pas de données"
+  it: "Nessun dato"
+  cs: "Žádná data"
+
+species_wd_weekly_detections:
+  en: "Weekly detections (48 weeks per year)"
+  de: "Wöchentliche Detektionen (48 Wochen im Jahr)"
+  fr: "Détections hebdomadaires (48 semaines par an)"
+  it: "Rilevamenti settimanali (48 settimane all'anno)"
+  cs: "Týdenní detekce (48 týdnů za rok)"
+
 species_learn_more:
   en: "Learn more"
   de: "Mehr Infos"

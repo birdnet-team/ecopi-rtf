@@ -707,6 +707,18 @@ nav .navbar-nav {
     margin-bottom: 25px;
 }
 
+.species-weekly-detections-plot {
+    height: 175px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 576px) {
+    .species-weekly-detections-plot {
+        height: 225px;
+    }
+}
+
 .recent-detections-heading {
     margin-top: 5px;
     margin-left: 0px;

@@ -13,6 +13,7 @@ from datetime import datetime
 
 import config as cfg
 import numpy as np
+from utils.strings import Strings
 
 def compute_sunrise_sunset(lat, lon, date=None):
     if date is None:
@@ -147,6 +148,104 @@ def get_hourly_detections_plot(detections, plot_sun_moon=False):
         plot_bgcolor='rgba(0,0,0,0)'  # Transparent plot area
     )
     
+    return fig
+
+def get_weekly_detections_plot(detections, locale='en'):
+    
+    strings = Strings(locale)
+
+    detections_data = detections['detections']
+    frequencies_data = detections['frequencies']
+    current_week = detections['current_week']
+
+    # Normalize the detections, handling -1 values
+    max_detections = max([val for val in detections_data if val != -1])
+    normalized_detections = [val / max_detections if val != -1 else -1 for val in detections_data]
+
+    # Create the gray bars to stack
+    gray_bars = [1 - val if val != -1 else 0 for val in normalized_detections]
+
+    fig = go.Figure()
+
+    # Add the light gray bars for no data
+    fig.add_trace(go.Bar(
+        x=[i for i, val in enumerate(normalized_detections, 1) if val == -1],
+        y=[1 for val in normalized_detections if val == -1],
+        marker_color='#F0F0F0',
+        name=strings.get('species_wd_no_data'),
+    ))
+
+    # Add the primary color bars
+    fig.add_trace(go.Bar(
+        x=list(range(1, 49)),
+        y=[val if val != -1 else 0 for val in normalized_detections],
+        marker_color=cfg.PLOT_PRIMARY_COLOR,
+        name=strings.get('species_wd_weekly_detections'),
+    ))
+
+    # Add the gray bars
+    fig.add_trace(go.Bar(
+        x=list(range(1, 49)),
+        y=gray_bars,
+        marker_color='#D0DDDB',
+        name='Remaining',
+        showlegend=False
+    ))
+
+    # Add the frequencies line plot
+    fig.add_trace(go.Scatter(
+        x=list(range(1, 49)),
+        y=frequencies_data,
+        mode='lines',
+        line=dict(dash='dash', color='black'),
+        name=strings.get('species_wd_frequency'),
+    ))
+
+    # Calculate the offset for the current weekday (UTC)
+    current_weekday = datetime.utcnow().weekday()  # Monday is 0 and Sunday is 6
+    weekday_offset = (current_weekday - 3) / 7
+
+    # Add the vertical line for the current week
+    fig.add_shape(
+        type="line",
+        x0=current_week + weekday_offset,
+        y0=0,
+        x1=current_week + weekday_offset,
+        y1=1,
+        line=dict(color="Red", width=2),
+    )
+
+    # Add the "Today" label without the arrow
+    fig.add_annotation(
+        x=current_week + weekday_offset,
+        y=1.1,
+        text=strings.get('species_wd_today'),
+        showarrow=False,
+        font=dict(size=10, color="Red"),
+        align="center"
+    )
+
+    fig.update_layout(
+        barmode='stack',
+        template='plotly_white',
+        xaxis=dict(
+            tickvals=[1] + list(range(4, 49, 4)),  # Ensure 1, 4, 8, ..., 48 are labeled
+            ticktext=[1] + [str(i) for i in range(4, 49, 4)],
+            showgrid=False
+        ),
+        yaxis=dict(showgrid=False, showticklabels=False, zeroline=False, showline=False),
+        margin=dict(l=0, r=0, t=0, b=20),  # Adjust bottom margin to move x-axis label up
+        paper_bgcolor='rgba(0,0,0,0)',  # Transparent background
+        plot_bgcolor='rgba(0,0,0,0)',  # Transparent plot area
+        legend=dict(
+            orientation="h",
+            yanchor="top",
+            y=-0.3,
+            xanchor="center",
+            x=0.5
+        )
+    )
+
     return fig
 
 def get_leaflet_map(data):

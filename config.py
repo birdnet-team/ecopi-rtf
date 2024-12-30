@@ -49,6 +49,7 @@ config = load_config(args.config_file)
 # Load project configuration from yaml
 PROJECT_ID = config['PROJECT_ID']
 PROJECT_NAME = config['PROJECT_NAME']
+PROJECT_START_DATE = config['PROJECT_START_DATE']
 RECORDER_GROUP = config['RECORDER_GROUP']
 SPECIES_DATA = load_species_data(project=config['SPECIES_DATA'])
 DEPLOYMENT_LAT = config['DEPLOYMENT_LAT']

@@ -1,5 +1,6 @@
 PROJECT_ID: 'neeri'
 PROJECT_NAME: '017_neerach_ried'
+PROJECT_START_DATE: '01-01-2022' # dd-mm-yyyy
 RECORDER_GROUP: 45
 SPECIES_DATA: neeracherried
 DEPLOYMENT_LAT: 47.500

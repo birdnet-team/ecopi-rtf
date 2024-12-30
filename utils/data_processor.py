@@ -23,6 +23,11 @@ def get_current_week():
     # Return current week 1..48 (4 weeks per month)
     return min(48, max(1, int(datetime.now().isocalendar()[1] / 52 * 48)))
 
+def get_week_from_date(date):
+    
+    # Return week number from date
+    return min(48, max(1, int(date.isocalendar()[1] / 52 * 48)))
+
 def date_to_last_seen(date, time_format='24h', locale='en'):
     strings = Strings(locale)
     date_formats = [
@@ -389,6 +394,73 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
 
     return total_detections
 
+def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min_count=5, locale='en'):
+    
+    # Check if either species_code or recorder_id is set
+    assert species_code or recorder_id, 'Either species_code or recorder_id must be set.'
+    
+    url = cfg.API_BASE_URL + 'detections'
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    params = {}
+    
+    # Project name
+    params['project_name'] = cfg.PROJECT_NAME
+    
+    # Minimum confidence
+    params['confidence_gte'] = min_conf
+    
+    # Only retrieve certain fields
+    params['only'] = 'species_code, datetime, confidence, recorder_field_id'
+    
+    # set species code and/or recorder id
+    if species_code:
+        params['species_code'] = species_code
+    if recorder_id:
+        params['recorder_field_id'] = recorder_id
+    
+    # Pagination/limit
+    params['limit'] = 'None'
+    
+    # past 12 months
+    now = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
+    params['datetime_recording__gte'] = (now - timedelta(days=365)).isoformat()
+    params['datetime_recording__lte'] = now.isoformat()
+    
+    response = make_request(url, headers, params, cache_timeout=3600)
+    
+    # Count detections per week
+    weekly_detections = np.zeros(48, dtype=int)
+    
+    # Based on cfg.PROJECT_START_DATE, set weeks to -1 if no - 365 days is before start date
+    project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
+    project_start_date = project_start_date.replace(tzinfo=UTC)  # Make project_start_date timezone-aware
+    if project_start_date > (now - timedelta(days=365)):
+        start_week = get_week_from_date(project_start_date)
+        weekly_detections[:start_week - 1] = -1
+    
+    # Add detections to weekly_detections
+    for detection in response:
+        
+        # Is detection before project start date?
+        if project_start_date > datetime.strptime(detection['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').replace(tzinfo=UTC):
+            continue
+        
+        week = get_week_from_date(datetime.strptime(detection['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S'))
+        weekly_detections[week - 1] += 1
+    
+    # Get projected frequency from species data
+    if species_code:
+        species_freq = cfg.SPECIES_DATA[species_code]['frequencies']
+        species_freq = [x / 100 for x in species_freq]
+        species_freq /= np.max(species_freq)
+    else:
+        species_freq = np.zeros(48, dtype=int).tolist()
+    
+    return {'detections': weekly_detections.tolist(), 'frequencies': species_freq, 'current_week': get_current_week()}
+
 def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, locale='en'):
     url = cfg.API_BASE_URL + 'detections'
     
@@ -685,7 +757,8 @@ if __name__ == '__main__':
     #for i in range(1, 13):
     #    print(f"#{i}: {get_recorder_location(i)}")
     
-    print(get_total_detections(min_conf=0.5, species_list=['eurnut2'], days=-1))
+    #print(get_total_detections(min_conf=0.5, species_list=['eurnut2'], days=-1))
     #print(get_total_detections(min_conf=0.5, days=-1, recorder_list=[9]))
     
+    print(get_weekly_detections(min_conf=0.5, species_code='eurnut2', recorder_id=None))
     

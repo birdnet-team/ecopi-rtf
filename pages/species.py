@@ -96,7 +96,7 @@ def display_species_page(species_id, locale):
             dbc.Container(
                 [
                     html.Div(id="species-info-row"),
-                    html.H5(f"{strings.get('species_hourly_activity')}:", className="recent-detections-heading"),
+                    html.H5(f"{strings.get('species_weekly_detections')}:", className="recent-detections-heading mb-2"),
                     html.Div(id="species-activity-plot"),
                     html.H5(f"{strings.get('det_recent_detections')}:", className="recent-detections-heading"),
                     dbc.Table(
@@ -151,6 +151,7 @@ def register_species_callbacks(app):
         species_stats = dp.get_species_stats(species_id, max_results=10)
         total_detections = dp.get_total_detections(species_list=[species_id], days=-1, min_count=0)['total_detections']
         activity_data = dp.get_most_active_species(n=1, min_conf=0.5, hours=24*30, species_list=[species_id], min_count=0, locale=locale)
+        weekly_detection_data = dp.get_weekly_detections(species_code=species_id, locale=locale)
         
         # Create info row
         info_row = dbc.Row([
@@ -170,11 +171,19 @@ def register_species_callbacks(app):
         ], className="species-info-row")
 
         # Create activity plot
-        hourly_plot = plots.get_hourly_detections_plot(activity_data[species_id]['detections'], plot_sun_moon=True)
+        #hourly_plot = plots.get_hourly_detections_plot(activity_data[species_id]['detections'], plot_sun_moon=True)
+        #plot = dcc.Graph(
+        #    figure=hourly_plot,
+        #    config={"displayModeBar": False, "staticPlot": True},
+        #    className="species-daily-activity-plot"
+        #)
+        
+        # Create weekly detections plot
+        weekly_plot = plots.get_weekly_detections_plot(weekly_detection_data, locale)
         plot = dcc.Graph(
-            figure=hourly_plot,
+            figure=weekly_plot,
             config={"displayModeBar": False, "staticPlot": True},
-            className="species-daily-activity-plot"
+            className="species-weekly-detections-plot"
         )
                 
         # Sort species stats by score
