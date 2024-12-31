@@ -112,22 +112,23 @@ def main_page_content(locale):
                         ],
                         className="mt-4"
                     ),
+                    html.Div(
+                        html.A(
+                            [
+                                html.I(className="bi bi-arrow-up-circle"),
+                                " " + strings.get('misc_back_to_top'),
+                            ],
+                            href="#",
+                            className="back-to-top-link"
+                        ),
+                        id="back-to-top-link",  # Assign an ID to the "Back to top" link
+                        className="d-flex justify-content-end p-4",
+                    ),
                 ],
                 fluid=True,
                 className="main-content",
             ),
-            html.Div(
-                html.A(
-                    [
-                        html.I(className="bi bi-arrow-up-circle"),
-                        " " + strings.get('misc_back_to_top'),
-                    ],
-                    href="#",
-                    className="back-to-top-link"
-                ),
-                id="back-to-top-link",  # Assign an ID to the "Back to top" link
-                className="d-flex justify-content-end p-4",
-            ),
+            
             popup_player(),
             livestream_popup_player(),
         ]
