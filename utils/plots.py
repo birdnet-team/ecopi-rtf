@@ -150,7 +150,7 @@ def get_hourly_detections_plot(detections, plot_sun_moon=False):
     
     return fig
 
-def get_weekly_detections_plot(detections, locale='en'):
+def get_weekly_detections_plot(detections, locale='en', log_strength=0.995):
     
     strings = Strings(locale)
 
@@ -158,19 +158,28 @@ def get_weekly_detections_plot(detections, locale='en'):
     frequencies_data = detections['frequencies']
     current_week = detections['current_week']
 
-    # Normalize the detections, handling -1 values
-    max_detections = max([val for val in detections_data if val != -1])
-    normalized_detections = [val / max_detections if val != -1 else -1 for val in detections_data]
+    # Apply adjustable log scale to the detections (only for values > -1)
+    log_detections = [np.log1p(val) if val > -1 else -1 for val in detections_data]
+    adjusted_detections = [
+        (1 - log_strength) * val + log_strength * log_val if val > -1 else -1
+        for val, log_val in zip(detections_data, log_detections)
+    ]
+
+    # Normalize the adjusted detections
+    max_adjusted_detections = max([val for val in adjusted_detections if val != -1])
+    normalized_adjusted_detections = [
+        val / max_adjusted_detections if val != -1 else -1 for val in adjusted_detections
+    ]
 
     # Create the gray bars to stack
-    gray_bars = [1 - val if val != -1 else 0 for val in normalized_detections]
+    gray_bars = [1 - val if val != -1 else 0 for val in normalized_adjusted_detections]
 
     fig = go.Figure()
 
     # Add the light gray bars for no data
     fig.add_trace(go.Bar(
-        x=[i for i, val in enumerate(normalized_detections, 1) if val == -1],
-        y=[1 for val in normalized_detections if val == -1],
+        x=[i for i, val in enumerate(normalized_adjusted_detections, 1) if val == -1],
+        y=[1 for val in normalized_adjusted_detections if val == -1],
         marker_color='#F0F0F0',
         name=strings.get('species_wd_no_data'),
     ))
@@ -178,7 +187,7 @@ def get_weekly_detections_plot(detections, locale='en'):
     # Add the primary color bars
     fig.add_trace(go.Bar(
         x=list(range(1, 49)),
-        y=[val if val != -1 else 0 for val in normalized_detections],
+        y=[val if val != -1 else 0 for val in normalized_adjusted_detections],
         marker_color=cfg.PLOT_PRIMARY_COLOR,
         name=strings.get('species_wd_weekly_detections'),
     ))
