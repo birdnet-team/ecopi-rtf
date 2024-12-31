@@ -16,38 +16,38 @@ h1, h2, h3, h4, h5 {
 
 h1 {
     font-weight: 300; /* Light */
-    font-size: 4.625rem; /* Headline size */
+    font-size: 4.0rem; /* Headline size */
 }
 
 h2 {
     font-weight: 300; /* Light */
-    font-size: 2.5rem; /* Subhead size */
+    font-size: 2.25rem; /* Subhead size */
 }
 
 h3 {
     font-weight: 400; /* Regular */
-    font-size: 2rem; /* Title size */
+    font-size: 1.75rem; /* Title size */
 }
 
 h4 {
     font-weight: 400; /* Regular */
-    font-size: 1.5em; /* Section tag size */
+    font-size: 1.33em; /* Section tag size */
 }
 
 h5 {
     font-weight: 400; /* Regular */
-    font-size: 1.25em; /* Section tag size */
+    font-size: 1.15em; /* Section tag size */
 }
 
 h6 {
     font-weight: 400; /* Regular */
-    font-size: 1em; /* Section tag size */
+    font-size: 0.9em; /* Section tag size */
 }
 
 p {
     font-family: 'Merriweather', serif;
     font-weight: 300;
-    font-size: .875rem;
+    font-size: .85rem;
     letter-spacing: 0.02em;
 }
 
@@ -58,16 +58,16 @@ a {
 .caption {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400; /* Regular */
-    font-size: .875rem; /* Caption size */
+    font-size: .85rem; /* Caption size */
     letter-spacing: 0.01em; /* Adjust letter spacing for captions */
 }
 
 .small-text {
-    font-size: 0.8em; 
+    font-size: 0.75em; 
 }
 
 .very-small-text {
-    font-size: 0.7em; 
+    font-size: 0.66em; 
 }
 
 .bold-text {
@@ -666,7 +666,7 @@ nav .navbar-nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 320px;
 }
 
 #species-main-content {
@@ -689,6 +689,7 @@ nav .navbar-nav {
 .learn-more-btn {
     background-color: var(--button-color); 
     border-radius: 20px;
+    font-size: 0.8rem;
 }
 
 .learn-more-btn:hover {
@@ -699,6 +700,11 @@ nav .navbar-nav {
 
 .learn-more-btn:active {
     background-color: var(--button-color); 
+}
+
+.learn-more-btn:visited {
+    background-color: var(--button-color); 
+    color: white;
 }
 
 .species-daily-activity-plot {
@@ -815,7 +821,7 @@ nav .navbar-nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 320px;
 }
 
 #recorder-main-content {
@@ -889,9 +895,15 @@ nav .navbar-nav {
 }
 
 .about-sidebar{
-    height: 400px;
+    height: 350px;
     margin-top: -16px;
     padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .about-sidebar {
+        height: 300px;
+    }
 }
 
 .recorder-image {

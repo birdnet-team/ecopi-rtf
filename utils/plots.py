@@ -212,7 +212,7 @@ def get_weekly_detections_plot(detections, locale='en'):
         y0=0,
         x1=current_week + weekday_offset,
         y1=1,
-        line=dict(color="Red", width=2),
+        line=dict(color="#DF1E12", width=2),
     )
 
     # Add the "Today" label without the arrow
@@ -221,7 +221,7 @@ def get_weekly_detections_plot(detections, locale='en'):
         y=1.1,
         text=strings.get('species_wd_today'),
         showarrow=False,
-        font=dict(size=10, color="Red"),
+        font=dict(size=10, color="#DF1E12"),
         align="center"
     )
 

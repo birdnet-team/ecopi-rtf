@@ -65,11 +65,11 @@ def species_page_header(species_data, locale):
                                 html.H3(f"{species_data['common_name']}", className="species-overlay-text"),
                                 html.H5(f"{species_data['scientific_name']}", className="species-overlay-text"),
                             ],
-                            width=9,
+                            width=8,
                         ),
                         dbc.Col(
                             html.H6(f"{strings.get('misc_photo')}: {species_data['image_author']}", className="very-small-text species-overlay-text"),
-                            width=3,
+                            width=4,
                             className="d-flex align-items-end justify-content-end"
                         ),
                     ],
@@ -161,11 +161,11 @@ def register_species_callbacks(app):
                     html.I(className="bi bi-clock"),
                     f" {dp.date_to_last_seen(species_stats[0]['datetime'], time_format=cfg.TIME_FORMAT, locale=locale) if species_stats else 'N/A'}"
                 ], className="small-text"),
-            ], width=9, xs=7),
+            ], width=9, xs=8),
             dbc.Col(
                 html.A(strings.get('species_learn_more'), href=species_data["ebird_url"], 
                       target="_blank", className="btn btn-href learn-more-btn"),
-                width=3, xs=5,
+                width=3, xs=4,
                 className="d-flex align-items-start justify-content-end"
             ),
         ], className="species-info-row")

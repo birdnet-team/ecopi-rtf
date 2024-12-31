@@ -128,7 +128,7 @@ def get_battery_status(voltage):
     
     return str(battery_level) if battery_level > 10 else '< 10'
 
-def clean_cache(cache_dir, max_age=7200):
+def clean_cache(cache_dir, max_age=60*60*24):
     """Remove cache files older than max_age seconds."""
     now = time.time()
     for filename in os.listdir(cache_dir):
@@ -413,7 +413,7 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     params['confidence_gte'] = min_conf
     
     # Only retrieve certain fields
-    params['only'] = 'species_code, datetime, confidence, recorder_field_id'
+    params['only'] = 'species_code, datetime, recorder_field_id'
     
     # set species code and/or recorder id
     if species_code:
@@ -429,7 +429,7 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     params['datetime_recording__gte'] = (now - timedelta(days=365)).isoformat()
     params['datetime_recording__lte'] = now.isoformat()
     
-    response = make_request(url, headers, params, cache_timeout=3600)
+    response = make_request(url, headers, params, cache_timeout=60*60*12)
     
     # Count detections per week
     weekly_detections = np.zeros(48, dtype=int)
