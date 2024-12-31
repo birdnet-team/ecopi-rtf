@@ -1186,3 +1186,10 @@ misc_date:
   fr: "Date"
   it: "Data"
   cs: "Datum"
+
+misc_back_to_top:
+  en: "Back to top"
+  de: "Nach oben"
+  fr: "Retour en haut"
+  it: "Torna in cima"
+  cs: "Zpět nahoru"

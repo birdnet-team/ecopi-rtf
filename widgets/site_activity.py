@@ -17,6 +17,6 @@ def get_site_activity_map(species_id, locale):
     return html.Div([
         html.H5(f"{strings.get('species_site_activity')}:", className="recent-detections-heading"),
         html.Div(site_activity_map, id="site-activity-map", className="mt-4"),
-        html.H6(strings.get('species_site_activity_desc'), className="mt-2 mb-4 small-text")
+        html.H6(strings.get('species_site_activity_desc'), className="mt-2 small-text")
     ],
         className="main-content")

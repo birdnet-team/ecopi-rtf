@@ -114,11 +114,24 @@ def display_species_page(species_id, locale):
                 ],
                 fluid=True,
                 className="species-main-content",
-            )
+            ),
+            html.Div(id="detections-data-container"),
+            html.Div(id="site-activity-map-container"),  # Initially hide the map
+            html.Div(
+                    html.A(
+                        [
+                            html.I(className="bi bi-arrow-up-circle"),
+                            " " + strings.get('misc_back_to_top'),
+                        ],
+                        href="#",
+                        className="back-to-top-link"
+                    ),
+                    id="back-to-top-link",  # Assign an ID to the "Back to top" link
+                    className="d-flex justify-content-end p-4",
+                ),
         ], id="species-main-content", style={"display": "none"}),  # Hide initially
-        html.Div(id="detections-data-container"),
+        
         popup_player(),
-        html.Div(id="site-activity-map-container", style={"display": "none"}),  # Initially hide the map
     ], className="species-page-content")
 
 def register_species_callbacks(app):
@@ -134,7 +147,6 @@ def register_species_callbacks(app):
             Output("species-stats-store", "data"),
             Output("species-data-store", "data"),
             Output("site-activity-map-container", "children"),  # Add this output
-            Output("site-activity-map-container", "style"),  # Add this output
         ],
         [Input("species-id-store", "data")],
         [State("locale-store", "data")],
@@ -252,7 +264,6 @@ def register_species_callbacks(app):
             species_stats,    # Store stats
             species_data,     # Store data
             site_activity_map,  # Add this return value
-            {"display": "block"}  # Add this return value
         )
 
     @app.callback(

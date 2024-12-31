@@ -372,6 +372,10 @@ nav .navbar-nav {
     padding: 0em;
 }
 
+.back-to-top-link {
+    color: var(--button-color);
+}
+
 .species-row {
     display: flex;
     flex-wrap: wrap;
