@@ -257,7 +257,7 @@ def get_weekly_detections_plot(detections, locale='en', log_strength=0.995):
 
     return fig
 
-def get_leaflet_map(data):
+def get_leaflet_map(data, height='450px'):
     # Convert the nested dictionary to a DataFrame
     df = pd.DataFrame.from_dict(data, orient='index')
     
@@ -315,7 +315,7 @@ def get_leaflet_map(data):
         ],
         center=[center_lat, center_lon],
         #zoom=cfg.MAP_ZOOM_LEVEL,  # Initial zoom level
-        style={'width': '100%', 'height': '500px'},
+        style={'width': '100%', 'height': height},
         scrollWheelZoom=False,  # Disable scroll wheel zoom
         touchZoom=True,  # Enable touch zoom
         zoomControl=True,  # Enable zoom controls
