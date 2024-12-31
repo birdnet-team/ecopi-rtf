@@ -190,6 +190,18 @@ def about_page_content(locale):
                 ],
                 fluid=True,
                 className="main-content",
+            ),            
+            html.Div(
+                html.A(
+                    [
+                        html.I(className="bi bi-arrow-up-circle"),
+                        " " + strings.get('misc_back_to_top'),
+                    ],
+                    href="#",
+                    className="back-to-top-link"
+                ),
+                id="back-to-top-link",  # Assign an ID to the "Back to top" link
+                className="d-flex justify-content-end p-4",
             ),
         ]
     )

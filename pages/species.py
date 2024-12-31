@@ -129,8 +129,7 @@ def display_species_page(species_id, locale):
                     id="back-to-top-link",  # Assign an ID to the "Back to top" link
                     className="d-flex justify-content-end p-4",
                 ),
-        ], id="species-main-content", style={"display": "none"}),  # Hide initially
-        
+        ], id="species-main-content", style={"display": "none"}),  # Hide initially        
         popup_player(),
     ], className="species-page-content")
 
