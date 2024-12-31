@@ -172,11 +172,11 @@ def register_species_callbacks(app):
                     html.I(className="bi bi-clock"),
                     f" {dp.date_to_last_seen(species_stats[0]['datetime'], time_format=cfg.TIME_FORMAT, locale=locale) if species_stats else 'N/A'}"
                 ], className="small-text"),
-            ], width=9, xs=8),
+            ], width=9, xs=7),
             dbc.Col(
                 html.A(strings.get('species_learn_more'), href=species_data["ebird_url"], 
                       target="_blank", className="btn btn-href learn-more-btn"),
-                width=3, xs=4,
+                width=3, xs=5,
                 className="d-flex align-items-start justify-content-end"
             ),
         ], className="species-info-row")
