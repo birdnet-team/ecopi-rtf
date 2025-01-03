@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.graph_objs as go
 import plotly.express as px
 
-from dash import html
+from dash import html, dcc
 import dash_leaflet as dl
 
 import pytz
@@ -297,11 +297,18 @@ def get_leaflet_map(data, height='500px'):
             fill=True,
             fillOpacity=0.7,
             children=[
-                dl.Tooltip([
-                    html.Div([                        
-                        html.B(f"#{row['id']} ({row['detections']})") if 'detections' in row else html.B(f"#{row['id']}"),
-                    ])
-                ], permanent=True, direction=cfg.RECORDERS[row['id']]['tooltip'] if 'tooltip' in cfg.RECORDERS[row['id']] else 'right')
+                dl.Tooltip(
+                    dcc.Link(
+                        html.Div([                        
+                            html.B(f"#{row['id']} ({row['detections']})") if 'detections' in row else html.B(f"#{row['id']}"),
+                        ]),
+                        href=f"{cfg.SITE_ROOT}/recorder/{row['id']}",
+                        style={'color': 'black'}
+                    ),
+                    permanent=True, 
+                    interactive=True,
+                    direction=cfg.RECORDERS[row['id']]['tooltip'] if 'tooltip' in cfg.RECORDERS[row['id']] else 'right'
+                )
             ]
         ) for idx, row in df.iterrows()
     ]
