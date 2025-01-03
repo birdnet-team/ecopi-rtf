@@ -722,14 +722,34 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
         # compute confidence as percentage
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100) / 10.0
         
-    # Remmove species not in species data
+    # Remove species not in species data
     response = [item for item in response if is_in_species_data(item['species_code'])]
     
     # Remove low confidence detections
     response = [item for item in response if item['confidence'] >= 2]
     
     # Sort by confidence
-    response = sorted(response, key=lambda x: x['datetime'], reverse=True)
+    response = sorted(response, key=lambda x: x['datetime'], reverse=True)  
+    
+    # Limit to at most 3 detections per species or per recorder
+    if recorder_id is not None:
+        species_detections = {}
+        for item in response:
+            species = item['species_code']
+            if species not in species_detections:
+                species_detections[species] = []
+            if len(species_detections[species]) < 3:
+                species_detections[species].append(item)
+        response = [item for sublist in species_detections.values() for item in sublist]
+    elif species_code is not None:
+        recorder_detections = {}
+        for item in response:
+            recorder = item['recorder_field_id']
+            if recorder not in recorder_detections:
+                recorder_detections[recorder] = []
+            if len(recorder_detections[recorder]) < 5:
+                recorder_detections[recorder].append(item)
+        response = [item for sublist in recorder_detections.values() for item in sublist]
     
     # Limit to max_results
     response = response[:max_results]
