@@ -257,7 +257,7 @@ def get_weekly_detections_plot(detections, locale='en', log_strength=0.995):
 
     return fig
 
-def get_leaflet_map(data, height='450px'):
+def get_leaflet_map(data, height='500px'):
     # Convert the nested dictionary to a DataFrame
     df = pd.DataFrame.from_dict(data, orient='index')
     
