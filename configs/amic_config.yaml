@@ -10,10 +10,10 @@ TIME_FORMAT: '24h'
 DATE_FORMAT: '%d.%m.%Y'
 DEFAULT_SITE_LOCALE: 'de'
 RECORDERS:
-  1: {id: '0271', lat: 50.850533, lon: 12.890730, habitat: 'habitat_urban', img: 'amic_unit_1.jpg'}
-  2: {id: '0829', lat: 50.850231, lon: 12.890473, habitat: 'habitat_urban', img: 'amic_unit_2.jpg'}
-  3: {id: '0269', lat: 50.850022, lon: 12.890146, habitat: 'habitat_urban', img: 'amic_unit_3.jpg'}
-  4: {id: '0270', lat: 50.849055, lon: 12.889994, habitat: 'habitat_forest', img: 'amic_unit_4.jpg'}
+  1: {id: '0271', lat: 50.850533, lon: 12.890730, habitat: 'habitat_urban', img: 'amic_unit_1.jpg', tooltip: 'right'}
+  2: {id: '0829', lat: 50.850231, lon: 12.890473, habitat: 'habitat_urban', img: 'amic_unit_2.jpg', tooltip: 'right'}
+  3: {id: '0269', lat: 50.850022, lon: 12.890146, habitat: 'habitat_urban', img: 'amic_unit_3.jpg', tooltip: 'left'}
+  4: {id: '0270', lat: 50.849055, lon: 12.889994, habitat: 'habitat_forest', img: 'amic_unit_4.jpg', tooltip: 'top'}
 MAP_ZOOM_LEVEL: 17
 MAIN_HEADER_IMG_LIST: ['amic_main_header_1.jpg']
 ABOUT_HEADER_IMG_LIST: ['amic_about_header_1.jpg']

@@ -301,7 +301,7 @@ def get_leaflet_map(data, height='500px'):
                     html.Div([                        
                         html.B(f"#{row['id']} ({row['detections']})") if 'detections' in row else html.B(f"#{row['id']}"),
                     ])
-                ], permanent=True, direction='right')
+                ], permanent=True, direction=cfg.RECORDERS[row['id']]['tooltip'] if 'tooltip' in cfg.RECORDERS[row['id']] else 'right')
             ]
         ) for idx, row in df.iterrows()
     ]

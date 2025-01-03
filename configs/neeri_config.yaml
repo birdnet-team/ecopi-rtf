@@ -10,18 +10,18 @@ TIME_FORMAT: '24h'
 DATE_FORMAT: '%d.%m.%Y'
 DEFAULT_SITE_LOCALE: 'de'
 RECORDERS:
-  1: {id: '0357', lat: 47.50141, lon: 8.48344, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg'}
-  2: {id: '0368', lat: 47.50364, lon: 8.483333, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg'}
-  3: {id: '0518', lat: 47.50269, lon: 8.48399, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg'}
-  4: {id: '0517', lat: 47.50026, lon: 8.48248, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg'}
-  5: {id: '0525', lat: 47.50249, lon: 8.48239, habitat: 'habitat_raised_bog', img: 'neeri_unit_5.jpg'}
-  6: {id: '0523', lat: 47.50016, lon: 8.48449, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg'}
-  7: {id: '0516', lat: 47.50095, lon: 8.48666, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg'}
-  8: {id: '0513', lat: 47.50006, lon: 8.48592, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg'}
-  9: {id: '0358', lat: 47.50255, lon: 8.48767, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg'}
-  10: {id: '0526', lat: 47.50372, lon: 8.48661, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg'}
-  11: {id: '0524', lat: 47.50464, lon: 8.48788, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg'}
-  12: {id: '0378', lat: 47.503143, lon: 8.488629, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg'}
+  1: {id: '0357', lat: 47.50141, lon: 8.48344, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg', tooltip: 'right'}
+  2: {id: '0368', lat: 47.50364, lon: 8.483333, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg', tooltip: 'right'}
+  3: {id: '0518', lat: 47.50269, lon: 8.48399, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg', tooltip: 'right'}
+  4: {id: '0517', lat: 47.50026, lon: 8.48248, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg', tooltip: 'left'}
+  5: {id: '0525', lat: 47.50249, lon: 8.48239, habitat: 'habitat_raised_bog', img: 'neeri_unit_5.jpg', tooltip: 'left'}
+  6: {id: '0523', lat: 47.50016, lon: 8.48449, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg', tooltip: 'bottom'}
+  7: {id: '0516', lat: 47.50095, lon: 8.48666, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg', tooltip: 'right'}
+  8: {id: '0513', lat: 47.50006, lon: 8.48592, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg', tooltip: 'right'}
+  9: {id: '0358', lat: 47.50255, lon: 8.48767, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg', tooltip: 'bottom'}
+  10: {id: '0526', lat: 47.50372, lon: 8.48661, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg', tooltip: 'right'}
+  11: {id: '0524', lat: 47.50464, lon: 8.48788, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg', tooltip: 'top'}
+  12: {id: '0378', lat: 47.503143, lon: 8.488629, habitat: 'habitat_raised_bog', img: 'dummy_recorder.jpg', tooltip: 'left'}
 MAP_ZOOM_LEVEL: 16
 MAIN_HEADER_IMG_LIST: ['neeri_main_header_1.jpg']
 ABOUT_HEADER_IMG_LIST: ['neeri_about_header_1.jpg']
