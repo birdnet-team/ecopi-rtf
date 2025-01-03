@@ -28,6 +28,19 @@ def get_week_from_date(date):
     # Return week number from date
     return min(48, max(1, int(date.isocalendar()[1] / 52 * 48)))
 
+def get_share_data(data, locale):
+    
+    strings = Strings(locale, project=cfg.PROJECT_ID)
+    
+    share_data = {
+            "title": f"{data['common_name']} ({data['scientific_name']})",
+            "url": data['url_media'],
+            "text": f"{data['common_name']} ({data['scientific_name']}) \n\n📅 {data['datetime']} \n📍 {strings.get('project_main_title')} - {data['recorder_field_id']} \n\n🎧 {strings.get('misc_share_listen')}: ",
+            "files": [data['url_media']]
+        }
+    
+    return share_data
+
 def date_to_last_seen(date, time_format='24h', locale='en'):
     strings = Strings(locale)
     date_formats = [

@@ -1040,6 +1040,25 @@ nav .navbar-nav {
     opacity: 1;
 }
 
+.popup-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.popup-button {
+    background: none;
+    border: none;
+    font-size: 1.0rem;
+    cursor: pointer;
+    margin-left: 25px;
+    color: #000;
+}
+
+.popup-button:hover {
+    color: var(--button-color);
+}
+
 
 
 

@@ -1193,3 +1193,10 @@ misc_back_to_top:
   fr: "Retour en haut"
   it: "Torna in cima"
   cs: "Zpět nahoru"
+
+misc_share_listen:
+  en: "Listen to the audio"
+  de: "Die Aufnahme anhören"
+  fr: "Écoutez l'audio"
+  it: "Ascolta l'audio"
+  cs: "Poslechněte si zvuk"

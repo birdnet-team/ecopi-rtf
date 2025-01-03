@@ -12,7 +12,8 @@ def popup_player():
                             html.H5("common_name", className="card-title", id="popup-com-name"),
                             html.P("scientific_name", className="card-subtitle mb-2 text-muted", id="popup-sci-name")]),
                         dbc.Col([
-                            html.A(html.I(className="bi bi-x-lg"), id='close-popup-button')
+                            html.A(html.I(className="bi bi-share-fill"), id='share-popup-button', className="popup-button"),
+                            html.A(html.I(className="bi bi-x-lg"), id='close-popup-button', className="popup-button")
                         ],
                         class_name="d-flex justify-content-end"),
                     ]),

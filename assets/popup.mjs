@@ -98,6 +98,7 @@ function openPlayer(index) {
     }
 
     let closeButton = document.querySelector("#close-popup-button");
+    let shareButton = document.querySelector("#share-popup-button");
     let replayButton = document.querySelector("#popup-replay-button");
     let nextButton = document.querySelector("#popup-next-button");
     let previousButton = document.querySelector("#popup-previous-button");
@@ -107,6 +108,7 @@ function openPlayer(index) {
     previousButton.replaceWith(previousButton.cloneNode(true));
 
     closeButton = document.querySelector("#close-popup-button");
+    shareButton = document.querySelector("#share-popup-button");
     replayButton = document.querySelector("#popup-replay-button");
     nextButton = document.querySelector("#popup-next-button");
     previousButton = document.querySelector("#popup-previous-button");
@@ -123,6 +125,27 @@ function openPlayer(index) {
     backdrop.addEventListener("click", () => {
         closePlayer(wavesurfer)
     }, {once: true});
+
+    if (navigator.share) {
+        shareButton.addEventListener("click", async () => {
+            try {
+                const response = await fetch(audioUrl);
+                const blob = await response.blob();
+                const file = new File([blob], `${data.common_name}.mp3`, { type: blob.type });
+
+                navigator.share({
+                    title: data.share_data.title,
+                    text: data.share_data.text,
+                    files: [file],
+                    url: data.share_data.url
+                }).catch(console.error);
+            } catch (error) {
+                console.error('Error sharing the audio file:', error);
+            }
+        });
+    } else {
+        shareButton.style.display = 'none';
+    }
 
     replayButton.addEventListener("click", () => {
         wavesurfer.setTime(0);

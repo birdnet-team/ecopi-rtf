@@ -9,7 +9,7 @@ from utils.strings import Strings
 import config as cfg
 
 def recent_detections(num_cards=8, hours=72, locale="en"):
-    strings = Strings(locale)
+    strings = Strings(locale, project=cfg.PROJECT_ID)
     last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=5, locale=locale)   
     if len(last_detections) < 4:
         last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=1, locale=locale)
@@ -21,6 +21,8 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
     for idx, (species, data) in enumerate(last_detections.items()):
         data['datetime'] = f"{strings.get('recorder_table_header_date')}: {data['datetime']}"
         data['recorder_field_id'] = f"{strings.get('species_table_header_recorder')}: #{data['recorder_field_id']}"
+        data['share_data'] = dp.get_share_data(data, locale)
+        data['share_error'] = strings.get('misc_share_error')
         datalist.append(data)
         confidence_score = data['confidence'] * 10
         card = dbc.Col(
