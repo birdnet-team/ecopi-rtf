@@ -33,9 +33,9 @@ def get_share_data(data, locale):
     strings = Strings(locale, project=cfg.PROJECT_ID)
     
     share_data = {
-            "title": f"{data['common_name']} ({data['scientific_name']})",
+            "title": f"{strings.get('misc_share_title')}",
             "url": data['url_media'],
-            "text": f"{data['common_name']} ({data['scientific_name']}) \n\n📅 {data['datetime']} \n📍 {strings.get('project_main_title')} - {data['recorder_field_id']} \n\n🎧 {strings.get('misc_share_listen')}: ",
+            "text": f"{strings.get('project_main_title')} \n\n {data['common_name']} ({data['scientific_name']}) \n\n📅 {data['datetime']} \n📍{data['recorder_field_id']} \n\n🎧 {strings.get('misc_share_listen')}: ",
             "files": [data['url_media']]
         }
     

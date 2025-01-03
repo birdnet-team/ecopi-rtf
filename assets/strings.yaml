@@ -1194,6 +1194,13 @@ misc_back_to_top:
   it: "Torna in cima"
   cs: "Zpět nahoru"
 
+misc_share_title:
+  en: "Listen to this recording"
+  de: "Hör dir diese Aufnahme an"
+  fr: "Écoutez cet enregistrement"
+  it: "Ascolta questa registrazione"
+  cs: "Poslechněte si tuto nahrávku"
+
 misc_share_listen:
   en: "Listen to the audio"
   de: "Die Aufnahme anhören"

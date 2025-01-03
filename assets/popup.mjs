@@ -131,14 +131,17 @@ function openPlayer(index) {
             try {
                 const response = await fetch(audioUrl);
                 const blob = await response.blob();
-                const file = new File([blob], `${data.common_name}.mp3`, { type: blob.type });
-
-                navigator.share({
+                const file = new File([blob], `${data.common_name}_${data.scientific_name}.mp3`, { type: blob.type });
+        
+                const shareData = {
                     title: data.share_data.title,
                     text: data.share_data.text,
-                    files: [file],
-                    url: data.share_data.url
-                }).catch(console.error);
+                    url: data.share_data.url,
+                    //files: [file]
+                };
+                
+                await navigator.share(shareData);
+        
             } catch (error) {
                 console.error('Error sharing the audio file:', error);
             }
