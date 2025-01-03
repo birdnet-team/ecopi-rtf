@@ -232,7 +232,7 @@ def register_recorder_callbacks(app):
             detection_data["confidence"] = detection["confidence"] * 10
             detection_data['datetime'] = f"{strings.get('recorder_table_header_date')}: {detection_data['datetime']}"
             detection_data['recorder_field_id'] = f"{strings.get('species_table_header_recorder')}: #{detection_data['recorder_field_id']}"
-            detection_data['share_data'] = dp.get_share_data(data, locale)
+            detection_data['share_data'] = dp.get_share_data(detection_data, locale)
             detection_data['share_error'] = strings.get('misc_share_error')
             data_list.append(detection_data)
 
@@ -343,6 +343,8 @@ def register_recorder_callbacks(app):
             detection_data["confidence"] = detection["confidence"] * 10
             detection_data['datetime'] = f"{strings.get('recorder_table_header_date')}: {detection_data['datetime']}"
             detection_data['recorder_field_id'] = f"{strings.get('species_table_header_recorder')}: #{detection_data['recorder_field_id']}"
+            detection_data['share_data'] = dp.get_share_data(detection_data, locale)
+            detection_data['share_error'] = strings.get('misc_share_error')
             data_list.append(detection_data)
 
         return [
