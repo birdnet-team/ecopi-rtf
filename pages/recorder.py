@@ -176,7 +176,7 @@ def register_recorder_callbacks(app):
         ], className="species-info-row")
 
         # Create activity plot
-        active_species_plot, _ = active_species.active_species(locale, n=5, hours=7*24, recorder_list=[recorder_id], show_hint=False)
+        active_species_plot, _ = active_species.active_species_simple(locale, n=6, hours=7*24, recorder_list=[recorder_id])
 
         # Sort recorder stats by date
         recorder_stats = sorted(recorder_stats, key=lambda x: x["confidence"], reverse=True)
