@@ -158,7 +158,7 @@ def get_weekly_detections_plot(detections, locale='en', log_strength=0.99):
     frequencies_data = detections['frequencies']
     current_week = detections['current_week']
 
-    # Apply adjustable log scale to the detections (only for values > -1)
+     # Apply adjustable log scale to the detections (only for values > -1)
     log_detections = [np.log1p(val) if val > -1 else -1 for val in detections_data]
     adjusted_detections = [
         (1 - log_strength) * val + log_strength * log_val if val > -1 else -1
@@ -166,7 +166,9 @@ def get_weekly_detections_plot(detections, locale='en', log_strength=0.99):
     ]
 
     # Normalize the adjusted detections
-    max_adjusted_detections = max([val for val in adjusted_detections if val != -1])
+    max_adjusted_detections = max([val for val in adjusted_detections if val != -1], default=1)
+    if max_adjusted_detections == 0:
+        max_adjusted_detections = 1  # Prevent division by zero
     normalized_adjusted_detections = [
         val / max_adjusted_detections if val != -1 else -1 for val in adjusted_detections
     ]
