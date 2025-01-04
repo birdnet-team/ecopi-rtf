@@ -127,17 +127,19 @@ function openPlayer(index) {
     }, {once: true});
 
     if (navigator.share) {
+        shareButton.replaceWith(shareButton.cloneNode(true));
+        shareButton = document.querySelector("#share-popup-button");
         shareButton.addEventListener("click", async () => {
             try {
                 const response = await fetch(audioUrl);
                 const blob = await response.blob();
-                const file = new File([blob], `${data.common_name}_${data.scientific_name}.mp3`, { type: blob.type });
+                const file = new File([blob], `${data.share_data.filename}`, { type: blob.type });
         
                 const shareData = {
                     title: data.share_data.title,
                     text: data.share_data.text,
                     url: data.share_data.url,
-                    //files: [file]
+                    files: [file]
                 };
                 
                 await navigator.share(shareData);

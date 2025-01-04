@@ -150,7 +150,7 @@ def get_hourly_detections_plot(detections, plot_sun_moon=False):
     
     return fig
 
-def get_weekly_detections_plot(detections, locale='en', log_strength=0.995):
+def get_weekly_detections_plot(detections, locale='en', log_strength=0.99):
     
     strings = Strings(locale)
 

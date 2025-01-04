@@ -1195,11 +1195,11 @@ misc_back_to_top:
   cs: "Zpět nahoru"
 
 misc_share_title:
-  en: "Listen to this recording"
-  de: "Hör dir diese Aufnahme an"
-  fr: "Écoutez cet enregistrement"
-  it: "Ascolta questa registrazione"
-  cs: "Poslechněte si tuto nahrávku"
+  en: "Share recording"
+  de: "Aufnahme teilen"
+  fr: "Partager l'enregistrement"
+  it: "Condividi la registrazione"
+  cs: "Sdílet nahrávku"
 
 misc_share_listen:
   en: "Listen to the audio"

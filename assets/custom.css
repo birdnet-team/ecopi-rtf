@@ -1059,6 +1059,10 @@ nav .navbar-nav {
     color: var(--button-color);
 }
 
+.popup-button:visited {
+    color: #000;
+}
+
 
 
 
