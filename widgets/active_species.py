@@ -48,13 +48,13 @@ def active_species(locale, n=8, hours=7*24, recorder_list=[], show_hint=True):
                                         )
                                     ],
                                     sm=12,
-                                    md=4,
+                                    md=5,
                                     className="species-info"
                                 ),
                                 dbc.Col(
                                     dcc.Graph(figure=plot, config={"displayModeBar": False, "staticPlot": True}, style={"height": "50px"}),
                                     sm=12,
-                                    md=8,
+                                    md=7,
                                     className="species-plot"
                                 )
                             ],
