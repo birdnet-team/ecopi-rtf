@@ -47,8 +47,9 @@ def popup_player():
                             ),
                         ],
                         className="align-items-end mt-3",
-                    ),
-                ]),
+                    )
+                ],
+                className="d-none",),
                 html.Div(id='popup-footer', className="d-flex justify-content-evenly mt-3",children=[
                             html.A(html.H4(className="bi bi-skip-start-fill"), id='popup-previous-button'),
                             html.A(html.H4(className="bi bi-arrow-counterclockwise"), id='popup-replay-button'),

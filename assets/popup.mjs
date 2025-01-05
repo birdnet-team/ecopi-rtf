@@ -6,8 +6,10 @@ import colormap from 'https://cdn.jsdelivr.net/npm/colormap@2.3.2/+esm';
 function closePlayer(wavesurfer) {
     const playerElement = document.querySelector("#popup");
     const backdrop = document.querySelector("#popup-backdrop");
+    const popupContent = document.querySelector("#popup-content");
     playerElement.classList.remove("visible");
     backdrop.classList.add("d-none");
+    popupContent.classList.add("d-none");
     wavesurfer.stop();
     wavesurfer.destroy();
 } 
@@ -118,6 +120,9 @@ function openPlayer(index) {
 
     const backdrop = document.querySelector("#popup-backdrop");
     backdrop.classList.remove("d-none");
+
+    const popupContent = document.querySelector("#popup-content");
+    popupContent.classList.remove("d-none");
 
     closeButton.addEventListener("click", () => {
         closePlayer(wavesurfer)
