@@ -1,10 +1,20 @@
+import os
 import yaml
 
 class Strings:
     def __init__(self, locale, project=None):
         self.locale = locale
         self.project = project
-        with open('assets/strings.yaml', 'r') as file:
+        
+        # Get the absolute path to the YAML file
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(base_dir, 'assets', 'strings.yaml')
+        
+        if not os.path.exists(file_path):
+            base_dir = os.path.dirname(base_dir)
+            file_path = os.path.join(base_dir, 'assets', 'strings.yaml')
+        
+        with open(file_path, 'r') as file:
             self.strings = yaml.safe_load(file)
 
     def get(self, key):
