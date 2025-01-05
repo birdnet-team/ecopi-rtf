@@ -142,6 +142,27 @@ def get_battery_status(voltage):
     
     return str(battery_level) if battery_level > 10 else '< 10'
 
+def get_project_list():
+    
+    url = 'https://api.ecopi.de/api/v0.1/projects/'
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    
+    # No limit
+    params = {}
+    
+    params['limit'] = 'None'
+    
+    response = make_request(url, headers, params, cache_timeout=0)
+    
+    project_list = []
+    for project in response:
+        project_list.append(project['project_name'])
+    
+    return project_list
+
 def clean_cache(cache_dir, max_age=60*60*24):
     """Remove cache files older than max_age seconds."""
     now = time.time()
@@ -266,6 +287,9 @@ def get_recorder_location(recorder_id):
     params['recorder_field_id'] = recorder_id
     
     response = make_request(url, headers, params, cache_timeout=0)
+    
+    if len(response) == 0:
+        return [None, None]
     
     return [response[0]['lat'], response[0]['lon']]
 
@@ -770,7 +794,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     
     return response
     
-if __name__ == '__main__':    
+if __name__ == '__main__':   
     
     #print('Current week: ', get_current_week())
     
@@ -786,7 +810,7 @@ if __name__ == '__main__':
                                 
     #print(get_species_stats('norcar', hours=24))
     
-    #print(get_recorder_state(5))
+    #print(get_recorder_state(6, locale='en'))
     #print(get_recorder_group())
     #for i in range(1, 13):
     #    print(f"#{i}: {get_recorder_location(i)}")
@@ -795,4 +819,7 @@ if __name__ == '__main__':
     #print(get_total_detections(min_conf=0.5, days=-1, recorder_list=[9]))
     
     print(get_weekly_detections(min_conf=0.5, species_code='eurnut2', recorder_id=None))
+    
+    #for p in get_project_list():
+    #    print(p)
     
