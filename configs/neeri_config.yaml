@@ -79,3 +79,4 @@ TEAM_MEMBERS:
   - {name: "Felix Günther", role: "about_team_role_backend", img: "felix.png"}
   - {name: "Max Mauermann", role: "about_team_role_web", img: "max.png"}
   - {name: "Josef Haupt", role: "about_team_role_web", img: "josef.png"}
+PWA_MANIFEST: 'assets/neeri_manifest.json'

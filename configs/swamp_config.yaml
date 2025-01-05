@@ -78,3 +78,4 @@ TEAM_MEMBERS:
   - {name: "Max Mauermann", role: "about_team_role_web", img: "max.png"}
   - {name: "Josef Haupt", role: "about_team_role_web", img: "josef.png"}
   - {name: "Isabella Marshall", role: "about_team_role_field_ops", img: "isabella.png"}
+PWA_MANIFEST: 'assets/swamp_manifest.json'

@@ -3,6 +3,7 @@ site_views.csv
 assets/favicon.ico
 assets/colors.css
 cache/*
+*_manifest.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
