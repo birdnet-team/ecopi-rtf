@@ -71,3 +71,4 @@ TEAM_MEMBERS:
   - {name: "Raja Seifert", role: "about_team_role_design", img: "raja.png"}
   - {name: "Max Mauermann", role: "about_team_role_web", img: "max.png"}
   - {name: "Josef Haupt", role: "about_team_role_web", img: "josef.png"}
+PWA_MANIFEST: 'assets/amic_manifest.json'

@@ -60,6 +60,7 @@ app.index_string = f"""
         {{%metas%}}
         <title>{{%title%}}</title>
         <link rel="icon" type="image/x-icon" href="{cfg.SITE_ROOT}/assets/{cfg.FAVICON}">
+        <link rel="manifest" href="{cfg.SITE_ROOT}/assets/{cfg.PWA_MANIFEST}">
         {{%css%}}
         <link rel="stylesheet" href="{cfg.SITE_ROOT}/assets/style/{cfg.PROJECT_ACRONYM.lower()}_colors.css">
     </head>
@@ -70,6 +71,16 @@ app.index_string = f"""
             {{%scripts%}}
             {{%renderer%}}
         </footer>
+        <script>
+            if ('serviceWorker' in navigator) {{
+                navigator.serviceWorker.register("{cfg.SITE_ROOT}/assets/service-worker.js")
+                .then(function(registration) {{
+                    console.log('Service Worker registered with scope:', registration.scope);
+                }}).catch(function(error) {{
+                    console.log('Service Worker registration failed:', error);
+                }});
+            }}
+        </script>
     </body>
 </html>
 """
@@ -228,6 +239,9 @@ def reload_page(locale, href):
     if locale and href:
         return dcc.Location(href=href, id="dummy-location")
     return ""
+
+# PWA manifest
+cfg.make_pwa_manifest(cfg.PWA_MANIFEST, locale=cfg.DEFAULT_SITE_LOCALE)
 
 # Layout of the Dash app
 app.layout = app_layout()

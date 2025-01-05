@@ -4,6 +4,8 @@ import yaml
 import time
 import argparse
 
+from utils.strings import Strings
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -35,6 +37,37 @@ def make_cache_dir(cache_dir):
         os.makedirs(cache_dir, exist_ok=True)
         
     return cache_dir
+
+def make_pwa_manifest(file_path, locale='en'):
+    
+    strings = Strings(locale, project=PROJECT_ID)
+    
+    # Get the absolute path to the JSON file
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, file_path)
+    
+    manifest = {
+        "name": strings.get('project_main_title'),
+        "short_name": PAGE_TITLE,
+        "start_url": "/",
+        "display": "standalone",
+        "icons": [
+            {
+                "src": f"{SITE_ROOT}/assets/icons/{PROJECT_ACRONYM.lower()}_pwa_icon-192x192.png",
+                "sizes": "192x192",
+                "type": "image/png"
+            },
+            {
+                "src": f"{SITE_ROOT}/assets/icons/{PROJECT_ACRONYM.lower()}_pwa_icon-512x512.png",
+                "sizes": "512x512",
+                "type": "image/png"
+            }
+        ],
+    } 
+    
+    # Save the manifest to the file
+    with open(file_path, 'w') as f:
+        json.dump(manifest, f, indent=4)
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description='Launch the ecoPi-RTF app with specified configuration.')
@@ -79,6 +112,7 @@ COPYRIGHT_HOLDERS = config['COPYRIGHT_HOLDERS']
 FOOTER_TOP_LOGO = config['FOOTER_TOP_LOGO']
 FOOTER_BOTTOM_LOGOS = config['FOOTER_BOTTOM_LOGOS']
 TEAM_MEMBERS = config['TEAM_MEMBERS']
+PWA_MANIFEST = config['PWA_MANIFEST']
 
 # Set site root and port from arguments
 SITE_ROOT = args.site_root
