@@ -68,7 +68,9 @@ def species_page_header(species_data, locale):
                             width=8,
                         ),
                         dbc.Col(
-                            html.H6(f"{strings.get('misc_photo')}: {species_data['image_author']}", className="very-small-text species-overlay-text"),
+                            [
+                                html.H6(f"{strings.get('misc_photo')}: {species_data['image_author']}{species_data['ml_asset_id']}", className="super-small-text species-overlay-text"),
+                            ],
                             width=4,
                             className="d-flex align-items-end justify-content-end"
                         ),

@@ -327,6 +327,10 @@ def get_species_data(species, locale):
         data['image_url_highres'] = cfg.SITE_ROOT + cfg.SPECIES_DATA[species]['image']['src']
     
     data['image_author'] = cfg.SPECIES_DATA[species]['image']['author']
+    if 'ml_asset_id' in cfg.SPECIES_DATA[species]['image'] and len(cfg.SPECIES_DATA[species]['image']['ml_asset_id']) > 0:
+        data['ml_asset_id'] = ' | Macaulay Library ML' + cfg.SPECIES_DATA[species]['image']['ml_asset_id']
+    else:
+        data['ml_asset_id'] = ''
     data['frequency'] = cfg.SPECIES_DATA[species]['frequencies'][get_current_week() - 1] / 100
     data['species_code'] = species 
     
