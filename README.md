@@ -2,15 +2,15 @@
 
 This is a web application built with Dash for visualizing data recorded with **ecoPi** real-time audio recorders. The application allows users to explore the data collected by ecoPi and learn more about the species present in the monitored areas. 
 
-ecoPi is a recording device used in various projects to perform acoustic monitoring and study the biodiversity of birds and other wildlife. The device collects audio data in real-time, which is then processed using machine learning models to identify species. The ecoPi Real Time Frontend (ecoPi-RTF) web application allows users to explore the data collected by ecoPi and learn more about the species present in the monitored areas.
+ecoPi is a recording device used in various projects to perform acoustic monitoring and study the biodiversity of birds and other wildlife. The device collects audio data in real-time, which is then processed using machine learning models to identify species. The ecoPi Real Time Frontend (ecoPi-RTF) web application allows users to browse the data collected by ecoPi devices and view the species detected in the recordings.
 
 To learn more about the recording units, visit the [OekoFor website](https://www.oekofor.de/de/portfolio/erfassungstechnik/).
 
 We currently support these monitoring projects:
 
-- SWAMP: Sapsucker Woods Acoustic Monitoring Project - [birdnet.cornell.edu/swamp](https://birdnet.cornell.edu/swamp/)
-- AMiC: Acoustic Monitoring in Chemnitz - [birdnet.cornell.edu/amic](https://birdnet.cornell.edu/amic/)
-- BirdLife Neeracherried Acoustic Monitoring Project - [birdnet.cornell.edu/neeri](https://birdnet.cornell.edu/neeri/)
+- SWAMP: Sapsucker Woods Acoustic Monitoring Project - [birdnet.cornell.edu/swamp/](https://birdnet.cornell.edu/swamp/)
+- AMiC: Acoustic Monitoring in Chemnitz - [birdnet.cornell.edu/amic/](https://birdnet.cornell.edu/amic/)
+- BirdLife Neeracherried Acoustic Monitoring Project - [birdnet.cornell.edu/neeri/](https://birdnet.cornell.edu/neeri/)
 
 Interested? Want to host your own project? Please don't hesitate to contact us at [ccb-birdnet@cornell.edu](mailto:ccb-birdnet@cornell.edu).
 
@@ -82,7 +82,7 @@ Install Gunicorn with the following command:
 sudo apt-get install gunicorn
 ```
 
-You can now run the app with the following command:
+You can now run the app with the following command (from the root directory of the project):
 
 ```bash
 gunicorn app:server --bind 0.0.0.0:8050 --workers 4 --env CONFIG_FILE=configs/swamp_config.yaml --env SITE_ROOT=/swamp
@@ -97,11 +97,11 @@ The app will be available at `http://localhost:8050/`. You can specify the numbe
 
 Please ensure you review and adhere to the specific license terms provided with each model. 
 
-*Please note that all educational and research purposes are considered non-commercial use cases and it therefore is free to use BirdNET models in any way.*
+*Please note that all educational and research purposes are considered non-commercial use and it is therefore freely permitted to use BirdNET models in any way.*
 
 ## Citation
 
-Feel free to use birdnet for your acoustic analyses and research. If you do, please cite as:
+Feel free to use BirdNET for your acoustic analyses and research. If you do, please cite as:
 
 ```bibtex
 @article{kahl2021birdnet,
