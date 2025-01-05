@@ -49,7 +49,7 @@ def make_pwa_manifest(file_path, locale='en'):
     manifest = {
         "name": strings.get('project_main_title'),
         "short_name": PAGE_TITLE,
-        "start_url": "/",
+        "start_url": f"{SITE_ROOT}/",
         "display": "standalone",
         "icons": [
             {

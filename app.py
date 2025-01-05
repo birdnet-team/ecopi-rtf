@@ -60,7 +60,7 @@ app.index_string = f"""
         {{%metas%}}
         <title>{{%title%}}</title>
         <link rel="icon" type="image/x-icon" href="{cfg.SITE_ROOT}/assets/{cfg.FAVICON}">
-        <link rel="manifest" href="{cfg.SITE_ROOT}/assets/{cfg.PWA_MANIFEST}">
+        <link rel="manifest" href="{cfg.SITE_ROOT}/{cfg.PWA_MANIFEST}">
         {{%css%}}
         <link rel="stylesheet" href="{cfg.SITE_ROOT}/assets/style/{cfg.PROJECT_ACRONYM.lower()}_colors.css">
     </head>
