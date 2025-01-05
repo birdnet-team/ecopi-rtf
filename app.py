@@ -165,7 +165,7 @@ def update_active_nav(pathname):
 # Callback to update the page content based on the URL
 @app.callback(Output("page-content", "children"), [Input("url", "pathname"), Input("locale-store", "data")])
 def display_page(pathname, locale):
-    user_agent = request.headers.get('User-Agent')
+    headers = request.headers
     path_parts = pathname.strip('/').split('/')
     
     # Check if the last part of the path is a locale
@@ -175,24 +175,24 @@ def display_page(pathname, locale):
     
     try:
         if pathname == cfg.SITE_ROOT + "/":
-            increment_site_views('main page', user_agent)
+            increment_site_views('main page', headers)
             return main_page_content(locale)
         elif pathname == cfg.SITE_ROOT + "/dashboard":
-            increment_site_views('dashboard', user_agent)
+            increment_site_views('dashboard', headers)
             return dashboard_page_content(locale)
         elif pathname.startswith(cfg.SITE_ROOT + "/recorder/"):
             recorder_id = pathname.split("/")[-1]
-            increment_site_views(f'recorder {recorder_id}', user_agent)
+            increment_site_views(f'recorder {recorder_id}', headers)
             return display_recorder_page(recorder_id, locale)
         elif pathname.startswith(cfg.SITE_ROOT + "/species/"):
             species_id = pathname.split("/")[-1]
-            increment_site_views(f'species {species_id}', user_agent)
+            increment_site_views(f'species {species_id}', headers)
             return display_species_page(species_id, locale)
         elif pathname == cfg.SITE_ROOT + "/detections":
-            increment_site_views('detections', user_agent)
+            increment_site_views('detections', headers)
             return detections_page_content(locale)
         elif pathname == cfg.SITE_ROOT + "/about":
-            increment_site_views('about', user_agent)
+            increment_site_views('about', headers)
             return about_page_content(locale)
         else:
             print(f"404 Page Not Found: {pathname}")
@@ -229,6 +229,7 @@ def update_locale(n_clicks, pathname, current_locale):
         if locale != current_locale:
             return locale
         return current_locale
+
 # Callback to reload the page when the locale is updated
 @app.callback(
     Output("dummy-output", "children"),
@@ -239,6 +240,7 @@ def reload_page(locale, href):
     if locale and href:
         return dcc.Location(href=href, id="dummy-location")
     return ""
+
 
 # PWA manifest
 cfg.make_pwa_manifest(cfg.PWA_MANIFEST, locale=cfg.DEFAULT_SITE_LOCALE)

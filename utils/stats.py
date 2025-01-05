@@ -1,19 +1,31 @@
 import csv
 import os
+import hashlib
 from datetime import datetime
 
 import config as cfg
 
-def user_agent_to_fingerprint(user_agent):
+def headers_to_fingerprint(headers):
     
-    # Turn the user_agent string into a fingerprint
-    # this is very simplisic, but we just want to have a rough estimate
-    # of the number of unique users
-    fingerprint = sum([ord(c) for c in user_agent]) % 10000000000
+    # Extract data from request headers
+    user_agent = headers.get('User-Agent', 'Unknown')
+    client_hints = headers.get('Sec-CH-UA', 'Unknown')
+    platform = headers.get('Sec-CH-UA-Platform', 'Unknown')
+    platform_version = headers.get('Sec-CH-UA-Platform-Version', 'Unknown')
+    is_mobile = headers.get('Sec-CH-UA-Mobile', 'Unknown')
+    accept_language = headers.get('Accept-Language', 'Unknown')
+    fingerprint_raw = f"{user_agent}-{client_hints}-{platform}-{platform_version}-{is_mobile}-{accept_language}"
+    
+    # Create a hash of the fingerprint_raw string
+    hash_object = hashlib.sha256(fingerprint_raw.encode())
+    fingerprint_hash = int(hash_object.hexdigest(), 16)
+    
+    # Truncate the hash to 6 digits
+    fingerprint = fingerprint_hash % 1000000
     
     return fingerprint
 
-def increment_site_views(site, user_agent):
+def increment_site_views(site, headers):
 
     # Get the current timestamp
     timestamp = datetime.now().isoformat()
@@ -26,8 +38,8 @@ def increment_site_views(site, user_agent):
         writer = csv.writer(file)
         if not file_exists:
             # Write the header if the file does not exist
-            writer.writerow(["timestamp", "project", "site", "user_agent"])
-        writer.writerow([timestamp, cfg.PROJECT_ACRONYM, site, user_agent_to_fingerprint(user_agent)])
+            writer.writerow(["timestamp", "project", "site", "user"])
+        writer.writerow([timestamp, cfg.PROJECT_ACRONYM, site, headers_to_fingerprint(headers)])
 
     return timestamp
 
