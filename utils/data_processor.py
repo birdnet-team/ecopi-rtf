@@ -35,7 +35,7 @@ def get_share_data(data, locale):
     share_data = {
             "title": f"{strings.get('misc_share_title')}",
             "url": data['url_media'],
-            "text": f"{strings.get('project_main_title')} \n\n {data['common_name']} ({data['scientific_name']}) \n\n📅 {data['datetime']} \n📍{data['recorder_field_id']}",# \n\n🎧 {strings.get('misc_share_listen')}: ",
+            "text": f"{strings.get('project_main_title')} \n\n {data['common_name']} ({data['scientific_name']}) \n\n📅 {data['datetime']} \n📍{data['recorder_field_id']} \n\n🎧 {strings.get('misc_share_listen')}: ",
             "files": [data['url_media']],
             "filename": f"{cfg.PROJECT_ACRONYM.lower()}_{data['common_name'].replace(' ', '_').lower()}_{data['datetime'].split(': ')[-1].replace(' - ', '_').replace(' ', '_').replace(':', '-').replace('.', '-').replace('/', '-').lower()}.mp3",
         }

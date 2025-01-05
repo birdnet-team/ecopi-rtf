@@ -145,7 +145,21 @@ function openPlayer(index) {
                 await navigator.share(shareData);
         
             } catch (error) {
-                console.error('Error sharing the audio file:', error);
+                
+                // Fallback, share without file
+                try {
+                    const shareData = {
+                        title: data.share_data.title,
+                        text: data.share_data.text,
+                        url: data.share_data.url
+                    };
+
+                    await navigator.share(shareData);
+                } catch (error) {
+
+                    //Finally, catch any error
+                    console.error('Error sharing:', error);
+                }
             }
         });
     } else {
