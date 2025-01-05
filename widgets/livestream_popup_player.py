@@ -32,7 +32,7 @@ def livestream_popup_player():
                             ),
                             dbc.Row(children=[html.Canvas(id="livestream-spectrogram")], className="mt-3"),
                         ],
-                    ),
+                    className="d-none"),
                     html.Div(
                         id="livestream-popup-footer",
                         className="d-flex justify-content-evenly mt-3",

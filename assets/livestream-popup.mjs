@@ -9,8 +9,10 @@ const zoomFactor = 0.75; // This might need to be adjusted according to the live
 function closeLivestream(audioContext, audioElement, resizeEventListener) {
     const playerElement = document.querySelector("#livestream-popup");
     const backdrop = document.querySelector("#livestream-popup-backdrop");
+    const popupContent = document.querySelector("#livestream-popup-content");
     playerElement.classList.remove("visible");
     backdrop.classList.add("d-none");
+    popupContent.classList.add("d-none");
     audioContext.close();
     audioElement.pause();
     audioElement.remove();
@@ -103,6 +105,9 @@ function openLivestream(url) {
 
     const backdrop = document.querySelector("#livestream-popup-backdrop");
     backdrop.classList.remove("d-none");
+
+    const popupContent = document.querySelector("#livestream-popup-content");
+    popupContent.classList.remove("d-none");
 
     let closeButton = document.querySelector("#close-livestream-popup-button");
     let livestreamPlayButton = document.querySelector("#livestream-popup-play-button");
