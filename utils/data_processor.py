@@ -144,6 +144,31 @@ def get_battery_status(voltage):
     
     return str(battery_level) if battery_level > 10 else '< 10'
 
+def ping():
+    
+    url = cfg.API_BASE_URL + 'detections'
+    
+    headers = {
+        'Authorization': f'Token ' + cfg.API_TOKEN
+    }
+    params = {}
+    
+    # Project name
+    params['project_name'] = cfg.PROJECT_NAME
+    
+    # Only retrieve certain fields
+    params['only'] = 'species_code, datetime'
+    
+    # Pagination/limit
+    params['limit'] = 5
+    
+    response = make_request(url, headers, params, cache_timeout=300)
+    
+    if not len(response) > 0:
+        return False
+    
+    return True
+
 def get_project_list():
     
     url = 'https://api.ecopi.de/api/v0.1/projects/'

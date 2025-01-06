@@ -3,7 +3,7 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH, ALL
 from flask_cors import CORS
-from flask import request
+from flask import request, jsonify
 
 import json
 
@@ -12,6 +12,7 @@ from utils import plots
 
 import config as cfg
 from utils.stats import increment_site_views
+from utils import data_processor as dp
 
 # Import page content functions
 from pages.main import main_page_content, register_main_callbacks
@@ -241,6 +242,13 @@ def reload_page(locale, href):
         return dcc.Location(href=href, id="dummy-location")
     return ""
 
+# Ping route
+@app.server.route("/ping")
+def ping():
+    if dp.ping():
+        return jsonify(status="ok")
+    else:
+        return jsonify(status="error")
 
 # PWA manifest
 cfg.make_pwa_manifest(cfg.PWA_MANIFEST, locale=cfg.DEFAULT_SITE_LOCALE)
