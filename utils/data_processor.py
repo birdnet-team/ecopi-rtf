@@ -232,7 +232,10 @@ def cache_costy_requests():
     
     # For each species in last_n, get weekly detections
     for species in last_n:
-        weekly_detections = get_weekly_detections(min_conf=0.5, species_code=species, recorder_id=None, min_count=5, locale='en')
+        try:
+            weekly_detections = get_weekly_detections(min_conf=0.5, species_code=species, recorder_id=None, min_count=5, locale='en')
+        except:
+            weekly_detections = {'detections': []}
         if len(weekly_detections['detections']) > 0:
             result['weekly_detections_' + species] = 'chached'
         else:
