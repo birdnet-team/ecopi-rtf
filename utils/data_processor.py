@@ -562,7 +562,11 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     params['limit'] = 'None'
     
     # past 12 months
-    now = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
+    now = datetime.now(UTC)
+    if now.hour < 12:
+        now = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    else:
+        now = now.replace(hour=12, minute=0, second=0, microsecond=0)
     params['datetime_recording__gte'] = (now - timedelta(days=365)).isoformat()
     params['datetime_recording__lte'] = now.isoformat()
     
