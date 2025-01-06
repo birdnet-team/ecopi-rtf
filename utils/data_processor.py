@@ -18,17 +18,15 @@ import config as cfg
 # Set random seed
 random.seed(42)
 
-def get_current_week():
+def get_current_week(date=datetime.now()):
     
-    fraction = min(52, max(0, (datetime.now().isocalendar()[1])) / 52)
+    fraction = min(52, max(0, (date.isocalendar()[1])) / 52)
     week = round(fraction * 48)
     
     return min(48, max(1, week))
 
 def get_week_from_date(date):
-    
-    # Return week number from date
-    return min(48, max(1, int(date.isocalendar()[1] / 52 * 48)))
+    return get_current_week(date)
 
 def get_share_data(data, locale):
     
