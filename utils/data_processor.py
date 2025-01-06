@@ -190,9 +190,66 @@ def get_project_list():
     
     return project_list
 
+def cache_costy_requests():
+    
+    result = {}
+    
+    # Total detections
+    if 'total_detections' in get_total_detections():
+        result['total_detections'] = 'chached'
+    else:
+        result['total_detections'] = 'error'
+    
+    if 'total_detections' in get_total_detections(days=1):
+        result['total_detections_day'] = 'chached'
+    else:
+        result['total_detections_day'] = 'error'
+        
+    if 'total_detections' in get_total_detections(days=90):
+        result['total_detections_90'] = 'chached'
+    else:
+        result['total_detections_90'] = 'error'
+    
+    # Most active species
+    if len(get_most_active_species(n=8, min_conf=0.5, hours=7*24, recorder_list=[], locale='en')) > 0:
+        result['most_active_species'] = 'chached'
+    else:
+        result['most_active_species'] = 'error'
+        
+    # Recorder stats
+    for recorder_id in cfg.RECORDERS:
+        if 'current_status' in get_recorder_state(recorder_id, locale='en'):
+            result['recorder_state_' + str(recorder_id)] = 'chached'
+        else:
+            result['recorder_state_' + str(recorder_id)] = 'error'
+        
+    # Last N detections
+    last_n = get_last_n_detections(n=24, hours=72, locale='en')
+    if len(last_n) > 0:
+        result['last_n_detections'] = 'chached'
+    else:
+        result['last_n_detections'] = 'error'
+    
+    # For each species in last_n, get weekly detections
+    for species in last_n:
+        weekly_detections = get_weekly_detections(min_conf=0.5, species_code=species, recorder_id=None, min_count=5, locale='en')
+        if len(weekly_detections['detections']) > 0:
+            result['weekly_detections_' + species] = 'chached'
+        else:
+            result['weekly_detections_' + species] = 'error'
+    
+    return result
+
 def clean_cache(cache_dir, max_age=60*60*24):
-    """Remove cache files older than max_age seconds."""
+    
     now = time.time()
+    
+    # Check if we need to clean the cache or if we did it recently
+    if hasattr(cfg, 'LAST_CACHE_CLEANUP'):
+        if now - cfg.LAST_CACHE_CLEANUP < 60*60:
+            return
+    
+    # Open each file in the cache directory and check if it's older than max_age
     for filename in os.listdir(cache_dir):
         file_path = os.path.join(cache_dir, filename)
         if os.path.isfile(file_path):
@@ -202,6 +259,9 @@ def clean_cache(cache_dir, max_age=60*60*24):
                     os.remove(file_path)
             except:
                 pass
+            
+    # Set LAST_CACHE_CLEANUP to now
+    cfg.LAST_CACHE_CLEANUP = now
 
 def make_request(url, headers, params, cache_timeout=3600):
     

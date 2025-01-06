@@ -249,6 +249,11 @@ def ping():
         return jsonify(status="ok")
     else:
         return jsonify(status="error")
+    
+# Cache costly requests
+@app.server.route("/cache")
+def cache():
+    return dp.cache_costy_requests()
 
 # PWA manifest
 cfg.make_pwa_manifest(cfg.PWA_MANIFEST, locale=cfg.DEFAULT_SITE_LOCALE)

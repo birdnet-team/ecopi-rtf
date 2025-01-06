@@ -90,6 +90,26 @@ gunicorn app:server --bind 0.0.0.0:8050 --workers 4 --env CONFIG_FILE=configs/sw
 
 The app will be available at `http://localhost:8050/`. You can specify the number of workers to run with the `--workers` flag based on the number of cores available on your machine. Make sure to set 'debug=False' in the app.py file before running the app in production. You also may have to set `SITE_ROOT` in when using URL forwarding in your domain.
 
+## Setting up a Cron Job to Call the Cache Route
+
+To ensure that the cache is refreshed every 30 minutes, you can set up a cron job. Follow these steps:
+
+1. Open the crontab file for editing:
+
+```bash
+crontab -e
+```
+
+2. Add the following line to the crontab file to call the cache route every 30 minutes:
+
+```bash
+*/30 * * * * curl -X GET http://localhost:8050/cache
+```
+
+3. Save and close the crontab file.
+
+Make sure your application is running and accessible at http://localhost:8050/ (or your specific site URL) before setting up the cron job.
+
 ## License
 
 - **Source Code**: The source code for this project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
