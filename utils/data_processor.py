@@ -232,6 +232,7 @@ def cache_costy_requests():
     
     # For each species in last_n, get weekly detections
     for species in last_n:
+        #print(f"Checking species data for {species}")
         try:
             weekly_detections = get_weekly_detections(min_conf=0.5, species_code=species, recorder_id=None, min_count=5, locale='en')
         except:
@@ -240,6 +241,11 @@ def cache_costy_requests():
             result['weekly_detections_' + species] = 'chached'
         else:
             result['weekly_detections_' + species] = 'error'
+        species_stats = get_species_stats(species, max_results=10)
+        if len(species_stats) > 0:
+            result['species_stats_' + species] = 'chached'
+        else:
+            result['species_stats_' + species] = 'error'
     
     return result
 
@@ -291,6 +297,7 @@ def make_request(url, headers, params, cache_timeout=3600):
             pass
 
     # Send the request
+    #print(f"Making request to {url}")
     response = requests.get(url, headers=headers, params=params)
     try:
         response_data = response.json()
