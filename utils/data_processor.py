@@ -20,8 +20,10 @@ random.seed(42)
 
 def get_current_week():
     
-    # Return current week 1..48 (4 weeks per month)
-    return min(48, max(1, int(datetime.now().isocalendar()[1] / 52 * 48)))
+    fraction = min(52, max(0, (datetime.now().isocalendar()[1])) / 52)
+    week = round(fraction * 48)
+    
+    return min(48, max(1, week))
 
 def get_week_from_date(date):
     
@@ -800,7 +802,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     
 if __name__ == '__main__':   
     
-    #print('Current week: ', get_current_week())
+    print('Current week: ', get_current_week())
     
     #print('Number of detections in the last 24 hours:', get_total_detections(days=1)['total_detections'])
     #print('Number of detections with confidence >= 0.5:', get_total_detections(min_conf=0.5)['total_detections'])
@@ -822,7 +824,7 @@ if __name__ == '__main__':
     #print(get_total_detections(min_conf=0.5, species_list=['eurnut2'], days=-1))
     #print(get_total_detections(min_conf=0.5, days=-1, recorder_list=[9]))
     
-    print(get_weekly_detections(min_conf=0.5, species_code='eurnut2', recorder_id=None))
+    #print(get_weekly_detections(min_conf=0.5, species_code='eurnut2', recorder_id=None))
     
     #for p in get_project_list():
     #    print(p)
