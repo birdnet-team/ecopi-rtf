@@ -37,7 +37,7 @@ def footer_content(locale):
                 html.Div(html.Img(src=cfg.SITE_ROOT + f"/assets/logo_img/{logo}", className="footer-logo"), className="footer-logo-container"),
                 width=12,
                 md=6,
-                lg=int(12 / num_logos),
+                lg=max(4, int(12 / num_logos)),
                 className="text-center"
             )
         )
