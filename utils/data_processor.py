@@ -253,20 +253,23 @@ def cache_costy_requests():
         
     # Recorder stats
     for recorder_id in cfg.RECORDERS:
-        if 'current_status' in get_recorder_state(recorder_id, locale='en'):
-            result['recorder_state_' + str(recorder_id)] = 'chached'
-        else:
-            result['recorder_state_' + str(recorder_id)] = 'error'
-        recorder_stats = get_species_stats(recorder_id=recorder_id, max_results=15)
-        if len(recorder_stats) > 0:
-            result['recorder_stats_' + str(recorder_id)] = 'chached'
-        else:
-            result['recorder_stats_' + str(recorder_id)] = 'error'
-        species_data = get_most_active_species(n=8, min_conf=0.5, hours=7*24, recorder_list=[recorder_id], locale='en')
-        if len(species_data) > 0:
-            result['recorder_most_active_species_' + str(recorder_id)] = 'chached'
-        else:
-            result['recorder_most_active_species_' + str(recorder_id)] = 'error'
+        try:
+            if 'current_status' in get_recorder_state(recorder_id, locale='en'):
+                result['recorder_state_' + str(recorder_id)] = 'chached'
+            else:
+                result['recorder_state_' + str(recorder_id)] = 'error'
+            recorder_stats = get_species_stats(recorder_id=recorder_id, max_results=15)
+            if len(recorder_stats) > 0:
+                result['recorder_stats_' + str(recorder_id)] = 'chached'
+            else:
+                result['recorder_stats_' + str(recorder_id)] = 'error'
+            species_data = get_most_active_species(n=8, min_conf=0.5, hours=7*24, recorder_list=[recorder_id], locale='en')
+            if len(species_data) > 0:
+                result['recorder_most_active_species_' + str(recorder_id)] = 'chached'
+            else:
+                result['recorder_most_active_species_' + str(recorder_id)] = 'error'
+        except:
+            continue
         
     # Last N detections
     last_n = get_last_n_detections(n=24, hours=72, locale='en')
@@ -281,17 +284,18 @@ def cache_costy_requests():
         #print(f"Checking species data for {species}")
         try:
             weekly_detections = get_weekly_detections(min_conf=0.5, species_code=species, recorder_id=None, min_count=5, locale='en')
-        except:
             weekly_detections = {'detections': []}
-        if len(weekly_detections['detections']) > 0:
-            result['weekly_detections_' + species] = 'chached'
-        else:
-            result['weekly_detections_' + species] = 'error'
-        species_stats = get_species_stats(species, max_results=10)
-        if len(species_stats) > 0:
-            result['species_stats_' + species] = 'chached'
-        else:
-            result['species_stats_' + species] = 'error'
+            if len(weekly_detections['detections']) > 0:
+                result['weekly_detections_' + species] = 'chached'
+            else:
+                result['weekly_detections_' + species] = 'error'
+            species_stats = get_species_stats(species, max_results=10)
+            if len(species_stats) > 0:
+                result['species_stats_' + species] = 'chached'
+            else:
+                result['species_stats_' + species] = 'error'
+        except:
+            continue
             
         # Abort after 20 seconds
         if time.time() - start > 20:
