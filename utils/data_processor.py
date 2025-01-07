@@ -239,6 +239,7 @@ def cache_costy_requests():
         result['last_n_detections'] = 'error'
     
     # For each species in last_n, get weekly detections
+    start = time.time()
     for species in last_n:
         #print(f"Checking species data for {species}")
         try:
@@ -254,6 +255,10 @@ def cache_costy_requests():
             result['species_stats_' + species] = 'chached'
         else:
             result['species_stats_' + species] = 'error'
+            
+        # Abort after 20 seconds
+        if time.time() - start > 20:
+            break
     
     return result
 
