@@ -18,6 +18,9 @@ import config as cfg
 # Set random seed
 random.seed(42)
 
+def get_local_time(time_format='24h'):
+    return datetime.now(pytz.timezone(cfg.TIMEZONE)).strftime('%I:%M %p') if time_format == '12h' else datetime.now(pytz.timezone(cfg.TIMEZONE)).strftime('%H:%M')
+
 def get_current_week(date=datetime.now()):
     
     fraction = min(52, max(0, (date.isocalendar()[1])) / 52)
@@ -141,6 +144,40 @@ def get_battery_status(voltage):
     battery_level = max(10, int((voltage - 9) / (12 - 9) * 100) // 10 * 10)
     
     return str(battery_level) if battery_level > 10 else '< 10'
+
+def get_weather_data():
+    
+    url = "http://api.openweathermap.org/data/2.5/weather"
+    
+    params = {
+        "lat": cfg.DEPLOYMENT_LAT,
+        "lon": cfg.DEPLOYMENT_LON,
+        "appid": cfg.OWM_API_KEY,
+        "units": "metric"
+    }
+    
+    headers = {}
+    
+    response = make_request(url, headers, params, cache_timeout=1800, ignore_cache=False)
+    
+    try:
+        weather_data = {
+            "temperature": round(response["main"]["temp"], 1),
+            "weather": response["weather"][0]["main"],
+            "wind_speed": response["wind"]["speed"],
+            "humidity": response["main"]["humidity"],
+            "pressure": response["main"]["pressure"]
+        }
+    except:
+        weather_data = {
+            "temperature": "N/A",
+            "weather": "N/A",
+            "wind_speed": "N/A",
+            "humidity": "N/A",
+            "pressure": "N/A"
+        }     
+    
+    return weather_data
 
 def ping():
     
@@ -285,7 +322,7 @@ def clean_cache(cache_dir, max_age=60*60*24):
     # Set LAST_CACHE_CLEANUP to now
     cfg.LAST_CACHE_CLEANUP = now
 
-def make_request(url, headers, params, cache_timeout=3600):
+def make_request(url, headers, params, cache_timeout=3600, ignore_cache=False):
     
     # Does the cache directory exist?
     cache_dir = cfg.make_cache_dir(cfg.CACHE_DIR)
@@ -298,7 +335,7 @@ def make_request(url, headers, params, cache_timeout=3600):
     cache_file = os.path.join(cache_dir, cache_key)
 
     # Check if the cache file exists and is still valid
-    if os.path.exists(cache_file):
+    if os.path.exists(cache_file) and not ignore_cache:
         try:
             with open(cache_file, 'r') as f:
                 cached_data = json.load(f)
@@ -943,4 +980,6 @@ if __name__ == '__main__':
     
     #for p in get_project_list():
     #    print(p)
+    
+    print(get_weather_data())
     

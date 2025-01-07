@@ -568,6 +568,24 @@ nav .navbar-nav {
     margin-left: 10px;
 }
 
+.weather-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-info {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 5px;
+    padding-left: 10px;
+    font-size: 0.7rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
 .footer-logo {
     max-height: 50px;
     max-width: 300px;

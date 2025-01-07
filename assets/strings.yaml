@@ -1186,6 +1186,91 @@ dp_time_delta_ago_postfix:
   it: "fa"
   cs: ""
 
+# Weather strings
+weather_clear_sky:
+  en: "Clear"
+  de: "Klar"
+  fr: "Dégagé"
+  it: "Sereno"
+  cs: "Jasno"
+
+weather_few_clouds:
+  en: "Few clouds"
+  de: "Wolken"
+  fr: "Nuages"
+  it: "Nuvole"
+  cs: "Mraky"
+
+weather_scattered_clouds:
+  en: "Scattered clouds"
+  de: "Leicht bewölkt"
+  fr: "Nuages épars"
+  it: "Nuvole sparse"
+  cs: "Rozptýlené mraky"
+
+weather_broken_clouds:
+  en: "Broken"
+  de: "Aufgelockert"
+  fr: "Fragmentés"
+  it: "Rotte"
+  cs: "Přerušované"
+
+weather_clouds:
+  en: "Clouds"
+  de: "Wolken"
+  fr: "Nuages"
+  it: "Nuvole"
+  cs: "Mraky"
+
+weather_shower_rain:
+  en: "Showers"
+  de: "Schauer"
+  fr: "Averses"
+  it: "Rovesci"
+  cs: "Přeháňky"
+
+weather_rain:
+  en: "Rain"
+  de: "Regen"
+  fr: "Pluie"
+  it: "Pioggia"
+  cs: "Déšť"
+
+weather_thunderstorm:
+  en: "Storm"
+  de: "Gewitter"
+  fr: "Orage"
+  it: "Temporale"
+  cs: "Bouřka"
+
+weather_snow:
+  en: "Snow"
+  de: "Schnee"
+  fr: "Neige"
+  it: "Neve"
+  cs: "Sníh"
+
+weather_mist:
+  en: "Mist"
+  de: "Nebel"
+  fr: "Brume"
+  it: "Nebbia"
+  cs: "Mlha"
+
+weather_fog:
+  en: "Fog"
+  de: "Nebel"
+  fr: "Brouillard"
+  it: "Nebbia"
+  cs: "Mlha"
+
+weather_overcast_clouds:
+  en: "Overcast"
+  de: "Bedeckt"
+  fr: "Couvert"
+  it: "Coperto"
+  cs: "Zataženo" 
+
 # Misc strings
 misc_photo:
   en: "Photo"

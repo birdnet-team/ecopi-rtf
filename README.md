@@ -46,7 +46,13 @@ API_TOKEN=<your api token>
 
 **Note:** You'll need an OekoFor API key to run the app. Please send an email to [info@oekofor.de](mailto:info@oekofor.de) to request API access.
 
-5. Add these additional environment variables to the `.env` file:
+5. Get your OpenWeatherMap API key from [OpenWeatherMap](https://openweathermap.org/api) and add it to the `.env` file
+
+```bash
+OWM_API_KEY=<your api key>
+```
+
+6. Add these additional environment variables to the `.env` file:
 
 ```bash
 CONFIG_FILE=configs/swamp_config.yaml
