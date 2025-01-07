@@ -71,8 +71,10 @@ FOOTER_LINKS:
     - {name: "widget_footer_about_privacy_policy", href: "https://privacy.cornell.edu/information-use-cornell", target: "_blank"}
     - {name: "widget_footer_about_terms_of_use", href: "https://www.birds.cornell.edu/home/terms-of-use/", target: "_blank"}
 COPYRIGHT_HOLDERS: ""
+PARTNER_STATEMENT: "about_partnership_neeri"
+PARTNER_LOGOS: ['logo_box_lab.png', 'logo_box_tuc.png', 'logo_box_oekofor.png', 'birdlife_ch_logo_box.png', 'vogelwarte_logo_box.png']
 FOOTER_TOP_LOGO: 'birdnet_logo_white.png'
-FOOTER_BOTTOM_LOGOS: ['birdlife_ch_logo_white.png', 'oekofor_logo_white.png', 'yang_logo_white.png', 'tuc_logo_white.png']
+FOOTER_BOTTOM_LOGOS: ['birdlife_ch_logo_white.png', 'vogelwarte_logo_white.png', 'oekofor_logo_white.png', 'yang_logo_white.png', 'tuc_logo_white.png']
 TEAM_MEMBERS:
   - {name: "Hendrik Reers", role: "about_team_role_project_lead", img: "hendrik.png"}
   - {name: "Stefan Kahl", role: "about_team_role_web", img: "stefan.png"}

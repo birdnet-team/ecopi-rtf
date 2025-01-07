@@ -46,6 +46,17 @@ def about_page_content(locale):
                 className="mb-4 text-center"
             )
         )
+        
+    partner_logos = []
+    for logo in cfg.PARTNER_LOGOS:
+        partner_logos.append(
+            dbc.Col(
+                html.Img(src=cfg.SITE_ROOT + f"/assets/logo_img/{logo}", className="partner-logo"),
+                sm=4,
+                xs=6,
+                className="text-center mb-4 p-4"
+            )
+        )
     
     return html.Div(
         [
@@ -124,28 +135,9 @@ def about_page_content(locale):
                                     html.H4(id="about-team", children=strings.get('about_headline_meet_the_team'), className="mb-4"),
                                     dbc.Row(team_members),                           
                                     html.H4(id="about-partners", children=strings.get('about_headline_partners'), className="mb-3"),
-                                    html.P(strings.get('about_partnership')),
+                                    html.P(strings.get(cfg.PARTNER_STATEMENT)),
                                     dbc.Row(
-                                        [
-                                            dbc.Col(
-                                                html.Img(src=cfg.SITE_ROOT + "/assets/logo_img/logo_box_lab.png", className="partner-logo"),
-                                                sm=4,
-                                                xs=6,
-                                                className="text-center mb-4"
-                                            ),
-                                            dbc.Col(
-                                                html.Img(src=cfg.SITE_ROOT + "/assets/logo_img/logo_box_tuc.png", className="partner-logo"),
-                                                sm=4,
-                                                xs=6,
-                                                className="text-center mb-4"
-                                            ),
-                                            dbc.Col(
-                                                html.Img(src=cfg.SITE_ROOT + "/assets/logo_img/logo_box_oekofor.png", className="partner-logo"),
-                                                sm=4,
-                                                xs=12,
-                                                className="text-center mb-4"
-                                            ),
-                                        ],
+                                        partner_logos,
                                         className="mt-4 mb-4",
                                     ),                                    
                                     

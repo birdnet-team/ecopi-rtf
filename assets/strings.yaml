@@ -561,12 +561,26 @@ about_ai_sound_id_3:
   it: "BirdNET è ampiamente utilizzato negli sforzi di conservazione per monitorare le popolazioni animali, studiare i modelli di migrazione e identificare aree critiche per le specie in pericolo. La sua capacità di elaborare automaticamente le registrazioni su larga scala fornisce ai ricercatori dati preziosi per supportare la protezione degli habitat e strategie di conservazione."
   cs: "BirdNET je široce používán v ochranářských snahách ke sledování populací zvířat, studiu migračních vzorců a identifikaci oblastí zájmu pro ohrožené druhy. Jeho schopnost automaticky a ve velkém měřítku zpracovávat nahrávky poskytuje vědcům cenná data na podporu ochrany stanovišť a ochranářských strategií."
 
-about_partnership:
+about_partnership_swamp:
   en: "This project is a collaboration between the Cornell Lab of Ornithology, Chemnitz University of Technology, and OekoFor GbR."
   de: "Dieses Projekt ist eine Zusammenarbeit zwischen dem Cornell Lab of Ornithology, der Technischen Universität Chemnitz und der OekoFor GbR."
   fr: "Ce projet est une collaboration entre le Cornell Lab of Ornithology, l'Université de Technologie de Chemnitz et OekoFor GbR."
   it: "Questo progetto è una collaborazione tra il Cornell Lab of Ornithology, l'Università Tecnica di Chemnitz e OekoFor GbR."
   cs: "Tento projekt je spoluprací mezi Cornell Lab of Ornithology, Technickou univerzitou v Chemnitzu a OekoFor GbR."
+
+about_partnership_amic:
+  en: "This project is a collaboration between the Cornell Lab of Ornithology, Chemnitz University of Technology, and OekoFor GbR."
+  de: "Dieses Projekt ist eine Zusammenarbeit zwischen dem Cornell Lab of Ornithology, der Technischen Universität Chemnitz und der OekoFor GbR."
+  fr: "Ce projet est une collaboration entre le Cornell Lab of Ornithology, l'Université de Technologie de Chemnitz et OekoFor GbR."
+  it: "Questo progetto è una collaborazione tra il Cornell Lab of Ornithology, l'Università Tecnica di Chemnitz e OekoFor GbR."
+  cs: "Tento projekt je spoluprací mezi Cornell Lab of Ornithology, Technickou univerzitou v Chemnitzu a OekoFor GbR."
+
+about_partnership_neeri:
+  en: "This project is a collaboration between the Cornell Lab of Ornithology, Chemnitz University of Technology, OekoFor GbR, BirdLife Switzerland, and the Swiss Ornithological Institute."
+  de: "Dieses Projekt ist eine Zusammenarbeit zwischen dem Cornell Lab of Ornithology, der Technischen Universität Chemnitz, der OekoFor GbR, BirdLife Schweiz und der Schweizerischen Vogelwarte Sempach."
+  fr: "Ce projet est une collaboration entre le Cornell Lab of Ornithology, l'Université de Technologie de Chemnitz, OekoFor GbR, BirdLife Suisse et Station ornithologique suisse."
+  it: "Questo progetto è una collaborazione tra il Cornell Lab of Ornithology, l'Università Tecnica di Chemnitz, OekoFor GbR, BirdLife Svizzera e stazione ornitologica svizzera di Sempach."
+  cs: "Tento projekt je spoluprací mezi Cornell Lab of Ornithology, Technickou univerzitou v Chemnitzu, OekoFor GbR, BirdLife Švýcarsko a Švýcarským ornitologickým institutem."
 
 about_funding_1:
   en: "This project is supported by Jake Holshuh (Cornell class of ’69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats."

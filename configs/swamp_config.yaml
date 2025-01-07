@@ -69,6 +69,8 @@ FOOTER_LINKS:
     - {name: "widget_footer_about_privacy_policy", href: "https://privacy.cornell.edu/information-use-cornell", target: "_blank"}
     - {name: "widget_footer_about_terms_of_use", href: "https://www.birds.cornell.edu/home/terms-of-use/", target: "_blank"}
 COPYRIGHT_HOLDERS: 'Cornell University'
+PARTNER_STATEMENT: "about_partnership_swamp"
+PARTNER_LOGOS: ['logo_box_lab.png', 'logo_box_tuc.png', 'logo_box_oekofor.png']
 FOOTER_TOP_LOGO: 'yang_logo_white.png'
 FOOTER_BOTTOM_LOGOS: ['cornell-logo-white.png']
 TEAM_MEMBERS:
