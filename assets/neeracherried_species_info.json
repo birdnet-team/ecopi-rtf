@@ -8378,7 +8378,7 @@
       2.10191
     ],
     "new_ebird_code": "tawowl1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Waldkauz",
     "common_name_fr": "Chouette hulotte",
     "common_name_cs": "Pu\u0161t\u00edk obecn\u00fd",
