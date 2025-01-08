@@ -99,7 +99,7 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
                         ]
                     ),
                 ],
-                className="mb-4 d-none d-md-block" if idx >= 4 else "mb-4",
+                className="mb-4 d-none d-md-block" if idx >= 4 and num_cards <= 8 else "mb-4",
                 style={"width": "100%", "position": "relative"},
             ),
             width=12,
