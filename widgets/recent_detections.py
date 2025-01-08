@@ -14,7 +14,7 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
     if len(last_detections) < 4:
         last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=1, locale=locale)
     
-    show_more = True if len(last_detections) >= 12 and num_cards <= 12 else False
+    show_more = True if len(last_detections) >= 4 and num_cards <= 12 else False
     cards = []
     datalist = []
 
@@ -99,7 +99,7 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
                         ]
                     ),
                 ],
-                className="mb-4",
+                className="mb-4 d-none d-md-block" if idx >= 4 else "mb-4",
                 style={"width": "100%", "position": "relative"},
             ),
             width=12,
