@@ -5,6 +5,7 @@ import os
 import hashlib
 import json
 import time
+import threading
 import requests
 import random
 from datetime import datetime, timedelta, UTC 
@@ -225,6 +226,9 @@ def get_project_list():
     
     return project_list
 
+def run_cache_costly_requests():
+    threading.Thread(target=cache_costy_requests).start()
+
 def cache_costy_requests():
     
     result = {}
@@ -279,7 +283,6 @@ def cache_costy_requests():
         result['last_n_detections'] = 'error'
     
     # For each species in last_n, get weekly detections
-    start = time.time()
     for species in last_n:
         #print(f"Checking species data for {species}")
         try:
@@ -296,10 +299,6 @@ def cache_costy_requests():
                 result['species_stats_' + species] = 'error'
         except:
             continue
-            
-        # Abort after 20 seconds
-        if time.time() - start > 20:
-            break
     
     return result
 
