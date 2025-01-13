@@ -3308,7 +3308,7 @@
       0.0
     ],
     "new_ebird_code": "sonthr1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Singdrossel",
     "common_name_fr": "Grive musicienne",
     "common_name_cs": "Drozd zp\u011bvn\u00fd",
@@ -4023,7 +4023,7 @@
       7.00637
     ],
     "new_ebird_code": "rook1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Saatkr\u00e4he",
     "common_name_fr": "Corbeau freux",
     "common_name_cs": "Havran poln\u00ed",
