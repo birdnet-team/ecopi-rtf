@@ -124,9 +124,9 @@ def get_confidence_score(species, confidence):
     species_freq = get_species_frequency(species)
         
     # Blend confidence and frequency as weighted average
-    if species_freq > 50:
+    if species_freq > 30:
         confidence = int(confidence)
-    elif species_freq > 0.0 and species_freq <= 50:
+    elif species_freq > 0.0 and species_freq <= 30:
         confidence = int((confidence * 0.75) + (species_freq * 0.25))
     else:
         confidence = 0
@@ -923,6 +923,9 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
         
     # Remove species not in species data
     response = [item for item in response if is_in_species_data(item['species_code'])]
+    
+    # Remove blacklisted species
+    response = [item for item in response if not is_blacklisted(item['species_code'])]
     
     # Remove low confidence detections
     response = [item for item in response if item['confidence'] >= 2]
