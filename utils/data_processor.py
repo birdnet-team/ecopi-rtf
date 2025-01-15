@@ -124,14 +124,12 @@ def get_confidence_score(species, confidence):
     species_freq = get_species_frequency(species)
         
     # Blend confidence and frequency as weighted average
-    if species_freq > 30:
+    if species_freq > 15:
         confidence = int(confidence)
-    elif species_freq > 0.0 and species_freq <= 30:
-        confidence = int((confidence * 0.75) + (species_freq * 0.25))
     else:
-        confidence = 0
+        confidence = int((confidence * 0.75) + (species_freq * 0.25))
     
-    return min(100, max(1, confidence))
+    return min(99, max(1, confidence))
 
 def get_battery_status(voltage):
     
