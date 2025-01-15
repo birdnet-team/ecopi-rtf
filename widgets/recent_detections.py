@@ -10,7 +10,7 @@ import config as cfg
 
 def recent_detections(num_cards=8, hours=72, locale="en"):
     strings = Strings(locale, project=cfg.PROJECT_ID)
-    last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=5, locale=locale)   
+    last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=1, locale=locale)   
     if len(last_detections) < 4:
         last_detections = dp.get_last_n_detections(n=max(12, num_cards), hours=hours, min_count=1, locale=locale)
     
