@@ -636,7 +636,8 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     project_start_date = project_start_date.replace(tzinfo=UTC)  # Make project_start_date timezone-aware
     if project_start_date > (now - timedelta(days=365)):
         start_week = get_week_from_date(project_start_date)
-        weekly_detections[:start_week - 1] = -1
+        current_week = get_current_week()
+        weekly_detections[current_week:start_week - 1] = -1
     
     # Add detections to weekly_detections
     for detection in response:
