@@ -157,8 +157,6 @@ def get_weekly_detections_plot(detections, locale='en', log_strength=0.99):
     detections_data = detections['detections']
     frequencies_data = detections['frequencies']
     current_week = detections['current_week']
-    
-    print(detections_data)
 
      # Apply adjustable log scale to the detections (only for values > -1)
     log_detections = [np.log1p(val) if val > -1 else -1 for val in detections_data]
