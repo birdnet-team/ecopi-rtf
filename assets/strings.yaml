@@ -1167,7 +1167,7 @@ dp_time_delta_day:
 
 dp_time_delta_days:
   en: "days"
-  de: "Tage"
+  de: "Tagen"
   fr: "jours"
   it: "giorni"
   cs: "dny"

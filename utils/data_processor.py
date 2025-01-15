@@ -928,12 +928,6 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     # Remove low confidence detections
     response = [item for item in response if item['confidence'] >= 2]
     
-    # Sort by confidence
-    #response = sorted(response, key=lambda x: x['datetime'], reverse=True)  
-    
-    # Sort by date
-    response = sorted(response, key=lambda x: x['datetime'], reverse=False)
-    
     # Limit to at most 3 detections per species or per recorder
     if recorder_id is not None:
         species_detections = {}
