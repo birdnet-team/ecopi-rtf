@@ -9,6 +9,7 @@ import config as cfg
 
 # Mapping of weather descriptions to Bootstrap icons
 weather_icons = {
+    "clear": "bi bi-sun",
     "clear sky": "bi bi-sun",
     "few clouds": "bi bi-cloud-sun",
     "scattered clouds": "bi bi-cloud",
@@ -25,6 +26,7 @@ weather_icons = {
 
 # Mapping of weather descriptions to translation keys
 weather_translation_keys = {
+    "clear": "weather_clear_sky",
     "clear sky": "weather_clear_sky",
     "few clouds": "weather_few_clouds",
     "scattered clouds": "weather_scattered_clouds",
@@ -57,6 +59,7 @@ def recording_units(locale):
         
         # Weather data
         weather_data = dp.get_weather_data()        
+        print(weather_data)
         weather_icon_class = weather_icons.get(weather_data["weather"].lower(), "bi bi-question-circle")
         weather_translation_key = weather_translation_keys.get(weather_data["weather"].lower(), weather_data["weather"])
         translated_weather = strings.get(weather_translation_key)
