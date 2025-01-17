@@ -513,7 +513,7 @@
       21.98198
     ],
     "new_ebird_code": "cowpig1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Ringeltaube",
     "common_name_fr": "Pigeon ramier",
     "common_name_cs": "Holub h\u0159ivn\u00e1\u010d",
