@@ -275,6 +275,10 @@ def cache_costy_requests():
         except:
             continue
         
+    # Recording list
+    if len(get_recordings_list()) > 0:
+        result['recordings_list'] = 'chached'
+        
     # Last N detections
     last_n = get_last_n_detections(n=24, hours=72, locale='en')
     if len(last_n) > 0:
@@ -359,7 +363,7 @@ def make_request(url, headers, params, cache_timeout=3600, ignore_cache=False):
         response_data = []
 
     # Cache the response if it's not empty
-    if len(response_data) > 0:
+    if len(response_data) > 0 and not ignore_cache:
         try:
             with open(cache_file, 'w') as f:
                 json.dump({'timestamp': time.time(), 'response': response_data}, f)
@@ -410,6 +414,36 @@ def get_recorder_state(recorder_id, locale):
             'battery': get_battery_status(last_status['voltage']),
             'cpu_temp': last_status['cpu_temp'], 
             'is_ok': is_ok}
+
+def get_recordings_list():
+    
+    url = 'https://api.ecopi.de/api/v0.1/recordings/'
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    params = {}
+    
+    # Project name
+    params['project_name'] = cfg.PROJECT_NAME
+    
+    # Get all recordings
+    params['limit'] = 'None'
+    
+    # Only retrieve certain fields
+    params['only'] = 'creation_time, duration, file_name'
+    
+    response = make_request(url, headers, params, cache_timeout=3600, ignore_cache=False)
+    
+    return response
+    
+def get_total_audio_duration():
+    
+    recordings_list = get_recordings_list()
+    
+    total_audio = sum(min(300, recording['duration']) for recording in recordings_list)
+    
+    return int(total_audio)
 
 def get_recorder_group():
     
@@ -985,5 +1019,8 @@ if __name__ == '__main__':
     #for p in get_project_list():
     #    print(p)
     
-    print(get_weather_data())
+    #print(get_weather_data())
+    
+    print(get_total_audio_duration())  
+    #print(get_recordings_list())
     

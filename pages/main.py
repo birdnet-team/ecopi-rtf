@@ -148,7 +148,7 @@ def register_main_callbacks(app):
         total_detections = dp.get_total_detections()
         detections_24h = dp.get_total_detections(days=1)
         species_24h = len(detections_24h["species_counts"])
-        total_audio = total_detections["total_detections"] * 5
+        total_audio = dp.get_total_audio_duration()
 
         total_detections_formatted = f"{total_detections['total_detections']:,}"
         detections_24h_formatted = f"{detections_24h['total_detections']:,}"
