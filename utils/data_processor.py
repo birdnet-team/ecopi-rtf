@@ -198,7 +198,7 @@ def ping():
     
     response = make_request(url, headers, params, cache_timeout=300)
     
-    if not len(response) > 0:
+    if len(response) == 0:
         return False
     
     return True
@@ -348,12 +348,12 @@ def make_request(url, headers, params, cache_timeout=3600, ignore_cache=False):
             pass
 
     # Send the request
-    #print(f"Making request to {url}")
-    response = requests.get(url, headers=headers, params=params)
+    #print(f"Making request to {url}")    
     try:
+        response = requests.get(url, headers=headers, params=params)
         response_data = response.json()
     except:
-        # Empty response
+        # Empty response or request error
         response_data = []
 
     # Cache the response if it's not empty
