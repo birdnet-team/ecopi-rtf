@@ -275,9 +275,9 @@ def cache_costy_requests():
         except:
             continue
         
-    # Recording list
-    if len(get_recordings_list()) > 0:
-        result['recordings_list'] = 'chached'
+    # Total Audio Duration
+    if get_total_audio_duration() > 0:
+        result['total_audio_duration'] = 'chached'
         
     # Last N detections
     last_n = get_last_n_detections(n=24, hours=72, locale='en')
@@ -443,7 +443,7 @@ def get_total_audio_duration():
     
     total_audio = sum(min(300, recording['duration']) for recording in recordings_list)
     
-    return int(total_audio)
+    return max(0, int(total_audio))
 
 def get_recorder_group():
     
