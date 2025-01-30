@@ -51,7 +51,7 @@ function openPlayer(index) {
 
     wavesurfer.registerPlugin(
         Spectrogram.create({
-          frequencyMax: 14000,
+          frequencyMax: 12000,
           splitChannels: false,
           fftSamples: 512,
           frequencyMin: 300,
