@@ -9215,7 +9215,7 @@
       0.4694
     ],
     "new_ebird_code": "easowl1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Ostkreischeule",
     "common_name_fr": "Petit-duc macul\u00e9",
     "common_name_cs": "V\u00fdre\u010dek americk\u00fd",
