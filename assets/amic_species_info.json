@@ -7395,7 +7395,7 @@
       0.0
     ],
     "new_ebird_code": "leswoo1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Kleinspecht",
     "common_name_fr": "Pic \u00e9peichette",
     "common_name_cs": "Strakapoud mal\u00fd",
@@ -8687,7 +8687,7 @@
       0.0
     ],
     "new_ebird_code": "miswoo1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Mittelspecht",
     "common_name_fr": "Pic mar",
     "common_name_cs": "Strakapoud prost\u0159edn\u00ed",
@@ -11872,7 +11872,7 @@
       0.0
     ],
     "new_ebird_code": "litbit1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Zwergdommel",
     "common_name_fr": "Blongios nain",
     "common_name_cs": "Buk\u00e1\u010dek mal\u00fd",
