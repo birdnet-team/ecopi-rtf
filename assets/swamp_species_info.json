@@ -13180,7 +13180,7 @@
       0.0
     ],
     "new_ebird_code": "bohwax",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Seidenschwanz",
     "common_name_fr": "Jaseur bor\u00e9al",
     "common_name_cs": "Brkoslav severn\u00ed",
