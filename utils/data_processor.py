@@ -159,7 +159,7 @@ def get_weather_data():
     
     headers = {}
     
-    response = make_request(url, headers, params, cache_timeout=1800, ignore_cache=False)
+    response = make_request(url, headers, params, cache_timeout=1500, ignore_cache=False)
     
     try:
         weather_data = {
@@ -232,6 +232,8 @@ def run_cache_costly_requests():
 def cache_costy_requests():
     
     result = {}
+    
+    #print(f"Running cache_costly_requests at {datetime.now()}")
     
     # Total detections
     if 'total_detections' in get_total_detections():
@@ -433,7 +435,7 @@ def get_recordings_list():
     # Only retrieve certain fields
     params['only'] = 'creation_time, duration, file_name'
     
-    response = make_request(url, headers, params, cache_timeout=3600, ignore_cache=False)
+    response = make_request(url, headers, params, cache_timeout=1500, ignore_cache=False)
     
     return response
     
@@ -585,7 +587,7 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
     else:
         params['start_date'] = (datetime.now(UTC).replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
     
-    response = make_request(url, headers, params, cache_timeout=3600)
+    response = make_request(url, headers, params, cache_timeout=3300)
     
     # Count entries
     detections = {}
@@ -731,7 +733,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, 
             params.pop('datetime_recording__lte', None)
         
         # Send request
-        response = make_request(url, headers, params, cache_timeout=3600)
+        response = make_request(url, headers, params, cache_timeout=3300)
         
         return response
     
@@ -828,7 +830,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
             params.pop('datetime_recording__lte', None)  
         
         # Send request
-        response = make_request(url, headers, params, cache_timeout=3600)
+        response = make_request(url, headers, params, cache_timeout=3300)
         
         return response
     
@@ -937,7 +939,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
             params.pop('datetime_recording__lte', None)     
         
         # Send request
-        response = make_request(url, headers, params, cache_timeout=3600)
+        response = make_request(url, headers, params, cache_timeout=3300)
         
         return response
     
