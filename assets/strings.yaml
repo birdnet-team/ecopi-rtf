@@ -75,6 +75,19 @@ projects:
       fr: "Le Projet de Surveillance Acoustique de Neeracherried combine technologie et engagement des visiteurs pour démontrer la puissance de la surveillance acoustique dans la compréhension du monde naturel. En écoutant les sons de Neeracherried, les visiteurs peuvent explorer comment des outils avancés sont utilisés pour étudier la faune et apprécier davantage la diversité des oiseaux dans la région."
       it: "Il Progetto di Monitoraggio Acustico di Neeracherried combina tecnologia e coinvolgimento dei visitatori per mostrare il potere del monitoraggio acustico nella comprensione del mondo naturale. Ascoltando i suoni di Neeracherried, i visitatori possono esplorare come vengono utilizzati strumenti avanzati per studiare la fauna selvatica e apprezzare meglio la diversità degli uccelli nella zona."
       cs: "Projekt Akustického Monitorování Neeracherried kombinuje technologii a zapojení návštěvníků, aby ukázal sílu akustického monitorování při porozumění přírodnímu světu. Posloucháním zvuků Neeracherried mohou návštěvníci prozkoumat, jak jsou pokročilé nástroje používány ke studiu divoké přírody a lépe ocenit rozmanitost ptactva v oblasti."
+  rsai:
+    project_main_title:
+      en: "Biodiversity in protected areas"
+      de: "Biodiversität in Schutzgebieten"
+    project_subtitle:
+      en: "AI-powered acoustic monitoring"
+      de: "KI-gestütztes akustisches Monitoring"
+    project_subtitle_desc:
+      en: "We listen to the sounds of birds in the Bavarian Forest national park."
+      de: "Wir lauschen den Stimmen der Vögel im Nationalpark Bayerischer Wald."
+    project_goal:
+      en: "The Acoustic Monitoring in Chemnitz project combines technology and visitor engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of the birds in the Botanical Garden, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area."
+      de: "Das Projekt 'Akustisches Monitoring in Chemnitz' kombiniert Technologie und die Einbeziehung der Besucher, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren. Besucher können den Stimmen der Vögel des Botanischen Gartens lauschen und erfahren, wie moderne Instrumente zur Erforschung der Vogelwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt in diesem Areal zu entwickeln."
 
 # Habitat strings
 habitat_urban:
