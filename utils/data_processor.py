@@ -694,7 +694,7 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     params['datetime_recording__gte'] = (now - timedelta(days=365)).isoformat()
     params['datetime_recording__lte'] = now.isoformat()
     
-    response = make_request(url, headers, params, cache_timeout=60*60*12, ignore_cache=True)
+    response = make_request(url, headers, params, cache_timeout=60*60*12, ignore_cache=False)
     
     # Count detections per week
     weekly_detections = np.zeros(48, dtype=int)
