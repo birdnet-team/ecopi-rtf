@@ -785,6 +785,13 @@ widget_footer_link_section_tuc:
   it: "Università di Chemnitz"
   cs: "TU Chemnitz"
 
+widget_footer_link_section_baywald:
+  en: "National Park"
+  de: "Nationalpark"
+  fr: "Parc national"
+  it: "Parco nazionale"
+  cs: "Národní park"
+
 widget_footer_link_section_explore:
   en: "Explore More"
   de: "Mehr entdecken"
@@ -1057,6 +1064,34 @@ widget_footer_oekofor_contact:
   fr: "Contact"
   it: "Contatto"
   cs: "Kontakt"
+
+widget_footer_baywald_about_us:
+  en: "Homepage"
+  de: "Homepage"
+  fr: "Page d'accueil"
+  it: "Homepage"
+  cs: "Homepage"
+
+widget_footer_baywald_conservation:
+  en: "Conservation"
+  de: "Naturschutz"
+  fr: "Conservation"
+  it: "Conservazione"
+  cs: "Ochrana"
+
+widget_footer_baywald_research:
+  en: "Research"
+  de: "Forschung"
+  fr: "Recherche"
+  it: "Ricerca"
+  cs: "Výzkum"
+
+widget_footer_baywald_webcams:
+  en: "Webcams"
+  de: "Webcams"
+  fr: "Webcams"
+  it: "Webcam"
+  cs: "Webkamery"
 
 widget_footer_birdlife_projects:
   en: "Projects"

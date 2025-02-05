@@ -37,13 +37,17 @@ FOOTER_LINKS:
     - {name: "widget_footer_site_links_recording_units", href: "/recorder/1"}
     - {name: "widget_footer_site_links_about_the_project", href: "/about"}
     - {name: "widget_footer_site_links_contact", href: "/about#about-contact"}
+  widget_footer_link_section_baywald:
+    - {name: "widget_footer_baywald_about_us", href: "https://www.nationalpark-bayerischer-wald.bayern.de", target: "_blank"}
+    - {name: "widget_footer_baywald_conservation", href: "https://www.nationalpark-bayerischer-wald.bayern.de/forschung/naturschutz/index.htm", target: "_blank"}
+    - {name: "widget_footer_baywald_research", href: "https://www.nationalpark-bayerischer-wald.bayern.de/forschung/index.htm", target: "_blank"}
+    - {name: "widget_footer_baywald_webcams", href: "https://www.nationalpark-bayerischer-wald.bayern.de/service/webcams/index.htm", target: "_blank"}
   widget_footer_link_section_oekofor:
     - {name: "widget_footer_oekofor_about_us", href: "https://www.oekofor.de/en/#about", target: "_blank"}
     - {name: "widget_footer_oekofor_services", href: "https://www.oekofor.de/en/#services", target: "_blank"}
     - {name: "widget_footer_oekofor_ecopi", href: "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", target: "_blank"}
     - {name: "widget_footer_oekofor_contact", href: "https://www.oekofor.de/en/#contact", target: "_blank"}
   widget_footer_link_section_yang_center:
-    - {name: "widget_footer_yang_center_our_values", href: "https://www.birds.cornell.edu/ccb/our-values/", target: "_blank"}
     - {name: "widget_footer_yang_center_research", href: "https://www.birds.cornell.edu/ccb/research/", target: "_blank"}
     - {name: "widget_footer_yang_center_technology", href: "https://www.birds.cornell.edu/ccb/technology/", target: "_blank"}
     - {name: "widget_footer_yang_center_education", href: "https://www.birds.cornell.edu/ccb/education/", target: "_blank"}
@@ -51,7 +55,6 @@ FOOTER_LINKS:
   widget_footer_link_section_tuc:
     - {name: "widget_footer_tu_chemnitz_university", href: "https://www.tu-chemnitz.de/index.html.en", target: "_blank"}
     - {name: "widget_footer_tu_chemnitz_degree_programs", href: "https://www.tu-chemnitz.de/studierendenservice/zsb/studiengaenge/en/", target: "_blank"}
-    - {name: "widget_footer_tu_chemnitz_international_office", href: "https://www.tu-chemnitz.de/international/index.php.en", target: "_blank"}
     - {name: "widget_footer_tu_chemnitz_research", href: "https://www.tu-chemnitz.de/forschung/index.php.en", target: "_blank"}
     - {name: "widget_footer_tu_chemnitz_computer_science", href: "https://www.tu-chemnitz.de/informatik/index.php.en", target: "_blank"}
   widget_footer_link_section_about:
