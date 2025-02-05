@@ -694,7 +694,7 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     params['datetime_recording__gte'] = (now - timedelta(days=365)).isoformat()
     params['datetime_recording__lte'] = now.isoformat()
     
-    response = make_request(url, headers, params, cache_timeout=60*60*12)
+    response = make_request(url, headers, params, cache_timeout=60*60*12, ignore_cache=True)
     
     # Count detections per week
     weekly_detections = np.zeros(48, dtype=int)
@@ -702,16 +702,22 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     # Based on cfg.PROJECT_START_DATE, set weeks to -1 if no - 365 days is before start date
     project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
     project_start_date = project_start_date.replace(tzinfo=UTC)  # Make project_start_date timezone-aware
-    if project_start_date > (now - timedelta(days=365)):
+    
+    if project_start_date > (now - timedelta(days=365)) and project_start_date.year < now.year:
         start_week = get_week_from_date(project_start_date)
         current_week = get_current_week()
         weekly_detections[current_week:start_week - 1] = -1
+    elif project_start_date.year == now.year:
+        start_week = get_week_from_date(project_start_date)
+        current_week = get_current_week()
+        weekly_detections[:start_week] = -1
+        weekly_detections[current_week:] = -1
     
     # Add detections to weekly_detections
     for detection in response:
         
         # Is detection before project start date?
-        if project_start_date > datetime.strptime(detection['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').replace(tzinfo=UTC):
+        if is_before_project_start(detection['datetime']):
             continue
         
         week = get_week_from_date(datetime.strptime(detection['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S'))
