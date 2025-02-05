@@ -108,6 +108,13 @@ def is_blacklisted(species_code):
     
     return cfg.SPECIES_DATA[species_code]['blacklisted']
 
+def is_before_project_start(date):
+    
+    project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
+    date = datetime.strptime(date.split('.')[0], '%Y-%m-%d %H:%M:%S')
+    
+    return date < project_start_date
+
 def get_species_frequency(species):
     
     week = get_current_week()
@@ -437,6 +444,9 @@ def get_recordings_list():
     
     response = make_request(url, headers, params, cache_timeout=1500, ignore_cache=False)
     
+    # Remove recordings that were recorded before the project start date
+    response = [recording for recording in response if not is_before_project_start(recording['creation_time'])]
+    
     return response
     
 def get_total_audio_duration():
@@ -481,6 +491,25 @@ def get_recorder_location(recorder_id):
         return [None, None]
     
     return [response[0]['lat'], response[0]['lon']]
+
+def get_recorder_inventory_name(recorder_id):
+    
+    url = 'https://api.ecopi.de/api/v0.1/recorderstates/'
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    params = {}
+    
+    # Project name
+    params['project_name'] = cfg.PROJECT_NAME
+    
+    # Recorder ID
+    params['recorder_field_id'] = recorder_id
+    
+    response = make_request(url, headers, params, cache_timeout=600)
+    
+    return response[0]['recorder_inventory_name']
 
 def get_species_data(species, locale):
     
@@ -570,7 +599,7 @@ def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=5):
     
     return recorder_data
 
-def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-1, min_count=5):
+def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-1, min_count=3):
     url = cfg.API_BASE_URL + 'meta/project/' + cfg.PROJECT_NAME + '/detections/recorderspeciescounts/'
     
     headers = {
@@ -583,7 +612,8 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
     
     # Set start date
     if days < 0:
-        params['start_date'] = datetime(2023, 1, 1).strftime('%Y-%m-%d')
+        project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
+        params['start_date'] = project_start_date.strftime('%Y-%m-%d')
     else:
         params['start_date'] = (datetime.now(UTC).replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
     
@@ -664,7 +694,7 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     params['datetime_recording__gte'] = (now - timedelta(days=365)).isoformat()
     params['datetime_recording__lte'] = now.isoformat()
     
-    response = make_request(url, headers, params, cache_timeout=60*60*12)
+    response = make_request(url, headers, params, cache_timeout=60*60*12, ignore_cache=True)
     
     # Count detections per week
     weekly_detections = np.zeros(48, dtype=int)
@@ -672,16 +702,22 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     # Based on cfg.PROJECT_START_DATE, set weeks to -1 if no - 365 days is before start date
     project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
     project_start_date = project_start_date.replace(tzinfo=UTC)  # Make project_start_date timezone-aware
-    if project_start_date > (now - timedelta(days=365)):
+    
+    if project_start_date > (now - timedelta(days=365)) and project_start_date.year < now.year:
         start_week = get_week_from_date(project_start_date)
         current_week = get_current_week()
         weekly_detections[current_week:start_week - 1] = -1
+    elif project_start_date.year == now.year:
+        start_week = get_week_from_date(project_start_date)
+        current_week = get_current_week()
+        weekly_detections[:start_week] = -1
+        weekly_detections[current_week:] = -1
     
     # Add detections to weekly_detections
     for detection in response:
         
         # Is detection before project start date?
-        if project_start_date > datetime.strptime(detection['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').replace(tzinfo=UTC):
+        if is_before_project_start(detection['datetime']):
             continue
         
         week = get_week_from_date(datetime.strptime(detection['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S'))
@@ -747,6 +783,11 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, 
     # Parse detections
     detections = {}
     for item in response:
+        
+        # Is before project start date?
+        if is_before_project_start(item['datetime']):
+            continue
+        
         # Has audio?
         if not item['has_audio']:
             continue
@@ -844,6 +885,10 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     # Parse detections
     detections = {}
     for item in response:
+        
+        # Is before project start date?
+        if is_before_project_start(item['datetime']):
+            continue
         
         # Is species in species data?
         if not is_in_species_data(item['species_code']):
@@ -1011,10 +1056,11 @@ if __name__ == '__main__':
                                 
     #print(get_species_stats('norcar', hours=24))
     
-    #print(get_recorder_state(6, locale='en'))
+    #print(get_recorder_state(4, locale='en'))
     #print(get_recorder_group())
-    #for i in range(1, 13):
-    #    print(f"#{i}: {get_recorder_location(i)}")
+    #for i in range(1, 11):
+    #    print(f"#{i}: lat: {get_recorder_location(i)[0]}, lon: {get_recorder_location(i)[1]}")
+    #    print(f"#{i}: {get_recorder_inventory_name(i)}")
     
     #print(get_total_detections(min_conf=0.5, species_list=['eurnut2'], days=-1))
     #print(get_total_detections(min_conf=0.5, days=-1, recorder_list=[9]))

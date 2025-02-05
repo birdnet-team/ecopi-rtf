@@ -1,0 +1,76 @@
+PROJECT_ID: 'rsai'
+PROJECT_NAME: '100_ranger_sound'
+PROJECT_START_DATE: '01-02-2025' # dd-mm-yyyy
+RECORDER_GROUP: 113
+SPECIES_DATA: rangersound
+DEPLOYMENT_LAT: 48.95
+DEPLOYMENT_LON: 13.41
+TIMEZONE: 'Europe/Berlin'
+TIME_FORMAT: '24h'
+DATE_FORMAT: '%d.%m.%Y'
+DEFAULT_SITE_LOCALE: 'de'
+RECORDERS:
+  4: {id: '0016', lat: 49.048645, lon: 13.360026, habitat: 'habitat_shrubs_and_trees', img: 'dummy_recorder.jpg', tooltip: 'right'}
+  5: {id: '0020', lat: 49.047993, lon: 13.340344, habitat: 'habitat_shrubs_and_trees', img: 'rsai_unit_5.jpg', tooltip: 'left'}
+  8: {id: '0015', lat: 48.91428, lon: 13.416163, habitat: 'habitat_shrubs_and_trees', img: 'rsai_unit_8.jpg', tooltip: 'top'}
+  9: {id: '0038', lat: 48.909187, lon: 13.42267, habitat: 'habitat_shrubs_and_trees', img: 'rsai_unit_9.jpg', tooltip: 'bottom'}
+  10: {id: '0018', lat: 48.96903, lon: 13.582803, habitat: 'habitat_shrubs_and_trees', img: 'dummy_recorder.jpg', tooltip: 'right'}
+MAP_ZOOM_LEVEL: 17
+MAIN_HEADER_IMG_LIST: ['rsai_main_header_1.jpg']
+ABOUT_HEADER_IMG_LIST: ['rsai_about_header_1.jpg']
+LIVE_STREAM_URL: ''
+DONATION_URL: ''
+PROJECT_ACRONYM: 'RangerSound'
+PRIMARY_COLOR: '#009995'
+SECONDARY_COLOR: '#44454f'
+PLOT_PRIMARY_COLOR: '#4c5f74'
+BUTTON_COLOR: '#009995'
+FAVICON: 'rsai_favicon.ico'
+PAGE_TITLE: 'RangerSound'
+LOGO_MOBILE: 'rsai_logo.png'
+LOGO_DESKTOP: 'rsai_logo.png'
+LEARN_MORE_BASE_URL: 'https://ebird.org/species/'
+FOOTER_LINKS:
+  widget_footer_link_section_site:
+    - {name: "widget_footer_site_links_home", href: "/"}
+    - {name: "widget_footer_site_links_detections", href: "/detections"}
+    - {name: "widget_footer_site_links_recording_units", href: "/recorder/1"}
+    - {name: "widget_footer_site_links_about_the_project", href: "/about"}
+    - {name: "widget_footer_site_links_contact", href: "/about#about-contact"}
+  widget_footer_link_section_baywald:
+    - {name: "widget_footer_baywald_about_us", href: "https://www.nationalpark-bayerischer-wald.bayern.de", target: "_blank"}
+    - {name: "widget_footer_baywald_conservation", href: "https://www.nationalpark-bayerischer-wald.bayern.de/forschung/naturschutz/index.htm", target: "_blank"}
+    - {name: "widget_footer_baywald_research", href: "https://www.nationalpark-bayerischer-wald.bayern.de/forschung/index.htm", target: "_blank"}
+    - {name: "widget_footer_baywald_webcams", href: "https://www.nationalpark-bayerischer-wald.bayern.de/service/webcams/index.htm", target: "_blank"}
+  widget_footer_link_section_oekofor:
+    - {name: "widget_footer_oekofor_about_us", href: "https://www.oekofor.de/en/#about", target: "_blank"}
+    - {name: "widget_footer_oekofor_services", href: "https://www.oekofor.de/en/#services", target: "_blank"}
+    - {name: "widget_footer_oekofor_ecopi", href: "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", target: "_blank"}
+    - {name: "widget_footer_oekofor_contact", href: "https://www.oekofor.de/en/#contact", target: "_blank"}
+  widget_footer_link_section_yang_center:
+    - {name: "widget_footer_yang_center_research", href: "https://www.birds.cornell.edu/ccb/research/", target: "_blank"}
+    - {name: "widget_footer_yang_center_technology", href: "https://www.birds.cornell.edu/ccb/technology/", target: "_blank"}
+    - {name: "widget_footer_yang_center_education", href: "https://www.birds.cornell.edu/ccb/education/", target: "_blank"}
+    - {name: "widget_footer_yang_center_publications", href: "https://www.birds.cornell.edu/ccb/publications/", target: "_blank"}
+  widget_footer_link_section_tuc:
+    - {name: "widget_footer_tu_chemnitz_university", href: "https://www.tu-chemnitz.de/index.html.en", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_degree_programs", href: "https://www.tu-chemnitz.de/studierendenservice/zsb/studiengaenge/en/", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_research", href: "https://www.tu-chemnitz.de/forschung/index.php.en", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_computer_science", href: "https://www.tu-chemnitz.de/informatik/index.php.en", target: "_blank"}
+  widget_footer_link_section_about:
+    - {name: "widget_footer_about_web_accessibility_assistance", href: "https://www.birds.cornell.edu/home/web-accessibility-assistance/", target: "_blank"}
+    - {name: "widget_footer_about_privacy_policy", href: "https://privacy.cornell.edu/information-use-cornell", target: "_blank"}
+    - {name: "widget_footer_about_terms_of_use", href: "https://www.birds.cornell.edu/home/terms-of-use/", target: "_blank"}
+COPYRIGHT_HOLDERS: ""
+PARTNER_STATEMENT: "about_partnership_rsai"
+PARTNER_LOGOS: ['baywald_logo.png', 'logo_box_lab.png', 'logo_box_tuc.png', 'logo_box_oekofor.png', 'dbu_logo_sponsored.png']
+FOOTER_TOP_LOGO: 'birdnet_logo_white.png'
+FOOTER_BOTTOM_LOGOS: ['baywald_logo_white.png', 'oekofor_logo_white.png', 'yang_logo_white.png', 'dbu_logo_white.png', 'tuc_logo_white.png']
+TEAM_MEMBERS:
+  - {name: "Jörg Müller", role: "about_team_role_project_lead", img: "joerg.png"}
+  - {name: "Stefan Kahl", role: "about_team_role_project_lead_and_web", img: "stefan.png"}
+  - {name: "Simon Verdon", role: "about_team_role_research", img: "simon.png"}
+  - {name: "Josef Haupt", role: "about_team_role_software", img: "josef.png"}
+  - {name: "Felix Günther", role: "about_team_role_backend", img: "felix.png"}
+  - {name: "Hendrik Reers", role: "about_team_role_hardware", img: "hendrik.png"}
+PWA_MANIFEST: 'assets/rsai_manifest.json'

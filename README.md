@@ -10,7 +10,7 @@ We currently support these monitoring projects:
 
 - SWAMP: Sapsucker Woods Acoustic Monitoring Project - [birdnet.cornell.edu/swamp/](https://birdnet.cornell.edu/swamp/)
 - AMiC: Acoustic Monitoring in Chemnitz - [birdnet.cornell.edu/amic/](https://birdnet.cornell.edu/amic/)
-- BirdLife Neeracherried Acoustic Monitoring Project - [birdnet.cornell.edu/neeri/](https://birdnet.cornell.edu/neeri/)
+- RangerSound - [birdnet.cornell.edu/rsai/](https://birdnet.cornell.edu/rsai/)
 
 Interested? Want to host your own project? Please don't hesitate to contact us at [ccb-birdnet@cornell.edu](mailto:ccb-birdnet@cornell.edu).
 
