@@ -79,15 +79,27 @@ projects:
     project_main_title:
       en: "Biodiversity in protected areas"
       de: "Biodiversität in Schutzgebieten"
+      fr: "Biodiversité dans les zones protégées"
+      it: "Biodiversità nelle aree protette"
+      cs: "Biodiverzita v chráněných oblastech"
     project_subtitle:
       en: "AI-powered acoustic monitoring"
       de: "KI-gestütztes akustisches Monitoring"
+      fr: "Surveillance acoustique alimentée par l'IA"
+      it: "Monitoraggio acustico alimentato dall'IA"
+      cs: "Akustické monitorování poháněné AI"
     project_subtitle_desc:
-      en: "We listen to the sounds of birds in the Bavarian Forest national park."
-      de: "Wir lauschen den Stimmen der Vögel im Nationalpark Bayerischer Wald."
+      en: "We listen to the sounds of birds in the Bavarian Forest national park and track species diversity over time."
+      de: "Wir lauschen den Stimmen der Vögel im Nationalpark Bayerischer Wald und verfolgen die Artenvielfalt im Laufe der Zeit."
+      fr: "Nous écoutons les sons des oiseaux dans le parc national de la Forêt bavaroise et suivons la diversité des espèces au fil du temps."
+      it: "Ascoltiamo i suoni degli uccelli nel parco nazionale della Foresta Bavarese e monitoriamo la diversità delle specie nel tempo."
+      cs: "Posloucháme zvuky ptáků v národním parku Bavorský les a sledujeme rozmanitost druhů v průběhu času."
     project_goal:
-      en: "The Acoustic Monitoring in Chemnitz project combines technology and visitor engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of the birds in the Botanical Garden, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area."
-      de: "Das Projekt 'Akustisches Monitoring in Chemnitz' kombiniert Technologie und die Einbeziehung der Besucher, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren. Besucher können den Stimmen der Vögel des Botanischen Gartens lauschen und erfahren, wie moderne Instrumente zur Erforschung der Vogelwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt in diesem Areal zu entwickeln."
+      en: "The 'RangerSound' project combines technology and visitor engagement to demonstrate the power of acoustic monitoring to understand the natural world. Park rangers and visitors can listen to the voices of the national park's birds and learn how modern tools are used to study birdlife and develop a better understanding of the diversity in the different areas."
+      de: "Das Projekt 'RangerSound' kombiniert Technologie und die Einbeziehung der Besucher, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren. Park-Ranger und Besucher können so den Stimmen der Vögel des Nationalparks lauschen und erfahren, wie moderne Instrumente zur Erforschung der Vogelwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt in den verschiedenen Revieren zu entwickeln."
+      fr: "Le projet 'RangerSound' combine la technologie et l'implication des visiteurs afin de démontrer les possibilités du monitoring acoustique pour la compréhension du monde naturel. Les gardes forestiers et les visiteurs peuvent ainsi écouter les voix des oiseaux du parc national et découvrir comment les instruments modernes sont utilisés pour étudier l'avifaune et développer une meilleure compréhension de la diversité dans les différents territoires."
+      it: "Il progetto 'RangerSound' combina tecnologia e coinvolgimento dei visitatori per dimostrare il potere del monitoraggio acustico per comprendere il mondo naturale. I ranger e i visitatori possono ascoltare le voci degli uccelli del parco nazionale e apprendere come gli strumenti moderni vengono utilizzati per studiare la vita degli uccelli e sviluppare una migliore comprensione della diversità nelle diverse aree."
+      cs: "Projekt 'RangerSound' kombinuje technologii a zapojení návštěvníků, aby ukázal sílu akustického monitorování při porozumění přírodnímu světu. Parkoví strážci a návštěvníci mohou poslouchat hlasy ptáků národního parku a dozvědět se, jak jsou moderní nástroje používány k studiu ptactva a vyvinout lepší porozumění rozmanitosti v různých oblastech."
 
 # Habitat strings
 habitat_urban:
