@@ -108,6 +108,13 @@ def is_blacklisted(species_code):
     
     return cfg.SPECIES_DATA[species_code]['blacklisted']
 
+def is_before_project_start(date):
+    
+    project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
+    date = datetime.strptime(date.split('.')[0], '%Y-%m-%d %H:%M:%S')
+    
+    return date < project_start_date
+
 def get_species_frequency(species):
     
     week = get_current_week()
@@ -437,6 +444,9 @@ def get_recordings_list():
     
     response = make_request(url, headers, params, cache_timeout=1500, ignore_cache=False)
     
+    # Remove recordings that were recorded before the project start date
+    response = [recording for recording in response if not is_before_project_start(recording['creation_time'])]
+    
     return response
     
 def get_total_audio_duration():
@@ -589,7 +599,7 @@ def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=5):
     
     return recorder_data
 
-def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-1, min_count=5):
+def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-1, min_count=3):
     url = cfg.API_BASE_URL + 'meta/project/' + cfg.PROJECT_NAME + '/detections/recorderspeciescounts/'
     
     headers = {
@@ -602,7 +612,8 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
     
     # Set start date
     if days < 0:
-        params['start_date'] = datetime(2023, 1, 1).strftime('%Y-%m-%d')
+        project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
+        params['start_date'] = project_start_date.strftime('%Y-%m-%d')
     else:
         params['start_date'] = (datetime.now(UTC).replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
     
@@ -766,6 +777,11 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, 
     # Parse detections
     detections = {}
     for item in response:
+        
+        # Is before project start date?
+        if is_before_project_start(item['datetime']):
+            continue
+        
         # Has audio?
         if not item['has_audio']:
             continue
@@ -863,6 +879,10 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     # Parse detections
     detections = {}
     for item in response:
+        
+        # Is before project start date?
+        if is_before_project_start(item['datetime']):
+            continue
         
         # Is species in species data?
         if not is_in_species_data(item['species_code']):
