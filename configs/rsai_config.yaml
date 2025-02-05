@@ -62,14 +62,15 @@ FOOTER_LINKS:
     - {name: "widget_footer_about_privacy_policy", href: "https://privacy.cornell.edu/information-use-cornell", target: "_blank"}
     - {name: "widget_footer_about_terms_of_use", href: "https://www.birds.cornell.edu/home/terms-of-use/", target: "_blank"}
 COPYRIGHT_HOLDERS: ""
-PARTNER_STATEMENT: "about_partnership_amic"
+PARTNER_STATEMENT: "about_partnership_rsai"
 PARTNER_LOGOS: ['baywald_logo.png', 'logo_box_lab.png', 'logo_box_tuc.png', 'logo_box_oekofor.png', 'dbu_logo_sponsored.png']
 FOOTER_TOP_LOGO: 'birdnet_logo_white.png'
 FOOTER_BOTTOM_LOGOS: ['baywald_logo_white.png', 'oekofor_logo_white.png', 'yang_logo_white.png', 'dbu_logo_white.png', 'tuc_logo_white.png']
 TEAM_MEMBERS:
+  - {name: "Jörg Müller", role: "about_team_role_project_lead", img: "joerg.png"}
   - {name: "Stefan Kahl", role: "about_team_role_project_lead_and_web", img: "stefan.png"}
+  - {name: "Simon Verdon", role: "about_team_role_research", img: "simon.png"}
+  - {name: "Josef Haupt", role: "about_team_role_software", img: "josef.png"}
   - {name: "Felix Günther", role: "about_team_role_backend", img: "felix.png"}
-  - {name: "Raja Seifert", role: "about_team_role_design", img: "raja.png"}
-  - {name: "Max Mauermann", role: "about_team_role_web", img: "max.png"}
-  - {name: "Josef Haupt", role: "about_team_role_web", img: "josef.png"}
+  - {name: "Hendrik Reers", role: "about_team_role_hardware", img: "hendrik.png"}
 PWA_MANIFEST: 'assets/rsai_manifest.json'
