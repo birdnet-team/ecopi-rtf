@@ -726,13 +726,14 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     # Get projected frequency from species data
     if species_code:
         species_freq = cfg.SPECIES_DATA[species_code]['frequencies']
-        species_freq = [x / 100 for x in species_freq]
         try:
             species_freq /= np.max(species_freq)
         except:
-            species_freq = np.zeros(48, dtype=int).tolist()
+            species_freq = np.ones(48, dtype=int).tolist()
     else:
-        species_freq = np.zeros(48, dtype=int).tolist()
+        species_freq = np.ones(48, dtype=int).tolist()
+        
+    species_freq = [x / 100 for x in species_freq]
     
     return {'detections': weekly_detections.tolist(), 'frequencies': species_freq, 'current_week': get_current_week()}
 
