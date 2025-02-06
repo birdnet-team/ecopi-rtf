@@ -98,6 +98,8 @@ def about_page_content(locale):
                                         html.P(),
                                         strings.get('about_acoustic_monitoring_2'),
                                         html.P(),
+                                        html.Img(src=cfg.SITE_ROOT + "/assets/content_img/pam_long_term_data.png", className="full-width p-4"),
+                                        html.P(),
                                         strings.get('about_acoustic_monitoring_3'),
                                     ]),
 
@@ -127,7 +129,7 @@ def about_page_content(locale):
                                         html.P(),
                                         strings.get('about_ai_sound_id_2'),
                                         html.P(),
-                                        html.Img(src=cfg.SITE_ROOT + "/assets/content_img/birdnet_how_it_works.jpg", className="full-width p-4"),
+                                        html.Img(src=cfg.SITE_ROOT + "/assets/content_img/birdnet_how_it_works.png", className="full-width p-4"),
                                         html.P(),
                                         strings.get('about_ai_sound_id_3'),
                                     ]),
