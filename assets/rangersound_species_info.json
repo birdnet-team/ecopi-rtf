@@ -14618,7 +14618,7 @@
       0.0
     ],
     "new_ebird_code": "eubeat1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Bienenfresser",
     "common_name_it": "Gruccione",
     "common_name_fr": "Gu\u00eapier d'Europe",
@@ -21638,7 +21638,7 @@
       0.0
     ],
     "new_ebird_code": "whimbr",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Regenbrachvogel",
     "common_name_it": "Chiurlo piccolo",
     "common_name_fr": "Courlis corlieu",
