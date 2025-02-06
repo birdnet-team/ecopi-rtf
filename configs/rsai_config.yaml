@@ -10,15 +10,15 @@ TIME_FORMAT: '24h'
 DATE_FORMAT: '%d.%m.%Y'
 DEFAULT_SITE_LOCALE: 'de'
 RECORDERS:
-  4: {id: '0016', lat: 49.048645, lon: 13.360026, habitat: 'habitat_shrubs_and_trees', img: 'dummy_recorder.jpg', tooltip: 'top'}
+  4: {id: '0016', lat: 49.048645, lon: 13.360026, habitat: 'habitat_shrubs_and_trees', img: 'rsai_unit_4.jpg', tooltip: 'top'}
   5: {id: '0020', lat: 49.047993, lon: 13.340344, habitat: 'habitat_shrubs_and_trees', img: 'rsai_unit_5.jpg', tooltip: 'bottom'}
   6: {id: '0039', lat: 48.987804, lon: 13.369539, habitat: 'habitat_shrubs_and_trees', img: 'dummy_recorder.jpg', tooltip: 'right'}
   8: {id: '0015', lat: 48.91428, lon: 13.416163, habitat: 'habitat_shrubs_and_trees', img: 'rsai_unit_8.jpg', tooltip: 'top'}
   9: {id: '0038', lat: 48.909187, lon: 13.42267, habitat: 'habitat_shrubs_and_trees', img: 'rsai_unit_9.jpg', tooltip: 'bottom'}
-  10: {id: '0018', lat: 48.96903, lon: 13.582803, habitat: 'habitat_shrubs_and_trees', img: 'dummy_recorder.jpg', tooltip: 'left'}
+  10: {id: '0018', lat: 48.96903, lon: 13.582803, habitat: 'habitat_shrubs_and_trees', img: 'rsai_unit_10.jpg', tooltip: 'left'}
 MAP_ZOOM_LEVEL: 17
-MAIN_HEADER_IMG_LIST: ['rsai_main_header_1.jpg']
-ABOUT_HEADER_IMG_LIST: ['rsai_about_header_1.jpg']
+MAIN_HEADER_IMG_LIST: ['rsai_main_header_1.jpg', 'rsai_main_header_2.jpg', 'rsai_main_header_3.jpg']
+ABOUT_HEADER_IMG_LIST: ['rsai_about_header_1.jpg', 'rsai_about_header_2.jpg']
 LIVE_STREAM_URL: ''
 DONATION_URL: ''
 PROJECT_ACRONYM: 'RangerSound'
