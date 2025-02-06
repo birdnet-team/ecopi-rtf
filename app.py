@@ -86,8 +86,22 @@ app.index_string = f"""
 </html>
 """
 
+# Function to determine the locale from the user agent
+def get_locale_from_user_agent():
+    supported_locales = cfg.SUPPORTED_SITE_LOCALES.values()
+    accept_language = request.headers.get('Accept-Language', '')
+    for lang in accept_language.split(','):
+        lang_code = lang.split(';')[0].strip()
+        if lang_code in supported_locales:
+            return lang_code
+        if lang_code.split('-')[0] in supported_locales:
+            return lang_code.split('-')[0]
+    return cfg.DEFAULT_SITE_LOCALE
+
 # Define overall layout
-def app_layout():
+def app_layout(initial_locale):
+    if initial_locale is None:
+        initial_locale = cfg.DEFAULT_SITE_LOCALE
     return html.Div(
         [
             dcc.Location(id="url", refresh=False),  # Track the URL
@@ -97,7 +111,7 @@ def app_layout():
             dcc.Store(id="species-data-store"),   # Store for species data
             dcc.Store(id="recorder-stats-store"),  # Store for recorder stats
             dcc.Store(id="recorder-data-store"),   # Store for recorder data
-            dcc.Store(id="locale-store", data=cfg.DEFAULT_SITE_LOCALE),  # Store for selected locale
+            dcc.Store(id="locale-store", data=initial_locale),  # Store for selected locale
             html.Div(id="dummy-output"),  # Dummy output for page reload
             html.Div(id="dynamic-layout")  # Dynamic layout based on locale
         ]
@@ -109,6 +123,8 @@ def app_layout():
     [Input("locale-store", "data")]
 )
 def update_layout(locale):
+    if locale is None:
+        locale = cfg.DEFAULT_SITE_LOCALE
     return html.Div(
         [
             # Header Section with Logo and Navigation Bar
@@ -242,6 +258,12 @@ def reload_page(locale, href):
         return dcc.Location(href=href, id="dummy-location")
     return ""
 
+# Home page route
+@app.server.route("/")
+def serve_layout():
+    initial_locale = get_locale_from_user_agent()
+    return app_layout(initial_locale)
+
 # Ping route
 @app.server.route("/ping")
 def ping():
@@ -260,7 +282,7 @@ def cache():
 cfg.make_pwa_manifest(cfg.PWA_MANIFEST, locale=cfg.DEFAULT_SITE_LOCALE)
 
 # Layout of the Dash app
-app.layout = app_layout()
+app.layout = serve_layout
 
 # Register callbacks
 register_main_callbacks(app)
