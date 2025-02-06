@@ -417,6 +417,13 @@ about_team_role_research:
   it: "Ricerca"
   cs: "Výzkum"
 
+about_team_role_research_lead:
+  en: "Research lead"
+  de: "Forschungsleitung"
+  fr: "Responsable de recherche"
+  it: "Responsabile della ricerca"
+  cs: "Vedoucí výzkumu"
+
 about_team_role_software:
   en: "Software engineering"
   de: "Software-Entwicklung"
@@ -517,11 +524,11 @@ about_project_goal_2:
   cs: "Projekt používá solárně napájené záznamové jednotky vybavené softwarem BirdNET k zachycení a analýze ptačích zpěvů a dalších přírodních zvuků v reálném čase. Tyto nahrávky poskytují pohled do denních rytmů přírody a odhalují, které druhy jsou aktivní a kdy."
 
 about_no_voice_note:
-  en: "Note: No voice is recorded. Our recording devices use an AI model that recognizes human conversations and discards them."
-  de: "Hinweis: Es werden keine Stimmen aufgezeichnet. Unsere Aufnahmegeräte verwenden ein KI-Modell, das menschliche Unterhaltungen erkennt und verwirft."
-  fr: "Remarque : Aucune voix n'est enregistrée. Nos dispositifs d'enregistrement utilisent un modèle d'IA qui reconnaît les conversations humaines et les ignore."
-  it: "Nota: Nessuna voce viene registrata. I nostri dispositivi di registrazione utilizzano un modello AI che riconosce e scarta le conversazioni umane."
-  cs: "Poznámka: Žádné hlasy nejsou nahrávány. Naše záznamová zařízení používají AI model, který rozpoznává lidské rozhovory a ignoruje je."
+  en: "Note: No voice is recorded. Our recording devices use an AI model that recognizes human conversations and discards them. AI can make mistakes, please let us know if you notice anything unusual."
+  de: "Hinweis: Es werden keine Stimmen aufgezeichnet. Unsere Aufnahmegeräte verwenden ein KI-Modell, das menschliche Unterhaltungen erkennt und verwirft. KI kann Fehler machen, geben Sie uns gern Bescheid, wenn Sie etwas auffälliges bemerken."
+  fr: "Remarque : Aucune voix n'est enregistrée. Nos dispositifs d'enregistrement utilisent un modèle d'IA qui reconnaît les conversations humaines et les ignore. L'IA peut faire des erreurs, n'hésitez pas à nous faire savoir si vous remarquez quelque chose de particulier."
+  it: "Nota: Nessuna voce viene registrata. I nostri dispositivi di registrazione utilizzano un modello AI che riconosce e scarta le conversazioni umane. L'intelligenza artificiale può commettere errori, quindi vi preghiamo di farci sapere se notate qualcosa di insolito."
+  cs: "Poznámka: Žádné hlasy nejsou nahrávány. Naše záznamová zařízení používají AI model, který rozpoznává lidské rozhovory a ignoruje je. Umělá inteligence se může dopustit chyb, proto nám prosím dejte vědět, pokud si všimnete něčeho neobvyklého."
 
 about_acoustic_monitoring_1:
   en: "Acoustic monitoring is a valuable method for studying ecosystems and biodiversity. By recording and analyzing soundscapes, it allows researchers to detect species presence and behavior without disturbing their habitats."
