@@ -77,17 +77,17 @@ projects:
       cs: "Projekt Akustického Monitorování Neeracherried kombinuje technologii a zapojení návštěvníků, aby ukázal sílu akustického monitorování při porozumění přírodnímu světu. Posloucháním zvuků Neeracherried mohou návštěvníci prozkoumat, jak jsou pokročilé nástroje používány ke studiu divoké přírody a lépe ocenit rozmanitost ptactva v oblasti."
   rsai:
     project_main_title:
-      en: "Biodiversity in protected areas"
-      de: "Biodiversität in Schutzgebieten"
-      fr: "Biodiversité dans les zones protégées"
-      it: "Biodiversità nelle aree protette"
-      cs: "Biodiverzita v chráněných oblastech"
+      en: "Bioacoustics in the Bavarian Forest National Park"
+      de: "Bioakustik im Nationalpark Bayrischer Wald"
+      fr: "Bioacoustique dans le Parc National de la Forêt Bavaroise"
+      it: "Bioacustica nel Parco Nazionale della Foresta Bavarese"
+      cs: "Bioakustika v Národním parku Bavorský les"
     project_subtitle:
-      en: "AI-powered acoustic monitoring"
-      de: "KI-gestütztes akustisches Monitoring"
-      fr: "Surveillance acoustique alimentée par l'IA"
-      it: "Monitoraggio acustico alimentato dall'IA"
-      cs: "Akustické monitorování poháněné AI"
+      en: "AI-powered biodiversity monitoring"
+      de: "KI-gestütztes Biodiversitäts-Monitoring"
+      fr: "Surveillance de la biodiversité alimentée par l'IA"
+      it: "Monitoraggio della biodiversità alimentato dall'IA"
+      cs: "Monitorování biodiverzity poháněné AI"
     project_subtitle_desc:
       en: "We listen to the sounds of birds in the Bavarian Forest national park and track species diversity over time."
       de: "Wir lauschen den Stimmen der Vögel im Nationalpark Bayerischer Wald und verfolgen die Artenvielfalt im Laufe der Zeit."
