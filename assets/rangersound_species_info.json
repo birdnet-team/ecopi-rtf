@@ -7598,7 +7598,7 @@
       0.0
     ],
     "new_ebird_code": "comgre",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Gr\u00fcnschenkel",
     "common_name_it": "Pantana",
     "common_name_fr": "Chevalier aboyeur",
@@ -10133,7 +10133,7 @@
       0.0
     ],
     "new_ebird_code": "osprey",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Fischadler",
     "common_name_it": "Falco pescatore",
     "common_name_fr": "Balbuzard p\u00eacheur",
@@ -18453,7 +18453,7 @@
       0.0
     ],
     "new_ebird_code": "grebit1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Rohrdommel",
     "common_name_it": "Tarabuso",
     "common_name_fr": "Butor \u00e9toil\u00e9",
