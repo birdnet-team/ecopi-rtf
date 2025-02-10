@@ -41,8 +41,7 @@ app = dash.Dash(
         "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css",
     ],
     external_scripts=[
-        "https://d3js.org/d3.v6.min.js",
-        "https://d3js.org/d3-scale-chromatic.v1.min.js"
+        # None for now
     ],
     suppress_callback_exceptions=True,
     title=cfg.PAGE_TITLE,
