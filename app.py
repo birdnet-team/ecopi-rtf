@@ -37,7 +37,7 @@ with open(f"assets/style/{cfg.PROJECT_ACRONYM.lower()}_colors.css", 'w') as file
 app = dash.Dash(
     __name__,
     external_stylesheets=[
-        dbc.themes.BOOTSTRAP,
+        #dbc.themes.BOOTSTRAP,
     ],
     external_scripts=[
         # None for now
