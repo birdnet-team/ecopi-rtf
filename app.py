@@ -183,8 +183,8 @@ def display_page(pathname, locale):
     path_parts = pathname.strip('/').split('/')
     
     # Check if the last part of the path is a locale
-    if path_parts[-1] in cfg.SUPPORTED_SITE_LOCALES.values():
-        locale = path_parts.pop()
+    if path_parts[-1].split('#')[0] in cfg.SUPPORTED_SITE_LOCALES.values():
+        locale = path_parts.pop().split('#')[0]
         pathname = '/' + '/'.join(path_parts)
     
     try:
