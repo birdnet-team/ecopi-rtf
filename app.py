@@ -3,7 +3,9 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH, ALL
 from flask_cors import CORS
-from flask import request, jsonify
+from flask import request, jsonify, send_file
+import requests
+from io import BytesIO
 
 import json
 
@@ -269,6 +271,19 @@ def ping():
         return jsonify(status="ok")
     else:
         return jsonify(status="error")
+    
+# Proxy route for images
+@app.server.route("/image")
+def proxy_image():
+    image_url = request.args.get('url')
+    if not image_url:
+        return send_file("assets/species_img/dummy_species.jpg", mimetype='image/jpeg')
+
+    response = requests.get(image_url)
+    if response.status_code != 200:
+        return send_file("assets/species_img/dummy_species.jpg", mimetype='image/jpeg')
+
+    return send_file(BytesIO(response.content), mimetype=response.headers['Content-Type'])
     
 # Cache costly requests
 @app.server.route("/cache")

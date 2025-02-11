@@ -534,13 +534,13 @@ def get_species_data(species, locale):
     
     # Low res species image
     if cfg.SPECIES_DATA[species]['image']['src'].find('birds.cornell.edu') > 0:
-        data['image_url'] = cfg.SPECIES_DATA[species]['image']['src'] + '/320'
+        data['image_url'] = f"{cfg.SITE_ROOT}/image?url={cfg.SPECIES_DATA[species]['image']['src']}/320"
     else:
         data['image_url'] = cfg.SITE_ROOT + cfg.SPECIES_DATA[species]['image']['src']
     
     # High res species image
     if cfg.SPECIES_DATA[species]['image']['src'].find('birds.cornell.edu') > 0:
-        data['image_url_highres'] = cfg.SPECIES_DATA[species]['image']['src'] + '/900'
+        data['image_url_highres'] = f"{cfg.SITE_ROOT}/image?url={cfg.SPECIES_DATA[species]['image']['src']}/900"
     else:
         data['image_url_highres'] = cfg.SITE_ROOT + cfg.SPECIES_DATA[species]['image']['src']
     
