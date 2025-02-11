@@ -11,25 +11,25 @@ def stats_bar(locale):
         dbc.Row(
             [
                 dbc.Col(
-                    html.Div([html.Div(f"{strings.get('stats_bar_detections_24h')}:", className='stats-bar-headline'), html.H4(id="detections-24h", children="0")]),
+                    html.Div([html.Div(f"{strings.get('stats_bar_detections_24h')}:", className='stats-bar-headline'), html.H4(id="detections-24h", children="-")]),
                     className="stat-column",
                     width=6,
                     md=3,
                 ),
                 dbc.Col(
-                    html.Div([html.Div(f"{strings.get('stats_bar_species_24h')}:", className='stats-bar-headline'), html.H4(id="species-24h", children="0")]),
+                    html.Div([html.Div(f"{strings.get('stats_bar_species_24h')}:", className='stats-bar-headline'), html.H4(id="species-24h", children="-")]),
                     className="stat-column",
                     width=6,
                     md=3,
                 ),
                 dbc.Col(
-                    html.Div([html.Div(f"{strings.get('stats_bar_detections_total')}:", className='stats-bar-headline'), html.H4(id="total-detections", children="0")]),
+                    html.Div([html.Div(f"{strings.get('stats_bar_detections_total')}:", className='stats-bar-headline'), html.H4(id="total-detections", children="-")]),
                     className="stat-column",
                     width=6,
                     md=3,
                 ),
                 dbc.Col(
-                    html.Div([html.Div(f"{strings.get('stats_bar_audio_total')}:", className='stats-bar-headline'), html.H4(id="total-audio", children="0")]),
+                    html.Div([html.Div(f"{strings.get('stats_bar_audio_total')}:", className='stats-bar-headline'), html.H4(id="total-audio", children="-")]),
                     className="stat-column",
                     width=6,
                     md=3,
