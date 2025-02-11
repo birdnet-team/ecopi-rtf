@@ -4,7 +4,7 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH, ALL
 from flask_cors import CORS
-from flask import request, jsonify, send_file
+from flask import request, jsonify, send_file, Response
 import requests
 from io import BytesIO
 import hashlib
@@ -277,6 +277,14 @@ def ping():
         return jsonify(status="ok")
     else:
         return jsonify(status="error")
+
+@app.server.route('/assets/style/custom.css')
+def custom_css():
+    site_root = cfg.SITE_ROOT
+    with open('assets/style/custom.css', 'r') as file:
+        css_content = file.read()
+    css_content = css_content.replace('{{SITE_ROOT}}', site_root)
+    return Response(css_content, mimetype='text/css')
     
 def get_cache_filename(url, cache_dir):
     url_hash = hashlib.md5(url.encode('utf-8')).hexdigest()
