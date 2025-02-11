@@ -32,12 +32,6 @@ from widgets.nav_bar import nav_bar
 # Import callback registration function for recent detections
 from widgets.recent_detections import register_recent_detections_callbacks
 
-# Set dynamic CSS colors
-with open(f"assets/style/{cfg.PROJECT_ACRONYM.lower()}_colors.css", 'w') as file:
-    file.write(
-        f""":root {{\n\t--primary-color: {cfg.PRIMARY_COLOR};\n\t--secondary-color: {cfg.SECONDARY_COLOR};\n\t--button-color: {cfg.BUTTON_COLOR};\n\t--plot-primary-color: {cfg.PLOT_PRIMARY_COLOR};\n}}"""
-        )
-
 # Initialize Dash app
 app = dash.Dash(
     __name__,
@@ -66,7 +60,7 @@ app.index_string = f"""
         <link rel="icon" type="image/x-icon" href="{cfg.SITE_ROOT}/assets/{cfg.FAVICON}">
         <link rel="manifest" href="{cfg.SITE_ROOT}/{cfg.PWA_MANIFEST}">
         {{%css%}}
-        <link rel="stylesheet" href="{cfg.SITE_ROOT}/assets/style/{cfg.PROJECT_ACRONYM.lower()}_colors.css">
+        
     </head>
     <body>
         {{%app_entry%}}
@@ -281,9 +275,18 @@ def ping():
 @app.server.route('/assets/style/custom.css')
 def custom_css():
     site_root = cfg.SITE_ROOT
+    colors = f"""
+    :root {{
+        --primary-color: {cfg.PRIMARY_COLOR};
+        --secondary-color: {cfg.SECONDARY_COLOR};
+        --button-color: {cfg.BUTTON_COLOR};
+        --plot-primary-color: {cfg.PLOT_PRIMARY_COLOR};
+    }}
+    """
     with open('assets/style/custom.css', 'r') as file:
         css_content = file.read()
     css_content = css_content.replace('{{SITE_ROOT}}', site_root)
+    css_content = colors + css_content
     return Response(css_content, mimetype='text/css')
 
 @app.server.route('/assets/js/popup.mjs')
