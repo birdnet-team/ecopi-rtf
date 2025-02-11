@@ -1,7 +1,6 @@
-import WaveSurfer from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/wavesurfer.esm.js';
-import Spectrogram from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/plugins/spectrogram.esm.js';
-import Minimap from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/minimap.esm.js';
-import colormap from 'https://cdn.jsdelivr.net/npm/colormap@2.3.2/+esm';
+import WaveSurfer from '/assets/external/wavesurfer.esm.js';
+import Spectrogram from '/assets/external/spectrogram.esm.js';
+import Minimap from '/assets/external/minimap.esm.js';
 
 function closePlayer(wavesurfer) {
     const playerElement = document.querySelector("#popup");
@@ -18,15 +17,7 @@ function openPlayer(index) {
     const dataListElement = document.querySelector("#audio-data-list");
     const dataList = JSON.parse(dataListElement.value)
     let data = dataList[index];
-    const audioUrl = data.url_media;
-
-    // Generate the colormap array
-    const customColormap = colormap({
-        colormap: 'magma',
-        nshades: 256,
-        format: 'rgba',
-        alpha: 1
-    }).map(color => [color[0] / 255, color[1] / 255, color[2] / 255, color[3]]);    
+    const audioUrl = data.url_media;  
 
     const wavesurfer = WaveSurfer.create({
         container: '#popup-audio-container',
@@ -59,7 +50,7 @@ function openPlayer(index) {
           labelsBackground: '#3339',
           height: 150,
           scale: 'linear',
-          colorMap: 'roseus', //customColormap,
+          colorMap: 'roseus',
           gainDB: 35,
           rangeDB: 100,
         }),

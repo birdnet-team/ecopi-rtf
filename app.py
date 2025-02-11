@@ -1,9 +1,13 @@
+import os
 import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State, MATCH, ALL
 from flask_cors import CORS
-from flask import request, jsonify
+from flask import request, jsonify, send_file
+import requests
+from io import BytesIO
+import hashlib
 
 import json
 
@@ -21,6 +25,7 @@ from pages.recorder import display_recorder_page, register_recorder_callbacks
 from pages.species import register_species_callbacks, display_species_page
 from pages.detections import detections_page_content
 from pages.about import about_page_content
+from pages.privacy import privacy_page_content
 from widgets.footer import footer_content
 from widgets.nav_bar import nav_bar
 
@@ -37,12 +42,10 @@ with open(f"assets/style/{cfg.PROJECT_ACRONYM.lower()}_colors.css", 'w') as file
 app = dash.Dash(
     __name__,
     external_stylesheets=[
-        dbc.themes.BOOTSTRAP,
-        "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css",
+        #dbc.themes.BOOTSTRAP,
     ],
     external_scripts=[
-        "https://d3js.org/d3.v6.min.js",
-        "https://d3js.org/d3-scale-chromatic.v1.min.js"
+        # None for now
     ],
     suppress_callback_exceptions=True,
     title=cfg.PAGE_TITLE,
@@ -211,6 +214,9 @@ def display_page(pathname, locale):
         elif pathname == cfg.SITE_ROOT + "/about":
             increment_site_views('about', headers)
             return about_page_content(locale)
+        elif pathname == cfg.SITE_ROOT + "/privacy":
+            increment_site_views('privacy', headers)
+            return privacy_page_content(locale)
         else:
             print(f"404 Page Not Found: {pathname}")
             return "404 Page Not Found"
@@ -271,6 +277,59 @@ def ping():
         return jsonify(status="ok")
     else:
         return jsonify(status="error")
+    
+def get_cache_filename(url, cache_dir):
+    url_hash = hashlib.md5(url.encode('utf-8')).hexdigest()
+    return os.path.join(cache_dir, url_hash)
+
+# Proxy route for images
+@app.server.route("/image")
+def proxy_image():
+    image_url = request.args.get('url')
+    if not image_url:
+        return send_file(os.path.join('assets', 'species_img', 'dummy_species.jpg'), mimetype='image/jpeg')
+
+    cache_filename = get_cache_filename(image_url, 'cache/img')
+    if os.path.exists(cache_filename):
+        return send_file(cache_filename, mimetype='image/jpeg')
+
+    response = requests.get(image_url)
+    if response.status_code != 200:
+        return send_file(os.path.join('assets', 'species_img', 'dummy_species.jpg'), mimetype='image/jpeg')
+
+    os.makedirs('cache/img', exist_ok=True)
+    with open(cache_filename, 'wb') as f:
+        f.write(response.content)
+
+    return send_file(BytesIO(response.content), mimetype=response.headers['Content-Type'])
+
+# Proxy route for Leaflet/OSM tiles
+@app.server.route("/tile")
+def proxy_tile():
+    tile_url = request.args.get('url')
+    if not tile_url:
+        return "No tile URL provided", 400
+
+    cache_filename = get_cache_filename(tile_url, 'cache/tiles')
+    if os.path.exists(cache_filename):
+        return send_file(cache_filename, mimetype='image/png')
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+        'Referer': 'https://www.openstreetmap.org/',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5'
+    }
+
+    response = requests.get(tile_url, headers=headers)
+    if response.status_code != 200:
+        return "Failed to fetch tile", response.status_code
+
+    os.makedirs('cache/tiles', exist_ok=True)
+    with open(cache_filename, 'wb') as f:
+        f.write(response.content)
+
+    return send_file(BytesIO(response.content), mimetype=response.headers['Content-Type'])
     
 # Cache costly requests
 @app.server.route("/cache")

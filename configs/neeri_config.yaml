@@ -67,9 +67,9 @@ FOOTER_LINKS:
     - {name: "widget_footer_tu_chemnitz_research", href: "https://www.tu-chemnitz.de/forschung/index.php.en", target: "_blank"}
     - {name: "widget_footer_tu_chemnitz_computer_science", href: "https://www.tu-chemnitz.de/informatik/index.php.en", target: "_blank"}
   widget_footer_link_section_about:
-    - {name: "widget_footer_about_web_accessibility_assistance", href: "https://www.birds.cornell.edu/home/web-accessibility-assistance/", target: "_blank"}
-    - {name: "widget_footer_about_privacy_policy", href: "https://privacy.cornell.edu/information-use-cornell", target: "_blank"}
-    - {name: "widget_footer_about_terms_of_use", href: "https://www.birds.cornell.edu/home/terms-of-use/", target: "_blank"}
+    - {name: "widget_footer_site_links_about_the_project", href: "/about"}
+    - {name: "widget_footer_about_imprint", href: "/privacy"}
+    - {name: "widget_footer_about_privacy_policy", href: "/privacy"}
 COPYRIGHT_HOLDERS: ""
 PARTNER_STATEMENT: "about_partnership_neeri"
 PARTNER_LOGOS: ['logo_box_lab.png', 'logo_box_tuc.png', 'logo_box_oekofor.png', 'birdlife_ch_logo_box.png', 'vogelwarte_logo_box.png']

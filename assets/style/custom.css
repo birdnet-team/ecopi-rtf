@@ -1,4 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Merriweather:wght@300;400;700&display=swap');
+/* Import local fonts */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/assets/external/fonts/Montserrat-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/assets/external/fonts/Montserrat-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/assets/external/fonts/Montserrat-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/assets/external/fonts/Merriweather-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/assets/external/fonts/Merriweather-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/assets/external/fonts/Merriweather-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
 
 /* Custom CSS for the layout */
 body {

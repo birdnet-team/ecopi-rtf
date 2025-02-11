@@ -16,7 +16,7 @@ def footer_content(locale):
                     html.H5(strings.get(section), className="small-text bold-text"),
                     html.Ul(
                         [
-                            html.Li(html.A(strings.get(link["name"]), href=cfg.SITE_ROOT + link["href"] if link["href"].startswith("/") else link["href"], className="footer-link small-text", target=link.get("target", "_self")))
+                            html.Li(html.A(strings.get(link["name"]), href=f"{cfg.SITE_ROOT}{link['href']}/{locale}" if link["href"].startswith("/") else f"{link['href']}/{locale}", className="footer-link small-text", target=link.get("target", "_self")))
                             for link in links
                         ],
                         className="list-unstyled"
