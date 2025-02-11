@@ -285,6 +285,14 @@ def custom_css():
         css_content = file.read()
     css_content = css_content.replace('{{SITE_ROOT}}', site_root)
     return Response(css_content, mimetype='text/css')
+
+@app.server.route('/assets/js/popup.mjs')
+def popup_js():
+    site_root = cfg.SITE_ROOT
+    with open('assets/js/popup.mjs', 'r') as file:
+        js_content = file.read()
+    js_content = js_content.replace('{{SITE_ROOT}}', site_root)
+    return Response(js_content, mimetype='application/javascript')
     
 def get_cache_filename(url, cache_dir):
     url_hash = hashlib.md5(url.encode('utf-8')).hexdigest()

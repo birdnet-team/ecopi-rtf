@@ -1,6 +1,6 @@
-import WaveSurfer from '/assets/external/wavesurfer.esm.js';
-import Spectrogram from '/assets/external/spectrogram.esm.js';
-import Minimap from '/assets/external/minimap.esm.js';
+import WaveSurfer from '{{SITE_ROOT}}/assets/external/wavesurfer.esm.js';
+import Spectrogram from '{{SITE_ROOT}}/assets/external/spectrogram.esm.js';
+import Minimap from '{{SITE_ROOT}}/assets/external/minimap.esm.js';
 
 function closePlayer(wavesurfer) {
     const playerElement = document.querySelector("#popup");
