@@ -25,6 +25,7 @@ from pages.recorder import display_recorder_page, register_recorder_callbacks
 from pages.species import register_species_callbacks, display_species_page
 from pages.detections import detections_page_content
 from pages.about import about_page_content
+from pages.privacy import privacy_page_content
 from widgets.footer import footer_content
 from widgets.nav_bar import nav_bar
 
@@ -213,6 +214,9 @@ def display_page(pathname, locale):
         elif pathname == cfg.SITE_ROOT + "/about":
             increment_site_views('about', headers)
             return about_page_content(locale)
+        elif pathname == cfg.SITE_ROOT + "/privacy":
+            increment_site_views('privacy', headers)
+            return privacy_page_content(locale)
         else:
             print(f"404 Page Not Found: {pathname}")
             return "404 Page Not Found"

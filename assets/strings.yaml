@@ -1042,6 +1042,13 @@ widget_footer_about_privacy_policy:
   it: "Politica sulla privacy"
   cs: "Ochrana osobních údajů"
 
+widget_footer_about_imprint:
+  en: "Imprint"
+  de: "Impressum"
+  fr: "Mentions légales"
+  it: "Colophon"
+  cs: "Impresum"
+
 widget_footer_about_terms_of_use:
   en: "Terms of Use"
   de: "Nutzungsbedingungen"
