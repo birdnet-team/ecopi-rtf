@@ -1,3 +1,4 @@
+import os
 import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
@@ -6,6 +7,7 @@ from flask_cors import CORS
 from flask import request, jsonify, send_file
 import requests
 from io import BytesIO
+import hashlib
 
 import json
 
@@ -272,16 +274,56 @@ def ping():
     else:
         return jsonify(status="error")
     
+def get_cache_filename(url, cache_dir):
+    url_hash = hashlib.md5(url.encode('utf-8')).hexdigest()
+    return os.path.join(cache_dir, url_hash)
+
 # Proxy route for images
 @app.server.route("/image")
 def proxy_image():
     image_url = request.args.get('url')
     if not image_url:
-        return send_file("assets/species_img/dummy_species.jpg", mimetype='image/jpeg')
+        return send_file(os.path.join('assets', 'species_img', 'dummy_species.jpg'), mimetype='image/jpeg')
+
+    cache_filename = get_cache_filename(image_url, 'cache/img')
+    if os.path.exists(cache_filename):
+        return send_file(cache_filename, mimetype='image/jpeg')
 
     response = requests.get(image_url)
     if response.status_code != 200:
-        return send_file("assets/species_img/dummy_species.jpg", mimetype='image/jpeg')
+        return send_file(os.path.join('assets', 'species_img', 'dummy_species.jpg'), mimetype='image/jpeg')
+
+    os.makedirs('cache/img', exist_ok=True)
+    with open(cache_filename, 'wb') as f:
+        f.write(response.content)
+
+    return send_file(BytesIO(response.content), mimetype=response.headers['Content-Type'])
+
+# Proxy route for Leaflet/OSM tiles
+@app.server.route("/tile")
+def proxy_tile():
+    tile_url = request.args.get('url')
+    if not tile_url:
+        return "No tile URL provided", 400
+
+    cache_filename = get_cache_filename(tile_url, 'cache/tiles')
+    if os.path.exists(cache_filename):
+        return send_file(cache_filename, mimetype='image/png')
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+        'Referer': 'https://www.openstreetmap.org/',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5'
+    }
+
+    response = requests.get(tile_url, headers=headers)
+    if response.status_code != 200:
+        return "Failed to fetch tile", response.status_code
+
+    os.makedirs('cache/tiles', exist_ok=True)
+    with open(cache_filename, 'wb') as f:
+        f.write(response.content)
 
     return send_file(BytesIO(response.content), mimetype=response.headers['Content-Type'])
     

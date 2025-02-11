@@ -259,6 +259,9 @@ def get_weekly_detections_plot(detections, locale='en', log_strength=0.99):
 
     return fig
 
+def get_leaflet_tile_url(tile_url):
+    return f"{cfg.SITE_ROOT}/tile?url={tile_url}"
+
 def get_leaflet_map(data, height='500px'):
     # Convert the nested dictionary to a DataFrame
     df = pd.DataFrame.from_dict(data, orient='index')
@@ -319,7 +322,7 @@ def get_leaflet_map(data, height='500px'):
     leaflet_map = dl.Map(
         id='species-site-map',
         children=[
-            dl.TileLayer(),
+            dl.TileLayer(url=get_leaflet_tile_url("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")),
             dl.LayerGroup(markers)
         ],
         center=[center_lat, center_lon],
