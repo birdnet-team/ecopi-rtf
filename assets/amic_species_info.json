@@ -10182,7 +10182,7 @@
       0.0
     ],
     "new_ebird_code": "grebit1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Rohrdommel",
     "common_name_fr": "Butor \u00e9toil\u00e9",
     "common_name_cs": "Buka\u010d velk\u00fd",
