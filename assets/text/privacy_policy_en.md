@@ -1,4 +1,4 @@
-## Imprint
+## Legal Notice
 
 Chair Media Informatics  
 Chemnitz University of Technology  

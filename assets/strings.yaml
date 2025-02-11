@@ -1036,14 +1036,14 @@ widget_footer_about_web_accessibility_assistance:
   cs: "Pomoc s přístupností webu"
 
 widget_footer_about_privacy_policy:
-  en: "Privacy Policy"
+  en: "Privacy policy"
   de: "Datenschutz"
   fr: "Politique de confidentialité"
   it: "Politica sulla privacy"
   cs: "Ochrana osobních údajů"
 
 widget_footer_about_imprint:
-  en: "Imprint"
+  en: "Legal notice"
   de: "Impressum"
   fr: "Mentions légales"
   it: "Colophon"
