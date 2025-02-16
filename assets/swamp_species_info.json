@@ -3568,7 +3568,7 @@
       8.39279
     ],
     "new_ebird_code": "rebnut",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Rotbrustkleiber",
     "common_name_fr": "Sittelle \u00e0 poitrine rousse",
     "common_name_cs": "Brhl\u00edk americk\u00fd",
@@ -5774,7 +5774,7 @@
       1.74615
     ],
     "new_ebird_code": "comred",
-    "blacklisted": false
+    "blacklisted": true
   },
   "whcspa": {
     "common_name": "White-crowned Sparrow",
@@ -8240,7 +8240,7 @@
       0.18776
     ],
     "new_ebird_code": "gnwtea",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Krickente",
     "common_name_fr": "Sarcelle d'hiver",
     "common_name_cs": "\u010c\u00edrka obecn\u00e1",

@@ -23783,7 +23783,7 @@
       0.0
     ],
     "new_ebird_code": "rocpta1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Alpenschneehuhn",
     "common_name_it": "Pernice bianca",
     "common_name_fr": "Lagop\u00e8de alpin",
