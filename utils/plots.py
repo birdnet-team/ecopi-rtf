@@ -29,8 +29,8 @@ def compute_sunrise_sunset(lat, lon, date=None):
     s = sun(location.observer, date=localized_date)
     
     # Get the sunrise and sunset times in the localized timezone
-    sunrise_hour = s['sunrise'].astimezone(timezone).hour
-    sunset_hour = s['sunset'].astimezone(timezone).hour
+    sunrise_hour = s['sunrise'].astimezone(timezone).hour + 1 if s['sunrise'].astimezone(timezone).minute > 30 else s['sunrise'].astimezone(timezone).hour
+    sunset_hour = s['sunset'].astimezone(timezone).hour + 1 if s['sunset'].astimezone(timezone).minute > 30 else s['sunset'].astimezone(timezone).hour
     
     return sunrise_hour, sunset_hour
 
