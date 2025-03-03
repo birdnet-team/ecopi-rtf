@@ -12587,7 +12587,7 @@
       0.0
     ],
     "new_ebird_code": "eurwoo",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Waldschnepfe",
     "common_name_fr": "B\u00e9casse des bois",
     "common_name_cs": "Sluka lesn\u00ed",
