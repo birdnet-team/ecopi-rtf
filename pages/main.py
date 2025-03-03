@@ -53,7 +53,7 @@ def main_page_content(locale):
                         className="header-text"
                     ),
                     html.H5(strings.get('project_subtitle_desc'), 
-                            className="text-center d-none d-lg-block"),
+                            className="text-center d-lg-block mb-4"),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
                         html.H5(strings.get('main_most_active_species'), className="divider-heading"),
