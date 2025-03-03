@@ -23,7 +23,7 @@ def footer_content(locale):
                     )
                 ],
                 width=6,
-                md=4,
+                md=3,
                 lg=2,
                 className="mb-4 text-left"
             )
