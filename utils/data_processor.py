@@ -400,6 +400,15 @@ def get_recorder_state(recorder_id, locale):
     
     response = make_request(url, headers, params, cache_timeout=600)
     
+    if len(response) == 0:
+        
+        return {'current_status': f"{strings.get('dp_recorder_status_error')} | {strings.get('dp_recorder_status_offline')}", 
+                'status_color': '#DAD5BC', 
+                'last_update': 'N/A',
+                'battery': 'N/A',
+                'cpu_temp': 'N/A', 
+                'is_ok': False}
+    
     last_status = response[0]
     
     time_since_last_status = datetime.now() - datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')            

@@ -6883,7 +6883,7 @@
       0.02824
     ],
     "new_ebird_code": "watrai1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Wasserralle",
     "common_name_it": "Porciglione",
     "common_name_fr": "R\u00e2le d'eau",

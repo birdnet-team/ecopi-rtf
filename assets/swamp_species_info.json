@@ -3373,7 +3373,7 @@
       5.56703
     ],
     "new_ebird_code": "brncre",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Amerikabauml\u00e4ufer",
     "common_name_fr": "Grimpereau brun",
     "common_name_cs": "Brown Creeper",
