@@ -30,7 +30,10 @@ def recent_detections(num_cards=8, hours=72, locale="en"):
                 [
                     html.Div(
                         [
-                            dbc.CardImg(src=data["image_url"], top=True, className="card-img-top"),
+                            dcc.Link(
+                                dbc.CardImg(src=data["image_url"], top=True, className="card-img-top"),
+                                href=f"{cfg.SITE_ROOT}/species/{species}",
+                            ),
                             html.Div(
                                 html.Div(
                                     [html.I(className="bi bi-play-circle-fill", id=f"play-icon-{idx}")],
