@@ -748,7 +748,7 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     
     return {'detections': weekly_detections.tolist(), 'frequencies': species_freq, 'current_week': get_current_week()}
 
-def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, locale='en'):
+def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=5000, min_count=5, locale='en'):
     url = cfg.API_BASE_URL + 'detections'
     
     headers = {
@@ -760,7 +760,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, 
     params['project_name'] = cfg.PROJECT_NAME
     
     # Minimum confidence
-    params['confidence_gte'] = min_conf
+    params['confidence__gte'] = min_conf
     
     # Only detections with audio
     params['has_media'] = True
@@ -781,7 +781,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=1000, min_count=5, 
             params.pop('datetime_recording__lte', None)
         
         # Send request
-        response = make_request(url, headers, params, cache_timeout=3300)
+        response = make_request(url, headers, params, cache_timeout=3300, ignore_cache=False)
         
         return response
     
@@ -861,7 +861,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     params['project_name'] = cfg.PROJECT_NAME
     
     # Minimum confidence
-    params['confidence_gte'] = min_conf
+    params['confidence__gte'] = min_conf
     
     # Only retrieve certain fields
     params['only'] = 'species_code, datetime, confidence, recorder_field_id'
@@ -955,7 +955,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     
     return detections
 
-def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=168, limit=1000, max_results=50):
+def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=168, limit=5000, max_results=50):
     url = cfg.API_BASE_URL + 'detections'
     
     headers = {
@@ -967,7 +967,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     params['project_name'] = cfg.PROJECT_NAME
     
     # Minimum confidence
-    params['confidence_gte'] = min_conf
+    params['confidence__gte'] = min_conf
     
     # Only detections with audio
     params['has_media'] = True
