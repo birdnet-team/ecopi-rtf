@@ -1051,6 +1051,57 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     response = response[:max_results]
     
     return response
+
+def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_date=None, to_date=None, limit=None):     
+    
+    url = cfg.API_BASE_URL + 'detections'
+    
+    headers = {
+        'Authorization': f'Token {
+            cfg.API_TOKEN}'
+    }
+    
+    params = {}
+    
+    # Project name
+    params['project_name'] = cfg.PROJECT_NAME
+    
+    # Minimum confidence
+    params['confidence__gte'] = min_conf
+    
+    # Only detections with audio
+    params['has_media'] = True
+    
+    # Pagination/limit
+    if limit is not None:
+        params['limit'] = limit
+    else:
+        params['limit'] = 'None'
+    
+    # Set species codes
+    if len(species_codes) > 0:
+        params['species_code__in'] = ','.join(species_codes)
+        
+    # Set recorder IDs
+    if len(recorder_ids) > 0:
+        params['recorder_field_id__in'] = ','.join(recorder_ids)
+        
+    # Set date range
+    if from_date is not None:
+        params['datetime_recording__gte'] = from_date
+    if to_date is not None:
+        params['datetime_recording__lte'] = to_date
+        
+    response = make_request(url, headers, params, cache_timeout=3300, ignore_cache=True)
+    
+    # Make dirs
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    
+    # Save to file
+    with open(filepath, 'w') as f:
+        json.dump(response, f, indent=4)
+        
+    return response
     
 if __name__ == '__main__':   
     
@@ -1084,6 +1135,14 @@ if __name__ == '__main__':
     
     #print(get_weather_data())
     
-    print(get_total_audio_duration())  
+    #print(get_total_audio_duration())  
     #print(get_recordings_list())
+    
+    print(len(export_detections(species_codes=['amewoo'], 
+                                recorder_ids=['1', '2', '3'], 
+                                filepath='../export/amewoo_detections.json', 
+                                min_conf=0.1, 
+                                from_date='2025-03-14', 
+                                to_date='2025-03-15', 
+                                limit=None)))
     

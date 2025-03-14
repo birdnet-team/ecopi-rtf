@@ -4,6 +4,7 @@ assets/favicon.ico
 assets/colors.css
 cache/*
 *_manifest.json
+export/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
