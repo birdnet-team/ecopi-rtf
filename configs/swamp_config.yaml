@@ -22,7 +22,7 @@ RECORDERS:
 MAP_ZOOM_LEVEL: 15
 MAIN_HEADER_IMG_LIST: ['ssw_main_header_1.jpg', 'ssw_main_header_2.jpg']
 ABOUT_HEADER_IMG_LIST: ['ssw_about_header_1.jpg', 'ssw_about_header_2.jpg', 'ssw_about_header_3.jpg', 'ssw_about_header_4.jpg', 'ssw_about_header_5.jpg']
-LIVE_STREAM_URL: 'https://birdnetlive.duckdns.org/ssw'
+LIVE_STREAM_URL: '' #'https://birdnetlive.duckdns.org/ssw'
 DONATION_URL: 'https://give.birds.cornell.edu/page/132162/donate/1?ea.tracking.id=ENR'
 PROJECT_ACRONYM: 'SWAMP'
 PRIMARY_COLOR: '#b31b1b'
