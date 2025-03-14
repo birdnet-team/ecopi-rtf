@@ -1123,6 +1123,23 @@ def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_
             json.dump(response, f, indent=4)
         
     return response    
+
+def download_audio(url, filepath):
+    
+    # audio is publicly accessible, so no need for headers
+    headers = {}
+    
+    # Send request
+    response = requests.get(url, headers=headers)
+    
+    # Make dirs
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    
+    # Save to file
+    with open(filepath, 'wb') as f:
+        f.write(response.content)
+        
+    return filepath
     
 if __name__ == '__main__':   
     
@@ -1154,11 +1171,12 @@ if __name__ == '__main__':
     #for p in get_project_list():
     #    print(p)
     
-    #print(get_weather_data())
+    print(get_weather_data())
     
     #print(get_total_audio_duration())  
     #print(get_recordings_list())
     
+    """
     print(len(export_detections(species_codes=['amewoo'], 
                                 recorder_ids=['1', '2', '3'], 
                                 filepath='../export/amewoo_detections.csv', 
@@ -1166,4 +1184,5 @@ if __name__ == '__main__':
                                 from_date='2025-03-14', 
                                 to_date='2025-03-15', 
                                 limit=None)))
+    """
     
