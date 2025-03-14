@@ -11,6 +11,7 @@ import random
 from datetime import datetime, timedelta, UTC 
 import pytz
 import numpy as np
+import csv
 
 from utils.strings import Strings
 
@@ -86,13 +87,21 @@ def to_local_time(utc_time, time_format='24h', date_format=cfg.DATE_FORMAT):
     try:
         utc_time = datetime.strptime(utc_time, '%m/%d/%Y - %I:%M %p')
     except ValueError:
-        utc_time = datetime.strptime(utc_time, '%m/%d/%Y - %H:%M')
+        try:
+            utc_time = datetime.strptime(utc_time, '%m/%d/%Y - %H:%M')
+        except ValueError:
+            try:
+                utc_time = datetime.strptime(utc_time, '%Y-%m-%d %H:%M:%S.%f')
+            except ValueError:
+                raise ValueError(f"Date {utc_time} does not match any expected format.")
     
     timezone = pytz.timezone(cfg.TIMEZONE)
     local_time = utc_time.astimezone(timezone)
     
     if time_format == '12h':
         return local_time.strftime(date_format + ' - %I:%M %p')
+    elif time_format == 'precise':
+        return local_time.strftime('%Y-%m-%d %H:%M:%S.%f')
     else:
         return local_time.strftime(date_format + ' - %H:%M')
 
@@ -1094,14 +1103,26 @@ def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_
         
     response = make_request(url, headers, params, cache_timeout=3300, ignore_cache=True)
     
+    # Convert to local time
+    for item in response:
+        item['datetime'] = to_local_time(item['datetime'], time_format='precise')
+        item['datetime_recording'] = to_local_time(item['datetime_recording'], time_format='precise')
+    
     # Make dirs
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     
     # Save to file
-    with open(filepath, 'w') as f:
-        json.dump(response, f, indent=4)
+    if filepath.endswith('.csv'):
+        with open(filepath, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['uid', 'species_code', 'datetime_recording', 'recorder_field_id', 'confidence', 'start', 'end', 'url_media'])
+            for item in response:
+                writer.writerow([item['uid'], item['species_code'], item['datetime_recording'], item['recorder_field_id'], item['confidence'], item['start'], item['end'], item['url_media']])
+    else:
+        with open(filepath, 'w') as f:
+            json.dump(response, f, indent=4)
         
-    return response
+    return response    
     
 if __name__ == '__main__':   
     
@@ -1140,7 +1161,7 @@ if __name__ == '__main__':
     
     print(len(export_detections(species_codes=['amewoo'], 
                                 recorder_ids=['1', '2', '3'], 
-                                filepath='../export/amewoo_detections.json', 
+                                filepath='../export/amewoo_detections.csv', 
                                 min_conf=0.1, 
                                 from_date='2025-03-14', 
                                 to_date='2025-03-15', 
