@@ -23,7 +23,11 @@ random.seed(42)
 def get_local_time(time_format='24h'):
     return datetime.now(pytz.timezone(cfg.TIMEZONE)).strftime('%I:%M %p') if time_format == '12h' else datetime.now(pytz.timezone(cfg.TIMEZONE)).strftime('%H:%M')
 
-def get_current_week(date=datetime.now()):
+def get_current_week(date=None):
+    if date is None:
+        date = datetime.now(pytz.timezone(cfg.TIMEZONE))
+    else:
+        date = date.astimezone(pytz.timezone(cfg.TIMEZONE))
     
     fraction = min(52, max(0, (date.isocalendar()[1])) / 52)
     week = round(fraction * 48)
