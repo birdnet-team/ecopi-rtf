@@ -144,7 +144,7 @@ def get_confidence_score(species, confidence):
     species_freq = get_species_frequency(species)
         
     # Blend confidence and frequency as weighted average
-    if species_freq >= 10:
+    if species_freq >= 10 or species.startswith('t-'):
         confidence = int(confidence)
     elif species_freq > 0 and species_freq < 10:
         confidence = int((confidence * 0.75) + (species_freq * 0.25))
