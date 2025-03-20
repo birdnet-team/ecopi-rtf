@@ -325,6 +325,10 @@ def cache_costy_requests():
                 result['species_stats_' + species] = 'error'
         except:
             continue
+        
+    # Request audio files
+    requested_species = request_audio()
+    result['requested_species'] = requested_species
     
     return result
 
@@ -351,7 +355,7 @@ def clean_cache(cache_dir, max_age=60*60*24):
     # Set LAST_CACHE_CLEANUP to now
     cfg.LAST_CACHE_CLEANUP = now
 
-def make_request(url, headers, params, cache_timeout=3600, ignore_cache=False):
+def make_request(url, headers, params, rtype='get', cache_timeout=3600, ignore_cache=False):
     
     # Does the cache directory exist?
     cache_dir = cfg.make_cache_dir(cfg.CACHE_DIR)
@@ -378,10 +382,13 @@ def make_request(url, headers, params, cache_timeout=3600, ignore_cache=False):
     # Send the request
     #print(f"Making request to {url}")    
     try:
-        response = requests.get(url, headers=headers, params=params)
+        if rtype == 'get':
+            response = requests.get(url, headers=headers, params=params)
+        elif rtype == 'patch':
+            response = requests.patch(url, headers=headers, json=params)
         response_data = response.json()
     except:
-        # Empty response or request error
+        # Empty response or request error        
         response_data = []
 
     # Cache the response if it's not empty
@@ -1122,7 +1129,86 @@ def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_
         with open(filepath, 'w') as f:
             json.dump(response, f, indent=4)
         
-    return response    
+    return response  
+
+def request_audio(min_det=1, min_conf=0.75, hours=2, limit=1000):
+    
+    # Get detections of last 24 hours
+    url = cfg.API_BASE_URL + 'detections'
+    
+    headers = {
+        'Authorization': f'Token ' + cfg.API_TOKEN
+    }
+    params = {}
+    
+    # Project name
+    params['project_name'] = cfg.PROJECT_NAME
+    
+    # Minimum confidence
+    params['confidence__gte'] = min_conf
+    
+    # Limit to last N hours
+    if hours > 0:
+        now = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
+        params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
+        params['datetime_recording__lte'] = now.isoformat()
+    else:
+        params.pop('datetime_recording__gte', None)
+        params.pop('datetime_recording__lte', None)  
+    
+    # Only retrieve certain fields
+    params['only'] = 'uid, species_code, has_audio, requested, confidence, datetime_recording'
+    
+    # Pagination/limit
+    params['limit'] = limit
+    
+    response = make_request(url, headers, params, ignore_cache=True)
+    
+    # Sort detections by species
+    detections = {}
+    for item in response:
+        if item['species_code'] not in detections:
+            detections[item['species_code']] = []
+        detections[item['species_code']].append(item)
+        
+    # Remove blacklisted species
+    detections = {k: v for k, v in detections.items() if not is_blacklisted(k)}
+        
+    # Remove species with less than n detections
+    detections = {k: v for k, v in detections.items() if len(v) >= min_det}
+        
+    # Check if at least one detection has audio or is requested
+    requested_species = {}
+    for species in detections:
+        has_audio = False
+        for item in detections[species]:
+            if item['has_audio'] or item['requested']:
+                has_audio = True
+                break
+            
+        if not has_audio:           
+            
+            # Sort detections by confidence
+            detections[species] = sorted(detections[species], key=lambda x: x['confidence'], reverse=True)
+            
+            # Request audio for the detection with the highest confidence
+            url = cfg.API_BASE_URL + 'detections/' + detections[species][0]['uid']
+            
+            headers = {
+                'Authorization': f'Token ' + cfg.API_TOKEN
+            }
+            params = {}
+            
+            # set requested to 1
+            params['requested'] = 1
+            
+            response = make_request(url, headers, params, rtype='patch', cache_timeout=0)
+            
+            if not species in requested_species:
+                requested_species[species] = []
+            requested_species[species].append((detections[species][0]['datetime_recording'], detections[species][0]['confidence']))
+            
+    return requested_species
 
 def download_audio(url, filepath):
     
@@ -1171,10 +1257,12 @@ if __name__ == '__main__':
     #for p in get_project_list():
     #    print(p)
     
-    print(get_weather_data())
+    #print(get_weather_data())
     
     #print(get_total_audio_duration())  
     #print(get_recordings_list())
+    
+    print(request_audio())
     
     """
     print(len(export_detections(species_codes=['amewoo'], 
