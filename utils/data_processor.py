@@ -57,7 +57,8 @@ def date_to_last_seen(date, time_format='24h', locale='en'):
         cfg.DATE_FORMAT + ' - %I:%M %p',
         cfg.DATE_FORMAT + ' - %H:%M',
         '%m/%d/%Y - %I:%M %p',
-        '%m/%d/%Y - %H:%M'
+        '%m/%d/%Y - %H:%M',
+        '%Y-%m-%d %H:%M:%S.%f'
     ]
     for fmt in date_formats:
         try:
@@ -864,6 +865,41 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=5000, min_count=5, 
             last_n[species][key] = value
     
     return last_n
+
+def get_last_detection_datetime(species_code, min_conf=0.5, locale='en'):
+    
+    url = cfg.API_BASE_URL + 'detections'
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    
+    params = {}
+    
+    # Project name
+    params['project_name'] = cfg.PROJECT_NAME
+    
+    # Species code
+    params['species_code'] = species_code
+    
+    # Minimum confidence
+    params['confidence__gte'] = min_conf
+    
+    # Only retrieve certain fields
+    params['only'] = 'datetime'
+    
+    # Pagination/limit
+    params['limit'] = 1
+    
+    response = make_request(url, headers, params, cache_timeout=3300)
+    
+    if len(response) == 0:
+        return 'N/A'
+    
+    # convert to last seen
+    last_seen = date_to_last_seen(response[0]['datetime'], time_format=cfg.TIME_FORMAT, locale=locale)
+    
+    return last_seen
 
 def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_count=5, recorder_list=[], locale='en'):
     url = cfg.API_BASE_URL + 'detections'

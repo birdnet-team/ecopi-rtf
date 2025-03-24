@@ -172,7 +172,7 @@ def register_species_callbacks(app):
                 html.H5(f"{total_detections:,} {strings.get('recorder_total_detections')}"),
                 html.H6([
                     html.I(className="bi bi-clock"),
-                    f" {dp.date_to_last_seen(species_stats[0]['datetime'], time_format=cfg.TIME_FORMAT, locale=locale) if species_stats else 'N/A'}"
+                    f" {dp.get_last_detection_datetime(species_id, locale=locale) if species_stats else 'N/A'}"
                 ], className="small-text"),
             ], width=9, xs=7),
             dbc.Col(
