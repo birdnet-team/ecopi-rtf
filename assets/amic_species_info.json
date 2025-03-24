@@ -2723,7 +2723,7 @@
       6.84685
     ],
     "new_ebird_code": "brambl",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Bergfink",
     "common_name_fr": "Pinson du Nord",
     "common_name_cs": "P\u011bnkava jikavec",
@@ -5579,7 +5579,7 @@
       0.0
     ],
     "new_ebird_code": "gyfwoo1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Grauspecht",
     "common_name_fr": "Pic cendr\u00e9",
     "common_name_cs": "\u017dluna \u0161ed\u00e1",
@@ -6034,7 +6034,7 @@
       0.0
     ],
     "new_ebird_code": "norgos1",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Habicht",
     "common_name_fr": "Autour des palombes",
     "common_name_cs": "Jest\u0159\u00e1b lesn\u00ed",

@@ -829,7 +829,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=5000, min_count=5, 
         # compute confidence as percentage
         item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100)
         
-        if item['confidence'] < 10:
+        if item['confidence'] < 33:
             continue
         
         # format date
@@ -1041,7 +1041,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     response = [item for item in response if not is_blacklisted(item['species_code'])]
     
     # Remove low confidence detections
-    response = [item for item in response if item['confidence'] >= 2]
+    response = [item for item in response if item['confidence'] >= 4]
     
     # Limit to at most 3 detections per species or per recorder
     if recorder_id is not None:
