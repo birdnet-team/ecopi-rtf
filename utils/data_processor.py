@@ -1104,7 +1104,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     
     return response
 
-def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_date=None, to_date=None, limit=None):     
+def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_date=None, to_date=None, limit=None, needs_media=True):    
     
     url = cfg.API_BASE_URL + 'detections'
     
@@ -1122,7 +1122,8 @@ def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_
     params['confidence__gte'] = min_conf
     
     # Only detections with audio
-    params['has_media'] = True
+    if needs_media:
+        params['has_media'] = True
     
     # Pagination/limit
     if limit is not None:
@@ -1158,9 +1159,9 @@ def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_
     if filepath.endswith('.csv'):
         with open(filepath, 'w', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow(['uid', 'species_code', 'datetime_recording', 'recorder_field_id', 'confidence', 'start', 'end', 'url_media'])
+            writer.writerow(['uid', 'species_code', 'datetime_recording', 'recorder_field_id', 'confidence', 'start', 'end', 'has_media', 'url_media'])
             for item in response:
-                writer.writerow([item['uid'], item['species_code'], item['datetime_recording'], item['recorder_field_id'], item['confidence'], item['start'], item['end'], item['url_media']])
+                writer.writerow([item['uid'], item['species_code'], item['datetime_recording'], item['recorder_field_id'], item['confidence'], item['start'], item['end'], item['has_media'], item['url_media']])
     else:
         with open(filepath, 'w') as f:
             json.dump(response, f, indent=4)
@@ -1299,15 +1300,26 @@ if __name__ == '__main__':
     #print(get_total_audio_duration())  
     #print(get_recordings_list())
     
-    print(request_audio())
+    #print(request_audio())
     
     """
-    print(len(export_detections(species_codes=['amewoo'], 
-                                recorder_ids=['1', '2', '3'], 
-                                filepath='../export/amewoo_detections.csv', 
-                                min_conf=0.1, 
-                                from_date='2025-03-14', 
-                                to_date='2025-03-15', 
-                                limit=None)))
+    swamp_species = ['amewoo', 'norcar', 'whbnut', 'sonspa', 'haiwoo', 'rebwoo', 'pilwoo', 'amecro', 'tuftit', 'amegfi', 'bkcchi', 'wooduc', 'dowwoo', 'blujay', 'comgra', 'daejun', 'cangoo', 'amerob', 'rewbla', 'easblu', 'carwre', 'comrav', 'winwre3', 'belkin1', 'norfli']    
+    for species in swamp_species:
+        print(f"{len(export_detections(species_codes=[species], 
+                                    recorder_ids=[], 
+                                    filepath=f'../export/swamp/{species}_detections.csv', 
+                                    min_conf=0.5, 
+                                    from_date='2024-12-10', 
+                                    to_date=None, 
+                                    needs_media=False,
+                                    limit=None))} detections exported for {species}")
+
+        
+    # Export recorder locations
+    recorder_locations = []
+    for r in cfg.RECORDERS:
+        recorder_locations.append({'recorder_field_id': r, 'lat': cfg.RECORDERS[r]['lat'], 'lon': cfg.RECORDERS[r]['lon'], 'habitat': cfg.RECORDERS[r]['habitat']})
+    with open('../export/swamp/recorder_locations.json', 'w') as f:
+        json.dump(recorder_locations, f, indent=4)
     """
     
