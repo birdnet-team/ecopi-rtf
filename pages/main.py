@@ -54,6 +54,14 @@ def main_page_content(locale):
                     ),
                     html.H5(strings.get('project_subtitle_desc'), 
                             className="text-center d-lg-block mb-4"),
+                    html.Div(
+                        dbc.Button(
+                            strings.get('species_learn_more'),
+                            href=f"{cfg.SITE_ROOT}/about",
+                            className="btn-href learn-more-btn d-block d-lg-none mb-4"
+                        ),
+                        className="d-flex justify-content-center",  # Center the button
+                    ),
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
                         html.H5(strings.get('main_most_active_species'), className="divider-heading"),

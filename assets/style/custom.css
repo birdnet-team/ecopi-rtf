@@ -763,6 +763,7 @@ nav .navbar-nav {
     background-color: var(--button-color); 
     border-radius: 20px;
     font-size: 0.8rem;
+    max-width: 200px;
 }
 
 .learn-more-btn:hover {
