@@ -58,7 +58,7 @@ def main_page_content(locale):
                         dbc.Button(
                             strings.get('species_learn_more'),
                             href=f"{cfg.SITE_ROOT}/about",
-                            className="btn-href learn-more-btn d-block d-lg-none mb-4"
+                            className="btn-href btn-primary d-block d-lg-none mb-4"
                         ),
                         className="d-flex justify-content-center",  # Center the button
                     ),
