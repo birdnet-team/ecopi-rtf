@@ -237,7 +237,7 @@ def get_project_list():
     # No limit
     params = {}
     
-    params['limit'] = 'None'
+    params['limit'] = 100000000
     
     response = make_request(url, headers, params, cache_timeout=0)
     
@@ -467,7 +467,7 @@ def get_recordings_list():
     params['project_name'] = cfg.PROJECT_NAME
     
     # Get all recordings
-    params['limit'] = 'None'
+    params['limit'] = 100000000
     
     # Only retrieve certain fields
     params['only'] = 'creation_time, duration, file_name'
@@ -475,7 +475,10 @@ def get_recordings_list():
     response = make_request(url, headers, params, cache_timeout=1500, ignore_cache=False)
     
     # Remove recordings that were recorded before the project start date
-    response = [recording for recording in response if not is_before_project_start(recording['creation_time'])]
+    try:
+        response = [recording for recording in response if not is_before_project_start(recording['creation_time'])]
+    except:
+        print(f"Error parsing recordings list: {response}")
     
     return response
     
@@ -701,7 +704,7 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
     params['project_name'] = cfg.PROJECT_NAME
     
     # Minimum confidence
-    params['confidence_gte'] = min_conf
+    params['confidence__gte'] = min_conf
     
     # Only retrieve certain fields
     params['only'] = 'species_code, datetime, recorder_field_id'
@@ -713,7 +716,7 @@ def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min
         params['recorder_field_id'] = recorder_id
     
     # Pagination/limit
-    params['limit'] = 'None'
+    params['limit'] = 100000000
     
     # past 12 months
     now = datetime.now(UTC)
@@ -923,7 +926,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
         params['species_code'] = species_list[0]
     
     # Pagination/limit
-    params['limit'] = 'None'
+    params['limit'] = 100000000
     
     def fetch_detections(hours):
         if hours > 0:
@@ -949,6 +952,8 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     # Parse detections
     detections = {}
     for item in response:
+        
+        #print(f'Item:{item}')
         
         # Is before project start date?
         if is_before_project_start(item['datetime']):
@@ -1129,7 +1134,7 @@ def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_
     if limit is not None:
         params['limit'] = limit
     else:
-        params['limit'] = 'None'
+        params['limit'] = 100000000
     
     # Set species codes
     if len(species_codes) > 0:
