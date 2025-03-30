@@ -895,6 +895,13 @@ widget_footer_site_links_contact:
   it: "Contatto"
   cs: "Kontakt"
 
+widget_footer_yang_center_home:
+  en: "Home"
+  de: "Startseite"
+  fr: "Accueil"
+  it: "Home"
+  cs: "Domů"
+
 widget_footer_yang_center_our_values:
   en: "Our values"
   de: "Unsere Werte"
