@@ -47,7 +47,7 @@ FOOTER_LINKS:
     - {name: "widget_footer_oekofor_ecopi", href: "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", target: "_blank"}
     - {name: "widget_footer_oekofor_contact", href: "https://www.oekofor.de/en/#contact", target: "_blank"}
   widget_footer_link_section_yang_center:
-    - {name: "widget_footer_yang_center_our_values", href: "https://www.birds.cornell.edu/ccb/our-values/", target: "_blank"}
+    - {name: "widget_footer_yang_center_home", href: "https://www.birds.cornell.edu/ccb/", target: "_blank"}
     - {name: "widget_footer_yang_center_research", href: "https://www.birds.cornell.edu/ccb/research/", target: "_blank"}
     - {name: "widget_footer_yang_center_technology", href: "https://www.birds.cornell.edu/ccb/technology/", target: "_blank"}
     - {name: "widget_footer_yang_center_education", href: "https://www.birds.cornell.edu/ccb/education/", target: "_blank"}
