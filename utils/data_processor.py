@@ -1173,7 +1173,7 @@ def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_
         
     return response  
 
-def request_audio(min_det=1, min_conf=0.75, hours=1, limit=1000):
+def request_audio(min_det=1, num_requests=3, min_conf=0.75, hours=1, limit=1000):
     
     # Get detections of last 24 hours
     url = cfg.API_BASE_URL + 'detections'
@@ -1231,26 +1231,29 @@ def request_audio(min_det=1, min_conf=0.75, hours=1, limit=1000):
         if not has_audio:           
             
             # Sort detections by confidence
-            detections[species] = sorted(detections[species], key=lambda x: x['confidence'], reverse=True)
+            detections[species] = sorted(detections[species], key=lambda x: x['confidence'], reverse=True)[:num_requests]
             
-            # Request audio for the detection with the highest confidence
-            url = cfg.API_BASE_URL + 'detections/' + detections[species][0]['uid'] + '/'
+            # Request audio for detections with the highest confidence
+            for i, item in enumerate(detections[species]):
             
-            headers = {
-                'Authorization': f'Token {cfg.API_TOKEN}',
-                'Content-Type': 'application/json'
-            }
-            params = {}
-            
-            # set requested to 1
-            params['requested'] = 1
-            
-            response = make_request(url, headers, params, rtype='patch', ignore_cache=True)
-            
-            if not species in requested_species:
-                requested_species[species] = []
-            requested_species[species].append((detections[species][0]['uid'], detections[species][0]['datetime_recording'], detections[species][0]['confidence']))
-            
+                # URL contains uid
+                url = cfg.API_BASE_URL + 'detections/' + detections[species][i]['uid'] + '/'
+                
+                headers = {
+                    'Authorization': f'Token {cfg.API_TOKEN}',
+                    'Content-Type': 'application/json'
+                }
+                params = {}
+                
+                # set requested to 1
+                params['requested'] = 1
+                
+                response = make_request(url, headers, params, rtype='patch', ignore_cache=True)
+                
+                if not species in requested_species:
+                    requested_species[species] = []
+                requested_species[species].append((detections[species][0]['uid'], detections[species][0]['datetime_recording'], detections[species][0]['confidence']))
+                
     return requested_species
 
 def download_audio(url, filepath):
@@ -1327,4 +1330,6 @@ if __name__ == '__main__':
     with open('../export/swamp/recorder_locations.json', 'w') as f:
         json.dump(recorder_locations, f, indent=4)
     """
+    
+    print(request_audio(min_det=1, min_conf=0.75, hours=1, limit=1000))
     
