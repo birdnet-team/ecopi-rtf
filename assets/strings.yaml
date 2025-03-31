@@ -223,6 +223,14 @@ main_recent_detections:
   cs: "Nedávné detekce"
   es: "Detecciones recientes"
 
+main_recent_detections_hint:
+  en: "Click on a species portrait to see more stats about that species."
+  de: "Ein Klick auf das Artenportrait zeigt weitere Statistiken."
+  fr: "Cliquez sur le portrait d'une espèce pour voir plus de statistiques sur cette espèce."
+  it: "Fai clic sul ritratto di una specie per vedere più statistiche su quella specie."
+  cs: "Kliknutím na portrét druhu zobrazíte další statistiky o tomto druhu."
+  es: "Haz clic en el retrato de una especie para ver más estadísticas sobre esa especie."
+
 main_recording_units:
   en: "Recording units"
   de: "Akustische Rekorder"
@@ -261,7 +269,7 @@ main_haikubox_description:
   fr: "Haikubox est un outil innovant conçu pour les passionnés d'oiseaux et les conservationnistes qui souhaitent suivre les oiseaux visitant leurs jardins. Utilisant une reconnaissance sonore avancée alimentée par l'IA, Haikubox écoute les chants des oiseaux et identifie automatiquement les espèces en temps réel. C'est une solution mains libres qui offre une surveillance continue, ce qui la rend idéale pour quiconque curieux de l'activité des oiseaux locaux sans avoir besoin de connaissances expertes."
   it: "Haikubox è uno strumento innovativo progettato per gli appassionati di uccelli e i conservazionisti che vogliono tenere traccia degli uccelli che visitano i loro giardini. Utilizzando il riconoscimento sonoro avanzato alimentato dall'IA, Haikubox ascolta i richiami degli uccelli e identifica automaticamente le specie in tempo reale. È una soluzione senza mani che fornisce un monitoraggio continuo, rendendola ideale per chiunque sia curioso dell'attività degli uccelli locali senza bisogno di conoscenze esperte."
   cs: "Haikubox je inovativní nástroj navržený pro nadšence do ptáků a ochránce přírody, kteří chtějí sledovat ptáky navštěvující jejich zahrady. Pomocí pokročilého rozpoznávání zvuku poháněného AI Haikubox poslouchá ptačí zpěv a automaticky identifikuje druhy v reálném čase. Je to bezdotykové řešení, které poskytuje nepřetržité monitorování, což je ideální pro každého, kdo se zajímá o místní ptačí aktivitu, aniž by potřeboval odborné znalosti."
-  es: "Haikubox es una herramienta innovadora diseñada para entusiastas de las aves y conservacionistas que desean realizar un seguimiento de las aves que visitan sus jardines. Utilizando un reconocimiento de sonido avanzado impulsado por IA, Haikubox escucha los cantos de las aves e identifica automáticamente las especies en tiempo real. Es una solución manos libres que proporciona monitoreo continuo, lo que la hace ideal para cualquier persona curiosa sobre la actividad de las aves locales sin necesidad de tener conocimientos expertos."
+  es: "Haikubox es una herramienta innovadora diseñada para entusiastas de las aves y conservacionistas que desean realizar un seguimiento de las aves que visitan sus jardines. Utilizando un reconocimiento de sonido avanzado impulsado por IA, Haikubox escucha los cantos de las aves e identifica automáticamente las especies en real-time. Es una solución manos libres que proporciona monitoreo continuo, lo que la hace ideal para cualquier persona curiosa sobre la actividad de las aves locales sin necesidad de tener conocimientos expertos."
 
 main_visit_haikubox_website:
   en: "Visit the Haikubox website"

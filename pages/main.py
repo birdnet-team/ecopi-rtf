@@ -72,6 +72,7 @@ def main_page_content(locale):
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
                         html.H5(strings.get('main_recent_detections'), className="divider-heading"),
+                        html.H6(strings.get('main_recent_detections_hint'), className="text-muted full-width medium-small-text centered-text mb-4"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="last-detections", className="mt-4"),
@@ -80,6 +81,7 @@ def main_page_content(locale):
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
                         html.H5(strings.get('main_recording_units'), className="divider-heading"),
+                        html.H6(strings.get('main_recording_units_hint'), className="text-muted full-width medium-small-text centered-text mb-4"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="recorder-stats", className="mt-4"),

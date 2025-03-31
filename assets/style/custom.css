@@ -103,6 +103,18 @@ a {
     letter-spacing: 0.01em; /* Adjust letter spacing for captions */
 }
 
+.large-text {
+    font-size: 1.5em; 
+}
+
+.medium-text {
+    font-size: 1.2em; 
+}
+
+.medium-small-text {
+    font-size: 1.0em; 
+}
+
 .small-text {
     font-size: 0.8em; 
 }
@@ -129,6 +141,10 @@ a {
     width: 100%;
     margin: 0;
     padding: 0;
+}
+
+.centered-text {
+    text-align: center;
 }
 
 /* Additional styles */
