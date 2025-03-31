@@ -6875,7 +6875,7 @@
       0.64777
     ],
     "new_ebird_code": "wiltur",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Truthuhn",
     "common_name_fr": "Dindon sauvage",
     "common_name_cs": "Krocan divok\u00fd",
