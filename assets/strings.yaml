@@ -240,7 +240,7 @@ main_recording_units:
   es: "Unidades de grabación"
 
 main_recording_units_hint:
-  en: "Click on a marker to view the detections at this site."
+  en: "Click on a marker to view the detections at that site."
   de: "Ein Klick auf einen Marker öffnet die Übersicht der Detektionen an diesem Standort."
   fr: "Cliquez sur un marqueur pour afficher les détections sur ce site."
   it: "Clicca su un marcatore per visualizzare i rilevamenti in questo sito."
