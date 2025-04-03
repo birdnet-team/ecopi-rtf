@@ -124,5 +124,5 @@ API_TOKEN = os.getenv('API_TOKEN')
 OWM_API_KEY = os.getenv('OWM_API_KEY')
 API_BASE_URL = 'https://api.ecopi.de/api/v0.1/'
 SITE_VIEWS_LOG = 'site_views.csv'
-SUPPORTED_SITE_LOCALES = {'English': 'en', 'Deutsch': 'de', 'Italiano': 'it', 'Français': 'fr', 'Čeština': 'cs', 'Spanish': 'es'}
+SUPPORTED_SITE_LOCALES = {'English': 'en', 'Español': 'es', 'Deutsch': 'de', 'Français': 'fr', 'Italiano': 'it', 'Čeština': 'cs'}
 CACHE_DIR = 'cache'
