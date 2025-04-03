@@ -4,7 +4,8 @@ let canvasCtx;
 let analyser;
 let dataArray;
 let bufferLength;
-const zoomFactor = 0.75; // This might need to be adjusted according to the livestream
+const ZOOM_FACTOR = 0.75; // This might need to be adjusted according to the livestream
+const FFT_SIZE = 1024; // This should match the FFT size used in the server-side processing
 
 function closeLivestream(audioContext, audioElement, resizeEventListener) {
     const playerElement = document.querySelector("#livestream-popup");
@@ -21,7 +22,7 @@ function closeLivestream(audioContext, audioElement, resizeEventListener) {
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 0.4; // 25% of the viewport height
+    canvas.height = window.innerHeight * 0.5; // 25% of the viewport height
     canvasCtx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
 }
 
@@ -35,10 +36,10 @@ function draw() {
     canvasCtx.putImageData(imageData, -1, 0);
 
     // Calculate the number of bins to display based on the zoom factor
-    const displayBufferLength = Math.floor(bufferLength * zoomFactor);
+    const displayBufferLength = Math.floor(bufferLength * ZOOM_FACTOR);
 
     // Define the number of low frequency pixels to skip
-    const skipPixels = 15; // Adjust this value as needed (to adjust for the server-side highpass filter)
+    const skipPixels = 0; // Adjust this value as needed (to adjust for the server-side highpass filter)
 
     // Draw the new FFT data using the Viridis colormap
     for (let i = skipPixels; i < displayBufferLength; i++) {
@@ -76,14 +77,14 @@ function openLivestream(url) {
     // Create a biquad filter to set fmin
     const biquadFilter = audioContext.createBiquadFilter();
     biquadFilter.type = "highpass";
-    biquadFilter.frequency.value = 500; // Set fmin to 300 Hz
+    biquadFilter.frequency.value = 0; // Set fmin to 300 Hz
 
     source.connect(biquadFilter);
     biquadFilter.connect(gainNode);
     gainNode.connect(analyser);
     analyser.connect(audioContext.destination);
 
-    analyser.fftSize = 1024;
+    analyser.fftSize = FFT_SIZE;
     bufferLength = analyser.frequencyBinCount;
     dataArray = new Uint8Array(bufferLength);
 
