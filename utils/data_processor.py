@@ -419,7 +419,7 @@ def get_recorder_state(recorder_id, locale):
     # Recorder ID
     params['recorder_field_id'] = recorder_id
     
-    response = make_request(url, headers, params, cache_timeout=600)
+    response = make_request(url, headers, params, cache_timeout=600, ignore_cache=True)
     
     if len(response) == 0:
         
@@ -688,7 +688,7 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
 
     return total_detections
 
-def get_weekly_detections(min_conf=0.5, species_code=None, recorder_id=None, min_count=5, locale='en'):
+def get_weekly_detections(min_conf=0.75, species_code=None, recorder_id=None, min_count=5, locale='en'):
     
     # Check if either species_code or recorder_id is set
     assert species_code or recorder_id, 'Either species_code or recorder_id must be set.'
@@ -894,13 +894,13 @@ def get_last_detection_datetime(species_code, min_conf=0.5, locale='en'):
     # Pagination/limit
     params['limit'] = 1
     
-    response = make_request(url, headers, params, cache_timeout=3300)
+    response = make_request(url, headers, params, cache_timeout=300, ignore_cache=False),
     
-    if len(response) == 0:
+    if len(response) == 0 or not 'datetime' in response[0][0]:
         return 'N/A'
     
     # convert to last seen
-    last_seen = date_to_last_seen(response[0]['datetime'], time_format=cfg.TIME_FORMAT, locale=locale)
+    last_seen = date_to_last_seen(response[0][0]['datetime'], time_format=cfg.TIME_FORMAT, locale=locale)
     
     return last_seen
 
