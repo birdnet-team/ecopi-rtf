@@ -69,7 +69,7 @@ def date_to_last_seen(date, time_format='24h', locale='en'):
     else:
         raise ValueError(f"Date {date} does not match any expected format.")
     
-    delta = datetime.now() - date
+    delta = datetime.utcnow() - date
     
     if delta.total_seconds() < 60:
         return f"{strings.get('dp_time_delta_ago_prefix')} 1 {strings.get('dp_time_delta_min')} {strings.get('dp_time_delta_ago_postfix')}"
@@ -432,7 +432,7 @@ def get_recorder_state(recorder_id, locale):
     
     last_status = response[0]
     
-    time_since_last_status = datetime.now() - datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')            
+    time_since_last_status = datetime.utcnow() - datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')            
     last_update = datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y - %H:%M')
     
     is_ok = True if time_since_last_status.total_seconds() < 3600 * 24 else False
@@ -603,7 +603,7 @@ def get_recorder_data(min_conf=0.5, species_list=[], days=1, min_count=5):
     if days < 0:
         params['start_date'] = datetime(2023, 1, 1).strftime('%Y-%m-%d')
     else:
-        params['start_date'] = (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%d')
+        params['start_date'] = (datetime.utcnow() - timedelta(days=days)).strftime('%Y-%m-%d')
     
     response = make_request(url, headers, params, cache_timeout=600)
     
