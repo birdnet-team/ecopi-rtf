@@ -254,7 +254,7 @@ def cache_costy_requests():
     
     result = {}
     
-    #print(f"Running cache_costly_requests at {datetime.now()}")
+    #print(f"Running cache_costly_requests at {datetime.utcnow()}")
     
     # Total detections
     if 'total_detections' in get_total_detections():
@@ -648,7 +648,7 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
         project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
         params['start_date'] = project_start_date.strftime('%Y-%m-%d')
     else:
-        params['start_date'] = (datetime.now(UTC).replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
+        params['start_date'] = (datetime.utcnow().replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
     
     response = make_request(url, headers, params, cache_timeout=3300)
     
@@ -719,7 +719,7 @@ def get_weekly_detections(min_conf=0.75, species_code=None, recorder_id=None, mi
     params['limit'] = 100000000
     
     # past 12 months
-    now = datetime.now(UTC)
+    now = datetime.utcnow()
     if now.hour < 12:
         now = now.replace(hour=0, minute=0, second=0, microsecond=0)
     else:
@@ -793,7 +793,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=5000, min_count=5, 
     
     def fetch_detections(hours):
         if hours > 0:
-            now = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
+            now = datetime.utcnow().replace(minute=0, second=0, microsecond=0)
             params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
             params['datetime_recording__lte'] = now.isoformat()
         else:
@@ -930,7 +930,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     
     def fetch_detections(hours):
         if hours > 0:
-            now = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
+            now = datetime.utcnow().replace(minute=0, second=0, microsecond=0)
             params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
             params['datetime_recording__lte'] = now.isoformat()
         else:
@@ -1045,7 +1045,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     
     def fetch_detections(hours):
         if hours > 0:
-            now = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
+            now = datetime.utcnow().replace(minute=0, second=0, microsecond=0)
             params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
             params['datetime_recording__lte'] = now.isoformat()
         else:
@@ -1191,7 +1191,7 @@ def request_audio(min_det=1, num_requests=3, min_conf=0.75, hours=1, limit=1000)
     
     # Limit to last N hours
     if hours > 0:
-        now = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
+        now = datetime.utcnow().replace(minute=0, second=0, microsecond=0)
         params['datetime_recording__gte'] = (now - timedelta(hours=hours)).isoformat()
         params['datetime_recording__lte'] = now.isoformat()
     else:

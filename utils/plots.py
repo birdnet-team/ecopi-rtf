@@ -17,7 +17,7 @@ from utils.strings import Strings
 
 def compute_sunrise_sunset(lat, lon, date=None):
     if date is None:
-        date = datetime.now()
+        date = datetime.utcnow()
     
     # Define the timezone for the location
     timezone = pytz.timezone(cfg.TIMEZONE) 
@@ -29,15 +29,15 @@ def compute_sunrise_sunset(lat, lon, date=None):
     s = sun(location.observer, date=localized_date)
     
     # Get the sunrise and sunset times in the localized timezone
-    sunrise_hour = s['sunrise'].astimezone(timezone).hour + 1 if s['sunrise'].astimezone(timezone).minute > 30 else s['sunrise'].astimezone(timezone).hour
-    sunset_hour = s['sunset'].astimezone(timezone).hour + 1 if s['sunset'].astimezone(timezone).minute > 30 else s['sunset'].astimezone(timezone).hour
+    sunrise_hour = s['dawn'].astimezone(timezone).hour + 1 if s['dawn'].astimezone(timezone).minute > 30 else s['dawn'].astimezone(timezone).hour
+    sunset_hour = s['dusk'].astimezone(timezone).hour + 1 if s['dusk'].astimezone(timezone).minute > 30 else s['dusk'].astimezone(timezone).hour
     
     return sunrise_hour, sunset_hour
 
 def utc_to_local(detections):
     
     timezone = pytz.timezone(cfg.TIMEZONE)
-    offset = timezone.utcoffset(datetime.now()).total_seconds() / 3600
+    offset = timezone.utcoffset(datetime.utcnow()).total_seconds() / 3600
     offset = int(offset) - 1 
     detections = np.roll(detections, offset)
     
@@ -45,7 +45,7 @@ def utc_to_local(detections):
 
 def get_hourly_detections_plot(detections, plot_sun_moon=False):
     
-    sunrise_hour, sunset_hour = compute_sunrise_sunset(cfg.DEPLOYMENT_LAT, cfg.DEPLOYMENT_LON, date=datetime.now())
+    sunrise_hour, sunset_hour = compute_sunrise_sunset(cfg.DEPLOYMENT_LAT, cfg.DEPLOYMENT_LON, date=datetime.utcnow())
     
     # Normalize the detections
     max_val = max(detections)
