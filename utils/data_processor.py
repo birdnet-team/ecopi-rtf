@@ -719,7 +719,7 @@ def get_weekly_detections(min_conf=0.75, species_code=None, recorder_id=None, mi
     params['limit'] = 100000000
     
     # past 12 months
-    now = datetime.utcnow()
+    now = datetime.now(UTC)
     if now.hour < 12:
         now = now.replace(hour=0, minute=0, second=0, microsecond=0)
     else:
