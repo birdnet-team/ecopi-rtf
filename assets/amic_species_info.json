@@ -6229,7 +6229,7 @@
       0.0
     ],
     "new_ebird_code": "eugori2",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Pirol",
     "common_name_fr": "Loriot d'Europe",
     "common_name_cs": "\u017dluva hajn\u00ed",
