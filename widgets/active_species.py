@@ -72,7 +72,7 @@ def active_species(locale, n=8, hours=7*24, recorder_list=[], show_hint=True):
         plot_rows.append(plot_row)
 
     if not plot_rows:
-        placeholder = html.P(string.gest('widget_error_no_data'), 
+        placeholder = html.P(strings.get('widget_error_no_data'), 
                              className="text-muted",
                              style={"text-align": "center", "width": "100%"})
     else:
