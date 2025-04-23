@@ -9618,7 +9618,7 @@
       0.32858
     ],
     "new_ebird_code": "comloo",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Eistaucher",
     "common_name_fr": "Plongeon huard",
     "common_name_cs": "Pot\u00e1plice ledn\u00ed",
