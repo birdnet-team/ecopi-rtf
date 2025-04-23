@@ -110,6 +110,16 @@ def to_local_time(utc_time, time_format='24h', date_format=cfg.DATE_FORMAT):
     else:
         return local_time.strftime(date_format + ' - %H:%M')
 
+def label_to_code(label):
+    sci_name = label.split('_')[0]
+    common_name = label.split('_')[1]
+    
+    for species_code, species_data in cfg.SPECIES_DATA.items():
+        if species_data['sci_name'] == sci_name and species_data['common_name'] == common_name:
+            return species_code
+        
+    return 'unkown'
+
 def is_in_species_data(species_code):
     
     return species_code in cfg.SPECIES_DATA
@@ -470,13 +480,13 @@ def get_recordings_list():
     params['limit'] = 100000000
     
     # Only retrieve certain fields
-    params['only'] = 'creation_time, duration, file_name'
+    params['only'] = 'datetime, duration'
     
     response = make_request(url, headers, params, cache_timeout=1500, ignore_cache=False)
     
     # Remove recordings that were recorded before the project start date
     try:
-        response = [recording for recording in response if not is_before_project_start(recording['creation_time'])]
+        response = [recording for recording in response if not is_before_project_start(recording['datetime'])]
     except:
         print(f"Error parsing recordings list: {response}")
     
@@ -648,9 +658,9 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
         project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
         params['start_date'] = project_start_date.strftime('%Y-%m-%d')
     else:
-        params['start_date'] = (datetime.utcnow().replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
-    
-    response = make_request(url, headers, params, cache_timeout=3300)
+        params['start_date'] = '2025-04-16'#(datetime.utcnow().replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
+
+    response = make_request(url, headers, params, cache_timeout=3300, ignore_cache=False)
     
     # Count entries
     detections = {}
@@ -685,6 +695,8 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
     detections = {k: v for k, v in detections.items() if v['total_count'] >= min_count}
     
     total_detections = {'total_detections': sum(v['total_count'] for v in detections.values()), 'species_counts': detections}
+    
+    #print(f"Total detections: {total_detections['total_detections']}")
 
     return total_detections
 
@@ -770,6 +782,7 @@ def get_weekly_detections(min_conf=0.75, species_code=None, recorder_id=None, mi
 
 def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=5000, min_count=5, locale='en'):
     url = cfg.API_BASE_URL + 'detections'
+    #url = 'https://api.ecopi.de/api/v0.2/' + 'detections'
     
     headers = {
         'Authorization': f'Token ' + cfg.API_TOKEN
@@ -823,6 +836,15 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=5000, min_count=5, 
         # Has audio?
         if not item['has_audio']:
             continue
+        
+        # Is species code 'unknown' then use class_label
+        if item['species_code'] == 'unknown':
+            if 'class_label' not in item:
+                continue
+            item['species_code'] = label_to_code(item['class_label'])
+            if item['species_code'] == 'unknown':
+                continue
+        
         # Is species in species data?
         if not is_in_species_data(item['species_code']):
             continue
@@ -1277,8 +1299,8 @@ if __name__ == '__main__':
     
     print('Current week: ', get_current_week())
     
-    #print('Number of detections in the last 24 hours:', get_total_detections(days=1)['total_detections'])
-    #print('Number of detections with confidence >= 0.5:', get_total_detections(min_conf=0.5)['total_detections'])
+    print('Number of detections in the last 24 hours:', get_total_detections(days=1)['total_detections'])
+    print('Number of detections with confidence >= 0.5:', get_total_detections(min_conf=0.5)['total_detections'])
     
     #print(get_last_n_detections())
     #print(get_most_active_species())
