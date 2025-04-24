@@ -439,6 +439,16 @@ nav .navbar-nav {
     padding: 0em;
 }
 
+.spinner-icon {
+    animation: spin 2s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .back-to-top-link {
     color: var(--button-color);
 }
