@@ -23,7 +23,7 @@ from pages.main import main_page_content, register_main_callbacks
 from pages.dashboard import dashboard_page_content
 from pages.recorder import display_recorder_page, register_recorder_callbacks
 from pages.species import register_species_callbacks, display_species_page
-from pages.detections import detections_page_content
+from pages.detections import detections_page_content, register_detections_callbacks
 from pages.about import about_page_content
 from pages.privacy import privacy_page_content
 from widgets.footer import footer_content
@@ -367,6 +367,7 @@ register_main_callbacks(app)
 register_recent_detections_callbacks(app)
 register_species_callbacks(app)
 register_recorder_callbacks(app)
+register_detections_callbacks(app)
 
 # App server
 server = app.server
