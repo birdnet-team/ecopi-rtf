@@ -5,7 +5,7 @@ from utils import data_processor as dp
 from utils import plots
 from utils.strings import Strings
 
-def active_species(locale, n=8, hours=7*24, recorder_list=[], show_hint=True):
+def active_species(locale, n=10, hours=7*24, recorder_list=[], show_hint=True):
     species_data = dp.get_most_active_species(n=n, min_conf=0.5, hours=hours, recorder_list=recorder_list, locale=locale)
     plot_rows = []
 
