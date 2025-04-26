@@ -658,7 +658,7 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
         project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
         params['start_date'] = project_start_date.strftime('%Y-%m-%d')
     else:
-        params['start_date'] = '2025-04-16'#(datetime.utcnow().replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
+        params['start_date'] = (datetime.utcnow().replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
 
     response = make_request(url, headers, params, cache_timeout=3300, ignore_cache=False)
     
