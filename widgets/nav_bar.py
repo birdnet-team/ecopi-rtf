@@ -79,8 +79,6 @@ def nav_bar(locale):
                                     ) for language, locale in cfg.SUPPORTED_SITE_LOCALES.items()
                                 ],
                                 nav=True,
-                                in_navbar=True,
-                                right=True,
                                 id="locale-dropdown-menu"
                             ),
                             dbc.NavItem(html.A(strings.get('nav_donate'), href=cfg.DONATION_URL, className="nav-link nav-donate" if cfg.DONATION_URL else "d-none", id="nav-donate", target="_blank")),
