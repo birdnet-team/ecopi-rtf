@@ -1136,8 +1136,7 @@ def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_
     url = cfg.API_BASE_URL + 'detections'
     
     headers = {
-        'Authorization': f'Token {
-            cfg.API_TOKEN}'
+        'Authorization': f'Token {cfg.API_TOKEN}'
     }
     
     params = {}
