@@ -1329,20 +1329,23 @@ if __name__ == '__main__':
     #print(get_total_audio_duration())  
     #print(get_recordings_list())
     
-    #print(request_audio())
+    #print(request_audio())    
     
-    """
-    swamp_species = ['amewoo', 'norcar', 'whbnut', 'sonspa', 'haiwoo', 'rebwoo', 'pilwoo', 'amecro', 'tuftit', 'amegfi', 'bkcchi', 'wooduc', 'dowwoo', 'blujay', 'comgra', 'daejun', 'cangoo', 'amerob', 'rewbla', 'easblu', 'carwre', 'comrav', 'winwre3', 'belkin1', 'norfli']    
+    swamp_species = ['amewoo', 'norcar', 'whbnut', 'sonspa', 'haiwoo', 'rebwoo', 'pilwoo', 'amecro', 
+                     'tuftit', 'amegfi', 'bkcchi', 'wooduc', 'dowwoo', 'blujay', 'comgra', 'daejun', 
+                     'cangoo', 'amerob', 'rewbla', 'easblu', 'carwre', 'comrav', 'winwre3', 'belkin1', 
+                     'norfli', 'easpho', 'swaspa', 'treswa', 'bnhcow', 'yebsap', 'ruckin', 't-11049240']    
     for species in swamp_species:
-        print(f"{len(export_detections(species_codes=[species], 
-                                    recorder_ids=[], 
-                                    filepath=f'../export/swamp/{species}_detections.csv', 
-                                    min_conf=0.5, 
-                                    from_date='2024-12-10', 
-                                    to_date=None, 
-                                    needs_media=False,
-                                    limit=None))} detections exported for {species}")
-
+        print(f"{len(export_detections(
+                species_codes=[species],
+                recorder_ids=[],
+                filepath=f'../export/swamp/{species}_detections.csv',
+                min_conf=0.5,
+                from_date='2024-12-10',
+                to_date=None,
+                needs_media=False,
+                limit=None
+            ))} detections exported for {species}")
         
     # Export recorder locations
     recorder_locations = []
@@ -1350,7 +1353,6 @@ if __name__ == '__main__':
         recorder_locations.append({'recorder_field_id': r, 'lat': cfg.RECORDERS[r]['lat'], 'lon': cfg.RECORDERS[r]['lon'], 'habitat': cfg.RECORDERS[r]['habitat']})
     with open('../export/swamp/recorder_locations.json', 'w') as f:
         json.dump(recorder_locations, f, indent=4)
-    """
     
-    print(request_audio(min_det=1, min_conf=0.75, hours=1, limit=1000))
     
+    #print(request_audio(min_det=1, min_conf=0.75, hours=1, limit=1000))
