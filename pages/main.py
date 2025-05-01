@@ -65,6 +65,7 @@ def main_page_content(locale):
                     html.Div(className="divider-container", children=[
                         html.Div(className="divider-line"),
                         html.H5(strings.get('main_most_active_species'), className="divider-heading"),
+                        html.H6(strings.get('main_most_active_species_hint'), className="text-muted full-width medium-small-text centered-text mb-4"),
                         html.Div(className="divider-line")
                     ]),
                     dbc.Row(id="most-active-species", className="mt-4"),

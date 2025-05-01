@@ -215,6 +215,14 @@ main_most_active_species:
   cs: "Nejaktivnější druhy (7 dní)"
   es: "Especies más activas (7 días)"
 
+main_most_active_species_hint:
+  en: "Bars show hourly detections; background shows day and night; numbers denote detections"
+  de: "Balken zeigen stündliche Detektionen; Hintergrund zeigt Tag und Nacht; Zahlen geben Detektionen an"
+  fr: "Les barres montrent les détections horaires; l'arrière-plan indique le jour et la nuit; les chiffres indiquent les détections"
+  it: "Le barre mostrano rilevazioni orarie; lo sfondo indica giorno e notte; i numeri indicano le rilevazioni"
+  cs: "Pruhy ukazují hodinové detekce; pozadí zobrazuje den a noc; čísla označují detekce"
+  es: "Las barras muestran detecciones por hora; el fondo indica día y noche; los números indican detecciones"
+
 main_recent_detections:
   en: "Recent detections"
   de: "Aktuelle Detektionen"
@@ -848,14 +856,6 @@ stats_bar_audio_total:
   it: "Audio (totale)"
   cs: "Audio (celkem)"
   es: "Audio (total)"
-
-widget_active_species_description:
-  en: "Dark blue bars show hourly detections; light blue marks nighttime, light yellow marks daytime, and numbers denote detections."
-  de: "Dunkelblaue Balken zeigen stündliche Detektionen; hellblaue Markierungen zeigen die Nacht, hellgelbe den Tag, und Zahlen die Anzahl der Detektionen."
-  fr: "Les barres bleues foncées montrent les détections horaires ; le bleu clair marque la nuit, le jaune clair marque le jour, et les chiffres indiquent les détections."
-  it: "Le barre blu scuro mostrano le rilevazioni orarie; il blu chiaro segna la notte, il giallo chiaro segna il giorno e i numeri indicano le rilevazioni."
-  cs: "Tmavě modré pruhy ukazují hodinové detekce; světle modrá označuje noc, světle žlutá označuje den a čísla označují detekce."
-  es: "Las barras azul oscuro muestran las detecciones por hora; el azul claro marca la noche, el amarillo claro marca el día y los números indican las detecciones."
 
 widget_recent_detections_show_more:
   en: "Show more detections"

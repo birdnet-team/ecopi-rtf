@@ -7,7 +7,7 @@ from utils.strings import Strings
 
 import config as cfg
 
-def active_species(locale, n=10, hours=7*24, recorder_list=[], show_hint=True):
+def active_species(locale, n=10, hours=7*24, recorder_list=[]):
     species_data = dp.get_most_active_species(n=n, min_conf=0.5, hours=hours, recorder_list=recorder_list, locale=locale)
     plot_rows = []
 
@@ -93,21 +93,6 @@ def active_species(locale, n=10, hours=7*24, recorder_list=[], show_hint=True):
                              style={"text-align": "center", "width": "100%"})
     else:
         placeholder = None
-        
-        # Append a sentence on what the chart shows
-        if show_hint:
-            plot_rows.append(
-                dbc.Row(
-                    dbc.Col([
-                        html.P(),
-                        html.Div(strings.get('widget_active_species_description'),
-                            className="text-muted",
-                            style={"text-align": "center", "width": "100%"}),
-                        ],
-                        className="m-2"
-                    )
-                )
-            )
 
     return plot_rows, placeholder
 
