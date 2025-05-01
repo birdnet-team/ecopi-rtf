@@ -29,8 +29,8 @@ def compute_sunrise_sunset(lat, lon, date=None):
     s = sun(location.observer, date=localized_date)
     
     # Get the sunrise and sunset times in the localized timezone
-    sunrise_hour = s['dawn'].astimezone(timezone).hour + 1 if s['dawn'].astimezone(timezone).minute > 45 else s['dawn'].astimezone(timezone).hour
-    sunset_hour = s['sunset'].astimezone(timezone).hour# + 1 if s['sunset'].astimezone(timezone).minute > 45 else s['sunset'].astimezone(timezone).hour
+    sunrise_hour = s['dawn'].astimezone(timezone).hour# + 1 if s['dawn'].astimezone(timezone).minute > 45 else s['dawn'].astimezone(timezone).hour
+    sunset_hour = s['dusk'].astimezone(timezone).hour# + 1 if s['sunset'].astimezone(timezone).minute > 45 else s['sunset'].astimezone(timezone).hour
     
     return sunrise_hour, sunset_hour
 
@@ -56,6 +56,9 @@ def get_hourly_detections_plot(detections, plot_sun_moon=False):
     
     # Convert UTC detections to local time
     #log_detections = utc_to_local(log_detections)
+    
+    # Shift detections 1hr forwards
+    log_detections = np.roll(log_detections, 1)
     
     # Create two sets of bars: one for blue and one for gray
     blue_bars = [val if val != 0 else 0 for val in log_detections]
