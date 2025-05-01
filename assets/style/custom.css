@@ -517,6 +517,11 @@ nav .navbar-nav {
     z-index: 10;
 }
 
+.chart-icon {
+    vertical-align: middle;
+    color: var(--plot-primary-color);
+}
+
 .chart-icon-overlay {
     position: absolute;
     top: 10px;

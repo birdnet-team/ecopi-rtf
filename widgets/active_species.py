@@ -54,13 +54,24 @@ def active_species(locale, n=10, hours=7*24, recorder_list=[], show_hint=True):
                                     ],
                                     sm=12,
                                     md=5,
+                                    lg=5,
                                     className="species-info"
                                 ),
                                 dbc.Col(
                                     dcc.Graph(figure=plot, config={"displayModeBar": False, "staticPlot": True}, style={"height": "50px"}),
                                     sm=12,
                                     md=7,
+                                    lg=6,
                                     className="species-plot"
+                                ),
+                                dbc.Col(
+                                    dcc.Link(
+                                        html.I(className="bi bi-bar-chart-fill"),
+                                        href=f"{cfg.SITE_ROOT}/species/{species}",
+                                        className="chart-icon",
+                                    ),
+                                    lg=1,
+                                    className="species-chart-icon d-none d-lg-flex align-items-center"
                                 )
                             ],
                         )
