@@ -11136,7 +11136,7 @@
       0.0
     ],
     "new_ebird_code": "comnig",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Falkennachtschwalbe",
     "common_name_fr": "Engoulevent d'Am\u00e9rique",
     "common_name_cs": "Lelek sokol\u00ed",
