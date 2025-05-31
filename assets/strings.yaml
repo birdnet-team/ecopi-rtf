@@ -182,6 +182,14 @@ habitat_trees_and_pond:
   cs: "Stromy & rybník"
   es: "Árboles & estanque"
 
+habitat_trees_and_swamp:
+  en: "Trees & swamp"
+  de: "Bäume & Sumpf"
+  fr: "Arbres & marais"
+  it: "Alberi & palude"
+  cs: "Stromy & močál"
+  es: "Árboles & pantano"
+  
 habitat_feeder_garden_and_pond:
   en: "Feeder garden & pond"
   de: "Futterplatz & Teich"
