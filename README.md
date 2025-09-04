@@ -1,6 +1,6 @@
-<img src="assets/content_img/swamp_github_header.png" alt="ecoPi-RTF Header" width="100%" />
-
 # ecoPi Real-Time Frontend (ecoPi-RTF)
+
+<img src="assets/content_img/swamp_github_header.png" alt="ecoPi-RTF Header" width="100%" />
 
 This is a web application built with Dash for visualizing data recorded with **ecoPi** real-time audio recorders. The application allows users to explore the data collected by ecoPi and learn more about the species present in the monitored areas. 
 
