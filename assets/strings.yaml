@@ -68,6 +68,14 @@ habitat_urban:
   cs: "Městský"
   es: "Urbano"
 
+habitat_urban_cpznyc:
+  en: "Urban (Central Park Zoo, NYC)"
+  de: "Urban (Central Park Zoo, NYC)"
+  fr: "Urbain (Zoo de Central Park, NYC)"
+  it: "Urbano (Zoo di Central Park, NYC)"
+  cs: "Městské (Central Park Zoo, NYC)"
+  es: "Urbano (Zoológico de Central Park, NYC)"
+
 habitat_forest:
   en: "Forest"
   de: "Wald"

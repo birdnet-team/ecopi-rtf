@@ -89,7 +89,7 @@ def display_recorder_page(recorder_id, locale):
                 [
                     html.Div(id="recorder-info-row"),
                     
-                    # Bootsratp note with 'note'string of unit if it exists
+                    # Recorder note if exists
                     html.Div(
                         html.Div(
                             strings.get(cfg.RECORDERS[int(recorder_id)]['note']),
