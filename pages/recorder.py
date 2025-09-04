@@ -94,8 +94,8 @@ def display_recorder_page(recorder_id, locale):
                         html.Div(
                             strings.get(cfg.RECORDERS[int(recorder_id)]['note']),
                             className="recorder-note"
-                        ) if 'note' in cfg.RECORDERS[int(recorder_id)] else no_update,
-                        className="d-flex justify-content-left mt-3 mb-5"
+                        ) if 'note' in cfg.RECORDERS[int(recorder_id)] else html.Div(),
+                        className="d-flex justify-content-left mt-3 mb-5" if 'note' in cfg.RECORDERS[int(recorder_id)] else "d-none"
                     ),
                     
                     html.H5(f"{strings.get('recorder_most_active_species')}:", className="recent-detections-heading mb-4"),
