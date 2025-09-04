@@ -1,3 +1,5 @@
+<img src="assets/content_img/swamp_github_header.png" alt="ecoPi-RTF Header" width="100%" />
+
 # ecoPi Real-Time Frontend (ecoPi-RTF)
 
 This is a web application built with Dash for visualizing data recorded with **ecoPi** real-time audio recorders. The application allows users to explore the data collected by ecoPi and learn more about the species present in the monitored areas. 
@@ -10,7 +12,6 @@ We currently support these monitoring projects:
 
 - SWAMP: Sapsucker Woods Acoustic Monitoring Project - [birdnet.cornell.edu/swamp/](https://birdnet.cornell.edu/swamp/)
 - AMiC: Acoustic Monitoring in Chemnitz - [birdnet.cornell.edu/amic/](https://birdnet.cornell.edu/amic/)
-- RangerSound - [birdnet.cornell.edu/rsai/](https://birdnet.cornell.edu/rsai/)
 
 Interested? Want to host your own project? Please don't hesitate to contact us at [ccb-birdnet@cornell.edu](mailto:ccb-birdnet@cornell.edu).
 
@@ -143,9 +144,9 @@ Feel free to use BirdNET for your acoustic analyses and research. If you do, ple
 
 ## Funding
 
-This project is supported by Jake Holshuh (Cornell class of '69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats.
+Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats.
 
-The development of BirdNET is supported by the German Federal Ministry of Education and Research through the project “BirdNET+” (FKZ 01|S22072). The German Federal Ministry for the Environment, Nature Conservation, Nuclear Safety and Consumer Protection contributes through the “DeepBirdDetect” project (FKZ 67KI31040E). In addition, the Deutsche Bundesstiftung Umwelt supports BirdNET through the project “RangerSound” (project 39263/01).
+The development of BirdNET is supported by the German Federal Ministry of Research, Technology and Space (FKZ 01|S22072), the German Federal Ministry for the Environment, Climate Action, Nature Conservation and Nuclear Safety (FKZ 67KI31040E), the German Federal Ministry of Economic Affairs and Energy (FKZ 16KN095550), the Deutsche Bundesstiftung Umwelt (project 39263/01) and the European Social Fund.
 
 ## Partners
 
