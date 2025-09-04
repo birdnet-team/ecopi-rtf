@@ -318,7 +318,7 @@ def get_leaflet_map(data, height='500px'):
                     direction=cfg.RECORDERS[row['id']]['tooltip'] if 'tooltip' in cfg.RECORDERS[row['id']] else 'right'
                 )
             ]
-        ) for idx, row in df.iterrows()
+        ) for idx, row in df.iterrows() if not 'show_on_map' in cfg.RECORDERS[row['id']] or cfg.RECORDERS[row['id']]['show_on_map']
     ]
     
     # Create the Leaflet map
