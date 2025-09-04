@@ -635,6 +635,16 @@ nav .navbar-nav {
     background-color: var(--button-color);
 }
 
+.recorder-note {
+    background-color: var(--plot-primary-color);
+    border-radius: 10px;
+    color: white;
+    padding: 10px 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    width: 100%;
+}
+
 .chart-icon {
     font-size: 1.2em;
     margin-left: 10px;

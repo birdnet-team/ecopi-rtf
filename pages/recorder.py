@@ -88,6 +88,16 @@ def display_recorder_page(recorder_id, locale):
             dbc.Container(
                 [
                     html.Div(id="recorder-info-row"),
+                    
+                    # Bootsratp note with 'note'string of unit if it exists
+                    html.Div(
+                        html.Div(
+                            strings.get(cfg.RECORDERS[int(recorder_id)]['note']),
+                            className="recorder-note"
+                        ) if 'note' in cfg.RECORDERS[int(recorder_id)] else no_update,
+                        className="d-flex justify-content-left mt-3 mb-5"
+                    ),
+                    
                     html.H5(f"{strings.get('recorder_most_active_species')}:", className="recent-detections-heading mb-4"),
                     html.Div(id="recorder-activity-plot"),
                     html.H5(strings.get('main_recent_detections') + ":", className="recent-detections-heading mt-4"),

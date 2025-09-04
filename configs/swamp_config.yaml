@@ -20,7 +20,7 @@ RECORDERS:
   8: {id: '0276', lat: 42.4782, lon: -76.4547, habitat: 'habitat_forest', img: 'swamp_unit_8.jpg', tooltip: 'bottom'}
   9: {id: '0274', lat: 42.4753, lon: -76.4451, habitat: 'habitat_forest_clearing', img: 'swamp_unit_9.jpg', tooltip: 'right'}
   10: {id: '0277', lat: 42.4742, lon: -76.4488, habitat: 'habitat_shrubs_and_pond', img: 'swamp_unit_10.jpg', tooltip: 'right'}
-  11: {id: '0076', lat: 42.4761, lon: -76.4494, habitat: 'habitat_trees_and_swamp', img: 'swamp_unit_11.jpg', tooltip: 'left', show_on_map: false}
+  11: {id: '0076', lat: 42.4761, lon: -76.4494, habitat: 'habitat_urban', img: 'swamp_unit_11.jpg', tooltip: 'left', show_on_map: false, note: 'recorder_note_swamp_11'}
 MAP_ZOOM_LEVEL: 15
 MAIN_HEADER_IMG_LIST: ['ssw_main_header_2.jpg', 'ssw_main_header_3.jpg', 'ssw_main_header_4.jpg']
 ABOUT_HEADER_IMG_LIST: ['ssw_about_header_1.jpg', 'ssw_about_header_2.jpg', 'ssw_about_header_3.jpg', 'ssw_about_header_4.jpg', 'ssw_about_header_5.jpg']

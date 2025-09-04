@@ -317,6 +317,14 @@ recorder_most_active_species:
   cs: "Nejaktivnější druhy (7 dní, toto místo)"
   es: "Especies más activas (7 días, este sitio)"
 
+recorder_note_swamp_11:
+  en: "Part of a Cornell Lab project monitoring bird activity, this recording unit is here in Central Park Zoo to showcase AI-powered bioacoustics. See 'About' for details."
+  de: "Teil eines Projekts des Cornell Lab zum Monitoring von Vogelaktivität – dieser Rekorder hängt im Central Park Zoo, um KI-gestützte Bioakustik zu demonstrieren. Siehe 'Infos' für Details."
+  fr: "Dans le cadre d’un projet du Cornell Lab de suivi de l’activité des oiseaux, ce récepteur est installé au zoo de Central Park pour démontrer la bioacoustique assistée par IA. Voir 'À propos' pour plus de détails."
+  it: "Parte di un progetto del Cornell Lab per monitorare l’attività degli uccelli – questo registratore si trova allo zoo di Central Park per dimostrare la bioacustica con tecnologia AI. Vedi 'Informazioni' per i dettagli."
+  cs: "Součást projektu Cornell Lab pro monitorování ptačí aktivity – tento rekordér je umístěn v Central Park Zoo, aby demonstroval bioakustiku s podporou AI. Podrobnosti najdete v části 'O projektu'."
+  es: "Como parte de un proyecto del Cornell Lab para monitorear la actividad de las aves, este grabador se encuentra en el zoológico de Central Park para demostrar la bioacústica con IA. Consulta 'Acerca de' para más detalles."
+
 species_table_header_recorder:
   en: "Recorder"
   de: "Rekorder"
