@@ -8694,7 +8694,7 @@
       0.0
     ],
     "new_ebird_code": "fiscro",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Fischkr\u00e4he",
     "common_name_fr": "Corneille de rivage",
     "common_name_cs": "Vr\u00e1na ryb\u00ed",

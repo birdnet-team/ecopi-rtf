@@ -62,7 +62,7 @@ def nav_bar(locale):
                                 label=strings.get('nav_recorder_top'),
                                 children=[
                                     dbc.DropdownMenuItem(
-                                        dbc.NavLink(f"{strings.get('nav_recorder')} #{recorder_id}", href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}", className="dropdown-item", id=f"nav-recorder-{recorder_id}")
+                                        dbc.NavLink(f"{strings.get('nav_recorder')} #{recorder_id}{cfg.RECORDERS[recorder_id]['nav_hint'] if 'nav_hint' in cfg.RECORDERS[recorder_id] else ''}", href=f"{cfg.SITE_ROOT}/recorder/{recorder_id}", className="dropdown-item", id=f"nav-recorder-{recorder_id}")
                                     ) for recorder_id in cfg.RECORDERS.keys()
                                 ],
                                 nav=True,
