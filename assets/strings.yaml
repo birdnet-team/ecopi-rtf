@@ -58,64 +58,6 @@ projects:
       it: "Il progetto di Monitoraggio Acustico a Chemnitz combina tecnologia e coinvolgimento dei visitatori per mostrare il potere del monitoraggio acustico nella comprensione del mondo naturale. Ascoltando i suoni degli uccelli nel Giardino Botanico, i visitatori possono esplorare come vengono utilizzati strumenti avanzati per studiare la fauna selvatica e apprezzare meglio la diversità degli uccelli nella zona."
       cs: "Projekt Akustického Monitorování v Chemnitzu kombinuje technologii a zapojení návštěvníků, aby ukázal sílu akustického monitorování při porozumění přírodnímu světu. Posloucháním zvuků ptáků v Botanické zahradě mohou návštěvníci prozkoumat, jak jsou pokročilé nástroje používány ke studiu divoké přírody a lépe ocenit rozmanitost ptactva v oblasti."
       es: "El proyecto de Monitoreo Acústico en Chemnitz combina tecnología y participación de los visitantes para mostrar el poder del monitoreo acústico en la comprensión del mundo natural. Al escuchar los sonidos de los pájaros en el Jardín Botánico, los visitantes pueden explorar cómo se utilizan herramientas avanzadas para estudiar la vida silvestre y obtener una apreciación más profunda de la diversidad de aves en el área."
-  neeri:
-    project_main_title:
-      en: "Neeracherried Acoustic Monitoring Project"
-      de: "Akustisches Monitoring im Neeracherried"
-      fr: "Projet de Surveillance Acoustique de Neeracherried"
-      it: "Progetto di Monitoraggio Acustico di Neeracherried"
-      cs: "Projekt Akustického Monitorování Neeracherried"
-      es: "Proyecto de Monitoreo Acústico de Neeracherried"
-    project_subtitle:
-      en: "AI-powered acoustic monitoring"
-      de: "KI-gestütztes akustisches Monitoring"
-      fr: "Surveillance acoustique alimentée par l'IA"
-      it: "Monitoraggio acustico alimentato dall'IA"
-      cs: "Akustické monitorování poháněné AI"
-      es: "Monitoreo acústico impulsado por IA"
-    project_subtitle_desc:
-      en: "We listen to the sounds of the birds in Neeracherried and track species diversity over time."
-      de: "Wir lauschen den Stimmen der Vögel im Neeracherried und verfolgen die Artenvielfalt im Laufe der Zeit."
-      fr: "Nous écoutons les sons des oiseaux à Neeracherried et suivons la diversité des espèces au fil du temps."
-      it: "Ascoltiamo i suoni degli uccelli a Neeracherried e monitoriamo la diversità delle specie nel tempo."
-      cs: "Posloucháme zvuky ptáků v Neeracherried a sledujeme rozmanitost druhů v průběhu času."
-      es: "Escuchamos los sonidos de los pájaros en Neeracherried y rastreamos la diversidad de especies a lo largo del tiempo."
-    project_goal:
-      en: "The Neeracherried Acoustic Monitoring Project combines technology and visitor engagement to showcase the power of acoustic monitoring in understanding the natural world. By listening to the sounds of Neeracherried, visitors can explore how advanced tools are used to study wildlife and gain a deeper appreciation for the diversity of birdlife in the area."
-      de: "Das akustische Monitoring-Projekt im Neeracherried kombiniert Technologie und die Einbeziehung von Besuchern, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren.Besucher können den Stimmen der Vögel des Neeracherried lauschen und erfahren, wie moderne Instrumente zur Erforschung der Vogelwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt in diesem Areal zu entwickeln."
-      fr: "Le Projet de Surveillance Acoustique de Neeracherried combine technologie et engagement des visiteurs pour démontrer la puissance de la surveillance acoustique dans la compréhension du monde naturel. En écoutant les sons de Neeracherried, les visiteurs peuvent explorer comment des outils avancés sont utilisés pour étudier la faune et apprécier davantage la diversité des oiseaux dans la région."
-      it: "Il Progetto di Monitoraggio Acustico di Neeracherried combina tecnologia e coinvolgimento dei visitatori per mostrare il potere del monitoraggio acustico nella comprensione del mondo naturale. Ascoltando i suoni di Neeracherried, i visitatori possono esplorare come vengono utilizzati strumenti avanzati per studiare la fauna selvatica e apprezzare meglio la diversità degli uccelli nella zona."
-      cs: "Projekt Akustického Monitorování Neeracherried kombinuje technologii a zapojení návštěvníků, aby ukázal sílu akustického monitorování při porozumění přírodnímu světu. Posloucháním zvuků Neeracherried mohou návštěvníci prozkoumat, jak jsou pokročilé nástroje používány ke studiu divoké přírody a lépe ocenit rozmanitost ptactva v oblasti."
-      es: "El Proyecto de Monitoreo Acústico de Neeracherried combina tecnología y participación de los visitantes para mostrar el poder del monitoreo acústico en la comprensión del mundo natural. Al escuchar los sonidos de Neeracherried, los visitantes pueden explorar cómo se utilizan herramientas avanzadas para estudiar la vida silvestre y obtener una apreciación más profunda de la diversidad de aves en el área."
-  rsai:
-    project_main_title:
-      en: "Bioacoustics in the Bavarian Forest National Park"
-      de: "Bioakustik im Nationalpark Bayrischer Wald"
-      fr: "Bioacoustique dans le Parc National de la Forêt Bavaroise"
-      it: "Bioacustica nel Parco Nazionale della Foresta Bavarese"
-      cs: "Bioakustika v Národním parku Bavorský les"
-      es: "Bioacústica en el Parque Nacional del Bosque Bávaro"
-    project_subtitle:
-      en: "AI-powered biodiversity monitoring"
-      de: "KI-gestütztes Biodiversitäts-Monitoring"
-      fr: "Surveillance de la biodiversité alimentée par l'IA"
-      it: "Monitoraggio della biodiversità alimentato dall'IA"
-      cs: "Monitorování biodiverzity poháněné AI"
-      es: "Monitoreo de biodiversidad impulsado por IA"
-    project_subtitle_desc:
-      en: "We listen to the sounds of birds in the Bavarian Forest national park and track species diversity over time."
-      de: "Wir lauschen den Stimmen der Vögel im Nationalpark Bayerischer Wald und verfolgen die Artenvielfalt im Laufe der Zeit."
-      fr: "Nous écoutons les sons des oiseaux dans le parc national de la Forêt bavaroise et suivons la diversité des espèces au fil du temps."
-      it: "Ascoltiamo i suoni degli uccelli nel parco nazionale della Foresta Bavarese e monitoriamo la diversità delle specie nel tempo."
-      cs: "Posloucháme zvuky ptáků v národním parku Bavorský les a sledujeme rozmanitost druhů v průběhu času."
-      es: "Escuchamos los sonidos de los pájaros en el parque nacional del Bosque Bávaro y rastreamos la diversidad de especies a lo largo del tiempo."
-    project_goal:
-      en: "The 'RangerSound' project combines technology and visitor engagement to demonstrate the power of acoustic monitoring to understand the natural world. Park rangers and visitors can listen to the voices of the national park's birds and learn how modern tools are used to study birdlife and develop a better understanding of the diversity in the different areas."
-      de: "Das Projekt 'RangerSound' kombiniert Technologie und die Einbeziehung der Besucher, um die Möglichkeiten des akustischen Monitorings für das Verständnis der natürlichen Welt zu demonstrieren. Park-Ranger und Besucher können so den Stimmen der Vögel des Nationalparks lauschen und erfahren, wie moderne Instrumente zur Erforschung der Vogelwelt eingesetzt werden, um ein besseres Verständnis für die Vielfalt in den verschiedenen Revieren zu entwickeln."
-      fr: "Le projet 'RangerSound' combine la technologie et l'implication des visiteurs afin de démontrer les possibilités du monitoring acoustique pour la compréhension du monde naturel. Les gardes forestiers et les visiteurs peuvent ainsi écouter les voix des oiseaux du parc national et découvrir comment les instruments modernes sont utilisés pour étudier l'avifaune et développer une meilleure compréhension de la diversité dans les différents territoires."
-      it: "Il progetto 'RangerSound' combina tecnologia e coinvolgimento dei visitatori per dimostrare il potere del monitoraggio acustico per comprendere il mondo naturale. I ranger e i visitatori possono ascoltare le voci degli uccelli del parco nazionale e apprendere come gli strumenti moderni vengono utilizzati per studiare la vita degli uccelli e sviluppare una migliore comprensione della diversità nelle diverse aree."
-      cs: "Projekt 'RangerSound' kombinuje technologii a zapojení návštěvníků, aby ukázal sílu akustického monitorování při porozumění přírodnímu světu. Parkoví strážci a návštěvníci mohou poslouchat hlasy ptáků národního parku a dozvědět se, jak jsou moderní nástroje používány k studiu ptactva a vyvinout lepší porozumění rozmanitosti v různých oblastech."
-      es: "El proyecto 'RangerSound' combina tecnología y participación de los visitantes para demostrar el poder del monitoreo acústico para comprender el mundo natural. Los guardaparques y los visitantes pueden escuchar las voces de los pájaros del parque nacional y aprender cómo se utilizan herramientas modernas para estudiar la vida de las aves y desarrollar una mejor comprensión de la diversidad en las diferentes áreas."
 
 # Habitat strings
 habitat_urban:
@@ -744,22 +686,6 @@ about_partnership_amic:
   cs: "Tento projekt je spoluprací mezi Cornell Lab of Ornithology, Technickou univerzitou v Chemnitzu a OekoFor GbR."
   es: "Este proyecto es una colaboración entre el Cornell Lab of Ornithology, la Universidad Tecnológica de Chemnitz y OekoFor GbR."
 
-about_partnership_neeri:
-  en: "This project is a collaboration between the Cornell Lab of Ornithology, Chemnitz University of Technology, OekoFor GbR, BirdLife Switzerland, and the Swiss Ornithological Institute."
-  de: "Dieses Projekt ist eine Zusammenarbeit zwischen dem Cornell Lab of Ornithology, der Technischen Universität Chemnitz, der OekoFor GbR, BirdLife Schweiz und der Schweizerischen Vogelwarte Sempach."
-  fr: "Ce projet est une collaboration entre le Cornell Lab of Ornithology, l'Université de Technologie de Chemnitz, OekoFor GbR, BirdLife Suisse et Station ornithologique suisse."
-  it: "Questo progetto è una collaborazione tra il Cornell Lab of Ornithology, l'Università Tecnica di Chemnitz, OekoFor GbR, BirdLife Svizzera e stazione ornitologica svizzera di Sempach."
-  cs: "Tento projekt je spoluprací mezi Cornell Lab of Ornithology, Technickou univerzitou v Chemnitzu, OekoFor GbR, BirdLife Švýcarsko a Švýcarským ornitologickým institutem."
-  es: "Este proyecto es una colaboración entre el Cornell Lab of Ornithology, la Universidad Tecnológica de Chemnitz, OekoFor GbR, BirdLife Suiza y el Instituto Ornitológico Suizo."
-
-about_partnership_rsai:
-  en: "This project is a collaboration between the Bavarian Forest National Park, the Cornell Lab of Ornithology, Chemnitz University of Technology, and OekoFor GbR. This project is funded by the Deutsche Bundesstiftung Umwelt."
-  de: "Dieses Projekt ist eine Zusammenarbeit zwischen dem Nationalpark Bayerischer Wald, dem Cornell Lab of Ornithology, der Technischen Universität Chemnitz und der OekoFor GbR. Dieses Projekt wird von der Deutschen Bundesstiftung Umwelt gefördert."
-  fr: "Ce projet est une collaboration entre le parc national de la forêt bavaroise, le Cornell Lab of Ornithology, l'Université de Technologie de Chemnitz et OekoFor GbR. Ce projet est financé par la Deutsche Bundesstiftung Umwelt."
-  it: "Questo progetto è una collaborazione tra il Parco Nazionale della Foresta Bavarese, il Cornell Lab of Ornithology, l'Università Tecnica di Chemnitz e OekoFor GbR. Questo progetto è finanziato dalla Deutsche Bundesstiftung Umwelt."
-  cs: "Tento projekt je spoluprací mezi Národním parkem Bavorský les, Cornell Lab of Ornithology, Technickou univerzitou v Chemnitzu a OekoFor GbR. Tento projekt je financován Deutsche Bundesstiftung Umwelt."
-  es: "Este proyecto es una colaboración entre el Parque Nacional del Bosque Bávaro, el Cornell Lab of Ornithology, la Universidad Tecnológica de Chemnitz y OekoFor GbR. Este proyecto está financiado por la Deutsche Bundesstiftung Umwelt."
-
 about_funding_1:
   en: "This project is supported by Jake Holshuh (Cornell class of ’69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats."
   de: "Dieses Projekt wird großzügig unterstützt von Jake Holshuh (Cornell Jahrgang '69) und den Arthur Vining Davis Foundations. Dank der Förderung von K. Lisa Yang kann unsere Arbeit am K. Lisa Yang Center for Conservation Bioacoustics innovative Technologien vorantreiben, die den Schutz von Wildtieren und ihren Lebensräumen fördern und zur Aufklärung beitragen."
@@ -937,14 +863,6 @@ widget_footer_link_section_botanical_garden:
   cs: "Botanická zahrada"
   es: "Jardín Botánico"
 
-widget_footer_link_section_birdlife:
-  en: "BirdLife"
-  de: "BirdLife"
-  fr: "BirdLife"
-  it: "BirdLife"
-  cs: "BirdLife"
-  es: "BirdLife"
-
 widget_footer_link_section_oekofor:
   en: "OekoFor"
   de: "OekoFor"
@@ -968,14 +886,6 @@ widget_footer_link_section_tuc:
   it: "Università di Chemnitz"
   cs: "TU Chemnitz"
   es: "Universidad de Chemnitz"
-
-widget_footer_link_section_baywald:
-  en: "National Park"
-  de: "Nationalpark"
-  fr: "Parc national"
-  it: "Parco nazionale"
-  cs: "Národní park"
-  es: "Parque Nacional"
 
 widget_footer_link_section_explore:
   en: "Explore More"
@@ -1304,70 +1214,6 @@ widget_footer_oekofor_contact:
   it: "Contatto"
   cs: "Kontakt"
   es: "Contacto"
-
-widget_footer_baywald_about_us:
-  en: "Homepage"
-  de: "Homepage"
-  fr: "Page d'accueil"
-  it: "Homepage"
-  cs: "Homepage"
-  es: "Página principal"
-
-widget_footer_baywald_conservation:
-  en: "Conservation"
-  de: "Naturschutz"
-  fr: "Conservation"
-  it: "Conservazione"
-  cs: "Ochrana"
-  es: "Conservación"
-
-widget_footer_baywald_research:
-  en: "Research"
-  de: "Forschung"
-  fr: "Recherche"
-  it: "Ricerca"
-  cs: "Výzkum"
-  es: "Investigación"
-
-widget_footer_baywald_webcams:
-  en: "Webcams"
-  de: "Webcams"
-  fr: "Webcams"
-  it: "Webcam"
-  cs: "Webkamery"
-  es: "Cámaras web"
-
-widget_footer_birdlife_projects:
-  en: "Projects"
-  de: "Projekte"
-  fr: "Projets"
-  it: "Progetti"
-  cs: "Projekty"
-  es: "Proyectos"
-
-widget_footer_birdlife_visitor_centers:
-  en: "Visitor centers"
-  de: "Besucherzentren"
-  fr: "Centres de visiteurs"
-  it: "Centri visitatori"
-  cs: "Návštěvnická centra"
-  es: "Centros de visitantes"
-
-widget_footer_birdlife_membership:
-  en: "Membership"
-  de: "Mitgliedschaft"
-  fr: "Adhésion"
-  it: "Iscrizione"
-  cs: "Členství"
-  es: "Membresía"
-
-widget_footer_birdlife_support_our_work:
-  en: "Support our work"
-  de: "Unterstützen Sie uns"
-  fr: "Soutenez notre travail"
-  it: "Sostieni il nostro lavoro"
-  cs: "Podpořte naši práci"
-  es: "Apoya nuestro trabajo"
 
 widget_footer_tu_chemnitz_university:
   en: "University"
