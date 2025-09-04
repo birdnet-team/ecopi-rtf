@@ -658,7 +658,11 @@ def get_total_detections(min_conf=0.5, species_list=[], recorder_list=[], days=-
         project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
         params['start_date'] = project_start_date.strftime('%Y-%m-%d')
     else:
-        params['start_date'] = (datetime.utcnow().replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
+        if days >= 1:
+            params['start_date'] = (datetime.utcnow().replace(minute=0, second=0, microsecond=0) - timedelta(days=days)).strftime('%Y-%m-%d')
+        else:
+            hours = int(days * 24)
+            params['start_date'] = (datetime.utcnow().replace(minute=0, second=0, microsecond=0) - timedelta(hours=hours)).strftime('%Y-%m-%d')
 
     response = make_request(url, headers, params, cache_timeout=3300, ignore_cache=False)
     
@@ -1130,6 +1134,178 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     response = response[:max_results]
     
     return response
+
+def get_species_data_api(params):
+    
+    species_code = params.get('species', ','.join([s for s in cfg.SPECIES_DATA.keys() if not is_blacklisted(s)]))
+    locale = params.get('locale', 'en')
+    
+    if species_code is None or len(species_code.strip()) == 0:
+        return {}
+    
+    # Return species data for single species or list of species
+    species_list = [c.strip() for c in species_code.split(',') if c.strip()]
+    species_data = {}
+    for species in species_list:
+        species_data[species] = get_species_data(species, locale)
+        species_data[species]['blacklisted'] = is_blacklisted(species)
+        species_data[species]['frequency'] = cfg.SPECIES_DATA[species]['frequencies']
+        
+    return species_data
+
+def get_recorders_data_api(params):
+    recorder_id = params.get('recorder_id', ','.join([str(r) for r in cfg.RECORDERS.keys()]))
+    locale = params.get('locale', 'en')
+
+    # If no recorder_id is provided, return all recorders
+    if recorder_id is None or len(str(recorder_id).strip()) == 0:
+        recorders = list(cfg.RECORDERS.keys())
+    else:
+        # Support comma-separated lists, convert to int
+        recorders = [int(i.strip()) for i in str(recorder_id).split(',') if i.strip().isdigit() and int(i.strip()) in cfg.RECORDERS]
+    
+    strings = Strings(locale, project=cfg.PROJECT_ID)
+
+    recorder_data = {}
+    for recorder in recorders:
+        if recorder in cfg.RECORDERS:
+            data = {}
+            data['id'] = recorder
+            data['habitat'] = strings.get(cfg.RECORDERS[recorder]['habitat'])
+            data['lat'] = cfg.RECORDERS[recorder]['lat']
+            data['lon'] = cfg.RECORDERS[recorder]['lon']
+            data['img_url'] = cfg.SITE_ROOT + "/assets/recorder_img/" + cfg.RECORDERS[recorder]['img']
+            recorder_data[recorder] = data
+    
+    return recorder_data
+
+def get_detections_api(params):
+    
+    # Parse parameters
+    species_code = params.get('species', None)
+    recorder_id = params.get('recorder_id', None)
+    min_conf = float(params.get('min_conf', 0.5))
+    from_date = params.get('from_date', (datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(hours=24))).isoformat()
+    to_date = params.get('to_date', None)
+    limit = params.get('limit', 100000000)
+    has_media = params.get('has_media', None)
+    sum_interval = params.get('sum', None)
+        
+    url = cfg.API_BASE_URL + 'detections'
+    
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    
+    params_api = {}
+    # Project name
+    params_api['project_name'] = cfg.PROJECT_NAME   
+
+    # Species code: support comma-separated lists
+    if species_code is not None:
+        codes = [c.strip() for c in species_code.split(',') if c.strip()]
+        if len(codes) == 1:
+            params_api['species_code'] = codes[0]
+        elif len(codes) > 1:
+            params_api['species_code__in'] = ','.join(codes)
+
+    # Recorder field ID: support comma-separated lists
+    if recorder_id is not None:
+        ids = [i.strip() for i in recorder_id.split(',') if i.strip()]
+        if len(ids) == 1:
+            params_api['recorder_field_id'] = ids[0]
+        elif len(ids) > 1:
+            params_api['recorder_field_id__in'] = ','.join(ids)
+
+    # Only detections with audio?
+    if has_media is not None and has_media.lower() == 'true':
+        params_api['has_media'] = True
+    elif has_media is not None and has_media.lower() == 'false':
+        params_api['has_media'] = False    
+    
+    # Minimum confidence
+    params_api['confidence__gte'] = min_conf
+    
+    # Pagination/limit
+    params_api['limit'] = limit
+    
+    # Set date range
+    if from_date is not None:
+        params_api['datetime_recording__gte'] = from_date
+    if to_date is not None:
+        params_api['datetime_recording__lte'] = to_date 
+        
+    response = make_request(url, headers, params_api, cache_timeout=3300, ignore_cache=False)
+    
+    # Convert to local time
+    for item in response:
+        item['datetime'] = to_local_time(item['datetime'])
+        item['datetime_recording'] = to_local_time(item['datetime_recording'])
+        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100) / 10.0
+        
+    # Remove species not in species data
+    response = [item for item in response if is_in_species_data(item['species_code'])]
+    
+    # Remove blacklisted species
+    response = [item for item in response if not is_blacklisted(item['species_code'])]
+    
+    # Remove low confidence detections
+    response = [item for item in response if item['confidence'] >= 4]
+    
+    # Only include certain fields
+    for item in response:
+        item_keys = list(item.keys())
+        for key in item_keys:
+            if key not in ['uid', 'species_code', 'datetime_recording', 'recorder_field_id', 'confidence', 'start', 'end', 'has_media', 'url_media']:
+                item.pop(key, None)
+                
+    # Aggregate detections if sum_interval is set
+    if sum_interval is not None:
+        response = aggregate_detections(response, interval=sum_interval)
+    
+    return response
+
+def aggregate_detections(detections, interval='day'):
+    # Supported intervals: hour, day, week, month
+    assert interval in ['hour', 'day', 'week', 'month'], 'Unsupported interval. Supported intervals: hour, day, week, month'
+
+    if interval == 'hour':
+        # 24 buckets for hours 0-23
+        buckets = {str(h).zfill(2): 0 for h in range(24)}
+        for item in detections:
+            # Parse hour from datetime_recording
+            try:
+                dt = datetime.strptime(item['datetime_recording'].split(' - ')[1], '%H:%M')
+                hour = dt.hour
+            except Exception:
+                # fallback: try to parse from ISO format if needed
+                try:
+                    dt = datetime.fromisoformat(item['datetime_recording'])
+                    hour = dt.hour
+                except Exception:
+                    continue
+            buckets[str(hour).zfill(2)] += 1
+        # Only respond with buckets that have items
+        aggregated_list = [{'hour': h, 'count': c} for h, c in buckets.items() if c > 0]
+        return aggregated_list
+
+    # ...existing code for day, week, month...
+    aggregated = {}
+    for item in detections:
+        dt = datetime.strptime(item['datetime_recording'].split(' - ')[0], '%m/%d/%Y')
+        if interval == 'day':
+            key = dt.strftime('%Y-%m-%d')
+        elif interval == 'week':
+            year, week, _ = dt.isocalendar()
+            key = f'{year}-W{week:02d}'
+        elif interval == 'month':
+            key = dt.strftime('%Y-%m')
+        if key not in aggregated:
+            aggregated[key] = 0
+        aggregated[key] += 1
+    aggregated_list = [{'interval': k, 'count': v} for k, v in sorted(aggregated.items())]
+    return aggregated_list
+        
 
 def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_date=None, to_date=None, limit=None, needs_media=True):    
     

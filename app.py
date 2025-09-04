@@ -271,6 +271,75 @@ def ping():
         return jsonify(status="ok")
     else:
         return jsonify(status="error")
+    
+# API route /detections
+# Example usage: /api/detections?species=amecro,blujay&recorder_id=1,2,3&min_conf=0.5&from_date=2025-01-01&to_date=2025-12-31&limit=100&has_media=true
+@app.server.route("/api/detections")
+def api_detections():
+    try:
+        params = request.args.to_dict()
+        data = dp.get_detections_api(params)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+    
+# API route /species metadata
+# Example usage: /api/species?species=amecro,blujay&locale=en
+@app.server.route("/api/species")
+def api_species():
+    try:
+        params = request.args.to_dict()
+        species_data = dp.get_species_data_api(params)
+        return jsonify(species_data)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+    
+# API route /recorders metadata
+@app.server.route("/api/recorders")
+def api_recorders():
+    try:
+        params = request.args.to_dict()
+        recorder_data = dp.get_recorders_data_api(params)
+        return jsonify(recorder_data)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+    
+# API help route (summarizes the interface and parameters)
+@app.server.route("/api/help")
+def api_help():
+    help_info = {
+        "/api/detections": {
+            "description": "Retrieve detection data with optional filters.",
+            "parameters": {
+                "species": "Comma-separated list of species codes (e.g., amecro,blujay). Leave empty for all.",
+                "recorder_id": "Comma-separated list of recorder IDs (e.g., 1,2,3). Leave empty for all.",
+                "min_conf": "Minimum confidence threshold (e.g., 0.85). Default is 0.5.",
+                "from_date": "Start date in YYYY-MM-DD format (e.g., 2025-01-01). Leave empty for last 24h.",
+                "to_date": "End date in YYYY-MM-DD format (e.g., 2025-12-31). Leave empty for current date/time.",
+                "limit": "Maximum number of records to return (e.g., 100). Leave empty for no limit.",
+                "has_media": "Filter for detections with media (true/false). Leave empty for no filter.",
+                "sum": "Aggregate results by species and recorder over an interval (hour/day/month).",
+            },
+            "example": "/api/detections?species=amecro,blujay&recorder_id=1,2&min_conf=0.5&from_date=2025-01-01&to_date=2025-12-31&limit=100&has_media=true"
+        },
+        "/api/species": {
+            "description": "Retrieve species metadata.",
+            "parameters": {
+                "species": "Comma-separated list of species codes (e.g., amecro,blujay). Leave empty for all.",
+                "locale": "Locale code for localization (e.g., en, es). Default is 'en'."
+            },
+            "example": "/api/species?species=amecro,blujay&locale=en"
+        },
+        "/api/recorders": {
+            "description": "Retrieve recorder metadata.",
+            "parameters": {
+                "recorder_id": "Comma-separated list of recorder IDs (e.g., 1,2,3). Leave empty for all.",
+                "locale": "Locale code for localization (e.g., en, es). Default is 'en'."
+            },
+            "example": "/api/recorders?recorder_id=1,2&locale=en"
+        }
+    }
+    return jsonify(help_info)
 
 @app.server.route('/assets/style/custom.css')
 def custom_css():
