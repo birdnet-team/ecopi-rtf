@@ -731,9 +731,12 @@ def get_weekly_detections(min_conf=0.75, species_code=None, recorder_id=None, mi
         params['species_code'] = species_code
     if recorder_id:
         params['recorder_field_id'] = recorder_id
+        
+    # Order by uid (pseudo random order)
+    params['order_by'] = 'uid'
     
     # Pagination/limit
-    params['limit'] = 100000000
+    params['limit'] = 2500 #100000000
     
     # past 12 months
     now = datetime.now(UTC)
