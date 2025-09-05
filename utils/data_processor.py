@@ -139,9 +139,10 @@ def is_before_project_start(date):
     
     return date < project_start_date
 
-def get_species_frequency(species):
+def get_species_frequency(species, week=None):
     
-    week = get_current_week()
+    if week is None:
+        week = get_current_week()
     try:
         species_freq = cfg.SPECIES_DATA[species]['frequencies'][week - 1]
     except:
@@ -149,10 +150,10 @@ def get_species_frequency(species):
         
     return species_freq
 
-def get_confidence_score(species, confidence):
+def get_confidence_score(species, confidence, week):
     
     # Get eBird species frequency
-    species_freq = get_species_frequency(species)
+    species_freq = get_species_frequency(species, week)
         
     # Blend confidence and frequency as weighted average
     if species_freq >= 10 or species.startswith('t-'):
@@ -861,7 +862,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=5000, min_count=5, 
             continue
         
         # compute confidence as percentage
-        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100)
+        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100, get_week_from_date(datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')))
         
         if item['confidence'] < 33:
             continue
@@ -1095,15 +1096,16 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
         response = fetch_detections(-1)
     
     # For each detection, get the confidence score
-    for item in response:
+    for item in response:        
+        
+        # compute confidence as percentage
+        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100, get_week_from_date(datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S'))) / 10.0
+        
         # format date
         item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y - %H:%M')
         
         # convert to local time
         item['datetime'] = to_local_time(item['datetime'], cfg.TIME_FORMAT)
-        
-        # compute confidence as percentage
-        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100) / 10.0
         
     # Remove species not in species data
     response = [item for item in response if is_in_species_data(item['species_code'])]
@@ -1248,11 +1250,11 @@ def get_detections_api(params):
         
     response = make_request(url, headers, params_api, cache_timeout=3300, ignore_cache=False)
     
-    # Convert to local time
-    for item in response:
+    # Convert to local time and compute confidence score
+    for item in response:        
+        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100, get_week_from_date(datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S'))) / 10.0
         item['datetime'] = to_local_time(item['datetime'])
         item['datetime_recording'] = to_local_time(item['datetime_recording'])
-        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100) / 10.0
         
     # Remove species not in species data
     response = [item for item in response if is_in_species_data(item['species_code'])]
