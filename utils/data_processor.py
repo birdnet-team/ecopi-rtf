@@ -803,7 +803,7 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=5000, min_count=5, 
     params['has_media'] = True
     
     # Only retrieve certain fields
-    params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'
+    params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id, confirmed, marked'
     
     # Pagination/limit
     params['limit'] = limit
@@ -839,6 +839,10 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=5000, min_count=5, 
         
         # Has audio?
         if not item['has_audio']:
+            continue
+        
+        # Has confirmed: No?
+        if 'confirmed' in item and item['confirmed'] == 'NO':
             continue
         
         # Is species code 'unknown' then use class_label
@@ -1064,7 +1068,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
         params['recorder_field_id'] = recorder_id
         
     # Only retrieve certain fields
-    params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id'
+    params['only'] = 'species_code, has_audio, datetime, url_media, confidence, recorder_field_id, confirmed, marked'
     
     # Pagination/limit
     params['limit'] = limit
@@ -1109,6 +1113,10 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     
     # Remove low confidence detections
     response = [item for item in response if item['confidence'] >= 4]
+    
+    # Remove detections with "confirmed": "No" or "marked:" "True"
+    response = [item for item in response if 'confirmed' not in item or item['confirmed'] != 'NO']
+    #response = [item for item in response if 'marked' not in item or item['marked'] != True]
     
     # Limit to at most 3 detections per species or per recorder
     if recorder_id is not None:
@@ -1229,6 +1237,9 @@ def get_detections_api(params):
     # Pagination/limit
     params_api['limit'] = limit
     
+    # Only retrieve certain fields
+    params_api['only'] = 'uid, species_code, datetime, datetime_recording, recorder_field_id, confidence, start, end, has_media, url_media, confirmed, marked'
+    
     # Set date range
     if from_date is not None:
         params_api['datetime_recording__gte'] = from_date
@@ -1252,12 +1263,16 @@ def get_detections_api(params):
     # Remove low confidence detections
     response = [item for item in response if item['confidence'] >= 4]
     
+    # Remove detections with "confirmed": "No" or "marked:" "True"
+    response = [item for item in response if 'confirmed' not in item or item['confirmed'] != 'NO']
+    #response = [item for item in response if 'marked' not in item or item['marked'] != True]
+    
     # Only include certain fields
-    for item in response:
-        item_keys = list(item.keys())
-        for key in item_keys:
-            if key not in ['uid', 'species_code', 'datetime_recording', 'recorder_field_id', 'confidence', 'start', 'end', 'has_media', 'url_media']:
-                item.pop(key, None)
+    #for item in response:
+    #    item_keys = list(item.keys())
+    #    for key in item_keys:
+    #        if key not in ['uid', 'species_code', 'datetime_recording', 'recorder_field_id', 'confidence', 'start', 'end', 'has_media', 'url_media']:
+    #            item.pop(key, None)
                 
     # Aggregate detections if sum_interval is set
     if sum_interval is not None:
@@ -1353,6 +1368,9 @@ def export_detections(species_codes, recorder_ids, filepath, min_conf=0.1, from_
     for item in response:
         item['datetime'] = to_local_time(item['datetime'], time_format='precise')
         item['datetime_recording'] = to_local_time(item['datetime_recording'], time_format='precise')
+    
+    # Remove items with "confirmed": "No"
+    response = [item for item in response if 'confirmed' not in item or item['confirmed'] != 'NO']
     
     # Make dirs
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
