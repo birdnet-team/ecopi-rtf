@@ -5,6 +5,7 @@ assets/colors.css
 cache/*
 *_manifest.json
 export/*
+startup.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

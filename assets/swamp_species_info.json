@@ -9420,7 +9420,7 @@
       0.0
     ],
     "new_ebird_code": "yebcuc",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Gelbschnabelkuckuck",
     "common_name_fr": "Coulicou \u00e0 bec jaune",
     "common_name_cs": "Kuka\u010dka de\u0161\u0165ov\u00e1",
@@ -10014,7 +10014,7 @@
       0.0
     ],
     "new_ebird_code": "bkbcuc",
-    "blacklisted": false,
+    "blacklisted": true,
     "common_name_de": "Schwarzschnabelkuckuck",
     "common_name_fr": "Coulicou \u00e0 bec noir",
     "common_name_cs": "Kuka\u010dka \u010dernozob\u00e1",
