@@ -847,6 +847,10 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=5000, min_count=5, 
         
         # Has confirmed: No?
         if 'confirmed' in item and item['confirmed'] == 'NO':
+            continue        
+        
+        # Has marked: True?  
+        if 'marked' in item and item['marked'] == True:
             continue
         
         # Is species code 'unknown' then use class_label
@@ -1121,7 +1125,7 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     
     # Remove detections with "confirmed": "No" or "marked:" "True"
     response = [item for item in response if 'confirmed' not in item or item['confirmed'] != 'NO']
-    #response = [item for item in response if 'marked' not in item or item['marked'] != True]
+    response = [item for item in response if 'marked' not in item or item['marked'] != True]
     
     # Limit to at most 3 detections per species or per recorder
     if recorder_id is not None:
@@ -1270,7 +1274,7 @@ def get_detections_api(params):
     
     # Remove detections with "confirmed": "No" or "marked:" "True"
     response = [item for item in response if 'confirmed' not in item or item['confirmed'] != 'NO']
-    #response = [item for item in response if 'marked' not in item or item['marked'] != True]
+    response = [item for item in response if 'marked' not in item or item['marked'] != True]
     
     # Only include certain fields
     #for item in response:
