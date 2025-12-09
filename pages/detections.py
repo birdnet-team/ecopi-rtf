@@ -70,7 +70,7 @@ def register_detections_callbacks(app):
             return [], {"display": "none"}, no_update, {"height": "300px", "width": "100%", "display": "flex"}
         
         # Get detection cards
-        cards, placeholder, data = recent_detections(num_cards=40, hours=72, locale=locale)
+        cards, placeholder, data = recent_detections(num_cards=40, hours=7*24, locale=locale)
         
         content = [
             dbc.Row(cards),
