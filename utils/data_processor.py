@@ -957,7 +957,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
     params['confidence__gte'] = min_conf
     
     # Only retrieve certain fields
-    params['only'] = 'species_code, datetime, confidence, recorder_field_id'
+    params['only'] = 'species_code, datetime, confidence, recorder_field_id, confirmed, marked'
     
     # set species code if species_list has len == 1
     if len(species_list) == 1:
@@ -1011,6 +1011,14 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
         
         # Is recorder in recorder_list?
         if len(recorder_list) > 0 and item['recorder_field_id'] not in recorder_list:
+            continue
+        
+        # Has confirmed: No?
+        if 'confirmed' in item and item['confirmed'] == 'NO':
+            continue
+        
+        # Has marked: True?  
+        if 'marked' in item and item['marked'] == True:
             continue
         
         if item['species_code'] not in detections:
@@ -1127,14 +1135,14 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     response = [item for item in response if 'confirmed' not in item or item['confirmed'] != 'NO']
     response = [item for item in response if 'marked' not in item or item['marked'] != True]
     
-    # Limit to at most 3 detections per species or per recorder
+    # Limit to at most 4 detections per species or per recorder
     if recorder_id is not None:
         species_detections = {}
         for item in response:
             species = item['species_code']
             if species not in species_detections:
                 species_detections[species] = []
-            if len(species_detections[species]) < 3:
+            if len(species_detections[species]) < 4:
                 species_detections[species].append(item)
         response = [item for sublist in species_detections.values() for item in sublist]
     elif species_code is not None:
@@ -1202,7 +1210,7 @@ def get_detections_api(params):
     species_code = params.get('species', None)
     recorder_id = params.get('recorder_id', None)
     min_conf = float(params.get('min_conf', 0.5))
-    from_date = params.get('from_date', (datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(hours=24))).isoformat()
+    from_date = params.get('from_date', (datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(hours=24)).isoformat())
     to_date = params.get('to_date', None)
     limit = params.get('limit', 100000000)
     has_media = params.get('has_media', None)
@@ -1259,7 +1267,8 @@ def get_detections_api(params):
     
     # Convert to local time and compute confidence score
     for item in response:        
-        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100, get_week_from_date(datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S'))) / 10.0
+        item['confidence'] = round(item['confidence'], 2)
+        item['score'] = get_confidence_score(item['species_code'], item['confidence'] * 100, get_week_from_date(datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S'))) / 10.0
         item['datetime'] = to_local_time(item['datetime'])
         item['datetime_recording'] = to_local_time(item['datetime_recording'])
         
@@ -1270,7 +1279,7 @@ def get_detections_api(params):
     response = [item for item in response if not is_blacklisted(item['species_code'])]
     
     # Remove low confidence detections
-    response = [item for item in response if item['confidence'] >= 4]
+    response = [item for item in response if item['score'] >= 4]
     
     # Remove detections with "confirmed": "No" or "marked:" "True"
     response = [item for item in response if 'confirmed' not in item or item['confirmed'] != 'NO']
