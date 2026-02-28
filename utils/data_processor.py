@@ -135,7 +135,7 @@ def is_blacklisted(species_code):
 def is_before_project_start(date):
     
     project_start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y')
-    date = datetime.strptime(date.split('.')[0], '%Y-%m-%d %H:%M:%S')
+    date = datetime.fromisoformat(date.split('.')[0])
     
     return date < project_start_date
 
@@ -443,8 +443,8 @@ def get_recorder_state(recorder_id, locale):
     
     last_status = response[0]
     
-    time_since_last_status = datetime.utcnow() - datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')            
-    last_update = datetime.strptime(last_status['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y - %H:%M')
+    time_since_last_status = datetime.utcnow() - datetime.fromisoformat(last_status['datetime'].split('.')[0])            
+    last_update = datetime.fromisoformat(last_status['datetime'].split('.')[0]).strftime('%m/%d/%Y - %H:%M')
     
     is_ok = True if time_since_last_status.total_seconds() < 3600 * 24 else False
     
@@ -773,7 +773,7 @@ def get_weekly_detections(min_conf=0.75, species_code=None, recorder_id=None, mi
         if is_before_project_start(detection['datetime']):
             continue
         
-        week = get_week_from_date(datetime.strptime(detection['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S'))
+        week = get_week_from_date(datetime.fromisoformat(detection['datetime'].split('.')[0]))
         weekly_detections[week - 1] += 1
     
     # Get projected frequency from species data
@@ -869,13 +869,13 @@ def get_last_n_detections(n=8, min_conf=0.5, hours=24, limit=5000, min_count=5, 
             continue
         
         # compute confidence as percentage
-        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100, get_week_from_date(datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S')))
+        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100, get_week_from_date(datetime.fromisoformat(item['datetime'].split('.')[0])))
         
         if item['confidence'] < 33:
             continue
         
         # format date
-        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y - %H:%M')
+        item['datetime'] = datetime.fromisoformat(item['datetime'].split('.')[0]).strftime('%m/%d/%Y - %H:%M')
         
         # convert to local time
         item['datetime'] = to_local_time(item['datetime'], cfg.TIME_FORMAT)    
@@ -1025,7 +1025,7 @@ def get_most_active_species(n=10, min_conf=0.5, hours=24, species_list=[], min_c
             detections[item['species_code']] = {'detections': np.zeros(24, dtype=int)}
             
         # convert to local time
-        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y - %H:%M')
+        item['datetime'] = datetime.fromisoformat(item['datetime'].split('.')[0]).strftime('%m/%d/%Y - %H:%M')
         item['datetime'] = to_local_time(item['datetime'], time_format='24h')
         
         # format date
@@ -1114,10 +1114,10 @@ def get_species_stats(species_code=None, recorder_id=None, min_conf=0.5, hours=1
     for item in response:        
         
         # compute confidence as percentage
-        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100, get_week_from_date(datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S'))) / 10.0
+        item['confidence'] = get_confidence_score(item['species_code'], item['confidence'] * 100, get_week_from_date(datetime.fromisoformat(item['datetime'].split('.')[0]))) / 10.0
         
         # format date
-        item['datetime'] = datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S').strftime('%m/%d/%Y - %H:%M')
+        item['datetime'] = datetime.fromisoformat(item['datetime'].split('.')[0]).strftime('%m/%d/%Y - %H:%M')
         
         # convert to local time
         item['datetime'] = to_local_time(item['datetime'], cfg.TIME_FORMAT)
@@ -1268,7 +1268,7 @@ def get_detections_api(params):
     # Convert to local time and compute confidence score
     for item in response:        
         item['confidence'] = round(item['confidence'], 2)
-        item['score'] = get_confidence_score(item['species_code'], item['confidence'] * 100, get_week_from_date(datetime.strptime(item['datetime'].split('.')[0], '%Y-%m-%d %H:%M:%S'))) / 10.0
+        item['score'] = get_confidence_score(item['species_code'], item['confidence'] * 100, get_week_from_date(datetime.fromisoformat(item['datetime'].split('.')[0]))) / 10.0
         item['datetime'] = to_local_time(item['datetime'])
         item['datetime_recording'] = to_local_time(item['datetime_recording'])
         
