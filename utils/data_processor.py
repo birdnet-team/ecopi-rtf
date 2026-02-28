@@ -60,16 +60,26 @@ def date_to_last_seen(date, time_format='24h', locale='en'):
         '%m/%d/%Y - %H:%M',
         '%Y-%m-%d %H:%M:%S.%f'
     ]
+    parsed_date = None
     for fmt in date_formats:
         try:
-            date = datetime.strptime(date, fmt)
+            parsed_date = datetime.strptime(date, fmt)
             break
         except ValueError:
             continue
-    else:
-        raise ValueError(f"Date {date} does not match any expected format.")
     
-    delta = datetime.utcnow() - date
+    # Try ISO 8601 format (handles T separator and timezone)
+    if parsed_date is None:
+        try:
+            # Handle timezone format like +0000 (no colon)
+            if '+' in date and ':' not in date.split('+')[-1]:
+                date = date[:-2] + ':' + date[-2:]
+            parsed_date = datetime.fromisoformat(date.replace('Z', '+00:00'))
+        except ValueError:
+            raise ValueError(f"Date {date} does not match any expected format.")
+    
+    date = parsed_date
+    delta = datetime.utcnow() - date.replace(tzinfo=None)
     
     if delta.total_seconds() < 60:
         return f"{strings.get('dp_time_delta_ago_prefix')} 1 {strings.get('dp_time_delta_min')} {strings.get('dp_time_delta_ago_postfix')}"
@@ -89,17 +99,29 @@ def date_to_last_seen(date, time_format='24h', locale='en'):
 
 def to_local_time(utc_time, time_format='24h', date_format=cfg.DATE_FORMAT):
     # Convert UTC time to local time
+    parsed_time = None
     try:
-        utc_time = datetime.strptime(utc_time, '%m/%d/%Y - %I:%M %p')
+        parsed_time = datetime.strptime(utc_time, '%m/%d/%Y - %I:%M %p')
     except ValueError:
         try:
-            utc_time = datetime.strptime(utc_time, '%m/%d/%Y - %H:%M')
+            parsed_time = datetime.strptime(utc_time, '%m/%d/%Y - %H:%M')
         except ValueError:
             try:
-                utc_time = datetime.strptime(utc_time, '%Y-%m-%d %H:%M:%S.%f')
+                parsed_time = datetime.strptime(utc_time, '%Y-%m-%d %H:%M:%S.%f')
             except ValueError:
-                raise ValueError(f"Date {utc_time} does not match any expected format.")
+                pass
     
+    # Try ISO 8601 format (handles T separator and timezone)
+    if parsed_time is None:
+        try:
+            # Handle timezone format like +0000 (no colon)
+            if '+' in utc_time and ':' not in utc_time.split('+')[-1]:
+                utc_time = utc_time[:-2] + ':' + utc_time[-2:]
+            parsed_time = datetime.fromisoformat(utc_time.replace('Z', '+00:00'))
+        except ValueError:
+            raise ValueError(f"Date {utc_time} does not match any expected format.")
+    
+    utc_time = parsed_time
     timezone = pytz.timezone(cfg.TIMEZONE)
     local_time = utc_time.astimezone(timezone)
     
@@ -495,9 +517,37 @@ def get_recordings_list():
     
 def get_total_audio_duration():
     
-    recordings_list = get_recordings_list()
+    # Use v0.2 aggregation endpoint for efficiency - gets total recorded minutes directly
+    url = f'https://api.ecopi.de/api/v0.2/aggregations/projects/{cfg.PROJECT_NAME}/time_series'
     
-    total_audio = sum(min(300, recording['duration']) for recording in recordings_list)
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    
+    # Convert PROJECT_START_DATE from dd-mm-yyyy to ISO 8601 format
+    try:
+        start_date = datetime.strptime(cfg.PROJECT_START_DATE, '%d-%m-%Y').strftime('%Y-%m-%dT00:00:00Z')
+    except:
+        start_date = '2020-01-01T00:00:00Z'
+    
+    # Get all time data with very long date range
+    params = {
+        'start_datetime': start_date,
+        'interval_unit': 'year',
+        'interval_size': 100
+    }
+    
+    try:
+        response = make_request(url, headers, params, cache_timeout=1500, ignore_cache=False)
+        if response and 'total_sum_recorded_minutes' in response:
+            # Convert minutes to seconds
+            return max(0, int(response['total_sum_recorded_minutes'] * 60))
+    except Exception as e:
+        print(f"Error fetching total audio duration from aggregation endpoint: {e}")
+    
+    # Fallback to old method if aggregation fails
+    recordings_list = get_recordings_list()
+    total_audio = sum(min(300, recording.get('duration', 0)) for recording in recordings_list)
     
     return max(0, int(total_audio))
 
