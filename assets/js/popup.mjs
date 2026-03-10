@@ -17,14 +17,12 @@ function openPlayer(index) {
     const dataListElement = document.querySelector("#audio-data-list");
     const dataList = JSON.parse(dataListElement.value)
     let data = dataList[index];
-    const audioUrl = data.url_media;  
+    const audioUrl = '{{SITE_ROOT}}/media?url=' + encodeURIComponent(data.url_media);
 
     const wavesurfer = WaveSurfer.create({
         container: '#popup-audio-container',
         progressColor: '#FFF',
-        url: audioUrl, // Production 
-        // url: "./assets/example.mp3", // For main page
-        // url: "../assets/example.mp3", // for species page
+        url: audioUrl, // Proxied through server to avoid CORS issues
         sampleRate: 48000,
         height: 0,
     });

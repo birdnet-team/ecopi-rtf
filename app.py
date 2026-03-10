@@ -41,6 +41,7 @@ app = dash.Dash(
     external_scripts=[
         # None for now
     ],
+    assets_ignore=r'.*\.esm\.js',
     suppress_callback_exceptions=True,
     title=cfg.PAGE_TITLE,
     update_title=None,
@@ -419,6 +420,31 @@ def proxy_tile():
 
     return send_file(BytesIO(response.content), mimetype=response.headers['Content-Type'])
     
+# Proxy route for audio media (avoids CORS issues with api.ecopi.de)
+@app.server.route("/media")
+def proxy_media():
+    media_url = request.args.get('url')
+    if not media_url:
+        return "No media URL provided", 400
+
+    cache_filename = get_cache_filename(media_url, 'cache/media')
+    if os.path.exists(cache_filename):
+        return send_file(cache_filename, mimetype='audio/mpeg')
+
+    headers = {
+        'Authorization': f'Token {cfg.API_TOKEN}'
+    }
+    response = requests.get(media_url, headers=headers)
+    if response.status_code != 200:
+        return "Failed to fetch media", response.status_code
+
+    os.makedirs('cache/media', exist_ok=True)
+    with open(cache_filename, 'wb') as f:
+        f.write(response.content)
+
+    content_type = response.headers.get('Content-Type', 'audio/mpeg')
+    return send_file(BytesIO(response.content), mimetype=content_type)
+
 # Cache costly requests
 @app.server.route("/cache")
 def cache():
