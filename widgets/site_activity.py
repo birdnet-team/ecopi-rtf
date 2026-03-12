@@ -6,7 +6,8 @@ from utils.strings import Strings
 
 def get_site_activity_map(species_id, locale):
     recorder_data = {}
-    site_detections = dp.get_total_detections(species_list=[species_id], days=90, min_count=0)['species_counts'][species_id]['recorders']
+    total_detections = dp.get_total_detections(species_list=[species_id], days=90, min_count=0)
+    site_detections = total_detections.get('species_counts', {}).get(species_id, {}).get('recorders', {})
     for recorder_id in cfg.RECORDERS:
         recorder_data[recorder_id] = dp.get_recorder_state(recorder_id, locale)
         recorder_data[recorder_id]['detections'] = site_detections.get(recorder_id, 0)

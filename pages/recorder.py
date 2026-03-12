@@ -98,7 +98,6 @@ def display_recorder_page(recorder_id, locale):
                         className="d-flex justify-content-left mt-3 mb-5" if 'note' in cfg.RECORDERS[int(recorder_id)] else "d-none"
                     ),
                     
-                    html.H5(f"{strings.get('recorder_most_active_species')}:", className="recent-detections-heading mb-4"),
                     html.Div(id="recorder-activity-plot"),
                     html.H5(strings.get('main_recent_detections') + ":", className="recent-detections-heading mt-4"),
                     dbc.Table(
@@ -187,6 +186,10 @@ def register_recorder_callbacks(app):
 
         # Create activity plot
         active_species_plot, _ = active_species.active_species_simple(locale, n=6, hours=7*24, recorder_list=[recorder_id])
+        if active_species_plot:
+            active_species_plot = [
+                html.H5(f"{strings.get('recorder_most_active_species')}:", className="recent-detections-heading mb-4"),
+            ] + active_species_plot
 
         # Sort recorder stats by date
         recorder_stats = sorted(recorder_stats, key=lambda x: x["confidence"], reverse=True)
