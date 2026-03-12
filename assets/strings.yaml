@@ -69,15 +69,35 @@ projects:
   sustainscapes:
     project_main_title:
       en: "Remote monitoring of Birds in the Kattrup Vildnis"
+      de: "Fernüberwachung von Vögeln im Kattrup Vildnis"
+      fr: "Surveillance à distance des oiseaux dans le Kattrup Vildnis"
+      it: "Monitoraggio remoto degli uccelli nel Kattrup Vildnis"
+      cs: "Vzdálené monitorování ptáků v Kattrup Vildnis"
+      es: "Monitoreo remoto de aves en el Kattrup Vildnis"
       da: "Fjernovervågning af fugle i Kattrup Vildnis"
     project_subtitle:
       en: "AI-powered acoustic monitoring"
+      de: "KI-gestütztes akustisches Monitoring"
+      fr: "Surveillance acoustique alimentée par l'IA"
+      it: "Monitoraggio acustico alimentato dall'IA"
+      cs: "Akustické monitorování poháněné AI"
+      es: "Monitoreo acústico impulsado por IA"
       da: "AI-drevet akustisk overvågning"
     project_subtitle_desc:
       en: "We listen to the sounds of birds and how their diversity changes over time in different habitats in Kattrup Vildnis."
+      de: "Wir lauschen den Stimmen der Vögel und verfolgen, wie sich ihre Diversität in verschiedenen Habitaten im Kattrup Vildnis über die Zeit verändert."
+      fr: "Nous écoutons les sons des oiseaux et comment leur diversité évolue au fil du temps dans les différents habitats du Kattrup Vildnis."
+      it: "Ascoltiamo i suoni degli uccelli e come la loro diversità cambia nel tempo nei diversi habitat del Kattrup Vildnis."
+      cs: "Nasloucháme zvukům ptáků a sledujeme, jak se jejich rozmanitost mění v průběhu času v různých biotopech v Kattrup Vildnis."
+      es: "Escuchamos los sonidos de las aves y cómo su diversidad cambia con el tiempo en los diferentes hábitats del Kattrup Vildnis."
       da: "Vi lytter til fuglenes lyde og følger, hvordan deres diversitet ændrer sig over tid i forskellige habitater i Kattrup Vildnis."
     project_goal:
       en: "The SustainScapes project uses AI-powered acoustic monitoring to remotely track bird diversity across different habitats in Kattrup Vildnis. By analyzing the soundscape over time, we aim to understand how bird communities respond to habitat differences and conservation efforts."
+      de: "Das SustainScapes-Projekt nutzt KI-gestütztes akustisches Monitoring, um die Vogeldiversität in verschiedenen Habitaten im Kattrup Vildnis aus der Ferne zu erfassen. Durch die Analyse der Klanglandschaft über die Zeit wollen wir verstehen, wie Vogelgemeinschaften auf Habitatunterschiede und Naturschutzmaßnahmen reagieren."
+      fr: "Le projet SustainScapes utilise la surveillance acoustique alimentée par l'IA pour suivre à distance la diversité des oiseaux dans les différents habitats du Kattrup Vildnis. En analysant le paysage sonore au fil du temps, nous cherchons à comprendre comment les communautés d'oiseaux réagissent aux différences d'habitat et aux efforts de conservation."
+      it: "Il progetto SustainScapes utilizza il monitoraggio acustico alimentato dall'IA per tracciare da remoto la diversità degli uccelli nei diversi habitat del Kattrup Vildnis. Analizzando il paesaggio sonoro nel tempo, miriamo a comprendere come le comunità di uccelli rispondono alle differenze di habitat e agli sforzi di conservazione."
+      cs: "Projekt SustainScapes využívá akustické monitorování poháněné AI k vzdálenému sledování diverzity ptáků v různých biotopech v Kattrup Vildnis. Analýzou zvukové krajiny v průběhu času se snažíme pochopit, jak ptačí společenství reagují na rozdíly v biotopech a ochranářské úsilí."
+      es: "El proyecto SustainScapes utiliza monitoreo acústico impulsado por IA para rastrear de forma remota la diversidad de aves en los diferentes hábitats del Kattrup Vildnis. Al analizar el paisaje sonoro a lo largo del tiempo, buscamos comprender cómo las comunidades de aves responden a las diferencias de hábitat y a los esfuerzos de conservación."
       da: "SustainScapes-projektet bruger AI-drevet akustisk overvågning til fjernovervågning af fuglediversiteten på tværs af forskellige habitater i Kattrup Vildnis. Ved at analysere lydlandskabet over tid ønsker vi at forstå, hvordan fuglesamfund reagerer på habitatforskelle og naturbevaringsindsatser."
 
 # Habitat strings
