@@ -12,6 +12,7 @@ We currently support these monitoring projects:
 
 - SWAMP: Sapsucker Woods Acoustic Monitoring Project - [birdnet.cornell.edu/swamp/](https://birdnet.cornell.edu/swamp/)
 - AMiC: Acoustic Monitoring in Chemnitz - [birdnet.cornell.edu/amic/](https://birdnet.cornell.edu/amic/)
+- SustainScapes: Remote monitoring of Birds in Kattrup Vildnis - [birdnet.cornell.edu/sustainscapes/](https://birdnet.cornell.edu/sustainscapes/)
 
 Interested? Want to host your own project? Please don't hesitate to contact us at [ccb-birdnet@cornell.edu](mailto:ccb-birdnet@cornell.edu).
 
@@ -154,6 +155,6 @@ BirdNET is a joint effort of partners from academia and industry.
 Without these partnerships, this project would not have been possible.
 Thank you!
 
-![Our partners](https://tuc.cloud/index.php/s/KSdWfX5CnSRpRgQ/download/box_logos.png)
+![Logos of all partners](https://tuc.cloud/index.php/s/KSdWfX5CnSRpRgQ/download/box_logos.png)
 
 
