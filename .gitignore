@@ -1,3 +1,6 @@
+# Exclude dev folder
+dev/
+
 # Exclude files with dynamic content
 site_views.csv
 assets/favicon.ico

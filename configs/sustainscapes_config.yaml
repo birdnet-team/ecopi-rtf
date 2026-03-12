@@ -8,7 +8,7 @@ DEPLOYMENT_LON: 11.356
 TIMEZONE: 'Europe/Copenhagen'
 TIME_FORMAT: '24h'
 DATE_FORMAT: '%d.%m.%Y'
-DEFAULT_SITE_LOCALE: 'dk'
+DEFAULT_SITE_LOCALE: 'da'
 RECORDERS:
   2: {id: '0051', lat: 55.63533, lon: 11.35766, habitat: 'habitat_wetland_forest_inside', img: 'ss_unit_2.jpg', tooltip: 'right'}
   3: {id: '0052', lat: 55.63024, lon: 11.34016, habitat: 'habitat_wetland_open_inside', img: 'ss_unit_3.jpg', tooltip: 'right'}
