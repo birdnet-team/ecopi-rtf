@@ -1,0 +1,61 @@
+PROJECT_ID: 'sustainscapes'
+PROJECT_NAME: '101_sustain_scapes'
+PROJECT_START_DATE: '20-06-2024' # dd-mm-yyyy
+RECORDER_GROUP: 39
+SPECIES_DATA: sustainscapes
+DEPLOYMENT_LAT: 55.617
+DEPLOYMENT_LON: 11.356
+TIMEZONE: 'Europe/Copenhagen'
+TIME_FORMAT: '24h'
+DATE_FORMAT: '%d.%m.%Y'
+DEFAULT_SITE_LOCALE: 'dk'
+RECORDERS:
+  2: {id: 'TBD', lat: 55.63533, lon: 11.35766, habitat: 'habitat_wetland_forest_inside', img: 'epi2.JPG', tooltip: 'right'}
+  3: {id: 'TBD', lat: 55.63024, lon: 11.34016, habitat: 'habitat_wetland_open_inside', img: 'epi3.jpg', tooltip: 'left'}
+  4: {id: 'TBD', lat: 55.62815, lon: 11.33319, habitat: 'habitat_wetland_open_edge', img: 'epi4.JPG', tooltip: 'left'}
+  5: {id: 'TBD', lat: 55.61028, lon: 11.35812, habitat: 'habitat_wetland_forest_edge', img: 'epi5.JPG', tooltip: 'right'}
+  6: {id: 'TBD', lat: 55.60057, lon: 11.37605, habitat: 'habitat_wetland_open_edge', img: 'epi6.jpg', tooltip: 'right'}
+  7: {id: 'TBD', lat: 55.59943, lon: 11.37243, habitat: 'habitat_wetland_open_inside', img: 'epi7.jpg', tooltip: 'left'}
+MAP_ZOOM_LEVEL: 13
+MAIN_HEADER_IMG_LIST: ['ss_main_header_1.jpg', 'ss_main_header_2.jpg']
+ABOUT_HEADER_IMG_LIST: ['ss_about_header_1.jpg']
+LIVE_STREAM_URL: ''
+DONATION_URL: ''
+PROJECT_ACRONYM: 'SustainScapes'
+PRIMARY_COLOR: '#3F7E44'
+SECONDARY_COLOR: '#BFBB2E'
+PLOT_PRIMARY_COLOR: '#3F7E44'
+BUTTON_COLOR: '#3F7E44'
+FAVICON: 'sustainscapes_favicon.ico'
+PAGE_TITLE: 'SustainScapes'
+LOGO_MOBILE: 'SustainScapes_Colour_long_web.png'
+LOGO_DESKTOP: 'SustainScapes_Colour_long_web.png'
+LEARN_MORE_BASE_URL: 'https://ebird.org/species/'
+FOOTER_LINKS:
+  widget_footer_link_section_site:
+    - {name: "widget_footer_site_links_home", href: "/"}
+    - {name: "widget_footer_site_links_detections", href: "/detections"}
+    - {name: "widget_footer_site_links_recording_units", href: "/recorder/2"}
+    - {name: "widget_footer_site_links_about_the_project", href: "/about"}
+    - {name: "widget_footer_site_links_contact", href: "/about#about-contact"}
+  widget_footer_link_section_oekofor:
+    - {name: "widget_footer_oekofor_about_us", href: "https://www.oekofor.de/en/#about", target: "_blank"}
+    - {name: "widget_footer_oekofor_services", href: "https://www.oekofor.de/en/#services", target: "_blank"}
+    - {name: "widget_footer_oekofor_ecopi", href: "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", target: "_blank"}
+    - {name: "widget_footer_oekofor_contact", href: "https://www.oekofor.de/en/#contact", target: "_blank"}
+  widget_footer_link_section_about:
+    - {name: "widget_footer_site_links_about_the_project", href: "/about"}
+    - {name: "widget_footer_about_imprint", href: "/privacy"}
+    - {name: "widget_footer_about_privacy_policy", href: "/privacy"}
+COPYRIGHT_HOLDERS: ""
+PARTNER_STATEMENT: "about_partnership_sustainscapes"
+PARTNER_LOGOS: ['logo_box_oekofor.png']
+FOOTER_TOP_LOGO: 'birdnet_logo_white.png'
+FOOTER_BOTTOM_LOGOS: ['oekofor_logo_white.png']
+TEAM_MEMBERS:
+  - {name: "Stefan Kahl", role: "about_team_role_project_lead_and_web", img: "stefan.png"}
+  - {name: "Felix Günther", role: "about_team_role_backend", img: "felix.png"}
+  - {name: "Raja Seifert", role: "about_team_role_design", img: "raja.png"}
+  - {name: "Max Mauermann", role: "about_team_role_web", img: "max.png"}
+  - {name: "Josef Haupt", role: "about_team_role_web", img: "josef.png"}
+PWA_MANIFEST: 'assets/sustainscapes_manifest.json'
