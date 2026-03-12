@@ -38,6 +38,10 @@ FOOTER_LINKS:
     - {name: "widget_footer_site_links_recording_units", href: "/recorder/2"}
     - {name: "widget_footer_site_links_about_the_project", href: "/about"}
     - {name: "widget_footer_site_links_contact", href: "/about#about-contact"}
+  widget_footer_link_section_sustainscapes:
+    - {name: "widget_footer_sustainscapes_link_1", href: "#", target: "_blank"}
+    - {name: "widget_footer_sustainscapes_link_2", href: "#", target: "_blank"}
+    - {name: "widget_footer_sustainscapes_link_3", href: "#", target: "_blank"}
   widget_footer_link_section_oekofor:
     - {name: "widget_footer_oekofor_about_us", href: "https://www.oekofor.de/en/#about", target: "_blank"}
     - {name: "widget_footer_oekofor_services", href: "https://www.oekofor.de/en/#services", target: "_blank"}
@@ -49,6 +53,12 @@ FOOTER_LINKS:
     - {name: "widget_footer_yang_center_technology", href: "https://www.birds.cornell.edu/ccb/technology/", target: "_blank"}
     - {name: "widget_footer_yang_center_education", href: "https://www.birds.cornell.edu/ccb/education/", target: "_blank"}
     - {name: "widget_footer_yang_center_publications", href: "https://www.birds.cornell.edu/ccb/publications/", target: "_blank"}
+  widget_footer_link_section_tuc:
+    - {name: "widget_footer_tu_chemnitz_university", href: "https://www.tu-chemnitz.de/index.html.en", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_degree_programs", href: "https://www.tu-chemnitz.de/studierendenservice/zsb/studiengaenge/en/", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_international_office", href: "https://www.tu-chemnitz.de/international/index.php.en", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_research", href: "https://www.tu-chemnitz.de/forschung/index.php.en", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_computer_science", href: "https://www.tu-chemnitz.de/informatik/index.php.en", target: "_blank"}
   widget_footer_link_section_about:
     - {name: "widget_footer_site_links_about_the_project", href: "/about"}
     - {name: "widget_footer_about_imprint", href: "/privacy"}

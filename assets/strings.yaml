@@ -183,21 +183,37 @@ habitat_feeder_garden_and_pond:
 habitat_wetland_forest_inside:
   en: "Wetland Forest (inside)"
   de: "Feuchtwald (innen)"
+  fr: "Forêt humide (intérieur)"
+  it: "Foresta umida (interno)"
+  cs: "Mokřadní les (vnitřní)"
+  es: "Bosque húmedo (interior)"
   dk: "Vådskov (indre)"
 
 habitat_wetland_forest_edge:
   en: "Wetland Forest (edge)"
   de: "Feuchtwald (Rand)"
+  fr: "Forêt humide (lisière)"
+  it: "Foresta umida (bordo)"
+  cs: "Mokřadní les (okraj)"
+  es: "Bosque húmedo (borde)"
   dk: "Vådskov (kant)"
 
 habitat_wetland_open_inside:
   en: "Wetland Open (inside)"
   de: "Offenes Feuchtgebiet (innen)"
+  fr: "Zone humide ouverte (intérieur)"
+  it: "Zona umida aperta (interno)"
+  cs: "Otevřený mokřad (vnitřní)"
+  es: "Humedal abierto (interior)"
   dk: "Åbent vådområde (indre)"
 
 habitat_wetland_open_edge:
   en: "Wetland Open (edge)"
   de: "Offenes Feuchtgebiet (Rand)"
+  fr: "Zone humide ouverte (lisière)"
+  it: "Zona umida aperta (bordo)"
+  cs: "Otevřený mokřad (okraj)"
+  es: "Humedal abierto (borde)"
   dk: "Åbent vådområde (kant)"
 
 # General site strings
@@ -826,6 +842,11 @@ about_partnership_amic:
 about_partnership_sustainscapes:
   en: "This project is a collaboration between ..."
   de: "Dieses Projekt ist eine Zusammenarbeit zwischen..."
+  fr: "Ce projet est une collaboration entre ..."
+  it: "Questo progetto è una collaborazione tra ..."
+  cs: "Tento projekt je spoluprací mezi ..."
+  es: "Este proyecto es una colaboración entre ..."
+  dk: "Dette projekt er et samarbejde mellem ..."
 
 about_funding_1:
   en: "This project is supported by Jake Holshuh (Cornell class of ’69) and The Arthur Vining Davis Foundations. Our work in the K. Lisa Yang Center for Conservation Bioacoustics is made possible by the generosity of K. Lisa Yang to advance innovative conservation technologies to inspire and inform the conservation of wildlife and habitats."
@@ -1025,6 +1046,42 @@ widget_footer_link_section_botanical_garden:
   cs: "Botanická zahrada"
   es: "Jardín Botánico"
   dk: "Botanisk Have"
+
+widget_footer_link_section_sustainscapes:
+  en: "SustainScapes"
+  de: "SustainScapes"
+  fr: "SustainScapes"
+  it: "SustainScapes"
+  cs: "SustainScapes"
+  es: "SustainScapes"
+  dk: "SustainScapes"
+
+widget_footer_sustainscapes_link_1:
+  en: "SustainScapes Link 1"
+  de: "SustainScapes Link 1"
+  fr: "SustainScapes Link 1"
+  it: "SustainScapes Link 1"
+  cs: "SustainScapes Link 1"
+  es: "SustainScapes Link 1"
+  dk: "SustainScapes Link 1"
+
+widget_footer_sustainscapes_link_2:
+  en: "SustainScapes Link 2"
+  de: "SustainScapes Link 2"
+  fr: "SustainScapes Link 2"
+  it: "SustainScapes Link 2"
+  cs: "SustainScapes Link 2"
+  es: "SustainScapes Link 2"
+  dk: "SustainScapes Link 2"
+
+widget_footer_sustainscapes_link_3:
+  en: "SustainScapes Link 3"
+  de: "SustainScapes Link 3"
+  fr: "SustainScapes Link 3"
+  it: "SustainScapes Link 3"
+  cs: "SustainScapes Link 3"
+  es: "SustainScapes Link 3"
+  dk: "SustainScapes Link 3"
 
 widget_footer_link_section_oekofor:
   en: "OekoFor"
