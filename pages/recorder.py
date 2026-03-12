@@ -189,7 +189,8 @@ def register_recorder_callbacks(app):
         if active_species_plot:
             active_species_plot = [
                 html.H5(f"{strings.get('recorder_most_active_species')}:", className="recent-detections-heading mb-4"),
-            ] + active_species_plot
+                active_species_plot,
+            ]
 
         # Sort recorder stats by date
         recorder_stats = sorted(recorder_stats, key=lambda x: x["confidence"], reverse=True)
