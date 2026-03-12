@@ -399,15 +399,25 @@ def proxy_tile():
     if not tile_url:
         return "No tile URL provided", 400
 
+    # Validate tile URL to prevent SSRF - only allow known tile providers
+    from urllib.parse import urlparse
+    parsed = urlparse(tile_url)
+    allowed_hosts = [
+        'a.tile.openstreetmap.org',
+        'b.tile.openstreetmap.org',
+        'c.tile.openstreetmap.org',
+        'tile.openstreetmap.org',
+    ]
+    if parsed.hostname not in allowed_hosts:
+        return "Tile source not allowed", 403
+
     cache_filename = get_cache_filename(tile_url, 'cache/tiles')
     if os.path.exists(cache_filename):
         return send_file(cache_filename, mimetype='image/png')
 
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
-        'Referer': 'https://www.openstreetmap.org/',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.5'
+        'User-Agent': 'ecoPi-RTF/1.0 (https://github.com/birdnet-team/ecopi-rtf; bird monitoring dashboard)',
+        'Accept': 'image/png,image/*;q=0.9,*/*;q=0.8',
     }
 
     response = requests.get(tile_url, headers=headers)
