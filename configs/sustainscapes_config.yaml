@@ -1,7 +1,7 @@
 PROJECT_ID: 'sustainscapes'
 PROJECT_NAME: '101_sustain_scapes'
 PROJECT_START_DATE: '20-06-2024' # dd-mm-yyyy
-RECORDER_GROUP: 39
+RECORDER_GROUP: 142
 SPECIES_DATA: sustainscapes
 DEPLOYMENT_LAT: 55.617
 DEPLOYMENT_LON: 11.356
@@ -10,12 +10,12 @@ TIME_FORMAT: '24h'
 DATE_FORMAT: '%d.%m.%Y'
 DEFAULT_SITE_LOCALE: 'dk'
 RECORDERS:
-  2: {id: 'TBD', lat: 55.63533, lon: 11.35766, habitat: 'habitat_wetland_forest_inside', img: 'epi2.JPG', tooltip: 'right'}
-  3: {id: 'TBD', lat: 55.63024, lon: 11.34016, habitat: 'habitat_wetland_open_inside', img: 'epi3.jpg', tooltip: 'left'}
-  4: {id: 'TBD', lat: 55.62815, lon: 11.33319, habitat: 'habitat_wetland_open_edge', img: 'epi4.JPG', tooltip: 'left'}
-  5: {id: 'TBD', lat: 55.61028, lon: 11.35812, habitat: 'habitat_wetland_forest_edge', img: 'epi5.JPG', tooltip: 'right'}
-  6: {id: 'TBD', lat: 55.60057, lon: 11.37605, habitat: 'habitat_wetland_open_edge', img: 'epi6.jpg', tooltip: 'right'}
-  7: {id: 'TBD', lat: 55.59943, lon: 11.37243, habitat: 'habitat_wetland_open_inside', img: 'epi7.jpg', tooltip: 'left'}
+  2: {id: '0051', lat: 55.63533, lon: 11.35766, habitat: 'habitat_wetland_forest_inside', img: 'ss_unit_2.jpg', tooltip: 'right'}
+  3: {id: '0052', lat: 55.63024, lon: 11.34016, habitat: 'habitat_wetland_open_inside', img: 'ss_unit_3.jpg', tooltip: 'left'}
+  4: {id: '0053', lat: 55.62815, lon: 11.33319, habitat: 'habitat_wetland_open_edge', img: 'ss_unit_4.jpg', tooltip: 'left'}
+  5: {id: '0054', lat: 55.61028, lon: 11.35812, habitat: 'habitat_wetland_forest_edge', img: 'ss_unit_5.jpg', tooltip: 'right'}
+  6: {id: '0055', lat: 55.60057, lon: 11.37605, habitat: 'habitat_wetland_open_edge', img: 'ss_unit_6.jpg', tooltip: 'right'}
+  7: {id: '0056', lat: 55.59943, lon: 11.37243, habitat: 'habitat_wetland_open_inside', img: 'ss_unit_7.jpg', tooltip: 'left'}
 MAP_ZOOM_LEVEL: 13
 MAIN_HEADER_IMG_LIST: ['ss_main_header_1.jpg', 'ss_main_header_2.jpg']
 ABOUT_HEADER_IMG_LIST: ['ss_about_header_1.jpg']
@@ -28,8 +28,8 @@ PLOT_PRIMARY_COLOR: '#3F7E44'
 BUTTON_COLOR: '#3F7E44'
 FAVICON: 'sustainscapes_favicon.ico'
 PAGE_TITLE: 'SustainScapes'
-LOGO_MOBILE: 'SustainScapes_Colour_long_web.png'
-LOGO_DESKTOP: 'SustainScapes_Colour_long_web.png'
+LOGO_MOBILE: 'sustainscapes_logo_long.png'
+LOGO_DESKTOP: 'sustainscapes_logo_long.png'
 LEARN_MORE_BASE_URL: 'https://ebird.org/species/'
 FOOTER_LINKS:
   widget_footer_link_section_site:
@@ -43,6 +43,18 @@ FOOTER_LINKS:
     - {name: "widget_footer_oekofor_services", href: "https://www.oekofor.de/en/#services", target: "_blank"}
     - {name: "widget_footer_oekofor_ecopi", href: "https://www.oekofor.de/en/portfolio/erfassungstechnik_en/", target: "_blank"}
     - {name: "widget_footer_oekofor_contact", href: "https://www.oekofor.de/en/#contact", target: "_blank"}
+  widget_footer_link_section_yang_center:
+    - {name: "widget_footer_yang_center_home", href: "https://www.birds.cornell.edu/ccb/", target: "_blank"}
+    - {name: "widget_footer_yang_center_research", href: "https://www.birds.cornell.edu/ccb/research/", target: "_blank"}
+    - {name: "widget_footer_yang_center_technology", href: "https://www.birds.cornell.edu/ccb/technology/", target: "_blank"}
+    - {name: "widget_footer_yang_center_education", href: "https://www.birds.cornell.edu/ccb/education/", target: "_blank"}
+    - {name: "widget_footer_yang_center_publications", href: "https://www.birds.cornell.edu/ccb/publications/", target: "_blank"}
+  widget_footer_link_section_tuc:
+    - {name: "widget_footer_tu_chemnitz_university", href: "https://www.tu-chemnitz.de/index.html.en", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_degree_programs", href: "https://www.tu-chemnitz.de/studierendenservice/zsb/studiengaenge/en/", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_international_office", href: "https://www.tu-chemnitz.de/international/index.php.en", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_research", href: "https://www.tu-chemnitz.de/forschung/index.php.en", target: "_blank"}
+    - {name: "widget_footer_tu_chemnitz_computer_science", href: "https://www.tu-chemnitz.de/informatik/index.php.en", target: "_blank"}
   widget_footer_link_section_about:
     - {name: "widget_footer_site_links_about_the_project", href: "/about"}
     - {name: "widget_footer_about_imprint", href: "/privacy"}
